@@ -77,7 +77,52 @@ and no error line. `Show-ScopeDisclaimer` is called at line 5140; the
 checklist loop begins at 5142. **The program died in the checklist
 render.**
 
-**Next step:** read lines **5142-5222**. Not yet done.
+**UPDATE (12:55) -- lines 5142-5222 have now been read. The crash site is
+identified and it is already documented in the source.**
+
+Line 5183 carries this comment:
+
+```powershell
+$statusStr = [string]$s.Status; ...   # FT-71 (ascii30): [string] cast -- null/array
+                                      # Status crashes here on page flip after N
+```
+
+*"crashes here on page flip after N"* is field note 14 verbatim, written
+into the file during ascii30. **This is a known crash site, patched once,
+that has recurred.** Any fix must therefore explain why the ascii30 patch
+was insufficient -- Class 6 rule 5 (close the defect that was reported,
+not a proxy for it) applies with force here, because a proxy fix has
+already been shipped once at this exact line.
+
+The surrounding block is the most-rewritten code in the file: lines
+5145-5157 record three successive attempts at the column-width arithmetic
+(FT-56, FT-58, FT-117), each replacing the last. Lines 5182-5183 then do
+`Substring` arithmetic on those computed widths, which is the operation
+that throws when a value is not what the code assumes.
+
+**Two gaps the ascii30 patch did not cover** -- candidates, not proven:
+
+1. **`[Math]::Floor` returns a double.** Line 5162 sets
+   `$ggNameW = [Math]::Floor($ggAvailable * 0.6)`, and line 5163 derives
+   `$ggStatW` from it, so both are `[double]`. They are then passed to
+   `Substring(Int32, Int32)` and `PadRight(Int32)` at lines 5182-5183.
+   PowerShell coerces this in the normal case, but it is exactly the loose
+   typing at a computed boundary that Class 4 rule 2 exists to prevent.
+   Explicit `[int]` casts on both widths are cheap and remove the whole
+   question.
+2. **The `[string]` guard is on one column only.** FT-71 added
+   `[string]$s.Status` at line 5183, but `$s.Name` at line 5178 has no
+   equivalent cast. The two columns are built by the same pattern and only
+   one was hardened.
+
+Neither is confirmed as the trigger. Confirming it needs the checklist
+exercised under a narrow console window with all items deselected --
+which is the FT-117 reproduction, and points back to 3.2.
+
+**Note the sequencing consequence:** this is a crash on the screen where
+the user spends the most time. If it is still live in ascii37, a field run
+may not reach the end regardless of what else is in the build. It is
+gating for the run, not merely another backlog item.
 
 **Likely connection:** see 3.2.
 
