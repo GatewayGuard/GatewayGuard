@@ -1,0 +1,121 @@
+GatewayGuard Project Checklist
+Updated: June 25, 2026
+=====================================
+
+IMMEDIATE (do these first)
+--------------------------------------
+[ ] Plug USB keyboard into IdeaPad
+[ ] Navigate to hidden Cowork folder and copy 2 files to USB:
+    C:\Users\willi\AppData\Local\Packages\Claude_pzs8sxrjxfjjc\
+    LocalCache\Roaming\Claude\local-agent-mode-sessions\
+    (sort by date modified, open most recent, find outputs folder)
+[ ] Files to retrieve:
+    - gatewayguard.co website pre-plan outline
+    - first notes keeping file
+[ ] Copy all GatewayGuard files from USB to:
+    C:\Users\willi\OneDrive\GatewayGuard\
+
+WHEN MB TRIAL EXPIRES ON SANDY (2-3 days)
+--------------------------------------
+[ ] Run these commands on SANDY and upload results to Claude:
+
+    Get-MpComputerStatus | Select-Object RealTimeProtectionEnabled, AntivirusEnabled, AMRunningMode
+
+    Get-Service WinDefend | Select-Object Name, Status, StartType
+
+    Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows Defender" | Select-Object DisableAntiSpyware, DisableAntiVirus
+
+    Get-WmiObject -Namespace "root\SecurityCenter2" -Class AntiVirusProduct | Select-Object displayName, productState
+
+[ ] Note which scenario occurred:
+    Scenario 1 = MB released Defender cleanly (AMRunningMode = Normal)
+    Scenario 2 = MB did NOT release Defender (still Stopped/Manual)
+    Scenario 3 = Partial release (AMRunningMode = Passive Mode)
+
+[ ] Upload results to Claude -- we build ascii21 based on results
+
+WHEN DELL LATITUDE 5430 ARRIVES (10-14 days)
+--------------------------------------
+[ ] Complete Windows 11 Pro initial setup
+[ ] Run Windows Update fully before anything else
+[ ] Run GatewayGuard ascii20 on it -- upload results
+[ ] Add to hardware registry:
+    - Make/Model: Dell Latitude 5430
+    - CPU: Intel Core i7-1265U 12th Gen
+    - RAM: 32GB
+    - Storage: 256GB SSD
+    - OS: Windows 11 Pro
+    - Machine #3 in test fleet
+[ ] Set up Hyper-V for Windows 11 Pro VM testing:
+    - Control Panel -> Programs -> Turn Windows features on/off
+    - Check Hyper-V -> OK -> Restart
+[ ] Test GatewayGuard on Pro edition -- note any differences from Home
+
+ASCII21 BUILD (after MB trial results known)
+--------------------------------------
+[ ] Upload MB trial results to Claude
+[ ] Build ascii21 with:
+    - 3-column chart (Setting / Recommended Action / Current Status)
+    - After-run view (Setting / Action Taken / Result)
+    - MB/Defender state detection rewrite (Screens A/B/C/D)
+    - Option A auto-fix for Defender re-enable
+    - Enhanced Phishing Protection rename (#6)
+    - Manual action screens with abbreviated steps + gatewayguard.co/guide
+    - Post-run summary (tool changed vs user still needs to do)
+    - Fix power settings battery detection (already in ascii21 base)
+    - Widen chart columns (already in ascii21 base)
+[ ] Test ascii21 on SANDY
+[ ] Test ascii21 on Dell Latitude 5430 (Pro edition)
+
+GATEWAYGUARD.CO WEBSITE (future)
+--------------------------------------
+[ ] Build site -- currently 0% complete
+[ ] Pages needed:
+    - Home / landing page
+    - Download page (bat + ps1 files)
+    - Full guide with screenshots (one page per manual setting)
+    - Beta tester signup page
+    - Hardware compatibility list
+[ ] Each manual setting needs:
+    - Full step by step instructions
+    - Screenshots
+    - URL format: gatewayguard.co/guide
+
+BETA TESTER PROGRAM (future)
+--------------------------------------
+[ ] Build signup form on gatewayguard.co
+[ ] Create screening checklist for known problem configs
+[ ] Define remote session process:
+    - Screen share only
+    - Text back and forth
+    - Log hardware profile after session
+[ ] Offer: free hardening in exchange for being test subject
+[ ] Add "Untested hardware" screen in tool that offers beta program
+
+HARDWARE TEST FLEET
+--------------------------------------
+Machine 1: HP Laptop 17-by1xxx (SANDY)
+  - OS: Windows 11 Home (Core, Build 26200)
+  - CPU: Intel Core i5-8265U
+  - RAM: 7.9GB
+  - Storage: 238GB SSD + 932GB HDD
+  - AV: Malwarebytes Free + Defender (suppressed)
+  - Status: Active test machine
+
+Machine 2: Lenovo IdeaPad
+  - OS: Windows 11 Home
+  - Status: Dev machine, keyboard broken, USB kbd workaround
+
+Machine 3: Dell Latitude 5430 (ARRIVING 10-14 days)
+  - OS: Windows 11 Pro
+  - CPU: Intel Core i7-1265U 12th Gen
+  - RAM: 32GB
+  - Storage: 256GB SSD
+  - Status: Ordered -- first Pro edition test machine
+
+FILES LOCATION
+--------------------------------------
+OneDrive: C:\Users\willi\OneDrive\GatewayGuard\
+Claude Project: GatewayGuard (claude.ai -- login via wfbiii@gmail.com)
+Current build: ascii20 (ready to test)
+Next build: ascii21 (pending MB trial results)

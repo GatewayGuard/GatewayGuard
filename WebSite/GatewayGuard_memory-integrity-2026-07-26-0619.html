@@ -1,0 +1,284 @@
+<!-- Dated: 2026-07-26 09:41 EDT -->
+<!-- File: GatewayGuard_memory-integrity-2026-07-26-0619.html (deploys as guide/memory-integrity.html) -->
+<!-- GatewayGuard LLC -- gatewayguard.co/guide/memory-integrity -->
+<!-- Change History:
+     2026-07-26 09:41: Rewritten to RULE W-08 (Plain Language and No
+     Dead Ends) after Bill's "Notes on memory integrity". All technical
+     jargon REMOVED rather than explained: "kernel"/"kernel processes"
+     -> "this part"; "sealed room" -> "locked file location";
+     Virtualization-Based Security / VBS / hypervisor / virtualization
+     cut entirely in favour of describing the effect. Pedantic phrasing
+     removed ("the tool told you so at the time"). Heading now says
+     "(explained fully below)". Check step 4 states the desired state
+     AND the fix. New section on updating a blocking driver, including
+     what to do when no updated driver exists (no dead ends). New
+     section on when to make the change manually. Copy buttons added to
+     every menu path -- this introduces the page's first JavaScript,
+     inline and dependency-free.
+     2026-07-26 06:19: Initial file. Setting 16 of 19.
+     WORDING SOURCE (W-07): windows_security_walkthrough_guide_v9.docx,
+     Phase 1 Step 2 -- Windows Security (Defender), the "Click Device
+     security" paragraph and the "Note on Memory Integrity overhead"
+     paragraph; plus the Glossary entry "Core Isolation / Memory
+     Integrity". Load-bearing guide phrasing kept verbatim: "On if
+     compatible", "leave Off (forcing it can break boot)", "revisit
+     after driver updates", "vmmem and vmwp ... 150-300 MB",
+     "legitimate, valuable security". Restart requirement is NOT in the
+     guide -- sourced from the ascii34 tool copy (W-07 clause 5) and
+     flagged as a gap to feed back into the guide at its next revision.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memory Integrity - Setting 16 - GatewayGuard Security Guide</title>
+<meta name="description" content="What Memory Integrity does, why it needs a restart, and what to do if a driver is blocking it.">
+<style>
+:root {
+  --black:     #000000;
+  --white:     #FFFFFF;
+  --gray-dark: #333333;
+  --gray-mid:  #666666;
+  --gray-light:#F4F4F4;
+  --gray-rule: #DDDDDD;
+  --navy:      #2E6BD6;
+  --mocha:     #A0522D;
+  --charcoal:  #5E35B1;
+  --max-w:     960px;
+  --font-body: Arial, Helvetica, sans-serif;
+  --font-mono: Consolas, "Courier New", monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: var(--black); background: var(--white); }
+a { color: var(--black); }
+a:hover { text-decoration: underline; }
+.wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+nav { background: var(--white); border: 4px solid var(--black); max-width: var(--max-w); margin: 12px auto 0; position: sticky; top: 0; z-index: 100; }
+.nav-inner { padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+.nav-brand { font-size: 17px; font-weight: bold; color: var(--black); text-decoration: none; }
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a { color: var(--black); text-decoration: none; font-size: 14px; font-weight: bold; }
+.nav-links a:hover { text-decoration: underline; }
+.nav-links a.active { border-bottom: 3px solid var(--black); padding-bottom: 2px; }
+.breadcrumb { max-width: var(--max-w); margin: 10px auto 0; padding: 0 24px; font-size: 13px; color: var(--gray-mid); }
+.breadcrumb a { color: var(--gray-mid); text-decoration: none; }
+.breadcrumb a:hover { color: var(--black); text-decoration: underline; }
+.breadcrumb span { margin: 0 6px; }
+.page-header { background: var(--white); border: 4px solid var(--black); max-width: var(--max-w); margin: 10px auto 0; padding: 28px 24px; }
+.setting-num { font-family: var(--font-mono); font-size: 12px; color: var(--gray-mid); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+.page-header h1 { font-size: 30px; font-weight: bold; margin-bottom: 10px; }
+.page-header h1 .explained { font-size: 17px; font-weight: normal; color: var(--gray-mid); white-space: nowrap; }
+.page-header .intro { font-size: 16px; color: var(--gray-dark); max-width: 640px; line-height: 1.55; }
+.tag { display: inline-block; font-size: 13px; font-weight: bold; padding: 5px 12px; color: var(--white); margin-top: 14px; }
+.tag-auto { background: var(--navy); }
+.tag-manual { background: var(--mocha); }
+.tag-choice { background: var(--charcoal); }
+.content-section { max-width: var(--max-w); margin: 0 auto; padding: 32px 24px; border-bottom: 1px solid var(--gray-rule); }
+.content-section h2 { font-size: 20px; font-weight: bold; margin-bottom: 14px; }
+.content-section p { font-size: 15px; color: var(--gray-dark); line-height: 1.6; }
+.content-section p + p { margin-top: 12px; }
+.gg-did-box { border: 3px solid var(--black); padding: 20px 24px; }
+.gg-did-box h2 { font-size: 16px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; font-family: var(--font-mono); color: var(--gray-mid); }
+.gg-did-row { display: flex; gap: 12px; margin-bottom: 10px; font-size: 15px; line-height: 1.5; }
+.gg-did-row:last-child { margin-bottom: 0; }
+.gg-did-label { font-weight: bold; white-space: nowrap; min-width: 110px; color: var(--black); }
+.gg-did-value { color: var(--gray-dark); }
+.why-box { background: var(--gray-light); border-left: 4px solid var(--black); padding: 18px 20px; font-size: 15px; line-height: 1.6; color: var(--gray-dark); }
+.why-box strong { color: var(--black); }
+.why-box p + p { margin-top: 10px; }
+.steps-list { list-style: none; counter-reset: steps; margin-top: 10px; }
+.steps-list li { counter-increment: steps; display: flex; gap: 14px; margin-bottom: 14px; font-size: 15px; line-height: 1.55; align-items: flex-start; }
+.steps-list li::before { content: counter(steps); background: var(--black); color: var(--white); font-weight: bold; font-size: 13px; min-width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.steps-list li .step-text { color: var(--gray-dark); }
+.steps-list li .step-text strong { color: var(--black); }
+.path { font-family: var(--font-mono); font-size: 13px; background: var(--gray-light); border: 1px solid var(--gray-rule); padding: 6px 10px; display: inline-block; line-height: 1.4; }
+.copy-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 8px 0 4px; }
+.copy-btn { font-family: var(--font-body); font-size: 14px; font-weight: bold; color: var(--black); background: var(--white); border: 2px solid var(--black); padding: 7px 14px; cursor: pointer; line-height: 1.2; }
+.copy-btn:hover { background: var(--gray-light); }
+.copy-btn:focus { outline: 3px solid var(--navy); outline-offset: 2px; }
+.copy-btn.copied { background: var(--black); color: var(--white); }
+.note-box { border: 2px solid var(--gray-rule); padding: 16px 20px; font-size: 15px; color: var(--gray-dark); line-height: 1.55; margin-top: 14px; }
+.note-box strong { color: var(--black); }
+.warn-box { border: 2px solid var(--black); padding: 16px 20px; font-size: 15px; color: var(--gray-dark); line-height: 1.55; margin-top: 14px; background: var(--gray-light); }
+.warn-box strong { color: var(--black); }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin-top: 14px; }
+.related-card { border: 2px solid var(--gray-rule); padding: 14px 16px; text-decoration: none; color: var(--black); display: block; }
+.related-card:hover { border-color: var(--black); text-decoration: none; }
+.related-card-num { font-family: var(--font-mono); font-size: 12px; color: var(--gray-mid); margin-bottom: 4px; }
+.related-card-name { font-size: 15px; font-weight: bold; }
+.back-section { max-width: var(--max-w); margin: 0 auto; padding: 24px 24px 8px; }
+.back-link { font-size: 14px; font-weight: bold; color: var(--black); text-decoration: none; }
+.back-link:hover { text-decoration: underline; }
+footer { background: var(--white); border: 4px solid var(--black); max-width: var(--max-w); margin: 12px auto; padding: 24px; }
+.footer-brand { font-size: 17px; font-weight: bold; display: block; margin-bottom: 10px; }
+.footer-links { display: flex; gap: 18px; list-style: none; flex-wrap: wrap; margin-bottom: 10px; }
+.footer-links a { color: var(--gray-dark); text-decoration: none; font-size: 14px; font-weight: bold; }
+.footer-links a:hover { color: var(--black); text-decoration: underline; }
+.footer-note { font-size: 13px; color: var(--gray-dark); line-height: 1.6; }
+@media (max-width: 640px) {
+  .nav-inner { flex-direction: column; height: auto; padding: 10px 16px; gap: 8px; }
+  .nav-links { gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .page-header h1 { font-size: 24px; }
+  .page-header h1 .explained { display: block; white-space: normal; }
+  .gg-did-row { flex-direction: column; gap: 4px; }
+  .gg-did-label { min-width: unset; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">GatewayGuard</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/download.html">Download</a></li>
+      <li><a href="/guide/index.html" class="active">Guide</a></li>
+      <li><a href="/tips.html">Tips</a></li>
+      <li><a href="/beta.html">Beta</a></li>
+      <li><a href="/compatible.html">Compatible</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="breadcrumb">
+  <a href="/">Home</a><span>&#8250;</span>
+  <a href="/guide/index.html">Guide</a><span>&#8250;</span>
+  Memory Integrity
+</div>
+<header class="page-header">
+  <p class="setting-num">Setting 16 of 19</p>
+  <h1>Memory Integrity <span class="explained">(explained fully below)</span></h1>
+  <p class="intro">There is one part of Windows that controls everything else on your PC. Memory Integrity keeps that part in a locked file location where other programs cannot reach it. Windows calls this setting <strong>Core isolation</strong>.</p>
+  <span class="tag tag-auto">&#10003; GatewayGuard can turn this on for you</span>
+</header>
+<section class="content-section">
+  <div class="gg-did-box">
+    <h2>What GatewayGuard found and did</h2>
+    <div class="gg-did-row"><span class="gg-did-label">Found:</span><span class="gg-did-value">Whether Memory Integrity was already switched on.</span></div>
+    <div class="gg-did-row"><span class="gg-did-label">Action taken:</span><span class="gg-did-value">If it was off and your PC can run it, GatewayGuard turned it on. <strong>Memory Integrity does not start working until you restart your PC.</strong></span></div>
+  </div>
+</section>
+<section class="content-section">
+  <h2>Why this matters</h2>
+  <div class="why-box"><p><strong>One part of Windows controls everything else.</strong> Every program you run sits on top of it. If malware reaches that part, it is running underneath your antivirus &#8212; which makes it very hard to find and very hard to remove.</p><p>Memory Integrity puts that part in a locked file location. Other programs cannot get into it, so malware cannot get into it either.</p><p>This closes one of the last remaining ways for an attacker to take over a Windows PC completely. It is worth having on.</p></div>
+</section>
+<section class="content-section">
+  <h2>How to check it yourself</h2>
+  <ol class="steps-list">
+    <li><div class="step-text">Press the <strong>Windows key</strong> and type <strong>Windows Security</strong>, then open it.</div></li>
+    <li><div class="step-text">Click <strong>Device security</strong> in the list on the left.</div></li>
+    <li><div class="step-text">Under <strong>Core isolation</strong>, click <strong>Core isolation details</strong>.</div></li>
+    <li><div class="step-text">Look at the <strong>Memory integrity</strong> switch. <strong>It should say On. If it does not, turn it on</strong> &#8212; click the switch, then restart your PC when Windows asks.</div></li>
+  </ol>
+  <p>Here is the full path. Use the Copy button if you would rather paste it than type it:</p>
+  <div class="copy-row">
+    <span class="path" id="path1">Windows Security &gt; Device security &gt; Core isolation details &gt; Memory integrity</span>
+    <button type="button" class="copy-btn" data-copy="path1">Copy</button>
+  </div>
+</section>
+<section class="content-section">
+  <h2>When to turn it on yourself</h2>
+  <p>Turn it on yourself in any of these cases:</p>
+  <ol class="steps-list">
+    <li><div class="step-text">You checked using the steps above and it says <strong>Off</strong>.</div></li>
+    <li><div class="step-text">GatewayGuard could not turn it on because it was not run as an administrator.</div></li>
+    <li><div class="step-text">It was blocked by a driver before, and you have since updated that driver. See the next section.</div></li>
+  </ol>
+  <p>You do not need to run GatewayGuard again to do this. The four steps above are all it takes.</p>
+</section>
+<section class="content-section">
+  <h2>If Windows says a driver is blocking it</h2>
+  <div class="warn-box">
+    <strong>Leave it Off &#8212; forcing it can stop your PC from starting.</strong> Windows will name the driver that is blocking it. This is not a fault in your PC. It means one program on it uses an out-of-date driver, and that driver has not been updated to work with Memory Integrity yet.
+  </div>
+  <p style="margin-top:16px;"><strong>A driver is the small program that lets Windows talk to a piece of your hardware</strong> &#8212; your printer, your screen, your network. Updating one is straightforward. Try these in order:</p>
+  <ol class="steps-list">
+    <li><div class="step-text"><strong>Check Windows Update first.</strong> Press the <strong>Windows key</strong>, type <strong>Windows Update</strong>, open it, then click <strong>Advanced options</strong>, then <strong>Optional updates</strong>. Driver updates often wait there. Install anything listed and restart.</div></li>
+    <li><div class="step-text"><strong>Then try Device Manager.</strong> Press the <strong>Windows key</strong>, type <strong>Device Manager</strong>, and open it. Find the device Windows named, right-click it, choose <strong>Update driver</strong>, then <strong>Search automatically for drivers</strong>.</div></li>
+    <li><div class="step-text"><strong>Then try the maker&#8217;s website.</strong> Search for the device name plus the word <strong>driver</strong>. Download only from the manufacturer&#8217;s own site &#8212; never from a search advert or a &#8220;driver updater&#8221; program.</div></li>
+  </ol>
+  <div class="copy-row">
+    <span class="path" id="path2">Windows Update &gt; Advanced options &gt; Optional updates</span>
+    <button type="button" class="copy-btn" data-copy="path2">Copy</button>
+  </div>
+  <div class="note-box"><strong>What if there is no updated driver?</strong> This happens, usually with older hardware or a program the maker no longer supports. You have three choices, and none of them puts your PC at risk:
+    <br><br>
+    <strong>1. Leave Memory Integrity off and carry on.</strong> This is a perfectly reasonable outcome. Everything else GatewayGuard set up still protects you. Memory Integrity is one layer among many, not the only one.
+    <br><br>
+    <strong>2. Check again in a few months.</strong> Makers do release updates later. Repeat the four check steps above now and then.
+    <br><br>
+    <strong>3. If the program is one you no longer use, remove it.</strong> Press the <strong>Windows key</strong>, type <strong>Installed apps</strong>, find it, and uninstall it. Once its driver is gone, try turning Memory Integrity on again. Only do this for a program you are sure you do not need.
+  </div>
+  <div class="note-box"><strong>If you use antivirus other than Microsoft Defender</strong>, that is a common cause of this. If Windows reports driver problems after the restart, turn Memory Integrity back off using the same four steps, and try again once that program has been updated.</div>
+</section>
+<section class="content-section">
+  <h2>How to undo it</h2>
+  <p>Follow the same four steps and set <strong>Memory integrity</strong> to <strong>Off</strong>, then restart. Nothing is deleted and none of your files are affected, either way.</p>
+</section>
+<section class="content-section">
+  <h2>What to expect after</h2>
+  <p><strong>You must restart.</strong> Until you do, nothing has changed.</p>
+  <p><strong>You may notice two new entries in Task Manager.</strong> Memory Integrity is what creates <strong>vmmem</strong> and <strong>vmwp</strong>, which together use about <strong>150&#8211;300 MB</strong> of memory. That is expected and it is doing its job. Leave them alone &#8212; do not try to end them.</p>
+  <p><strong>Everything else should feel the same.</strong> On most PCs there is no difference in speed for day-to-day use.</p>
+</section>
+<section class="content-section">
+  <h2>Related settings</h2>
+  <div class="related-grid"><a href="/guide/defender-realtime.html" class="related-card"><p class="related-card-num">Setting 2</p><p class="related-card-name">Defender Real-Time Protection</p></a><a href="/guide/tamper-protection.html" class="related-card"><p class="related-card-num">Setting 3</p><p class="related-card-name">Tamper Protection</p></a><a href="/guide/windows-update.html" class="related-card"><p class="related-card-num">Setting 1</p><p class="related-card-name">Windows Update</p></a></div>
+</section>
+<div class="back-section">
+  <a href="/guide/index.html" class="back-link">&#8592; Back to Guide</a>
+</div>
+<footer>
+  <span class="footer-brand">GatewayGuard</span>
+  <ul class="footer-links">
+    <li><a href="/download.html">Download</a></li>
+    <li><a href="/guide/index.html">Guide</a></li>
+    <li><a href="/beta.html">Beta</a></li>
+    <li><a href="/compatible.html">Compatible</a></li>
+    <li><a href="mailto:support@gatewayguard.co">Contact</a></li>
+  </ul>
+  <div class="footer-note">
+    GatewayGuard LLC &#8226; Brunswick, Maine &#8226; support@gatewayguard.co<br>
+    GatewayGuard does not collect personal data or show ads. No subscription &#8212; ever.<br>
+    Source code is included with every download. &#169; 2026 GatewayGuard LLC. All rights reserved.
+  </div>
+</footer>
+<script>
+(function () {
+  var buttons = document.querySelectorAll('.copy-btn');
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function () {
+      var btn = this;
+      var el = document.getElementById(btn.getAttribute('data-copy'));
+      if (!el) { return; }
+      var text = el.innerText || el.textContent;
+      var done = function () {
+        btn.textContent = 'Copied';
+        btn.className = 'copy-btn copied';
+        window.setTimeout(function () {
+          btn.textContent = 'Copy';
+          btn.className = 'copy-btn';
+        }, 2000);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else {
+        fallback(text, done);
+      }
+    });
+  }
+  function fallback(text, done) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'absolute';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); done(); } catch (e) { /* clipboard unavailable */ }
+    document.body.removeChild(ta);
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+
+  GATEWAYGUARD -- SYSTEM BASELINE DIAGNOSTIC
+  ============================================                                                                                                                                                                                                    [1] SYSTEM BASICS                                                                                                       -----------------                          
+
+CsManufacturer        : Dell Inc.
+CsModel               : Latitude 5430
+OsName                : Microsoft Windows 11 Pro
+OsVersion             : 10.0.26200
+CsTotalPhysicalMemory : 34029125632
+
+
+
+
+  [2] WINDOWS EDITION
+  -------------------
+
+
+EditionID    : Professional
+ProductName  : Windows 10 Pro
+CurrentBuild : 26200
+
+
+
+
+  [3] PROCESSOR
+  -------------
+
+
+Name                      : 12th Gen Intel(R) Core(TM) i7-1265U
+NumberOfCores             : 10
+NumberOfLogicalProcessors : 12
+
+
+
+
+  [4] STORAGE
+  -----------
+
+
+FriendlyName : KBG50ZNS256G NVMe KIOXIA 256GB
+MediaType    : SSD
+Size(GB)     : 238.5
+
+FriendlyName :
+MediaType    : Unspecified
+Size(GB)     : 7.5
+
+
+
+
+  [5] BATTERY STATUS
+  ------------------
+
+
+Name                     : DELL 01VX52A
+BatteryStatus            : 2
+EstimatedChargeRemaining : 100
+
+
+
+
+  [6] ANTIVIRUS REGISTERED
+  ------------------------
+
+
+displayName  : Malwarebytes
+productState : 397312
+
+displayName  : Windows Defender
+productState : 393472
+
+
+
+
+  [7] WINDOWS DEFENDER STATUS
+  ---------------------------
+
+
+AMServiceEnabled          : True
+AntispywareEnabled        : True
+AntivirusEnabled          : True
+RealTimeProtectionEnabled : False
+TamperProtectionSource    : Signatures
+
+
+
+
+  [8] WINDOWS UPDATE SERVICE
+  --------------------------
+
+
+Name      : wuauserv
+Status    : Stopped
+StartType : Manual
+
+
+
+
+  [9] TIME AND DATE SYNC
+  ----------------------
+
+
+Name   : W32Time
+Status : Running
+
+
+
+
+ReferenceId: 0xA83DD74A (source IP:  168.61.215.74)
+Last Successful Sync Time: 7/1/2026 2:17:42 PM
+Source: time.windows.com,0x9
+
+  [10] BITLOCKER / DEVICE ENCRYPTION
+  -----------------------------------
+
+
+
+
+MountPoint           : C:
+VolumeStatus         : FullyDecrypted
+EncryptionPercentage : 0
+ProtectionStatus     : Off
+
+MountPoint           : D:
+VolumeStatus         : FullyDecrypted
+EncryptionPercentage : 0
+ProtectionStatus     : Off
+
+
+
+
+  ============================================
+  BASELINE DIAGNOSTIC COMPLETE
+  Copy and paste the above results for logging
+  ============================================

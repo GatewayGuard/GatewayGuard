@@ -1,0 +1,32 @@
+Ascii25_2026-07-11_Time_ 22-50-11 Test Results:
+
+1. Ran it twice first time it flashed some screen and then it seemed to stall and had to hit enter key twice and it ended
+2. 2nd screen is a repeat of first part of #1 for BEFORE YOU START SCREEN. 
+3. had to hit the space bar twice to move to next screen.
+4. Time and date function was correct
+5. Space bar didn't work 'on before we scan you pc' screen. enter did work
+6. Malwarebytes worked.  Checked Dell deep scan see image. and provided to reports of detections, none from any of the scans.
+7. Provided report of deep scan on broken ideapad
+8. Bad Defender screen showed up after N to running Malwarebytes
+9. Add to screen that says 'checking power settings' , be sure to scroll up to the top of next screen.
+10. Add to power settings near bottom "Scroll down and Review each setting...' etc.
+11. N for critical battery option did not work right away had to press it twice on power settings screen. 
+12. hit space bar and something seemed to flash by and then apps audit results appeared.
+13. Select a Mode screen. After gatewayguard.co add "(NOT .COM)
+14. on the previous continue message before What this tool does screen,  add 'SCROLL UP AND THEN DOWN ON THE NEXT SCREEN'
+15. the Tetter E statement on What this tool does screen. They should only do this if they have implemented a password manager to handle their passwords. we need to ask user this before they get to this screen and provide the why (reasoning). 
+16. On the previous continue message before first setting/status screen,  add 'SCROLL UP AND THEN DOWN ON THE NEXT SCREEN'
+17. On setting/status screen #2 is inaccurate.
+18. Is there a way to check for tamper protection in Dell win 11 pro, as you can see it in Malwarebyres manage settings 
+18. Aside: There was a Microsoft statement we made prior, can't remember where.  That we should discuss and maybe change it or eliminate mentioning Microsoft.
+19. Make a note about checking tamper protection after Malwarebytes free trial is over. 
+20. One thing I noticed on broken ideapad, you could still do a deep scan in Malwarebytes by setting up a schedule of say once a month. We will have had a discussion about this before you get these notes.
+21 I checked defender periodic scanning and it is off. settings/status says it is enabled. Also characters on right are being cut off on few lines.
+22. Missing characters on #s (3,5,6,7,12,13.14 and 17) on status side of 
+23. Windows hello is setup with a pin, but currently no signon required on pc after reboot. fix.
+24. Diagnostic data - only required what is the danger here and the WHY (reasoning). Is this explained at some point?
+25. Where and how do I check the accuracy of all of the 19 statuses?
+26. Edge passwords is listed as off in windows security.  I presume you are saying to check it manually (characters missing), but they may need instructions on how do so. 
+27, Also EDge synced all my prior edge passwords which we had on the deleted broken ideapad using a program we wrote in chat 'automating account deletion across websites' program name was account deletion and ran on my brokened ideapad. Probably from the cloud I will check my other test pcs, as i believe i turned off sync on them. Edge ask to save passwords and passkeys and autofill passwords and passkeys are both off, Sync Passwords and passkeys is off. Sync history is off. everything else is on.
+28. I turned dell widgets and startup boost both off
+29

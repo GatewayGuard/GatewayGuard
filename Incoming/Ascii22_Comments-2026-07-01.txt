@@ -1,0 +1,3 @@
+1. When running apps on Win 11 Pro, be aware that if you leave it in a mode where it is asking you to allow permissions (yes/no), it will disappear after a few minutes.  To get it back, you can ask the MS Store to reinstall it, and it will recognize the situation and show the yes/no screen.  Also, I believe you can search in the Windows search bar for Malwarebytes and probably bring back the decision box.This should also go to notes for website tips for our users. 
+2. Malwarebyes scan took less than 1 minutes, no items detected.
+3. How can we handle the auto detection of the users device up front.

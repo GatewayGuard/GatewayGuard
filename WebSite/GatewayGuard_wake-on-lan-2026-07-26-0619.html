@@ -1,0 +1,281 @@
+<!-- Dated: 2026-07-26 11:05 EDT -->
+<!-- File: GatewayGuard_wake-on-lan-2026-07-26-0619.html (deploys as guide/wake-on-lan.html) -->
+<!-- GatewayGuard LLC -- gatewayguard.co/guide/wake-on-lan -->
+<!-- Change History:
+     2026-07-26 11:05: Brought up to RULE W-08 (Plain Language and No
+     Dead Ends). Five fixes:
+       (1) heading now says "(explained fully below)";
+       (2) jargon removed -- "firmware/BIOS/UEFI" section rewritten to a
+           plain definite answer, "media server" replaced with a plain
+           example, "LAN" explained on first use. "network adapter" is
+           KEPT (W-08 clause 2 exception -- it is the label the reader
+           must find in Device Manager) but glossed on first use;
+       (3) check step now states the desired state AND the fix;
+       (4) the BIOS/UEFI dead end removed -- replaced with a definite
+           answer (the Windows setting is what governs this);
+       (5) copy buttons added to both menu paths.
+     Also added: the "Only allow a magic packet to wake the computer"
+     option for readers who keep the feature on, and a cross-reference
+     to Fast Startup (Setting 18).
+     NEEDS VERIFICATION BEFORE PUSH (RESEARCH BEFORE STATING): the claim
+     that Fast Startup can interfere with Wake on LAN is stated here only
+     as a cross-reference, not as a mechanism. Verify against Microsoft
+     or the adapter vendor before strengthening that wording.
+     2026-07-26 06:19: Initial file. Setting 19 of 19.
+     WORDING SOURCE (W-07): NO GUIDE COVERAGE -- original copy.
+     Verified directly against windows_security_walkthrough_guide_v9.docx:
+     a full-text search for "Wake on LAN", "Wake-on-LAN", and "wake the
+     computer" returns ZERO hits. SettingsToGuideMap [19] agrees.
+     The remote-access scam warning IS carried from the ascii34 tool
+     copy, where it appears on the power settings screen (W-07 clause 5).
+     ACTION: this page's copy should be fed back into the guide at its
+     next revision so the two sources stop diverging.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wake on LAN - Setting 19 - GatewayGuard Security Guide</title>
+<meta name="description" content="What Wake on LAN does, why almost no home user needs it, and how to turn it off.">
+<style>
+:root {
+  --black:     #000000;
+  --white:     #FFFFFF;
+  --gray-dark: #333333;
+  --gray-mid:  #666666;
+  --gray-light:#F4F4F4;
+  --gray-rule: #DDDDDD;
+  --navy:      #2E6BD6;
+  --mocha:     #A0522D;
+  --charcoal:  #5E35B1;
+  --max-w:     960px;
+  --font-body: Arial, Helvetica, sans-serif;
+  --font-mono: Consolas, "Courier New", monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: var(--black); background: var(--white); }
+a { color: var(--black); }
+a:hover { text-decoration: underline; }
+.wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+nav { background: var(--white); border: 4px solid var(--black); max-width: var(--max-w); margin: 12px auto 0; position: sticky; top: 0; z-index: 100; }
+.nav-inner { padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+.nav-brand { font-size: 17px; font-weight: bold; color: var(--black); text-decoration: none; }
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a { color: var(--black); text-decoration: none; font-size: 14px; font-weight: bold; }
+.nav-links a:hover { text-decoration: underline; }
+.nav-links a.active { border-bottom: 3px solid var(--black); padding-bottom: 2px; }
+.breadcrumb { max-width: var(--max-w); margin: 10px auto 0; padding: 0 24px; font-size: 13px; color: var(--gray-mid); }
+.breadcrumb a { color: var(--gray-mid); text-decoration: none; }
+.breadcrumb a:hover { color: var(--black); text-decoration: underline; }
+.breadcrumb span { margin: 0 6px; }
+.page-header { background: var(--white); border: 4px solid var(--black); max-width: var(--max-w); margin: 10px auto 0; padding: 28px 24px; }
+.setting-num { font-family: var(--font-mono); font-size: 12px; color: var(--gray-mid); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+.page-header h1 { font-size: 30px; font-weight: bold; margin-bottom: 10px; }
+.page-header h1 .explained { font-size: 17px; font-weight: normal; color: var(--gray-mid); white-space: nowrap; }
+.page-header .intro { font-size: 16px; color: var(--gray-dark); max-width: 640px; line-height: 1.55; }
+.tag { display: inline-block; font-size: 13px; font-weight: bold; padding: 5px 12px; color: var(--white); margin-top: 14px; }
+.tag-auto { background: var(--navy); }
+.tag-manual { background: var(--mocha); }
+.tag-choice { background: var(--charcoal); }
+.content-section { max-width: var(--max-w); margin: 0 auto; padding: 32px 24px; border-bottom: 1px solid var(--gray-rule); }
+.content-section h2 { font-size: 20px; font-weight: bold; margin-bottom: 14px; }
+.content-section p { font-size: 15px; color: var(--gray-dark); line-height: 1.6; }
+.content-section p + p { margin-top: 12px; }
+.gg-did-box { border: 3px solid var(--black); padding: 20px 24px; }
+.gg-did-box h2 { font-size: 16px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; font-family: var(--font-mono); color: var(--gray-mid); }
+.gg-did-row { display: flex; gap: 12px; margin-bottom: 10px; font-size: 15px; line-height: 1.5; }
+.gg-did-row:last-child { margin-bottom: 0; }
+.gg-did-label { font-weight: bold; white-space: nowrap; min-width: 110px; color: var(--black); }
+.gg-did-value { color: var(--gray-dark); }
+.why-box { background: var(--gray-light); border-left: 4px solid var(--black); padding: 18px 20px; font-size: 15px; line-height: 1.6; color: var(--gray-dark); }
+.why-box strong { color: var(--black); }
+.why-box p + p { margin-top: 10px; }
+.steps-list { list-style: none; counter-reset: steps; margin-top: 10px; }
+.steps-list li { counter-increment: steps; display: flex; gap: 14px; margin-bottom: 14px; font-size: 15px; line-height: 1.55; align-items: flex-start; }
+.steps-list li::before { content: counter(steps); background: var(--black); color: var(--white); font-weight: bold; font-size: 13px; min-width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.steps-list li .step-text { color: var(--gray-dark); }
+.steps-list li .step-text strong { color: var(--black); }
+.path { font-family: var(--font-mono); font-size: 13px; background: var(--gray-light); border: 1px solid var(--gray-rule); padding: 6px 10px; display: inline-block; line-height: 1.4; }
+.copy-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 8px 0 4px; }
+.copy-btn { font-family: var(--font-body); font-size: 14px; font-weight: bold; color: var(--black); background: var(--white); border: 2px solid var(--black); padding: 7px 14px; cursor: pointer; line-height: 1.2; }
+.copy-btn:hover { background: var(--gray-light); }
+.copy-btn:focus { outline: 3px solid var(--navy); outline-offset: 2px; }
+.copy-btn.copied { background: var(--black); color: var(--white); }
+.note-box { border: 2px solid var(--gray-rule); padding: 16px 20px; font-size: 15px; color: var(--gray-dark); line-height: 1.55; margin-top: 14px; }
+.note-box strong { color: var(--black); }
+.warn-box { border: 2px solid var(--black); padding: 16px 20px; font-size: 15px; color: var(--gray-dark); line-height: 1.55; margin-top: 14px; background: var(--gray-light); }
+.warn-box strong { color: var(--black); }
+.scam-box { border: 4px solid var(--black); padding: 20px 24px; font-size: 16px; color: var(--black); line-height: 1.6; margin-top: 14px; }
+.scam-box h3 { font-size: 17px; font-weight: bold; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.04em; }
+.scam-box p + p { margin-top: 10px; font-size: 15px; color: var(--gray-dark); }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin-top: 14px; }
+.related-card { border: 2px solid var(--gray-rule); padding: 14px 16px; text-decoration: none; color: var(--black); display: block; }
+.related-card:hover { border-color: var(--black); text-decoration: none; }
+.related-card-num { font-family: var(--font-mono); font-size: 12px; color: var(--gray-mid); margin-bottom: 4px; }
+.related-card-name { font-size: 15px; font-weight: bold; }
+.back-section { max-width: var(--max-w); margin: 0 auto; padding: 24px 24px 8px; }
+.back-link { font-size: 14px; font-weight: bold; color: var(--black); text-decoration: none; }
+.back-link:hover { text-decoration: underline; }
+footer { background: var(--white); border: 4px solid var(--black); max-width: var(--max-w); margin: 12px auto; padding: 24px; }
+.footer-brand { font-size: 17px; font-weight: bold; display: block; margin-bottom: 10px; }
+.footer-links { display: flex; gap: 18px; list-style: none; flex-wrap: wrap; margin-bottom: 10px; }
+.footer-links a { color: var(--gray-dark); text-decoration: none; font-size: 14px; font-weight: bold; }
+.footer-links a:hover { color: var(--black); text-decoration: underline; }
+.footer-note { font-size: 13px; color: var(--gray-dark); line-height: 1.6; }
+@media (max-width: 640px) {
+  .nav-inner { flex-direction: column; height: auto; padding: 10px 16px; gap: 8px; }
+  .nav-links { gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .page-header h1 { font-size: 24px; }
+  .page-header h1 .explained { display: block; white-space: normal; }
+  .gg-did-row { flex-direction: column; gap: 4px; }
+  .gg-did-label { min-width: unset; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">GatewayGuard</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/download.html">Download</a></li>
+      <li><a href="/guide/index.html" class="active">Guide</a></li>
+      <li><a href="/tips.html">Tips</a></li>
+      <li><a href="/beta.html">Beta</a></li>
+      <li><a href="/compatible.html">Compatible</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="breadcrumb">
+  <a href="/">Home</a><span>&#8250;</span>
+  <a href="/guide/index.html">Guide</a><span>&#8250;</span>
+  Wake on LAN
+</div>
+<header class="page-header">
+  <p class="setting-num">Setting 19 of 19</p>
+  <h1>Wake on LAN <span class="explained">(explained fully below)</span></h1>
+  <p class="intro">This setting lets another computer switch your PC on from across your home network, while your PC is asleep. It was built for offices. Almost no home user needs it, and leaving it on keeps a door open that nobody is watching.</p>
+  <span class="tag tag-choice">&#9654; Your decision &#8212; GatewayGuard asked before changing it</span>
+</header>
+<section class="content-section">
+  <div class="gg-did-box">
+    <h2>What GatewayGuard found and did</h2>
+    <div class="gg-did-row"><span class="gg-did-label">Found:</span><span class="gg-did-value">Whether your PC was set to allow this. Some PCs cannot do it at all, and GatewayGuard simply moved past it.</span></div>
+    <div class="gg-did-row"><span class="gg-did-label">Action taken:</span><span class="gg-did-value">If it was switched on, GatewayGuard explained what it does and asked whether to turn it off. Nothing was changed unless you said yes.</span></div>
+  </div>
+</section>
+<section class="content-section">
+  <h2>Why this matters</h2>
+  <div class="why-box"><p><strong>Wake on LAN and Remote Desktop are the two &#8220;let someone in from outside&#8221; features on a home PC.</strong> We strongly recommend both be off. (LAN is just a name for your home network &#8212; the wired and wireless connections between the machines in your house.)</p><p>This setting exists so an office can switch on hundreds of computers overnight to install updates. That is a real need &#8212; in an office. At home, it means your PC can be woken by something other than you, and a PC that can be woken is a PC that can be reached when you are not sitting in front of it.</p><p>On its own, this does not let anyone into your PC. It is the combination that matters: a machine that can be turned on remotely, plus any other way in, is worth far more to an attacker than either one alone. Turning it off costs you nothing if you never used it &#8212; and if you are reading this page, you almost certainly never used it.</p></div>
+</section>
+<section class="content-section">
+  <h2>The phone call you should expect one day</h2>
+  <div class="scam-box">
+    <h3>If anyone ever phones you and asks you to turn remote access on &#8212; hang up.</h3>
+    <p>The same goes for anyone who asks you to install a program so they can &#8220;connect to your computer and fix it.&#8221; It does not matter if they say they are from Microsoft, from your bank, from your internet provider, or from a company whose name you recognise.</p>
+    <p><strong>This is the single most common scam used against home computer users today.</strong> Microsoft does not phone people. Your bank does not need to control your PC. A real company will never call you out of the blue and ask for remote access.</p>
+    <p>Hang up. If you are worried it might have been genuine, look up the company&#8217;s real number yourself &#8212; on your bank card, on a statement, on their official website &#8212; and call them back on that number. Never a number the caller gave you.</p>
+  </div>
+</section>
+<section class="content-section">
+  <h2>How to check it, and turn it off</h2>
+  <ol class="steps-list">
+    <li><div class="step-text">Press the <strong>Windows key</strong>, type <strong>Device Manager</strong>, and open it.</div></li>
+    <li><div class="step-text">Click the arrow next to <strong>Network adapters</strong> to open the list. (A network adapter is the part of your PC that connects it to the internet. Most PCs have two &#8212; one for Wi-Fi, one for the cable socket.)</div></li>
+    <li><div class="step-text">Right-click the first one and choose <strong>Properties</strong>.</div></li>
+    <li><div class="step-text">Click the <strong>Power Management</strong> tab. If there is no tab with that name, this one cannot wake your PC and there is nothing to change &#8212; close it and go to the next one.</div></li>
+    <li><div class="step-text">Find <strong>Allow this device to wake the computer</strong>. <strong>The box should be empty. If there is a tick in it, click it to remove the tick</strong>, then click <strong>OK</strong>.</div></li>
+    <li><div class="step-text"><strong>Repeat for your other network adapter.</strong> Both need doing &#8212; turning off one and not the other leaves the door open.</div></li>
+  </ol>
+  <p>No restart is needed. The change works straight away. Here is the path if you would rather paste it than type it:</p>
+  <div class="copy-row">
+    <span class="path" id="path1">Device Manager &gt; Network adapters &gt; Properties &gt; Power Management</span>
+    <button type="button" class="copy-btn" data-copy="path1">Copy</button>
+  </div>
+</section>
+<section class="content-section">
+  <h2>Do I need to change anything in the startup screen settings?</h2>
+  <p><strong>No. The Windows setting above is the one that matters, and it is enough.</strong></p>
+  <p>You may read elsewhere that this feature also has a switch in the settings screen that appears before Windows starts. That is true on some PCs, but it does not override what you just did &#8212; with the Windows box unticked, your PC will not be woken from the network. You do not need to go near those settings, and we do not recommend it. They differ on every make of PC and a wrong change there is much harder to undo.</p>
+</section>
+<section class="content-section">
+  <h2>If you actually use this feature</h2>
+  <p>Some people do use it on purpose &#8212; for example, switching on a PC in another room from a phone app so it is ready when they get there. If that is you, leave it on. This is a recommendation, not a requirement, which is why GatewayGuard asked instead of just changing it.</p>
+  <div class="note-box"><strong>If you keep it on, make it safer.</strong> In the same <strong>Power Management</strong> tab, look for <strong>Only allow a magic packet to wake the computer</strong> and put a tick in that box. A magic packet is a specific &#8220;wake up&#8221; message meant only for your PC. With that ticked, ordinary network chatter can no longer wake it &#8212; only a deliberate signal will.</div>
+  <div class="note-box"><strong>A note on Fast Startup.</strong> GatewayGuard also turns off Fast Startup (Setting 18), for reasons explained on <a href="/guide/fast-startup.html">that page</a>. The two settings interact on some PCs. If you keep Wake on LAN on and it stops working reliably, the two are worth looking at together.</div>
+</section>
+<section class="content-section">
+  <h2>How to undo it</h2>
+  <p>Go back to the same place &#8212; <strong>Device Manager</strong>, <strong>Network adapters</strong>, right-click the adapter, <strong>Properties</strong>, <strong>Power Management</strong> &#8212; and put the tick back in <strong>Allow this device to wake the computer</strong>. Nothing is lost by switching it off and back on.</p>
+  <div class="copy-row">
+    <span class="path" id="path2">Device Manager &gt; Network adapters &gt; Properties &gt; Power Management</span>
+    <button type="button" class="copy-btn" data-copy="path2">Copy</button>
+  </div>
+</section>
+<section class="content-section">
+  <h2>What to expect after</h2>
+  <p><strong>Your PC still wakes up normally.</strong> Opening the lid, pressing the power button, moving the mouse, or pressing a key all work exactly as before. The only thing that stops is another machine waking it &#8212; which is the point.</p>
+  <p><strong>Your scheduled reminders still run.</strong> The monthly and quarterly scan reminders GatewayGuard set up are scheduled inside Windows and do not depend on this setting.</p>
+</section>
+<section class="content-section">
+  <h2>Related settings</h2>
+  <div class="related-grid"><a href="/guide/remote-desktop.html" class="related-card"><p class="related-card-num">Setting 10</p><p class="related-card-name">Remote Desktop</p></a><a href="/guide/password-on-wake.html" class="related-card"><p class="related-card-num">Setting 17</p><p class="related-card-name">Password Required on Wake</p></a><a href="/guide/fast-startup.html" class="related-card"><p class="related-card-num">Setting 18</p><p class="related-card-name">Fast Startup</p></a></div>
+</section>
+<div class="back-section">
+  <a href="/guide/index.html" class="back-link">&#8592; Back to Guide</a>
+</div>
+<footer>
+  <span class="footer-brand">GatewayGuard</span>
+  <ul class="footer-links">
+    <li><a href="/download.html">Download</a></li>
+    <li><a href="/guide/index.html">Guide</a></li>
+    <li><a href="/beta.html">Beta</a></li>
+    <li><a href="/compatible.html">Compatible</a></li>
+    <li><a href="mailto:support@gatewayguard.co">Contact</a></li>
+  </ul>
+  <div class="footer-note">
+    GatewayGuard LLC &#8226; Brunswick, Maine &#8226; support@gatewayguard.co<br>
+    GatewayGuard does not collect personal data or show ads. No subscription &#8212; ever.<br>
+    Source code is included with every download. &#169; 2026 GatewayGuard LLC. All rights reserved.
+  </div>
+</footer>
+<script>
+(function () {
+  var buttons = document.querySelectorAll('.copy-btn');
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function () {
+      var btn = this;
+      var el = document.getElementById(btn.getAttribute('data-copy'));
+      if (!el) { return; }
+      var text = el.innerText || el.textContent;
+      var done = function () {
+        btn.textContent = 'Copied';
+        btn.className = 'copy-btn copied';
+        window.setTimeout(function () {
+          btn.textContent = 'Copy';
+          btn.className = 'copy-btn';
+        }, 2000);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else {
+        fallback(text, done);
+      }
+    });
+  }
+  function fallback(text, done) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'absolute';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); done(); } catch (e) { /* clipboard unavailable */ }
+    document.body.removeChild(ta);
+  }
+})();
+</script>
+</body>
+</html>

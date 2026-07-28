@@ -1,0 +1,21 @@
+Notes on memory integrity
+
+1. Top Memory integrity heading. At end add: (explained fully below).
+2. what gg found: delete pedantic phrasing: the tool told you so at the time, and
+3. review all guide, tool and website phrasing removing or rewriting pedantic phrasing. to understand the meaning of "pedantic phrasing," consider these points:
+
+Refers to overly meticulous or precise language.
+Often empha. again sizes trivial details rather than the main idea.
+Can come across as condescending or overly formal.
+Common in academic or technical writing to ensure clarity.
+May detract from engaging communication or storytelling.
+Useful in contexts where precision is critical, but can alienate audiences. 
+4.Tell them when to make manual memory change .
+Remove the technical jargon everywhere and leave the plain englisg version. check everywhere in guide, 
+5. change sealed room everywhere to "locked file location" where this fits te intent
+6. every place where we tell them online or in a document something to copy, give them a copy button.
+7. change kernel to "this part". Remove technical and rewrite  technical jargon. 
+8. Add to #4 on page It should say on ", if nto turn it on.
+9. tell them to update the drive and tell them how to do it.  What if there isn't an update driver?
+10.Best approach going forward, add new rules for writing so the above don't happen in the future.
+11. 

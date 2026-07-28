@@ -1,0 +1,472 @@
+<!-- Dated: 2026-07-18 18:30 EDT -->
+<!-- File: guide-index-2026-07-18-r3.html (deploys as guide/index.html) -->
+<!-- GatewayGuard LLC : gatewayguard.co/guide : Settings guide navigation hub -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security Settings Guide - GatewayGuard</title>
+<meta name="description" content="Plain-English guides for all 19 Windows 11 security settings GatewayGuard checks.">
+<style>
+:root {
+  --black:    #000000;
+  --white:    #FFFFFF;
+  --gray-dark:#333333;
+  --gray-mid: #666666;
+  --gray-light:#F4F4F4;
+  --gray-rule:#DDDDDD;
+  --navy:     #1F4E9C;
+  --mocha:    #7A4419;
+  --charcoal: #444444;
+  --max-w:    960px;
+  --font-body: Arial, Helvetica, sans-serif;
+  --font-mono: Consolas, "Courier New", monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--black);
+  background: var(--white);
+}
+
+a { color: var(--black); }
+a:hover { text-decoration: underline; }
+
+.wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== NAV : boxed, content width ===== */
+nav {
+  background: var(--white);
+  border: 4px solid var(--black);
+  max-width: var(--max-w);
+  margin: 12px auto 0;
+}
+.nav-inner {
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+}
+.nav-brand {
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--black);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a {
+  color: var(--black);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+.nav-links a:hover { text-decoration: underline; }
+.nav-links a.active { border-bottom: 3px solid var(--black); padding-bottom: 2px; }
+
+/* ===== TOOL BANNER : boxed, content width ===== */
+.tool-banner {
+  background: var(--white);
+  border: 4px solid var(--black);
+  max-width: var(--max-w);
+  margin: 12px auto;
+  padding: 14px 24px;
+}
+.tool-banner p { font-size: 15px; color: var(--gray-dark); }
+.tool-banner strong { color: var(--black); }
+
+/* ===== PAGE HEADER : boxed, content width, compact ===== */
+.page-header {
+  background: var(--white);
+  border: 4px solid var(--black);
+  max-width: var(--max-w);
+  margin: 12px auto;
+  padding: 24px;
+}
+.page-header h1 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.page-header .intro {
+  font-size: 16px;
+  color: var(--gray-dark);
+  max-width: 640px;
+}
+
+/* ===== CATEGORY SECTIONS ===== */
+.category-section {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 36px 24px;
+  border-bottom: 1px solid var(--gray-rule);
+}
+.category-title { font-size: 22px; font-weight: bold; margin-bottom: 6px; }
+.category-desc { font-size: 15px; color: var(--gray-dark); margin-bottom: 24px; max-width: 640px; }
+
+/* ===== SETTING CARDS ===== */
+.setting-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+.setting-card {
+  border: 1px solid var(--gray-rule);
+  padding: 18px;
+  text-decoration: none;
+  color: var(--black);
+  display: block;
+  background: var(--white);
+}
+.setting-card:hover { border-color: var(--black); text-decoration: none; }
+.setting-card-num { font-family: var(--font-mono); font-size: 12px; color: var(--gray-mid); margin-bottom: 5px; }
+.setting-card-name { font-size: 17px; font-weight: bold; margin-bottom: 7px; }
+.setting-card-desc { font-size: 15px; color: var(--gray-dark); line-height: 1.5; margin-bottom: 12px; }
+
+/* ===== TAGS : white bg, colored heavy border and bold colored text ===== */
+.tag {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 4px 10px;
+  background: var(--white);
+}
+.tag-auto   { border: 3px solid var(--navy);     color: var(--navy); }
+.tag-manual { border: 3px solid var(--mocha);    color: var(--mocha); }
+.tag-choice { border: 3px solid var(--charcoal); color: var(--charcoal); }
+
+/* ===== QUICK REFERENCE TABLE ===== */
+.quick-ref {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 36px 24px;
+}
+.section-title { font-size: 22px; font-weight: bold; margin-bottom: 6px; }
+.section-intro { font-size: 15px; color: var(--gray-dark); margin-bottom: 20px; }
+
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+thead th {
+  background: var(--white);
+  color: var(--black);
+  font-weight: bold;
+  padding: 10px 12px;
+  text-align: left;
+  border: 3px solid var(--black);
+}
+tbody tr { border-bottom: 1px solid var(--gray-rule); }
+td { padding: 10px 12px; vertical-align: middle; }
+td:first-child { font-family: var(--font-mono); font-size: 13px; color: var(--gray-mid); }
+td a { font-weight: bold; text-decoration: none; }
+td a:hover { text-decoration: underline; }
+
+.badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  background: var(--white);
+  white-space: nowrap;
+}
+.badge-auto   { border: 2px solid var(--navy);     color: var(--navy); }
+.badge-manual { border: 2px solid var(--mocha);    color: var(--mocha); }
+.badge-choice { border: 2px solid var(--charcoal); color: var(--charcoal); }
+
+/* ===== RESOURCES ===== */
+.resources {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 36px 24px;
+}
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+.resource-card {
+  border: 1px solid var(--gray-rule);
+  padding: 18px;
+  text-decoration: none;
+  color: var(--black);
+  display: block;
+}
+.resource-card:hover { border-color: var(--black); text-decoration: none; }
+.resource-card h3 { font-size: 15px; font-weight: bold; margin-bottom: 5px; }
+.resource-card p { font-size: 14px; color: var(--gray-dark); }
+
+/* ===== FOOTER : boxed, content width ===== */
+footer {
+  background: var(--white);
+  border: 4px solid var(--black);
+  max-width: var(--max-w);
+  margin: 12px auto;
+  padding: 24px;
+}
+.footer-brand { font-size: 17px; font-weight: bold; display: block; margin-bottom: 10px; }
+.footer-links { display: flex; gap: 18px; list-style: none; flex-wrap: wrap; margin-bottom: 10px; }
+.footer-links a { color: var(--gray-dark); text-decoration: none; font-size: 14px; font-weight: bold; }
+.footer-links a:hover { color: var(--black); text-decoration: underline; }
+.footer-note { font-size: 13px; color: var(--gray-dark); line-height: 1.6; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+  .nav-inner { flex-direction: column; height: auto; padding: 10px 16px; gap: 8px; }
+  .nav-links { gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .setting-grid { grid-template-columns: 1fr; }
+  table { font-size: 13px; }
+  thead th, td { padding: 7px 8px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">GatewayGuard</a>
+    <ul class="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/download.html">Download</a></li>
+      <li><a href="/guide/index.html" class="active">Guide</a></li>
+      <li><a href="/tips.html">Tips</a></li>
+      <li><a href="/beta.html">Beta</a></li>
+      <li><a href="/compatible.html">Compatible</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="tool-banner">
+  <p><strong>Sent here by GatewayGuard?</strong> Find the setting number GatewayGuard mentioned and click it below. Each page explains what the setting does, why it matters, and how to change it yourself.</p>
+</div>
+
+<header class="page-header">
+  <h1>Security Settings Guide</h1>
+  <p class="intro">Plain-English explanations for all 19 Windows 11 security settings GatewayGuard checks. Click any setting to see what it does, why it matters, and how to check or change it yourself.</p>
+</header>
+
+<section class="category-section">
+  <h2 class="category-title">Settings GatewayGuard checks and fixes for you</h2>
+  <p class="category-desc">For these eight settings, GatewayGuard checks your current status and makes the recommended change with your approval. You don&#8217;t need to do anything manually.</p>
+  <div class="setting-grid">
+    <a href="/guide/windows-update.html" class="setting-card">
+      <p class="setting-card-num">Setting 1</p>
+      <p class="setting-card-name">Windows Update</p>
+      <p class="setting-card-desc">Makes sure your PC downloads security patches automatically. Outdated Windows is the single most common way PCs get compromised.</p>
+      <span class="tag tag-auto">&#10003; GatewayGuard handles this</span>
+    </a>
+    <a href="/guide/defender-realtime.html" class="setting-card">
+      <p class="setting-card-num">Setting 2</p>
+      <p class="setting-card-name">Defender Real-Time Protection</p>
+      <p class="setting-card-desc">Windows&#8217;s built-in antivirus. When it&#8217;s on, it catches threats as they happen instead of after the damage is done.</p>
+      <span class="tag tag-auto">&#10003; GatewayGuard handles this</span>
+    </a>
+    <a href="/guide/tamper-protection.html" class="setting-card">
+      <p class="setting-card-num">Setting 3</p>
+      <p class="setting-card-name">Tamper Protection</p>
+      <p class="setting-card-desc">Stops malware from turning off your antivirus. If this is off and you didn&#8217;t turn it off, that&#8217;s a red flag worth investigating.</p>
+      <span class="tag tag-auto">&#10003; GatewayGuard handles this</span>
+    </a>
+    <a href="/guide/smartscreen.html" class="setting-card">
+      <p class="setting-card-num">Setting 4</p>
+      <p class="setting-card-name">SmartScreen</p>
+      <p class="setting-card-desc">Warns you before you open a file or visit a website that&#8217;s known to be dangerous. An extra safety net for accidental clicks.</p>
+      <span class="tag tag-auto">&#10003; GatewayGuard handles this</span>
+    </a>
+    <a href="/guide/periodic-scanning.html" class="setting-card">
+      <p class="setting-card-num">Setting 5</p>
+      <p class="setting-card-name">Defender Periodic Scanning</p>
+      <p class="setting-card-desc">Lets Windows Defender run a second opinion scan even if you have another antivirus installed. Catches things that slip through the gaps.</p>
+      <span class="tag tag-auto">&#10003; GatewayGuard handles this</span>
+    </a>
+    <a href="/guide/phishing-protection.html" class="setting-card">
+      <p class="setting-card-num">Setting 6</p>
+      <p class="setting-card-name">Enhanced Phishing Protection</p>
+      <p class="setting-card-desc">Warns you when you type your Windows password into a website or unsecured document. Helps stop password theft before it happens.</p>
+      <span class="tag tag-auto">&#10003; GatewayGuard handles this</span>
+    </a>
+    <a href="/guide/firewall.html" class="setting-card">
+      <p class="setting-card-num">Setting 7</p>
+      <p class="setting-card-name">Windows Firewall</p>
+      <p class="setting-card-desc">Blocks uninvited connections trying to reach your PC over the network. Should be on for all three network profiles.</p>
+      <span class="tag tag-auto">&#10003; GatewayGuard handles this</span>
+    </a>
+    <a href="/guide/bitlocker.html" class="setting-card">
+      <p class="setting-card-num">Setting 8</p>
+      <p class="setting-card-name">BitLocker Drive Encryption</p>
+      <p class="setting-card-desc">Scrambles everything on your hard drive so it&#8217;s unreadable without your password. Protects your files if your laptop is ever lost or stolen.</p>
+      <span class="tag tag-auto">&#10003; GatewayGuard handles this</span>
+    </a>
+  </div>
+</section>
+
+<section class="category-section">
+  <h2 class="category-title">Settings you need to set up yourself</h2>
+  <p class="category-desc">These settings require steps Windows won&#8217;t let a script handle automatically. GatewayGuard walks you through each one and directs you here for the step-by-step instructions.</p>
+  <div class="setting-grid">
+    <a href="/guide/windows-hello.html" class="setting-card">
+      <p class="setting-card-num">Setting 9</p>
+      <p class="setting-card-name">Windows Hello</p>
+      <p class="setting-card-desc">Sign into your PC with your face, fingerprint, or a PIN instead of typing a long password every time. More secure and more convenient.</p>
+      <span class="tag tag-manual">&#9998; You set this up</span>
+    </a>
+    <a href="/guide/remote-desktop.html" class="setting-card">
+      <p class="setting-card-num">Setting 10</p>
+      <p class="setting-card-name">Remote Desktop</p>
+      <p class="setting-card-desc">Lets someone control your PC over the internet. Most home users should have this turned off. Windows Pro only.</p>
+      <span class="tag tag-manual">&#9998; You set this up</span>
+    </a>
+    <a href="/guide/memory-integrity.html" class="setting-card">
+      <p class="setting-card-num">Setting 16</p>
+      <p class="setting-card-name">Memory Integrity</p>
+      <p class="setting-card-desc">Protects the core of Windows from attacks that try to sneak in through device drivers. Requires a reboot to take effect.</p>
+      <span class="tag tag-manual">&#9998; You set this up</span>
+    </a>
+    <a href="/guide/password-on-wake.html" class="setting-card">
+      <p class="setting-card-num">Setting 17</p>
+      <p class="setting-card-name">Password Required on Wake</p>
+      <p class="setting-card-desc">Makes your PC ask for your password when it wakes from sleep. Stops anyone from sitting down at your unlocked PC while you step away.</p>
+      <span class="tag tag-manual">&#9998; You set this up</span>
+    </a>
+  </div>
+</section>
+
+<section class="category-section">
+  <h2 class="category-title">Features you can turn off to improve privacy</h2>
+  <p class="category-desc">These settings are harmless to turn off. They&#8217;re convenience features, not security ones. GatewayGuard explains each and lets you decide. There&#8217;s no wrong answer.</p>
+  <div class="setting-grid">
+    <a href="/guide/advertising-id.html" class="setting-card">
+      <p class="setting-card-num">Setting 11</p>
+      <p class="setting-card-name">Advertising ID</p>
+      <p class="setting-card-desc">A unique number Windows assigns to your account so advertisers can track which ads you see. Turning it off has no effect on how Windows works.</p>
+      <span class="tag tag-choice">&#9654; Your decision</span>
+    </a>
+    <a href="/guide/diagnostic-data.html" class="setting-card">
+      <p class="setting-card-num">Setting 12</p>
+      <p class="setting-card-name">Diagnostic Data</p>
+      <p class="setting-card-desc">Information Windows sends to Microsoft about how you use your PC. You can set this to &#8220;Required only&#8221; instead of sending everything.</p>
+      <span class="tag tag-choice">&#9654; Your decision</span>
+    </a>
+    <a href="/guide/edge-startup.html" class="setting-card">
+      <p class="setting-card-num">Setting 13</p>
+      <p class="setting-card-name">Edge Startup Boost</p>
+      <p class="setting-card-desc">Keeps parts of the Edge browser running in the background so it opens faster. Turning it off frees up memory and stops Edge from running when you didn&#8217;t ask it to.</p>
+      <span class="tag tag-choice">&#9654; Your decision</span>
+    </a>
+    <a href="/guide/widgets.html" class="setting-card">
+      <p class="setting-card-num">Setting 14</p>
+      <p class="setting-card-name">Windows Widgets</p>
+      <p class="setting-card-desc">The news and weather panel on your taskbar. It sends usage data back to Microsoft. Turning it off removes the panel and stops the data sharing.</p>
+      <span class="tag tag-choice">&#9654; Your decision</span>
+    </a>
+    <a href="/guide/password-manager.html" class="setting-card">
+      <p class="setting-card-num">Setting 15</p>
+      <p class="setting-card-name">Edge Password Saving</p>
+      <p class="setting-card-desc">Edge&#8217;s built-in offer to save and fill your passwords. Convenient, but most security experts recommend a dedicated password manager instead.</p>
+      <span class="tag tag-choice">&#9654; Your decision</span>
+    </a>
+  </div>
+</section>
+
+<section class="category-section">
+  <h2 class="category-title">Settings that close less obvious security gaps</h2>
+  <p class="category-desc">These two settings are less well-known but worth addressing. GatewayGuard explains the trade-offs and asks before making any change.</p>
+  <div class="setting-grid">
+    <a href="/guide/fast-startup.html" class="setting-card">
+      <p class="setting-card-num">Setting 18</p>
+      <p class="setting-card-name">Fast Startup</p>
+      <p class="setting-card-desc">Makes Windows start up faster by saving part of its state to disk. The trade-off: your PC isn&#8217;t fully shut down when you close the lid, which can interfere with updates and encryption.</p>
+      <span class="tag tag-auto">&#10003; GatewayGuard handles this</span>
+    </a>
+    <a href="/guide/wake-on-lan.html" class="setting-card">
+      <p class="setting-card-num">Setting 19</p>
+      <p class="setting-card-name">Wake on LAN</p>
+      <p class="setting-card-desc">Lets your PC be turned on remotely over the network. Useful in offices, unnecessary at home. GatewayGuard checks whether it&#8217;s enabled and explains the risk.</p>
+      <span class="tag tag-auto">&#10003; GatewayGuard handles this</span>
+    </a>
+  </div>
+</section>
+
+<section class="quick-ref">
+  <h2 class="section-title">Quick reference: all 19 settings</h2>
+  <p class="section-intro">A full list of every setting GatewayGuard checks. Click any name to go to its guide page.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Setting</th>
+        <th>Category</th>
+        <th>How it&#8217;s handled</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td><a href="/guide/windows-update.html">Windows Update</a></td><td>Security</td><td><span class="badge badge-auto">&#10003; Automatic</span></td></tr>
+      <tr><td>2</td><td><a href="/guide/defender-realtime.html">Defender Real-Time Protection</a></td><td>Security</td><td><span class="badge badge-auto">&#10003; Automatic</span></td></tr>
+      <tr><td>3</td><td><a href="/guide/tamper-protection.html">Tamper Protection</a></td><td>Security</td><td><span class="badge badge-auto">&#10003; Automatic</span></td></tr>
+      <tr><td>4</td><td><a href="/guide/smartscreen.html">SmartScreen</a></td><td>Security</td><td><span class="badge badge-auto">&#10003; Automatic</span></td></tr>
+      <tr><td>5</td><td><a href="/guide/periodic-scanning.html">Defender Periodic Scanning</a></td><td>Security</td><td><span class="badge badge-auto">&#10003; Automatic</span></td></tr>
+      <tr><td>6</td><td><a href="/guide/phishing-protection.html">Enhanced Phishing Protection</a></td><td>Security</td><td><span class="badge badge-auto">&#10003; Automatic</span></td></tr>
+      <tr><td>7</td><td><a href="/guide/firewall.html">Windows Firewall</a></td><td>Security</td><td><span class="badge badge-auto">&#10003; Automatic</span></td></tr>
+      <tr><td>8</td><td><a href="/guide/bitlocker.html">BitLocker Drive Encryption</a></td><td>Security</td><td><span class="badge badge-auto">&#10003; Automatic</span></td></tr>
+      <tr><td>9</td><td><a href="/guide/windows-hello.html">Windows Hello</a></td><td>Manual setup</td><td><span class="badge badge-manual">&#9998; Manual</span></td></tr>
+      <tr><td>10</td><td><a href="/guide/remote-desktop.html">Remote Desktop</a></td><td>Manual setup</td><td><span class="badge badge-manual">&#9998; Manual</span></td></tr>
+      <tr><td>11</td><td><a href="/guide/advertising-id.html">Advertising ID</a></td><td>Convenience</td><td><span class="badge badge-choice">&#9654; Your choice</span></td></tr>
+      <tr><td>12</td><td><a href="/guide/diagnostic-data.html">Diagnostic Data</a></td><td>Convenience</td><td><span class="badge badge-choice">&#9654; Your choice</span></td></tr>
+      <tr><td>13</td><td><a href="/guide/edge-startup.html">Edge Startup Boost</a></td><td>Convenience</td><td><span class="badge badge-choice">&#9654; Your choice</span></td></tr>
+      <tr><td>14</td><td><a href="/guide/widgets.html">Windows Widgets</a></td><td>Convenience</td><td><span class="badge badge-choice">&#9654; Your choice</span></td></tr>
+      <tr><td>15</td><td><a href="/guide/password-manager.html">Edge Password Saving</a></td><td>Convenience</td><td><span class="badge badge-choice">&#9654; Your choice</span></td></tr>
+      <tr><td>16</td><td><a href="/guide/memory-integrity.html">Memory Integrity</a></td><td>Manual setup</td><td><span class="badge badge-manual">&#9998; Manual</span></td></tr>
+      <tr><td>17</td><td><a href="/guide/password-on-wake.html">Password Required on Wake</a></td><td>Manual setup</td><td><span class="badge badge-manual">&#9998; Manual</span></td></tr>
+      <tr><td>18</td><td><a href="/guide/fast-startup.html">Fast Startup</a></td><td>System hardening</td><td><span class="badge badge-auto">&#10003; Automatic</span></td></tr>
+      <tr><td>19</td><td><a href="/guide/wake-on-lan.html">Wake on LAN</a></td><td>System hardening</td><td><span class="badge badge-auto">&#10003; Automatic</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="resources">
+  <h2 class="section-title">More from GatewayGuard</h2>
+  <div class="resources-grid">
+    <a href="/compatible.html" class="resource-card">
+      <h3>Tested hardware</h3>
+      <p>PCs we&#8217;ve run GatewayGuard on and confirmed it works correctly.</p>
+    </a>
+    <a href="/beta.html" class="resource-card">
+      <h3>Beta tester program</h3>
+      <p>PC not on the tested list? Sign up for a free assisted session.</p>
+    </a>
+    <a href="/tips.html" class="resource-card">
+      <h3>Windows 11 Tips</h3>
+      <p>Plain-English how-to guides for everyday Windows 11 tasks.</p>
+    </a>
+    <a href="/download.html" class="resource-card">
+      <h3>Download GatewayGuard</h3>
+      <p>Get the tool, see system requirements, and read the run instructions.</p>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-brand">GatewayGuard</span>
+  <ul class="footer-links">
+    <li><a href="/download.html">Download</a></li>
+    <li><a href="/guide/index.html">Guide</a></li>
+    <li><a href="/beta.html">Beta</a></li>
+    <li><a href="/compatible.html">Compatible</a></li>
+    <li><a href="mailto:support@gatewayguard.co">Contact</a></li>
+  </ul>
+  <div class="footer-note">
+    GatewayGuard LLC &#8226; Brunswick, Maine &#8226; support@gatewayguard.co<br>
+    GatewayGuard does not collect personal data or show ads. No subscription &#8212; ever.<br>
+    Source code is included with every download. &#169; 2026 GatewayGuard LLC. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>

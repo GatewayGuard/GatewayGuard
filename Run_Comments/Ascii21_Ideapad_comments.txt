@@ -1,0 +1,47 @@
+User has to be told to run .bat file as admin right click and select run as administrator. I got Unknown publisher message - fix. i had option to run or cancel. run worked, still had to allow pgm to make changes.  We have to give them upfront instructions for this. Only space bar would work on some screens not enter.  Wrong message on some screen. Some screens still say and allow anyjet. Check all screens. are they all being built the same way? i.e. "press space bar or enter key to continue" or some shorter version throughout where a selection is needed.  
+
++=============================================================+
+|  WHAT HAPPENS NEXT -- PLEASE READ                           |
++=============================================================+
+|  This tool runs a series of quick checks before reaching    |
+|  the main security settings. Some screens appear briefly    |
+|  and move on automatically -- this is normal.               |
+|                                                             |
+|  PRE-FLIGHT CHECKS (you will see these in order):           |
+|  1. Personal computer confirmation                          |
+|  2. Domain / corporate network check                        |
+|  3. Administrator access check                              |
+|  4. Windows edition detection (Home vs Pro)                 |
+|  5. RAM check                                               |
+|  6. First-run vs returning user check                       |
+|  7. Security scan confirmation (Defender + Malwarebytes)    |
+|  8. Antivirus detection and status                          |
+|  9. Battery / power status check                            |
+| 10. Power settings (optional)                               |
+| 11. Apps audit (installed apps review)                      |
+|                                                             |
+|  Screens that require your input will PAUSE and wait.       |
+|  Quick status confirmations (green OK messages) will show   |
+|  briefly and move on -- nothing is skipped silently.        |
+|                                                             |
+|  After all checks pass, you reach the main security         |
+|  settings checklist where YOU control what gets changed.    |
++=============================================================+
+
+
+  Ready to begin? Press any key to start pre-flight checks...
+Press any key to continue . . .
+Hit space bar here and system crashed 3rd time it has crashed 3 different spots see below
+1. Beginning instruction about screen scrolling, etc, Tell them about little square box at top right that will expand screen to full length, Also widening by using mouse pointer didn't work.
+2. A number  pf press any key to continue appear in the beginning instruction boxes. Change and fix so only spacebar and enter keys are active.
+3. After running defender offline scan, What will protection history tell them and how will they know what to do?  Same question for Malwarebytes. 
+4.Step 2 of 2 on running MB scan. in change not required to 'Recommended'  and explain risks if scan is not run.  What is the worst that could happen? Put up warning that they are putting them selves risk by not running MB and dealing with results
+5. Have you comp. both typed Y and something flashed by.
+6.no back buttons to previous screen. Fix
+7. Checking power service:  Font changes did not take here. fix amd check entire document. Change all font to pt.20 and Bold
+8.  what does battery status 2 tell user? Remove 100% phrase and say XXX % charged/plugged in with no parens. Can we change to "your original sleep setting of xxxxx.. will be restored on exit." also two of these:  Press Enter or Space to continue...
+Press any key to continue . . . fix 
+9. Are you keeping a set of instructions of things you should always do and/or check for that cn be added to project instructions for gatewayguard project? If not review everything we have done in the past and create one and then continue to add to it as we go forward. Create a doc I can review.
+10.on next screen pressed enter main key i think, but could have been space bar.  system crashed. Reran and pressed number pad enter kryspaced bar. 
+ 
+Reran and on a screen after these with y/n choice selected s and pgm crashed

@@ -1,0 +1,12 @@
+1. pre scan recommended screen - mB still in front of MB should be reverse
+2.next scree out of order - says defender AV in cntl
+3. MB not detected but MB is on the Dell and can run scans - asked to open the app it said was undected - all screens at this point aboub defender and MB are out of order.  We shpu;d be first explaining about defender and MB and then asking about running defender offlin.  This needs to be fis=xed and we need screen numbering and then a digital document listing all screens in order and then showing all screens in order. Only way we will ever get this straight. nor kore runs until we have fixed this working with me and the 2 docs jus described.
+4.typed y and said a permission box may appear. something flashed and disappeared.  no permission bos or MB app appeared.
+5. We need screen numbers and back buttons on all screens, screens can change position, but then there screen number must chang with it.
+8. checking power status screen - still doesn't say what it found and what it changed it to.  Fix this
+9. same problems in power settings screen. apparently nothing was fixed from the previous two test run ascii32&33.  need to find out if ascii 36 was updated using the wrong file/ Please check.
+10. No BAck buttons on these screens. some how all selections were removed while I was typing notes. will resume as many of the selections were wrong. especially#6  3 phishing in edge. Edge now use windows smartscreen and it was on - no phishing switches anywhere. 13-14-15:  Also boost was off and widgets were off and tool said they were enabled - what is happening see logs. also passwords saves was off and tool said it was enabled. what are you reading?  fixs this.
+11. REsume took me right back to console mode selection. However still asked a second time about P/W mgr.  fix this no need to ask twice.
+12. What this tool does screen is to long - any screen longer then 25 lines must be split into two screens.
+13. #19 - how do we know it is on - especially giving my input on wifi, no ethernet, etc. We need to test WOL separately during the test to see if it is on or off. to be sure we are accurate.
+14. selected N to turn off all selections and screen flickered for a fe2 seconds and then displayed screen showin R had been selected and when i hit space bar pgm crashed.  see logs.

@@ -1,0 +1,33 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\willi> Get-MpComputerStatus | Select-Object RealTimeProtectionEnabled, AntivirusEnabled, AMRunningMode
+
+RealTimeProtectionEnabled AntivirusEnabled AMRunningMode
+------------------------- ---------------- -------------
+                     True             True Normal
+
+
+PS C:\Users\willi>
+PS C:\Users\willi>     Get-Service WinDefend | Select-Object Name, Status, StartType
+
+Name       Status StartType
+----       ------ ---------
+WinDefend Running Automatic
+
+
+PS C:\Users\willi>
+PS C:\Users\willi>     Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows Defender" | Select-Object DisableAntiSpyware, DisableAntiVirus
+
+DisableAntiSpyware DisableAntiVirus
+------------------ ----------------
+                 0                0
+
+
+PS C:\Users\willi>
+PS C:\Users\willi>     Get-WmiObject -Namespace "root\SecurityCenter2" -Class AntiVirusProduct | Select-Object displayName, productState
+
+displayName      productState
+-----------      ------------
+Windows Defender       397568
+

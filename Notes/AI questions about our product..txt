@@ -1,0 +1,3 @@
+1. 
+What security application(s) do you find we are missing and can they be auto implemented thru MS powershell. 
+2.Any other suggestions to make about hardening a windows 11 device. for instance NoID makes 650 changes, Malwarebytes has extensive incoming and outgoing rule, plus some internal settings that are on and user should turn off and some they should turn on.

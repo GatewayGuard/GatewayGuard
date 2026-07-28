@@ -1,0 +1,17 @@
+System basics:
+Get-ComputerInfo | Select-Object CsManufacturer, CsModel, OsName, OsVersion, CsProcessors, CsTotalPhysicalMemory
+Battery:
+Get-WmiObject -Class Win32_Battery | Select-Object Name, BatteryStatus, EstimatedChargeRemaining, DesignCapacity
+Storage:
+Get-PhysicalDisk | Select-Object FriendlyName, MediaType, Size
+Windows Edition (exact registry value):
+Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion" | Select-Object EditionID, ProductName, CurrentBuild Antivirus registered:
+Get-WmiObject -Namespace "root\SecurityCenter2" -Class AntiVirusProduct | Select
+
+PS C:\Users\willi> Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion" | Select-Object EditionID, ProductName, CurrentBuild Antivirus registered:
+Select-Object : A positional parameter cannot be found that accepts argument 'Antivirus'.
+At line:1 char:73
++ ... tVersion" | Select-Object EditionID, ProductName, CurrentBuild Antivi ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Select-Object], ParameterBindingException
+    + FullyQualifiedErrorId : PositionalParameterNotFound,Microsoft.PowerShell.Commands.SelectObjectCommand

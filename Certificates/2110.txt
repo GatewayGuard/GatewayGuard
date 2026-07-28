@@ -1,0 +1,10 @@
+
+Link to the website where your software will be hosted: 
+Description of what your organization does:  We build IT guides and tools  for 
+description of the files that will be signed
+Why do you need a code signing certificate?
+What will you be using the certificate to sign?
+What kind of files will you be signing? Please provide file extensions.
+Do you have an example code or file you need to sign?
+Do you have a website for your software or product?
+Does your organization offer residential proxy services or SOCKS4/5 proxy connections as part of your product or service offerings?

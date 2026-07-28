@@ -1,0 +1,16 @@
+# GatewayGuard -- byte-exact storage, no line-ending translation.
+#
+# "* -text" tells git to treat every file as binary for line-ending purposes:
+# what goes into the repo is exactly what is on disk, byte for byte.
+#
+# This is deliberate and load-bearing. DefectPreventionPlaybook Class 7 rule 5
+# specifies recovery as "restore byte-for-byte, confirm by hash." Git's Windows
+# default (core.autocrlf=true) rewrites CRLF to LF on commit and back on
+# checkout -- a restored file would then differ from the original and the hash
+# check would fail. CodingStandards also require .ps1 builds to be CRLF with a
+# UTF-8 BOM; translation would put both at risk.
+#
+# Belt and braces: core.autocrlf is also set to false in .git/config, but that
+# is a local setting that can be changed or lost. This file travels with the
+# repository.
+* -text

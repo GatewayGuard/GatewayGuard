@@ -1,0 +1,23 @@
+# GatewayGuard -- files kept out of version control
+# The point of this repo is protecting the source of truth (the .ps1 build,
+# the standards docs, the website HTML). Installers and archives are neither.
+
+# Installers and downloads. iPrintScan-Setup is 569 MB on its own.
+*.exe
+*.crdownload
+
+# Archives -- snapshots of files that are already tracked individually.
+*.zip
+
+# Preserved corruption evidence (14 MB). Kept ON DISK per DefectPrevention
+# Playbook Class 7 rule 5 ("preserve the damaged file -- it is evidence"),
+# but there is no value in versioning an unparseable artifact.
+Tool/_corrupt/
+
+# Windows and Office artifacts
+Thumbs.db
+desktop.ini
+~$*
+
+# LibreOffice / OpenOffice lock files, created while a document is open
+.~lock.*#

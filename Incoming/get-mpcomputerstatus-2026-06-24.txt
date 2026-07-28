@@ -1,0 +1,44 @@
+PS C:\Users\willi> get-mpcomputerstatus | select-objEct REALTIMEPROTECTIONENABLED, ANTIVIRUSENABLED, AMRUNNINGMODE
+
+REALTIMEPROTECTIONENABLED ANTIVIRUSENABLED AMRUNNINGMODE
+------------------------- ---------------- -------------
+                    False            False Not running
+
+Get-Service WinDefend | Select-Object Name, Status, StartType
+
+
+Get-MpComputerStatus | Select-Object AMEngineVersion, AMProductVersion, AMServiceEnabled, AMServiceVersion
+
+PS C:\Users\willi> Get-Service WinDefend | Select-Object Name, Status, StartType
+
+Name       Status StartType
+----       ------ ---------
+WinDefend Stopped    Manual
+
+
+PS C:\Users\willi> Get-MpComputerStatus | Select-Object AMEngineVersion, AMProductVersion, AMServiceEnabled, AMServiceVersion
+
+AMEngineVersion AMProductVersion AMServiceEnabled AMServiceVersion
+--------------- ---------------- ---------------- ----------------
+0.0.0.0         4.18.26050.15               False 0.0.0.0
+
+Get-MpPreference | Select-Object DisableRealtimeMonitoring, DisableAntiSpyware
+
+Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows Defender" | Select-Object DisableAntiSpyware, DisableAntiVirus
+
+
+
+PS C:\Users\willi> Get-MpPreference | Select-Object DisableRealtimeMonitoring, DisableAntiSpyware
+Get-MpPreference : Operation failed with the following error: 0x800106ba
+At line:1 char:1
++ Get-MpPreference | Select-Object DisableRealtimeMonitoring, DisableAn ...
++ ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (MSFT_MpPreference:root\Microsoft\...FT_MpPreference) [Get-MpPreference],
+   CimException
+    + FullyQualifiedErrorId : HRESULT 0x800106ba,Get-MpPreference
+
+PS C:\Users\willi> Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows Defender" | Select-Object DisableAntiSpyware, DisableAntiVirus
+
+DisableAntiSpyware DisableAntiVirus
+------------------ ----------------
+                 1                1

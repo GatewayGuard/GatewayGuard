@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Import-Module PSScriptAnalyzer; $results = Invoke-ScriptAnalyzer -Path \"C:\\\\Users\\\\willi\\\\OneDrive\\\\GatewayGuide\\\\Builds\\\\W11-SecurityHardening-v3-ascii32-2026-07-17.ps1\" -Severity Warning,Error; $results | Group-Object RuleName | Sort-Object Count -Descending | Select-Object Count, Name)",
+      "WebSearch",
+      "PowerShell(& schtasks.exe /query /tn \"GG-QuotingTest-DoNotKeep\" 2>&1)",
+      "PowerShell(\"\\(A 'not found' error above confirms cleanup succeeded\\)\")",
+      "WebFetch(domain:support.microsoft.com)",
+      "Skill(update-config)",
+      "PowerShell($f=\"C:\\\\Users\\\\willi\\\\OneDrive\\\\GatewayGuide\\\\Tool\\\\W11-SecurityHardening-v3-ascii35-2026-07-26-1540.ps1\"; $t=$null;$e=$null;$ast=[System.Management.Automation.Language.Parser]::ParseFile\\($f,[ref]$t,[ref]$e\\); $fns=$ast.FindAll\\({param\\($n\\) $n -is [System.Management.Automation.Language.FunctionDefinitionAst]},$true\\); foreach\\($ln in 2614,2733,2802,2872,3556,3903,3570\\){ $m=$fns | Where-Object { $_.Extent.StartLineNumber -le $ln -and $_.Extent.EndLineNumber -ge $ln } | Sort-Object { $_.Extent.EndLineNumber - $_.Extent.StartLineNumber } | Select-Object -First 1; \"{0} -> {1} \\(lines {2}-{3}\\)\" -f $ln, $m.Name, $m.Extent.StartLineNumber, $m.Extent.EndLineNumber })",
+      "PowerShell(\\(Get-Command Set-NetAdapterPowerManagement\\).Parameters.Keys -contains 'NoRestart'; \\(Get-Command Set-NetAdapterAdvancedProperty\\).Parameters.Keys -contains 'NoRestart')",
+      "PowerShell(& \"C:\\\\Users\\\\willi\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-willi-OneDrive-GatewayGuide\\\\c5ccf821-1bca-4396-9181-343183bd57eb\\\\scratchpad\\\\build-ascii36.ps1\")",
+      "PowerShell(Get-ChildItem *)"
+    ]
+  }
+}
