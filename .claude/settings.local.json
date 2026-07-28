@@ -9,7 +9,17 @@
       "PowerShell(Get-Item *)",
       "PowerShell(Test-Path *)",
       "PowerShell(Select-String *)",
-      "PowerShell(winget install *)"
+      "PowerShell(winget install *)",
+      "Bash(py --version)",
+      "Bash(python build_ascii37.py)",
+      "Bash(sed -i 's|ascii36-2026-07-27-1655|ascii37-2026-07-28-1330|' measure.py)",
+      "Bash(python measure.py)",
+      "Bash(python final_check.py)",
+      "Bash(python patch_header_count.py)",
+      "Bash(cp \"C:/Users/willi/OneDrive/GatewayGuide/Tool/W11-SecurityHardening-v3-ascii37-2026-07-28-1330.ps1\" \"C:/Users/willi/OneDrive/GatewayGuide/Builds/\")",
+      "Bash(awk '{print $1}')",
+      "Bash(git add *)",
+      "Bash(git commit *)"
     ]
   },
   "hooks": {
