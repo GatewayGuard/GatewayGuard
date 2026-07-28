@@ -6,7 +6,12 @@
 - **Product:** GatewayGuard — Windows 11 security hardening tool for non-technical home users
 - **Developer:** Solo (William F. Burns III / GatewayGuard LLC)
 - **Target launch:** September 1, 2026
-- **Current build:** ascii36 (6,134 lines) — always confirm current build number before any edit session
+- **Current build:** ascii37 (6,463 non-blank lines / 6,792 total) — always confirm current build number before any edit session
+  - **Line-count convention:** the quoted figure is the `Measure-Object -Line`
+    **non-blank** number, per Playbook Appendix A. The old "ascii36 (6,134
+    lines)" entry used the total-lines figure instead — two different methods
+    on the same line, which makes gate 11's before/after size check
+    meaningless. Both numbers are given above so the method is unambiguous.
   - **This line is one of five build-ID locations** (filename, `FILE:` header, `BUILD:` header, `$BuildID`, and here). Pre-Build Audit item 9 checks all five; update this line in the same edit that increments the build. It sat at ascii28 while the tree was on ascii34 — six builds stale, on the very line telling you to confirm the build number. A pointer that lies is worse than no pointer.
 - **Language:** Python (primary tool), PowerShell (.ps1 for system edits), batch (.bat for launchers)
 - **Platform:** Windows 11 Home and Pro only
