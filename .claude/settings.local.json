@@ -8,7 +8,8 @@
       "PowerShell(Get-Content *)",
       "PowerShell(Get-Item *)",
       "PowerShell(Test-Path *)",
-      "PowerShell(Select-String *)"
+      "PowerShell(Select-String *)",
+      "PowerShell(winget install *)"
     ]
   },
   "hooks": {
