@@ -1,11 +1,4 @@
-GatewayGuard LLC -- DigiCert OV Code Signing Certificate Validation Response
-
-=============================================================================
- 
-1. Link to the website where your software will be hosted
-   https://gatewayguard.co
- 
-2. Description of what your organization does
+GatewayGuard LLC -- DigiCert OV Code Signing `Description of what your organization does
    GatewayGuard LLC develops Windows 11 security hardening software for
    non-technical home users, especially seniors. Our product guides users
    through essential security configuration steps on their own PC, using

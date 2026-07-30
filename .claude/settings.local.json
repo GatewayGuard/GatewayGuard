@@ -19,7 +19,9 @@
       "Bash(cp \"C:/Users/willi/OneDrive/GatewayGuide/Tool/W11-SecurityHardening-v3-ascii37-2026-07-28-1330.ps1\" \"C:/Users/willi/OneDrive/GatewayGuide/Builds/\")",
       "Bash(awk '{print $1}')",
       "Bash(git add *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Read(//c/Users/willi/OneDrive/GatewayGuide/**)",
+      "Read(//c/GatewayGuard/Logs/**)"
     ]
   },
   "hooks": {

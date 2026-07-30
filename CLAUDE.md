@@ -6,13 +6,16 @@
 - **Product:** GatewayGuard — Windows 11 security hardening tool for non-technical home users
 - **Developer:** Solo (William F. Burns III / GatewayGuard LLC)
 - **Target launch:** September 1, 2026
-- **Current build:** ascii37 (6,463 non-blank lines / 6,792 total) — always confirm current build number before any edit session
+- **Current build:** ascii38 (7,159 non-blank lines / 7,505 total) — always confirm current build number before any edit session
   - **Line-count convention:** the quoted figure is the `Measure-Object -Line`
     **non-blank** number, per Playbook Appendix A. The old "ascii36 (6,134
     lines)" entry used the total-lines figure instead — two different methods
     on the same line, which makes gate 11's before/after size check
     meaningless. Both numbers are given above so the method is unambiguous.
   - **This line is one of five build-ID locations** (filename, `FILE:` header, `BUILD:` header, `$BuildID`, and here). Pre-Build Audit item 9 checks all five; update this line in the same edit that increments the build. It sat at ascii28 while the tree was on ascii34 — six builds stale, on the very line telling you to confirm the build number. A pointer that lies is worse than no pointer.
+- **Tool name:** the tool is **Checkup**. "GatewayGuard Checkup" on first mention, "Checkup" thereafter. GatewayGuard is the company. Certified 2026-07-29. Do **not** rename the MachineID hash salt (`"GatewayGuard|"`), the Task Scheduler task names (`GatewayGuard - Quarterly…`, `GatewayGuard - Monthly…`), `C:\GatewayGuard\`, `Run-GatewayGuard.bat`, `gatewayguard.co`, or the LLC name — those are identifiers and recovery points, not prose. A blanket find-and-replace on "GatewayGuard" would corrupt every machine's ID and orphan the scheduled tasks.
+- **Screen numbers:** on screen the user sees **position** in their journey ("Screen 6"); the log carries the **stable ID** plus the position (`[SCREEN-02] (shown as screen 6)`). Gate 12 / C-15's "fixed forever, never renumber" governs the **log only** — Bill overruled the user-facing half on 2026-07-28, because a user on a support call must be able to say which screen they are on. Run `Tool\Check-ScreenCoverage-2026-07-29.ps1` before every build; it is the mechanical gate-12 check and reports the next free ID (78 as of ascii38).
+- **Review every screen:** `Tool\Show-AllScreens.bat` walks all 60 screens without running checks or changing anything. It reads the .ps1's own source via the AST, so it cannot drift from the real screens.
 - **Language:** Python (primary tool), PowerShell (.ps1 for system edits), batch (.bat for launchers)
 - **Platform:** Windows 11 Home and Pro only
 
