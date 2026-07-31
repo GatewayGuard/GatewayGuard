@@ -137,6 +137,65 @@ copy. Full rule: WebsiteStandards RULE W-08.
 
 ---
 
+## Research Before Asserting — in conversation, not just in the tool
+
+`RESEARCH BEFORE STATING` (CodingStandards) governs what gets coded into the
+tool and written into user-facing copy. **It also governs what Claude tells
+Bill.** Added 2026-07-30 after four wrong assertions in one session, every
+one of which the machine could have settled beforehand.
+
+- **Before stating any fact** about system behaviour, a machine's state, or
+  the cause of a defect — **verify it, or label it unverified.**
+- **Prefer running the check over asking Bill to run it.** Most are available
+  locally. Asking Bill costs a round trip and his time; running it costs
+  seconds.
+- If it cannot be verified, write **"check whether X"**, never **"X is"**.
+
+**Every claim carries its basis, using these four words:**
+
+| Label | Means |
+|---|---|
+| **measured** | I ran it — output shown |
+| **sourced** | Documented, with the link |
+| **inferred** | Reasoning from evidence; could be wrong |
+| **guess** | A hypothesis. Treat as such |
+
+A claim with no label is being asserted as fact, so it had better be one.
+
+**What earned this (2026-07-30):** "the Off row is almost certainly Kernel DMA
+Protection" — msinfo32 said Kernel DMA was **On**; the Off row was Secure
+Boot. "The crash was in my look-back code" — the PowerShell event log showed
+**no event at all** at the crash time, proving an external process kill
+(Bill's own X-click theory, which was correct). "Absent = default" for Edge
+settings — broke on the second machine. Each was a *guess* presented as a
+conclusion, and each cost a round trip to disprove.
+
+**The asymmetry:** checking costs seconds, a wrong assertion costs a build.
+That is FT-116 and FT-120 in this project's own defect record.
+
+---
+
+## Commands Given to Bill Must Be Bounded and Tested
+
+Ad-hoc PowerShell pasted into chat gets the same rigour as the build scripts.
+Added 2026-07-30 after an unbounded `Get-WinEvent` locked up SANDY and had to
+be killed by closing the window.
+
+- **Bound every query** — `-MaxEvents`, `-First`, an explicit count. This is
+  PYTHON EDITING RULES 4a ("bound every replacement") applied to the terminal,
+  where there is no safety net at all.
+- **Filter server-side** where the cmdlet supports it:
+  `Get-WinEvent -FilterHashtable @{LogName=...; Id=...}` beats piping to
+  `Where-Object`, which fetches everything first.
+- **Run it locally first** when the machine allows. Say so plainly when it
+  cannot be tested.
+- **One line, no wrapping.** Multi-line pastes have mangled twice.
+- **Write results to a file** rather than long console output.
+- **State whether it is read-only.** That is the reassurance Bill needs when
+  something misbehaves on a test machine that field data depends on.
+
+---
+
 ## User-Facing Clarity Rule
 
 Every instruction given to the user must state exactly what each action does and what happens if they do not take it.
