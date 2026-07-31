@@ -1,0 +1,383 @@
+﻿
+================================================================
+ FT-159 -- SWALLOWED POWERSHELL ERRORS (read-only)
+================================================================
+  Computer : CGDELL
+  Run date : 2026-07-30 20:16:45
+
+---- Event ID 4100 (pipeline errors), newest 10, FULL TEXT ----
+
+  Found 10 event(s).
+
+  ---- 2026-07-30 00:39:10  Id 4100 ----
+    Error Message = System error.
+    
+    
+    Context:
+            Severity = Warning
+            Host Name = ConsoleHost
+            Host Version = 5.1.26100.8875
+            Host ID = 1e820538-f7da-46e3-8154-543dd7961b11
+            Host Application = C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command try { $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8' } catch {}; if ($ExecutionContext.SessionState.LanguageMode -eq 'FullLanguage') { try { $OutputEncoding = [System.Text.UTF8Encoding]::new() } catch {}; if ($null -ne $PSStyle) { try { $PSStyle.OutputRendering = 'PlainText' } catch {} } }; Set-Location "C:\Users\willi\OneDrive\GatewayGuide\Tool"
+    $e=$null;$t=$null
+    [System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\Check-HomeEdition-2026-07-29.ps1).Path,[ref]$t,[ref]$e) | Out-Null
+    "Parse errors: $($e.Count)"
+    & .\Check-HomeEdition-2026-07-29.ps1 2>&1 | Select-String -Pattern "SECTION|^====|I\. FT-141|J\. MEMORY|BLOCKED|Kernel DMA|Device Encryption Support|Virtualization-based|Secure Boot State|Saved to" -Context 0,2 | Select-Object -First 40
+    ; $_ec = if ($null -ne $LASTEXITCODE) { $LASTEXITCODE } elseif ($?) { 0 } else { 1 }
+    ; (Get-Location).Path | Out-File -FilePath 'C:\Users\willi\AppData\Local\Temp\claude\claude-pwd-ps-d187' -Encoding utf8 -NoNewline
+    ; if ($ExecutionContext.SessionState.LanguageMode -eq 'FullLanguage') { $host.SetShouldExit($_ec) } else { exit $_ec }
+            Engine Version = 5.1.26100.8875
+            Runspace ID = 8f8becd8-eb9f-4190-af7c-ade68fe858ba
+            Pipeline ID = 1
+            Command Name = 
+            Command Type = 
+            Script Name = 
+            Command Path = 
+            Sequence Number = 25
+            User = CGDELL\willi
+            Connected User = 
+            Shell ID = Microsoft.PowerShell
+    
+    
+    User Data:
+    
+    
+
+  ---- 2026-07-30 00:39:10  Id 4100 ----
+    Error Message = System error.
+    
+    
+    Context:
+            Severity = Warning
+            Host Name = ConsoleHost
+            Host Version = 5.1.26100.8875
+            Host ID = 1e820538-f7da-46e3-8154-543dd7961b11
+            Host Application = C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command try { $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8' } catch {}; if ($ExecutionContext.SessionState.LanguageMode -eq 'FullLanguage') { try { $OutputEncoding = [System.Text.UTF8Encoding]::new() } catch {}; if ($null -ne $PSStyle) { try { $PSStyle.OutputRendering = 'PlainText' } catch {} } }; Set-Location "C:\Users\willi\OneDrive\GatewayGuide\Tool"
+    $e=$null;$t=$null
+    [System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\Check-HomeEdition-2026-07-29.ps1).Path,[ref]$t,[ref]$e) | Out-Null
+    "Parse errors: $($e.Count)"
+    & .\Check-HomeEdition-2026-07-29.ps1 2>&1 | Select-String -Pattern "SECTION|^====|I\. FT-141|J\. MEMORY|BLOCKED|Kernel DMA|Device Encryption Support|Virtualization-based|Secure Boot State|Saved to" -Context 0,2 | Select-Object -First 40
+    ; $_ec = if ($null -ne $LASTEXITCODE) { $LASTEXITCODE } elseif ($?) { 0 } else { 1 }
+    ; (Get-Location).Path | Out-File -FilePath 'C:\Users\willi\AppData\Local\Temp\claude\claude-pwd-ps-d187' -Encoding utf8 -NoNewline
+    ; if ($ExecutionContext.SessionState.LanguageMode -eq 'FullLanguage') { $host.SetShouldExit($_ec) } else { exit $_ec }
+            Engine Version = 5.1.26100.8875
+            Runspace ID = 8f8becd8-eb9f-4190-af7c-ade68fe858ba
+            Pipeline ID = 1
+            Command Name = 
+            Command Type = 
+            Script Name = 
+            Command Path = 
+            Sequence Number = 24
+            User = CGDELL\willi
+            Connected User = 
+            Shell ID = Microsoft.PowerShell
+    
+    
+    User Data:
+    
+    
+
+  ---- 2026-07-30 00:39:10  Id 4100 ----
+    Error Message = System error.
+    
+    
+    Context:
+            Severity = Warning
+            Host Name = ConsoleHost
+            Host Version = 5.1.26100.8875
+            Host ID = 1e820538-f7da-46e3-8154-543dd7961b11
+            Host Application = C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command try { $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8' } catch {}; if ($ExecutionContext.SessionState.LanguageMode -eq 'FullLanguage') { try { $OutputEncoding = [System.Text.UTF8Encoding]::new() } catch {}; if ($null -ne $PSStyle) { try { $PSStyle.OutputRendering = 'PlainText' } catch {} } }; Set-Location "C:\Users\willi\OneDrive\GatewayGuide\Tool"
+    $e=$null;$t=$null
+    [System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\Check-HomeEdition-2026-07-29.ps1).Path,[ref]$t,[ref]$e) | Out-Null
+    "Parse errors: $($e.Count)"
+    & .\Check-HomeEdition-2026-07-29.ps1 2>&1 | Select-String -Pattern "SECTION|^====|I\. FT-141|J\. MEMORY|BLOCKED|Kernel DMA|Device Encryption Support|Virtualization-based|Secure Boot State|Saved to" -Context 0,2 | Select-Object -First 40
+    ; $_ec = if ($null -ne $LASTEXITCODE) { $LASTEXITCODE } elseif ($?) { 0 } else { 1 }
+    ; (Get-Location).Path | Out-File -FilePath 'C:\Users\willi\AppData\Local\Temp\claude\claude-pwd-ps-d187' -Encoding utf8 -NoNewline
+    ; if ($ExecutionContext.SessionState.LanguageMode -eq 'FullLanguage') { $host.SetShouldExit($_ec) } else { exit $_ec }
+            Engine Version = 5.1.26100.8875
+            Runspace ID = 8f8becd8-eb9f-4190-af7c-ade68fe858ba
+            Pipeline ID = 1
+            Command Name = 
+            Command Type = 
+            Script Name = 
+            Command Path = 
+            Sequence Number = 23
+            User = CGDELL\willi
+            Connected User = 
+            Shell ID = Microsoft.PowerShell
+    
+    
+    User Data:
+    
+    
+
+  ---- 2026-07-30 00:39:10  Id 4100 ----
+    Error Message = System error.
+    
+    
+    Context:
+            Severity = Warning
+            Host Name = ConsoleHost
+            Host Version = 5.1.26100.8875
+            Host ID = 1e820538-f7da-46e3-8154-543dd7961b11
+            Host Application = C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command try { $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8' } catch {}; if ($ExecutionContext.SessionState.LanguageMode -eq 'FullLanguage') { try { $OutputEncoding = [System.Text.UTF8Encoding]::new() } catch {}; if ($null -ne $PSStyle) { try { $PSStyle.OutputRendering = 'PlainText' } catch {} } }; Set-Location "C:\Users\willi\OneDrive\GatewayGuide\Tool"
+    $e=$null;$t=$null
+    [System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\Check-HomeEdition-2026-07-29.ps1).Path,[ref]$t,[ref]$e) | Out-Null
+    "Parse errors: $($e.Count)"
+    & .\Check-HomeEdition-2026-07-29.ps1 2>&1 | Select-String -Pattern "SECTION|^====|I\. FT-141|J\. MEMORY|BLOCKED|Kernel DMA|Device Encryption Support|Virtualization-based|Secure Boot State|Saved to" -Context 0,2 | Select-Object -First 40
+    ; $_ec = if ($null -ne $LASTEXITCODE) { $LASTEXITCODE } elseif ($?) { 0 } else { 1 }
+    ; (Get-Location).Path | Out-File -FilePath 'C:\Users\willi\AppData\Local\Temp\claude\claude-pwd-ps-d187' -Encoding utf8 -NoNewline
+    ; if ($ExecutionContext.SessionState.LanguageMode -eq 'FullLanguage') { $host.SetShouldExit($_ec) } else { exit $_ec }
+            Engine Version = 5.1.26100.8875
+            Runspace ID = 8f8becd8-eb9f-4190-af7c-ade68fe858ba
+            Pipeline ID = 1
+            Command Name = 
+            Command Type = 
+            Script Name = 
+            Command Path = 
+            Sequence Number = 22
+            User = CGDELL\willi
+            Connected User = 
+            Shell ID = Microsoft.PowerShell
+    
+    
+    User Data:
+    
+    
+
+  ---- 2026-07-30 00:39:10  Id 4100 ----
+    Error Message = System error.
+    
+    
+    Context:
+            Severity = Warning
+            Host Name = ConsoleHost
+            Host Version = 5.1.26100.8875
+            Host ID = 1e820538-f7da-46e3-8154-543dd7961b11
+            Host Application = C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command try { $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8' } catch {}; if ($ExecutionContext.SessionState.LanguageMode -eq 'FullLanguage') { try { $OutputEncoding = [System.Text.UTF8Encoding]::new() } catch {}; if ($null -ne $PSStyle) { try { $PSStyle.OutputRendering = 'PlainText' } catch {} } }; Set-Location "C:\Users\willi\OneDrive\GatewayGuide\Tool"
+    $e=$null;$t=$null
+    [System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\Check-HomeEdition-2026-07-29.ps1).Path,[ref]$t,[ref]$e) | Out-Null
+    "Parse errors: $($e.Count)"
+    & .\Check-HomeEdition-2026-07-29.ps1 2>&1 | Select-String -Pattern "SECTION|^====|I\. FT-141|J\. MEMORY|BLOCKED|Kernel DMA|Device Encryption Support|Virtualization-based|Secure Boot State|Saved to" -Context 0,2 | Select-Object -First 40
+    ; $_ec = if ($null -ne $LASTEXITCODE) { $LASTEXITCODE } elseif ($?) { 0 } else { 1 }
+    ; (Get-Location).Path | Out-File -FilePath 'C:\Users\willi\AppData\Local\Temp\claude\claude-pwd-ps-d187' -Encoding utf8 -NoNewline
+    ; if ($ExecutionContext.SessionState.LanguageMode -eq 'FullLanguage') { $host.SetShouldExit($_ec) } else { exit $_ec }
+            Engine Version = 5.1.26100.8875
+            Runspace ID = 8f8becd8-eb9f-4190-af7c-ade68fe858ba
+            Pipeline ID = 1
+            Command Name = 
+            Command Type = 
+            Script Name = 
+            Command Path = 
+            Sequence Number = 21
+            User = CGDELL\willi
+            Connected User = 
+            Shell ID = Microsoft.PowerShell
+    
+    
+    User Data:
+    
+    
+
+  ---- 2026-07-30 00:39:10  Id 4100 ----
+    Error Message = System error.
+    
+    
+    Context:
+            Severity = Warning
+            Host Name = ConsoleHost
+            Host Version = 5.1.26100.8875
+            Host ID = 1e820538-f7da-46e3-8154-543dd7961b11
+            Host Application = C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command try { $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8' } catch {}; if ($ExecutionContext.SessionState.LanguageMode -eq 'FullLanguage') { try { $OutputEncoding = [System.Text.UTF8Encoding]::new() } catch {}; if ($null -ne $PSStyle) { try { $PSStyle.OutputRendering = 'PlainText' } catch {} } }; Set-Location "C:\Users\willi\OneDrive\GatewayGuide\Tool"
+    $e=$null;$t=$null
+    [System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\Check-HomeEdition-2026-07-29.ps1).Path,[ref]$t,[ref]$e) | Out-Null
+    "Parse errors: $($e.Count)"
+    & .\Check-HomeEdition-2026-07-29.ps1 2>&1 | Select-String -Pattern "SECTION|^====|I\. FT-141|J\. MEMORY|BLOCKED|Kernel DMA|Device Encryption Support|Virtualization-based|Secure Boot State|Saved to" -Context 0,2 | Select-Object -First 40
+    ; $_ec = if ($null -ne $LASTEXITCODE) { $LASTEXITCODE } elseif ($?) { 0 } else { 1 }
+    ; (Get-Location).Path | Out-File -FilePath 'C:\Users\willi\AppData\Local\Temp\claude\claude-pwd-ps-d187' -Encoding utf8 -NoNewline
+    ; if ($ExecutionContext.SessionState.LanguageMode -eq 'FullLanguage') { $host.SetShouldExit($_ec) } else { exit $_ec }
+            Engine Version = 5.1.26100.8875
+            Runspace ID = 8f8becd8-eb9f-4190-af7c-ade68fe858ba
+            Pipeline ID = 1
+            Command Name = 
+            Command Type = 
+            Script Name = 
+            Command Path = 
+            Sequence Number = 20
+            User = CGDELL\willi
+            Connected User = 
+            Shell ID = Microsoft.PowerShell
+    
+    
+    User Data:
+    
+    
+
+  ---- 2026-07-30 00:37:19  Id 4100 ----
+    Error Message = The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Requested registry access is not allowed.
+    Fully Qualified Error ID = System.Security.SecurityException,Microsoft.PowerShell.Commands.GetItemPropertyCommand
+    
+    
+    Context:
+            Severity = Warning
+            Host Name = ConsoleHost
+            Host Version = 5.1.26100.8875
+            Host ID = 1e820538-f7da-46e3-8154-543dd7961b11
+            Host Application = C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command try { $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8' } catch {}; if ($ExecutionContext.SessionState.LanguageMode -eq 'FullLanguage') { try { $OutputEncoding = [System.Text.UTF8Encoding]::new() } catch {}; if ($null -ne $PSStyle) { try { $PSStyle.OutputRendering = 'PlainText' } catch {} } }; Set-Location "C:\Users\willi\OneDrive\GatewayGuide\Tool"
+    $e=$null;$t=$null
+    [System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\Check-HomeEdition-2026-07-29.ps1).Path,[ref]$t,[ref]$e) | Out-Null
+    "Parse errors: $($e.Count)"
+    & .\Check-HomeEdition-2026-07-29.ps1 2>&1 | Select-String -Pattern "SECTION|^====|I\. FT-141|J\. MEMORY|BLOCKED|Kernel DMA|Device Encryption Support|Virtualization-based|Secure Boot State|Saved to" -Context 0,2 | Select-Object -First 40
+    ; $_ec = if ($null -ne $LASTEXITCODE) { $LASTEXITCODE } elseif ($?) { 0 } else { 1 }
+    ; (Get-Location).Path | Out-File -FilePath 'C:\Users\willi\AppData\Local\Temp\claude\claude-pwd-ps-d187' -Encoding utf8 -NoNewline
+    ; if ($ExecutionContext.SessionState.LanguageMode -eq 'FullLanguage') { $host.SetShouldExit($_ec) } else { exit $_ec }
+            Engine Version = 5.1.26100.8875
+            Runspace ID = 8f8becd8-eb9f-4190-af7c-ade68fe858ba
+            Pipeline ID = 1
+            Command Name = Get-ItemProperty
+            Command Type = Cmdlet
+            Script Name = C:\Users\willi\OneDrive\GatewayGuide\Tool\Check-HomeEdition-2026-07-29.ps1
+            Command Path = 
+            Sequence Number = 19
+            User = CGDELL\willi
+            Connected User = 
+            Shell ID = Microsoft.PowerShell
+    
+    
+    User Data:
+    
+    
+
+  ---- 2026-07-30 00:37:17  Id 4100 ----
+    Error Message = The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Edge' because it does not exist.
+    Fully Qualified Error ID = PathNotFound,Microsoft.PowerShell.Commands.GetItemPropertyCommand
+    
+    
+    Context:
+            Severity = Warning
+            Host Name = ConsoleHost
+            Host Version = 5.1.26100.8875
+            Host ID = 1e820538-f7da-46e3-8154-543dd7961b11
+            Host Application = C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command try { $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8' } catch {}; if ($ExecutionContext.SessionState.LanguageMode -eq 'FullLanguage') { try { $OutputEncoding = [System.Text.UTF8Encoding]::new() } catch {}; if ($null -ne $PSStyle) { try { $PSStyle.OutputRendering = 'PlainText' } catch {} } }; Set-Location "C:\Users\willi\OneDrive\GatewayGuide\Tool"
+    $e=$null;$t=$null
+    [System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\Check-HomeEdition-2026-07-29.ps1).Path,[ref]$t,[ref]$e) | Out-Null
+    "Parse errors: $($e.Count)"
+    & .\Check-HomeEdition-2026-07-29.ps1 2>&1 | Select-String -Pattern "SECTION|^====|I\. FT-141|J\. MEMORY|BLOCKED|Kernel DMA|Device Encryption Support|Virtualization-based|Secure Boot State|Saved to" -Context 0,2 | Select-Object -First 40
+    ; $_ec = if ($null -ne $LASTEXITCODE) { $LASTEXITCODE } elseif ($?) { 0 } else { 1 }
+    ; (Get-Location).Path | Out-File -FilePath 'C:\Users\willi\AppData\Local\Temp\claude\claude-pwd-ps-d187' -Encoding utf8 -NoNewline
+    ; if ($ExecutionContext.SessionState.LanguageMode -eq 'FullLanguage') { $host.SetShouldExit($_ec) } else { exit $_ec }
+            Engine Version = 5.1.26100.8875
+            Runspace ID = 8f8becd8-eb9f-4190-af7c-ade68fe858ba
+            Pipeline ID = 1
+            Command Name = Get-ItemProperty
+            Command Type = Cmdlet
+            Script Name = C:\Users\willi\OneDrive\GatewayGuide\Tool\Check-HomeEdition-2026-07-29.ps1
+            Command Path = 
+            Sequence Number = 18
+            User = CGDELL\willi
+            Connected User = 
+            Shell ID = Microsoft.PowerShell
+    
+    
+    User Data:
+    
+    
+
+  ---- 2026-07-30 00:37:16  Id 4100 ----
+    Error Message = The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Edge' because it does not exist.
+    Fully Qualified Error ID = PathNotFound,Microsoft.PowerShell.Commands.GetItemPropertyCommand
+    
+    
+    Context:
+            Severity = Warning
+            Host Name = ConsoleHost
+            Host Version = 5.1.26100.8875
+            Host ID = 1e820538-f7da-46e3-8154-543dd7961b11
+            Host Application = C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command try { $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8' } catch {}; if ($ExecutionContext.SessionState.LanguageMode -eq 'FullLanguage') { try { $OutputEncoding = [System.Text.UTF8Encoding]::new() } catch {}; if ($null -ne $PSStyle) { try { $PSStyle.OutputRendering = 'PlainText' } catch {} } }; Set-Location "C:\Users\willi\OneDrive\GatewayGuide\Tool"
+    $e=$null;$t=$null
+    [System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\Check-HomeEdition-2026-07-29.ps1).Path,[ref]$t,[ref]$e) | Out-Null
+    "Parse errors: $($e.Count)"
+    & .\Check-HomeEdition-2026-07-29.ps1 2>&1 | Select-String -Pattern "SECTION|^====|I\. FT-141|J\. MEMORY|BLOCKED|Kernel DMA|Device Encryption Support|Virtualization-based|Secure Boot State|Saved to" -Context 0,2 | Select-Object -First 40
+    ; $_ec = if ($null -ne $LASTEXITCODE) { $LASTEXITCODE } elseif ($?) { 0 } else { 1 }
+    ; (Get-Location).Path | Out-File -FilePath 'C:\Users\willi\AppData\Local\Temp\claude\claude-pwd-ps-d187' -Encoding utf8 -NoNewline
+    ; if ($ExecutionContext.SessionState.LanguageMode -eq 'FullLanguage') { $host.SetShouldExit($_ec) } else { exit $_ec }
+            Engine Version = 5.1.26100.8875
+            Runspace ID = 8f8becd8-eb9f-4190-af7c-ade68fe858ba
+            Pipeline ID = 1
+            Command Name = Get-ItemProperty
+            Command Type = Cmdlet
+            Script Name = C:\Users\willi\OneDrive\GatewayGuide\Tool\Check-HomeEdition-2026-07-29.ps1
+            Command Path = 
+            Sequence Number = 17
+            User = CGDELL\willi
+            Connected User = 
+            Shell ID = Microsoft.PowerShell
+    
+    
+    User Data:
+    
+    
+
+  ---- 2026-07-30 00:37:16  Id 4100 ----
+    Error Message = The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Edge' because it does not exist.
+    Fully Qualified Error ID = PathNotFound,Microsoft.PowerShell.Commands.GetItemPropertyCommand
+    
+    
+    Context:
+            Severity = Warning
+            Host Name = ConsoleHost
+            Host Version = 5.1.26100.8875
+            Host ID = 1e820538-f7da-46e3-8154-543dd7961b11
+            Host Application = C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command try { $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8' } catch {}; if ($ExecutionContext.SessionState.LanguageMode -eq 'FullLanguage') { try { $OutputEncoding = [System.Text.UTF8Encoding]::new() } catch {}; if ($null -ne $PSStyle) { try { $PSStyle.OutputRendering = 'PlainText' } catch {} } }; Set-Location "C:\Users\willi\OneDrive\GatewayGuide\Tool"
+    $e=$null;$t=$null
+    [System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\Check-HomeEdition-2026-07-29.ps1).Path,[ref]$t,[ref]$e) | Out-Null
+    "Parse errors: $($e.Count)"
+    & .\Check-HomeEdition-2026-07-29.ps1 2>&1 | Select-String -Pattern "SECTION|^====|I\. FT-141|J\. MEMORY|BLOCKED|Kernel DMA|Device Encryption Support|Virtualization-based|Secure Boot State|Saved to" -Context 0,2 | Select-Object -First 40
+    ; $_ec = if ($null -ne $LASTEXITCODE) { $LASTEXITCODE } elseif ($?) { 0 } else { 1 }
+    ; (Get-Location).Path | Out-File -FilePath 'C:\Users\willi\AppData\Local\Temp\claude\claude-pwd-ps-d187' -Encoding utf8 -NoNewline
+    ; if ($ExecutionContext.SessionState.LanguageMode -eq 'FullLanguage') { $host.SetShouldExit($_ec) } else { exit $_ec }
+            Engine Version = 5.1.26100.8875
+            Runspace ID = 8f8becd8-eb9f-4190-af7c-ade68fe858ba
+            Pipeline ID = 1
+            Command Name = Get-ItemProperty
+            Command Type = Cmdlet
+            Script Name = C:\Users\willi\OneDrive\GatewayGuide\Tool\Check-HomeEdition-2026-07-29.ps1
+            Command Path = 
+            Sequence Number = 16
+            User = CGDELL\willi
+            Connected User = 
+            Shell ID = Microsoft.PowerShell
+    
+    
+    User Data:
+    
+    
+
+---- Engine start/stop events, newest 20 ----
+  (a start with no matching stop = the process was KILLED, not exited)
+
+  2026-07-30 17:19:15  53504  Windows PowerShell has started an IPC listening thread on process: 29484 in AppDomain: DefaultAppDomain.
+  2026-07-30 17:19:16  40962  PowerShell console is ready for user input
+  2026-07-30 19:04:38  40961  PowerShell console is starting up
+  2026-07-30 19:04:38  53504  Windows PowerShell has started an IPC listening thread on process: 28392 in AppDomain: DefaultAppDomain.
+  2026-07-30 19:04:38  40962  PowerShell console is ready for user input
+  2026-07-30 19:05:19  40961  PowerShell console is starting up
+  2026-07-30 19:05:19  53504  Windows PowerShell has started an IPC listening thread on process: 15564 in AppDomain: DefaultAppDomain.
+  2026-07-30 19:05:19  40962  PowerShell console is ready for user input
+  2026-07-30 19:05:26  40961  PowerShell console is starting up
+  2026-07-30 19:05:26  53504  Windows PowerShell has started an IPC listening thread on process: 23900 in AppDomain: DefaultAppDomain.
+  2026-07-30 19:05:26  40962  PowerShell console is ready for user input
+  2026-07-30 20:07:58  40961  PowerShell console is starting up
+  2026-07-30 20:07:58  53504  Windows PowerShell has started an IPC listening thread on process: 19664 in AppDomain: DefaultAppDomain.
+  2026-07-30 20:07:58  40962  PowerShell console is ready for user input
+  2026-07-30 20:16:38  40961  PowerShell console is starting up
+  2026-07-30 20:16:38  53504  Windows PowerShell has started an IPC listening thread on process: 25544 in AppDomain: DefaultAppDomain.
+  2026-07-30 20:16:38  40962  PowerShell console is ready for user input
+  2026-07-30 20:16:42  40961  PowerShell console is starting up
+  2026-07-30 20:16:42  53504  Windows PowerShell has started an IPC listening thread on process: 10692 in AppDomain: DefaultAppDomain.
+  2026-07-30 20:16:42  40962  PowerShell console is ready for user input
+
+---- Console host ----
+  Windows Terminal  (WT_SESSION = 226e0cce-22fe-403b-8de5-3de44cb18d60)
+  PowerShell host name : ConsoleHost
+  PowerShell version   : 5.1.26100.8875

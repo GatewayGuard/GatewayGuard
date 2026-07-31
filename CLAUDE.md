@@ -187,10 +187,27 @@ be killed by closing the window.
 - **Filter server-side** where the cmdlet supports it:
   `Get-WinEvent -FilterHashtable @{LogName=...; Id=...}` beats piping to
   `Where-Object`, which fetches everything first.
-- **Run it locally first** when the machine allows. Say so plainly when it
-  cannot be tested.
-- **One line, no wrapping.** Multi-line pastes have mangled twice.
-- **Write results to a file** rather than long console output.
+- **NEVER paste a command for Bill to run. Write a `.ps1` file instead.**
+  This supersedes the original "one line, no wrapping" version of this rule,
+  which was written on 2026-07-30 and failed the same afternoon. Measured
+  record for that day: **3 commands pasted into chat, 3 mangled by
+  line-wrapping (100% failure); 3 scripts shipped as `.ps1` files, 3 ran
+  first time (100% success).** The last paste was 166 characters and broke at
+  columns 29 and 109, so PowerShell executed three invalid fragments. The
+  syntax was correct every time — the command never arrived intact. Length
+  limits do not fix this; a file removes the failure mode entirely.
+- **Every `.ps1` gets a paired `.bat` launcher** so Bill can double-click
+  instead of typing anything (his request, 2026-07-30). Launcher rules:
+  no date-time in the name; `cd /d "%~dp0"`; **never self-elevate** (the
+  Malwarebytes exploit-payload flag stands); detect and report whether it is
+  elevated rather than elevating; end with an Enter-only wait, never cmd's
+  built-in `pause`, which prints the banned phrase "press any key"; and write
+  the file as **CRLF** — `.bat` files with bare LF endings misbehave in
+  cmd.exe.
+- **Run the script locally first** when the machine allows. Say plainly when
+  it cannot be tested.
+- **Write results to a file** rather than long console output, so nothing is
+  truncated on screen.
 - **State whether it is read-only.** That is the reassurance Bill needs when
   something misbehaves on a test machine that field data depends on.
 

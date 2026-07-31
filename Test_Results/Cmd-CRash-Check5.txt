@@ -1,0 +1,37 @@
+  Get-WinEvent -FilterHashtable
+  @{LogName='Microsoft-Windows-PowerShell/Operational'; Id=4100} -MaxEvents 5 -EA
+  SilentlyContinue | Select-Object -ExpandProperty Message
+PS C:\Users\willi> Get-WinEvent -FilterHashtable
+Get-WinEvent : Missing an argument for parameter 'FilterHashtable'. Specify a parameter of type 'System.Collections.Hashtable[]' and try again.
+At line:1 char:14
++ Get-WinEvent -FilterHashtable
++              ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Get-WinEvent], ParameterBindingException
+    + FullyQualifiedErrorId : MissingArgument,Microsoft.PowerShell.Commands.GetWinEventCommand
+
+PS C:\Users\willi>   @{LogName='Microsoft-Windows-PowerShell/Operational'; Id=4100} -MaxEvents 5 -EA
+At line:1 char:66
++ ... 'Microsoft-Windows-PowerShell/Operational'; Id=4100} -MaxEvents 5 -EA
++                                                          ~~~~~~~~~~
+Unexpected token '-MaxEvents' in expression or statement.
+At line:1 char:77
++ ... 'Microsoft-Windows-PowerShell/Operational'; Id=4100} -MaxEvents 5 -EA
++                                                                     ~
+Unexpected token '5' in expression or statement.
+At line:1 char:79
++ ... 'Microsoft-Windows-PowerShell/Operational'; Id=4100} -MaxEvents 5 -EA
++                                                                       ~~~
+Unexpected token '-EA' in expression or statement.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : UnexpectedToken
+
+PS C:\Users\willi>   SilentlyContinue | Select-Object -ExpandProperty Message
+SilentlyContinue : The term 'SilentlyContinue' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if
+a path was included, verify that the path is correct and try again.
+At line:1 char:3
++   SilentlyContinue | Select-Object -ExpandProperty Message
++   ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (SilentlyContinue:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\willi>

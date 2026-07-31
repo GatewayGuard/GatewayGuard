@@ -1,0 +1,208 @@
+﻿
+====================================================================
+GATEWAYGUARD CHECKUP -- HOME EDITION DIAGNOSTIC (read-only)
+====================================================================
+  Run date        : 2026-07-30 00:37:08
+  Computer        : CGDELL
+  Running as admin: True
+
+====================================================================
+A. MACHINE IDENTITY (for the test record)
+====================================================================
+  Make                                       : Dell Inc.
+  Model                                      : Latitude 5430
+  RAM (GB)                                   : 32
+  Windows caption                            : Microsoft Windows 11 Pro
+  Windows build                              : 26200
+  OperatingSystemSKU                         : 48
+  Edition (registry)                         : Professional
+
+  Checkup decides Home vs Pro with this test:
+    -notmatch Pro|Enterprise|Education = HOME : FALSE -- treated as PRO
+
+====================================================================
+B. FT-115 -- MEMORY INTEGRITY (the four-build-old question)
+====================================================================
+  Checkup tries Win32_DeviceGuard first, then the registry, then gives up
+  and reports 'Unknown'. We need to see which step fails here.
+
+  DeviceGuard class reachable                : yes
+  SecurityServicesConfigured                 : 2
+  SecurityServicesRunning                    : 2, 7
+    -> contains 2 (Checkup's test)           : YES -> would report 'ON -- GOOD'
+  VBS status (0=off 1=enabled 2=running)     : 2
+
+  HVCI registry Enabled                      : 1
+  HVCI registry WasEnabledBy                 : 1
+
+  WHAT TO COMPARE: what does Windows Security itself show under
+  Device security > Core isolation > Memory integrity? On/Off/not present?
+  If the screen says On but both probes above fail, that is FT-115 exactly.
+
+====================================================================
+C. FT-105 -- TAMPER PROTECTION (never verified on Home)
+====================================================================
+  IsTamperProtected (Checkup's method)       : True
+  Registry TamperProtection                  : 1
+
+====================================================================
+D. FINDING 3.8 -- DOES Get-MpPreference THROW HERE?
+====================================================================
+  On a machine with Defender stopped this throws 0x800106ba, and every
+  call wrapped in -EA SilentlyContinue then produces a silent wrong
+  answer. This is a Class 1 risk we have never been able to test.
+
+  Get-MpComputerStatus reachable             : yes
+  AMRunningMode                              : Normal
+  RealTimeProtectionEnabled                  : True
+  AntivirusEnabled                           : True
+  Get-MpPreference reachable                 : yes -- does NOT throw here
+  DisableRealtimeMonitoring                  : False
+  Defender service (WinDefend)               : Running
+
+====================================================================
+E. HOME ENCRYPTION -- FT-110 and FT-108
+====================================================================
+  Sandy3 is already encrypted, so it CANNOT exercise the FT-110 enable
+  path (an encrypted machine takes the already-encrypted branch and never
+  reaches Enable-BitLocker). What it CAN answer is the already-encrypted
+  HOME path, which no machine has ever tested -- the Dell covered
+  already-encrypted on PRO, where the recovery key lives elsewhere.
+
+  Get-BitLockerVolume C: available           : yes (cmdlet present on Home)
+  ProtectionStatus                           : On
+  VolumeStatus                               : FullyEncrypted
+  EncryptionMethod                           : XtsAes128
+  KeyProtector types present                 : Tpm, RecoveryPassword
+
+  manage-bde -status C: (raw, stderr captured):
+    BitLocker Drive Encryption: Configuration Tool version 10.0.26100
+    Copyright (C) 2013 Microsoft Corporation. All rights reserved.
+    
+    Volume C: [Windows]
+    [OS Volume]
+    
+        Size:                 235.96 GB
+        BitLocker Version:    2.0
+        Conversion Status:    Fully Encrypted
+        Percentage Encrypted: 100.0%
+        Encryption Method:    XTS-AES 128
+        Protection Status:    Protection On
+        Lock Status:          Unlocked
+        Identification Field: Unknown
+        Key Protectors:
+            TPM
+            Numerical Password
+    
+
+  TPM present                                : True
+  Secure Boot                                : False
+
+  ALSO CHECK BY HAND: Settings > Privacy & security > Device encryption.
+  Is that page present at all, and what does it say? And does the key
+  appear at account.microsoft.com/devices/recoverykey for this PC?
+
+====================================================================
+F. FT-123b -- WHAT ITEMS 13, 14 AND 15 SHOULD ACTUALLY READ
+====================================================================
+  ascii38 reports these as 'Unknown -- could not check' when the HKLM
+  policy key is absent, which is honest but unhelpful. To read the REAL
+  state we need a verified source, which is what this section gathers.
+
+  -- item 14, Widgets --
+  HKLM policy AllowNewsAndInterests          : THREW ItemNotFoundException
+                                               Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Dsh' because it does not exist.
+  HKCU Advanced TaskbarDa                    : 0
+
+  -- items 13 and 15, Edge --
+  HKLM policy StartupBoostEnabled            : THREW ItemNotFoundException
+                                               Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Edge' because it does not exist.
+  HKLM policy BackgroundModeEnabled          : THREW ItemNotFoundException
+                                               Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Edge' because it does not exist.
+  HKLM policy PasswordManagerEnabled         : THREW ItemNotFoundException
+                                               Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Edge' because it does not exist.
+
+  Edge Preferences file -- THREE named settings only, no browsing data:
+    startup_boost_enabled     : <not present>
+    background_mode.enabled   : <not present>
+    credentials_enable_service: False
+
+  TELL ME what these three are actually set to in Edge's own settings,
+  so the file values can be matched to the real UI state before anything
+  is coded against them (gate 13 needs that pairing, not a guess).
+
+====================================================================
+G. FT-120 -- WAKE ON LAN ON THIS HARDWARE
+====================================================================
+  Adapter: Ethernet  [Disconnected]  Intel(R) Ethernet Connection (16) I219-LM
+    Wake from S0ix on Magic Packet         = Enabled
+    Wake on Magic Packet                   = Enabled
+    Wake on Pattern Match                  = Enabled
+    PowerManagement WakeOnMagicPacket   = Enabled
+    PowerManagement WakeOnPattern       = Enabled
+  Adapter: Wi-Fi  [Up]  Intel(R) Wi-Fi 6E AX211 160MHz
+    Wake on Magic Packet                   = Disabled
+    Wake on Pattern Match                  = Enabled
+    PowerManagement WakeOnMagicPacket   = Disabled
+    PowerManagement WakeOnPattern       = Enabled
+
+====================================================================
+H. FINDING 3.6 -- ANTIVIRUS REGISTRATION (the MB branch bug)
+====================================================================
+  Checkup reported 'MALWAREBYTES NOT DETECTED' on a machine where MB was
+  installed and running. This is the raw data its branch logic reads.
+
+  displayName  : Windows Defender
+    productState (dec) : 397568
+    productState (hex) : 0x061100
+    pathToSignedExe    : windowsdefender://
+
+  Malwarebytes service (MBAMService)         : Running
+  MB installed (registry uninstall)          : Malwarebytes version 5.6.3.277 5.6.3.277
+
+====================================================================
+I. FT-141 -- PHISHING PROTECTION (item 6): READ OR BLOCKED?
+====================================================================
+  Checkup reads this key with -EA SilentlyContinue. On the Dell the read
+  THROWS SecurityException because Tamper Protection blocks it, the null
+  falls through, and the tool reports 'Not configured -- all 3 need to be
+  enabled' -- a definite BAD from a check that never ran. Here the
+  exception is REPORTED, which is the whole point.
+
+  BLOCKED -- SecurityException: Tamper Protection is protecting this key.
+  Checkup would swallow this and report 'Not configured' (FT-141).
+
+  FT-142 -- LABEL CHECK. Checkup calls the third toggle 'unsafe apps'.
+  On the Dell the actual on-screen label is 'Warn me about unsafe
+  password storage'. Windows Security > App & browser control >
+  Reputation-based protection > Phishing protection. WRITE DOWN the exact
+  label of every toggle on that screen and whether each is On or Off --
+  that pairing is what lets the registry values be mapped to the labels
+  the user actually sees, which gate 13 requires before anything is coded.
+
+====================================================================
+J. MEMORY INTEGRITY vs KERNEL DMA PROTECTION (two different things)
+====================================================================
+  These are SEPARATE features that sit next to each other on the Device
+  security page, and confusing them is easy:
+    Memory integrity      -- under Core isolation. Section B above.
+    Kernel DMA Protection -- its own row. Blocks attacks through external
+                             plug-in ports. Often Off, or not shown.
+  Read below from msinfo32's own fields -- the same authority the
+  BitLocker code already defers to for Device Encryption Support.
+
+  Running msinfo32 (this takes 10-30 seconds)...
+    Kernel DMA Protection	On
+    Automatic Device Encryption Support	Reasons for failed automatic device encryption: PCR7 binding is not supported
+    Virtualization-based security	Running
+    Secure Boot State	Off
+    BIOS Mode	UEFI
+    A hypervisor has been detected. Features required for Hyper-V will not be displayed.
+
+  COMPARE with Section B. If Memory integrity is ON there but the Device
+  security page shows something Off, the Off row is almost certainly
+  Kernel DMA Protection -- a different feature, not a Checkup fault.
+
+====================================================================
+DONE -- NOTHING ON THIS PC WAS CHANGED
+====================================================================
