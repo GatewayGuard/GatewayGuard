@@ -21,7 +21,10 @@
       "Bash(git add *)",
       "Bash(git commit *)",
       "Read(//c/Users/willi/OneDrive/GatewayGuide/**)",
-      "Read(//c/GatewayGuard/Logs/**)"
+      "Read(//c/GatewayGuard/Logs/**)",
+      "Bash(python -c ' *)",
+      "PowerShell(Get-Date *)",
+      "WebSearch"
     ]
   },
   "hooks": {
