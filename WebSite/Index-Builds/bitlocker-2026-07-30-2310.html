@@ -1,0 +1,177 @@
+<!-- Dated: 2026-07-30 23:10 EDT -->
+<!-- File: guide/bitlocker.html -->
+<!-- GatewayGuard LLC -- gatewayguard.co/guide/bitlocker -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BitLocker Data Encryption - Setting 8 - GatewayGuard Security Guide - GatewayGuard Security Guide</title>
+<meta name="description" content="What BitLocker does, what GatewayGuard checks, and why saving your recovery key is critical.">
+<style>
+:root {
+  --black:     #000000;
+  --white:     #FFFFFF;
+  --gray-dark: #333333;
+  --gray-mid:  #666666;
+  --gray-light:#F4F4F4;
+  --gray-rule: #DDDDDD;
+  --navy:      #2E6BD6;
+  --mocha:     #A0522D;
+  --charcoal:  #5E35B1;
+  --max-w:     960px;
+  --font-body: Arial, Helvetica, sans-serif;
+  --font-mono: Consolas, "Courier New", monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: var(--black); background: var(--white); }
+a { color: var(--black); }
+a:hover { text-decoration: underline; }
+.wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+nav { background: var(--white); border: 4px solid var(--black); max-width: var(--max-w); margin: 12px auto 0; position: sticky; top: 0; z-index: 100; }
+.nav-inner { padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+.nav-brand { font-size: 17px; font-weight: bold; color: var(--black); text-decoration: none; }
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a { color: var(--black); text-decoration: none; font-size: 14px; font-weight: bold; }
+.nav-links a:hover { text-decoration: underline; }
+.nav-links a.active { border-bottom: 3px solid var(--black); padding-bottom: 2px; }
+.breadcrumb { max-width: var(--max-w); margin: 10px auto 0; padding: 0 24px; font-size: 13px; color: var(--gray-mid); }
+.breadcrumb a { color: var(--gray-mid); text-decoration: none; }
+.breadcrumb a:hover { color: var(--black); text-decoration: underline; }
+.breadcrumb span { margin: 0 6px; }
+.page-header { background: var(--white); border: 4px solid var(--black); max-width: var(--max-w); margin: 10px auto 0; padding: 28px 24px; }
+.setting-num { font-family: var(--font-mono); font-size: 12px; color: var(--gray-mid); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+.page-header h1 { font-size: 30px; font-weight: bold; margin-bottom: 10px; }
+.page-header .intro { font-size: 16px; color: var(--gray-dark); max-width: 640px; line-height: 1.55; }
+.tag { display: inline-block; font-size: 13px; font-weight: bold; padding: 5px 12px; color: var(--white); margin-top: 14px; }
+.tag-auto { background: var(--navy); }
+.tag-manual { background: var(--mocha); }
+.content-section { max-width: var(--max-w); margin: 0 auto; padding: 32px 24px; border-bottom: 1px solid var(--gray-rule); }
+.content-section h2 { font-size: 20px; font-weight: bold; margin-bottom: 14px; }
+.gg-did-box { border: 3px solid var(--black); padding: 20px 24px; }
+.gg-did-box h2 { font-size: 16px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; font-family: var(--font-mono); color: var(--gray-mid); }
+.gg-did-row { display: flex; gap: 12px; margin-bottom: 10px; font-size: 15px; line-height: 1.5; }
+.gg-did-row:last-child { margin-bottom: 0; }
+.gg-did-label { font-weight: bold; white-space: nowrap; min-width: 110px; color: var(--black); }
+.gg-did-value { color: var(--gray-dark); }
+.why-box { background: var(--gray-light); border-left: 4px solid var(--black); padding: 18px 20px; font-size: 15px; line-height: 1.6; color: var(--gray-dark); }
+.why-box strong { color: var(--black); }
+.why-box p + p { margin-top: 10px; }
+.steps-list { list-style: none; counter-reset: steps; margin-top: 10px; }
+.steps-list li { counter-increment: steps; display: flex; gap: 14px; margin-bottom: 14px; font-size: 15px; line-height: 1.55; align-items: flex-start; }
+.steps-list li::before { content: counter(steps); background: var(--black); color: var(--white); font-weight: bold; font-size: 13px; min-width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.steps-list li .step-text { color: var(--gray-dark); }
+.steps-list li .step-text strong { color: var(--black); }
+.path { font-family: var(--font-mono); font-size: 13px; background: var(--gray-light); border: 1px solid var(--gray-rule); padding: 6px 10px; display: inline-block; margin: 4px 0; line-height: 1.4; }
+.note-box { border: 2px solid var(--gray-rule); padding: 16px 20px; font-size: 15px; color: var(--gray-dark); line-height: 1.55; margin-top: 14px; }
+.note-box strong { color: var(--black); }
+.warn-box { border: 2px solid var(--black); padding: 16px 20px; font-size: 15px; color: var(--gray-dark); line-height: 1.55; margin-top: 14px; background: var(--gray-light); }
+.warn-box strong { color: var(--black); }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin-top: 14px; }
+.related-card { border: 2px solid var(--gray-rule); padding: 14px 16px; text-decoration: none; color: var(--black); display: block; }
+.related-card:hover { border-color: var(--black); text-decoration: none; }
+.related-card-num { font-family: var(--font-mono); font-size: 12px; color: var(--gray-mid); margin-bottom: 4px; }
+.related-card-name { font-size: 15px; font-weight: bold; }
+.back-section { max-width: var(--max-w); margin: 0 auto; padding: 24px 24px 8px; }
+.back-link { font-size: 14px; font-weight: bold; color: var(--black); text-decoration: none; }
+.back-link:hover { text-decoration: underline; }
+footer { background: var(--white); border: 4px solid var(--black); max-width: var(--max-w); margin: 12px auto; padding: 24px; }
+.footer-brand { font-size: 17px; font-weight: bold; display: block; margin-bottom: 10px; }
+.footer-links { display: flex; gap: 18px; list-style: none; flex-wrap: wrap; margin-bottom: 10px; }
+.footer-links a { color: var(--gray-dark); text-decoration: none; font-size: 14px; font-weight: bold; }
+.footer-links a:hover { color: var(--black); text-decoration: underline; }
+.footer-note { font-size: 13px; color: var(--gray-dark); line-height: 1.6; }
+@media (max-width: 640px) {
+  .nav-inner { flex-direction: column; height: auto; padding: 10px 16px; gap: 8px; }
+  .nav-links { gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .page-header h1 { font-size: 24px; }
+  .gg-did-row { flex-direction: column; gap: 4px; }
+  .gg-did-label { min-width: unset; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">GatewayGuard</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/download.html">Download</a></li>
+      <li><a href="/guide/index.html" class="active">Guide</a></li>
+      <li><a href="/tips.html">Tips</a></li>
+      <li><a href="/beta.html">Beta</a></li>
+      <li><a href="/compatible.html">Compatible</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="breadcrumb">
+  <a href="/">Home</a><span>&#8250;</span>
+  <a href="/guide/index.html">Guide</a><span>&#8250;</span>
+  BitLocker Data Encryption
+</div>
+<header class="page-header">
+  <p class="setting-num">Setting 8 of 19</p>
+  <h1>BitLocker Data Encryption</h1>
+  <p class="intro">BitLocker scrambles everything on your hard drive so it&#8217;s unreadable without your password. If your laptop is lost or stolen, the thief cannot read your files &#8212; even if they remove the drive and plug it into another PC.</p>
+  <span class="tag tag-auto">&#10003; GatewayGuard walks you through this</span>
+</header>
+<section class="content-section">
+  <div class="gg-did-box">
+    <h2>What GatewayGuard found and did</h2>
+    <div class="gg-did-row"><span class="gg-did-label">Found:</span><span class="gg-did-value">Whether your hard drive is encrypted. On Windows 11 Home, this is called Device Encryption. On Windows 11 Pro, it&#8217;s called BitLocker.</span></div>
+    <div class="gg-did-row"><span class="gg-did-label">Action taken:</span><span class="gg-did-value">GatewayGuard walked you through enabling encryption and saving your recovery key to at least two safe locations. This is one of the few settings where GatewayGuard Checkup guides you step by step rather than applying the change automatically &#8212; because the recovery key is critical and must be saved before encryption begins.</span></div>
+  </div>
+</section>
+<section class="content-section">
+  <h2>Why this matters</h2>
+  <div class="why-box"><p><strong>If your laptop is ever stolen, encryption is what protects your files.</strong> Without it, anyone with physical access to your drive can read everything on it &#8212; your documents, photos, passwords saved in your browser, everything &#8212; in minutes, using free tools.</p><p>With encryption on, the data on the drive is scrambled. Without your password (or your recovery key), it&#8217;s unreadable. The laptop can be wiped and resold. Your data stays private.</p></div>
+</section>
+<section class="content-section">
+  <h2>How to check it yourself</h2>
+  <ol class="steps-list"><li><div class="step-text">On <strong>Windows 11 Home</strong>: Open <strong>Settings &gt; Privacy &amp; security &gt; Device encryption</strong>. If the toggle says <strong>On</strong>, your drive is encrypted.</div></li><li><div class="step-text">On <strong>Windows 11 Pro</strong>: Open <strong>Settings &gt; Privacy &amp; security &gt; Device security &gt; BitLocker drive encryption</strong>. It should say <strong>BitLocker on</strong> next to your C: drive.</div></li><li><div class="step-text">To check from the Start menu on either edition: press the <strong>Windows key</strong> and search for <strong>BitLocker</strong>. Open <strong>Manage BitLocker</strong>. The C: drive should show <strong>BitLocker on</strong> or <strong>On</strong>.</div></li></ol>
+</section>
+
+
+<section class="content-section">
+  <h2>Your recovery key &#8212; the most important part</h2>
+  <div class="warn-box">
+    <strong>Save your recovery key before encryption is complete.</strong> The recovery key is a 48-digit number that lets you access your drive if you ever forget your password or if Windows asks for it during startup. If you lose the key and forget your password, your files cannot be recovered &#8212; not by Microsoft, not by GatewayGuard, not by anyone.
+  </div>
+  <p style="font-size:15px;color:var(--gray-dark);margin-top:16px;line-height:1.6;">Save your recovery key in at least <strong>two</strong> of these places:</p>
+  <ol class="steps-list" style="margin-top:12px;">
+    <li><div class="step-text"><strong>Your Microsoft account online</strong> &#8212; go to <a href="https://account.microsoft.com/devices/recoverykey" target="_blank" rel="noopener">account.microsoft.com/devices/recoverykey</a>. If you signed into Windows with a Microsoft account, the key may already be saved here automatically.</div></li>
+    <li><div class="step-text"><strong>A USB drive</strong> &#8212; save the key file to a USB drive you store somewhere safe (not with the laptop).</div></li>
+    <li><div class="step-text"><strong>Printed on paper</strong> &#8212; print it and store it somewhere secure, like with important documents.</div></li>
+    <li><div class="step-text"><strong>A password manager</strong> &#8212; if you use one, paste the key as a secure note.</div></li>
+  </ol>
+  <div class="note-box" style="margin-top:16px;"><strong>GatewayGuard showed you this key during setup.</strong> If you saved it then, you&#8217;re done. If you&#8217;re not sure whether you saved it, check your Microsoft account at the link above before doing anything else.</div>
+</section>
+<section class="content-section">
+  <h2>What to expect</h2>
+  <p style="font-size:15px;color:var(--gray-dark);line-height:1.6;">Encryption runs in the background and does not slow down your PC during normal use. The initial encryption process (the first time you turn it on) may take 30 minutes to a few hours depending on how much is on your drive &#8212; you can use your PC normally while it runs.</p>
+  
+</section>
+<section class="content-section">
+  <h2>Related settings</h2>
+  <div class="related-grid"><a href="/guide/windows-update.html" class="related-card"><p class="related-card-num">Setting 1</p><p class="related-card-name">Windows Update</p></a><a href="/guide/windows-hello.html" class="related-card"><p class="related-card-num">Setting 9</p><p class="related-card-name">Windows Hello</p></a><a href="/guide/password-on-wake.html" class="related-card"><p class="related-card-num">Setting 17</p><p class="related-card-name">Password Required on Wake</p></a></div>
+</section>
+<div class="back-section">
+  <a href="/guide/index.html" class="back-link">&#8592; Back to Guide</a>
+</div>
+<footer>
+  <span class="footer-brand">GatewayGuard</span>
+  <ul class="footer-links">
+    <li><a href="/download.html">Download</a></li>
+    <li><a href="/guide/index.html">Guide</a></li>
+    <li><a href="/beta.html">Beta</a></li>
+    <li><a href="/compatible.html">Compatible</a></li>
+    <li><a href="mailto:support@gatewayguard.co">Contact</a></li>
+  </ul>
+  <div class="footer-note">
+    GatewayGuard LLC &#8226; Brunswick, Maine &#8226; support@gatewayguard.co<br>
+    GatewayGuard does not collect personal data or show ads. No subscription &#8212; ever.<br>
+    Source code is included with every download. &#169; 2026 GatewayGuard LLC. All rights reserved.
+  </div>
+</footer>
+</body>
+</html>

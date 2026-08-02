@@ -1,0 +1,168 @@
+<!-- Dated: 2026-07-30 23:10 EDT -->
+<!-- File: advertising-id-2026-07-30-2310.html (deploys as guide/advertising-id.html) -->
+<!-- GatewayGuard LLC -- gatewayguard.co/guide/advertising-id -->
+<!-- Change History:
+     2026-07-30 23:10: Initial file. Expanded from guide quick-reference
+     table. Privacy preference, not a security requirement.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advertising ID - Setting 11 - GatewayGuard Security Guide</title>
+<meta name="description" content="What the Advertising ID does, what GatewayGuard Checkup changes, and how to turn it off.">
+<style>
+:root {
+  --black:#000000;--white:#FFFFFF;--gray-dark:#333333;--gray-mid:#666666;--gray-light:#F4F4F4;--gray-rule:#DDDDDD;--navy:#2E6BD6;--mocha:#A0522D;--charcoal:#5E35B1;--max-w:960px;--font-body:Arial,Helvetica,sans-serif;--font-mono:Consolas,"Courier New",monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: var(--black); background: var(--white); }
+a { color: var(--black); }
+a:hover { text-decoration: underline; }
+nav { background: var(--white); border: 4px solid var(--black); max-width: var(--max-w); margin: 12px auto 0; position: sticky; top: 0; z-index: 100; }
+.nav-inner { padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+.nav-brand { font-size: 17px; font-weight: bold; color: var(--black); text-decoration: none; }
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a { color: var(--black); text-decoration: none; font-size: 14px; font-weight: bold; }
+.nav-links a:hover { text-decoration: underline; }
+.nav-links a.active { border-bottom: 3px solid var(--black); padding-bottom: 2px; }
+.breadcrumb { max-width: var(--max-w); margin: 10px auto 0; padding: 0 24px; font-size: 13px; color: var(--gray-mid); }
+.breadcrumb a { color: var(--gray-mid); text-decoration: none; }
+.breadcrumb a:hover { color: var(--black); text-decoration: underline; }
+.breadcrumb span { margin: 0 6px; }
+.page-header { background: var(--white); border: 4px solid var(--black); max-width: var(--max-w); margin: 10px auto 0; padding: 28px 24px; }
+.setting-num { font-family: var(--font-mono); font-size: 12px; color: var(--gray-mid); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+.page-header h1 { font-size: 30px; font-weight: bold; margin-bottom: 10px; }
+.page-header .intro { font-size: 16px; color: var(--gray-dark); max-width: 640px; line-height: 1.55; }
+.tag { display: inline-block; font-size: 13px; font-weight: bold; padding: 5px 12px; color: var(--white); margin-top: 14px; }
+.tag-choice { background: var(--charcoal); }
+.content-section { max-width: var(--max-w); margin: 0 auto; padding: 32px 24px; border-bottom: 1px solid var(--gray-rule); }
+.content-section h2 { font-size: 20px; font-weight: bold; margin-bottom: 14px; }
+.gg-did-box { border: 3px solid var(--black); padding: 20px 24px; }
+.gg-did-box h2 { font-size: 16px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; font-family: var(--font-mono); color: var(--gray-mid); }
+.gg-did-row { display: flex; gap: 12px; margin-bottom: 10px; font-size: 15px; line-height: 1.5; }
+.gg-did-row:last-child { margin-bottom: 0; }
+.gg-did-label { font-weight: bold; white-space: nowrap; min-width: 110px; color: var(--black); }
+.gg-did-value { color: var(--gray-dark); }
+.why-box { background: var(--gray-light); border-left: 4px solid var(--black); padding: 18px 20px; font-size: 15px; line-height: 1.6; color: var(--gray-dark); }
+.why-box strong { color: var(--black); }
+.why-box p + p { margin-top: 10px; }
+.steps-list { list-style: none; counter-reset: steps; margin-top: 10px; }
+.steps-list li { counter-increment: steps; display: flex; gap: 14px; margin-bottom: 14px; font-size: 15px; line-height: 1.55; align-items: flex-start; }
+.steps-list li::before { content: counter(steps); background: var(--black); color: var(--white); font-weight: bold; font-size: 13px; min-width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.steps-list li .step-text { color: var(--gray-dark); }
+.steps-list li .step-text strong { color: var(--black); }
+.note-box { border: 2px solid var(--gray-rule); padding: 16px 20px; font-size: 15px; color: var(--gray-dark); line-height: 1.55; margin-top: 14px; }
+.note-box strong { color: var(--black); }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin-top: 14px; }
+.related-card { border: 2px solid var(--gray-rule); padding: 14px 16px; text-decoration: none; color: var(--black); display: block; }
+.related-card:hover { border-color: var(--black); }
+.related-card-num { font-family: var(--font-mono); font-size: 12px; color: var(--gray-mid); margin-bottom: 4px; }
+.related-card-name { font-size: 15px; font-weight: bold; }
+.back-section { max-width: var(--max-w); margin: 0 auto; padding: 24px 24px 8px; }
+.back-link { font-size: 14px; font-weight: bold; color: var(--black); text-decoration: none; }
+.back-link:hover { text-decoration: underline; }
+footer { background: var(--white); border: 4px solid var(--black); max-width: var(--max-w); margin: 12px auto; padding: 24px; }
+.footer-brand { font-size: 17px; font-weight: bold; display: block; margin-bottom: 10px; }
+.footer-links { display: flex; gap: 18px; list-style: none; flex-wrap: wrap; margin-bottom: 10px; }
+.footer-links a { color: var(--gray-dark); text-decoration: none; font-size: 14px; font-weight: bold; }
+.footer-links a:hover { color: var(--black); text-decoration: underline; }
+.footer-note { font-size: 13px; color: var(--gray-dark); line-height: 1.6; }
+@media (max-width: 640px) {
+  .nav-inner { flex-direction: column; height: auto; padding: 10px 16px; gap: 8px; }
+  .nav-links { gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .page-header h1 { font-size: 24px; }
+  .gg-did-row { flex-direction: column; gap: 4px; }
+  .gg-did-label { min-width: unset; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">GatewayGuard</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/download.html">Download</a></li>
+      <li><a href="/guide/index.html" class="active">Guide</a></li>
+      <li><a href="/tips.html">Tips</a></li>
+      <li><a href="/beta.html">Beta</a></li>
+      <li><a href="/compatible.html">Compatible</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="breadcrumb">
+  <a href="/">Home</a><span>&#8250;</span>
+  <a href="/guide/index.html">Guide</a><span>&#8250;</span>
+  Advertising ID
+</div>
+<header class="page-header">
+  <p class="setting-num">Setting 11 of 19</p>
+  <h1>Advertising ID</h1>
+  <p class="intro">Windows assigns your PC a unique tracking number that apps use to follow your activity and show you targeted ads. Turning it off removes that number and stops apps from tracking you across different programs.</p>
+  <span class="tag tag-choice">&#9654; Your decision</span>
+</header>
+<section class="content-section">
+  <div class="gg-did-box">
+    <h2>What GatewayGuard Checkup found and did</h2>
+    <div class="gg-did-row"><span class="gg-did-label">Found:</span><span class="gg-did-value">Checkup checks if Windows is allowing apps to use your Advertising ID to show you personalized ads. It can switch that off with your permission.</span></div>
+    <div class="gg-did-row"><span class="gg-did-label">Action taken:</span><span class="gg-did-value">GatewayGuard Checkup turned off the Advertising ID with your approval. This is a privacy preference &#8212; it has no effect on your PC&#8217;s security or performance. You can turn it back on at any time.</span></div>
+  </div>
+</section>
+<section class="content-section">
+  <h2>Why you might want this off</h2>
+  <div class="why-box">
+    <p><strong>The Advertising ID is a tracking number Microsoft assigns to your PC.</strong> Apps that use it can see what you do across different programs and use that information to target you with ads. Think of it like a loyalty card number &#8212; except you did not sign up for it, and the data goes to advertisers you have never heard of.</p>
+    <p>Turning it off does not stop you from seeing ads. It just means the ads you see are not based on tracking what you do on your own PC. This is a privacy preference, not a security requirement &#8212; there is no right or wrong answer here.</p>
+  </div>
+</section>
+<section class="content-section">
+  <h2>How to turn it off</h2>
+  <ol class="steps-list">
+    <li><div class="step-text">Press the <strong>Windows key</strong>, type <strong>Privacy settings</strong>, and press <strong>Enter</strong>.</div></li>
+    <li><div class="step-text">In the left sidebar, click <strong>General</strong>.</div></li>
+    <li><div class="step-text">Find <strong>Let apps use advertising ID to make ads more interesting to you based on your app activity</strong>. The toggle should be <strong>Off</strong>. If it is On, click it to turn it Off.</div></li>
+  </ol>
+</section>
+<section class="content-section">
+  <h2>How to turn it back on if you want it</h2>
+  <ol class="steps-list">
+    <li><div class="step-text">Press the <strong>Windows key</strong>, type <strong>Privacy settings</strong>, press <strong>Enter</strong>.</div></li>
+    <li><div class="step-text">Click <strong>General</strong> in the left sidebar.</div></li>
+    <li><div class="step-text">Toggle <strong>Let apps use advertising ID</strong> to <strong>On</strong>.</div></li>
+  </ol>
+</section>
+<section class="content-section">
+  <h2>What to expect</h2>
+  <p style="font-size:15px;color:var(--gray-dark);line-height:1.6;">With the Advertising ID off, apps can no longer track your activity across programs to serve targeted ads. Your PC works exactly the same in every other way. No restart is needed. If you use apps from the Microsoft Store, you may notice ads become less targeted over time &#8212; that is the expected result.</p>
+  <div class="note-box" style="margin-top:16px;"><strong>This is a privacy preference, not a security requirement.</strong> GatewayGuard Checkup recommends turning it off as a general privacy improvement, but leaving it on does not put your PC at risk. The choice is yours.</div>
+</section>
+<section class="content-section">
+  <h2>Related settings</h2>
+  <div class="related-grid">
+    <a href="/guide/diagnostic-data.html" class="related-card"><p class="related-card-num">Setting 12</p><p class="related-card-name">Diagnostic Data</p></a>
+    <a href="/guide/widgets.html" class="related-card"><p class="related-card-num">Setting 14</p><p class="related-card-name">Windows Widgets</p></a>
+    <a href="/guide/edge-startup.html" class="related-card"><p class="related-card-num">Setting 13</p><p class="related-card-name">Edge Startup Boost</p></a>
+  </div>
+</section>
+<div class="back-section">
+  <a href="/guide/index.html" class="back-link">&#8592; Back to Guide</a>
+</div>
+<footer>
+  <span class="footer-brand">GatewayGuard</span>
+  <ul class="footer-links">
+    <li><a href="/download.html">Download</a></li>
+    <li><a href="/guide/index.html">Guide</a></li>
+    <li><a href="/beta.html">Beta</a></li>
+    <li><a href="/compatible.html">Compatible</a></li>
+    <li><a href="mailto:support@gatewayguard.co">Contact</a></li>
+  </ul>
+  <div class="footer-note">
+    GatewayGuard LLC &#8226; Brunswick, Maine &#8226; support@gatewayguard.co<br>
+    GatewayGuard does not collect personal data or show ads. No subscription &#8212; ever.<br>
+    Source code is included with every download. &#169; 2026 GatewayGuard LLC. All rights reserved.
+  </div>
+</footer>
+</body>
+</html>
