@@ -135,6 +135,41 @@ Substitutions: *whether X* → **if X**; *not sure whether you did* →
 **cannot remember doing**; *applies whether A or B* → **applies when A or
 B**; *asked whether to* → **asked for your permission to**.
 
+### Use the verb Checkup uses: "turn on" / "turn off", never "switch"
+
+**Measured 2026-08-02:** Checkup's own screens say **"turn on/off" 23 times**
+and "switch on/off" 3 times. Windows Settings says **"Turn on."** The website
+said "switch" **23 times** — because that is the verb Claude chose when
+writing the permission wording that morning, without checking what the product
+already said.
+
+That is a straight breach of **D-18**: *where the tool already says something
+on screen, reuse the tool's wording rather than writing a parallel version.*
+A parallel version is exactly what got written, across 15 of the 19 pages.
+
+Three reasons "turn" wins, in order of weight:
+
+1. **Checkup says it.** D-18. The product's vocabulary is the vocabulary.
+2. **Windows says it.** The Settings toggle reads *Turn on* / *Turn off*. A
+   senior hunting for a "switch" will not find that word on their screen, and
+   the literal-on-screen-labels rule applies.
+3. **"Switch off" is British.** GatewayGuard is Maine, writing for American
+   seniors. "Turn off" is the natural register.
+
+**Two senses of "switch" that are NOT covered by this rule** — do not sweep
+them blindly:
+
+- **The noun, meaning the toggle control the user clicks** — *"the Memory
+  integrity switch. It should say On."* That is fine; it is a thing on screen.
+- **Powering a machine on** — wake-on-lan's *"switch on hundreds of computers
+  overnight"* is a different verb entirely. Leave it.
+
+**The general rule this is an instance of: before choosing a verb for
+something Checkup does, grep the build for how Checkup already says it.**
+The tool is the dictionary. Writing fresh words for a thing that already has
+words is how the guide, the website and the screens drift apart — which is
+what RULE W-07 exists to prevent, pointed inward.
+
 ### Say who authorized it, every time a setting is described
 
 Any sentence describing what Checkup does to a setting names **the user's
