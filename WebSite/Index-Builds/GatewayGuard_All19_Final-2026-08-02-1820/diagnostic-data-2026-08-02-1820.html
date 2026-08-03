@@ -1,0 +1,160 @@
+<!-- Dated: 2026-07-30 23:10 EDT -->
+<!-- File: diagnostic-data-2026-07-30-2310.html (deploys as guide/diagnostic-data.html) -->
+<!-- GatewayGuard LLC -- gatewayguard.co/guide/diagnostic-data -->
+<!-- Change History:
+     2026-07-30 23:10: Initial file. Expanded from guide quick-reference
+     table. Privacy preference.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnostic Data - Setting 12 - GatewayGuard Security Guide</title>
+<meta name="description" content="What Diagnostic Data is, what GatewayGuard Checkup changes, and how to set it to Required only.">
+<style>
+:root {
+  --black:#000000;--white:#FFFFFF;--gray-dark:#333333;--gray-mid:#666666;--gray-light:#F4F4F4;--gray-rule:#DDDDDD;--navy:#2E6BD6;--mocha:#A0522D;--charcoal:#5E35B1;--max-w:960px;--font-body:Arial,Helvetica,sans-serif;--font-mono:Consolas,"Courier New",monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: var(--black); background: var(--white); }
+a { color: var(--black); }
+a:hover { text-decoration: underline; }
+nav { background: var(--white); border: 4px solid var(--black); max-width: var(--max-w); margin: 12px auto 0; position: sticky; top: 0; z-index: 100; }
+.nav-inner { padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+.nav-brand { font-size: 17px; font-weight: bold; color: var(--black); text-decoration: none; }
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a { color: var(--black); text-decoration: none; font-size: 14px; font-weight: bold; }
+.nav-links a:hover { text-decoration: underline; }
+.nav-links a.active { border-bottom: 3px solid var(--black); padding-bottom: 2px; }
+.breadcrumb { max-width: var(--max-w); margin: 10px auto 0; padding: 0 24px; font-size: 13px; color: var(--gray-mid); }
+.breadcrumb a { color: var(--gray-mid); text-decoration: none; }
+.breadcrumb a:hover { color: var(--black); text-decoration: underline; }
+.breadcrumb span { margin: 0 6px; }
+.page-header { background: var(--white); border: 4px solid var(--black); max-width: var(--max-w); margin: 10px auto 0; padding: 28px 24px; }
+.setting-num { font-family: var(--font-mono); font-size: 12px; color: var(--gray-mid); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+.page-header h1 { font-size: 30px; font-weight: bold; margin-bottom: 10px; }
+.page-header .intro { font-size: 16px; color: var(--gray-dark); max-width: 640px; line-height: 1.55; }
+.tag { display: inline-block; font-size: 13px; font-weight: bold; padding: 5px 12px; color: var(--white); margin-top: 14px; }
+.tag-choice { background: var(--charcoal); }
+.content-section { max-width: var(--max-w); margin: 0 auto; padding: 32px 24px; border-bottom: 1px solid var(--gray-rule); }
+.content-section h2 { font-size: 20px; font-weight: bold; margin-bottom: 14px; }
+.gg-did-box { border: 3px solid var(--black); padding: 20px 24px; }
+.gg-did-box h2 { font-size: 16px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; font-family: var(--font-mono); color: var(--gray-mid); }
+.gg-did-row { display: flex; gap: 12px; margin-bottom: 10px; font-size: 15px; line-height: 1.5; }
+.gg-did-row:last-child { margin-bottom: 0; }
+.gg-did-label { font-weight: bold; white-space: nowrap; min-width: 110px; color: var(--black); }
+.gg-did-value { color: var(--gray-dark); }
+.why-box { background: var(--gray-light); border-left: 4px solid var(--black); padding: 18px 20px; font-size: 15px; line-height: 1.6; color: var(--gray-dark); }
+.why-box strong { color: var(--black); }
+.why-box p + p { margin-top: 10px; }
+.steps-list { list-style: none; counter-reset: steps; margin-top: 10px; }
+.steps-list li { counter-increment: steps; display: flex; gap: 14px; margin-bottom: 14px; font-size: 15px; line-height: 1.55; align-items: flex-start; }
+.steps-list li::before { content: counter(steps); background: var(--black); color: var(--white); font-weight: bold; font-size: 13px; min-width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.steps-list li .step-text { color: var(--gray-dark); }
+.steps-list li .step-text strong { color: var(--black); }
+.note-box { border: 2px solid var(--gray-rule); padding: 16px 20px; font-size: 15px; color: var(--gray-dark); line-height: 1.55; margin-top: 14px; }
+.note-box strong { color: var(--black); }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin-top: 14px; }
+.related-card { border: 2px solid var(--gray-rule); padding: 14px 16px; text-decoration: none; color: var(--black); display: block; }
+.related-card:hover { border-color: var(--black); }
+.related-card-num { font-family: var(--font-mono); font-size: 12px; color: var(--gray-mid); margin-bottom: 4px; }
+.related-card-name { font-size: 15px; font-weight: bold; }
+.back-section { max-width: var(--max-w); margin: 0 auto; padding: 24px 24px 8px; }
+.back-link { font-size: 14px; font-weight: bold; color: var(--black); text-decoration: none; }
+.back-link:hover { text-decoration: underline; }
+footer { background: var(--white); border: 4px solid var(--black); max-width: var(--max-w); margin: 12px auto; padding: 24px; }
+.footer-brand { font-size: 17px; font-weight: bold; display: block; margin-bottom: 10px; }
+.footer-links { display: flex; gap: 18px; list-style: none; flex-wrap: wrap; margin-bottom: 10px; }
+.footer-links a { color: var(--gray-dark); text-decoration: none; font-size: 14px; font-weight: bold; }
+.footer-links a:hover { color: var(--black); text-decoration: underline; }
+.footer-note { font-size: 13px; color: var(--gray-dark); line-height: 1.6; }
+@media (max-width: 640px) {
+  .nav-inner { flex-direction: column; height: auto; padding: 10px 16px; gap: 8px; }
+  .nav-links { gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .page-header h1 { font-size: 24px; }
+  .gg-did-row { flex-direction: column; gap: 4px; }
+  .gg-did-label { min-width: unset; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">GatewayGuard</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/download.html">Download</a></li>
+      <li><a href="/guide/index.html" class="active">Guide</a></li>
+      <li><a href="/tips.html">Tips</a></li>
+      <li><a href="/beta.html">Beta</a></li>
+      <li><a href="/compatible.html">Compatible</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="breadcrumb">
+  <a href="/">Home</a><span>&#8250;</span>
+  <a href="/guide/index.html">Guide</a><span>&#8250;</span>
+  Diagnostic Data
+</div>
+<header class="page-header">
+  <p class="setting-num">Setting 12 of 19</p>
+  <h1>Diagnostic Data</h1>
+  <p class="intro">Windows sends information about how your PC is running back to Microsoft. There are two levels: the minimum needed to keep Windows working, and a broader set that includes information about what you do on your PC. Checkup recommends the minimum.</p>
+  <span class="tag tag-choice">&#9654; Your decision</span>
+</header>
+<section class="content-section">
+  <div class="gg-did-box">
+    <h2>What Checkup found and did</h2>
+    <div class="gg-did-row"><span class="gg-did-label">Found:</span><span class="gg-did-value">Checkup reviews how much diagnostic data your PC sends to Microsoft. It can limit this to the required minimum with your permission.</span></div>
+    <div class="gg-did-row"><span class="gg-did-label">Action taken:</span><span class="gg-did-value">Checkup set Diagnostic data to <strong>Required diagnostic data</strong> with your approval. This is the minimum level Windows needs to function and receive updates. It does not affect performance or updates in any way.</span></div>
+  </div>
+</section>
+<section class="content-section">
+  <h2>Why you might want the minimum</h2>
+  <div class="why-box">
+    <p><strong>The optional level sends information about what you do on your PC.</strong> This includes which apps you use, how long you use them, which features you click on, and details about your browsing. Microsoft uses this to improve Windows &#8212; but it is your PC and your data, and you may not want to share it.</p>
+    <p>The required level sends only what Windows needs to work: basic device information, error reports, and update-related data. Your PC gets the same updates either way. The only difference is how much information Microsoft receives about your daily use.</p>
+  </div>
+</section>
+<section class="content-section">
+  <h2>How to set it to the minimum</h2>
+  <ol class="steps-list">
+    <li><div class="step-text">Press the <strong>Windows key</strong>, type <strong>Diagnostics &amp; feedback</strong>, and press <strong>Enter</strong>.</div></li>
+    <li><div class="step-text">Under <strong>Diagnostic data</strong>, you will see two options: <strong>Required diagnostic data</strong> and <strong>Optional diagnostic data</strong>.</div></li>
+    <li><div class="step-text">Select <strong>Required diagnostic data</strong>. It should already be selected if Checkup ran successfully. If it shows Optional, click Required to change it.</div></li>
+  </ol>
+</section>
+<section class="content-section">
+  <h2>What to expect</h2>
+  <p style="font-size:15px;color:var(--gray-dark);line-height:1.6;">No restart required. Windows continues to receive all updates and works exactly the same. The only change is that Microsoft receives less information about how you use your PC.</p>
+  <div class="note-box" style="margin-top:16px;"><strong>This is a privacy preference, not a security requirement.</strong> Your PC is not less secure either way. Checkup recommends the minimum as a general privacy improvement &#8212; the choice is yours.</div>
+</section>
+<section class="content-section">
+  <h2>Related settings</h2>
+  <div class="related-grid">
+    <a href="/guide/advertising-id.html" class="related-card"><p class="related-card-num">Setting 11</p><p class="related-card-name">Advertising ID</p></a>
+    <a href="/guide/widgets.html" class="related-card"><p class="related-card-num">Setting 14</p><p class="related-card-name">Windows Widgets</p></a>
+    <a href="/guide/edge-startup.html" class="related-card"><p class="related-card-num">Setting 13</p><p class="related-card-name">Edge Startup Boost</p></a>
+  </div>
+</section>
+<div class="back-section">
+  <a href="/guide/index.html" class="back-link">&#8592; Back to Guide</a>
+</div>
+<footer>
+  <span class="footer-brand">GatewayGuard</span>
+  <ul class="footer-links">
+    <li><a href="/download.html">Download</a></li>
+    <li><a href="/guide/index.html">Guide</a></li>
+    <li><a href="/beta.html">Beta</a></li>
+    <li><a href="/compatible.html">Compatible</a></li>
+    <li><a href="mailto:support@gatewayguard.co">Contact</a></li>
+  </ul>
+  <div class="footer-note">
+    GatewayGuard LLC &#8226; Brunswick, Maine &#8226; support@gatewayguard.co<br>
+    GatewayGuard does not collect personal data or show ads. No subscription &#8212; ever.<br>
+    Source code is included with every download. &#169; 2026 GatewayGuard LLC. All rights reserved.
+  </div>
+</footer>
+</body>
+</html>

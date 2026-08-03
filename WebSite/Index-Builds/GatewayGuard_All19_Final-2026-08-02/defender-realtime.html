@@ -1,0 +1,167 @@
+<!-- Dated: 2026-07-30 23:10 EDT -->
+<!-- File: guide/defender-realtime.html -->
+<!-- GatewayGuard LLC -- gatewayguard.co/guide/defender-realtime -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Defender Real-Time Protection - Setting 2 - GatewayGuard Security Guide - GatewayGuard Security Guide</title>
+<meta name="description" content="What Defender Real-Time Protection does, what GatewayGuard Checkup checks, and how to verify it yourself.">
+<style>
+:root {
+  --black:     #000000;
+  --white:     #FFFFFF;
+  --gray-dark: #333333;
+  --gray-mid:  #666666;
+  --gray-light:#F4F4F4;
+  --gray-rule: #DDDDDD;
+  --navy:      #2E6BD6;
+  --mocha:     #A0522D;
+  --charcoal:  #5E35B1;
+  --max-w:     960px;
+  --font-body: Arial, Helvetica, sans-serif;
+  --font-mono: Consolas, "Courier New", monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: var(--black); background: var(--white); }
+a { color: var(--black); }
+a:hover { text-decoration: underline; }
+.wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+nav { background: var(--white); border: 4px solid var(--black); max-width: var(--max-w); margin: 12px auto 0; position: sticky; top: 0; z-index: 100; }
+.nav-inner { padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+.nav-brand { font-size: 17px; font-weight: bold; color: var(--black); text-decoration: none; }
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a { color: var(--black); text-decoration: none; font-size: 14px; font-weight: bold; }
+.nav-links a:hover { text-decoration: underline; }
+.nav-links a.active { border-bottom: 3px solid var(--black); padding-bottom: 2px; }
+.breadcrumb { max-width: var(--max-w); margin: 10px auto 0; padding: 0 24px; font-size: 13px; color: var(--gray-mid); }
+.breadcrumb a { color: var(--gray-mid); text-decoration: none; }
+.breadcrumb a:hover { color: var(--black); text-decoration: underline; }
+.breadcrumb span { margin: 0 6px; }
+.page-header { background: var(--white); border: 4px solid var(--black); max-width: var(--max-w); margin: 10px auto 0; padding: 28px 24px; }
+.setting-num { font-family: var(--font-mono); font-size: 12px; color: var(--gray-mid); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+.page-header h1 { font-size: 30px; font-weight: bold; margin-bottom: 10px; }
+.page-header .intro { font-size: 16px; color: var(--gray-dark); max-width: 640px; line-height: 1.55; }
+.tag { display: inline-block; font-size: 13px; font-weight: bold; padding: 5px 12px; color: var(--white); margin-top: 14px; }
+.tag-auto { background: var(--navy); }
+.tag-manual { background: var(--mocha); }
+.content-section { max-width: var(--max-w); margin: 0 auto; padding: 32px 24px; border-bottom: 1px solid var(--gray-rule); }
+.content-section h2 { font-size: 20px; font-weight: bold; margin-bottom: 14px; }
+.gg-did-box { border: 3px solid var(--black); padding: 20px 24px; }
+.gg-did-box h2 { font-size: 16px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; font-family: var(--font-mono); color: var(--gray-mid); }
+.gg-did-row { display: flex; gap: 12px; margin-bottom: 10px; font-size: 15px; line-height: 1.5; }
+.gg-did-row:last-child { margin-bottom: 0; }
+.gg-did-label { font-weight: bold; white-space: nowrap; min-width: 110px; color: var(--black); }
+.gg-did-value { color: var(--gray-dark); }
+.why-box { background: var(--gray-light); border-left: 4px solid var(--black); padding: 18px 20px; font-size: 15px; line-height: 1.6; color: var(--gray-dark); }
+.why-box strong { color: var(--black); }
+.why-box p + p { margin-top: 10px; }
+.steps-list { list-style: none; counter-reset: steps; margin-top: 10px; }
+.steps-list li { counter-increment: steps; display: flex; gap: 14px; margin-bottom: 14px; font-size: 15px; line-height: 1.55; align-items: flex-start; }
+.steps-list li::before { content: counter(steps); background: var(--black); color: var(--white); font-weight: bold; font-size: 13px; min-width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.steps-list li .step-text { color: var(--gray-dark); }
+.steps-list li .step-text strong { color: var(--black); }
+.path { font-family: var(--font-mono); font-size: 13px; background: var(--gray-light); border: 1px solid var(--gray-rule); padding: 6px 10px; display: inline-block; margin: 4px 0; line-height: 1.4; }
+.note-box { border: 2px solid var(--gray-rule); padding: 16px 20px; font-size: 15px; color: var(--gray-dark); line-height: 1.55; margin-top: 14px; }
+.note-box strong { color: var(--black); }
+.warn-box { border: 2px solid var(--black); padding: 16px 20px; font-size: 15px; color: var(--gray-dark); line-height: 1.55; margin-top: 14px; background: var(--gray-light); }
+.warn-box strong { color: var(--black); }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin-top: 14px; }
+.related-card { border: 2px solid var(--gray-rule); padding: 14px 16px; text-decoration: none; color: var(--black); display: block; }
+.related-card:hover { border-color: var(--black); text-decoration: none; }
+.related-card-num { font-family: var(--font-mono); font-size: 12px; color: var(--gray-mid); margin-bottom: 4px; }
+.related-card-name { font-size: 15px; font-weight: bold; }
+.back-section { max-width: var(--max-w); margin: 0 auto; padding: 24px 24px 8px; }
+.back-link { font-size: 14px; font-weight: bold; color: var(--black); text-decoration: none; }
+.back-link:hover { text-decoration: underline; }
+footer { background: var(--white); border: 4px solid var(--black); max-width: var(--max-w); margin: 12px auto; padding: 24px; }
+.footer-brand { font-size: 17px; font-weight: bold; display: block; margin-bottom: 10px; }
+.footer-links { display: flex; gap: 18px; list-style: none; flex-wrap: wrap; margin-bottom: 10px; }
+.footer-links a { color: var(--gray-dark); text-decoration: none; font-size: 14px; font-weight: bold; }
+.footer-links a:hover { color: var(--black); text-decoration: underline; }
+.footer-note { font-size: 13px; color: var(--gray-dark); line-height: 1.6; }
+@media (max-width: 640px) {
+  .nav-inner { flex-direction: column; height: auto; padding: 10px 16px; gap: 8px; }
+  .nav-links { gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .page-header h1 { font-size: 24px; }
+  .gg-did-row { flex-direction: column; gap: 4px; }
+  .gg-did-label { min-width: unset; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">GatewayGuard</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/download.html">Download</a></li>
+      <li><a href="/guide/index.html" class="active">Guide</a></li>
+      <li><a href="/tips.html">Tips</a></li>
+      <li><a href="/beta.html">Beta</a></li>
+      <li><a href="/compatible.html">Compatible</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="breadcrumb">
+  <a href="/">Home</a><span>&#8250;</span>
+  <a href="/guide/index.html">Guide</a><span>&#8250;</span>
+  Defender Real-Time Protection
+</div>
+<header class="page-header">
+  <p class="setting-num">Setting 2 of 19</p>
+  <h1>Defender Real-Time Protection</h1>
+  <p class="intro">Microsoft Defender is the antivirus built into every copy of Windows 11 &#8212; already paid for, no subscription required. Real-time protection is the part that watches files and programs as you use them and blocks threats before they can run.</p>
+  <span class="tag tag-auto">&#10003; Checkup checks this automatically</span>
+</header>
+<section class="content-section">
+  <div class="gg-did-box">
+    <h2>What Checkup found and did</h2>
+    <div class="gg-did-row"><span class="gg-did-label">Found:</span><span class="gg-did-value">Checkup checks if Defender&#8217;s real-time protection is active, and if Defender is the primary antivirus on your PC. It can turn real-time protection back on with your permission.</span></div>
+    <div class="gg-did-row"><span class="gg-did-label">Action taken:</span><span class="gg-did-value">If real-time protection was off and no other antivirus had taken its place, Checkup flagged it and offered to turn it back on. No changes are made without your approval.</span></div>
+  </div>
+</section>
+<section class="content-section">
+  <h2>Why this matters</h2>
+  <div class="why-box"><p><strong>Your PC is protected from the moment you turn it on &#8212; but only if Defender is running.</strong> Real-time protection scans every file you open, every download, and every program you run. Without it, malware can install itself before anything notices.</p><p>Defender is free, built-in, and consistently rated by independent labs as one of the best antivirus engines available. You don&#8217;t need to pay for a separate product &#8212; you just need to make sure Defender is on and set up correctly.</p></div>
+</section>
+<section class="content-section">
+  <h2>How to check it yourself</h2>
+  <ol class="steps-list"><li><div class="step-text">Press the <strong>Windows key</strong> and type <strong>Windows Security</strong>, then press <strong>Enter</strong>.</div></li><li><div class="step-text">Click <strong>Virus &amp; threat protection</strong>.</div></li><li><div class="step-text">Under <strong>Virus &amp; threat protection settings</strong>, click <strong>Manage settings</strong>.</div></li><li><div class="step-text">Confirm <strong>Real-time protection</strong> is set to <strong>On</strong>. The toggle should be blue.</div></li><li><div class="step-text">Also check: <strong>Cloud-delivered protection</strong> &#8212; On. <strong>Automatic sample submission</strong> &#8212; On. These two help Defender identify new threats faster.</div></li></ol>
+</section>
+
+<section class="content-section">
+  <h2>How to change it yourself</h2>
+  <ol class="steps-list"><li><div class="step-text">Open <strong>Windows Security</strong> (search from the Start menu).</div></li><li><div class="step-text">Click <strong>Virus &amp; threat protection</strong>, then <strong>Manage settings</strong>.</div></li><li><div class="step-text">Click the toggle next to <strong>Real-time protection</strong> to turn it On.</div></li><li><div class="step-text"><strong>If the toggle is grayed out</strong> and you can&#8217;t click it, another antivirus program is controlling this setting. You&#8217;ll see a message telling you which one. If you don&#8217;t recognize it or no longer use it, uninstall it first, then check Defender again.</div></li></ol>
+</section>
+
+<section class="content-section">
+  <h2>What to expect</h2>
+  <p style="font-size:15px;color:var(--gray-dark);line-height:1.6;">No restart required. Defender starts protecting your PC immediately once real-time protection is on.</p>
+  <div class="note-box" style="margin-top:16px;"><strong>Have Malwarebytes installed?</strong> If you&#8217;re using Malwarebytes Free as a companion scanner alongside Defender, that&#8217;s the recommended setup. Defender handles real-time protection; Malwarebytes runs manual scans as a second opinion. Both can run together without conflict.</div>
+</section>
+<section class="content-section">
+  <h2>Related settings</h2>
+  <div class="related-grid"><a href="/guide/windows-update.html" class="related-card"><p class="related-card-num">Setting 1</p><p class="related-card-name">Windows Update</p></a><a href="/guide/tamper-protection.html" class="related-card"><p class="related-card-num">Setting 3</p><p class="related-card-name">Tamper Protection</p></a><a href="/guide/periodic-scanning.html" class="related-card"><p class="related-card-num">Setting 5</p><p class="related-card-name">Defender Periodic Scanning</p></a></div>
+</section>
+<div class="back-section">
+  <a href="/guide/index.html" class="back-link">&#8592; Back to Guide</a>
+</div>
+<footer>
+  <span class="footer-brand">GatewayGuard</span>
+  <ul class="footer-links">
+    <li><a href="/download.html">Download</a></li>
+    <li><a href="/guide/index.html">Guide</a></li>
+    <li><a href="/beta.html">Beta</a></li>
+    <li><a href="/compatible.html">Compatible</a></li>
+    <li><a href="mailto:support@gatewayguard.co">Contact</a></li>
+  </ul>
+  <div class="footer-note">
+    GatewayGuard LLC &#8226; Brunswick, Maine &#8226; support@gatewayguard.co<br>
+    GatewayGuard does not collect personal data or show ads. No subscription &#8212; ever.<br>
+    Source code is included with every download. &#169; 2026 GatewayGuard LLC. All rights reserved.
+  </div>
+</footer>
+</body>
+</html>

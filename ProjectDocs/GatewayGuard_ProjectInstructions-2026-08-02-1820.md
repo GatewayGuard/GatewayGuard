@@ -1,9 +1,13 @@
-<!-- Dated: 2026-08-02 07:41 EDT -->
+<!-- Dated: 2026-08-02 18:20 EDT -->
 # GatewayGuard Project Instructions
 - **Document Name:** GatewayGuard_ProjectInstructions
-- **Last Modified:** 2026-08-02 07:41 EDT
+- **Last Modified:** 2026-08-02 18:20 EDT
 - **Status:** Cumulative Master Document (supersedes all prior versions)
 - **Change History Log:**
+  - 2026-08-02 18:20: Added PLAIN LANGUAGE RULES section (three word-level
+    rules: banned words, Checkup's verb, name the permission). Added
+    CONFIRM BEFORE ACTING rule. Added CHECKUP NAME RULE. Source: Claude
+    Code session 2026-08-02 and Bill's direction this session.
   - 2026-08-02: Extended RESEARCH BEFORE STATING -- a command FLAG (and a
     parameter NAME) is a factual claim; the four bases measured/sourced/
     inferred/guess, with only the first two shippable; test on CGDELL first.
@@ -371,6 +375,100 @@ marketing, FAQ) must be plain English, zero jargon. Test: "Would a
 non-technical neighbor understand this in 5 seconds?" If a request or
 draft contradicts source documentation already in this workspace, flag
 the discrepancy rather than guessing or smoothing it over.
+
+---
+
+## CONFIRM BEFORE ACTING (effective 2026-08-02)
+
+Before executing any multi-file change, bulk edit, delete operation,
+or any action that cannot be easily undone, Claude must state what it
+is about to do and wait for explicit confirmation before proceeding.
+
+**This rule applies to:**
+- Deleting any project file
+- Bulk find-and-replace across multiple files
+- Rebuilding or re-zipping any file set
+- Any action where the scope is more than one file or one change
+
+**Format:**
+State the action, list what will be affected, then stop and ask:
+"Confirm?" Do not proceed until Bill says yes or equivalent.
+
+**Exception:** Single targeted edits within an active build session
+where the scope has already been agreed do not require re-confirmation
+at each step -- only at the start of the task.
+
+---
+
+## PLAIN LANGUAGE RULES (effective 2026-08-02)
+
+These three word-level rules sit inside the PlainLanguage section and
+apply to ALL user-facing copy: tool screens, website, guide, marketing,
+FAQ, emails. No exceptions.
+
+**Rule PL-1 -- BANNED WORDS: "whether" and "whereas"**
+Never use either word anywhere user-facing.
+- "Whether" hedges. It describes what was looked at instead of what
+  was found. Replace with "if": "Checkup checks if X is on."
+- "Whereas" is formal/legalistic and has no place in plain English.
+- Substitutions: *whether X* → "if X"; *not sure whether* → "cannot
+  remember"; *applies whether A or B* → "applies when A or B";
+  *asked whether to* → "asked for your permission to".
+
+**Rule PL-2 -- CHECKUP'S VERB: "turn on/off", never "switch"**
+The action verb for changing a setting is always "turn on" or "turn
+off". Never use "switch" as a verb for a setting change.
+- Wrong: "Checkup can switch it off."
+- Right: "Checkup can turn it off."
+- "Switch" as a noun meaning a physical device (network switch, light
+  switch) is acceptable in non-setting contexts only.
+
+**Rule PL-3 -- NAME THE PERMISSION: every setting change says the
+user approved it**
+Any sentence describing what Checkup does to a setting must name the
+user's permission. This is the product's central promise -- Checkup
+never applies anything the user did not choose.
+- "Checkup turned it off with your approval."
+- "Checkup asks your permission before making any change."
+- Where Windows forbids programmatic change: "Windows does not allow
+  any program to change this, so Checkup shows you the exact steps
+  to do it yourself."
+
+---
+
+## CHECKUP NAME RULE (effective 2026-08-02)
+
+The product is named **GatewayGuard Checkup**. In any document,
+page, or screen:
+- First mention: **GatewayGuard Checkup** (full name)
+- All subsequent mentions on the same page/screen: **Checkup** alone
+
+Never use "GatewayGuard Checkup" more than once per page. Never use
+"Checkup" before the full name has appeared. Never use "the tool",
+"the program", or "it" as the subject when "Checkup" is clearer.
+
+---
+
+## SESSION LENGTH WARNING (effective 2026-08-02)
+
+Long sessions degrade rule adherence. When any of these signals appear,
+flag it and suggest starting a new chat before continuing:
+
+- This conversation has produced more than 10 files or major deliverables
+- A rule stated earlier in the session was forgotten or violated
+- Bill has to re-explain something already covered this session
+- A response feels uncertain about project context that should be clear
+- We are about to start a new major task (new build, new document, new topic)
+
+**Format when flagging:**
+"This session is long — rule adherence may be degrading. Suggest starting
+a new chat before we continue with [next task]. Upload any new files to
+the project first so context is preserved."
+
+Before suggesting a new chat, always:
+1. Deliver any files that are in progress
+2. Produce an updated _READ-FIRST-Briefing with current session summary
+3. List what was completed this session and what is still pending
 
 ---
 

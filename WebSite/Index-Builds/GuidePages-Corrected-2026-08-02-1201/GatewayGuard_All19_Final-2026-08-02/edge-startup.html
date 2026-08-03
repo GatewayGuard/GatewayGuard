@@ -1,0 +1,168 @@
+<!-- Dated: 2026-07-30 23:10 EDT -->
+<!-- File: GatewayGuard_edge-startup-2026-07-30-2310.html (deploys as guide/edge-startup.html) -->
+<!-- GatewayGuard LLC -- gatewayguard.co/guide/edge-startup -->
+<!-- Change History:
+     2026-07-30 23:10: Initial file.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edge Startup Boost - Setting 13 - GatewayGuard Security Guide</title>
+<meta name="description" content="What Edge Startup Boost does, what GatewayGuard Checkup changes, and how to verify it yourself.">
+<style>
+:root {
+  --black:#000000;--white:#FFFFFF;--gray-dark:#333333;--gray-mid:#666666;--gray-light:#F4F4F4;--gray-rule:#DDDDDD;--navy:#2E6BD6;--mocha:#A0522D;--charcoal:#5E35B1;--max-w:960px;--font-body:Arial,Helvetica,sans-serif;--font-mono:Consolas,"Courier New",monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: var(--black); background: var(--white); }
+a { color: var(--black); }
+a:hover { text-decoration: underline; }
+nav { background: var(--white); border: 4px solid var(--black); max-width: var(--max-w); margin: 12px auto 0; position: sticky; top: 0; z-index: 100; }
+.nav-inner { padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+.nav-brand { font-size: 17px; font-weight: bold; color: var(--black); text-decoration: none; }
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a { color: var(--black); text-decoration: none; font-size: 14px; font-weight: bold; }
+.nav-links a:hover { text-decoration: underline; }
+.nav-links a.active { border-bottom: 3px solid var(--black); padding-bottom: 2px; }
+.breadcrumb { max-width: var(--max-w); margin: 10px auto 0; padding: 0 24px; font-size: 13px; color: var(--gray-mid); }
+.breadcrumb a { color: var(--gray-mid); text-decoration: none; }
+.breadcrumb a:hover { color: var(--black); text-decoration: underline; }
+.breadcrumb span { margin: 0 6px; }
+.page-header { background: var(--white); border: 4px solid var(--black); max-width: var(--max-w); margin: 10px auto 0; padding: 28px 24px; }
+.setting-num { font-family: var(--font-mono); font-size: 12px; color: var(--gray-mid); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+.page-header h1 { font-size: 30px; font-weight: bold; margin-bottom: 10px; }
+.page-header .intro { font-size: 16px; color: var(--gray-dark); max-width: 640px; line-height: 1.55; }
+.tag { display: inline-block; font-size: 13px; font-weight: bold; padding: 5px 12px; color: var(--white); margin-top: 14px; }
+.tag-choice { background: var(--charcoal); }
+.content-section { max-width: var(--max-w); margin: 0 auto; padding: 32px 24px; border-bottom: 1px solid var(--gray-rule); }
+.content-section h2 { font-size: 20px; font-weight: bold; margin-bottom: 14px; }
+.gg-did-box { border: 3px solid var(--black); padding: 20px 24px; }
+.gg-did-box h2 { font-size: 16px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; font-family: var(--font-mono); color: var(--gray-mid); }
+.gg-did-row { display: flex; gap: 12px; margin-bottom: 10px; font-size: 15px; line-height: 1.5; }
+.gg-did-row:last-child { margin-bottom: 0; }
+.gg-did-label { font-weight: bold; white-space: nowrap; min-width: 110px; color: var(--black); }
+.gg-did-value { color: var(--gray-dark); }
+.why-box { background: var(--gray-light); border-left: 4px solid var(--black); padding: 18px 20px; font-size: 15px; line-height: 1.6; color: var(--gray-dark); }
+.why-box strong { color: var(--black); }
+.why-box p + p { margin-top: 10px; }
+.steps-list { list-style: none; counter-reset: steps; margin-top: 10px; }
+.steps-list li { counter-increment: steps; display: flex; gap: 14px; margin-bottom: 14px; font-size: 15px; line-height: 1.55; align-items: flex-start; }
+.steps-list li::before { content: counter(steps); background: var(--black); color: var(--white); font-weight: bold; font-size: 13px; min-width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.steps-list li .step-text { color: var(--gray-dark); }
+.steps-list li .step-text strong { color: var(--black); }
+.note-box { border: 2px solid var(--gray-rule); padding: 16px 20px; font-size: 15px; color: var(--gray-dark); line-height: 1.55; margin-top: 14px; }
+.note-box strong { color: var(--black); }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin-top: 14px; }
+.related-card { border: 2px solid var(--gray-rule); padding: 14px 16px; text-decoration: none; color: var(--black); display: block; }
+.related-card:hover { border-color: var(--black); }
+.related-card-num { font-family: var(--font-mono); font-size: 12px; color: var(--gray-mid); margin-bottom: 4px; }
+.related-card-name { font-size: 15px; font-weight: bold; }
+.back-section { max-width: var(--max-w); margin: 0 auto; padding: 24px 24px 8px; }
+.back-link { font-size: 14px; font-weight: bold; color: var(--black); text-decoration: none; }
+.back-link:hover { text-decoration: underline; }
+footer { background: var(--white); border: 4px solid var(--black); max-width: var(--max-w); margin: 12px auto; padding: 24px; }
+.footer-brand { font-size: 17px; font-weight: bold; display: block; margin-bottom: 10px; }
+.footer-links { display: flex; gap: 18px; list-style: none; flex-wrap: wrap; margin-bottom: 10px; }
+.footer-links a { color: var(--gray-dark); text-decoration: none; font-size: 14px; font-weight: bold; }
+.footer-links a:hover { color: var(--black); text-decoration: underline; }
+.footer-note { font-size: 13px; color: var(--gray-dark); line-height: 1.6; }
+@media (max-width: 640px) {
+  .nav-inner { flex-direction: column; height: auto; padding: 10px 16px; gap: 8px; }
+  .nav-links { gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .page-header h1 { font-size: 24px; }
+  .gg-did-row { flex-direction: column; gap: 4px; }
+  .gg-did-label { min-width: unset; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">GatewayGuard</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/download.html">Download</a></li>
+      <li><a href="/guide/index.html" class="active">Guide</a></li>
+      <li><a href="/tips.html">Tips</a></li>
+      <li><a href="/beta.html">Beta</a></li>
+      <li><a href="/compatible.html">Compatible</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="breadcrumb">
+  <a href="/">Home</a><span>&#8250;</span>
+  <a href="/guide/index.html">Guide</a><span>&#8250;</span>
+  Edge Startup Boost
+</div>
+<header class="page-header">
+  <p class="setting-num">Setting 13 of 19</p>
+  <h1>Edge Startup Boost</h1>
+  <p class="intro">Edge Startup Boost keeps parts of the Microsoft Edge browser running in the background so it opens faster when you click it. The trade-off: Edge is using memory and CPU even when you are not using it.</p>
+  <span class="tag tag-choice">&#9654; Your decision</span>
+</header>
+<section class="content-section">
+  <div class="gg-did-box">
+    <h2>What Checkup found and did</h2>
+    <div class="gg-did-row"><span class="gg-did-label">Found:</span><span class="gg-did-value">Checkup checks if Edge Startup Boost and background running are enabled. It can turn them off with your permission.</span></div>
+    <div class="gg-did-row"><span class="gg-did-label">Action taken:</span><span class="gg-did-value">Checkup turned off Edge Startup Boost and background running with your approval. This is a convenience setting &#8212; if you prefer Edge to open as fast as possible and do not mind it running in the background, you can turn it back on at any time.</span></div>
+  </div>
+</section>
+<section class="content-section">
+  <h2>Why you might want this off</h2>
+  <div class="why-box">
+    <p><strong>Edge runs in the background even when you are not using it.</strong> With Startup Boost on, Edge loads itself into memory when Windows starts so it is ready to go the moment you click it. That sounds helpful, but it means Edge is consuming RAM and running background processes you did not ask for.</p>
+    <p>On a PC with 8GB of RAM, this matters more. Every background process that runs when you are not using it is memory and CPU that is not available for what you are actually doing. Turning it off does not break Edge &#8212; it just opens a second or two slower.</p>
+  </div>
+</section>
+<section class="content-section">
+  <h2>How to check it yourself</h2>
+  <ol class="steps-list">
+    <li><div class="step-text">Open <strong>Microsoft Edge</strong>.</div></li>
+    <li><div class="step-text">Click the three dots (<strong>&#8943;</strong>) in the top right corner, then click <strong>Settings</strong>.</div></li>
+    <li><div class="step-text">In the left sidebar, click <strong>System and performance</strong>.</div></li>
+    <li><div class="step-text">Check two toggles: <strong>Startup boost</strong> and <strong>Continue running background extensions and apps when Microsoft Edge is closed</strong>. Both should be <strong>Off</strong> if you accepted Checkup&#8217;s recommendation.</div></li>
+  </ol>
+</section>
+<section class="content-section">
+  <h2>How to change it back if you want</h2>
+  <ol class="steps-list">
+    <li><div class="step-text">Open Edge &#8250; Settings &#8250; System and performance.</div></li>
+    <li><div class="step-text">Toggle <strong>Startup boost</strong> to <strong>On</strong>.</div></li>
+    <li><div class="step-text">Toggle <strong>Continue running background extensions and apps when Microsoft Edge is closed</strong> to <strong>On</strong>.</div></li>
+  </ol>
+  <div class="note-box" style="margin-top:16px;"><strong>Note about pinned tabs:</strong> If you have tabs pinned in Edge, turning off background running means those pinned tabs will not refresh in the background while Edge is closed. They will reload when you open Edge next time.</div>
+</section>
+<section class="content-section">
+  <h2>What to expect</h2>
+  <p style="font-size:15px;color:var(--gray-dark);line-height:1.6;">With Startup Boost off, Edge takes a second or two longer to open from a cold start. Once open, Edge works exactly the same as before. You may notice your PC starts up slightly faster and uses less memory overall.</p>
+</section>
+<section class="content-section">
+  <h2>Related settings</h2>
+  <div class="related-grid">
+    <a href="/guide/widgets.html" class="related-card"><p class="related-card-num">Setting 14</p><p class="related-card-name">Windows Widgets</p></a>
+    <a href="/guide/password-manager.html" class="related-card"><p class="related-card-num">Setting 15</p><p class="related-card-name">Edge Password Saving</p></a>
+    <a href="/guide/advertising-id.html" class="related-card"><p class="related-card-num">Setting 11</p><p class="related-card-name">Advertising ID</p></a>
+  </div>
+</section>
+<div class="back-section">
+  <a href="/guide/index.html" class="back-link">&#8592; Back to Guide</a>
+</div>
+<footer>
+  <span class="footer-brand">GatewayGuard</span>
+  <ul class="footer-links">
+    <li><a href="/download.html">Download</a></li>
+    <li><a href="/guide/index.html">Guide</a></li>
+    <li><a href="/beta.html">Beta</a></li>
+    <li><a href="/compatible.html">Compatible</a></li>
+    <li><a href="mailto:support@gatewayguard.co">Contact</a></li>
+  </ul>
+  <div class="footer-note">
+    GatewayGuard LLC &#8226; Brunswick, Maine &#8226; support@gatewayguard.co<br>
+    GatewayGuard does not collect personal data or show ads. No subscription &#8212; ever.<br>
+    Source code is included with every download. &#169; 2026 GatewayGuard LLC. All rights reserved.
+  </div>
+</footer>
+</body>
+</html>
