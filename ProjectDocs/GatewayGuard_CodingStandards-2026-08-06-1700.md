@@ -1,9 +1,23 @@
-<!-- Dated: 2026-08-02 07:41 EDT -->
+<!-- Dated: 2026-08-06 17:00 EDT -->
 # GatewayGuard -- Coding Standards
 - **Document Name:** GatewayGuard_CodingStandards
-- **Last Modified:** 2026-08-02 07:41 EDT
+- **Last Modified:** 2026-08-06 17:00 EDT
 - **Status:** Cumulative Master Document (supersedes all prior dates)
 - **Change History Log:**
+  - 2026-08-06 17:00: FILE STRUCTURE RULES corrected, and the post-move path
+    recorded. The documented tree root read `...\OneDrive\GatewayGuard\`; the
+    folder is `GatewayGuide` and always has been, so the one path this document
+    states about itself was wrong. Found by the M365 migration Phase 4 grep,
+    which also found the real defect: the `.ps1` integrity hook -- the Class 7
+    gate earned by the ascii34 corruption -- was registered in
+    `.claude\settings.local.json` by absolute path
+    (`C:\Users\willi\onedrive\gatewayguide\...`). Moving the tree would have
+    stopped it running, and a gate that stops running says nothing. It is now
+    `${CLAUDE_PROJECT_DIR}`, verified by observation, not assumed: a probe
+    `.ps1` was written and the hook returned `PS1 INTEGRITY OK`. **The general
+    rule: a check that is wired up by absolute path is one folder move away
+    from being a wish.** See also GATE 24 -- same failure shape, different
+    surface.
   - 2026-08-02 07:41: Added GATE 24 -- EXTERNAL COMMAND VERIFICATION, the
     mechanical enforcement of RESEARCH BEFORE STATING, earned by FT-162
     (`MpCmdRun.exe -Scan -ScanType 4` -- a flag that does not exist, shipped
@@ -509,13 +523,31 @@ on (machine + RAM). No unattributed times.
 ## FILE STRUCTURE RULES
 
 ### OneDrive folder structure:
+
+The tree root is spelled **`GatewayGuide`**. Everything else in this project is
+spelled `GatewayGuard`; the folder is not, and never has been. That is the real
+name on disk, so it is written here exactly as it is -- a documented path that
+does not match reality is worse than no path at all.
+
 ```
-C:\Users\willi\OneDrive\GatewayGuard\
+C:\Users\willi\OneDrive\GatewayGuide\        <- today (personal OneDrive)
 ├── Tool\          -- current active build only (.ps1 + .bat)
 ├── Builds\        -- archive of latest build only
 ├── ProjectDocs\   -- notes, checklist, standards, research
-└── Website\       -- website planning docs
+└── WebSite\       -- website planning docs
 ```
+
+**After the M365 migration (migration plan Phase 3) the root becomes:**
+
+```
+C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuide\
+```
+
+**That path contains spaces.** Anything naming it must quote it. Today nothing
+does: all 11 launchers in `Tool\` use `cd /d "%~dp0"` and relocate cleanly, and
+no script in `Tool\` depends on an absolute path. Do not add one. Where a tool
+outside `Tool\` must reach the project root -- a Claude Code hook, for instance
+-- use the `${CLAUDE_PROJECT_DIR}` placeholder rather than typing the path.
 
 ### File naming:
 - Script: W11-SecurityHardening-v3-ascii33-2026-07-21-1009.ps1
