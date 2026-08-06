@@ -115,14 +115,21 @@ Always ask which machine Bill is on before giving any machine-specific steps.
 ---
 
 ## GOVERNING DOCUMENTS — READ BEFORE BUILDING
+
+**Dates are omitted on purpose. Glob the name and take the newest.** Every one of
+these is re-issued under a new date each time it changes, so a filename spelled
+out in full here goes stale silently. That has already happened — CLAUDE.md
+records two of its three pointers stale by 2026-08-02, one of them for eleven
+days. Match the pattern, sort by date, read the newest.
+
 | Document | When to read |
 |----------|-------------|
-| `GatewayGuard_ProjectInstructions-2026-08-02-1820.md` | Every session start |
-| `GatewayGuard_CodingStandards-2026-08-02-0741.md` | Before any .ps1 build |
-| `GatewayGuard_DefectPreventionPlaybook-2026-07-25-1936.md` | Before any .ps1 build |
-| `GatewayGuard_WebsiteStandards-2026-07-26-0619.md` | Before any HTML work |
+| `GatewayGuard_ProjectInstructions-*.md` | Every session start |
+| `GatewayGuard_CodingStandards-*.md` | Before any .ps1 build |
+| `GatewayGuard_DefectPreventionPlaybook-*.md` | Before any .ps1 build |
+| `GatewayGuard_WebsiteStandards-*.md` | Before any HTML work |
 | `CLAUDE.md` | Before any guide or website copy |
-| `GatewayGuard_ScreenContents-2026-07-28-1003.md` | Before writing any tool-facing copy |
+| `GatewayGuard_ScreenContents-*.md` | Before writing any tool-facing copy |
 
 ---
 

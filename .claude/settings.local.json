@@ -16,11 +16,9 @@
       "Bash(python measure.py)",
       "Bash(python final_check.py)",
       "Bash(python patch_header_count.py)",
-      "Bash(cp \"C:/Users/willi/OneDrive/GatewayGuide/Tool/W11-SecurityHardening-v3-ascii37-2026-07-28-1330.ps1\" \"C:/Users/willi/OneDrive/GatewayGuide/Builds/\")",
       "Bash(awk '{print $1}')",
       "Bash(git add *)",
       "Bash(git commit *)",
-      "Read(//c/Users/willi/OneDrive/GatewayGuide/**)",
       "Read(//c/GatewayGuard/Logs/**)",
       "Bash(python -c ' *)",
       "PowerShell(Get-Date *)",
@@ -34,7 +32,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\willi\\onedrive\\gatewayguide\\.claude\\check-ps1-integrity.ps1\"",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"${CLAUDE_PROJECT_DIR}/.claude/check-ps1-integrity.ps1\"",
             "timeout": 60,
             "statusMessage": "Checking .ps1 file integrity..."
           }

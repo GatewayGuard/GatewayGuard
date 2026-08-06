@@ -65,8 +65,8 @@ the page that was broken, and no automated gate would have found it.
 | The schedule, 30 days out | `GatewayGuard_CPM_Schedule-2026-08-02-1201.md` (Rev 7) |
 | How to field-test ascii39 | `GatewayGuard_FieldTestPlan-ascii39-2026-08-02-0919.md` |
 | The copy rules added today | `CLAUDE.md` -- banned words, Checkup's verb, name the permission |
-| Gate 24 (external commands) | `GatewayGuard_CodingStandards-2026-08-02-0741.md` |
-| Session rules | `GatewayGuard_ProjectInstructions-2026-08-02-1820.md` |
+| Gate 24 (external commands) | `GatewayGuard_CodingStandards-*.md` (newest) |
+| Session rules | `GatewayGuard_ProjectInstructions-*.md` (newest) |
 
 ---
 
