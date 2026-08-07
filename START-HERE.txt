@@ -1,0 +1,34 @@
+===============================================================
+ GATEWAYGUARD -- WHAT TO PASTE INTO A NEW CHAT
+ Dated: 2026-08-07 09:16 ET
+===============================================================
+
+Open a new Claude Code session in the project folder, then copy the
+block between the lines below and paste it as your first message.
+
+It works for Claude Code AND for Claude.ai (Claude Cloud). You do not
+need to change a word.
+
+---------------- COPY FROM HERE ----------------
+
+Read ProjectDocs\_READ-FIRST-Briefing-*.md -- take the newest by the
+DATE IN THE FILENAME, not the file's modified date. Then read CLAUDE.md.
+
+Then tell me, before doing any work:
+1. The current build number and whether it has been field run.
+2. The top three open items.
+3. Anything in the briefing you checked and found already stale.
+
+Do not start work until I tell you what we are doing.
+
+----------------- COPY TO HERE -----------------
+
+WHY IT ASKS FOR ITEM 3: every briefing so far has gone stale within
+hours, including two pointers in the one written yesterday afternoon.
+Asking for it up front turns a silent trap into the first thing you
+are told.
+
+If you only remember one line, this is enough:
+
+    Read the newest ProjectDocs\_READ-FIRST-Briefing-*.md and CLAUDE.md,
+    then tell me the build, the top 3 open items, and what is stale.
