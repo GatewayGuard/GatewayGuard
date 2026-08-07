@@ -1,0 +1,57 @@
+﻿============================================================
+  GatewayGuard Windows 11 Security Hardening Tool v3.1
+  Build: ascii24
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-07-11 13:13:57
+  Computer: CGDELL
+  Machine:  Dell Inc. Latitude 5430
+  Machine ID: 565F4EC4F822 (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[13:13:57] [START] Tool launched v3.1 build ascii24
+[13:13:57] [INFO] Machine: Dell Inc. Latitude 5430 | MachineID: 565F4EC4F822
+[13:13:58] [OK] QuickEdit mode disabled for this session (FT-01 mitigation)
+[13:13:58] [OK] Sleep/shutdown prevention activated
+[13:16:22] [KEY] Continue accepted at: Show-FontInstructions
+[13:16:43] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[13:16:53] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[13:17:00] [KEY] Nav 'BACK' at: Show-FontInstructions
+[13:17:07] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[13:22:45] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[13:22:45] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[13:24:55] [KEY] Key 'Y' accepted at: Test-PersonalComputer
+[13:24:55] [CONFIRM] Personal computer confirmed by user
+[13:24:55] [OK] Domain check passed -- not domain joined
+[13:24:55] [OK] Administrator access confirmed
+[13:25:00] [KEY] Continue accepted at: Test-AdminAccess
+[13:25:00] [INFO] Windows Edition: Professional -- Windows 11 Pro
+[13:25:02] [INFO] RAM: 32 GB (ample)
+[13:25:14] [KEY] Key 'N' accepted at: Test-TimeDateSync
+[13:25:14] [WARN] User flagged time/date as INCORRECT after auto-fix attempt
+[13:25:22] [KEY] Key 'Y' accepted at: Test-TimeDateSync
+[13:28:46] [KEY] Continue accepted at: Test-TimeDateSync
+[22:23:27] [KEY] Key 'Y' accepted at: Test-TimeDateSync
+[22:23:27] [FIXED] Time/date corrected by user via Settings panel: Saturday, July 11, 2026 -- 1:28 PM (UTC-05:00) Eastern Time (US & Canada)
+[22:23:31] [INFO] System Baseline Summary displayed
+[22:23:33] [KEY] Continue accepted at: Show-SystemBaselineSummary
+[22:23:33] [STATE] Checkpoint saved: Baseline
+[22:23:37] [KEY] Key 'S' accepted at: Show-PreScanGate
+[22:23:37] [WARN] Scan gate SKIPPED by user (S key)
+[22:23:39] [KEY] Continue accepted at: Show-PreScanGate
+[22:24:31] [KEY] Key 'N' accepted at: Show-MalwarebytesFollowUp
+[22:24:31] [SKIP] User skipped Malwarebytes scan (already installed, state: Unknown)
+[22:24:49] [KEY] Continue accepted at: Show-MalwarebytesFollowUp
+[22:24:49] [STATE] Checkpoint saved: Malwarebytes
+[22:25:03] [KEY] Key 'N' accepted at: Test-DefenderPrimary
+[22:25:03] [WARN] Exited -- Defender real-time protection is OFF
+[22:25:03] [OK] Sleep prevention deactivated -- normal power management restored
+
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================

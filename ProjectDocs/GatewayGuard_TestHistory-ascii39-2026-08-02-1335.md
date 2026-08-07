@@ -923,6 +923,75 @@ not the invoice -- and it cannot age into a false claim.
 
 ---
 
+## 5h. FT-170 -- CHECKUP CREATES TWO FOLDERS ON THE USER'S C: DRIVE AND NEVER SAYS SO
+
+**Raised by Bill, 2026-08-07.** His words: *"Checkup tool needs to setup
+c:\gatewayguard\logs automatically with users approval of course."*
+
+**The first half is already done. The second half is the whole defect.**
+
+### What the build actually does -- measured in ascii39
+
+The folder is created automatically, in three places, all silent:
+
+| Line | Creates | How |
+|---|---|---|
+| 1530 | `C:\GatewayGuard\Logs` | `New-Item -ItemType Directory -Force`, inside a `try` |
+| 1571 | `C:\GatewayGuard\Logs` | same, in the second write path |
+| 1583 | `C:\ProgramData\GatewayGuard\Logs` | same -- a **second** folder nobody has been told about |
+
+So Checkup does not need to *learn* to create the folder. It creates **two**
+folders, one of them at the root of the user's C: drive, and mentions neither
+before doing it. The user is told the log *exists* -- screens at lines 2733,
+3527 and 6287 name the path -- but only **after** the folder has been made.
+
+### Why this is a defect and not a nicety
+
+The product's central promise is *"Checkup never applies anything you did not
+choose."* CLAUDE.md turned that into a writing rule on 2026-08-02: **every
+sentence describing what Checkup does to a machine names the user's
+permission.** Creating a directory at the root of `C:` is a change to the
+machine. It is currently the one change Checkup makes that it never asks about.
+
+The audience makes it worse, not better. This tool is for a nervous
+non-technical senior who has just been taught to be suspicious of software. A
+new folder appearing at the top of their C: drive, unexplained, is precisely
+the shape of the thing they have been told to worry about. The tool that
+teaches vigilance should not be the thing that trips it.
+
+### The second, quieter half: it fails invisibly
+
+Both creations sit inside `try` blocks with no failure branch. If the directory
+cannot be made -- permissions, a policy-locked root, a full disk -- logging
+degrades silently and the run continues. That is a **Class 1 invisible
+failure**, the same family as FT-161 and FT-162: the log said `[GOOD]` while
+nothing had happened. A tool whose entire support story is "check the log"
+must never lose its log quietly.
+
+### What ascii40 owes
+
+1. **Ask first, once.** Before the first write, a screen that names **both**
+   paths, says what is written there (a plain-text record of this run, nothing
+   else), says nothing else is ever written to them, and asks permission in the
+   tool's own words -- "turn on", not "switch".
+2. **Offer somewhere else, not a dead end.** If the answer is no, do not simply
+   proceed without a log. Offer the user's own Documents folder as an
+   alternative, and say plainly what is lost if they decline entirely: no record
+   to consult, and nothing to send if they ever ask for help.
+3. **Say so when it fails.** Replace the silent `try` with a visible message
+   naming the folder that could not be created and where the log went instead.
+4. **Disclose `C:\ProgramData\GatewayGuard\Logs` as well.** It is a real second
+   copy on the user's disk and has never been mentioned on any screen.
+5. **Do not move or rename either path.** `C:\GatewayGuard\` is a fixed recovery
+   point (CLAUDE.md). This is a disclosure and consent defect, not a path
+   defect. The fix is in what the user is told, not in where the file goes.
+
+**Related:** the same "say who authorized it" rule that produced the 2026-08-02
+website pass. This is that rule pointed at the tool's own behaviour rather than
+at its copy.
+
+---
+
 ## 5. OPEN QUESTIONS CARRIED FORWARD
 
 1. ~~**FT-109 is not closed**~~ -- **CLOSED 2026-08-02**, see section 5a.

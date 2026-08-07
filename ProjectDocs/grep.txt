@@ -1,0 +1,7 @@
+In Claude Code on CGDELL, grep .ps1, .psm1, .bat, and .md for:
+
+\OneDrive\
+$env:USERPROFILE
+C:\Users\
+CGDELL
+SANDY3
