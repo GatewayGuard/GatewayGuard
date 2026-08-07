@@ -2,7 +2,7 @@
 # File: Check-OneDriveSync-2026-08-06.ps1
 #
 # WHAT THIS ANSWERS: which OneDrive accounts are set up on THIS machine, and
-# whether the GatewayGuide project tree is present and fully on disk under each
+# whether the project tree is present and fully on disk under each
 # one. Run it on all three machines (CGDELL, SANDY, SANDY3) and compare the
 # FINGERPRINT line at the bottom. If the fingerprints match, the machines are
 # carrying the same tree. If they differ, sync has not finished or has not been
@@ -92,18 +92,33 @@ if (Test-Path $base) {
 
 # ---------- the project tree under each account ----------
 Add-Line ""
-Add-Line "---- The GatewayGuide project tree ----"
+Add-Line "---- The GatewayGuard project tree ----"
 
 $treeReports = New-Object System.Collections.Generic.List[string]
 
+# The tree root was renamed GatewayGuide -> GatewayGuard on 2026-08-07, when the
+# personal OneDrive copy was retired and the business copy became the only tree.
+# BOTH names are probed, newest first: a machine that has not finished syncing
+# the rename still has the old name on disk, and a hardcoded single name would
+# report "NO TREE ON THIS MACHINE" on a machine that has one. That is the same
+# failure shape as the absolute-path hook found by the Phase 4 grep -- a check
+# that silently stops finding what it was written to find.
+$treeNames = @('GatewayGuard', 'GatewayGuide')
+
 foreach ($root in $folders) {
-    $tree = Join-Path $root 'GatewayGuide'
-    Add-Line ""
-    Add-Line ("  " + $tree)
-    if (-not (Test-Path -LiteralPath $tree)) {
+    $tree = $null
+    foreach ($n in $treeNames) {
+        $candidate = Join-Path $root $n
+        if (Test-Path -LiteralPath $candidate) { $tree = $candidate; break }
+    }
+    if (-not $tree) {
+        Add-Line ""
+        Add-Line ("  " + (Join-Path $root $treeNames[0]))
         Add-Line "     NOT PRESENT under this account."
         continue
     }
+    Add-Line ""
+    Add-Line ("  " + $tree)
 
     $files = @(Get-ChildItem -LiteralPath $tree -Recurse -File -Force -ErrorAction SilentlyContinue)
     $bytes = 0
@@ -125,7 +140,7 @@ foreach ($root in $folders) {
     Add-Line ("     Pinned (always local): " + $pinned)
     if ($cloudOnly -gt 0) {
         Add-Line "     NOTE: some files are online only. They will download when"
-        Add-Line "     opened. To force them local: right-click the GatewayGuide"
+        Add-Line "     opened. To force them local: right-click the project"
         Add-Line "     folder and choose 'Always keep on this device'."
     }
 
@@ -178,7 +193,7 @@ Add-Line "================================================================"
 Add-Line " FINGERPRINT -- compare this line across all three machines"
 Add-Line "================================================================"
 if ($treeReports.Count -eq 0) {
-    Add-Line ("  " + $env:COMPUTERNAME + " : NO GatewayGuide TREE ON THIS MACHINE")
+    Add-Line ("  " + $env:COMPUTERNAME + " : NO PROJECT TREE ON THIS MACHINE")
 } else {
     foreach ($r in $treeReports) { Add-Line ("  " + $env:COMPUTERNAME + " : " + $r) }
 }

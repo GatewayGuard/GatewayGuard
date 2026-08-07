@@ -1,13 +1,20 @@
-<!-- Dated: 2026-08-07 09:16 ET -->
+<!-- Dated: 2026-08-07 13:30 ET -->
 # READ FIRST -- Session Briefing
 **Document Name:** _READ-FIRST-Briefing
-**Last Modified:** 2026-08-07 09:16 ET
+**Last Modified:** 2026-08-07 13:30 ET
 **Last Editor:** Claude Code (CGDELL)
 **Purpose:** Read this before anything else at the start of every session.
-**Supersedes:** `_READ-FIRST-Briefing-2026-08-06-1727.md` -- retire that file.
-Its machine fleet, rules and workflow sections were correct and are carried
-forward here. Its document pointers and two of its status lines were not; see
-CORRECTIONS below.
+**Supersedes:** `_READ-FIRST-Briefing-2026-08-07-0916.md` -- retire that file,
+and `-2026-08-06-1727.md` with it.
+
+**TWO THINGS CHANGED SINCE 09:16 THIS MORNING AND THEY CHANGE THE GROUND RULES:**
+
+1. **The GitHub remote exists.** `GatewayGuard/GatewayGuard`, private, 21
+   commits, 702 files, pushed 2026-08-07. The largest risk to the launch is
+   closed. See section 2.
+2. **There is now ONE tree, not two.** The personal OneDrive copy was deleted
+   and the business copy renamed `GatewayGuide` -> `GatewayGuard`. The old
+   instruction to "edit the personal copy only" is dead. See section 2.
 
 ---
 
@@ -60,8 +67,10 @@ patterns, not filenames.
 log.** That is the UNRUN BUILD RULE. The migration plan once instructed exactly
 that increment; it has been corrected twice now, so expect it to try again.
 
-**Git:** 19 commits, 700 files tracked, working tree clean apart from the
-deliberate holdbacks in section 5.
+**Git:** 21 commits, 702 files tracked, pushed to `GatewayGuard/GatewayGuard`
+(private). Working tree carries 107 unstaged deletions (section 2 item 4) and
+the deliberate untracked holdbacks in section 5 -- neither is "clean", both are
+intentional. Do not sweep either into a commit without asking.
 
 ---
 
@@ -70,16 +79,23 @@ deliberate holdbacks in section 5.
 1. **ascii39 has never been field run.** Everything downstream is blocked on it.
    It belongs on **SANDY** -- CGDELL is fully encrypted and cannot reach the
    Home-unencrypted branch that most needs testing.
-2. **There is NO offsite backup. No git remote exists.** `.git` lives inside the
-   project folder. Delete the folder and 19 commits go with it. A local backup
-   (`C:\GatewayGuard-Backup-2026-08-06\`) and a USB copy were made 2026-08-06.
-   **A GitHub remote is the outstanding fix and it is the single largest risk
-   to the September 1 launch.**
-3. **The project tree exists in BOTH OneDrives and they drift within hours.**
-   Until SANDY3 has the business account, the rule is: **edit the personal copy
-   only** (`C:\Users\willi\OneDrive\GatewayGuide`). The business copy is a
-   passive backup that nobody edits. Bill's reason for keeping both: sync
-   carries builds to Sandy and results back without a USB shuttle.
+2. **The offsite backup now EXISTS -- and must be kept fed.**
+   `GatewayGuard/GatewayGuard`, **private**, org-owned, first push 2026-08-07
+   (21 commits, 702 files, 48 MB). Recovery is `git clone`, or
+   `git checkout <commit> -- <path>` for one file.
+   **Push at the end of any session that produces work worth keeping.** The
+   danger is no longer "no remote" -- it is a remote that has gone stale while
+   the only current copy sits in one folder again. That was exactly the state
+   at 09:16 today: 21 commits locally, both fallbacks three commits behind, and
+   a deletion pending that would have destroyed the only copy of 77 field logs.
+3. **There is ONE tree. The two-OneDrive arrangement is over.**
+   The single root is
+   `C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\`.
+   The personal copy was deleted 2026-08-07 and the business copy renamed from
+   `GatewayGuide`. **Any document telling you to "edit the personal copy only"
+   is stale.** The old folder spelling `GatewayGuide` appears throughout files
+   written before 2026-08-07 -- it was real, not a typo, and it is retired.
+   Note the root **contains a space**; quote it anywhere it is named.
 4. **107 files are missing from the working tree and recoverable from git.**
    19 website guide pages, 17 old builds, 62 Incoming files, the LegalZoom
    license and more. **Do not restore them until Sandy's sync is confirmed
@@ -170,7 +186,7 @@ subscription; his personal OneDrive now survives that with room to spare.
 | Read `GatewayGuard_TestHistory-ascii39-2026-08-02-0914.md` | **Never existed** -- the file is `-2026-08-02-1335` |
 | "Path grep on CGDELL -- NOT DONE" | **Done 2026-08-06.** Found the hook defect above |
 | "may prove the path-fix work is empty" | It was not empty |
-| "GitHub as sync layer... the repo is authoritative for website files" | **No git remote exists.** Measured 2026-08-07. Either the repo is somewhere this machine cannot see, or the statement is aspirational. Settle this before relying on it |
+| "GitHub as sync layer... the repo is authoritative for website files" | **Settled 2026-08-07.** Half true. A public website repo does exist -- `GatewayGuard/gatewayguard.github.io`, org-owned, Pages on, `CNAME` = `gatewayguard.co` -- but it is **not** authoritative for the guide pages, because they were never uploaded. `gh repo list` returns nothing because the repos belong to the **`GatewayGuard` org**, not to `wfbiii`; query the org, not the account |
 
 **Uncommitted on purpose, do not sweep into a commit without asking:**
 `Certificates/Banking instructions.odt`, `Certificates/MaineCommunityBank/`
@@ -251,8 +267,15 @@ reads is what Cloud last produced -- check the date in the filename.
    on. Read-only, and the results file syncs back on its own.
 2. **ascii39 field run on SANDY** -- item 8 screens exercised, encryption NOT
    started, then `Run-CollectLogs.bat`. Unblocks everything downstream.
-3. **Set up a GitHub remote.** See section 2 item 2. This is the largest
-   unmitigated risk to the launch.
+3. **Rebuild the assert-guarded Python wrapper.** CodingStandards requires
+   every `.ps1` build edit to go through one. **Measured 2026-08-07: there are
+   zero `.py` files in the tree and zero in git history** -- the wrappers that
+   built ascii37 (`build_ascii37.py`, `measure.py`, `final_check.py`,
+   `patch_header_count.py`, still named in `.claude/settings.local.json`) were
+   never committed and are gone. The spec survives intact in CodingStandards
+   PYTHON EDITING RULES, so it can be rebuilt exactly. **Commit it this time.**
+   Required before ascii40, but not urgent: ascii40 is blocked on the ascii39
+   field run regardless.
 4. **ascii40 scope, only after the field log exists:** FT-170 (consent for the
    log folders), FT-162 (the Defender scan that has never run), and the three
    remaining "whether" strings.
@@ -262,5 +285,10 @@ reads is what Cloud last produced -- check the date in the filename.
 6. Reconfirm the business items carried from 2026-08-02, all with dates now
    passed: Maine Community Bank, SAM.gov EFT, D&B DUNS, DigiCert validation,
    LegalZoom EULA review, Google Business profile.
-7. Confirm the 19 guide pages reached GitHub; confirm 17 stale HTML files
-   deleted. Both were Bill's tasks and neither has been confirmed.
+7. **Upload the 19 guide pages.** No longer "confirm" -- **measured 2026-08-07:
+   they never reached GitHub.** `GatewayGuard/gatewayguard.github.io/guide/`
+   contains a single `index.html`. That repo is public, GitHub Pages is on, and
+   its `CNAME` is `gatewayguard.co`, so the domain is already wired to it -- but
+   it has not been pushed to since **2026-07-21** and `index.html` still carries
+   an "UNDER CONSTRUCTION" banner. Also still open: confirm 17 stale HTML files
+   deleted.

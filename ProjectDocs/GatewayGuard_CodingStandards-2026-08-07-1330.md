@@ -1,9 +1,23 @@
-<!-- Dated: 2026-08-07 12:23 EDT -->
+<!-- Dated: 2026-08-07 13:30 EDT -->
 # GatewayGuard -- Coding Standards
 - **Document Name:** GatewayGuard_CodingStandards
-- **Last Modified:** 2026-08-07 12:23 EDT
+- **Last Modified:** 2026-08-07 13:30 EDT
 - **Status:** Cumulative Master Document (supersedes all prior dates)
 - **Change History Log:**
+  - 2026-08-07 13:30: **FILE STRUCTURE RULES rewritten for the consolidation.**
+    The personal OneDrive copy of the tree was retired and the business copy
+    renamed `GatewayGuide` -> `GatewayGuard`, ending the two-tree arrangement
+    that had them drifting within hours of each other. The single root is now
+    `C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\`. The long-standing
+    note that "the folder is spelled GatewayGuide and always has been" is
+    retired with the folder -- it was true and load-bearing right up until it
+    was not, which is the reason this section names the path rather than
+    assuming the reader knows it.
+    Also recorded: the **GitHub remote now exists** --
+    `GatewayGuard/GatewayGuard`, **private**, first push 2026-08-07 with 21
+    commits and 702 files. Until that push the repository lived only inside the
+    folder it was protecting, with the two local copies three commits behind it.
+    See RECOVERY POINTS, which now lists the remote as recovery point 0.
   - 2026-08-07 12:23: Three corrections, all the same shape -- a fix that
     landed in one governing document and not in its neighbours.
     **(1) The CGDELL machine-state line under RESEARCH BEFORE STATING was
@@ -562,30 +576,42 @@ on (machine + RAM). No unattributed times.
 
 ### OneDrive folder structure:
 
-The tree root is spelled **`GatewayGuide`**. Everything else in this project is
-spelled `GatewayGuard`; the folder is not, and never has been. That is the real
-name on disk, so it is written here exactly as it is -- a documented path that
-does not match reality is worse than no path at all.
+**There is ONE tree, and this is where it is (as of 2026-08-07):**
 
 ```
-C:\Users\willi\OneDrive\GatewayGuide\        <- today (personal OneDrive)
+C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\
 ├── Tool\          -- current active build only (.ps1 + .bat)
 ├── Builds\        -- archive of latest build only
 ├── ProjectDocs\   -- notes, checklist, standards, research
 └── WebSite\       -- website planning docs
 ```
 
-**After the M365 migration (migration plan Phase 3) the root becomes:**
+**The two-tree arrangement is over.** The tree used to exist in both OneDrives
+at once -- personal and business -- and they drifted within hours of each
+other. On 2026-08-07 the personal copy was deleted and the business copy was
+renamed `GatewayGuide` -> `GatewayGuard`. Anything still describing "the
+personal copy" or instructing you to edit one of two copies is stale; there is
+one tree and one remote.
 
-```
-C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuide\
-```
+**The folder used to be spelled `GatewayGuide`** -- the one thing in this
+project not spelled `GatewayGuard`. That is retired with the folder. It is
+recorded here rather than deleted because scripts, logs and documents written
+before 2026-08-07 name the old spelling, and a reader who meets it needs to
+know it was real rather than a typo.
 
-**That path contains spaces.** Anything naming it must quote it. Today nothing
-does: all 11 launchers in `Tool\` use `cd /d "%~dp0"` and relocate cleanly, and
-no script in `Tool\` depends on an absolute path. Do not add one. Where a tool
-outside `Tool\` must reach the project root -- a Claude Code hook, for instance
--- use the `${CLAUDE_PROJECT_DIR}` placeholder rather than typing the path.
+**That path contains spaces.** Anything naming it must quote it. Nothing does
+today, and nothing should start: all 13 launchers in `Tool\` use
+`cd /d "%~dp0"` and relocate cleanly, and no script in `Tool\` depends on an
+absolute path. Do not add one. Where a tool outside `Tool\` must reach the
+project root -- a Claude Code hook, for instance -- use the
+`${CLAUDE_PROJECT_DIR}` placeholder rather than typing the path.
+
+**Do not hardcode the root folder's NAME either.** `Check-OneDriveSync` probed
+for the literal string `GatewayGuide` and would have reported "NO PROJECT TREE
+ON THIS MACHINE" on every machine the moment the rename landed -- a check that
+silently stops finding what it was written to find, which is the same failure
+as the absolute-path hook the Phase 4 grep caught. It now probes both names,
+newest first. Any future tool that must locate the tree does the same.
 
 ### File naming:
 - Script: W11-SecurityHardening-v3-ascii33-2026-07-21-1009.ps1
@@ -746,6 +772,17 @@ When editing large .ps1 files:
 
 Know where the last known-good copy is BEFORE starting a risky edit.
 Established during the 2026-07-25 ascii34 recovery:
+
+**0. The GitHub remote -- the only OFFSITE copy (added 2026-08-07).**
+`GatewayGuard/GatewayGuard`, **private**, org-owned. Every other recovery point
+on this list lives on the same machine as the thing it protects, or inside the
+folder it protects. Until 2026-08-07 the repository was inside the project
+folder with no remote at all, and both local copies were three commits behind
+it -- so deleting one folder would have destroyed 21 commits, including the
+only backup of 77 field logs. Recover a file with
+`git checkout <commit> -- <path>`, or the whole tree with `git clone`.
+**Push after any session that produces work worth keeping.** A remote that is
+21 commits stale is a recovery point for a version you no longer have.
 
 **1. Claude Code file history -- the fastest recovery, per-file and
 per-version:**
