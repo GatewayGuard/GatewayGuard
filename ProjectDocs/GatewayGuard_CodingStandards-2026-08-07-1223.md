@@ -1,9 +1,32 @@
-<!-- Dated: 2026-08-06 17:00 EDT -->
+<!-- Dated: 2026-08-07 12:23 EDT -->
 # GatewayGuard -- Coding Standards
 - **Document Name:** GatewayGuard_CodingStandards
-- **Last Modified:** 2026-08-06 17:00 EDT
+- **Last Modified:** 2026-08-07 12:23 EDT
 - **Status:** Cumulative Master Document (supersedes all prior dates)
 - **Change History Log:**
+  - 2026-08-07 12:23: Three corrections, all the same shape -- a fix that
+    landed in one governing document and not in its neighbours.
+    **(1) The CGDELL machine-state line under RESEARCH BEFORE STATING was
+    stale.** It read "CGDELL carries Defender, BitLocker, TPM, Secure Boot
+    **off**". CGDELL was measured 2026-08-02 as **fully encrypted**, signed in
+    with a **Microsoft account** (TestHistory-ascii39, FT-143/144/145). The
+    identical claim was corrected in ProjectInstructions on 2026-08-06 at
+    17:27; this document was edited at 17:00 the same day and missed it, so
+    the stale line outlived its own correction. It is the line that produced a
+    false "your machine has encrypted itself" warning to Bill on 2026-08-06.
+    Replaced with a **pointer** to the ENCRYPTION STATE MATRIX rather than a
+    second copy of the facts -- a restated fact is a fact that can go stale on
+    its own, which is exactly what happened here.
+    **(2) SESSION END CHECKLIST said "All 23 mandatory pre-build gates".**
+    Gate 24 was added to this same document on 2026-08-02 and the checklist
+    was not updated with it. A checklist that stops at 23 never asks about the
+    gate that caught FT-162.
+    **(3) Gate 6 was titled "Build ID Triple Agreement" and listed four
+    locations.** Playbook Appendix A item 9 requires **five** -- it adds the
+    "Current build" line in CLAUDE.md, added 2026-07-26 precisely because that
+    line had drifted six builds stale. Retitled, corrected to five, and the
+    Run-GatewayGuard.bat reference kept as the separate paired-file check it
+    actually is (Playbook item 10), so the count cannot drift to six.
   - 2026-08-06 17:00: FILE STRUCTURE RULES corrected, and the post-move path
     recorded. The documented tree root read `...\OneDrive\GatewayGuard\`; the
     folder is `GatewayGuide` and always has been, so the one path this document
@@ -251,12 +274,27 @@ Zero Read-Host calls in main logic. All input via Read-ValidKey only.
 ```
 Zero "press any key" references in any user-facing string.
 
-### 6. Build ID Triple Agreement
-- # FILE: header matches new build filename
-- # BUILD: header matches new build name
-- $BuildID variable matches new build name
-- Run-GatewayGuard.bat references correct .ps1 filename
-All four must agree. Never update one without updating all.
+### 6. Build ID Agreement -- FIVE locations (Playbook Appendix A item 9)
+The build ID appears in five places. All five must agree, and all five are
+updated in the SAME edit that increments the build:
+
+1. The .ps1 **filename** itself
+2. `# FILE:` header -- matches the new build filename
+3. `# BUILD:` header -- matches the new build name
+4. `$BuildID` variable -- matches the new build name
+5. The **"Current build" line in CLAUDE.md**
+
+**Location 5 is the one that gets forgotten, and it is the one that lies to
+the next session.** CLAUDE.md sat at ascii28 while the tree was on ascii34 --
+six builds stale, on the very line instructing the reader to confirm the build
+number before any edit session. A pointer that lies is worse than no pointer.
+That is why the Playbook raised this check from four locations to five on
+2026-07-26.
+
+**Separately -- this is a paired-file check, not a sixth ID location:**
+Run-GatewayGuard.bat references its .ps1 by exact filename and must be
+corrected in the same edit (Playbook Appendix A item 10; CROSS-FILE SYNC
+below). It is named here so it is not missed, not to make six.
 
 ### 7. Date-Time in Filename
 Format: W11-SecurityHardening-v3-ascii33-2026-07-21-1009.ps1
@@ -588,7 +626,9 @@ Claude must, before producing any output:
 ## SESSION END CHECKLIST
 
 Before presenting final output:
-- [ ] All 23 mandatory pre-build gates passed (for .ps1)
+- [ ] All 24 mandatory pre-build gates passed (for .ps1) -- gates 1-24,
+      including gate 24 (external command verification, run mechanically
+      via `Tool\Run-ExternalCommandCheck.bat`)
 - [ ] HTML Delivery Gate H-1/H-2/H-3/H-4 reported (for .html)
 - [ ] PSScriptAnalyzer run; any warnings documented
 - [ ] Brace balance verified (open == close)
@@ -756,13 +796,35 @@ The flags and flag VALUES passed to an external program are claims about that
 program, and they fall under this rule exactly as prose claims do. **Never
 write a flag you have not seen in that program's own `-?` output, or run.**
 
-**TEST ON THE DELL FIRST.** CGDELL carries Defender, BitLocker, TPM, Secure
-Boot **off**, Kernel DMA on, and a **trial-expired** Malwarebytes -- so most
-claims about this tool's subject matter can be settled there in seconds. The
-asymmetry that governs everything here: **checking costs seconds, a wrong
+**TEST ON A REAL MACHINE FIRST -- AND CHOOSE THE MACHINE BY THE STATE THE
+CLAIM DEPENDS ON.** CGDELL is the usual bench: it is the primary dev machine,
+it carries Defender and a **trial-expired** Malwarebytes, and most questions
+about this tool's subject matter can be settled there in seconds.
+
+**Do not restate any machine's encryption, account, or firmware state in this
+document.** The single authoritative statement of fleet state is the
+**ENCRYPTION STATE MATRIX** in `GatewayGuard_ProjectInstructions-*.md`
+(MACHINE CHECK section), and a measurement in the current
+`GatewayGuard_TestHistory-ascii*.md` outranks even that. Read one of those
+before reasoning from any machine's state. A restated fact is a fact that can
+go stale on its own.
+
+**What CGDELL cannot settle.** CGDELL is **fully encrypted** (measured
+2026-08-02, FT-143/144/145), so it cannot reach the Home / unencrypted /
+local-account branch of item 8 -- the FT-110 path and the FT-144 danger case.
+**SANDY is the only machine in the fleet that can**, and its value for that
+branch is spent permanently the first time encryption actually completes on
+it. A claim about the unencrypted path cannot be settled on CGDELL no matter
+how convenient CGDELL is.
+
+The asymmetry that governs everything here: **checking costs seconds, a wrong
 assertion costs a build.** Prefer running the check over asking Bill to run
 it; asking costs a round trip and his time. Say plainly when something cannot
 be tested on any available machine.
+
+*(The prior version of this paragraph asserted CGDELL carried BitLocker, TPM
+and Secure Boot **off**. That was false, and already four days out of date
+when it was written. See MACHINE-STATE CURRENCY in ProjectInstructions.)*
 
 **Verify the parameter NAME too, not just the behaviour.** On 2026-08-02 the
 fix for FT-161 was first written as
