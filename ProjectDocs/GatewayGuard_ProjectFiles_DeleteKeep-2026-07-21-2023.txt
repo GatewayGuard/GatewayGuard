@@ -1,0 +1,124 @@
+GatewayGuard Project Files -- Delete / Keep Analysis
+Generated: 2026-07-21 22:23 EDT
+=====================================================================
+
+LEGEND:
+  DELETE  = Superseded by a newer version; safe to remove
+  KEEP    = Current / active file; do not remove
+  RENAME  = File needs a proper date-time filename per current naming rules
+  REVIEW  = Non-code asset; Bill to confirm if still needed
+
+=====================================================================
+
+FILE                                                    ACTION     REASON
+----------------------------------------------------------------------
+
+Capture_Streaming_Audio_Windows11.pdf                   KEEP       Tips page source content
+CodingStandards_Additions-2026-07-19.md                 DELETE     Content integrated into GatewayGuard_CodingStandards-2026-07-21-1009.md
+GatewayGuard-BitLocker-Overnight-2026-07-13.ps1         KEEP       Standalone utility, not part of main build series
+GatewayGuard-BitLocker-Screens-ascii29-2026-07-13.ps1   KEEP       Historical test artifact; safe to keep for reference
+GatewayGuard_404-2026-07-21-1625.html                   KEEP       Current 404 page (latest version)
+GatewayGuard_ACBL_Pitch-2026-07-16.docx                 KEEP       Marketing asset
+GatewayGuard_CPM_Schedule-2026-07-15.md                 RENAME     No -HHMM in filename; needs resave as GatewayGuard_CPM_Schedule-2026-07-21-2023.md after CPM update tonight
+GatewayGuard_CPM_Schedule.md                            DELETE     Superseded by dated version above
+GatewayGuard_ClaudeUsageGuide-2026-06-30.md             KEEP       Reference doc; no newer version
+GatewayGuard_CodingStandards-2026-07-20-0908.md         DELETE     Superseded by GatewayGuard_CodingStandards-2026-07-21-1009.md
+GatewayGuard_CodingStandards-2026-07-21-1009.md         KEEP       Current coding standards
+GatewayGuard_CommunityFlyer.docx                        KEEP       Marketing asset
+GatewayGuard_DefectPreventionPlaybook-2026-07-13.md     KEEP       Current playbook (no newer version)
+GatewayGuard_DeploymentSteps-2026-07-21-1009.txt        KEEP       Current deployment steps
+GatewayGuard_EnvironmentHardening__1_.md                REVIEW     Unclear if still active; Bill to confirm
+GatewayGuard_FAQ.md                                     RENAME     No date-time in filename; needs resave as GatewayGuard_FAQ-2026-07-21-2023.md
+GatewayGuard_FieldTestNotes_Round5-2026-07-12.md        KEEP       Historical test record
+GatewayGuard_FutureProjects-2026-07-19.md               KEEP       Current future projects list (no newer version)
+GatewayGuard_LaunchAssets.md                            RENAME     No date-time in filename; needs resave as GatewayGuard_LaunchAssets-2026-07-21-2023.md
+GatewayGuard_LaymanPositioning-2026-07-16.docx          KEEP       Marketing asset
+GatewayGuard_MBDefender_Screens.md                      RENAME     No date-time; needs resave as GatewayGuard_MBDefender_Screens-2026-07-21-2023.md
+GatewayGuard_MarketResearch.docx                        KEEP       Research asset
+GatewayGuard_PreScanSpec-ascii33-2026-07-19-r2.md       KEEP       Current pre-scan spec (r2 is latest)
+GatewayGuard_PreScanSpec-ascii33-2026-07-19.md          DELETE     Superseded by -r2 version above (NOTE: -r2 suffix predates new naming rules; acceptable to keep as-is until next update)
+GatewayGuard_PresentationCompanionSheet-2026-07-03.md   KEEP       Marketing/presentation asset
+GatewayGuard_ProjectInstructions-2026-07-20-0908.md     DELETE     Superseded by current version (uploaded today as message header)
+GatewayGuard_ProjectNotes-2026-07-11-r4.md              DELETE     Superseded by GatewayGuard_ProjectNotes.md if that is newer -- see below
+GatewayGuard_ProjectNotes.md                            RENAME     No date-time; needs resave as GatewayGuard_ProjectNotes-2026-07-21-2023.md after confirming it is the current version
+GatewayGuard_SettingsToGuideMap.md                      RENAME     No date-time; needs resave as GatewayGuard_SettingsToGuideMap-2026-07-21-2023.md
+GatewayGuard_SystemBaseline_Diagnostic.ps1              KEEP       Standalone utility
+GatewayGuard_TestHistory-ascii29-2026-07-13.md          KEEP       Historical test record
+GatewayGuard_TestHistory-ascii30-2026-07-14.md          KEEP       Historical test record
+GatewayGuard_TestHistory-ascii32-2026-07-19-r2.md       KEEP       Current ascii32 test history (r2 is latest)
+GatewayGuard_TestHistory-ascii32-2026-07-19.md          DELETE     Superseded by -r2 version
+GatewayGuard_TestHistory-ascii33-2026-07-21-1009.md     KEEP       Current ascii33 test history
+GatewayGuard_WebsitePrePlan-2026-07-12.md               KEEP       Historical planning record
+GatewayGuard_WebsitePrePlan.md                          DELETE     Superseded by dated version above
+GatewayGuard_WebsiteStandards-2026-07-18.md             DELETE     Superseded by GatewayGuard_WebsiteStandards-2026-07-21-1009.md
+GatewayGuard_WebsiteStandards-2026-07-21-1009.md        KEEP       Current website standards
+GatewayGuard_ascii23_DevNotes__1_.md                    KEEP       Historical dev notes
+GatewayGuard_index-2026-07-21-0933.html                 DELETE     Superseded by GatewayGuard_index-2026-07-21-1625.html
+GatewayGuard_index-2026-07-21-1625.html                 KEEP       Current home page working file
+LocalCommunityWorkshopPlan.pdf                          KEEP       Marketing asset
+MB_Privacy_policy_.pdf                                  KEEP       Reference / compliance asset
+MB_State_Capture_Template.txt                           KEEP       Active testing tool
+Marketing-Notes.docx                                    KEEP       Marketing asset
+PCSafetyChecklist.pdf                                   KEEP       Marketing/reference asset
+ProjectNotes_Addendum-2026-07-19.md                     DELETE     Content should be integrated into GatewayGuard_ProjectNotes.md; standalone addendum violates naming rules
+Run-GatewayGuard.bat                                    KEEP       Always-current launcher (no date in filename by design)
+W11-SecurityHardening-v3-ascii30-2026-07-14.ps1         KEEP       Historical build record
+W11-SecurityHardening-v3-ascii31-2026-07-14.ps1         KEEP       Historical build record
+W11-SecurityHardening-v3-ascii32-2026-07-17.ps1         KEEP       Historical build record
+W11-SecurityHardening-v3-ascii33-2026-07-19.ps1         KEEP       Current active build
+What_is_Ascii.txt                                       KEEP       Reference doc
+defender-realtime-2026-07-18.html                       RENAME     Missing GatewayGuard_ prefix and -HHMM; resave as GatewayGuard_defender-realtime-2026-07-21-2023.html
+firewall-2026-07-18.html                                RENAME     Missing GatewayGuard_ prefix and -HHMM; resave as GatewayGuard_firewall-2026-07-21-2023.html
+guide-index-2026-07-18-r2.html                          DELETE     Superseded by r7
+guide-index-2026-07-18-r4.html                          DELETE     Superseded by r7
+guide-index-2026-07-18-r7.html                          RENAME     Missing GatewayGuard_ prefix and -HHMM; resave as GatewayGuard_guide-index-2026-07-21-2023.html
+index-2026-07-16-r4.html                                DELETE     Superseded by GatewayGuard_index-2026-07-21-1625.html
+launcher.cs                                             KEEP       Future .exe launcher source (no date in filename -- single always-current file)
+mainellc6.pdf                                           KEEP       Maine LLC certificate
+phishing-protection-2026-07-18.html                     RENAME     Missing GatewayGuard_ prefix and -HHMM; resave as GatewayGuard_phishing-protection-2026-07-21-2023.html
+windows-update-2026-07-18.html                          RENAME     Missing GatewayGuard_ prefix and -HHMM; resave as GatewayGuard_windows-update-2026-07-21-2023.html
+windows_security_walkthrough_guide_v9.docx              KEEP       Master guide source document
+
+=====================================================================
+
+SUMMARY
+-------
+DELETE (10):
+  CodingStandards_Additions-2026-07-19.md
+  GatewayGuard_CPM_Schedule.md
+  GatewayGuard_CodingStandards-2026-07-20-0908.md
+  GatewayGuard_PreScanSpec-ascii33-2026-07-19.md
+  GatewayGuard_ProjectInstructions-2026-07-20-0908.md
+  GatewayGuard_ProjectNotes-2026-07-11-r4.md
+  GatewayGuard_TestHistory-ascii32-2026-07-19.md
+  GatewayGuard_WebsitePrePlan.md
+  GatewayGuard_WebsiteStandards-2026-07-18.md
+  GatewayGuard_index-2026-07-21-0933.html
+  guide-index-2026-07-18-r2.html
+  guide-index-2026-07-18-r4.html
+  index-2026-07-16-r4.html
+  ProjectNotes_Addendum-2026-07-19.md
+
+RENAME (needs proper date-time filename) (9):
+  GatewayGuard_CPM_Schedule-2026-07-15.md
+  GatewayGuard_FAQ.md
+  GatewayGuard_LaunchAssets.md
+  GatewayGuard_MBDefender_Screens.md
+  GatewayGuard_ProjectNotes.md
+  GatewayGuard_SettingsToGuideMap.md
+  defender-realtime-2026-07-18.html
+  firewall-2026-07-18.html
+  guide-index-2026-07-18-r7.html
+  phishing-protection-2026-07-18.html
+  windows-update-2026-07-18.html
+
+REVIEW (Bill to confirm) (1):
+  GatewayGuard_EnvironmentHardening__1_.md
+
+KEEP (everything else) -- no action needed
+
+=====================================================================
+NOTE: The 14 new guide setting pages produced tonight will be delivered
+as GatewayGuard_[settingname]-2026-07-21-2023.html files and added to
+the project. GitHub deploy names remain clean (no dates).
+=====================================================================
