@@ -1,11 +1,22 @@
-<!-- Dated: 2026-08-08 20:53 ET -->
+<!-- Dated: 2026-08-09 07:05 ET -->
 # GatewayGuard -- Sync Setup Steps (Claude Code <-> Claude Cloud)
 - **Document Name:** GatewayGuard_SyncSetupSteps
-- **Last Modified:** 2026-08-08 20:53 ET
+- **Last Modified:** 2026-08-09 07:05 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **Status:** Working procedure -- follow at the keyboard
 - **Companion to:** `GatewayGuard_SyncPlan-*.md` (the what and why; this is the how)
 - **Change History Log:**
+  - 2026-08-09 07:05: **Added PART 0 -- harvest the existing Project
+    Instructions before overwriting them.** The first version went straight to
+    connecting the repository and then told Bill to paste a new instruction
+    block over the old one. **The box in Cloud almost certainly holds rules
+    that exist in no file**, and pasting over it destroys them with no copy and
+    no history. That is the same class of loss as the four Python wrappers,
+    which were named in `settings.local.json` and never committed. Harvest
+    first, file what is unique, then overwrite.
+    Also rewrote PART A as literal actions -- which button, which box, what
+    text to type -- after Bill pointed out the previous version described what
+    to do without saying where or what to type.
   - 2026-08-08 20:53: Created. Step-by-step procedure to bring Claude Cloud
     and Claude Code into agreement on project files, ProjectDocs and WebSite
     files. Written after the GitHub remote was created 2026-08-08 -- none of
@@ -30,58 +41,143 @@ remote `GatewayGuard/GatewayGuard`, private, org-owned, 0 unpushed.
 
 ---
 
-# PART A -- ONE-TIME SETUP
+# PART 0 -- DO THIS FIRST: HARVEST THE OLD INSTRUCTIONS
 
-## A1. Confirm the repository is current (Claude Code, 10 seconds)
+**Do not skip this. It is the step that loses rules if skipped.**
 
-Before connecting anything, make sure GitHub has everything:
+Cloud's Project Instructions box has been in use for months. It very likely
+holds rules that were typed straight into it and were **never written into any
+file**. Paste a new block over it and those rules are gone -- no copy, no
+history, no way to know what was lost.
+
+This is the same shape as the four Python wrappers: named in
+`settings.local.json`, used to build ascii37, never committed, and now
+unrecoverable.
+
+## 0a. Copy the existing text out
+
+1. Go to **claude.ai** and open the **GatewayGuard** project
+2. Find **Project instructions** (there may be an **Edit** link beside it)
+3. Click inside the box
+4. Press **Ctrl+A** then **Ctrl+C** -- this selects and copies everything in it
+
+## 0b. Save it where Claude Code can read it
+
+1. Open **Notepad** (press the Windows key, type `notepad`, press Enter)
+2. Press **Ctrl+V** to paste
+3. Press **Ctrl+S** to save
+4. In the filename box, type this **exactly**, including the quotes:
+
+```
+"C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\ProjectDocs\CloudInstructions-CAPTURED.txt"
+```
+
+The quotes matter -- the folder name has spaces in it.
+
+## 0c. Tell Claude Code to reconcile it
+
+In the Claude Code terminal, say:
+
+> Read ProjectDocs\CloudInstructions-CAPTURED.txt and compare it against the
+> governing documents. Tell me every rule in it that exists in no file.
+
+**Claude Code then files anything unique** into the right document -- usually
+`GatewayGuard_ProjectInstructions-*.md` or `CLAUDE.md` -- commits it, and
+pushes.
+
+**Only after that push is it safe to overwrite the box.** The rules now live
+in files, and the files are on GitHub.
+
+## 0d. Why the two do not need to "mirror" afterwards
+
+They never should. **The box holds a pointer; the files hold the content.**
+
+A 386-line copy of CLAUDE.md pasted into a text box has no timestamp, no diff,
+and nothing that signals it has drifted -- so it drifts silently and forever.
+A short pointer that says "read the newest briefing, then CLAUDE.md" stays
+correct no matter how much those files change.
+
+**Mirroring is achieved by making the box small enough that it cannot drift**,
+not by keeping two long texts in step.
+
+---
+
+# PART A -- CONNECT THE REPOSITORY
+
+## A1. Confirm GitHub has everything (Claude Code, 10 seconds)
+
+Ask Claude Code to run:
 
 ```
 git status
 git log origin/main..HEAD --oneline
 ```
 
-**Desired state:** the second command prints nothing. That means no commits
-are sitting unpushed. If it prints anything, push first.
+**Desired state:** the second command prints nothing -- no commits sitting
+unpushed. If it prints anything, push before going further.
 
-## A2. Connect Claude Cloud to the repository
+## A2. Open the project
 
-1. Open the GatewayGuard project at **claude.ai**
-2. Find **Project knowledge** on the right
-3. Click **+**
-4. Choose **GitHub**
-5. Paste: `GatewayGuard/GatewayGuard`
+In a browser, go to:
 
-## A3. Authorize the ORGANISATION, not just your account
+```
+claude.ai
+```
+
+Sign in. On the left, click **Projects**, then click **GatewayGuard**.
+
+## A3. Add the repository
+
+On the right of the project page is a panel headed **Project knowledge**.
+
+1. Click the **`+`** button in that panel
+2. A menu appears -- click **GitHub**
+3. A box appears asking for a repository. **Type exactly:**
+
+```
+GatewayGuard/GatewayGuard
+```
+
+4. Press **Enter**
+
+## A4. Authorize the ORGANISATION, not your account
 
 The repository is **private and owned by the `GatewayGuard` org**, not by
-`wfbiii`. A personal authorization is not enough.
+`wfbiii`. A personal authorization is not enough, and this is the step people
+get wrong.
 
-- When the warning about a private repository appears, follow the link to the
-  GitHub App and grant access
-- **Grant it for the `GatewayGuard` organisation**
-- If the repositories still do not appear, the org may require single sign-on.
-  Each user then authorizes separately for that org. Disconnecting and
-  reconnecting GitHub inside Claude does **not** fix an SSO problem.
+1. A warning about a private repository appears, with a link to GitHub. Click
+   the link.
+2. GitHub shows a list containing **wfbiii** and **GatewayGuard**.
+   **Click `GatewayGuard` -- the organisation, not your name.**
+3. Choose **Only select repositories**
+4. Pick **GatewayGuard**
+5. Click the green **Install** (or **Save**) button
+6. Return to the Claude browser tab
 
-## A4. Select exactly four things -- and nothing else
+**If the repositories still do not appear**, the org may require single
+sign-on. Each user then authorizes separately for that org. Disconnecting and
+reconnecting GitHub inside Claude does **not** fix an SSO problem.
 
-Use the file browser to select:
+## A5. Tick exactly four things -- and nothing else
+
+A file browser appears showing the folders in the repository. **Tick these
+four:**
 
 ```
-ProjectDocs/     <- governing documents
-Tool/            <- the build, checkers and launchers
-WebSite/         <- website source, 150 files (131 HTML)
-CLAUDE.md        <- build rules
+ProjectDocs
+Tool
+WebSite
+CLAUDE.md
 ```
 
-**Select FOLDERS, not individual files.** A folder picks up new documents on
-the next sync. Individually chosen files do not, and the new ones will simply
-not exist as far as Cloud is concerned.
+Then click **Save** (or **Add**).
 
-### Do NOT connect the repository root
+**Tick FOLDERS, not individual files inside them.** A folder picks up new
+documents on later syncs. Individually chosen files do not -- any document
+written after today would simply not exist as far as Cloud is concerned.
 
-The root also contains:
+**Do NOT tick the top-level box that selects everything.** The root also holds:
 
 | Folder | What is in it |
 |---|---|
@@ -90,26 +186,34 @@ The root also contains:
 | `Attachments/` | a stale copy of the whole tree, plus personal business documents |
 | `Builds/Documents/` | personal documents |
 
-None of that belongs in project knowledge. Connecting the root puts all of it
-there in one click.
+One click on the top-level box puts all of that into project knowledge.
 
-## A5. PROVE it is connected -- do not trust the badge
+## A6. PROVE it is connected -- do not trust the badge
 
-There is a known failure where a repository shows **Connected** while its
-files are not actually reachable in conversation.
+There is a known failure where a repository shows **Connected** while its files
+are not actually reachable in conversation.
 
-**Ask Cloud this, and require a real answer:**
+**In the project's chat box, type exactly this and press Enter:**
 
-> Quote the first three lines of `ProjectDocs/GatewayGuard_SyncPlan-2026-08-08-2050.md`
-> exactly as they appear.
+```
+Quote the first two lines of ProjectDocs\_READ-FIRST-Briefing-2026-08-08-2147.md exactly as they appear.
+```
 
-**Desired state:** it returns the `<!-- Dated: 2026-08-08 20:50 ET -->` line
-and the title. If it paraphrases, guesses, or says it cannot find the file,
-**it is not connected** -- go back to A3.
+**It should answer with:**
+
+```
+<!-- Dated: 2026-08-08 21:47 ET -->
+# READ FIRST -- Session Briefing
+```
+
+If it paraphrases, guesses, or says it cannot find the file, **it is not
+connected** -- go back to A4.
 
 ---
 
 # PART B -- PROJECT INSTRUCTIONS IN CLOUD
+
+**Do not start Part B until PART 0 is finished and pushed.**
 
 ## B1. Do not paste CLAUDE.md into Project Instructions
 
@@ -119,8 +223,14 @@ and nothing will tell you.
 
 ## B2. Paste this instead
 
-Put **only** this in Cloud's Project Instructions. It changes almost never,
-because the detail lives in files the connector delivers:
+1. On the project page, click **Set project instructions** (or **Edit** beside
+   Instructions)
+2. Click in the box, press **Ctrl+A**, then **Delete**
+3. Paste the block below
+4. Click **Save**
+
+Put **only** this in the box. It changes almost never, because the detail
+lives in files the connector delivers:
 
 ```
 Read ProjectDocs\_READ-FIRST-Briefing-*.md -- take the newest by the DATE IN
