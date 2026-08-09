@@ -1,11 +1,23 @@
-<!-- Dated: 2026-08-09 07:17 ET -->
+<!-- Dated: 2026-08-09 14:35 ET -->
 # GatewayGuard -- Sync Setup Steps (Claude Code <-> Claude Cloud)
 - **Document Name:** GatewayGuard_SyncSetupSteps
-- **Last Modified:** 2026-08-09 07:17 ET
+- **Last Modified:** 2026-08-09 14:35 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **Status:** Working procedure -- follow at the keyboard
 - **Companion to:** `GatewayGuard_SyncPlan-*.md` (the what and why; this is the how)
 - **Change History Log:**
+  - 2026-08-09 14:35: **Connector scope corrected from four items to five --
+    `.claude` was missing.** It is easy to overlook: the name starts with a
+    dot and it holds three files. But one of them is
+    `.claude/rules/website-copy.md`, the website-copy-must-match-the-guide
+    rule, which `CLAUDE.md` relocated there on 2026-08-02 and replaced with a
+    pointer.
+    **Measured 2026-08-09:** Cloud's copy of `CLAUDE.md` still carries that
+    rule as full inline text, because its snapshot predates the move. So
+    connecting the four as previously written would have taken a rule Cloud
+    already had and made it invisible -- the switch would have lost ground.
+    Found by hash-comparing the project-knowledge archive against the tree.
+    Connector total corrected 343 -> 346 files.
   - 2026-08-09 07:17: **Added PART 0b -- reconcile Project Knowledge, then thin
     the duplicates.** Connecting GitHub does not replace what is already in
     Project Knowledge; it adds to it. Cloud would then hold two copies of the
@@ -51,7 +63,7 @@ sides can see is **the GitHub repository**. So agreement means:
 clicks Sync, Cloud is reading whatever it saw last -- which may be days old
 and will never say so.
 
-**Current state (measured 2026-08-08 20:53):** 24 commits, 705 tracked files,
+**Current state (measured 2026-08-09 14:35):** 31 commits, 706 tracked files,
 remote `GatewayGuard/GatewayGuard`, private, org-owned, 0 unpushed.
 
 ---
@@ -128,8 +140,8 @@ from git. Two copies of the same document, different content, nothing marking
 which is authoritative. **That is worse than one stale source**, because they
 contradict each other and Cloud has no way to choose.
 
-**Measured 2026-08-09:** the connector will deliver **343 files** --
-ProjectDocs 128, Tool 64, WebSite 150, CLAUDE.md 1. Of those, **64 are `.md`
+**Measured 2026-08-09:** the connector will deliver **346 files** --
+ProjectDocs 128, Tool 64, WebSite 150, CLAUDE.md 1, .claude 3. Of those, **64 are `.md`
 documents.**
 
 ## 0b-1. Get the list out of Cloud
@@ -306,19 +318,41 @@ get wrong.
 sign-on. Each user then authorizes separately for that org. Disconnecting and
 reconnecting GitHub inside Claude does **not** fix an SSO problem.
 
-## A5. Tick exactly four things -- and nothing else
+## A5. Tick exactly five things -- and nothing else
 
 A file browser appears showing the folders in the repository. **Tick these
-four:**
+five:**
 
 ```
 ProjectDocs
 Tool
 WebSite
 CLAUDE.md
+.claude
 ```
 
 Then click **Save** (or **Add**).
+
+### Why `.claude` is on that list
+
+It is easy to miss -- the name starts with a dot and it holds only three
+files -- but one of them is a governing rule:
+
+```
+.claude/rules/website-copy.md      the website-copy-must-match-the-guide rule
+.claude/check-ps1-integrity.ps1    the Class 7 integrity gate
+.claude/settings.local.json        hook registration and permissions
+```
+
+**Measured 2026-08-09:** Cloud's copy of `CLAUDE.md` carries the
+website-copy rule as full inline text, because that is where it lived until
+2026-08-02. The tree's `CLAUDE.md` replaced it with a pointer -- *"Moved to
+`.claude/rules/website-copy.md`"* -- and moved the 50 lines there.
+
+**So connecting the four without `.claude` would take a rule Cloud currently
+has and make it invisible.** The switch to the connector would lose ground
+rather than gain it. Nothing else in the tree is in that position; this is
+the only relocated rule.
 
 **Tick FOLDERS, not individual files inside them.** A folder picks up new
 documents on later syncs. Individually chosen files do not -- any document

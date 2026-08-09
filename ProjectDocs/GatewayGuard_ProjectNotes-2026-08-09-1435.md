@@ -1,14 +1,29 @@
 # GatewayGuard Project Notes
-<!-- Dated: 2026-07-24 13:17 EDT -->
+<!-- Dated: 2026-08-09 14:35 EDT -->
 <!-- Document Name: GatewayGuard_ProjectNotes -->
-<!-- Status: Cumulative Master. Supersedes ProjectNotes r4 (07-11),
-     r3 (07-12), the June 26 snapshot, and ProjectNotes_Addendum
-     (07-19), whose content is integrated below. -->
-**Last Updated:** 24-Jul-2026 13:17 EDT (Rev: LegalZoom replaces AirCounsel; DigiCert/Sectigo signing chain; SANDY Wi-Fi hardware failure; EULA Option B drafted; 7 guide pages built; July 19 addendum integrated; 14 new investigation items added)
+<!-- Status: Cumulative Master. Supersedes ProjectNotes-2026-07-24-1317,
+     r4 (07-11), r3 (07-12), the June 26 snapshot, and
+     ProjectNotes_Addendum (07-19), whose content is integrated below. -->
+**Last Updated:** 09-Aug-2026 14:35 EDT (Rev: LegalZoom replaces AirCounsel; DigiCert/Sectigo signing chain; SANDY Wi-Fi hardware failure; EULA Option B drafted; 7 guide pages built; July 19 addendum integrated; 14 new investigation items added)
 **Current Build:** ascii33 (built 2026-07-19, field-tested 2026-07-21 on HP SANDY -- cleared)
 **Test Machines:** Dell Latitude 5430 (CGDELL, 32GB, primary dev), HP Notebook 17-by1955cl (SANDY, 8GB, Wi-Fi adapter failed -- USB adapter arriving), Lenovo IdeaPad (Sandy3, 8GB)
 
 ## CHANGE HISTORY LOG
+- 2026-08-09 14:35: **Recovered CARRIED-FORWARD FIELD FINDINGS (CF-01
+  through CF-06) from Claude project knowledge.** The tree's copy of this
+  document lacked that entire section -- 62 lines of ascii30/31 field
+  findings -- while the copy held in Claude Cloud had it. Found by
+  hash-comparing the 2026-08-09 project-knowledge archive against the tree:
+  91 files compared, 59 identical, and this was the only one where Cloud
+  held substantive content the tree did not.
+  The section's own comment says the items were "preserved here so nothing
+  is stranded on a local machine." They were stranded in Cloud instead --
+  which is the argument for the sync plan in one line.
+  Merged by splicing the exact bytes from the archive copy rather than
+  retyping. Verified: 3,782 -> 3,844 lines (+62 as expected), one
+  CARRIED-FORWARD heading, all six CF items present, and the two
+  INVESTIGATION QUEUE sections (June 28 and July 24) both pre-existed and
+  were not disturbed.
 - 2026-07-24 13:17: Full refresh to ascii33 reality. Integrated the
   2026-07-19 addendum (MB scan findings, machine-name mapping, FT-105
   tamper detection, FT-93 root cause, HP 18-PUP incident, D-15 scan
@@ -3704,6 +3719,68 @@ via -StartWhenAvailable. Fix: schtasks.exe native monthly scheduling
   transition observable ~Aug 2, before launch
 
 ---
+
+## CARRIED-FORWARD FIELD FINDINGS -- ascii30/31 (retrieved 2026-07-24)
+<!-- From Ascii30_Testing-Notes (07-14) and Ascii31_Testing-Notes
+     (07-16). Most ascii30/31 findings were already folded into
+     ascii32/33 history and ProjectNotes (Mark-mode copy, schtasks
+     Monthly bug -> FT-93/C-14a, HTTPS cert error, one-at-a-time
+     convenience review, SCREEN-26/27 pre-scan). The items below were
+     NOT captured elsewhere and are preserved here so nothing is
+     stranded on a local machine. Cross-check against ascii34 scope. -->
+
+**CF-01 -- BitLocker "clueless" hand-off screen (ascii30 #7).** The
+screen BEFORE the BitLocker decision leaves the user unaware that the
+NEXT screen will let them auto-run BitLocker from within the program.
+Rewrite the hand-off so the user knows what's coming: "On the next
+screen you can choose to have GatewayGuard turn on BitLocker for you,
+or do it yourself." Tie to the D-20 Home-edition work in ascii34
+(Home has no BitLocker -- the hand-off copy must branch by edition).
+
+**CF-02 -- Full approval/disapproval scheme for ALL settings
+(ascii31 #12, #13).** The tester wants every setting presented one at a
+time with its own explanation, then an explicit approve/disapprove
+choice BEFORE the next one is shown -- not a batch list. Critically,
+this restores the per-setting approval right promised to users: some
+users still need Wake-on-LAN, so they must be able to choose rather
+than have it forced off. Current build only treats settings 18 (Fast
+Startup) and 19 (Wake on LAN) as needing new content; this ask is
+broader -- audit ALL settings for an approve/disapprove path. Design
+item for ascii34 scoping.
+
+**CF-03 -- Split the time-check screen / content below the fold
+(ascii31 #2).** At the time-check screen, ~3 lines were below the
+visible area and the tester couldn't see them; the screen may not have
+scrolled after Space. Screen likely too long -- split the time-check
+into two screens, or guarantee it fits one screen with no
+below-the-fold content. Related to the width/scroll work (FT-117).
+
+**CF-04 -- Arrow-key twitch / cursor jump (ascii31 #15, #16, #19).**
+Tapping up/down arrows too quickly makes the screen jump too far and
+back-navigation becomes difficult. On the console page, N & P work but
+all keys on both pages cause the screen to "twitch" and the cursor to
+jump up. And after leaving PowerShell and clicking back in, the program
+behaved as if every key had been pressed for a minute (buffered-input
+flood -- related to the Read-GGKey FlushInputBuffer fix; verify that
+fix fully covers this re-focus case). Add user guidance ("don't tap the
+arrow keys rapidly") AND treat the twitch as a defect to diagnose in
+ascii34.
+
+**CF-05 -- Widgets revert after reboot/update (ascii31 #18).** Widgets
+was ON again after the tester believed they'd turned it off in ascii30.
+Open question: does Widgets get re-enabled by reboot or by a Windows
+update? Add a check. Also consider: can we turn Widgets off
+automatically with explanation + approval (fits the CF-02 scheme)?
+
+**CF-06 -- MB Tamper Protection switch observed OFF (ascii30 #7,
+ascii31 #16).** The tester found a Tamper Protection on/off switch
+INSIDE Malwarebytes, set to OFF, on the test machine. Implications
+unknown -- note to check its state on HP and IdeaPad MB installs and
+decide whether GatewayGuard should mention it. (Distinct from Windows
+Defender Tamper Protection / FT-105, which is the Defender-side setting
+we DO detect.) Per D-11, GatewayGuard never programmatically changes
+third-party security settings -- so this would be guidance-only if
+addressed at all.
 
 ## INVESTIGATION QUEUE -- July 24, 2026
 <!-- 14 items raised by Bill (ProjectNotes_Notes.txt). These are
