@@ -1,11 +1,26 @@
-<!-- Dated: 2026-08-09 07:05 ET -->
+<!-- Dated: 2026-08-09 07:17 ET -->
 # GatewayGuard -- Sync Setup Steps (Claude Code <-> Claude Cloud)
 - **Document Name:** GatewayGuard_SyncSetupSteps
-- **Last Modified:** 2026-08-09 07:05 ET
+- **Last Modified:** 2026-08-09 07:17 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **Status:** Working procedure -- follow at the keyboard
 - **Companion to:** `GatewayGuard_SyncPlan-*.md` (the what and why; this is the how)
 - **Change History Log:**
+  - 2026-08-09 07:17: **Added PART 0b -- reconcile Project Knowledge, then thin
+    the duplicates.** Connecting GitHub does not replace what is already in
+    Project Knowledge; it adds to it. Cloud would then hold two copies of the
+    same document -- an old upload and the git version -- with different
+    content and nothing marking which is authoritative. That is worse than one
+    stale source, because they contradict and Cloud cannot choose.
+    Lists the 11 clear-cut retirements by name, and separates out **three that
+    need Bill's decision rather than a guess**: a `.docx`/`.md` format pair
+    sharing one timestamp (not an older version), two byte-identical copies of
+    the CompanionSheet in different folders (a filing decision), and the two
+    `GatewayGuide_Project_Instructions` files under the retired spelling, which
+    the newest-by-date rule never compares against `GatewayGuard_*` because
+    they are a different document type.
+    Measured: the connector will deliver 343 files -- ProjectDocs 128, Tool 64,
+    WebSite 150, CLAUDE.md 1; 64 of them are `.md`.
   - 2026-08-09 07:05: **Added PART 0 -- harvest the existing Project
     Instructions before overwriting them.** The first version went straight to
     connecting the repository and then told Bill to paste a new instruction
@@ -99,6 +114,138 @@ correct no matter how much those files change.
 
 **Mirroring is achieved by making the box small enough that it cannot drift**,
 not by keeping two long texts in step.
+
+---
+
+# PART 0b -- RECONCILE PROJECT KNOWLEDGE, THEN THIN THE DUPLICATES
+
+**Connecting GitHub does not replace what is already in Project Knowledge. It
+adds to it.**
+
+Cloud holds months of manually uploaded files. Once the repository connects, it
+sees **both** -- the old uploaded `ProjectInstructions` and the current one
+from git. Two copies of the same document, different content, nothing marking
+which is authoritative. **That is worse than one stale source**, because they
+contradict each other and Cloud has no way to choose.
+
+**Measured 2026-08-09:** the connector will deliver **343 files** --
+ProjectDocs 128, Tool 64, WebSite 150, CLAUDE.md 1. Of those, **64 are `.md`
+documents.**
+
+## 0b-1. Get the list out of Cloud
+
+In the project's chat box, **type exactly:**
+
+```
+List every file in your project knowledge. Give the exact filename of each one, one per line, nothing else.
+```
+
+## 0b-2. Save the list
+
+1. Select the answer, **Ctrl+C**
+2. Open **Notepad** (Windows key, type `notepad`, Enter)
+3. **Ctrl+V**, then **Ctrl+S**
+4. Filename box -- type this **exactly, with the quotes**:
+
+```
+"C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\ProjectDocs\CloudKnowledge-CAPTURED.txt"
+```
+
+## 0b-3. Have Claude Code compare it
+
+In the terminal, say:
+
+> Compare ProjectDocs\CloudKnowledge-CAPTURED.txt against `git ls-files`.
+> Tell me which files exist only in Cloud.
+
+Anything only in Cloud never made it into the tree. **Download those from
+Cloud before deleting anything.** Claude Code files them, commits, pushes.
+
+## 0b-4. Delete the manual uploads
+
+In the **Project knowledge** panel, each uploaded file has an **x** or a menu
+with **Remove**. Remove every manually-uploaded file, leaving **only the
+GitHub connection**.
+
+That is the whole point: **one source, not two.**
+
+## 0b-5. Verify
+
+Type to Cloud:
+
+```
+How many files can you see in project knowledge, and where do they come from?
+```
+
+It should report files coming from the GitHub repository, and no loose uploads.
+
+---
+
+## 0b-6. THIN THE DUPLICATE VERSIONS IN THE TREE
+
+Cloud will see **every** version of every document, not only the newest. The
+"take the newest by the DATE IN THE FILENAME" rule keeps that safe -- but it is
+a rule Cloud must remember on every question, forever. **Retiring the
+superseded versions removes the ambiguity at the source instead**, which the
+DOCUMENT REVISION RULE already requires: the prior version is retired when a
+new one is delivered.
+
+### Clear-cut -- 11 files, superseded by a later version of the same document
+
+```
+GatewayGuard_CPM_Schedule-2026-07-03.md
+GatewayGuard_CPM_Schedule-2026-07-15.md
+GatewayGuard_CPM_Schedule-2026-07-24-0638.md
+GatewayGuard_CPM_Schedule-2026-07-30-2208.md
+        -> keep GatewayGuard_CPM_Schedule-2026-08-02-1201.md
+
+_READ-FIRST-Briefing-2026-08-02-1820.md
+_READ-FIRST-Briefing-2026-08-06-1727.md
+        -> keep _READ-FIRST-Briefing-2026-08-08-2147.md
+
+GatewayGuard_DefectPreventionPlaybook-2026-07-13.md
+GatewayGuard_DefectPreventionPlaybook-2026-07-25-1936.md
+        -> keep GatewayGuard_DefectPreventionPlaybook-2026-07-26-0619.md
+
+GatewayGuard_ProjectInstructions-2026-08-02-1820.md
+        -> keep GatewayGuard_ProjectInstructions-2026-08-06-1727.md
+
+GatewayGuard_M365MigrationPlan-2026-08-06-1425.md
+        -> keep GatewayGuard_M365MigrationPlan-2026-08-06-1727.md
+
+GatewayGuard_SessionHandoff-2026-07-28-1243.md
+        -> keep GatewayGuard_SessionHandoff-2026-08-02-2205.md
+```
+
+The three Playbooks are the case briefing section 0 documents, where three
+different ways of choosing gave three different answers and only one was right.
+
+### Needs Bill's decision -- do NOT retire on a guess
+
+**1. `GatewayGuard_CPM_Schedule-2026-07-24-0638.docx`**
+Same date-time as the `.md`. That is a **format pair, not an older version** --
+the same document exported to Word. Retiring it may throw away a deliverable.
+*Decide: keep the .docx, or keep only Markdown?*
+
+**2. `GatewayGuard_PresentationCompanionSheet-2026-07-03.md` -- two copies**
+One in `ProjectDocs\`, one in `ProjectDocs\Presentation\`. **Verified
+byte-identical 2026-08-09.** A pure duplicate, not a version -- but which
+location is the right home is a filing decision.
+*Decide: which folder keeps it?*
+
+**3. `GatewayGuide_Project_Instructions-*.md` -- the old spelling**
+Two July versions, under the retired `GatewayGuide` spelling. They are a
+*different document type* from `GatewayGuard_ProjectInstructions`, so the
+newest-by-date rule never compares them. They may be fully superseded, or may
+hold rules that were never carried across.
+*Decide: read them first, then retire both -- or carry anything unique into
+ProjectInstructions.*
+
+### How to retire
+
+Retiring means `git rm` -- the file leaves the working tree but **stays in git
+history forever** and can be recovered with
+`git checkout <commit> -- <path>`. Nothing is destroyed.
 
 ---
 
