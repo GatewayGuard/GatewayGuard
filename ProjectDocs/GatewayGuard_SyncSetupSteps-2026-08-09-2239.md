@@ -1,13 +1,45 @@
-<!-- Dated: 2026-08-09 14:35 ET -->
+<!-- Dated: 2026-08-09 22:39 ET -->
 # GatewayGuard -- Sync Setup Steps (Claude Code <-> Claude Cloud)
 - **Document Name:** GatewayGuard_SyncSetupSteps
-- **Last Modified:** 2026-08-09 14:35 ET
+- **Last Modified:** 2026-08-09 22:39 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **Status:** Working procedure -- follow at the keyboard
 - **Companion to:** `GatewayGuard_SyncPlan-*.md` (the what and why; this is the how)
 - **Change History Log:**
+  - 2026-08-09 22:39: **Rewritten against Claude Cloud's review**
+    (`GatewayGuard_SyncDocsReview-2026-08-09-1635.md`, 28 findings). Ten
+    applied here:
+    **Scope back to FOUR, and stated once.** The 14:35 entry below added
+    `.claude` as a fifth item. Cloud flagged that as the highest-risk step in
+    the document -- `.claude` is a dot-folder and may not be selectable in the
+    picker at all, so the correction rested on an assumption nobody could
+    check. Fixed at the source instead: the rule body moved to
+    `WebSite\Rules\website-copy.md`, which was already in scope. A5 now says it
+    is the single source of truth for the scope.
+    **A6 no longer names a retired file.** It pointed at a briefing by exact
+    timestamped filename -- a file the briefing itself retires -- so following
+    the documents in order made the test fail on a working connection and then
+    told you that meant it was broken. It was also a breach of rule 7a inside
+    the document that teaches rule 7a. Now targets `CLAUDE.md`, which never
+    gets a date-time suffix.
+    **PART 0 harvests TWO boxes, not one.** Personal preferences / profile
+    instructions is a separate box, holds live rules (USER-FACING CLARITY, file
+    naming, time zone), and was missed entirely.
+    **A3/A4 order inverted.** Authorization comes first; the picker only lists
+    repos the App has been granted. The repo is selected from a filtered list,
+    not typed into a free-text field.
+    **0b-1 now warns that Cloud's file list is a floor, not a set** -- long
+    verbatim enumerations are where Cloud fails silently, and 0b-4 deletes
+    whatever the list missed. Added the ask-twice and get-the-zip mitigations,
+    staged deletion, and the binary-signature check.
+    **0b-5 demoted to informational** -- Cloud does not reliably know
+    provenance. A6 is the real verification.
+    Also: "tick folders not files" reconciled with `CLAUDE.md` on the list;
+    "no webhook" hedged from asserted fact to operating assumption;
+    connector-facing paths switched to forward slashes; "no tool can delete
+    from project knowledge" stated where 0b-4 depends on it.
   - 2026-08-09 14:35: **Connector scope corrected from four items to five --
-    `.claude` was missing.** It is easy to overlook: the name starts with a
+    `.claude` was missing.** *(Superseded 22:39 -- the rule moved instead.)* It is easy to overlook: the name starts with a
     dot and it holds three files. But one of them is
     `.claude/rules/website-copy.md`, the website-copy-must-match-the-guide
     rule, which `CLAUDE.md` relocated there on 2026-08-02 and replaced with a
@@ -59,12 +91,19 @@ sides can see is **the GitHub repository**. So agreement means:
 > Claude Code pushes to GitHub. Bill clicks Sync in Cloud. Both now read the
 > same commit.
 
-**It is not automatic.** There is no webhook. If nobody pushes and nobody
-clicks Sync, Cloud is reading whatever it saw last -- which may be days old
-and will never say so.
+**Treat it as manual.** There is no automatic refresh -- an auto-sync webhook
+is an open feature request, not a feature. That is product behaviour and could
+change without announcement, so verify rather than assume. If nobody pushes and
+nobody clicks Sync, Cloud is reading whatever it saw last -- which may be days
+old and will never say so.
 
-**Current state (measured 2026-08-09 14:35):** 31 commits, 706 tracked files,
-remote `GatewayGuard/GatewayGuard`, private, org-owned, 0 unpushed.
+**The remote is `GatewayGuard/GatewayGuard`** -- private, owned by the
+`GatewayGuard` org.
+
+**Commit and file counts are not stated here.** They live in section 1 of the
+newest `_READ-FIRST-Briefing-*.md`, and nowhere else. They were previously
+written into three documents at once and all three disagreed within a day.
+For a live reading, run `git status`.
 
 ---
 
@@ -81,12 +120,43 @@ This is the same shape as the four Python wrappers: named in
 `settings.local.json`, used to build ascii37, never committed, and now
 unrecoverable.
 
-## 0a. Copy the existing text out
+## THERE ARE TWO BOXES, NOT ONE
+
+This is the part an earlier version of this document missed entirely.
+
+| Box | Where | Scope |
+|---|---|---|
+| **Project instructions** | inside the GatewayGuard project | that project only |
+| **Personal preferences / profile instructions** | account settings, outside any project | **every** conversation |
+
+**The profile box holds live rules.** At minimum the USER-FACING CLARITY rule,
+the file-naming and header-timestamp rules, and the time-zone rule -- none of
+which exist in any file Claude Code can read.
+
+The profile box is **not** destroyed by PART B, which only overwrites the
+project box. So this is not urgent loss. But those rules are unfiled and
+invisible to Claude Code today, which is the identical failure PART 0 exists to
+close. **Harvest both in the same pass.**
+
+## 0a. Copy the PROJECT instructions out
 
 1. Go to **claude.ai** and open the **GatewayGuard** project
 2. Find **Project instructions** (there may be an **Edit** link beside it)
 3. Click inside the box
 4. Press **Ctrl+A** then **Ctrl+C** -- this selects and copies everything in it
+
+## 0a-2. Copy the PROFILE instructions out
+
+1. Click your initials or photo, **top-right** of claude.ai
+2. Open **Settings**, then look for **Profile** or **Personal preferences**
+3. Click inside the instructions box
+4. **Ctrl+A**, then **Ctrl+C**
+
+Save it the same way as 0b below, as
+`ProjectDocs\CloudProfileInstructions-CAPTURED.txt`.
+
+**If you cannot find that box**, say so rather than skipping it -- the rules in
+it govern every conversation, and they are currently written down nowhere.
 
 ## 0b. Save it where Claude Code can read it
 
@@ -141,7 +211,7 @@ which is authoritative. **That is worse than one stale source**, because they
 contradict each other and Cloud has no way to choose.
 
 **Measured 2026-08-09:** the connector will deliver **346 files** --
-ProjectDocs 128, Tool 64, WebSite 150, CLAUDE.md 1, .claude 3. Of those, **64 are `.md`
+ProjectDocs 130, Tool 64, WebSite 151, CLAUDE.md 1. **Four items, no dot-folder.**
 documents.**
 
 ## 0b-1. Get the list out of Cloud
@@ -163,6 +233,27 @@ List every file in your project knowledge. Give the exact filename of each one, 
 "C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\ProjectDocs\CloudKnowledge-CAPTURED.txt"
 ```
 
+### The list Cloud gives you is a FLOOR, not a set
+
+**Cloud is unreliable at long verbatim enumerations, and the failure is
+silent** -- a list with files missing looks exactly like a complete one. On
+2026-08-09 Cloud twice reported a hand-transcribed listing as an exact match
+when it had dropped the same files both times.
+
+That matters here because of what happens next: 0b-4 deletes every manual
+upload, and project knowledge is not a backup. **A filename dropped from the
+list is never harvested, and is then deleted.**
+
+Two mitigations, both cheap:
+
+- **Ask twice, in separate messages, and compare the two lists.** Different
+  omissions each time reveal the problem; identical lists raise confidence.
+- **Better: get the zip.** Ask Cloud to build an archive of project knowledge
+  and download it. A file comparison beats a filename comparison, because it
+  catches files present on *both* sides with the same name and different
+  content -- which a name list cannot see. On 2026-08-09 that method found two
+  real problems a name list would have missed entirely.
+
 ## 0b-3. Have Claude Code compare it
 
 In the terminal, say:
@@ -170,18 +261,35 @@ In the terminal, say:
 > Compare ProjectDocs\CloudKnowledge-CAPTURED.txt against `git ls-files`.
 > Tell me which files exist only in Cloud.
 
+Or, if you got the zip:
+
+> Unzip the archive outside the tree and hash-compare every file against
+> ProjectDocs, Tool, WebSite and CLAUDE.md. Report three lists: identical,
+> same name but different content, and only in Cloud.
+
 Anything only in Cloud never made it into the tree. **Download those from
 Cloud before deleting anything.** Claude Code files them, commits, pushes.
 
-## 0b-4. Delete the manual uploads
+**Check signatures before committing anything binary.** Cloud's copies of
+`.docx` and `.pdf` are text extractions and page images, not the originals. A
+real PDF starts `%PDF`; a real `.docx` starts `PK`. Committing Cloud's copy
+puts an unopenable file in the tree under a name implying it works.
+
+## 0b-4. Delete the manual uploads -- IN STAGES
 
 In the **Project knowledge** panel, each uploaded file has an **x** or a menu
-with **Remove**. Remove every manually-uploaded file, leaving **only the
-GitHub connection**.
+with **Remove**. Remove the manually-uploaded files, leaving **only the GitHub
+connection**.
 
-That is the whole point: **one source, not two.**
+**Do it in batches, not all at once**, and re-run 0b-3 between batches. If the
+list was short by a file, a staged deletion gives you a chance to notice before
+that file is gone.
 
-## 0b-5. Verify
+**No tool can do this step.** Cloud cannot delete from its own project
+knowledge, and neither can Claude Code. It is manual, in the file panel, by
+Bill. This project has re-learned that more than once.
+
+## 0b-5. Verify -- informational only
 
 Type to Cloud:
 
@@ -189,7 +297,11 @@ Type to Cloud:
 How many files can you see in project knowledge, and where do they come from?
 ```
 
-It should report files coming from the GitHub repository, and no loose uploads.
+**Treat the answer as informational, not as proof.** Cloud does not reliably
+know provenance -- content arrives in its context without always carrying a
+labelled source, so asking where something came from invites a confident guess.
+
+**A6's quote-an-exact-line test is the real verification.** Use that.
 
 ---
 
@@ -213,7 +325,7 @@ GatewayGuard_CPM_Schedule-2026-07-30-2208.md
 
 _READ-FIRST-Briefing-2026-08-02-1820.md
 _READ-FIRST-Briefing-2026-08-06-1727.md
-        -> keep _READ-FIRST-Briefing-2026-08-08-2147.md
+        -> keep the NEWEST _READ-FIRST-Briefing-*.md by filename date
 
 GatewayGuard_DefectPreventionPlaybook-2026-07-13.md
 GatewayGuard_DefectPreventionPlaybook-2026-07-25-1936.md
@@ -285,78 +397,95 @@ claude.ai
 
 Sign in. On the left, click **Projects**, then click **GatewayGuard**.
 
-## A3. Add the repository
+## A3. AUTHORIZE FIRST -- the organisation, not your account
 
-On the right of the project page is a panel headed **Project knowledge**.
-
-1. Click the **`+`** button in that panel
-2. A menu appears -- click **GitHub**
-3. A box appears asking for a repository. **Type exactly:**
-
-```
-GatewayGuard/GatewayGuard
-```
-
-4. Press **Enter**
-
-## A4. Authorize the ORGANISATION, not your account
+**Do this before looking for the repository.** The picker only lists
+repositories the Claude GitHub App has already been granted, so until the App
+is installed on the `GatewayGuard` org, the repo is not in the list to be
+found. Trying to select it first is the common way to get stuck.
 
 The repository is **private and owned by the `GatewayGuard` org**, not by
-`wfbiii`. A personal authorization is not enough, and this is the step people
-get wrong.
+`wfbiii`. A personal authorization is not enough. This is the step people get
+wrong.
 
-1. A warning about a private repository appears, with a link to GitHub. Click
-   the link.
-2. GitHub shows a list containing **wfbiii** and **GatewayGuard**.
+1. On the right of the project page, find the panel headed **Project
+   knowledge**
+2. Click **`+`** -- it may be a bare plus, or a button labelled **Add content**
+3. Choose **GitHub**
+4. If you are not connected yet, or the repo does not appear, follow the link
+   to GitHub
+5. GitHub shows a list containing **wfbiii** and **GatewayGuard**.
    **Click `GatewayGuard` -- the organisation, not your name.**
-3. Choose **Only select repositories**
-4. Pick **GatewayGuard**
-5. Click the green **Install** (or **Save**) button
-6. Return to the Claude browser tab
+6. Choose **Only select repositories**, pick **GatewayGuard**
+7. Click the green **Install** (or **Save**)
+8. Return to the Claude browser tab
 
 **If the repositories still do not appear**, the org may require single
 sign-on. Each user then authorizes separately for that org. Disconnecting and
 reconnecting GitHub inside Claude does **not** fix an SSO problem.
 
-## A5. Tick exactly five things -- and nothing else
+## A4. Now pick the repository
+
+**Expect a searchable picker, not a free-text field.** Typing filters a list;
+you then click the result. It is probably not a box where you type a path and
+press Enter.
+
+Start typing:
+
+```
+GatewayGuard/GatewayGuard
+```
+
+and click it when it appears in the list.
+
+**If you type the name and nothing happens, that is not a failure** -- it means
+A3 has not completed. Finish the authorization, come back, and the repository
+will be in the list.
+
+## A5. Tick exactly four things -- and nothing else
 
 A file browser appears showing the folders in the repository. **Tick these
-five:**
+four:**
 
 ```
 ProjectDocs
 Tool
 WebSite
 CLAUDE.md
-.claude
 ```
 
 Then click **Save** (or **Add**).
 
-### Why `.claude` is on that list
+**This is the ONLY scope. If any other document says three or five, it is
+stale -- this line is the source of truth.**
 
-It is easy to miss -- the name starts with a dot and it holds only three
-files -- but one of them is a governing rule:
+### Why not `.claude`
 
-```
-.claude/rules/website-copy.md      the website-copy-must-match-the-guide rule
-.claude/check-ps1-integrity.ps1    the Class 7 integrity gate
-.claude/settings.local.json        hook registration and permissions
-```
+An earlier version of this document said five, adding `.claude`, because
+`.claude/rules/website-copy.md` held a governing rule that `CLAUDE.md` only
+pointed to.
 
-**Measured 2026-08-09:** Cloud's copy of `CLAUDE.md` carries the
-website-copy rule as full inline text, because that is where it lived until
-2026-08-02. The tree's `CLAUDE.md` replaced it with a pointer -- *"Moved to
-`.claude/rules/website-copy.md`"* -- and moved the 50 lines there.
+**That was fixed at the source on 2026-08-09 instead.** `.claude` is a
+dot-folder, and dot-folders are routinely filtered out of file pickers as
+hidden -- so the rule might not have been selectable at all, and the whole
+scope correction rested on an assumption nobody could check. The rule body was
+moved to `WebSite\Rules\website-copy.md`, which is inside `WebSite/` and
+therefore already in scope. A path-triggered pointer stays behind in
+`.claude/rules/` so Claude Code still auto-loads it on website work.
 
-**So connecting the four without `.claude` would take a rule Cloud currently
-has and make it invisible.** The switch to the connector would lose ground
-rather than gain it. Nothing else in the tree is in that position; this is
-the only relocated rule.
+What remains in `.claude` is Claude Code machinery only -- the Class 7
+integrity hook and a permissions file. Cloud does not run hooks and does not
+need either.
 
-**Tick FOLDERS, not individual files inside them.** A folder picks up new
-documents on later syncs. Individually chosen files do not -- any document
-written after today would simply not exist as far as Cloud is concerned.
+**Do not tick a dot-folder to solve a rule-visibility problem. Move the rule.**
+
+**Tick whole FOLDERS -- never cherry-pick files from inside one.** A folder
+picks up new documents on later syncs; individually chosen files do not, so any
+document written after today would simply not exist as far as Cloud is
+concerned.
+
+`CLAUDE.md` is the one file on the list, because it sits at the repository root
+and is not inside any folder. That is not cherry-picking.
 
 **Do NOT tick the top-level box that selects everything.** The root also holds:
 
@@ -377,18 +506,28 @@ are not actually reachable in conversation.
 **In the project's chat box, type exactly this and press Enter:**
 
 ```
-Quote the first two lines of ProjectDocs\_READ-FIRST-Briefing-2026-08-08-2147.md exactly as they appear.
+Quote the first two lines of CLAUDE.md exactly as they appear.
 ```
 
-**It should answer with:**
-
-```
-<!-- Dated: 2026-08-08 21:47 ET -->
-# READ FIRST -- Session Briefing
-```
+**It should answer with a `<!-- Dated: ... -->` comment and the heading
+`# GatewayGuard — Claude Code Project Instructions`.**
 
 If it paraphrases, guesses, or says it cannot find the file, **it is not
 connected** -- go back to A4.
+
+### Why this test names `CLAUDE.md` and not a dated document
+
+An earlier version pointed the test at a briefing by its exact timestamped
+filename. **That file is retired by the very briefing it was named in** -- so
+following the documents in order made the test fail on a correctly connected
+repository, and then told you to conclude you were not connected.
+
+It was also a breach of the never-write-an-exact-filename-into-a-pointer rule,
+inside the document that teaches the rule.
+
+`CLAUDE.md` never gets a date-time suffix and is never retired, so it cannot
+go stale as a test target. It is also the stamp-comparison target in PART D,
+which keeps both checks pointed at one file.
 
 ---
 
@@ -414,7 +553,7 @@ Put **only** this in the box. It changes almost never, because the detail
 lives in files the connector delivers:
 
 ```
-Read ProjectDocs\_READ-FIRST-Briefing-*.md -- take the newest by the DATE IN
+Read ProjectDocs/_READ-FIRST-Briefing-*.md -- take the newest by the DATE IN
 THE FILENAME, not the file's modified date. Then read CLAUDE.md.
 
 Then tell me, before doing any work:

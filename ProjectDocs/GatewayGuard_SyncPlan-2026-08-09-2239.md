@@ -1,10 +1,33 @@
-<!-- Dated: 2026-08-08 20:50 ET -->
+<!-- Dated: 2026-08-09 22:39 ET -->
 # GatewayGuard -- Sync Plan: Claude Code, Claude Cloud, and Bill
 - **Document Name:** GatewayGuard_SyncPlan
-- **Last Modified:** 2026-08-08 20:50 ET
+- **Last Modified:** 2026-08-09 22:39 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **Status:** Cumulative Master Document
 - **Change History Log:**
+  - 2026-08-09 22:39: **Revised against Claude Cloud's review**
+    (`GatewayGuard_SyncDocsReview-2026-08-09-1635.md`). Six findings applied:
+    **Scope 4a was three items and omitted `WebSite/`** -- and section 6b's
+    weekly audit command inherited the omission, so the audit would have
+    compared against the wrong set every week and reported a permanent
+    mismatch that was not one. Now four items, and it defers to
+    SyncSetupSteps A5 as the single source of truth for the scope.
+    **Section 3a's first capability row expires the moment the connector
+    works.** Cloud can confirm a filename exists once connected. The rule now
+    rests on what stays true -- Cloud can see a filename but not how current it
+    is -- rather than on a premise that stops being true.
+    **Section 6a described a content-hash stamp that does not exist.** It was
+    written in the present tense, claimed it "cannot be forgotten," and was
+    forgotten in the same edit across all three documents. Marked aspirational,
+    with the date-only comparison described honestly as the interim check.
+    **Section 2 no longer states commit or file counts.** They were written
+    into three documents at once, which section 7b itself names as a symptom;
+    within 24 hours all three disagreed. The briefing states them now, and
+    everything else points at it.
+    Also: "Cloud cannot delete from project knowledge" added to the capability
+    table, because 0b-4 of the procedure depends on it and no document said it;
+    and the `TestHistory-...-0914` "never existed" claim corrected -- it exists
+    in project knowledge and had simply never reached the tree.
   - 2026-08-08 20:50: **Section 2 corrected before first commit.** The draft
     claimed "There is now ONE tree." That was false within the hour: a stale
     copy with its own `.git` sits nested inside the working tree at
@@ -52,7 +75,13 @@ All three are now fixed. This plan describes how to keep them fixed.
 |---|---|
 | Remote | `GatewayGuard/GatewayGuard` -- **private**, owned by the `GatewayGuard` org |
 | Working tree | `C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\` |
-| State at writing | 23 commits, 704 tracked files, 219 MB working files (**measured** 2026-08-08 20:xx) |
+| Current state | **Not stated here.** See section 1 of the newest `_READ-FIRST-Briefing-*.md`, or run `git status` |
+
+**Commit and file counts are deliberately absent from this document.** They are
+the most volatile facts in the project and they were previously written into
+three documents at once, which section 7b names as a symptom: *"two documents
+state the same machine fact -- one will go stale."* Within 24 hours all three
+disagreed. The briefing states them; everything else points at the briefing.
 
 ### There is ONE WORKING tree. There are still several stale copies.
 
@@ -63,7 +92,7 @@ drifting. **That is not the same as there being one copy.** Measured
 
 | Path | Files | What it is |
 |---|---|---|
-| `...\OneDrive - GatewayGuard LLC\GatewayGuard\` | 704 tracked | **the working tree -- the only one to edit** |
+| `...\OneDrive - GatewayGuard LLC\GatewayGuard\` | all tracked | **the working tree -- the only one to edit** |
 | `C:\GG-Backup\GatewayGuide` | 652 | local fallback, made 2026-08-08 |
 | `C:\GatewaayGuardBackup\GatewayGuide` | 557 | older backup (note the typo in the folder name) |
 | `C:\GatewayGuard-Backup-2026-08-06` | 560 | older backup |
@@ -125,17 +154,37 @@ before writing it down**:
 
 | Capability | Claude Code | Claude Cloud |
 |---|---|---|
-| Confirm a filename exists | yes -- one glob | **no** |
+| Confirm a filename exists | yes -- one glob | **no** before the connector; **yes** after, within scope -- see below |
 | Measure line counts, hashes, git state | yes | **no** |
 | Run the gates and checkers | yes | **no** |
 | Read live machine state | yes | **no** |
 | Write to the tree, commit, push | yes | **no** |
+| **Delete from project knowledge** | **no** | **no** -- Bill, by hand, in the file panel |
+
+### The first row expires. The rule does not.
+
+**Once the connector is live, Cloud CAN confirm a filename exists** inside the
+scoped folders. That was the load-bearing row, so the rule needs a version that
+survives its own success:
+
+> **Cloud can see a filename. Cloud cannot see how current it is.** Its
+> view is stale by design between Sync clicks, and stale-by-an-unknown-amount
+> is not a basis for writing a pointer into a governing document.
+
+The rest of the column is permanent: no hashes, no line counts, no git state,
+no machine state, no writes, no deletes.
+
+**A rule resting on a premise that stops being true is a rule that gets argued
+with later.** Flagged by Cloud's own review, 2026-08-09.
 
 **What earned this rule (measured 2026-08-08):** every dead pointer found in
 the governing documents was in a file whose `Last Editor:` line reads
 Claude.ai. The 2026-08-06 briefing named `CodingStandards-2026-08-02-0741.md`
-and `TestHistory-ascii39-2026-08-02-0914.md`; the first had been renamed and
-the second never existed. Cloud could not have known -- it has no way to look.
+and `TestHistory-ascii39-2026-08-02-0914.md`; the first had been renamed, and
+the second **exists in Claude project knowledge but had never reached the
+tree** -- an earlier version of this plan said it "never existed," which was an
+unverified negative and is corrected here. Cloud could not have known about the
+rename -- it has no way to look.
 A scan of every `.md` in the tree found **15 of 49 exact filename references
 dead**. (Not all 15 are defects -- Change History entries legitimately name
 retired files -- but the live pointers among them were.)
@@ -186,13 +235,24 @@ If Cloud needs one of those facts, it asks Claude Code to measure it.
 3. It is a **private repo in an org**. Authorize the Claude GitHub App **for
    the `GatewayGuard` organization**, not just the personal account. If the
    org ever requires SSO, each user authorizes separately.
-4. Scope the connector to **exactly three things**:
+4. Scope the connector to **exactly four things**:
    - `ProjectDocs/`
    - `Tool/`
+   - `WebSite/`
    - `CLAUDE.md`
 
-**Scope by folder, not by individual file**, so new documents appear on the
-next sync instead of silently not existing.
+**The authoritative statement of the scope is in
+`GatewayGuard_SyncSetupSteps-*.md`, step A5.** If this plan and that procedure
+ever disagree, the procedure wins -- it is the one open at the keyboard.
+
+**Scope by whole folder, never cherry-picked files**, so new documents appear
+on the next sync instead of silently not existing. `CLAUDE.md` is the one file
+on the list because it sits at the repository root, not inside a folder.
+
+*(An earlier version of this plan said three items and omitted `WebSite/`,
+which meant the weekly audit in section 6b compared against the wrong set and
+would have reported a permanent mismatch that was not one. Found by Cloud's
+review, 2026-08-09.)*
 
 **Do NOT connect the repo root.** `Certificates/` holds a driver's licence,
 licence images, an EIN, and a file named like stored credentials. `Heath/`
@@ -227,7 +287,7 @@ they diverge.
 ### 5a. Project Instructions holds a POINTER, not a copy
 
 Cloud's Project Instructions should contain the short block already proven in
-`START-HERE.txt` -- read the newest briefing by the date in the filename, read
+the block in `START-HERE.txt` (a file Cloud cannot see, so it cannot confirm the match) -- read the newest briefing by the date in the filename, read
 CLAUDE.md, then report what is stale -- **not** a transcription of CLAUDE.md's
 386 lines.
 
@@ -243,14 +303,32 @@ rule that lives in only one of the two will be silently absent from the other.
 
 ## 6. DRIFT CONTROLS
 
-### 6a. The stamp line
+### 6a. The stamp line -- NOT YET IMPLEMENTED
 
-The first line of `CLAUDE.md` and of the current briefing carries a stamp:
-the date-time plus a short hash of the file's own content.
+**Present state:** `CLAUDE.md` and the briefing carry a date-time on line 1:
 
-Drift then becomes one question: **"What stamp do you see?"** Compare to the
-local file. Different stamp means the two have diverged, and it costs five
+```
+<!-- Dated: 2026-08-09 22:39 ET -->
+```
+
+**Date-time only. No content hash.** An earlier version of this section
+described the hash in the present tense and claimed the mechanism "cannot be
+forgotten" -- and it was forgotten in the same edit, in all three documents it
+governs. Cloud's review caught it. Recorded here as **aspirational**, not
+existing, until it is built.
+
+**Why the hash matters and the date alone is not enough:** without it, *"what
+stamp do you see?"* only detects that the two sides are on different
+**versions**. Two files with the same date-time and different content -- which
+is exactly what a mid-session edit produces -- read as identical.
+
+**Interim check that does work today:** ask Cloud for the `Dated:` line, and
+compare. It catches version drift, which is the common case, and it costs five
 seconds instead of never being noticed.
+
+**To build it:** `Run-DocCheck.bat` (section 6c) generates the hash and
+verifies it matches the file's own content. Until that exists, this is a
+date-only comparison and should not be described as more.
 
 Claude Code generates and updates the stamp mechanically in the same edit as
 any change, so it cannot be forgotten.
@@ -258,7 +336,7 @@ any change, so it cannot be forgotten.
 ### 6b. The audit -- weekly, or more often after any problem
 
 1. Ask Cloud to list the files it can see in project knowledge
-2. Compare against `git ls-files ProjectDocs/ Tool/ CLAUDE.md`
+2. Compare against `git ls-files ProjectDocs/ Tool/ WebSite/ CLAUDE.md`
 3. Compare stamp lines
 4. Any mismatch: push, then click Sync in Cloud, then re-check
 
