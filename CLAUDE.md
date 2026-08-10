@@ -1,5 +1,5 @@
 # GatewayGuard — Claude Code Project Instructions
-<!-- Dated: 2026-07-26 06:19 ET -->
+<!-- Dated: 2026-08-09 17:05 ET -->
 
 ## Project Identity
 
@@ -89,10 +89,18 @@
 
 ## Website Copy Must Match the Written Guide
 
-**Moved to `.claude/rules/website-copy.md`** (2026-08-02) — it loads
-automatically whenever you touch `WebSite/`, any `.html`, or a guide doc,
-so the full rule is in front of you exactly when it applies and costs
-nothing the rest of the time.
+**The rule lives in `WebSite\Rules\website-copy.md`** (moved there
+2026-08-09). A path-triggered pointer remains at
+`.claude/rules/website-copy.md`, so it still loads automatically whenever you
+touch `WebSite/`, any `.html`, or a guide doc — the rule is in front of you
+exactly when it applies and costs nothing the rest of the time.
+
+**Why it moved:** it was in `.claude/rules/` from 2026-08-02. `.claude` is a
+dot-folder, and dot-folders are routinely filtered out of file pickers as
+hidden — so the rule might not have been selectable when connecting Claude
+Cloud to the repository. A rule Cloud cannot see is a rule Cloud does not
+follow, and Cloud's own snapshot still carried this rule inline from before the
+2026-08-02 move. `WebSite/` is in the connector scope; `.claude` may not be.
 
 The one line worth carrying everywhere: **the guide wins on substance,
 plain English wins on expression** — and jargon gets deleted, not

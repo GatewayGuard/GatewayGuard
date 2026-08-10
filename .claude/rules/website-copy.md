@@ -1,5 +1,5 @@
 ---
-description: Website and guide copy must match the written guide, in the guide's own words, at the plain-English standard.
+description: Website and guide copy must match the written guide, in the guide's own words. Pointer only -- the rule itself lives in WebSite/Rules/website-copy.md
 paths:
   - "WebSite/**"
   - "**/*.html"
@@ -7,44 +7,33 @@ paths:
   - "ProjectDocs/**Website**"
 ---
 
-# Website Copy Must Match the Written Guide
+# Website Copy Rule -- POINTER ONLY
 
-Moved out of the always-loaded `CLAUDE.md` on 2026-08-02 because it applies
-only when writing website or guide pages. It loads automatically whenever a
-file matching the paths above is in play, so nothing is lost — it simply
-stops costing context during tool builds.
+**The rule itself is in `WebSite\Rules\website-copy.md`. Read that file.**
 
-The website and the written guide are read by the same person, often side
-by side. **They must say the same things in the same words.**
+This stub exists only to keep the path trigger working. It is not the rule and
+must never be allowed to grow into a second copy of it.
 
-- Before writing any guide page, read the actual guide section for that
-  setting and match its wording — not a summary of it.
-- `GatewayGuard_SettingsToGuideMap.md` is an **index**, not a content
-  source. It tells you which guide section covers a setting. Use it to
-  find the section, then read the section.
-- **The guide wins on substance. Plain English wins on expression.**
-  Match the guide's facts, recommendations, terminology, setting names
-  and menu paths exactly — never a different claim or a different path.
-  But write the sentences to the plain-English standard, because the
-  reader is a non-technical senior.
-- **Remove technical jargon — don't explain it, delete it.** Leave the
-  plain English version only. Glossing a hard word still leaves a hard
-  word in front of the reader. Standing substitutions: *kernel* → "this
-  part"; *sealed room* → "locked file location"; *hypervisor*, *VBS*,
-  *virtualization* → cut entirely, describe the effect instead.
-- **Keep literal on-screen labels exact** — "Memory integrity", "Core
-  isolation", "Device security", "Device Manager". Those are names the
-  reader must find on their own screen, not jargon. Also keep process
-  names they may actually see (vmmem, vmwp).
-- Load-bearing phrases stay verbatim — warnings, exact setting names,
-  exact paths, and anything that changes meaning if reworded
-  ("leave Off — forcing it can break boot").
-- If the guide is wrong or unclear, fix the guide first, then carry it
-  across — never let the two drift.
-- Where the tool already says something on screen, reuse the tool's
-  wording rather than writing a parallel version (the D-18 principle).
-- **Exception:** a few settings have no guide coverage at all (Fast
-  Startup #18, Wake on LAN #19). Original copy is correct there — flag it
-  in the page header and feed it back into the guide when next revised.
+## Why the rule moved (2026-08-09)
 
-Full rule: WebsiteStandards RULE W-07, enforced by delivery gate H-4.
+`.claude` is a dot-folder. Dot-folders are routinely filtered out of file
+pickers as hidden, so the rule may not have been selectable when connecting
+Claude Cloud to the repository -- and a rule Cloud cannot see is a rule Cloud
+does not follow. `WebSite/` is in the connector scope, so the rule now lives
+where both Claudes can reach it.
+
+Claude Code still loads this stub automatically on website work, via the
+`paths:` frontmatter above, which only functions from `.claude/rules/`. That is
+the whole reason this file still exists.
+
+**One copy of the rule, one pointer to it.** If you find yourself pasting rule
+text into this file, stop -- that is the "state every fact exactly once"
+violation this arrangement was built to avoid.
+
+## The one line worth carrying everywhere
+
+**The guide wins on substance, plain English wins on expression** -- and jargon
+gets deleted, not explained.
+
+Full rule: `WebSite\Rules\website-copy.md`. Also WebsiteStandards RULE W-07,
+delivery gate H-4.
