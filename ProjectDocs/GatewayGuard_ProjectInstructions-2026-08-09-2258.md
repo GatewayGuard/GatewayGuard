@@ -1,10 +1,22 @@
-<!-- Dated: 2026-08-06 17:27 EDT -->
+<!-- Dated: 2026-08-09 22:58 EDT -->
 # GatewayGuard Project Instructions
 - **Document Name:** GatewayGuard_ProjectInstructions
-- **Last Modified:** 2026-08-06 17:27 EDT
-- **Last Editor:** Claude.ai
+- **Last Modified:** 2026-08-09 22:58 EDT
+- **Last Editor:** Claude Code (CGDELL)
 - **Status:** Cumulative Master Document (supersedes all prior versions)
 - **Change History Log:**
+  - 2026-08-09 22:58: **Added EXHAUST THE FORMS BEFORE CONCLUDING ABSENCE.**
+    A single check coming back empty is not evidence a thing does not exist --
+    it is evidence one form of it was not found in one place. Earned three
+    times in two days on three different subjects: a tool declared unavailable
+    after one of its several invocation names failed; a file recorded as
+    "never existed" because it was absent from the one tree searched, while it
+    sat in another system; and a folder assessed as redundant because a
+    different folder of the same name had been. Two of the three reached
+    governing documents before being caught. A wrong negative closes the
+    question, which is what makes it worse than a wrong positive.
+    Last Editor corrected to Claude Code -- governing documents moved to
+    Claude Code authorship on 2026-08-08; see the SyncPlan.
   - 2026-08-06 17:27: **Added CLAUDE.md as required reading** before any
     .ps1 build, build-number increment, or bulk edit -- it was named in no
     prior version of this document, so a session following these instructions
@@ -378,6 +390,51 @@ been run.
 At the end of any session that produces files, run a stated-vs-
 delivered check: list every claim made about file contents and confirm
 each one is in the delivered file. Flag any gap before signing off.
+
+---
+
+## EXHAUST THE FORMS BEFORE CONCLUDING ABSENCE (added 2026-08-09)
+
+**One check coming back empty is not evidence that a thing does not exist. It
+is evidence that one form of it was not found in one place.**
+
+Before writing *"there is no X"*, *"X never existed"*, *"X is not installed"*,
+or *"X is redundant"*:
+
+1. **Name the other forms X could take.** A thing rarely has one spelling, one
+   extension, one command name, one location, one representation.
+2. **Name the other places X could be.** This tree is not the only place things
+   live. Neither is any one machine, folder, account, or system.
+3. **Check them.** If either list is unexhausted, the search is unfinished.
+4. **Then say what you actually measured:** *"not found as Y in Z"* -- never
+   *"does not exist."*
+
+**"Not found" and "does not exist" are different claims.** The first is a
+measurement and is almost always safe. The second is a conclusion, and it is
+only earned when the search was exhaustive. Downgrade to the first whenever the
+second cannot be defended.
+
+**The tell:** a negative conclusion reached faster than a positive one would
+have been. Finding something requires locating it; concluding nothing exists
+requires ruling everywhere out. If the second felt quicker, it was not done.
+
+**Why this is a standing rule and not a note:** a wrong negative is worse than
+a wrong positive. A wrong positive gets contradicted by the next check. A wrong
+negative closes the question -- nobody looks again, the thing stays lost, and
+the conclusion gets written into a governing document where it is read as
+settled.
+
+**What earned this (three instances, two days, three different subjects):** a
+tool was declared unavailable after one of its several invocation names failed;
+a file was recorded as having "never existed" because it was absent from the
+one tree searched, while it sat in another system entirely; and a folder was
+assessed as redundant because a different folder with the same name had been.
+Each was a single probe treated as an exhaustive search. Two reached governing
+documents before being caught.
+
+**This generalises past files and tools.** Machine state, settings, rules,
+capabilities, permissions, and history all have more than one place to look and
+more than one form to take.
 
 ---
 

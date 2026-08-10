@@ -1,8 +1,8 @@
-<!-- Dated: 2026-08-04 11:05 EDT -->
-<!-- Editor: Claude.ai -->
+<!-- Dated: 2026-08-09 22:58 EDT -->
+<!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-08-04 11:05 EDT
+- **Last Modified:** 2026-08-09 22:58 EDT
 - **Status:** Append-only running log — newest session at top
 - **Purpose:** Continuous record of all sessions (Claude.ai and Claude
   Code) so any Claude instance can resume with full context.
@@ -26,6 +26,111 @@ Upload it to the Claude project immediately after downloading.
 This is the shared memory between all Claude instances.
 
 ---
+---
+
+## Session: 2026-08-08 to 2026-08-09 [Claude Code — CGDELL]
+
+**Two-day session. No build work. Consolidation, backup, and governance.**
+
+### The headline
+
+**The GitHub remote now exists** — `GatewayGuard/GatewayGuard`, private,
+org-owned. Before 2026-08-08 the repository lived inside the folder it was
+protecting, with no remote at all, while the tree existed in six copies at
+three different commits. That was the largest unmitigated risk to the
+September 1 launch and it is closed.
+
+### Completed — infrastructure
+
+- **GitHub remote created and populated.** 35 commits pushed.
+- **Tree consolidated to one working copy.** Personal-OneDrive copy deleted;
+  business copy renamed `GatewayGuide` → `GatewayGuard`. The rename had been
+  made once before and reverted — it only stuck when made in the browser,
+  because the cloud held the old name and the cloud wins.
+- **CGDELL's Documents folder rescued from inside the project tree.** It had
+  been redirected to `OneDrive\GatewayGuide\Documents`, which explained a
+  folder that regenerated after four deletions, 1.2 GB of personal files in
+  `Builds\Documents\`, and two OneDrive accounts deadlocking over folder
+  backup. Fixed with `SHSetKnownFolderPath` — the Location tab never appeared,
+  and three legacy junctions had to be removed first.
+- **Folder backup turned off on SANDY and SANDY3**, both accounts, before
+  CGDELL's 1.2 GB could merge onto them.
+- **Recovery keys printed and copied to USB** for CGDELL and Sandy3.
+
+### Completed — measurements that settled open questions
+
+- **Sandy3 encryption MEASURED:** `FullyEncrypted / 100 / XtsAes128`. The last
+  fleet fact resting on a guess.
+- **All three machines confirmed at the same commit** with the same ascii39
+  hash `75C3509473F17D6F`.
+- **The 19 guide pages located** — in git history and untracked in
+  `WebSite/files (6)/`. They never reached GitHub Pages.
+- **CGDELL has four working BitLocker recovery keys.** All four unlock it;
+  rotation is a deliberate two-pass design and pass 2 was never run.
+
+### Completed — governance
+
+- **`GatewayGuard_SyncPlan`** — what and why, and who authors what.
+- **`GatewayGuard_SyncSetupSteps`** — the click-by-click procedure.
+- **READ-FIRST briefing merged** from two rival versions and rewritten.
+- **Claude Cloud reviewed all three** and returned 28 findings; 23 applied.
+- **Governing-document authorship moved to Claude Code**, on the evidence that
+  every dead pointer found was in a Cloud-authored file — 15 of 49 filename
+  references across the tree were dead.
+- **New rule: EXHAUST THE FORMS BEFORE CONCLUDING ABSENCE** (ProjectInstructions).
+
+### Recovered — content that existed in only one place
+
+- **CF-01 through CF-06** — 62 lines of ascii30/31 field findings, in Cloud
+  and in no file here. CF-02 (per-setting approve/disapprove for all settings)
+  reads like ascii40 scope.
+- **`GatewayGuard_NamingStandard`** — the source of truth for all 19 setting
+  names, across ~45 files. Nothing defined them before.
+- **`GatewayGuard_SessionLog`** — this file. Its own rule had never been
+  followable by Claude Code because the file had never reached the tree.
+- **`FutureProjects`** (FP-01–FP-21), **`ProjectFiles_DeleteKeep`**, the five
+  Guide print editions, and eight other documents.
+
+### Errors made and corrected
+
+- Read the **wrong tree** for the first 20 minutes of 2026-08-08 — a stale
+  copy, three commits behind.
+- Recorded `TestHistory-ascii39-2026-08-02-0914.md` as **"never existed."** It
+  exists in project knowledge; it had never reached the tree.
+- Declared **Python unavailable** after `python3` failed. `python` and `py`
+  both work.
+- Twice dismissed a misplaced folder as "sync debris" without opening it. One
+  was `ProjectDocs` — every governing document — moved by a stray drag and
+  gone for over an hour.
+- Told Bill the connector scope three different ways across three documents.
+
+All five are the same shape and produced the new rule above.
+
+### Bill's decisions this session
+
+- **Gumroad for all sales** — closes the question gating refund terms and
+  sales tax work.
+- **Website-copy rule moved to `WebSite\Rules\`** rather than adding `.claude`
+  to the connector scope.
+- **404.html** — live site has one; no action.
+- Keep all four BitLocker recovery keys.
+
+### Open — carried into the next session
+
+1. **ascii39 field run on SANDY.** Blocks everything downstream. Right-click
+   the project folder → "Always keep on this device" first: 307 of 1,110 files
+   are cloud placeholders and SANDY has no internet without the USB adapter.
+2. **Connect Claude Cloud to GitHub** — follow `GatewayGuard_SyncSetupSteps-*.md`.
+3. **Rebuild the assert-guarded Python wrapper.** Zero `.py` files in the tree
+   or in git history. Required before ascii40. Python 3.12.10 is installed.
+4. **Move Bill's 18 personal documents out of `Attachments\`** — his resume,
+   the Cuban letters and the Sunset set exist nowhere else.
+5. **Upload the 19 guide pages.** `gatewayguard.co` still shows UNDER
+   CONSTRUCTION from 2026-07-21.
+6. **`Run-DocCheck.bat`** — the document gate. Would have caught the scope
+   disagreement and the repeated git counts.
+7. **Marketing-Notes open-source violation** — three occurrences, never fixed.
+
 
 ## Session: 2026-08-04 [Claude.ai]
 
@@ -144,7 +249,7 @@ Task: [what you want to do]
 
 Add to every file header immediately after the Dated line:
 ```
-<!-- Editor: Claude.ai -->   (this chat produced or last edited it)
+<!-- Editor: Claude Code (CGDELL) -->   (this chat produced or last edited it)
 <!-- Editor: Claude Code -->  (Claude Code terminal produced or last edited it)
 <!-- Editor: Bill -->         (manually edited by Bill)
 ```
