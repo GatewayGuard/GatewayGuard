@@ -1,10 +1,23 @@
-<!-- Dated: 2026-08-09 22:39 ET -->
+<!-- Dated: 2026-08-10 11:19 ET -->
 # GatewayGuard -- Sync Plan: Claude Code, Claude Cloud, and Bill
 - **Document Name:** GatewayGuard_SyncPlan
-- **Last Modified:** 2026-08-09 22:39 ET
+- **Last Modified:** 2026-08-10 11:19 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **Status:** Cumulative Master Document
 - **Change History Log:**
+  - 2026-08-10 11:19: **Section 5a pointer updated for the
+    `START-HERE.txt` -> `Check-Claude-Cloud.txt` rename**, and the Claude Code
+    half of that file split out into `Start-CC.txt`. Both are at the repo root
+    and outside the four-item connector scope, so Cloud reads neither.
+    **Section 5a's sentence was also broken, not merely stale.** The 22:39
+    edit the day before left two half-sentences spliced together -- "the short
+    block already proven in / the block in `START-HERE.txt`" -- with the
+    reading instructions trailing off the end of an over-long line. It had
+    been unreadable for a day in the one section that tells Cloud what to put
+    in its Project Instructions. **Cloud's 28-finding review did not catch it,
+    and neither did anything else**, which is the argument for `Run-DocCheck`
+    in 6c stated better than 6c states it: a review reads for meaning and
+    slides over a sentence that has none.
   - 2026-08-09 22:39: **Revised against Claude Cloud's review**
     (`GatewayGuard_SyncDocsReview-2026-08-09-1635.md`). Six findings applied:
     **Scope 4a was three items and omitted `WebSite/`** -- and section 6b's
@@ -287,9 +300,10 @@ they diverge.
 ### 5a. Project Instructions holds a POINTER, not a copy
 
 Cloud's Project Instructions should contain the short block already proven in
-the block in `START-HERE.txt` (a file Cloud cannot see, so it cannot confirm the match) -- read the newest briefing by the date in the filename, read
-CLAUDE.md, then report what is stale -- **not** a transcription of CLAUDE.md's
-386 lines.
+`Check-Claude-Cloud.txt` -- a file at the repo root, outside the connector
+scope, so Cloud cannot open it to confirm the match itself. Read the newest
+briefing by the date in the filename, read CLAUDE.md, then report what is
+stale -- **not** a transcription of CLAUDE.md's 386 lines.
 
 That block changes almost never. The volatile detail arrives through the
 GitHub connector, where it is versioned and dated.

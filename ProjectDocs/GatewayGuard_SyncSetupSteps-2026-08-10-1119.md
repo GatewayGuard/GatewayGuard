@@ -1,11 +1,20 @@
-<!-- Dated: 2026-08-09 22:39 ET -->
+<!-- Dated: 2026-08-10 11:19 ET -->
 # GatewayGuard -- Sync Setup Steps (Claude Code <-> Claude Cloud)
 - **Document Name:** GatewayGuard_SyncSetupSteps
-- **Last Modified:** 2026-08-09 22:39 ET
+- **Last Modified:** 2026-08-10 11:19 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **Status:** Working procedure -- follow at the keyboard
 - **Companion to:** `GatewayGuard_SyncPlan-*.md` (the what and why; this is the how)
 - **Change History Log:**
+  - 2026-08-10 11:19: **`START-HERE.txt` was renamed to
+    `Check-Claude-Cloud.txt`**, and the pointer in Part B updated. The Claude
+    Code half of that file has moved to a separate `Start-CC.txt`, which adds
+    `Get-Date`, a working-root confirmation and `git status` -- none of which
+    Cloud can do, which is why the two are now separate files rather than one
+    that claimed to serve both. **Both sit at the repo root and are therefore
+    outside the four-item connector scope in A5**, so Cloud still cannot read
+    either one. That is the same limitation the Part B note already records,
+    unchanged by the rename.
   - 2026-08-09 22:39: **Rewritten against Claude Cloud's review**
     (`GatewayGuard_SyncDocsReview-2026-08-09-1635.md`, 28 findings). Ten
     applied here:
@@ -571,7 +580,9 @@ Never write an exact filename or a measured number from memory -- ask for it
 to be measured.
 ```
 
-That block is the same one already proven in `START-HERE.txt`.
+That block is the same one already proven in `Check-Claude-Cloud.txt` (repo
+root, outside the connector scope -- so Cloud cannot open it to confirm the
+match itself). It was named `START-HERE.txt` until 2026-08-10.
 
 ---
 
