@@ -1,13 +1,19 @@
 ===============================================================
- GATEWAYGUARD -- WHAT TO PASTE INTO A NEW CHAT
- Dated: 2026-08-07 09:16 ET
+ CHECK-CLAUDE-CLOUD -- WHAT TO PASTE INTO A NEW CLOUD CHAT
+ Dated: 2026-08-10 10:19 ET
+ Was: START-HERE.txt (renamed 2026-08-10)
 ===============================================================
 
-Open a new Claude Code session in the project folder, then copy the
-block between the lines below and paste it as your first message.
+Open a new chat at claude.ai, then copy the block between the
+lines below and paste it as your first message.
 
-It works for Claude Code AND for Claude.ai (Claude Cloud). You do not
-need to change a word.
+THIS IS THE CLAUDE CLOUD VERSION. For Claude Code in a terminal
+use Start-CC.txt instead -- it adds Get-Date, the working-root
+check and git state, none of which Cloud can do.
+
+Until 2026-08-10 this file claimed to work for both. It no
+longer does, and that claim is the same failure that produced
+two briefings each claiming to be current.
 
 ---------------- COPY FROM HERE ----------------
 
@@ -24,7 +30,7 @@ Do not start work until I tell you what we are doing.
 ----------------- COPY TO HERE -----------------
 
 WHY IT ASKS FOR ITEM 3: every briefing so far has gone stale within
-hours, including two pointers in the one written yesterday afternoon.
+hours, including two pointers in one written the same afternoon.
 Asking for it up front turns a silent trap into the first thing you
 are told.
 

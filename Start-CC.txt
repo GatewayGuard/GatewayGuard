@@ -1,0 +1,169 @@
+===============================================================
+ START-CC -- WHAT TO DO AT THE START OF EVERY CLAUDE CODE
+             SESSION
+ Dated: 2026-08-10 10:19 ET
+===============================================================
+
+This file is for CLAUDE CODE, on this machine, in a terminal.
+For Claude.ai (Cloud) use Check-Claude-Cloud.txt -- Cloud cannot
+run Get-Date, cannot read git, and cannot see the folder, so
+three of the steps below are impossible for it.
+
+THIS FILENAME CARRIES NO DATE ON PURPOSE. Every other document
+here is globbed newest-by-filename-date. This one you type from
+memory, so it must never move.
+
+---------------------------------------------------------------
+ STEP 1 -- SET UP THE FOLDER BEFORE YOU TYPE claude
+---------------------------------------------------------------
+
+Open PowerShell (or Windows Terminal) and paste this line:
+
+cd "C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard"
+
+Then, and only then, type:
+
+claude
+
+THE QUOTES ARE REQUIRED. The path contains a space, at
+"OneDrive - GatewayGuard LLC". Without quotes PowerShell reads
+it as three arguments and you land somewhere else.
+
+THE PATH ENDS IN \GatewayGuard. Stopping one folder short, at
+"...\OneDrive - GatewayGuard LLC", is the easy mistake and it
+is a quiet one -- the folder exists, the cd succeeds, and
+Claude Code starts normally. What it does NOT do is load
+.claude\settings.local.json, because that now sits in a
+SUBFOLDER rather than the session root. The .ps1 integrity
+hook does not arm. The permission allowlist does not apply.
+The website-copy rule does not trigger. Bare git finds no
+repository at all, because git searches upward, never down.
+
+Nothing announces any of this. Happened 2026-08-10, on the
+first use of this file.
+
+DO NOT start it in Attachments\GatewayGuide\ either -- that is
+a stale copy of the whole tree, with its own .git, nested
+inside the working tree. It looks right and is not.
+
+TO CHECK, once claude is running, ask it to print its working
+root. That is step 2 of the paste block below, and this is the
+failure it exists to catch.
+
+---------------------------------------------------------------
+ STEP 2 -- PASTE THIS AS YOUR FIRST MESSAGE
+---------------------------------------------------------------
+
+Change the machine name if you are not on CGDELL.
+Change the task on the last line.
+
+---------------- COPY FROM HERE ----------------
+
+New session. Machine: CGDELL.
+
+Before anything else:
+
+1. Run Get-Date and state the date and time you will use for
+   this session. Do not ask me for it.
+
+2. Confirm your working root and print the full path. Do not
+   assume it -- a stale nested copy exists under Attachments\.
+
+3. Run git status. The tree is NOT expected to be clean.
+
+4. Glob and read the NEWEST BY FILENAME DATE of each. Not the
+   newest modified date -- OneDrive rewrites those:
+     ProjectDocs\_READ-FIRST-Briefing-*.md
+     ProjectDocs\GatewayGuard_SessionLog-*.md
+     ProjectDocs\GatewayGuard_ProjectInstructions-*.md
+     CLAUDE.md
+
+5. Report back, in this order:
+   - current build number, and whether a field log exists for it
+   - git state: commits, tracked files, unpushed, untracked,
+     and whether the folder layout still looks right
+   - the top three open items from the briefing
+   - anything in the briefing you believe is now stale
+
+Do not start work until I confirm your report.
+
+At session end: update the SessionLog, commit, and push.
+
+Task: [what you want]
+
+----------------- COPY TO HERE -----------------
+
+---------------------------------------------------------------
+ WHY EACH STEP IS THERE
+---------------------------------------------------------------
+
+1. GET-DATE. Claude Code can read the clock. Cloud has to ask
+   and Claude Code copied the habit. Every file here is named
+   and stamped with a date, so a wrong date is a wrong filename.
+
+2. CONFIRM THE ROOT. Six copies of this tree have existed at
+   three different commits. One is still nested inside the
+   working tree at Attachments\GatewayGuide\, complete with its
+   own .git. Printing the path costs one line and catches the
+   one failure that makes an entire session's work land in the
+   wrong folder.
+
+3. GIT STATUS. On 2026-08-08 a stray drag in File Explorer
+   moved ProjectDocs\ -- every governing document -- inside
+   Recovery Keys\, and moved WebSite\ inside Tool\. Windows does
+   that on a same-drive drag with no confirmation and no undo
+   prompt. It went unnoticed for over an hour. git status
+   reported it instantly. The tree carries deliberate deletions
+   and untracked holdbacks, so "not clean" is the correct state
+   -- what matters is whether the numbers moved since last time.
+
+4. NEWEST BY FILENAME DATE. Three copies of the Playbook exist.
+   Sorting by modified date returns one 13 days stale. Trusting
+   a filename written out inside a briefing returns one a day
+   stale. Only the date in the filename returns the current one.
+   Known exception: LegalZoomGuide-2026-07-24-0846 is newer than
+   -0921.
+
+   THE SESSION LOG AND PROJECT INSTRUCTIONS ARE NEW HERE. Both
+   carry a standing "read at every session start" rule, and the
+   briefing alone does not replace them. The SessionLog only
+   reached the tree on 2026-08-09 -- before that Claude Code had
+   never read it, because it could not.
+
+5. THE STALE CHECK IS THE POINT. Every briefing so far has gone
+   stale within hours, including two pointers in one written the
+   same afternoon. Asking for it up front turns a silent trap
+   into the first thing you are told.
+
+   ASKING FOR THE BUILD'S FIELD LOG, not just the build number,
+   is what enforces the UNRUN BUILD RULE: nothing may be scoped
+   or numbered as the next build until the current one has been
+   field run.
+
+---------------------------------------------------------------
+ WHAT CHANGED FROM Check-Claude-Cloud.txt (was START-HERE.txt)
+---------------------------------------------------------------
+
+Kept:    glob newest by filename date; read CLAUDE.md; report
+         the build, whether it was field run, the top three open
+         items, and what is stale; do not start work until told.
+
+Added:   the cd path and the quoting rule; Get-Date; confirm the
+         working root; git status; read the SessionLog and the
+         ProjectInstructions, not the briefing alone; state the
+         machine up front; update and push the SessionLog at the
+         end.
+
+Dropped: "works for Claude Code AND Claude.ai." It no longer
+         does, and pretending otherwise is what produced two
+         briefings that each claimed to be current. That file is
+         now Check-Claude-Cloud.txt and is the Cloud version.
+
+---------------------------------------------------------------
+
+If you only remember one line, this is enough:
+
+    cd to the GatewayGuard folder in quotes, start claude, and
+    tell it: read the newest briefing, session log, project
+    instructions and CLAUDE.md, then give me the build, git
+    state, the top 3, and what is stale -- before any work.
