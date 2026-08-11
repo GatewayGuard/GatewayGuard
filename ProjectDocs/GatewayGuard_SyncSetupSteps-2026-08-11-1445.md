@@ -1,11 +1,18 @@
-<!-- Dated: 2026-08-11 12:05 ET -->
+<!-- Dated: 2026-08-11 14:45 ET -->
 # GatewayGuard -- Sync Setup Steps (Claude Code <-> Claude Cloud)
 - **Document Name:** GatewayGuard_SyncSetupSteps
-- **Last Modified:** 2026-08-11 12:05 ET
+- **Last Modified:** 2026-08-11 14:45 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **Status:** Working procedure -- follow at the keyboard
 - **Companion to:** `GatewayGuard_SyncPlan-*.md` (the what and why; this is the how)
 - **Change History Log:**
+  - 2026-08-11 14:45: **CONNECTOR PROVEN. A6 PASSED.** Cloud quoted the root
+    `CLAUDE.md` rule-move line, `Tool/Run-ExternalCommandCheck.bat` and both
+    header lines of `WebSite/Rules/website-copy.md`, all matching CGDELL
+    character for character; `ProjectDocs/` proved by twelve prefixed files.
+    Adds **PART F**, the five interface failures that cost most of two days --
+    none documented anywhere, and every one indistinguishable from a broken
+    connector while it was happening.
   - 2026-08-11 12:05: **Target 2 swapped, and folders may now be proven by
     prefix.** `ProjectDocs/GatewayGuard_Checklist.txt` exists and is on
     `origin/main`, but Claude.ai could not retrieve it in **twelve query
@@ -763,6 +770,67 @@ will answer confidently from the older version and give no sign it is behind.
 
 **Rule:** push at the end of any session that produced work worth keeping. A
 remote 20 commits behind is a recovery point for a version you no longer have.
+
+---
+
+# PART F -- INTERFACE FAILURES THAT LOOK LIKE A BROKEN CONNECTOR
+
+**All five were hit on 2026-08-10/11. Each wasted time, and each is invisible
+-- nothing on screen says this is what is happening.**
+
+## F1. The Project knowledge panel is unreachable at 150% text scaling
+
+**The control beside Share is not rendered at 150%.** Not hidden behind a menu
+-- absent. Bill runs enlarged text, so the panel did not exist for him, and
+every instruction beginning "open the Project knowledge panel" was
+unfollowable.
+
+**Two ways in:**
+- Drop the browser to **100% zoom**
+- **Put an artifact in the chat** -- the layout changes and the control appears
+  at 150%. Bill found this one.
+
+**Worth noting for the product:** GatewayGuard's own users are seniors running
+enlarged text. A control that vanishes at 150% is the exact failure Checkup
+exists to help with, met in the tooling used to build it.
+
+## F2. Deleting the manual uploads clears the connector content
+
+After 0b-4 removed the uploads, Cloud could no longer reach any repository
+file, and the four items had to be **re-added** through the picker. The
+repository entry still showed in the panel throughout -- it looked attached and
+delivered nothing.
+
+**So run A6 again AFTER 0b-4, not only before it.** A pass before the deletion
+does not survive it.
+
+## F3. The capacity meter is unreliable
+
+It read **1% immediately after the folders were re-added**, while the connector
+was fully loaded and answering correctly. It had read 87% for the same content
+an hour earlier.
+
+**Do not diagnose from the meter.** It is good for one thing only -- watching it
+climb during an Add, which shows content is being fetched. **A6 is the only
+evidence that has held up.**
+
+## F4. Cloud's `/mnt/project/` mount is not the connector
+
+Cloud repeatedly reported "no repository access" and "there is no repo, no
+tree" after searching `/mnt/project/`, `/mnt/user-data` and `/home`, while
+retrieval was working. **The mount holds manual uploads. Connector files arrive
+through retrieval and are not on that filesystem.**
+
+Briefing section 11 already says the mount is not a reliable listing. **For this
+purpose it is worse than unreliable -- it is the wrong place entirely.** When
+Cloud says it cannot see the repository, ask it to quote a line instead. That is
+what A6 does, and it works.
+
+## F5. Being outside the project looks identical to a broken connector
+
+A chat started outside the project answers *"I do not have access to a local
+filesystem or repository environment."* That is not a connector failure, it is
+the wrong window. **Check the project name at the top of the page first.**
 
 ---
 

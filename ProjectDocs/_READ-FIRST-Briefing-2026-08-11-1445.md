@@ -1,7 +1,7 @@
-<!-- Dated: 2026-08-09 22:39 ET -->
+<!-- Dated: 2026-08-11 14:45 ET -->
 # READ FIRST -- Session Briefing
 **Document Name:** _READ-FIRST-Briefing
-**Last Modified:** 2026-08-09 22:39 ET
+**Last Modified:** 2026-08-11 14:45 ET
 **Last Editor:** Claude Code (CGDELL)
 **Purpose:** Read this before anything else at the start of every session.
 **Supersedes:** BOTH `_READ-FIRST-Briefing-2026-08-08-2147.md` (Claude Code)
@@ -9,6 +9,16 @@ and `_READ-FIRST-Briefing-2026-08-09-1110.md` (Claude.ai) -- retire both, and
 every earlier briefing with them.
 
 **Change History Log:**
+- 2026-08-11 14:45: **THE CONNECTOR IS LIVE, AND `Attachments\` IS GONE.**
+  Claude Cloud now reads the repository -- A6 passed on revised targets, with
+  every quoted line matching CGDELL character for character. Section 8's items
+  7 and 9 are **done** and struck. Section 5's `Attachments\` do-not-delete
+  warning is **withdrawn**: the folder was deleted 2026-08-10 after 21 unique
+  documents and 29 medical files were rescued and hash-verified. Counts in
+  section 1 re-measured. Also records what two days of connector work actually
+  cost -- five interface failures, now PART F of `SyncSetupSteps`, none of them
+  documented anywhere and every one indistinguishable from a broken connector
+  while it was happening.
 - 2026-08-09 22:39: **Revised against Claude Cloud's review** of all three sync
   documents (28 findings; 23 applied, 2 pushed back, 3 decided by Bill).
   Restored from Cloud's briefing: the **LegalZoomGuide backwards-timestamp
@@ -149,7 +159,13 @@ patterns, not filenames.
 
 ## 1. CURRENT STATUS -- 2026-08-09 22:39 ET
 
-**Active build:** ascii39 -- **NEVER FIELD RUN. No log exists.**
+**Active build:** ascii39 -- **NEVER FIELD RUN.**
+
+A TestHistory file exists -- `GatewayGuard_TestHistory-ascii39-2026-08-02-1335.md`
+-- but it is a **BUILD record, not a field record.** Its own header reads *"No
+field run yet."* **No field-run log exists.** *(An earlier version of this line
+said "No log exists," which is how a file that does exist got recorded as
+missing once already -- see section 5.)*
 **Target launch:** September 1, 2026 at gatewayguard.co
 **Current phase:** M365 tenant migration, website build, code-signing cert pending
 
@@ -157,8 +173,13 @@ patterns, not filenames.
 log.** That is the UNRUN BUILD RULE. The migration plan once instructed exactly
 that increment; it has been corrected twice now, so expect it to try again.
 
-**Git (measured 2026-08-09 22:39):** 34 commits, 709 files tracked, 0 unpushed,
+**Git (measured 2026-08-11 14:45):** 47 commits, 634 files tracked, 0 unpushed,
 remote `GatewayGuard/GatewayGuard` (private, org-owned).
+
+**The tracked count went DOWN by 75 on purpose.** The connector would not fit --
+project knowledge reported 312% of capacity -- so 10.8 MB was trimmed to 4.42 MB:
+saved-webpage junk, 17 PDFs, superseded builds ascii32-38, three `.pptx`. The
+large binaries were untracked with `git rm --cached`, so they remain on disk.
 
 **These counts are stated HERE and nowhere else.** They were previously written
 into three documents at once and all three disagreed within 24 hours -- which
@@ -166,16 +187,26 @@ is the "two documents state the same machine fact" symptom the SyncPlan names.
 Everything else points here. **If you need them current, run `git status`;** a
 number in a document is a measurement with a timestamp, not a live reading.
 
-**The working tree is NOT "clean", and that is correct.** It carries **139
-deletions** and **18 untracked** entries, all deliberate or junk:
+**The working tree is NOT "clean", and that is correct.** It carries **93
+deletions** and **51 untracked** entries, all deliberate or junk:
 
 | Count | What | Verdict |
 |---|---|---|
 | 63 | `Incoming/` | deliberate holdback |
-| 32 | `Tool/Run-GatewayGuard_files/` | saved-webpage CSS/JS. Junk. |
-| 19 | `WebSite/html/` | **the 19 guide pages** -- see section 8 item 7 |
 | 17 | `Builds/` | old builds ascii18-34 |
-| 8 | Presentation, LegalZoom, Certificates | holdbacks |
+| 6 | `Notes/Older Files/` | **moved, not lost** -- see below |
+| 7 | ProjectDocs, LegalZoom, Certificates | holdbacks |
+
+**The untracked count nearly tripled, and that is also correct.** Most of it is
+the PDFs, `.pptx` and superseded builds untracked on 2026-08-11 to fit the
+connector -- still on disk, still in git history, simply no longer tracked.
+
+**`Notes\Older Files\` was found at the business OneDrive root** on
+2026-08-11, one level above the project, after a stray File Explorer drag. All
+six files hash-verified identical to git. **Nothing was lost.** Decide whether
+to move it back or record the removal with `git rm`; what is wrong is the
+current state, where git reports six files missing and they are sitting one
+folder up. This is the third stray-drag incident -- see section 2 item 4.
 
 **Do not sweep any of it into a commit without asking.** Every commit made on
 2026-08-08 was individually path-scoped, and that is the only reason 1.2 GB of
@@ -205,9 +236,10 @@ personal documents never reached GitHub.
    It was real, not a typo, and it is retired.
    **These other copies exist and are NOT sources** (measured 2026-08-08):
    `C:\GG-Backup\GatewayGuide` (652), `C:\GatewaayGuardBackup\GatewayGuide`
-   (557, note the typo), `C:\GatewayGuard-Backup-2026-08-06` (560),
-   `D:\GatewayGuide`, and one **nested inside the working tree** at
-   `Attachments\GatewayGuide\` (586). See section 5.
+   (557, note the typo), `C:\GatewayGuard-Backup-2026-08-06` (560), and
+   `D:\GatewayGuide` (not reachable when last checked).
+   **The nested copy inside the working tree is GONE** -- `Attachments\` was
+   deleted 2026-08-10. See section 5.
    **When two copies disagree, the remote decides** -- not the newer file, not
    the bigger folder.
 4. **The working tree's SHAPE can change without anyone noticing.**
@@ -378,7 +410,41 @@ subscription; his personal OneDrive now survives that with room to spare.
 `Builds/Documents/`, a duplicate licence `.docx`, and `WebSite/files (6)/`
 which holds the 19 guide pages.
 
-### `Attachments\` -- READ BEFORE DELETING IT
+### `Attachments\` -- DELETED 2026-08-10. This section is history.
+
+**The folder no longer exists.** 825 files removed, including the nested stale
+tree copy and its `.git`. Nothing was lost, and the warning below is retained
+only because how it was cleared is the useful part.
+
+**What was rescued first, and verified:**
+
+- **29 medical documents** from `Attachments\GatewayGuide\Heath\` --
+  hash-verified byte-identical into `C:\Users\willi\OneDrive\Personal\`,
+  29 of 29. That folder existed in **exactly one place** on the machine: not in
+  git, not in any of the four backup copies, not in either OneDrive. **The
+  briefing named 18 personal documents as the constraint; the real constraint
+  was 29 medical files nobody had listed.**
+- **21 documents** in `Attachments\` itself -- the resume, three Cuban letters,
+  `The Executive Letter.docx`, `final review.docx`, `Maine LLC.pdf`,
+  `Maine Credi Voucher (1).pdf`, and both levels of `Sunset\` -- copied to
+  `Personal\` and hash-verified 21 of 21 **before** the delete ran. The script
+  was written so the deletion could not execute unless all 21 passed.
+
+**Only one file in the whole folder had a copy elsewhere** (`UPS-LLC_Delivery.txt`,
+eight copies). Everything else was either unique and rescued, or part of the
+586-file stale tree copy that was proven redundant first: 493 files
+byte-identical to the live tree, 4 differing with the live tree newer on every
+one, and nothing that superseded anything.
+
+**The lesson worth keeping:** the briefing said "move the 18 documents out
+first, then the remainder can go." The 18 were in `Attachments\` proper and
+were never at risk from deleting the nested copy. The 29 files that *were* at
+risk went unmentioned. **A named list in a warning becomes the thing people
+check, and stops them looking for what the list left out.**
+
+---
+
+### The original warning, retained for its reasoning
 
 A stale copy of the whole tree, **with its own `.git`**, sits nested inside the
 working tree at `Attachments\GatewayGuide\`. It is untracked, so nothing has
@@ -540,15 +606,31 @@ in [filename]."*
    `WebSite/files (6)/`. **Hash-compare the two copies before publishing any
    of them** -- which is current has not been established.
    Also still open: confirm 17 stale HTML files deleted.
-7. **Move Bill's 18 personal documents out of `Attachments\`** (section 5),
-   then remove the stale nested tree copy.
+7. ~~Move Bill's 18 personal documents out of `Attachments\`, then remove the
+   stale nested tree copy.~~ **DONE 2026-08-10.** All rescued and
+   hash-verified into `C:\Users\willi\OneDrive\Personal\`; `Attachments\`
+   deleted, 825 files. See section 5.
 8. **Commit the seven untracked project files** -- three sync-check results,
    the Sandy3 encryption profile, `Rotate-BitLockerKey` and its launcher, the
    to-do list. The rotate tool has never been committed, which is the same
    class of gap as the missing Python wrappers.
-9. **Connect Claude Cloud to the repository** -- follow
-    `GatewayGuard_SyncSetupSteps-*.md`. Scope to `ProjectDocs/`, `Tool/`,
-    `WebSite/` and `CLAUDE.md` by **folder**, never the repo root.
+9. ~~Connect Claude Cloud to the repository.~~ **DONE 2026-08-11. A6 PASSED.**
+
+    Scope is `ProjectDocs/`, `Tool/`, **`WebSite/Rules/`** and `CLAUDE.md`.
+    **Note the narrowing:** all of `WebSite/` would not fit -- capacity ran to
+    116% -- and `WebSite/Rules/website-copy.md` is the only part Cloud needs.
+
+    **Proof, 2026-08-11:** Cloud quoted the root `CLAUDE.md` rule-move line,
+    `Tool/Run-ExternalCommandCheck.bat` and both header lines of
+    `WebSite/Rules/website-copy.md`, all matching CGDELL character for
+    character; `ProjectDocs/` proved by twelve prefixed files.
+
+    **Re-run A6 after anything that changes the connection** -- deleting the
+    manual uploads cleared the connector content once, and the repository entry
+    kept showing as attached the whole time. **The capacity meter is not
+    evidence:** it read 1% while the connector was fully loaded and answering
+    correctly. See `SyncSetupSteps` PART F for the five interface failures that
+    cost two days, all of which look exactly like a broken connector.
 
 ---
 

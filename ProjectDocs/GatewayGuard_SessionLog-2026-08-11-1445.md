@@ -1,8 +1,8 @@
-<!-- Dated: 2026-08-09 22:58 EDT -->
+<!-- Dated: 2026-08-11 14:45 EDT -->
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-08-09 22:58 EDT
+- **Last Modified:** 2026-08-11 14:45 EDT
 - **Status:** Append-only running log — newest session at top
 - **Purpose:** Continuous record of all sessions (Claude.ai and Claude
   Code) so any Claude instance can resume with full context.
@@ -27,6 +27,96 @@ This is the shared memory between all Claude instances.
 
 ---
 ---
+
+## Session: 2026-08-10 to 2026-08-11 [Claude Code -- CGDELL]
+
+**Fourteen hours across two days. No build work. The Cloud connector, a
+governance clean-up, and six of Claude Code's own errors turned into rules.**
+
+### The headline
+
+**Claude Cloud now reads the repository.** A6 passed on revised targets: Cloud
+quoted the root `CLAUDE.md` rule-move line, `Tool/Run-ExternalCommandCheck.bat`,
+and both header lines of `WebSite/Rules/website-copy.md`, all matching CGDELL
+character for character. `ProjectDocs/` proved by twelve prefixed files. **Both
+Claudes now read the same commit** -- the thing SyncPlan was written for.
+
+### Completed
+
+- **Connector live**, scoped to `ProjectDocs`, `Tool`, `WebSite/Rules`,
+  `CLAUDE.md`. Manual uploads deleted; the Cloud-only files harvested first,
+  signatures checked, and committed.
+- **`Attachments\` deleted** -- 825 files, including the nested stale tree
+  copy with its own `.git`. 29 medical documents were hash-verified into
+  `C:\Users\willi\OneDrive\Personal\` first, and 21 documents that existed
+  nowhere else were rescued and verified before the delete ran.
+- **Repo trimmed 10.8 MB to 4.42 MB** so the connector would fit: saved-webpage
+  junk, 17 PDFs, superseded builds ascii32-38, three `.pptx`.
+- **ProjectInstructions rewritten twice** -- THE CLOCK scoped by capability,
+  the four-gate HTML DELIVERY GATE with H-4, PL-4 no-unverified-superlatives,
+  Sandy3's measured encryption, UNIVERSAL WORKING RULES, VERIFICATION RULES
+  V-1 to V-6, and RETIRING OLD FILES.
+- **Profile instructions trimmed** and filed for the first time, at
+  `ProjectDocs\Profile_Instructions_Universal-*.md`.
+- **`SyncSetupSteps` fixed three times** -- the 0b-4 ordering gate, A6 widened
+  to four targets, then A6 target 1 rewritten after it could neither fail nor
+  verify.
+- **`Check-Connector.txt`** added at the root: the A6 test as a file with copy
+  markers, because three chat pastes were mangled or over-selected.
+
+### Errors made, and what came of them
+
+Six, all verification failures rather than knowledge failures. Three broke
+EXHAUST THE FORMS, which had no mechanical step. They are now **V-1 to V-6** in
+ProjectInstructions, each citing the error that earned it: a negative drawn from
+one query form; a name matcher never tested on a control; "not in the tree" used
+as the test for a cumulative document; a PowerShell wildcard that matched every
+line and reported 165 untracked files against a real 18; a measurement restated
+hours later as current; and a guard watching a substring that new prose
+legitimately quoted.
+
+**Bill caught three of them himself** -- the hyphen-stripping matcher, the
+superseded-file archaeology, and the deletion-before-verification ordering.
+
+### Recovered
+
+- **The 0b-4 ordering decision**, made 2026-08-09 18:28 and never filed. Found
+  by searching the session transcripts under
+  `C:\Users\willi\.claude\projects\`. **Those transcripts are searchable and
+  this project did not know it.**
+- **The ProjectNotes UPDATE rule**, uncarried since 2026-07-03 in a file under
+  the retired `GatewayGuide` spelling. A renamed document is invisible to the
+  newest-wins rule -- now recorded as ORPHAN LINEAGE.
+- **`Notes\Older Files\`**, six files, found at the business OneDrive root
+  after a stray drag. Hash-verified identical to git.
+
+### Interface findings that cost hours
+
+- **The Project knowledge panel is unreachable at 150% text scaling.** An
+  artifact in the chat makes it reachable -- Bill found that.
+- **Deleting the manual uploads cleared the connector content**, and the
+  folders had to be re-added.
+- **The capacity meter is unreliable** -- it read 1% while the connector was
+  fully loaded and answering correctly.
+- **Cloud's `/mnt/project/` mount is not the connector.**
+
+All four are now PART F of `SyncSetupSteps`.
+
+### Bill's decisions
+
+- Org display name `GatewayGuard LLC`; third-party OAuth restrictions removed
+- Connector scope narrowed to `WebSite/Rules` rather than all of `WebSite`
+- Stop chasing superseded files
+
+### Open
+
+1. **ascii39 field run on SANDY.** Still blocks everything downstream.
+2. `GatewayGuard_AttorneyCallQuestions-2026-08-04-0120.docx` -- the last file
+   that exists only in Cloud.
+3. `Run-DocCheck.bat` -- the document gate, still unbuilt.
+4. Rebuild the assert-guarded Python wrapper and **commit it this time**.
+5. Marketing-Notes open-source violation -- three occurrences, still unfixed.
+
 
 ## Session: 2026-08-08 to 2026-08-09 [Claude Code — CGDELL]
 
