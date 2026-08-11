@@ -1,9 +1,0 @@
-No, ASCII itself isn't a program code or a programming language—it's actually a character encoding standard.Think of it as a universal translation dictionary for computers. Since computers only understand numbers ($1$s and $0$s), they need a standardized system to know that a specific number represents a specific letter or symbol on your screen. 
-
-Here is how it breaks down: Th Full Name: It stands for American Standard Code for Information Interchange. How it Works: It assigns a number from '0' to '127' to 128 different characters. 
-
-For example, when you press the capital letter A, the computer sees the number 65. When you press the spacebar, it sees 32. 
-
-In Programming: While ASCII isn't code itself, programmers use ASCII characters to write code. 
-
-Additionally, in the files you've been working on, "ascii17" or "ascii18" are just custom version names or labels used to keep track of the different development stages of your script!

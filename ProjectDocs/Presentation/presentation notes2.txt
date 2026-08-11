@@ -1,2 +1,0 @@
-1. add to debloat with a symbol and place this wording at bottom of slide 'technology debloat - removing pre-installed, unnecessary software to free up system memory and space'
-2. add to notes file - remember to pass final drafts thru gemimi and always ask them to do research
