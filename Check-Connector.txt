@@ -1,0 +1,98 @@
+===============================================================
+ CHECK-CONNECTOR -- PROVE CLOUD IS READING THE REPOSITORY
+ Dated: 2026-08-11 13:30 ET
+===============================================================
+
+THIS FILENAME CARRIES NO DATE ON PURPOSE, like Check-Claude-Cloud.txt
+and Start-CC.txt. You open it when you need it, so it must never move.
+
+BEFORE YOU PASTE ANYTHING:
+
+You must be INSIDE the GatewayGuard project. Look at the top of the
+page for the project name. A plain new chat will answer "I do not have
+access to a local filesystem or repository environment" -- that is not
+a connector failure, it is the wrong window.
+
+Open Projects -> GatewayGuard -> start a chat there.
+
+---------------- COPY FROM HERE ----------------
+
+Three questions about CLAUDE.md. Answer each separately. Quote exactly,
+never paraphrase, and never guess.
+
+1. How many files can you see whose name is exactly "CLAUDE.md"? List
+   each one with its full path.
+
+2. From the CLAUDE.md at the REPOSITORY ROOT (path is exactly
+   "CLAUDE.md", not inside any folder), quote the line that begins
+   "The rule lives in".
+
+3. From that same root file, quote its "<!-- Dated:" header line in
+   full, including the date and time.
+
+If you can see more than one CLAUDE.md, say so plainly and tell me
+which path each answer came from.
+
+----------------- COPY TO HERE -----------------
+
+SELECT ONLY BETWEEN THE TWO LINES ABOVE. On 2026-08-10 a copy ran four
+lines past the end of a block and put explanatory prose into the
+profile instructions box, where it read as a rule.
+
+---------------------------------------------------------------
+ THE ANSWERS -- measured on CGDELL 2026-08-11
+---------------------------------------------------------------
+
+1. ONE file named exactly CLAUDE.md.
+
+   A second copy exists at
+   WebSite\Index-Builds\ForCloudUpload-2026-08-02-1218\CLAUDE.md
+   but that folder is NOT in the connector scope, so Cloud should not
+   see it. If Cloud lists it, the scope is wider than intended.
+
+2. **The rule lives in `WebSite\Rules\website-copy.md`** (moved there
+
+   The sentence wraps; the next line begins "2026-08-09). A
+   path-triggered pointer remains at".
+
+3. <!-- Dated: 2026-08-09 17:05 ET -->
+
+---------------------------------------------------------------
+ HOW TO READ THE RESULT
+---------------------------------------------------------------
+
+PASS -- answer 3 reads 2026-08-09 17:05 ET.
+        Cloud is reading the repository. The sync is done.
+
+FAIL -- answer 3 reads 2026-07-26 06:19 ET.
+        That header belongs to a DIFFERENT file. An uploaded copy of
+        CLAUDE.md survived the cull, or the ForCloudUpload snapshot is
+        in scope. Delete the upload; do not edit CLAUDE.md.
+
+FAIL -- Cloud says it cannot see any file, or has no repository access.
+        You are probably not inside the project. Check the page title
+        first. If you ARE inside the project, the connector needs
+        re-syncing -- open the Project knowledge panel at 100% browser
+        zoom (the control is hidden at 150%), find the repository
+        entry, and click Sync.
+
+---------------------------------------------------------------
+ WHY THIS TEST ASKS WHAT IT ASKS
+---------------------------------------------------------------
+
+Three files in the tree open with the identical line
+"# GatewayGuard - Claude Code Project Instructions", and two of them
+are named exactly CLAUDE.md. An earlier version of this test asked for
+"the first two lines" and accepted any of the three. It reported PASS
+three times running while quoting a frozen snapshot from 2026-07-26,
+and a non-existent defect was then written up against CLAUDE.md on the
+strength of it.
+
+The "The rule lives in" line exists in the root file and nowhere else
+in scope -- the other copies predate the 2026-08-09 move of the
+website-copy rule out of .claude\. Its PRESENCE is the check.
+
+A check whose expected value is elided is not a check.
+"<!-- Dated: ... ET -->" looks rigorous and matches anything.
+
+Full procedure: ProjectDocs\GatewayGuard_SyncSetupSteps-*.md, step A6.
