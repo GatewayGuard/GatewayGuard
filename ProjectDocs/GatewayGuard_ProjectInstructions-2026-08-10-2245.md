@@ -1,10 +1,49 @@
-<!-- Dated: 2026-08-09 22:58 EDT -->
+<!-- Dated: 2026-08-10 22:45 EDT -->
 # GatewayGuard Project Instructions
 - **Document Name:** GatewayGuard_ProjectInstructions
-- **Last Modified:** 2026-08-09 22:58 EDT
+- **Last Modified:** 2026-08-10 22:45 EDT
 - **Last Editor:** Claude Code (CGDELL)
 - **Status:** Cumulative Master Document (supersedes all prior versions)
 - **Change History Log:**
+  - 2026-08-10 22:45: **Rescued a rule that had been missing for five weeks.**
+    `GatewayGuide_Project_Instructions-2026-07-03.md` -- written under the
+    RETIRED `GatewayGuide` spelling -- required that ProjectNotes be **updated**
+    when new decisions, research or builds are discussed, not merely consulted.
+    Every other rule in that file was carried into this document. That one was
+    not, and nothing could have caught it: because the old file's name differs
+    from `GatewayGuard_ProjectInstructions`, the newest-by-filename-date rule
+    never compares the two. **A renamed document is invisible to the rule that
+    protects documents.** Recorded as ORPHAN LINEAGE under RETIRING OLD FILES so
+    the class is named, not just this instance. The two old-spelling files are
+    retired in the same commit that adds this.
+  - 2026-08-10 22:18: **Added VERIFICATION RULES V-1 to V-6.** Six errors in one
+    session, none of them a knowledge failure -- every one was a verification
+    failure, and three broke EXHAUST THE FORMS, which was added nine days
+    earlier and had no mechanical step. A rule that says "check the other
+    forms" without saying HOW MANY forms or WHICH ones is advice, not a gate.
+    V-1 to V-6 each name the check, and each cites the error that earned it.
+    Requested by Bill after he counted the errors himself.
+  - 2026-08-10 16:06: **Five corrections, all from reconciling this document
+    against Bill's profile instructions.** (1) **THE CLOCK replaces "ask Bill
+    for the date and time"** in both FILE NAMING and SESSION START -- the old
+    wording was a workaround for a limitation only Claude.ai has, generalised
+    into a universal rule, and it contradicted Start-CC.txt, which tells Claude
+    Code to run `Get-Date`. Now scoped: read the clock if you can run commands,
+    ask if you cannot. (2) **WEBSITE BUILD RULE now carries all FOUR gates.** It
+    listed three and omitted **H-4**, the guide-wording source -- the only gate
+    that protects meaning rather than syntax. A session following this document
+    could print "ALL PASSED" having never checked the words. Bill's profile had
+    the identical defect. (3) **PL-4 NO UNVERIFIED SUPERLATIVES added** -- it was
+    already enforced by name in TrustSection-2026-07-16 ("the superlative rule")
+    while being defined in no governing document. (4) **Sandy3's ENCRYPTION STATE
+    MATRIX row corrected** to `FullyEncrypted / 100 / XtsAes128`, measured
+    2026-08-08. It still read "unverified -- re-measure before relying on it" in
+    a table that calls itself the single authoritative statement of fleet state,
+    two days after the measurement -- the exact failure MACHINE-STATE CURRENCY
+    exists to prevent, inside the document that carries that rule. (5) **UNIVERSAL
+    WORKING RULES section added**, naming the profile as a real dependency,
+    recording that it is invisible to grep, git and every gate, and settling the
+    authority in both directions.
   - 2026-08-09 22:58: **Added EXHAUST THE FORMS BEFORE CONCLUDING ABSENCE.**
     A single check coming back empty is not evidence a thing does not exist --
     it is evidence one form of it was not found in one place. Earned three
@@ -73,6 +112,12 @@ GatewayGuard LLC, Brunswick, Maine. Website: gatewayguard.co.
 Always check project knowledge files before answering questions about
 project status, history, or past decisions.
 
+**And update `GatewayGuard_ProjectNotes-*.md` when new decisions, research
+or builds are discussed.** Checking is not enough on its own -- a decision
+that is only ever read out of chat is a decision that will be lost when the
+chat is. *(Restored 2026-08-10 from the retired `GatewayGuide`-spelled
+instructions, where it had sat uncarried since 2026-07-03.)*
+
 ---
 
 ## FILE NAMING & VERSIONING (effective 2026-07-20)
@@ -94,18 +139,26 @@ project status, history, or past decisions.
   The new file supersedes the prior version. Upload it; retire the old one.
 - Every file maintains a cumulative Change History Log in its header.
   All history lives inside the file -- never in separate patch files.
-- Before producing any file, Claude must ask Bill for the current date
-  and time. Both the filename and the internal header come from that
-  answer. Claude never infers the date or time from UTC chat metadata,
-  system clocks, or conversation context -- UTC timestamps routinely
-  differ from US Eastern Time by hours or a calendar day. A wrong
-  date-time in the filename is a wrong version label. No exceptions:
-  if the date and time have not been provided in this session, Claude
-  asks before producing any output file.
-  **Once Bill has given a date and time in a session, that answer stands
-  for the session.** Re-asking for a fresh clock reading before every
-  file is friction, not diligence. Ask once; ask again only if the
-  session has clearly spanned hours or a date boundary.
+- **THE CLOCK.** Every dated file carries a real local date and time,
+  never an inferred one. Both the filename and the internal header come
+  from it.
+  - **If you can run commands, read the clock yourself** and state the
+    date and time you will use for the session. On Windows that is
+    `Get-Date`. **Do not ask Bill for something you can measure in a
+    second** -- asking costs a round trip and his time.
+  - **If you cannot run commands, ask Bill,** and say that is why you are
+    asking. This is Claude.ai's position, not Claude Code's.
+  - **Never infer** the date or time from UTC chat metadata, container or
+    system clocks reported by the chat, or conversation context -- UTC
+    routinely differs from US Eastern Time by hours or by a calendar day.
+    A wrong date-time in the filename is a wrong version label.
+  - **Once established for the session, read or given, that answer
+    stands.** Re-asking before every file is friction, not diligence.
+    Ask again only if the session has clearly spanned hours or crossed a
+    date boundary.
+  - *Corrected 2026-08-10. The prior wording told every Claude to ask.
+    That is right for Claude.ai, which cannot read a clock, and wrong for
+    Claude Code, which can -- and it contradicted `Start-CC.txt`.*
 - Exception -- script builds: ascii build name is part of the .ps1
   filename and increments with each build.
   Format: `W11-SecurityHardening-v3-ascii34-YYYY-MM-DD-HHMM.ps1`
@@ -198,7 +251,7 @@ subordinate to this table.
 |---|---|---|---|---|
 | **CGDELL** | **Microsoft account** | **Fully encrypted** (`Encrypted / 100 / FullyEncrypted`) | `False` | **measured** 2026-08-02, TestHistory-ascii39 FT-143/144/145 |
 | **SANDY** | **Local account** | **Not encrypted** | unverified | **reported by Bill** 2026-08-06; local-account state measured in FT-144 |
-| **Sandy3** | unverified | **Pre-encrypted by Windows** (not by GatewayGuard) | unverified | prior session note -- **unverified**, re-measure before relying on it |
+| **Sandy3** | unverified | **Fully encrypted** (`FullyEncrypted / 100 / XtsAes128`) | unverified | **measured** 2026-08-08, `Tool\Run-EncryptionMeasure.bat` |
 
 **What this matrix means for testing:**
 
@@ -438,6 +491,140 @@ more than one form to take.
 
 ---
 
+## RETIRING OLD FILES -- NAME THE KIND FIRST (added 2026-08-10)
+
+**"Old file" is not one thing.** Five kinds sit in this tree and they carry
+different risk. Name the kind before deleting anything.
+
+| Kind | What it is | Delete? |
+|---|---|---|
+| **Superseded version** | Same document, later version exists, content carried forward | Yes -- git keeps it |
+| **Exact duplicate** | Identical content in two places, or a `(1)` download artifact | Yes |
+| **Stale export** | Same document in another format, built from an OLDER version | **Ask Bill** -- may record what someone was given |
+| **Orphan lineage** | An earlier document under a DIFFERENT name | **Read it first** |
+| **Undated legacy** | Predates the naming convention, occupies the bare core name | **Read it first** |
+
+**ORPHAN LINEAGE is the dangerous one, and it has already cost this project.**
+The newest-by-filename-date rule works by matching the core name. Rename the
+document and the rule stops comparing the old one to the new -- silently,
+forever. Nothing reports it, because from the rule's point of view they are two
+unrelated documents.
+
+*Measured 2026-08-10:* `GatewayGuide_Project_Instructions-2026-07-03.md`, under
+the retired folder spelling, held a rule requiring ProjectNotes to be UPDATED
+and not merely checked. Every other rule in it had been carried across. That one
+sat uncarried for five weeks, and no gate could have found it.
+
+**So: when a document is renamed, diff the old lineage against the new one in
+the same session, and record that you did.** A rename is not a filing change; it
+is a break in the chain the newest-wins rule depends on.
+
+**Retiring means `git rm`** -- the file leaves the working tree, stays in git
+history, and comes back with `git checkout <commit> -- <path>`. Nothing is
+destroyed. **Never `git rm` a file that was never committed:** that is not
+retirement, it is deletion, and it is how the assert-guarded Python wrappers
+were lost.
+
+---
+
+## VERIFICATION RULES V-1 TO V-6 (added 2026-08-10)
+
+**All six were earned in one session.** Not one was a knowledge failure -- every
+one was a verification failure, and three of the six broke EXHAUST THE FORMS,
+which had been added nine days earlier. That rule says "check the other forms."
+It does not say how many, or which, or how you would know you were done. **A
+rule with no mechanical step is advice, and advice does not survive a long
+session.** Each rule below names its check and cites the error that earned it.
+
+### V-1 -- A NEGATIVE NEEDS TWO QUERIES OF DIFFERENT SHAPE
+
+**Before writing "X is not there", run a second query built differently** --
+different tool, different field, different match rule. Same query twice is one
+query. If the two disagree, the search is unfinished and neither answer ships.
+
+*Earned:* `git ls-files "Check-Claude-Cloud.txt" "Start-CC.txt"` returned
+nothing, and that was reported as "neither is tracked" -- a false alarm that the
+two startup documents were outside the backup. `git ls-files --error-unmatch`
+returned both immediately. One query form, one wrong conclusion, and the
+conclusion was the alarming direction.
+
+### V-2 -- TEST THE MATCHER ON A CONTROL THAT MUST MATCH
+
+**Any normalisation, fuzzy match or name comparison across two systems is run
+first against an item KNOWN to exist in both.** If the control does not match,
+the matcher is broken and every "missing" it produced is void -- report nothing
+until it passes.
+
+*Earned twice in one comparison.* Cloud strips hyphens on ingest, so
+`GatewayGuard_Guide-Comfort-16pt-2026-07-16.pdf` arrives as
+`GatewayGuardGuideComfort16pt20260716.pdf`. The normaliser collapsed separators
+to underscores instead of removing them, and reported five guide PDFs as
+missing that were tracked in git the whole time. **Bill caught it, not the
+process.** Separately, a bidirectional prefix match accepted the undated
+`GatewayGuard_CPM_Schedule.md` as a match for
+`GatewayGuard_CPM_Schedule-2026-07-30-2208.md` -- a different and older file.
+
+### V-3 -- FOR CUMULATIVE DOCUMENTS, TEST THE CONTENT, NOT THE FILENAME
+
+**Before calling a missing version a loss, open the newest version and look for
+its change-history entry.** Every GatewayGuard master document is a complete
+self-contained replacement carrying cumulative history -- so an older dated
+version is almost never a loss. **"Not in the tree" is the wrong test.
+"Content not in the tree" is the right one.**
+
+*Earned:* `GatewayGuard_TestHistory-ascii39-2026-08-02-0914.md` was reported as
+existing only in Cloud and queued for recovery. The tree's `-2026-08-02-1335`
+already contained its change-history entry, its FT-163/FT-164 sections, and
+everything after -- 54,666 bytes against the earlier 36,971, because each
+version absorbs the last. Nothing had ever been missing. The same was true of
+`ProjectInstructions-2026-08-02-1820.md`. **Bill stopped this one:** *"We spend
+too much time on useless old files that have been superceded."*
+
+**Only chase content that exists nowhere else** -- genuinely new material, or
+binaries (`.docx`, `.pdf`) that no newer version can reconstruct.
+
+### V-4 -- NEVER USE A PATTERN OPERATOR FOR A LITERAL TEST
+
+**PowerShell `-like` treats `?` and `*` as wildcards.** Use `.StartsWith()`, or
+`-match` with the metacharacters escaped. **And every count is sanity-checked
+against a known total before it is reported** -- a number larger than the
+population is a bug, not a finding.
+
+*Earned:* `Where-Object { $_ -like '??*' }`, intended to select git's untracked
+lines, matched EVERY line of `git status --short`. It reported **165 untracked
+files against a real 18**, and the impossible number was passed on as a
+suspected mass restore before the filter was suspected.
+
+### V-5 -- A MEASUREMENT IS STAMPED; RESTATING IT RE-RUNS IT
+
+**Never restate an earlier measurement as current state.** Either re-run it, or
+give it the time it was taken. This applies inside a single session -- long
+sessions cross hours, and the tree changes underneath.
+
+*Earned:* a file deleted at 16:54 was reported as still deleted hours later. It
+had been recreated at 21:38 with different content. The claim was true when
+made and false when repeated.
+
+### V-6 -- GUARD ON THE STRUCTURE, NOT ON A SUBSTRING
+
+**An assert that old text is gone must target the full structural unit** -- the
+whole table row, the whole block -- **not a phrase.** New prose legitimately
+quotes old wording when it explains what changed, and a substring guard cannot
+tell the two apart.
+
+*Earned:* a build guard checking that `"re-measure before relying on it"` was
+gone aborted correctly-built output, because the new change-history entry
+quoted that phrase while describing its removal. The guard was right to fire
+and wrong in what it watched.
+
+**Why V-6 is a rule and not a note:** this is the only one of the six that cost
+nothing, because the guard failed CLOSED -- it aborted and wrote no file. That
+is the behaviour every check should have. A guard that fails closed on a false
+positive is cheap; a guard that fails open is how ascii34 was corrupted and how
+`ScanType 4` printed `[GOOD]` for months.
+
+---
+
 ## RESEARCH BEFORE STATING
 
 No factual claim about external system behavior (Windows, Defender,
@@ -494,12 +681,37 @@ with no check is a wish.
 
 ## WEBSITE BUILD RULE
 
-Before delivering any HTML file: (1) run a corruption grep, (2)
-instruct the user to validate the page at validator.w3.org before it
-goes live, (3) tell the user to open the file in Chrome or Edge
-locally before pushing to GitHub -- Claude's preview does not render
-CSS. Review full standards in GatewayGuard_WebsiteStandards.md before
-any website work.
+Before delivering any HTML file, run the **four-gate HTML DELIVERY GATE**
+and print its results block in the same response. `GatewayGuard_
+WebsiteStandards-*.md` defines it; this is the summary, and
+**WebsiteStandards wins on any difference.**
+
+- **H-1  Corruption grep** of the file content.
+- **H-2  Browser check.** Instruct Bill to open the file locally in Chrome
+  or Edge before pushing. A chat preview does not render CSS.
+- **H-3  W3C validation.** Instruct Bill to validate at
+  https://validator.w3.org. **Errors block delivery; warnings do not.**
+- **H-4  Guide-wording source.** Name the guide section the page's wording
+  came from. **"Written from the settings map" is a FAIL, not a source** --
+  `GatewayGuard_SettingsToGuideMap.md` is an INDEX, not a content source.
+  Use it to find the section, then read the section.
+
+**A skipped gate blocks delivery.** Re-run after fixing; do not present a
+file with a gate outstanding.
+
+**H-4 is the only gate that protects meaning.** H-1 through H-3 are
+mechanical -- a grep, a browser, a validator -- and a page can pass all
+three and still send a senior down a menu path the guide does not
+describe. That is the drift RULE W-07 exists to prevent, and no other
+check can see it.
+
+*Added 2026-08-10. This rule listed three gates and omitted H-4 from the
+day H-4 was created (2026-07-26). Bill's profile instructions carried the
+identical three-gate defect. A gate that two of the three documents a
+session actually reads do not mention is a gate that does not run.*
+
+Review full standards in `GatewayGuard_WebsiteStandards-*.md` before any
+website work.
 
 ---
 
@@ -631,6 +843,29 @@ never applies anything the user did not choose.
   any program to change this, so Checkup shows you the exact steps
   to do it yourself."
 
+**Rule PL-4 -- NO UNVERIFIED SUPERLATIVES (added 2026-08-10)**
+Never write "most", "everyone", "no one else", "the only", or "always"
+about the market, competitors, or users unless a named source supports
+it. Prefer accurate, defensible wording.
+- Wrong: "works perfectly alongside your antivirus"
+- Right: "works alongside your antivirus"
+- Wrong: "most security tools collect your data"
+- Right: "many security tools collect usage data"
+Substitutions: *most* -> "many"; *everyone* -> "many people";
+*no one else* -> "few competitors"; *always* -> "in every case we have
+tested".
+
+**Why this is a trust rule, not a style rule.** An easily disproved
+superlative does more damage to the trust argument than a weak claim
+does. One reader who finds a counter-example has a reason to doubt
+everything else on the page.
+
+*This rule was being enforced before it was written down.*
+`GatewayGuard_TrustSection-2026-07-16.md` cites "the superlative rule" by
+name and applies it -- "work perfectly alongside" -> "work alongside" --
+while no governing document defined it. It lived only in Bill's profile
+instructions, where no grep and no gate could reach it.
+
 ---
 
 ## CHECKUP NAME RULE (effective 2026-08-02)
@@ -673,8 +908,10 @@ Before suggesting a new chat, always:
 
 At the start of every session:
 1. Ask which machine Bill is working on (MACHINE CHECK above).
-2. Ask for current date and time before producing any file. Once given,
-   that answer stands for the session.
+2. **Establish the date and time before producing any dated file -- see
+   THE CLOCK under FILE NAMING & VERSIONING.** Read the clock yourself if
+   you can run commands (`Get-Date`); ask Bill only if you cannot. Once
+   established, it stands for the session.
 3. Read GatewayGuard_CodingStandards.md before any .ps1 build.
 4. Read GatewayGuard_DefectPreventionPlaybook.md Appendix A AND
    class descriptions before any .ps1 build.
@@ -685,3 +922,31 @@ At the start of every session:
 6. Check project knowledge for current build status and open items --
    including the most recent TestHistory, which outranks this document
    on any question of machine state.
+
+---
+
+## UNIVERSAL WORKING RULES (added 2026-08-10)
+
+**Bill's profile instructions carry rules that apply to every project he
+works on, not only this one** -- tone, sourcing, the clock, time zone,
+cross-file sync, user-facing clarity, and confirm-before-acting. They load
+into every conversation automatically.
+
+**They are invisible to grep, to git, and to every gate.** They live in a
+settings box. No check in this project can read them, and no review will
+ever surface them.
+
+**The current text is filed at `ProjectDocs\Profile_Instructions_Universal-*.md`
+-- glob the newest by the date in the filename.** That file is a COPY, not
+the source. The source is the settings box, and the copy goes stale the
+moment the box is edited. Re-file it whenever the box changes.
+
+**Where this document and the profile cover the same ground, THIS DOCUMENT
+WINS.** The profile's job is the projects where these instructions are not
+loaded. Report any conflict you find rather than silently following one
+and dropping the other.
+
+**Measured 2026-08-10:** the profile and this document disagreed on three
+points at once -- the clock, the number of HTML delivery gates, and the
+W3C warnings threshold. All three are corrected in this version. That is
+what an undocumented dependency costs.
