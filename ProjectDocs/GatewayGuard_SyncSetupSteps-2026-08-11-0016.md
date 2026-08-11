@@ -1,11 +1,29 @@
-<!-- Dated: 2026-08-10 11:19 ET -->
+<!-- Dated: 2026-08-11 00:16 ET -->
 # GatewayGuard -- Sync Setup Steps (Claude Code <-> Claude Cloud)
 - **Document Name:** GatewayGuard_SyncSetupSteps
-- **Last Modified:** 2026-08-10 11:19 ET
+- **Last Modified:** 2026-08-11 00:16 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **Status:** Working procedure -- follow at the keyboard
 - **Companion to:** `GatewayGuard_SyncPlan-*.md` (the what and why; this is the how)
 - **Change History Log:**
+  - 2026-08-11 00:16: **THE ORDER WAS WRONG, AND IT WAS WRONG AGAINST A
+    DECISION ALREADY MADE.** This document ran 0b-4 -- delete every manual
+    upload -- BEFORE Part A connects the repository and A6 proves it. So it
+    told Bill to empty project knowledge and only then find out if the
+    connector worked. **Project knowledge cannot be restored by any tool, so
+    that ordering had no recovery path.** The correct order was settled in
+    conversation on **2026-08-09 at 18:28**: *"merge ProjectNotes -> commit ->
+    push -> connect -> verify with the quote test -> THEN delete the uploads."*
+    It was never written into this document. Bill caught it on 2026-08-10 by
+    remembering the conversation this document contradicts. **A decision that
+    lives only in a chat is a decision the next document will overwrite** --
+    which is the exact rule restored to ProjectInstructions the same evening.
+    0b-4 now carries a hard prerequisite gate.
+    **A6 also widened from one target to four.** It tested `CLAUDE.md` alone --
+    the single file ticked at the repository ROOT, inside none of the three
+    folders. A folder that silently failed to attach would leave A6 passing,
+    and 117 uploads would then be deleted on that evidence. It now quotes one
+    file per ticked item, with an answer key measured 2026-08-11.
   - 2026-08-10 11:19: **`START-HERE.txt` was renamed to
     `Check-Claude-Cloud.txt`**, and the pointer in Part B updated. The Claude
     Code half of that file has moved to a separate `Start-CC.txt`, which adds
@@ -286,6 +304,32 @@ puts an unopenable file in the tree under a name implying it works.
 
 ## 0b-4. Delete the manual uploads -- IN STAGES
 
+> # STOP -- DO NOT RUN 0b-4 YET
+>
+> **0b-4 runs AFTER Part A and AFTER A6 passes. Not before.**
+>
+> Deleting the uploads is the only step in this document with **no recovery
+> path**. No tool can restore project knowledge -- not Cloud, not Claude Code,
+> not Bill. If the connector turns out not to work, and the uploads are already
+> gone, the project has neither.
+>
+> **The two failures this guards against are both documented in this very
+> document:** the "Connected but not really" bug in A6, and org single sign-on
+> in A3 -- which reconnecting inside Claude does not fix.
+>
+> **Required order, settled 2026-08-09 18:28:**
+>
+> 1. Merge anything found only in Cloud -- 0b-3
+> 2. Commit and push -- Claude Code
+> 3. Connect the repository -- PART A
+> 4. **Prove it with A6 -- all four targets, exact quotes**
+> 5. *Then* delete the uploads -- this step
+>
+> **The risk is not symmetric.** Connecting first means Cloud briefly sees two
+> copies of some documents: a correctness problem, and a temporary one. Deleting
+> first means an unrecoverable loss if anything in Part A fails. Take the
+> recoverable risk.
+
 In the **Project knowledge** panel, each uploaded file has an **x** or a menu
 with **Remove**. Remove the manually-uploaded files, leaving **only the GitHub
 connection**.
@@ -512,17 +556,48 @@ One click on the top-level box puts all of that into project knowledge.
 There is a known failure where a repository shows **Connected** while its files
 are not actually reachable in conversation.
 
+### Test ALL FOUR ticked items, not just one
+
+**`CLAUDE.md` is the single file ticked at the repository ROOT. It is inside
+none of the three folders.** A test that only quotes `CLAUDE.md` proves the
+connector reaches one root file and proves nothing about `ProjectDocs/`,
+`Tool/` or `WebSite/`. A5 warns that folders and individually-picked files
+behave differently -- so a folder that silently failed to attach would leave
+this test passing, and 0b-4 would then delete every upload on that evidence.
+
 **In the project's chat box, type exactly this and press Enter:**
 
 ```
-Quote the first two lines of CLAUDE.md exactly as they appear.
+Quote these exactly as they appear, no paraphrasing. If you cannot
+open any of them, say which one and do not guess.
+
+1. The first two lines of CLAUDE.md
+2. The first line of ProjectDocs/GatewayGuard_Checklist.txt
+3. The first line of Tool/Run-ExternalCommandCheck.bat
+4. The first line of WebSite/Rules/website-copy.md
 ```
 
-**It should answer with a `<!-- Dated: ... -->` comment and the heading
-`# GatewayGuard — Claude Code Project Instructions`.**
+**Answer key -- measured 2026-08-11 00:16:**
 
-If it paraphrases, guesses, or says it cannot find the file, **it is not
-connected** -- go back to A4.
+| # | Ticked item | Must come back as |
+|---|---|---|
+| 1 | `CLAUDE.md` (root) | `# GatewayGuard -- Claude Code Project Instructions` then `<!-- Dated: ... ET -->` |
+| 2 | `ProjectDocs` | `GatewayGuard Project Checklist` |
+| 3 | `Tool` | `@echo off` |
+| 4 | `WebSite` | `<!-- Dated: ... ET -->` |
+
+**All four must be exact.** Any paraphrase, any "I can see that file" without
+the text, any miss -- **it is not connected. Go back to A4 and find out which
+folder did not attach. Do not run 0b-4.**
+
+**Target 4 carries extra weight.** `WebSite/Rules/website-copy.md` was moved
+there on 2026-08-09 specifically so Cloud could reach it, replacing a copy in
+`.claude` that a file picker may hide as a dot-folder. If Cloud quotes it, the
+reason for that move is confirmed. If it cannot, the move did not achieve what
+it was for -- and nothing else in this procedure would tell you.
+
+**All four targets have undated filenames on purpose**, so the test cannot go
+stale. See below for what happened the last time it named a dated file.
 
 ### Why this test names `CLAUDE.md` and not a dated document
 
