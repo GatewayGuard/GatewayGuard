@@ -1,7 +1,7 @@
-<!-- Dated: 2026-08-11 14:45 ET -->
+<!-- Dated: 2026-08-11 16:16 ET -->
 # READ FIRST -- Session Briefing
 **Document Name:** _READ-FIRST-Briefing
-**Last Modified:** 2026-08-11 14:45 ET
+**Last Modified:** 2026-08-11 16:16 ET
 **Last Editor:** Claude Code (CGDELL)
 **Purpose:** Read this before anything else at the start of every session.
 **Supersedes:** BOTH `_READ-FIRST-Briefing-2026-08-08-2147.md` (Claude Code)
@@ -9,6 +9,13 @@ and `_READ-FIRST-Briefing-2026-08-09-1110.md` (Claude.ai) -- retire both, and
 every earlier briefing with them.
 
 **Change History Log:**
+- 2026-08-11 16:16: **The ascii39 field run started.** Phase 2 captured SANDY's
+  unencrypted profile -- one-shot, now permanent. **FT-167 confirmed in the
+  field** (a second fixed drive, 931.5 GB, in the clear). And **SANDY's
+  Windows account was Microsoft until today**, through a week of reboots,
+  without Device Encryption ever engaging -- which contradicts the warning in
+  section 3. Bill converted it to a local account named `panther` immediately
+  before Phase 3. See section 1.
 - 2026-08-11 14:45: **THE CONNECTOR IS LIVE, AND `Attachments\` IS GONE.**
   Claude Cloud now reads the repository -- A6 passed on revised targets, with
   every quoted line matching CGDELL character for character. Section 8's items
@@ -159,7 +166,48 @@ patterns, not filenames.
 
 ## 1. CURRENT STATUS -- 2026-08-09 22:39 ET
 
-**Active build:** ascii39 -- **NEVER FIELD RUN.**
+**ascii39 FIELD RUN IS UNDERWAY -- Phase 2 DONE, 2026-08-11.**
+
+`Tool\EncryptionProfile-SANDY-2026-08-11_15-15.txt` is captured and
+committed. **That measurement was one-shot** -- once SANDY encrypts, its
+unencrypted profile is unrecoverable.
+
+| | |
+|---|---|
+| `C:` | 237.3 GB / **67.7 GB used** (29%) · WDC SN520 SSD NVMe · **FullyDecrypted** |
+| `D:` | 931.5 GB / 78.9 GB used (8%) · ST1000LM035 HDD · **FullyDecrypted** |
+| | i5-8265U · 8 GB · Edition **Core** (Home) · **Modern Standby** |
+
+**Predicted mode is USED-SPACE-ONLY, so any timing estimate comes from the
+67.7 GB used figure, not the 237 GB volume size.**
+
+**FT-167 IS CONFIRMED IN THE FIELD.** SANDY has a second internal fixed
+drive, `D:`, 931.5 GB, fully decrypted. **Checkup only ever reads `C:`**, so
+a machine in this shape is told `ENCRYPTED -- GOOD` while a terabyte sits in
+the clear. Raised 2026-08-02 as a theory from the Dell; this is the first
+measurement of a machine that actually exhibits it.
+
+**SANDY'S WINDOWS ACCOUNT WAS MICROSOFT UNTIL 2026-08-11.** Bill converted
+it to a **local account named `panther`** that day, immediately before
+Phase 3. It had been signed into a Microsoft account **for a week or more,
+through multiple reboots, with Modern Standby present -- and Device
+Encryption never engaged.**
+
+**That contradicts a standing warning in this document.** Section 3 says
+signing SANDY into Windows with a Microsoft account is one of the things
+that triggers Device Encryption. On this machine, over a week, it did not.
+**Basis: reported by Bill 2026-08-11, corroborated by the profile above
+showing both drives FullyDecrypted.** The warning has not been disproven in
+general -- one machine over one week is not a rule -- but it can no longer
+be stated as settled, and the assumption that SANDY's test value is
+one keystroke from being spent is measurably too pessimistic.
+
+**Phase 3 -- the 45-minute local-account run -- was starting when this was
+written. Ask Bill whether it finished before assuming either way.**
+
+---
+
+**Active build:** ascii39 -- **FIELD RUN IN PROGRESS, no log yet.**
 
 A TestHistory file exists -- `GatewayGuard_TestHistory-ascii39-2026-08-02-1335.md`
 -- but it is a **BUILD record, not a field record.** Its own header reads *"No

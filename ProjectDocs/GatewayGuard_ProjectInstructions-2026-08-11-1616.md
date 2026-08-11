@@ -1,10 +1,19 @@
-<!-- Dated: 2026-08-10 22:45 EDT -->
+<!-- Dated: 2026-08-11 16:16 EDT -->
 # GatewayGuard Project Instructions
 - **Document Name:** GatewayGuard_ProjectInstructions
-- **Last Modified:** 2026-08-10 22:45 EDT
+- **Last Modified:** 2026-08-11 16:16 EDT
 - **Last Editor:** Claude Code (CGDELL)
 - **Status:** Cumulative Master Document (supersedes all prior versions)
 - **Change History Log:**
+  - 2026-08-11 16:16: **ENCRYPTION STATE MATRIX corrected for SANDY.** Its
+    Windows account was a **Microsoft account** until 2026-08-11, not a local
+    one -- the matrix had said local since 2026-08-06 on Bill's report, and
+    the two were never reconciled. It sat on that Microsoft account for a week
+    or more, through multiple reboots, with Modern Standby present, and
+    **Device Encryption never engaged.** Bill converted it to a local account
+    named `panther` immediately before the ascii39 Phase 3 run. Both drives
+    measured FullyDecrypted the same day. This is the MACHINE-STATE CURRENCY
+    rule catching its own table again.
   - 2026-08-10 22:45: **Rescued a rule that had been missing for five weeks.**
     `GatewayGuide_Project_Instructions-2026-07-03.md` -- written under the
     RETIRED `GatewayGuide` spelling -- required that ProjectNotes be **updated**
@@ -250,7 +259,7 @@ subordinate to this table.
 | Machine | Sign-in account | Encryption | Secure Boot | Basis |
 |---|---|---|---|---|
 | **CGDELL** | **Microsoft account** | **Fully encrypted** (`Encrypted / 100 / FullyEncrypted`) | `False` | **measured** 2026-08-02, TestHistory-ascii39 FT-143/144/145 |
-| **SANDY** | **Local account** | **Not encrypted** | unverified | **reported by Bill** 2026-08-06; local-account state measured in FT-144 |
+| **SANDY** | **Local account** `panther` -- **converted from a MICROSOFT account 2026-08-11** | **Not encrypted** (`FullyDecrypted`, both `C:` and `D:`) | unverified | **measured** 2026-08-11, `Tool\EncryptionProfile-SANDY-2026-08-11_15-15.txt` |
 | **Sandy3** | unverified | **Fully encrypted** (`FullyEncrypted / 100 / XtsAes128`) | unverified | **measured** 2026-08-08, `Tool\Run-EncryptionMeasure.bat` |
 
 **What this matrix means for testing:**
@@ -260,6 +269,14 @@ subordinate to this table.
   danger case where Windows will encrypt on a local account with the
   recovery key escrowed nowhere. It is the highest-value test machine in
   the fleet for that item.
+- **SANDY carries a SECOND fixed drive, `D:`, 931.5 GB, fully decrypted**
+  (measured 2026-08-11). Checkup reads only `C:`. That is FT-167, and SANDY
+  is the machine that proves it.
+- **A Microsoft account did NOT trigger Device Encryption on SANDY.** It sat
+  signed in for a week or more through multiple reboots, Modern Standby
+  present, and nothing engaged. **Do not treat the Microsoft-account warning
+  as settled in either direction** -- one machine over one week is not a
+  rule, but it is no longer an assumption that can be asserted.
 - **SANDY's value for that branch is spent the moment encryption
   actually starts on it.** Exercise the screens without completing
   encryption for as many runs as needed. Treat actually letting

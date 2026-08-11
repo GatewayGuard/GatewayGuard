@@ -1,8 +1,8 @@
-<!-- Dated: 2026-08-11 14:45 EDT -->
+<!-- Dated: 2026-08-11 16:16 EDT -->
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-08-11 14:45 EDT
+- **Last Modified:** 2026-08-11 16:16 EDT
 - **Status:** Append-only running log — newest session at top
 - **Purpose:** Continuous record of all sessions (Claude.ai and Claude
   Code) so any Claude instance can resume with full context.
@@ -101,6 +101,25 @@ superseded-file archaeology, and the deletion-before-verification ordering.
 - **Cloud's `/mnt/project/` mount is not the connector.**
 
 All four are now PART F of `SyncSetupSteps`.
+
+### The ascii39 field run started, 15:15
+
+- **Phase 2 done.** SANDY's unencrypted profile captured and committed --
+  `C:` 67.7 GB used of 237.3 GB, `D:` 78.9 GB of 931.5 GB, both
+  **FullyDecrypted**, Modern Standby, Edition Core. One-shot measurement;
+  unrecoverable once it encrypts.
+- **FT-167 confirmed in the field** -- the second fixed drive is real and in
+  the clear. Checkup reads only `C:`.
+- **SANDY's Windows account was Microsoft until 2026-08-11**, for a week or
+  more through multiple reboots, and Device Encryption never engaged.
+  Converted to a local account named `panther` immediately before Phase 3.
+  **This contradicts the fleet warning** and is recorded in the briefing and
+  the ENCRYPTION STATE MATRIX rather than left in chat.
+- **Phase 3 starting** -- the 45-minute local-account run. Not yet reported.
+- A blocker was caught on the way: `Builds\Run-GatewayGuard.bat` named a
+  `.ps1` filename that has never existed and predates the missing-file check,
+  so it would have blinked shut with no message. Retired. Briefing section 14
+  had flagged it for verification weeks ago and nobody had.
 
 ### Bill's decisions
 
