@@ -1,11 +1,35 @@
-<!-- Dated: 2026-08-11 00:16 ET -->
+<!-- Dated: 2026-08-11 12:00 ET -->
 # GatewayGuard -- Sync Setup Steps (Claude Code <-> Claude Cloud)
 - **Document Name:** GatewayGuard_SyncSetupSteps
-- **Last Modified:** 2026-08-11 00:16 ET
+- **Last Modified:** 2026-08-11 12:00 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **Status:** Working procedure -- follow at the keyboard
 - **Companion to:** `GatewayGuard_SyncPlan-*.md` (the what and why; this is the how)
 - **Change History Log:**
+  - 2026-08-11 12:00: **A6 TARGET 1 COULD NOT FAIL AND COULD NOT VERIFY.**
+    Found by Claude.ai on the third consecutive run, after it reported target 1
+    PASSED three times while quoting the wrong file. The answer key wrote line 2
+    as `<!-- Dated: ... ET -->` **with the value elided**, and line 1 is
+    identical in three files -- root `CLAUDE.md` (2026-08-09 17:05),
+    `ProjectDocs/CLAUDE-2026-07-25.md` (2026-07-25 15:30), and
+    `WebSite/Index-Builds/ForCloudUpload-2026-08-02-1218/CLAUDE.md`
+    (2026-07-26 06:19). Two are named exactly `CLAUDE.md`. The key therefore
+    accepted all three, and what came back was the frozen snapshot.
+    **A false PASS here is worse than the false FAIL it replaced**, because a
+    false FAIL sends you back to A4 and costs an hour, while a false PASS
+    unblocks 0b-4 and deletes uploads. Target 1 now quotes a line that exists
+    in the ROOT file and nowhere else in scope, and the instruction names the
+    path and warns that duplicates exist. **Measured 2026-08-11 on CGDELL:**
+    the rule-move line is present in root `CLAUDE.md` and in no other file in
+    the connector scope.
+    Also records that `ProjectDocs/GatewayGuard_Checklist.txt` EXISTS -- 5,651
+    bytes, tracked, in HEAD and on `origin/main`. Ten Cloud queries failed to
+    surface it; that is a search-ranking miss inside an attached folder, not a
+    missing file, and the answer key is correct as written.
+    **Withdrawn:** the FILE HEADERS defect reported against `CLAUDE.md` in two
+    delivered test records. It was manufactured from this same confusion -- a
+    07-26 header read off one file and attributed to another. `CLAUDE.md` needs
+    no correction.
   - 2026-08-11 00:16: **THE ORDER WAS WRONG, AND IT WAS WRONG AGAINST A
     DECISION ALREADY MADE.** This document ran 0b-4 -- delete every manual
     upload -- BEFORE Part A connects the repository and A6 proves it. So it
@@ -571,20 +595,51 @@ this test passing, and 0b-4 would then delete every upload on that evidence.
 Quote these exactly as they appear, no paraphrasing. If you cannot
 open any of them, say which one and do not guess.
 
-1. The first two lines of CLAUDE.md
+1. In the CLAUDE.md at the REPOSITORY ROOT -- not any other file named
+   CLAUDE.md -- quote the line that begins "The rule lives in".
 2. The first line of ProjectDocs/GatewayGuard_Checklist.txt
 3. The first line of Tool/Run-ExternalCommandCheck.bat
-4. The first line of WebSite/Rules/website-copy.md
+4. The first two lines of WebSite/Rules/website-copy.md
 ```
 
-**Answer key -- measured 2026-08-11 00:16:**
+**Answer key -- measured 2026-08-11 12:00 on CGDELL:**
 
 | # | Ticked item | Must come back as |
 |---|---|---|
-| 1 | `CLAUDE.md` (root) | `# GatewayGuard -- Claude Code Project Instructions` then `<!-- Dated: ... ET -->` |
+| 1 | `CLAUDE.md` (root) | ``**The rule lives in `WebSite\Rules\website-copy.md`** (moved there`` |
 | 2 | `ProjectDocs` | `GatewayGuard Project Checklist` |
 | 3 | `Tool` | `@echo off` |
-| 4 | `WebSite` | `<!-- Dated: ... ET -->` |
+| 4 | `WebSite` | `<!-- Dated: ... ET -->` then `<!-- Document Name: website-copy -->` |
+
+### Why target 1 does NOT ask for the first two lines
+
+**It used to, and that version could neither fail nor verify.**
+
+Three files in the tree open with the identical line
+`# GatewayGuard -- Claude Code Project Instructions`, and **two of them are
+named exactly `CLAUDE.md`:**
+
+| File | Header date |
+|---|---|
+| `CLAUDE.md` (root) | 2026-08-09 17:05 ET |
+| `ProjectDocs/CLAUDE-2026-07-25.md` | 2026-07-25 15:30 ET |
+| `WebSite/Index-Builds/ForCloudUpload-2026-08-02-1218/CLAUDE.md` | 2026-07-26 06:19 ET |
+
+The old key wrote line 2 as `<!-- Dated: ... ET -->` with the value elided, so
+it **accepted all three**. Claude.ai reported target 1 PASSED on three
+consecutive runs while quoting the frozen snapshot, and then built a
+non-existent FILE HEADERS defect on top of the confusion.
+
+**The rule-move line discriminates because only the root file has it.** The
+other two predate the 2026-08-09 move of the website-copy rule out of
+`.claude/`, so they still point at the old location. Its **presence** is the
+check, not its value -- which keeps A6's no-stale-target property.
+
+**The general lesson, and it applies to every gate in this project:** a check
+whose expected value is elided is not a check. `<!-- Dated: ... ET -->` looks
+rigorous and matches anything. If a gate cannot distinguish the right answer
+from a plausible wrong one, it will report PASS on the wrong one, and it will
+do so confidently.
 
 **All four must be exact.** Any paraphrase, any "I can see that file" without
 the text, any miss -- **it is not connected. Go back to A4 and find out which
