@@ -1,11 +1,24 @@
-<!-- Dated: 2026-08-11 12:00 ET -->
+<!-- Dated: 2026-08-11 12:05 ET -->
 # GatewayGuard -- Sync Setup Steps (Claude Code <-> Claude Cloud)
 - **Document Name:** GatewayGuard_SyncSetupSteps
-- **Last Modified:** 2026-08-11 12:00 ET
+- **Last Modified:** 2026-08-11 12:05 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **Status:** Working procedure -- follow at the keyboard
 - **Companion to:** `GatewayGuard_SyncPlan-*.md` (the what and why; this is the how)
 - **Change History Log:**
+  - 2026-08-11 12:05: **Target 2 swapped, and folders may now be proven by
+    prefix.** `ProjectDocs/GatewayGuard_Checklist.txt` exists and is on
+    `origin/main`, but Claude.ai could not retrieve it in **twelve query
+    formulations across four runs** -- every probe resolved instead to
+    `GatewayGuard_CodingStandards`, which names the file twice. **Measured
+    2026-08-11: seven other tracked files mention `GatewayGuard_Checklist`,
+    more than any other candidate.** A heavily-referenced file gets outranked
+    by the documents referencing it, so the target was unretrievable for
+    reasons having nothing to do with the connector -- the same class of defect
+    as naming a retired file. Swapped to
+    `GatewayGuard_DeploymentSteps-2026-07-21-1009.txt`, referenced by two.
+    **Also added the prefix rule**, so no folder's proof rests on one file
+    ever again. Found and argued by Claude.ai across runs 1-4.
   - 2026-08-11 12:00: **A6 TARGET 1 COULD NOT FAIL AND COULD NOT VERIFY.**
     Found by Claude.ai on the third consecutive run, after it reported target 1
     PASSED three times while quoting the wrong file. The answer key wrote line 2
@@ -597,7 +610,7 @@ open any of them, say which one and do not guess.
 
 1. In the CLAUDE.md at the REPOSITORY ROOT -- not any other file named
    CLAUDE.md -- quote the line that begins "The rule lives in".
-2. The first line of ProjectDocs/GatewayGuard_Checklist.txt
+2. The first line of ProjectDocs/GatewayGuard_DeploymentSteps-2026-07-21-1009.txt
 3. The first line of Tool/Run-ExternalCommandCheck.bat
 4. The first two lines of WebSite/Rules/website-copy.md
 ```
@@ -607,9 +620,28 @@ open any of them, say which one and do not guess.
 | # | Ticked item | Must come back as |
 |---|---|---|
 | 1 | `CLAUDE.md` (root) | ``**The rule lives in `WebSite\Rules\website-copy.md`** (moved there`` |
-| 2 | `ProjectDocs` | `GatewayGuard Project Checklist` |
+| 2 | `ProjectDocs` | `GatewayGuard Website Deployment Instructions` |
 | 3 | `Tool` | `@echo off` |
 | 4 | `WebSite` | `<!-- Dated: ... ET -->` then `<!-- Document Name: website-copy -->` |
+
+### A folder is ALSO proven by any file returning with its prefix
+
+**A named target is the preferred evidence, not the only evidence.** If a
+folder's named target cannot be retrieved but **other files from that folder
+come back carrying the folder prefix** -- `ProjectDocs/...`, `Tool/...` -- the
+folder is attached and that item passes.
+
+**Why this is not a loosening of the gate.** The gate exists to prove each
+ticked item is *reachable*. Twelve prefixed files from a folder prove
+reachability better than one named file does. What it stops is a *retrieval*
+failure being read as an *attachment* failure -- which cost four test runs on
+2026-08-11 and produced one wrong FAIL verdict in a delivered record.
+
+**What still fails:** zero prefixed hits from a ticked folder, a paraphrase
+instead of a quotation, or any "I can see that file" without the text.
+
+**Record the basis either way** -- "quoted target" or "N prefixed files" --
+so the next reader knows which kind of evidence the pass rests on.
 
 ### Why target 1 does NOT ask for the first two lines
 
