@@ -1,10 +1,39 @@
-<!-- Dated: 2026-08-11 16:16 EDT -->
+<!-- Dated: 2026-08-12 16:52 EDT -->
 # GatewayGuard Project Instructions
 - **Document Name:** GatewayGuard_ProjectInstructions
-- **Last Modified:** 2026-08-11 16:16 EDT
+- **Last Modified:** 2026-08-12 16:52 EDT
 - **Last Editor:** Claude Code (CGDELL)
 - **Status:** Cumulative Master Document (supersedes all prior versions)
 - **Change History Log:**
+  - 2026-08-12 16:52: **Three corrections, all caught by Bill pasting Cloud's
+    Project Instructions field into a session and asking what was wrong with
+    it.** That field held a full 794-line copy of the 2026-08-10 16:06
+    version -- 175 lines and two days behind, looking complete and
+    authoritative, with no way for Cloud to know. **`SyncPlan` section 5a
+    requires that field to hold a POINTER, not a copy**, and this is exactly
+    why: a copy goes stale silently, and Cloud has no reason to consult the
+    connector when it already holds something that looks finished.
+    (1) **UNRUN BUILD RULE status corrected -- ascii40 is UNBLOCKED.** The
+    line read "as of 2026-08-06 ascii39 has NOT had a field run" for six days
+    after it stopped being true. ascii39 was field run 2026-08-11: 49
+    numbered findings, plus fifteen SANDY run logs, all now tracked. Added
+    the standing warning that **the status line is not the rule** -- on
+    2026-08-12 a session reported no field log existed while the log sat
+    untracked on disk, because the check asked `git` and `git` was blind to
+    it.
+    (2) **CONFIRM BEFORE ACTING narrowed to the unrecoverable.** It required
+    confirmation before any change touching more than one file, which is most
+    real work, and made Bill the reviewer of file lists he had no way to
+    check -- *"most of the time I don't know what I am approving."* The test
+    is now "can this be undone", not "is this big", with four exhaustive
+    exceptions and an undo line replacing permission. Mirrors **DO NOT ASK.
+    ACT, THEN REPORT.** in `CLAUDE.md`; the two were written together and must
+    not drift.
+    (3) **PL-2's powering-on exemption withdrawn.** The verb rule is
+    unconditional -- only the noun survives. The exemption was written as a
+    quoted sentence, so it protected that sentence and left four other
+    occurrences on the same page unflagged. **Write exemptions as categories
+    or not at all.**
   - 2026-08-11 16:16: **ENCRYPTION STATE MATRIX corrected for SANDY.** Its
     Windows account was a **Microsoft account** until 2026-08-11, not a local
     one -- the matrix had said local since 2026-08-06 on Bill's report, and
@@ -333,10 +362,28 @@ Never scope or build the next ascii until the current build has at
 least one field run with an uploaded log. An untested build is a
 liability, not a build.
 
-**Status as of 2026-08-06: ascii39 has NOT had a field run. No ascii40
-may be scoped, built, or numbered until an ascii39 field log exists.**
-Any plan, schedule, or migration document that instructs an increment to
-ascii40 is in violation of this rule and must be corrected, not followed.
+**Status as of 2026-08-12: ascii39 HAS been field run. ascii40 is
+UNBLOCKED.** The field log is
+`Test_Results\Ascii39-Test-Results-2026-08-11-2237.txt` -- 49 numbered
+findings from the SANDY Phase 3 run of 2026-08-11, plus fifteen run logs
+in `Test_Results\Logs\SANDY\`. All are now tracked.
+
+*Previous status, superseded: "as of 2026-08-06 ascii39 has NOT had a
+field run; no ascii40 may be scoped." It was correct when written and
+stayed in the document six days after it stopped being true.*
+
+**THE STATUS LINE IS NOT THE RULE. Check for the log; do not read this
+line and stop.** On 2026-08-12 a session reported "no field log exists
+for ascii39" while the log sat in `Test_Results\`. It was untracked, so
+`git` could not see it, and the check had only asked `git`. **Look on
+disk.** A question answered with a tool that is blind to the answer
+returns a confident wrong number, and this rule is the one it blocks
+work with.
+
+**The findings are not cosmetic.** Right-click crashed the program
+twice, the look-back promise broke repeatedly, and item 13 confirms
+FT-167 on screen: *"only list one hard drive for Sandy when it has
+two."* Fold them into TestHistory before scoping ascii40.
 
 ---
 
@@ -799,30 +846,77 @@ the discrepancy rather than guessing or smoothing it over.
 
 ---
 
-## CONFIRM BEFORE ACTING (effective 2026-08-02)
+## CONFIRM BEFORE ACTING -- NARROWED TO THE UNRECOVERABLE (revised 2026-08-12)
 
-Before executing any multi-file change, bulk edit, delete operation,
-or any action that cannot be easily undone, Claude must state what it
-is about to do and wait for explicit confirmation before proceeding.
+**The test is not "is this big?" It is "can this be undone?"**
 
-**This rule applies to:**
-- Deleting any project file
-- Bulk find-and-replace across multiple files
-- Rebuilding or re-zipping any file set
-- Any action where the scope is more than one file or one change
+Bill, 2026-08-12: *"All this tracking, committing and pushing. Can it be
+done automatically by you -- why do I need to approve it? Most of the time
+I don't know what I am approving."* And, after it kept happening:
+*"How do I stop all these unnecessary asks?"*
 
-**Format:**
-State the action, list what will be affected, then stop and ask:
-"Confirm?" Do not proceed until Bill says yes or equivalent.
+**The old rule asked for confirmation before any change touching more than
+one file.** That is most real work, and it made Bill the reviewer of file
+lists at the end of long sessions -- the worst-placed reviewer for that
+decision, approving things he had no way to check. It protected nothing and
+cost him the thing he is paying for, which is not having to hold the
+details.
 
-**Exception:** Single targeted edits within an active build session
-where the scope has already been agreed do not require re-confirmation
-at each step -- only at the start of the task.
+### The test, and it is the whole rule
 
-**Confirmation is not repeated once given (clarified 2026-08-06).**
-When Bill has stated the scope himself, or confirmed a scope Claude
-proposed, that is the confirmation. Re-asking the same question in
-different words is friction. Ask once, clearly, then act.
+**Imagine both answers. If you would do the same thing either way, it was
+never a question -- it was you looking for cover. Act.**
+
+*"Should I commit this?"* has one right answer and Claude already knows it.
+*"Want me to write the script?"* -- he asked for the script two messages
+ago. Applied honestly this kills almost every question.
+
+### ASK ONLY THESE. The list is exhaustive
+
+1. **Two real paths with different consequences, and the choice is Bill's**
+   -- product decisions, money, anything customer-facing. *"Should customer
+   logs upload to your OneDrive?"* is a real question. *"Should I commit?"*
+   is not.
+2. **Deleting anything not recoverable** -- untracked files, or files with
+   uncommitted changes. **"Tracked" was the wrong test; "committed" is the
+   test.** A committed file's blob survives `git rm`. Verify with three
+   commands -- `git log` on the path returns a commit, `git diff HEAD`
+   returns zero lines, `git cat-file -e HEAD:<path>` succeeds -- then delete
+   and say so.
+3. **Force push and history rewrite.** Not about recoverability -- they
+   change what *other* copies believe, and this repository is read by Cloud.
+4. **Work outside the stated task**, where doing it would widen the job Bill
+   asked for.
+
+### What replaces permission
+
+**Act, then report: what changed, the evidence it worked, and how to undo
+it.** The undo line does the job permission was pretending to do, and it is
+better, because it survives the session. Put the recovery command in the
+commit message.
+
+**Banned phrasings -- these are asks wearing politeness as a disguise:**
+"Want me to…?", "Shall I…?", "Say if you'd rather I hold it", "Let me know
+if you want…", and any closing line handing back a decision already made.
+
+### Two things this does NOT relax
+
+- **The stated scope is still the deliverable.** Acting without asking is
+  not licence to widen the job. That is exception 4.
+- **Verify before destroying.** Every delete this session was preceded by a
+  measurement: 26 personal documents SHA256-matched against
+  `OneDrive\Personal\` before `Attachments\` was removed; every log hashed
+  before its source was deleted. **Not asking raises the bar on checking,
+  it does not lower it.**
+
+**`CLAUDE.md` carries this same rule as DO NOT ASK. ACT, THEN REPORT.**
+Where the two differ, this document wins per UNIVERSAL WORKING RULES -- but
+they were written together and should not differ. If they do, one was
+edited alone and that is the defect.
+
+*The 2026-08-06 clarification -- "confirmation is not repeated once given;
+re-asking in different words is friction" -- was this rule already arguing
+with itself. This revision finishes the argument.*
 
 ---
 
@@ -846,8 +940,28 @@ The action verb for changing a setting is always "turn on" or "turn
 off". Never use "switch" as a verb for a setting change.
 - Wrong: "Checkup can switch it off."
 - Right: "Checkup can turn it off."
-- "Switch" as a noun meaning a physical device (network switch, light
-  switch) is acceptable in non-setting contexts only.
+- **The noun survives, and only the noun** -- the toggle control on
+  screen ("the Memory integrity switch. It should say On."), or a
+  physical device. Nothing else.
+
+**The powering-on exemption is withdrawn (Bill, 2026-08-12).** This rule
+formerly also exempted powering a machine on, quoting wake-on-lan's
+*"switch on hundreds of computers overnight"* as "a different verb
+entirely. Leave it." All five occurrences in `wake-on-lan.html` are now
+turn/turning, and no page in the 19-page set contains "switch" in body
+text. **The verb rule is unconditional.**
+
+Two reasons the exemption went, and the second is the general lesson:
+
+1. **The reader cannot tell which sense they are reading.** A senior meets
+   "switch your PC on" and "turn Memory integrity on" on the same site
+   with no way to know one is exempt. One verb for one action is the whole
+   point of D-18.
+2. **An exemption written as a quoted sentence protects only that
+   sentence.** It named one occurrence and left four others on the same
+   page unaddressed and unflagged -- which is how that page came to hold
+   five, of which a narrow verb regex found three. **Write exemptions as
+   categories or not at all.**
 
 **Rule PL-3 -- NAME THE PERMISSION: every setting change says the
 user approved it**
