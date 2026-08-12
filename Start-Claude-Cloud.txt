@@ -1,7 +1,8 @@
-===============================================================
- CHECK-CLAUDE-CLOUD -- WHAT TO PASTE INTO A NEW CLOUD CHAT
- Dated: 2026-08-10 10:19 ET
- Was: START-HERE.txt (renamed 2026-08-10)
+﻿===============================================================
+ START-CLAUDE-CLOUD -- WHAT TO PASTE INTO A NEW CLOUD CHAT
+ Dated: 2026-08-12 09:03 ET
+ Was: START-HERE.txt (2026-08-10), then Check-Claude-Cloud.txt
+ (renamed to Start-Claude-Cloud.txt 2026-08-12 09:03, to pair with Start-CC.txt)
 ===============================================================
 
 Open a new chat at claude.ai, then copy the block between the

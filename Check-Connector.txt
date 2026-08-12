@@ -1,9 +1,9 @@
-===============================================================
+﻿===============================================================
  CHECK-CONNECTOR -- PROVE CLOUD IS READING THE REPOSITORY
  Dated: 2026-08-11 13:30 ET
 ===============================================================
 
-THIS FILENAME CARRIES NO DATE ON PURPOSE, like Check-Claude-Cloud.txt
+THIS FILENAME CARRIES NO DATE ON PURPOSE, like Start-Claude-Cloud.txt
 and Start-CC.txt. You open it when you need it, so it must never move.
 
 BEFORE YOU PASTE ANYTHING:

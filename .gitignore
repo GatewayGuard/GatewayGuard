@@ -21,3 +21,24 @@ desktop.ini
 
 # LibreOffice / OpenOffice lock files, created while a document is open
 .~lock.*#
+
+# ---------------------------------------------------------------------
+# NEVER PUBLISH -- personal, financial and medical documents that live in
+# this tree because OneDrive put them here, not because they belong to the
+# product. This repository pushes to GitHub. Added 2026-08-12 so that
+# committing no longer requires Bill to approve a file list he cannot be
+# expected to audit.
+#
+# NARROW ON PURPOSE. Certificates\ and LegalZoom\ already hold 18 and 5
+# TRACKED files respectively, so neither folder is ignored wholesale --
+# only the specific items that must never leave this machine.
+# ---------------------------------------------------------------------
+Certificates/MaineCommunityBank/
+Certificates/Banking instructions.odt
+
+# The resurrected stale tree copy -- 803 files, its own .git inside the
+# working tree. Start-CC.txt warns against starting a session in it.
+Attachments/
+
+# Screen recordings. Large, and none is a source of truth.
+Videos/

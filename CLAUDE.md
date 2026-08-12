@@ -164,13 +164,33 @@ Three reasons "turn" wins, in order of weight:
 3. **"Switch off" is British.** GatewayGuard is Maine, writing for American
    seniors. "Turn off" is the natural register.
 
-**Two senses of "switch" that are NOT covered by this rule** — do not sweep
-them blindly:
+**One sense of "switch" that is NOT covered by this rule** — do not sweep it
+blindly:
 
 - **The noun, meaning the toggle control the user clicks** — *"the Memory
   integrity switch. It should say On."* That is fine; it is a thing on screen.
-- **Powering a machine on** — wake-on-lan's *"switch on hundreds of computers
-  overnight"* is a different verb entirely. Leave it.
+
+**The powering-on exemption is withdrawn (Bill, 2026-08-12.)** This rule
+formerly carried a second exemption: *"Powering a machine on — wake-on-lan's
+'switch on hundreds of computers overnight' is a different verb entirely.
+Leave it."* All five occurrences in `wake-on-lan.html` are now "turn on" /
+"turning on", by Bill's instruction, and the exemption is removed so the rule
+and the build agree.
+
+The exemption was linguistically defensible and practically wrong. Two
+reasons it went:
+
+1. **The reader does not know which sense they are reading.** A senior meets
+   "switch your PC on" and "turn Memory integrity on" on the same site and
+   has no way to tell that one is an exempt verb and the other a governed
+   one. One verb for one action is the whole point of D-18.
+2. **An exemption stated as a quoted sentence protects only that sentence.**
+   It named *"switch on hundreds of computers overnight"* and left the four
+   other occurrences on the same page unaddressed and unflagged. That is how
+   the page ended up with five, of which a narrow verb regex found three.
+
+**The verb rule is now unconditional: "switch" is never the verb.** The noun
+survives. Nothing else does.
 
 **The general rule this is an instance of: before choosing a verb for
 something Checkup does, grep the build for how Checkup already says it.**

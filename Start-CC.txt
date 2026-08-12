@@ -1,11 +1,11 @@
-===============================================================
+﻿===============================================================
  START-CC -- WHAT TO DO AT THE START OF EVERY CLAUDE CODE
              SESSION
  Dated: 2026-08-10 10:19 ET
 ===============================================================
 
 This file is for CLAUDE CODE, on this machine, in a terminal.
-For Claude.ai (Cloud) use Check-Claude-Cloud.txt -- Cloud cannot
+For Claude.ai (Cloud) use Start-Claude-Cloud.txt -- Cloud cannot
 run Get-Date, cannot read git, and cannot see the folder, so
 three of the steps below are impossible for it.
 
@@ -141,7 +141,7 @@ Task: [what you want]
    field run.
 
 ---------------------------------------------------------------
- WHAT CHANGED FROM Check-Claude-Cloud.txt (was START-HERE.txt)
+ WHAT CHANGED FROM Start-Claude-Cloud.txt (was START-HERE.txt)
 ---------------------------------------------------------------
 
 Kept:    glob newest by filename date; read CLAUDE.md; report
@@ -157,7 +157,7 @@ Added:   the cd path and the quoting rule; Get-Date; confirm the
 Dropped: "works for Claude Code AND Claude.ai." It no longer
          does, and pretending otherwise is what produced two
          briefings that each claimed to be current. That file is
-         now Check-Claude-Cloud.txt and is the Cloud version.
+         now Start-Claude-Cloud.txt and is the Cloud version.
 
 ---------------------------------------------------------------
 
