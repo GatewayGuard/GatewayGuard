@@ -1,5 +1,19 @@
-# Dated: 2026-08-07 00:09 ET
-# File: Collect-CheckupLogs-2026-08-07.ps1
+# Dated: 2026-08-12 16:40 ET
+# File: Collect-CheckupLogs-2026-08-12.ps1
+#
+# CHANGED 2026-08-12:
+#   1. Destination is now Test_Results\Logs\<MACHINE>\, was Test_Results\Logs-<MACHINE>\.
+#      Every log in the project lives under one Logs folder, per Bill's
+#      instruction. The old scattered layout is what produced a stray
+#      Logs-SANDY folder beside 78 logs that had never left C:\GatewayGuard.
+#   2. Copies are SHA256-verified, and the already-collected test is by HASH,
+#      not by size. The old test read "same name AND same size = already
+#      collected", justified by "Checkup never rewrites a log once its run has
+#      finished". That is an assumption about the tool, not a property of the
+#      files, and two different logs can share a byte count.
+#   3. Collects every file, not only *.txt. The old filter silently skipped the
+#      .docx test-result write-ups sitting in the same folder.
+#   4. Writes a report file into the destination, so nothing scrolls away.
 #
 # WHAT IT DOES: copies Checkup's run logs into the project's Test_Results
 # folder, so OneDrive syncs them back automatically and there is no USB round
@@ -28,7 +42,7 @@ $src = 'C:\GatewayGuard\Logs'
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $projRoot  = Split-Path -Parent $scriptDir
 $dstRoot   = Join-Path $projRoot 'Test_Results'
-$dst       = Join-Path $dstRoot ('Logs-' + $env:COMPUTERNAME)
+$dst       = Join-Path $dstRoot ('Logs\' + $env:COMPUTERNAME)
 
 Write-Host ""
 Write-Host "================================================================"
@@ -46,9 +60,9 @@ if (-not (Test-Path -LiteralPath $src)) {
     return
 }
 
-$logs = @(Get-ChildItem -LiteralPath $src -File -Filter '*.txt' -ErrorAction SilentlyContinue)
+$logs = @(Get-ChildItem -LiteralPath $src -File -Recurse -ErrorAction SilentlyContinue)
 if ($logs.Count -eq 0) {
-    Write-Host "  The logs folder exists but has no .txt logs in it. Nothing to collect."
+    Write-Host "  The logs folder exists but has nothing in it. Nothing to collect."
     Write-Host ""
     return
 }
@@ -67,29 +81,43 @@ if (-not (Test-Path -LiteralPath $dst)) {
 
 $copied  = 0
 $skipped = 0
+$kept    = 0
 foreach ($f in $logs) {
     $target = Join-Path $dst $f.Name
-    $already = $false
     if (Test-Path -LiteralPath $target) {
-        # same name AND same size = already collected. Size is enough here:
-        # Checkup never rewrites a log once its run has finished.
-        $t = Get-Item -LiteralPath $target
-        if ($t.Length -eq $f.Length) { $already = $true }
+        # Same name. Compare CONTENT, not size -- two different logs can share
+        # a byte count, and "the tool never rewrites a log" is an assumption
+        # about Checkup rather than a property of these files.
+        $h1 = (Get-FileHash -LiteralPath $f.FullName -Algorithm SHA256).Hash
+        $h2 = (Get-FileHash -LiteralPath $target     -Algorithm SHA256).Hash
+        if ($h1 -eq $h2) { $skipped = $skipped + 1; continue }
+        # Same name, different content. Keep BOTH. Overwriting here would
+        # destroy a log that exists nowhere else.
+        $target = Join-Path $dst ($f.BaseName + '-' + $f.LastWriteTime.ToString('yyyyMMdd-HHmmss') + $f.Extension)
+        $kept = $kept + 1
     }
-    if ($already) {
-        $skipped = $skipped + 1
-    } else {
-        Copy-Item -LiteralPath $f.FullName -Destination $target -Force
-        $copied = $copied + 1
+    Copy-Item -LiteralPath $f.FullName -Destination $target -Force
+    $a = (Get-FileHash -LiteralPath $f.FullName -Algorithm SHA256).Hash
+    $b = (Get-FileHash -LiteralPath $target     -Algorithm SHA256).Hash
+    if ($a -ne $b) {
+        Write-Host ""
+        Write-Host ("  STOPPED: the copy of " + $f.Name + " did not match the original.")
+        Write-Host "  Nothing was deleted. The original is untouched where Checkup put it."
+        Write-Host ""
+        return
     }
+    $copied = $copied + 1
 }
 
 $bytes = 0
 foreach ($f in $logs) { $bytes = $bytes + $f.Length }
 
 Write-Host ("  Logs found on this computer : " + $logs.Count)
-Write-Host ("  Newly copied                : " + $copied)
+Write-Host ("  Newly copied and verified   : " + $copied)
 Write-Host ("  Already collected, skipped  : " + $skipped)
+if ($kept -gt 0) {
+Write-Host ("  Same name, different content -- both kept : " + $kept)
+}
 Write-Host ("  Total size                  : " + ("{0:N1}" -f ($bytes/1KB)) + " KB")
 Write-Host ""
 Write-Host ("  Newest log : " + (@($logs | Sort-Object LastWriteTime -Descending)[0].Name))

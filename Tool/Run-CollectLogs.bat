@@ -1,7 +1,7 @@
 @echo off
-REM Dated: 2026-08-07 00:09 ET
+REM Dated: 2026-08-12 16:40 ET
 REM File: Run-CollectLogs.bat (always-current launcher)
-REM RUNS: Collect-CheckupLogs-2026-08-07.ps1
+REM RUNS: Collect-CheckupLogs-2026-08-12.ps1
 REM
 REM  WHAT IT DOES: copies Checkup's run logs out of C:\GatewayGuard\Logs and
 REM  into the project's Test_Results folder, where OneDrive syncs them back on
@@ -20,7 +20,7 @@ REM  flagged by Malwarebytes as an exploit payload (field-confirmed 2026-07-04).
 REM
 cd /d "%~dp0"
 
-set "GGPS1=Collect-CheckupLogs-2026-08-07.ps1"
+set "GGPS1=Collect-CheckupLogs-2026-08-12.ps1"
 
 if not exist "%GGPS1%" (
   echo.
