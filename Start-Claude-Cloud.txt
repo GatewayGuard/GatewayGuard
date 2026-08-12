@@ -1,41 +1,81 @@
-﻿===============================================================
+===============================================================
  START-CLAUDE-CLOUD -- WHAT TO PASTE INTO A NEW CLOUD CHAT
- Dated: 2026-08-12 09:03 ET
+ Dated: 2026-08-12 17:05 ET
  Was: START-HERE.txt (2026-08-10), then Check-Claude-Cloud.txt
- (renamed to Start-Claude-Cloud.txt 2026-08-12 09:03, to pair with Start-CC.txt)
+ (renamed to Start-Claude-Cloud.txt 2026-08-12, to pair with Start-CC.txt)
 ===============================================================
 
 Open a new chat at claude.ai, then copy the block between the
 lines below and paste it as your first message.
 
+You do not need to change anything in it. No filenames, no
+dates, no build number. That is the point of this version.
+
 THIS IS THE CLAUDE CLOUD VERSION. For Claude Code in a terminal
 use Start-CC.txt instead -- it adds Get-Date, the working-root
 check and git state, none of which Cloud can do.
 
-Until 2026-08-10 this file claimed to work for both. It no
-longer does, and that claim is the same failure that produced
-two briefings each claiming to be current.
-
 ---------------- COPY FROM HERE ----------------
 
-Read ProjectDocs\_READ-FIRST-Briefing-*.md -- take the newest by the
-DATE IN THE FILENAME, not the file's modified date. Then read CLAUDE.md.
+Read ProjectDocs/CURRENT.md. It names the current version of every
+document. Then read the briefing and the session log it names, and
+read CLAUDE.md.
+
+First, before anything else: quote me the sentence in the briefing
+about SANDY and a local account named panther. If you cannot find
+it, you are reading an old snapshot -- say so and stop.
 
 Then tell me, before doing any work:
 1. The current build number and whether it has been field run.
 2. The top three open items.
-3. Anything in the briefing you checked and found already stale.
+3. Anything you checked and found already stale.
 
 Do not start work until I tell you what we are doing.
 
 ----------------- COPY TO HERE -----------------
+
+---------------------------------------------------------------
+ WHY THIS FILE CHANGED ON 2026-08-12
+---------------------------------------------------------------
+
+It used to say: read ProjectDocs\_READ-FIRST-Briefing-*.md and
+take the newest by the date in the filename.
+
+CLOUD CANNOT DO THAT. It cannot list a folder and it cannot sort
+one. With five briefings in ProjectDocs it searched by relevance,
+took whichever ranked highest, and reported that as success. On
+2026-08-12 it told Bill it could not find the current files at
+all -- while every one of them was tracked and on origin/main.
+
+The instruction was correct for Claude Code, which can glob, and
+impossible for Cloud, which cannot. Nobody noticed the asymmetry
+because the failure was silent: Cloud always found A briefing.
+
+THE FIX: ProjectDocs/CURRENT.md. One filename that never changes,
+listing the filenames that do. Cloud reads one name it was told
+and gets valid pointers.
+
+CURRENT.md IS GENERATED, NEVER TYPED -- by Tool\Update-Current.ps1,
+run at session end. A pointer kept by hand is the exact failure it
+exists to prevent: 15 of 49 filename references in this project had
+already gone dead. It refuses to write at all if any document is
+missing, rather than publish a list with a hole in it.
+
+WHY THE PANTHER LINE: that sentence exists only in the current
+briefing. If Cloud can quote it, it is genuinely reading current
+files. If it cannot, it is on an old snapshot -- which is a
+different problem with a different fix, and worth knowing before
+you trust anything else it says.
 
 WHY IT ASKS FOR ITEM 3: every briefing so far has gone stale within
 hours, including two pointers in one written the same afternoon.
 Asking for it up front turns a silent trap into the first thing you
 are told.
 
+---------------------------------------------------------------
+
 If you only remember one line, this is enough:
 
-    Read the newest ProjectDocs\_READ-FIRST-Briefing-*.md and CLAUDE.md,
-    then tell me the build, the top 3 open items, and what is stale.
+    Read ProjectDocs/CURRENT.md and CLAUDE.md, quote the panther
+    line to prove you are current, then tell me the build, the top
+    3 open items, and what is stale.

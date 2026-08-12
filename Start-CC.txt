@@ -79,7 +79,9 @@ Before anything else:
      CLAUDE.md
 
 5. Report back, in this order:
-   - current build number, and whether a field log exists for it
+   - current build number, and whether a field log exists for it.
+     CHECK Test_Results\ ON DISK, not just git -- field logs
+     arrive untracked and git cannot see them.
    - git state: commits, tracked files, unpushed, untracked,
      and whether the folder layout still looks right
    - the top three open items from the briefing
@@ -87,7 +89,8 @@ Before anything else:
 
 Do not start work until I confirm your report.
 
-At session end: update the SessionLog, commit, and push.
+At session end: update the SessionLog, run
+Tool\Run-UpdateCurrent.bat, then commit and push.
 
 Task: [what you want]
 
@@ -139,6 +142,13 @@ Task: [what you want]
    is what enforces the UNRUN BUILD RULE: nothing may be scoped
    or numbered as the next build until the current one has been
    field run.
+
+   AND IT MUST LOOK ON DISK. On 2026-08-12 this step answered
+   "no field log exists for ascii39" while
+   Test_Results\Ascii39-Test-Results-2026-08-11-2237.txt sat in
+   the folder. It was untracked, so git could not see it, and
+   the check had only asked git. A question answered with a tool
+   that is blind to the answer returns a confident wrong number.
 
 ---------------------------------------------------------------
  WHAT CHANGED FROM Start-Claude-Cloud.txt (was START-HERE.txt)
