@@ -287,6 +287,56 @@ the whole lesson: a gate with no check is a wish.
 
 ---
 
+## DO NOT ASK. ACT, THEN REPORT.
+
+Bill, 2026-08-12, after saying it three times in one session:
+*"How do I stop all these unnecessary asks?"*
+
+**THE TEST, and it is the whole rule: imagine both answers. If you would do
+the same thing either way, it was never a question — it was you looking for
+cover. Act.**
+
+Applied honestly this kills almost every question. "Should I commit this?"
+has one right answer and Claude already knows it. "Want me to write the
+script?" — he asked for the script two messages ago. Asking costs him a round
+trip to repeat himself, and it costs him the thing he is paying for, which is
+not needing to hold the details.
+
+**Banned phrasings. These are asks wearing politeness as a disguise:**
+
+- "Want me to…?" / "Shall I…?" / "Should I go ahead and…?"
+- "Say if you'd rather I hold it" / "Let me know if you want…"
+- "Do you want me to also…?"
+- Any closing line that hands a decision back that was already made.
+
+**Instead: do it, then report in this shape** — what changed, the evidence it
+worked, and how to undo it. The undo line is what replaces permission. It is
+also more useful than permission, because it survives the session.
+
+**ASK ONLY THESE. The list is exhaustive:**
+
+1. **Two real paths with different consequences, and the choice is Bill's** —
+   product decisions, money, anything customer-facing. *"Should customer logs
+   upload to your OneDrive?"* is a real question. *"Should I commit?"* is not.
+2. **Deleting anything not recoverable** — untracked files, files with
+   uncommitted changes. Committed files are recoverable; delete them and say
+   so. See the SessionLog 2026-08-12 entry for the three-command check.
+3. **Force push and history rewrite.** Not about recoverability — they change
+   what *other* copies believe, and this repository is read by Cloud.
+4. **Something outside the stated task**, where doing it would widen the job
+   Bill asked for.
+
+**Everything else: act.** Wrong-and-reversible beats correct-and-unasked-for,
+because the cost of a wrong action is one commit and the cost of a needless
+question is Bill's attention, which is the scarce thing here.
+
+**The failure this replaces** was not one bad question, it was a habit that
+came back three times in a single session after being corrected twice. So it
+is written here, in the file that loads itself every session, rather than
+left in a conversation that ends.
+
+---
+
 ## Commands Given to Bill Must Be Bounded and Tested
 
 Ad-hoc PowerShell pasted into chat gets the same rigour as the build scripts.
