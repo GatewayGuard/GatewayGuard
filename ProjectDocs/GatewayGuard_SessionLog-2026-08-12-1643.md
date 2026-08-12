@@ -1,9 +1,9 @@
-<!-- Dated: 2026-08-12 15:10 EDT -->
+﻿<!-- Dated: 2026-08-12 16:43 EDT -->
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-08-12 15:10 EDT
-- **Status:** Append-only running log — newest session at top
+- **Last Modified:** 2026-08-12 16:43 EDT
+- **Status:** Append-only running log â€” newest session at top
 - **Purpose:** Continuous record of all sessions (Claude.ai and Claude
   Code) so any Claude instance can resume with full context.
   Updated after every file produced or decision made.
@@ -282,11 +282,131 @@ briefing line 625 says "rewrite Phase 3" and means the migration plan.
    `git`. **Proposed line, not yet added:** *check `Test_Results\` on disk for
    field results, not just git -- field logs arrive untracked.*
 
+### Afternoon: the untracked problem, and the rule that caused it
+
+**99 files were untracked. 561 were tracked. Nobody had decided that.**
+
+Git tracks only what someone ran `git add` on, and the commit rule is
+"path-scoped to files touched this session." That rule keeps banking and
+medical documents off GitHub, which is why it exists. **It also, by
+construction, keeps out everything Bill creates** -- no session ever
+"touches" a field log, so no session ever adds one. One mechanism, two
+effects, one of them never intended and never noticed.
+
+**Tracked this session, 35 files, 578 K of plain text:** the 15 SANDY run
+logs, the ascii39 field results, `Notes\CC-Add-ons-Startup.txt` (whose first
+line is *"Live state not yet in any document"* and which is the sole record
+of the panther conversion), the Malwarebytes and OneDrive sync reports.
+
+**Still deliberately out:** superseded ascii36/37/38 builds (2.4 M), the
+duplicate 19-page set under `files (6)` (284 K), guide PDFs and presentations
+(15 M). Those were trimmed 2026-08-10 to keep the repository under the Cloud
+connector's size limit, and that decision stands.
+
+**Bill's correction on OneDrive, and it was right.** The log had said these
+files lived "on your PC only." They do not -- OneDrive holds them on
+Microsoft's servers with roughly 500 versions per file and a 30-day recycle
+bin. For *"will I lose this file"*, OneDrive already had it covered. **What
+git adds is different in kind:** history that never expires, changes grouped
+with a reason (OneDrive can say `firewall.html` changed Tuesday; it cannot
+say *these nineteen changed together because the exemption was withdrawn*),
+and visibility to Cloud, which cannot read OneDrive at all. And OneDrive
+syncs deletions perfectly -- which is why `Attachments\` came back.
+
+### All logs consolidated into Test_Results\Logs
+
+104 files, previously in three places, **78 of them in `C:\GatewayGuard\Logs`
+where they had never been in OneDrive or git at all**, going back to
+2026-07-06.
+
+```
+Test_Results\Logs\CGDELL    78
+Test_Results\Logs\SANDY     15
+Test_Results\Logs\Archive   11
+```
+
+Every copy SHA256-verified before its source was removed. `C:\GatewayGuard\
+Logs` still exists as an empty folder and must -- the build writes there
+(line 1400) and `CLAUDE.md` lists `C:\GatewayGuard\` as a do-not-rename
+recovery point.
+
+**Bill asked that future logs go to OneDrive "including sales of Checkup to
+our users." The customer half is not buildable and should not be revisited
+from memory:** customers have no OneDrive folder of Bill's, so the write
+fails on every machine sold; and uploading their logs centrally would make
+GatewayGuard the holder of a security inventory of each customer's PC,
+contrary to the promise the product rests on. The machine-local half is
+scoped for ascii40 -- an optional second destination, off by default.
+
+### I wrote a script that already existed
+
+`Tool\Sync-Logs.ps1` duplicated `Collect-CheckupLogs-2026-08-07.ps1`, five
+days old and better in one respect: it derives the project root from its own
+location rather than hardcoding Bill's path. **Deleted mine; merged the
+improvements into the existing one** (`Collect-CheckupLogs-2026-08-12.ps1`).
+That is EXHAUST THE FORMS BEFORE CONCLUDING ABSENCE applied to code, and D-18
+pointed at scripts rather than words: **before writing a thing, grep for
+whether the thing exists.**
+
+Four fixes to the survivor: destination `Logs\<MACHINE>` not
+`Logs-<MACHINE>`; already-collected decided by **SHA256 rather than file
+size** (the old test rested on "Checkup never rewrites a log", an assumption
+about the tool rather than a property of the files) with same-name-different-
+content now keeping both; collects every file rather than `*.txt` only, which
+had silently skipped the `.docx` write-ups; every copy verified before it
+counts.
+
+### CURRENT.md -- the fix for Cloud
+
+`Start-Claude-Cloud.txt` told Cloud to glob `_READ-FIRST-Briefing-*.md` and
+take the newest by filename date. **Cloud can neither list a folder nor sort
+one.** With five briefings it searched by relevance, took the highest-ranked,
+and reported success. The instruction was correct for Claude Code and
+impossible for Cloud, and **the failure was silent because Cloud always found
+A briefing.**
+
+`Tool\Update-Current.ps1` now generates `ProjectDocs\CURRENT.md` -- one
+filename that never changes, listing the ten that do. **Generated, never
+typed**; 15 of 49 filename references in this project had already gone dead.
+**It refuses to write if any pattern matches nothing**, leaving the previous
+file intact, because publishing a pointer with a hole is worse than an
+out-of-date one. Verified by hiding the briefing and confirming it stopped
+with `CURRENT.md` unchanged.
+
+`Start-Claude-Cloud.txt` rewritten around it and now opens with the **panther
+check** -- a sentence present only in the current briefing, so Cloud proves it
+is reading current files before reporting on them. **Bill changes nothing in
+the paste block:** no filenames, no dates, no build number.
+
+**On whether a new Cloud chat is needed to see new commits:** a new chat
+clears the conversation's cached content, which is worth doing and free. It
+does **not** refresh the connector's index, and the index is what decides. A
+new chat on a stale index gets stale files. That is unmeasurable from the
+outside, which is precisely what the panther test converts into a one-line
+answer.
+
+### Two rules broken this session, both by their own author
+
+1. **`git add -A` used four commits after writing "never `git add -A`."** It
+   swept in the three superseded builds and a duplicate, all deliberately
+   excluded. Untracked again; **1.2 MB is in history permanently** and a
+   rewrite is not worth it (`.git` is 28 MB; the connector reads the working
+   tree). The lesson is the mechanism: `-A` was reached for to catch a rename
+   and a delete in one call, and it caught the whole folder.
+2. **The ask habit returned three times after two corrections**, which is why
+   it is now a `CLAUDE.md` section rather than a conversation.
+
 ### Files produced
 
 - `WebSite\html\` -- 19 pages (new)
-- `ProjectDocs\GatewayGuard_SessionLog-2026-08-12-1510.md` (this file)
-- `Start-Claude-Cloud.txt` (renamed from `Check-Claude-Cloud.txt`)
+- `ProjectDocs\CURRENT.md` (generated) and `Tool\Update-Current.ps1` +
+  `Run-UpdateCurrent.bat`
+- `Tool\Collect-CheckupLogs-2026-08-12.ps1` (merged; `Sync-Logs.ps1` deleted)
+- `ProjectDocs\GatewayGuard_SyncPlan-2026-08-12-1512.md` and
+  `GatewayGuard_SyncSetupSteps-2026-08-12-1512.md` (both predecessors retired)
+- `Test_Results\Logs\` -- 104 files consolidated
+- `ProjectDocs\GatewayGuard_SessionLog-2026-08-12-1643.md` (this file)
+- `Start-Claude-Cloud.txt` (renamed from `Check-Claude-Cloud.txt`, rewritten)
 - `CLAUDE.md`, `.gitignore`, `Start-CC.txt`, `Check-Connector.txt` (edited)
 
 ---
@@ -400,79 +520,79 @@ All four are now PART F of `SyncSetupSteps`.
 5. Marketing-Notes open-source violation -- three occurrences, still unfixed.
 
 
-## Session: 2026-08-08 to 2026-08-09 [Claude Code — CGDELL]
+## Session: 2026-08-08 to 2026-08-09 [Claude Code â€” CGDELL]
 
 **Two-day session. No build work. Consolidation, backup, and governance.**
 
 ### The headline
 
-**The GitHub remote now exists** — `GatewayGuard/GatewayGuard`, private,
+**The GitHub remote now exists** â€” `GatewayGuard/GatewayGuard`, private,
 org-owned. Before 2026-08-08 the repository lived inside the folder it was
 protecting, with no remote at all, while the tree existed in six copies at
 three different commits. That was the largest unmitigated risk to the
 September 1 launch and it is closed.
 
-### Completed — infrastructure
+### Completed â€” infrastructure
 
 - **GitHub remote created and populated.** 35 commits pushed.
 - **Tree consolidated to one working copy.** Personal-OneDrive copy deleted;
-  business copy renamed `GatewayGuide` → `GatewayGuard`. The rename had been
-  made once before and reverted — it only stuck when made in the browser,
+  business copy renamed `GatewayGuide` â†’ `GatewayGuard`. The rename had been
+  made once before and reverted â€” it only stuck when made in the browser,
   because the cloud held the old name and the cloud wins.
 - **CGDELL's Documents folder rescued from inside the project tree.** It had
   been redirected to `OneDrive\GatewayGuide\Documents`, which explained a
   folder that regenerated after four deletions, 1.2 GB of personal files in
   `Builds\Documents\`, and two OneDrive accounts deadlocking over folder
-  backup. Fixed with `SHSetKnownFolderPath` — the Location tab never appeared,
+  backup. Fixed with `SHSetKnownFolderPath` â€” the Location tab never appeared,
   and three legacy junctions had to be removed first.
 - **Folder backup turned off on SANDY and SANDY3**, both accounts, before
   CGDELL's 1.2 GB could merge onto them.
 - **Recovery keys printed and copied to USB** for CGDELL and Sandy3.
 
-### Completed — measurements that settled open questions
+### Completed â€” measurements that settled open questions
 
 - **Sandy3 encryption MEASURED:** `FullyEncrypted / 100 / XtsAes128`. The last
   fleet fact resting on a guess.
 - **All three machines confirmed at the same commit** with the same ascii39
   hash `75C3509473F17D6F`.
-- **The 19 guide pages located** — in git history and untracked in
+- **The 19 guide pages located** â€” in git history and untracked in
   `WebSite/files (6)/`. They never reached GitHub Pages.
 - **CGDELL has four working BitLocker recovery keys.** All four unlock it;
   rotation is a deliberate two-pass design and pass 2 was never run.
 
-### Completed — governance
+### Completed â€” governance
 
-- **`GatewayGuard_SyncPlan`** — what and why, and who authors what.
-- **`GatewayGuard_SyncSetupSteps`** — the click-by-click procedure.
+- **`GatewayGuard_SyncPlan`** â€” what and why, and who authors what.
+- **`GatewayGuard_SyncSetupSteps`** â€” the click-by-click procedure.
 - **READ-FIRST briefing merged** from two rival versions and rewritten.
 - **Claude Cloud reviewed all three** and returned 28 findings; 23 applied.
 - **Governing-document authorship moved to Claude Code**, on the evidence that
-  every dead pointer found was in a Cloud-authored file — 15 of 49 filename
+  every dead pointer found was in a Cloud-authored file â€” 15 of 49 filename
   references across the tree were dead.
 - **New rule: EXHAUST THE FORMS BEFORE CONCLUDING ABSENCE** (ProjectInstructions).
 
-### Recovered — content that existed in only one place
+### Recovered â€” content that existed in only one place
 
-- **CF-01 through CF-06** — 62 lines of ascii30/31 field findings, in Cloud
+- **CF-01 through CF-06** â€” 62 lines of ascii30/31 field findings, in Cloud
   and in no file here. CF-02 (per-setting approve/disapprove for all settings)
   reads like ascii40 scope.
-- **`GatewayGuard_NamingStandard`** — the source of truth for all 19 setting
+- **`GatewayGuard_NamingStandard`** â€” the source of truth for all 19 setting
   names, across ~45 files. Nothing defined them before.
-- **`GatewayGuard_SessionLog`** — this file. Its own rule had never been
+- **`GatewayGuard_SessionLog`** â€” this file. Its own rule had never been
   followable by Claude Code because the file had never reached the tree.
-- **`FutureProjects`** (FP-01–FP-21), **`ProjectFiles_DeleteKeep`**, the five
+- **`FutureProjects`** (FP-01â€“FP-21), **`ProjectFiles_DeleteKeep`**, the five
   Guide print editions, and eight other documents.
 
 ### Errors made and corrected
 
-- Read the **wrong tree** for the first 20 minutes of 2026-08-08 — a stale
+- Read the **wrong tree** for the first 20 minutes of 2026-08-08 â€” a stale
   copy, three commits behind.
 - Recorded `TestHistory-ascii39-2026-08-02-0914.md` as **"never existed."** It
   exists in project knowledge; it had never reached the tree.
 - Declared **Python unavailable** after `python3` failed. `python` and `py`
   both work.
 - Twice dismissed a misplaced folder as "sync debris" without opening it. One
-  was `ProjectDocs` — every governing document — moved by a stray drag and
+  was `ProjectDocs` â€” every governing document â€” moved by a stray drag and
   gone for over an hour.
 - Told Bill the connector scope three different ways across three documents.
 
@@ -480,34 +600,34 @@ All five are the same shape and produced the new rule above.
 
 ### Bill's decisions this session
 
-- **Gumroad for all sales** — closes the question gating refund terms and
+- **Gumroad for all sales** â€” closes the question gating refund terms and
   sales tax work.
 - **Website-copy rule moved to `WebSite\Rules\`** rather than adding `.claude`
   to the connector scope.
-- **404.html** — live site has one; no action.
+- **404.html** â€” live site has one; no action.
 - Keep all four BitLocker recovery keys.
 
-### Open — carried into the next session
+### Open â€” carried into the next session
 
 1. **ascii39 field run on SANDY.** Blocks everything downstream. Right-click
-   the project folder → "Always keep on this device" first: 307 of 1,110 files
+   the project folder â†’ "Always keep on this device" first: 307 of 1,110 files
    are cloud placeholders and SANDY has no internet without the USB adapter.
-2. **Connect Claude Cloud to GitHub** — follow `GatewayGuard_SyncSetupSteps-*.md`.
+2. **Connect Claude Cloud to GitHub** â€” follow `GatewayGuard_SyncSetupSteps-*.md`.
 3. **Rebuild the assert-guarded Python wrapper.** Zero `.py` files in the tree
    or in git history. Required before ascii40. Python 3.12.10 is installed.
-4. **Move Bill's 18 personal documents out of `Attachments\`** — his resume,
+4. **Move Bill's 18 personal documents out of `Attachments\`** â€” his resume,
    the Cuban letters and the Sunset set exist nowhere else.
 5. **Upload the 19 guide pages.** `gatewayguard.co` still shows UNDER
    CONSTRUCTION from 2026-07-21.
-6. **`Run-DocCheck.bat`** — the document gate. Would have caught the scope
+6. **`Run-DocCheck.bat`** â€” the document gate. Would have caught the scope
    disagreement and the repeated git counts.
-7. **Marketing-Notes open-source violation** — three occurrences, never fixed.
+7. **Marketing-Notes open-source violation** â€” three occurrences, never fixed.
 
 
 ## Session: 2026-08-04 [Claude.ai]
 
 ### Completed
-- Built `download-2026-08-04-0932.html` — download page, all rules applied
+- Built `download-2026-08-04-0932.html` â€” download page, all rules applied
 - Proposed editor tag system (Claude.ai / Claude Code / Bill in headers)
 - Answered why two-Claude workflow exists and how to manage it
 - Produced structured plan for session handoff (see WorkflowGuide below)
@@ -520,19 +640,19 @@ All five are the same shape and produced the new rule above.
 - Rewrite CodingStandards with new rules
 - Delete `GatewayGuard_CodingStandards-2026-07-26-0619.md` from project
 - Delete superseded HTML files from project
-- Guide rewrite (v9 → current)
+- Guide rewrite (v9 â†’ current)
 - Upload all 19 final HTML pages to GitHub guide/ folder
 - ascii39 field test results review
 
 ### Files produced this session (2026-08-04)
-- `download-2026-08-04-0932.html` — download page
+- `download-2026-08-04-0932.html` â€” download page
 
 ### Files produced previous session (2026-08-02)
-- `GatewayGuard_All19_Final-2026-08-02-1820.zip` — all 19 guide pages
-- `GatewayGuard_BankLetterRequest-2026-08-02-1820.docx` — bank letter
-- `GatewayGuard_TomorrowActionList-2026-08-02-1820.docx` — action list
-- `GatewayGuard_ProjectInstructions-2026-08-02-1820.md` — updated rules
-- `_READ-FIRST-Briefing-2026-08-02-1820.md` — session briefing
+- `GatewayGuard_All19_Final-2026-08-02-1820.zip` â€” all 19 guide pages
+- `GatewayGuard_BankLetterRequest-2026-08-02-1820.docx` â€” bank letter
+- `GatewayGuard_TomorrowActionList-2026-08-02-1820.docx` â€” action list
+- `GatewayGuard_ProjectInstructions-2026-08-02-1820.md` â€” updated rules
+- `_READ-FIRST-Briefing-2026-08-02-1820.md` â€” session briefing
 
 ### Rules decided this session
 - EDITOR TAG SYSTEM: every file header identifies last editor
@@ -543,7 +663,7 @@ All five are the same shape and produced the new rule above.
   to download it for Claude Code
 
 ### Business status (as of 2026-08-04)
-- Maine Community Bank: account opening attempt Monday 8/3 — status unknown
+- Maine Community Bank: account opening attempt Monday 8/3 â€” status unknown
 - SAM.gov: pending bank account info
 - DigiCert/SignMyCode: pending D&B or bank letter
 - LegalZoom EULA review: rescheduled to 8/4 Tuesday noon
@@ -555,11 +675,11 @@ All five are the same shape and produced the new rule above.
 ## Session: 2026-08-02 [Claude.ai]
 
 ### Completed
-- Built all 19 guide setting pages — all rules applied, zipped
+- Built all 19 guide setting pages â€” all rules applied, zipped
 - Fixed "whether", "switch", Checkup naming across all 19 pages
 - Added PL-1, PL-2, PL-3, CHECKUP NAME RULE, CONFIRM BEFORE ACTING,
   SESSION LENGTH WARNING to ProjectInstructions
-- Deleted 17 old timestamped HTML files from project (marked — Bill
+- Deleted 17 old timestamped HTML files from project (marked â€” Bill
   must confirm deletion in Claude UI)
 - Built bank letter request and Monday action list
 - Updated READ-FIRST briefing

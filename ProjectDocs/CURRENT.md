@@ -1,10 +1,10 @@
 ﻿<!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-12 16:38 ET -->
+<!-- Generated: 2026-08-12 16:44 ET -->
 
 # CURRENT -- which file is the live one
 
-**Generated 2026-08-12 16:38 ET by `Tool\Update-Current.ps1`.**
+**Generated 2026-08-12 16:44 ET by `Tool\Update-Current.ps1`.**
 
 This filename never changes, so it can be named in an instruction without
 going stale. The filenames BELOW change constantly -- always take them from
@@ -15,7 +15,7 @@ All paths are relative to `ProjectDocs/`.
 | What it is | The current file | Older versions present |
 |---|---|---|
 | Briefing -- read this first | `_READ-FIRST-Briefing-2026-08-11-1616.md` | 0 |
-| Session log | `GatewayGuard_SessionLog-2026-08-12-1510.md` | 1 |
+| Session log | `GatewayGuard_SessionLog-2026-08-12-1643.md` | 1 |
 | Project instructions | `GatewayGuard_ProjectInstructions-2026-08-11-1616.md` | 2 |
 | Coding standards | `GatewayGuard_CodingStandards-2026-08-07-1330.md` | 0 |
 | Defect prevention playbook | `GatewayGuard_DefectPreventionPlaybook-2026-07-26-0619.md` | 0 |
