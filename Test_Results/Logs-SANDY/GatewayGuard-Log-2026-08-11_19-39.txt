@@ -1,0 +1,65 @@
+﻿============================================================
+  GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+  Build: ascii39
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-08-11 19:39:01
+  Computer: SANDY
+  Machine:  HP HP Laptop 17-by1xxx
+  Machine ID: F7F13A97D58D (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[19:39:02] [OK] Console control handler registered -- Ctrl+C in Mark mode can no longer end the session (FT-150), and closing the window still writes the log footer (FT-160)
+[19:39:02] [START] Tool launched v3.1 build ascii39
+[19:39:02] [INFO] Machine: HP HP Laptop 17-by1xxx | MachineID: F7F13A97D58D
+[19:39:02] [OK] Sleep/shutdown prevention activated
+[19:39:02] [SCREEN] [SCREEN-25] (shown as screen 1) Rendered: WELCOME BACK
+[19:39:08] [KEY] Key 'R' accepted at: Show-ResumePrompt
+[19:39:08] [STATE] User chose to RESUME from checkpoint: AppsAudit
+[19:39:22] [KEY] Continue accepted at: Show-ResumePrompt
+[19:39:22] [SCREEN] [SCREEN-31] (shown as screen 2) Rendered: QUICK RE-CHECK BEFORE RESUMING
+[19:39:28] [KEY] Key 'Y' accepted at: Show-ResumeReverify
+[19:39:28] [CONFIRM] Resume re-check: personal computer reconfirmed
+[19:39:28] [OK] Domain check passed -- not domain joined
+[19:39:28] [OK] Resume re-check: administrator access confirmed
+[19:39:28] [OK] Sleep/shutdown prevention activated
+[19:39:28] [OK] Resume re-check: AC power confirmed (100%). Sleep prevention active.
+[19:39:30] [KEY] Continue accepted at: Show-ResumeReverify
+[19:39:30] [INFO] Windows Edition: Core -- Windows 11 Home
+[19:39:30] [SCREEN] [SCREEN-34] (shown as screen 3) Rendered: WINDOWS EDITION DETECTED
+[19:39:30] [INFO] Home edition -- Remote Desktop and Group Policy unavailable
+[19:39:39] [KEY] Continue accepted at: Get-WinEdition
+[19:39:39] [SCREEN] [SCREEN-35] (shown as screen 4) Rendered: YOUR PC -- RAM: 8 GB
+[19:39:39] [WARN] RAM: 8 GB (minimal)
+[19:39:40] [KEY] Continue accepted at: Get-RAMStatus
+[19:39:40] [SCREEN] [SCREEN-52] (shown as screen 5) Rendered: GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+[19:40:13] [KEY] Key '1' accepted at: Select-Mode
+[19:40:13] [INFO] Mode selected: Console
+[19:40:13] [OK] QuickEdit mode disabled for this session (FT-01 mitigation) -- re-asserted silently from here on
+[19:40:14] [INFO] Item 6 (Edge phishing protection): registry read BLOCKED by Tamper Protection -- reporting Unknown rather than a fault (FT-141)
+[19:40:17] [DONE] Get-AllStatuses complete -- all 19 settings probed
+[19:40:18] [SCREEN] [SCREEN-53] (shown as screen 6) Rendered: QUICK QUESTION -- YOUR PASSWORDS
+[19:40:18] [ERROR] SILENT ERROR at Show-ScopeDisclaimer: Requested registry access is not allowed. | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii39-2026-07-30-2208.ps1:5270 char:31
+[19:40:18] [ERROR] SILENT ERROR at Show-ScopeDisclaimer: Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Edge' because it does not exist. | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii39-2026-07-30-2208.ps1:5371 char:27
+[19:40:18] [ERROR] SILENT ERROR at Show-ScopeDisclaimer: Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Dsh' because it does not exist. | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii39-2026-07-30-2208.ps1:5387 char:27
+[19:40:18] [ERROR] SILENT ERROR at Show-ScopeDisclaimer: Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Edge' because it does not exist. | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii39-2026-07-30-2208.ps1:5401 char:28
+[19:45:34] [KEY] Key 'Y' accepted at: Show-ScopeDisclaimer
+[19:45:34] [INFO] User has a password manager -- Edge Password Saving change stays available
+[19:45:37] [KEY] Continue accepted at: Show-ScopeDisclaimer
+[19:45:37] [SCREEN] [SCREEN-54] (shown as screen 7) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 1 of 2)
+[19:45:44] [KEY] Nav 'NEXT' at: Show-ScopeDisclaimer
+[19:45:44] [SCREEN] [SCREEN-75] (shown as screen 8) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 2 of 2)
+[19:45:52] [KEY] Nav 'NEXT' at: Show-ScopeDisclaimer
+[19:45:52] [SCREEN] [SCREEN-76] Checklist render: page 1, window width 175, 8 item(s) selected
+[19:45:52] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[19:45:57] [KEY] Checklist command 'Q' accepted at: Run-ConsoleMode
+
+[19:46:06] [EXIT] SESSION ENDED EARLY -- the window's X (close button) was clicked. Nothing was left half-applied: Checkup applies one setting at a time.
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================

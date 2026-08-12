@@ -1,0 +1,104 @@
+﻿============================================================
+  GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+  Build: ascii39
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-08-11 16:01:39
+  Computer: SANDY
+  Machine:  HP HP Laptop 17-by1xxx
+  Machine ID: F7F13A97D58D (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[16:01:39] [OK] Console control handler registered -- Ctrl+C in Mark mode can no longer end the session (FT-150), and closing the window still writes the log footer (FT-160)
+[16:01:39] [START] Tool launched v3.1 build ascii39
+[16:01:39] [INFO] Machine: HP HP Laptop 17-by1xxx | MachineID: F7F13A97D58D
+[16:01:39] [OK] Sleep/shutdown prevention activated
+[16:01:39] [SCREEN] [SCREEN-25] (shown as screen 1) Rendered: WELCOME BACK
+[16:02:00] [KEY] Key 'S' accepted at: Show-ResumePrompt
+[16:02:00] [STATE] User chose to START OVER -- checkpoint cleared
+[16:02:21] [KEY] Continue accepted at: Show-FontInstructions
+[16:03:04] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[16:03:04] [SCREEN] [SCREEN-28] (shown as screen 2) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[16:03:05] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[16:03:05] [SCREEN] [SCREEN-29] (shown as screen 3) Rendered: BEFORE YOU START -- YOUR WINDOW  (Screen 4 of 6)
+[16:05:05] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[16:05:05] [SCREEN] [SCREEN-78] (shown as screen 4) Rendered: BEFORE YOU START -- YOUR KEYBOARD  (Screen 5 of 6)
+[16:05:07] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[16:05:07] [SCREEN] [SCREEN-30] (shown as screen 5) Rendered: WHAT HAPPENS NEXT -- PLEASE READ  (Screen 6 of 6)
+[16:05:17] [KEY] Nav 'BACK' at: Show-FontInstructions
+[16:05:17] [SCREEN] [SCREEN-78] (shown as screen 4) Rendered: BEFORE YOU START -- YOUR KEYBOARD  (Screen 5 of 6)
+[16:05:17] [KEY] Nav 'BACK' at: Show-FontInstructions
+[16:05:17] [SCREEN] [SCREEN-29] (shown as screen 3) Rendered: BEFORE YOU START -- YOUR WINDOW  (Screen 4 of 6)
+[16:05:19] [KEY] Nav 'BACK' at: Show-FontInstructions
+[16:05:19] [SCREEN] [SCREEN-28] (shown as screen 2) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[16:05:27] [KEY] Nav 'BACK' at: Show-FontInstructions
+[16:05:42] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[16:05:43] [SCREEN] [SCREEN-28] (shown as screen 2) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[16:06:53] [KEY] Nav 'BACK' at: Show-FontInstructions
+[16:07:37] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[16:07:37] [SCREEN] [SCREEN-28] (shown as screen 2) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[16:34:37] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[16:34:37] [SCREEN] [SCREEN-29] (shown as screen 3) Rendered: BEFORE YOU START -- YOUR WINDOW  (Screen 4 of 6)
+[16:45:35] [KEY] Nav 'BACK' at: Show-FontInstructions
+[16:45:35] [SCREEN] [SCREEN-28] (shown as screen 2) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[16:57:32] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[16:57:32] [SCREEN] [SCREEN-29] (shown as screen 3) Rendered: BEFORE YOU START -- YOUR WINDOW  (Screen 4 of 6)
+[16:57:39] [KEY] Nav 'BACK' at: Show-FontInstructions
+[16:57:39] [SCREEN] [SCREEN-28] (shown as screen 2) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[16:57:43] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[16:57:43] [SCREEN] [SCREEN-29] (shown as screen 3) Rendered: BEFORE YOU START -- YOUR WINDOW  (Screen 4 of 6)
+[16:57:45] [KEY] Nav 'BACK' at: Show-FontInstructions
+[16:57:45] [SCREEN] [SCREEN-28] (shown as screen 2) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[16:57:46] [KEY] Nav 'BACK' at: Show-FontInstructions
+[16:57:49] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[16:57:49] [SCREEN] [SCREEN-28] (shown as screen 2) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[16:57:50] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[16:57:50] [SCREEN] [SCREEN-29] (shown as screen 3) Rendered: BEFORE YOU START -- YOUR WINDOW  (Screen 4 of 6)
+[17:04:18] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[17:04:18] [SCREEN] [SCREEN-78] (shown as screen 4) Rendered: BEFORE YOU START -- YOUR KEYBOARD  (Screen 5 of 6)
+[17:09:09] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[17:09:09] [SCREEN] [SCREEN-30] (shown as screen 5) Rendered: WHAT HAPPENS NEXT -- PLEASE READ  (Screen 6 of 6)
+[17:11:12] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[17:11:12] [SCREEN] [SCREEN-02] (shown as screen 6) Rendered: HOW TO SCROLL BACK (AND COPY) IN THIS WINDOW
+[17:11:12] [KEY] Continue accepted at: Show-ScrollCopyTip
+[17:11:12] [SCREEN] [SCREEN-05] (shown as screen 7) Rendered: !  IMPORTANT -- READ BEFORE CONTINUING
+[17:11:26] [KEY] Key 'Y' accepted at: Test-PersonalComputer
+[17:11:26] [CONFIRM] Personal computer confirmed by user
+[17:11:26] [OK] Domain check passed -- not domain joined
+[17:11:26] [OK] Administrator access confirmed
+[17:11:41] [KEY] Continue accepted at: Test-AdminAccess
+[17:11:41] [INFO] Windows Edition: Core -- Windows 11 Home
+[17:11:41] [SCREEN] [SCREEN-34] (shown as screen 8) Rendered: WINDOWS EDITION DETECTED
+[17:11:41] [INFO] Home edition -- Remote Desktop and Group Policy unavailable
+[17:12:12] [KEY] Continue accepted at: Get-WinEdition
+[17:12:12] [SCREEN] [SCREEN-35] (shown as screen 9) Rendered: YOUR PC -- RAM: 8 GB
+[17:12:12] [WARN] RAM: 8 GB (minimal)
+[17:12:57] [KEY] Look-back opened at: Get-RAMStatus
+[17:18:59] [KEY] Continue accepted at: Get-RAMStatus
+[17:30:49] [KEY] Key 'Y' accepted at: Test-TimeDateSync
+[17:30:49] [OK] Time/date confirmed correct by user: Tuesday, August 11, 2026 -- 5:18 PM (UTC-05:00) Eastern Time (US & Canada)
+[17:30:53] [INFO] Secure Boot state read on all editions (FT-143): True
+[17:30:53] [SCREEN] [SCREEN-09] (shown as screen 10) Rendered: YOUR SYSTEM AT A GLANCE
+[17:30:53] [INFO] System Baseline Summary displayed
+[17:38:34] [KEY] Continue accepted at: Show-SystemBaselineSummary
+[17:38:34] [STATE] Checkpoint saved: Baseline
+[17:38:34] [SCREEN] [SCREEN-26] (shown as screen 11) Rendered: YOUR PC'S SECURITY TOOLS -- A QUICK INTRODUCTION
+[17:38:57] [KEY] Continue accepted at: Show-SecurityToolsBriefing
+[17:38:57] [KEY] Discarded 256 keypress(es) that were already queued before this screen appeared (FT-149)
+[17:38:57] [SCREEN] [SCREEN-27] (shown as screen 12) Rendered: THE SCANS WE RECOMMEND -- AND WHY
+[17:38:57] [KEY] Continue accepted at: Show-ScanPlanBriefing
+[17:38:58] [KEY] Discarded 117 keypress(es) that were already queued before this screen appeared (FT-149)
+[17:38:58] [STATE] Checkpoint saved: Briefing
+[17:38:58] [SCREEN] [SCREEN-39] (shown as screen 13) Rendered: REMINDER: PRE-SCAN RECOMMENDED
+[17:38:58] [KEY] Key 'N' accepted at: Show-PreScanGate
+[17:38:58] [KEY] Discarded 256 keypress(es) that were already queued before this screen appeared (FT-149)
+
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================
+[17:38:58] [OK] Sleep prevention deactivated -- normal power management restored (called from: PowerShell.Exiting engine event (last-resort cleanup))

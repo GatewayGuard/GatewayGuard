@@ -1,0 +1,51 @@
+﻿============================================================
+  GatewayGuard Windows 11 Security Hardening Tool v3.1
+  Build: ascii33
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-07-20 10:09:11
+  Computer: CGDELL
+  Machine:  Dell Inc. Latitude 5430
+  Machine ID: 565F4EC4F822 (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[10:09:11] [WARN] FT-63: startup was delayed 1 minute(s) between launch and initialization -- console was likely frozen in text-selection (Mark) mode; Esc releases it
+[10:09:11] [START] Tool launched v3.1 build ascii33
+[10:09:11] [INFO] Machine: Dell Inc. Latitude 5430 | MachineID: 565F4EC4F822
+[10:09:11] [OK] Sleep/shutdown prevention activated
+[10:09:12] [SCREEN] [SCREEN-25] Rendered: Welcome Back (Resume Prompt)
+[10:09:12] [SCREEN] Rendered: WELCOME BACK
+[10:09:14] [KEY] Key 'R' accepted at: Show-ResumePrompt
+[10:09:14] [STATE] User chose to RESUME from checkpoint: AppsAudit
+[10:09:17] [KEY] Continue accepted at: Show-ResumePrompt
+[10:09:17] [SCREEN] Rendered: QUICK RE-CHECK BEFORE RESUMING
+[10:09:19] [KEY] Key 'Y' accepted at: Show-ResumeReverify
+[10:09:19] [CONFIRM] Resume re-check: personal computer reconfirmed
+[10:09:19] [OK] Domain check passed -- not domain joined
+[10:09:19] [OK] Resume re-check: administrator access confirmed
+[10:09:19] [OK] Sleep/shutdown prevention activated
+[10:09:19] [OK] Resume re-check: AC power confirmed (9%). Sleep prevention active.
+[10:09:22] [KEY] Continue accepted at: Show-ResumeReverify
+[10:09:22] [INFO] Windows Edition: Professional -- Windows 11 Pro
+[10:09:22] [INFO] RAM: 32 GB (ample)
+[10:09:22] [SCREEN] Rendered: GatewayGuard Windows 11 Security Hardening Tool v3.1
+[10:09:25] [KEY] Key '1' accepted at: Select-Mode
+[10:09:25] [INFO] Mode selected: Console
+[10:09:30] [SCREEN] Rendered: QUICK QUESTION -- YOUR PASSWORDS
+[10:09:34] [KEY] Key 'Y' accepted at: Show-ScopeDisclaimer
+[10:09:34] [INFO] User has a password manager -- Edge Password Saving change stays available
+[10:09:36] [KEY] Continue accepted at: Show-ScopeDisclaimer
+[10:09:36] [SCREEN] Rendered: WHAT THIS TOOL DOES AND DOES NOT DO
+[10:09:44] [KEY] Nav 'NEXT' at: Show-ScopeDisclaimer
+[17:50:56] [KEY] Key 'Y' accepted at: Confirm-Exit
+[17:50:56] [EXIT] User confirmed exit
+[17:50:56] [OK] Sleep prevention deactivated -- normal power management restored (called from: Confirm-Exit)
+
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================

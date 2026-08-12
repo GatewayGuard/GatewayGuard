@@ -1,0 +1,13 @@
+Live state not yet in any document:
+
+- ascii39 Phase 2 is DONE. EncryptionProfile-SANDY-2026-08-11_15-15.txt
+  is committed. Phase 3 (the 45-minute local-account run) is in progress
+  or just finished -- ask me before assuming either.
+- SANDY's Windows account was converted from a Microsoft account to a
+  LOCAL account named "panther" on 2026-08-11. It had been on a Microsoft
+  account for a week or more, through multiple reboots, and Device
+  Encryption never engaged. That contradicts the standing fleet warning
+  and is not yet recorded anywhere.
+- FT-167 is confirmed in the field: SANDY has a second internal fixed
+  drive, D:, 931.5 GB, fully decrypted. Checkup only reads C:.
+- The GitHub connector is LIVE. A6 passed 2026-08-11.

@@ -1,0 +1,81 @@
+﻿============================================================
+  GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+  Build: ascii39
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-08-11 17:51:41
+  Computer: SANDY
+  Machine:  HP HP Laptop 17-by1xxx
+  Machine ID: F7F13A97D58D (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[17:51:41] [OK] Console control handler registered -- Ctrl+C in Mark mode can no longer end the session (FT-150), and closing the window still writes the log footer (FT-160)
+[17:51:41] [START] Tool launched v3.1 build ascii39
+[17:51:41] [INFO] Machine: HP HP Laptop 17-by1xxx | MachineID: F7F13A97D58D
+[17:51:41] [OK] Sleep/shutdown prevention activated
+[17:51:42] [SCREEN] [SCREEN-25] (shown as screen 1) Rendered: WELCOME BACK
+[17:51:56] [KEY] Key 'R' accepted at: Show-ResumePrompt
+[17:51:56] [STATE] User chose to RESUME from checkpoint: Briefing
+[17:51:58] [KEY] Continue accepted at: Show-ResumePrompt
+[17:51:58] [SCREEN] [SCREEN-31] (shown as screen 2) Rendered: QUICK RE-CHECK BEFORE RESUMING
+[17:52:28] [KEY] Key 'Y' accepted at: Show-ResumeReverify
+[17:52:28] [CONFIRM] Resume re-check: personal computer reconfirmed
+[17:52:29] [OK] Domain check passed -- not domain joined
+[17:52:29] [OK] Resume re-check: administrator access confirmed
+[17:52:29] [OK] Sleep/shutdown prevention activated
+[17:52:29] [OK] Resume re-check: AC power confirmed (100%). Sleep prevention active.
+[17:55:09] [KEY] Look-back opened at: Show-ResumeReverify
+[17:57:41] [KEY] Continue accepted at: Show-ResumeReverify
+[17:57:41] [INFO] Windows Edition: Core -- Windows 11 Home
+[17:57:41] [SCREEN] [SCREEN-34] (shown as screen 3) Rendered: WINDOWS EDITION DETECTED
+[17:57:41] [INFO] Home edition -- Remote Desktop and Group Policy unavailable
+[17:58:50] [KEY] Continue accepted at: Get-WinEdition
+[17:58:50] [SCREEN] [SCREEN-35] (shown as screen 4) Rendered: YOUR PC -- RAM: 8 GB
+[17:58:50] [WARN] RAM: 8 GB (minimal)
+[18:02:34] [KEY] Continue accepted at: Get-RAMStatus
+[18:02:34] [SCREEN] [SCREEN-39] (shown as screen 5) Rendered: REMINDER: PRE-SCAN RECOMMENDED
+[18:07:12] [KEY] Key 'Y' accepted at: Show-PreScanGate
+[18:07:12] [CONFIRM] Repeat run -- user confirmed to continue
+[18:07:13] [SCREEN] [SCREEN-43] (shown as screen 6) Rendered: OK  ANTIVIRUS STATUS -- HEALTHY SETUP
+[18:07:13] [OK] Defender active as primary AV. MB Free installed as companion.
+[18:07:13] [KEY] Continue accepted at: Test-DefenderPrimary
+[18:07:13] [STATE] Checkpoint saved: DefenderAV
+[18:07:13] [SCREEN] [SCREEN-73] (shown as screen 7) Rendered: MALWAREBYTES DETECTED ON THIS PC
+[19:33:10] [KEY] Key 'Y' accepted at: Show-MalwarebytesFollowUp
+[19:33:10] [INFO] Launched Malwarebytes at C:\Program Files\Malwarebytes\Anti-Malware\mbam.exe (elevated, inherited from tool)
+[19:33:10] [SCREEN] [SCREEN-48] (shown as screen 8) Rendered: AFTER THE CUSTOM SCAN -- RUN THE DEEP SCAN OVERNIGHT
+[19:33:10] [INFO] Overnight Deep Scan guidance shown (D-15: verified no settings changes needed)
+[19:35:44] [KEY] Continue accepted at: Show-MalwarebytesFollowUp
+[19:35:44] [KEY] Discarded 256 keypress(es) that were already queued before this screen appeared (FT-149)
+[19:35:44] [STATE] Checkpoint saved: Malwarebytes
+[19:35:47] [KEY] Continue accepted at: Run-PowerSettingsCheck
+[19:35:47] [KEY] Discarded 256 keypress(es) that were already queued before this screen appeared (FT-149)
+[19:35:47] [SCREEN] [SCREEN-50] (shown as screen 9) Rendered: POWER SETTINGS -- SECURITY REVIEW
+[19:35:47] [INFO] Power settings: PW=NOT required -- change recommended FastStart=DISABLED -- GOOD WOL=ENABLED -- change recommended Screen=Found: NEVER (your existing setting) -- recommend 5 min: Settings -> System -> Power & sleep CritBatt=HIBERNATE -- GOOD
+[19:35:47] [KEY] Key 'N' accepted at: Run-PowerSettingsCheck
+[19:35:47] [KEY] Discarded 256 keypress(es) that were already queued before this screen appeared (FT-149)
+[19:35:47] [KEY] Key 'N' accepted at: Run-PowerSettingsCheck
+[19:35:47] [KEY] Discarded 256 keypress(es) that were already queued before this screen appeared (FT-149)
+[19:35:47] [KEY] Continue accepted at: Run-PowerSettingsCheck
+[19:36:31] [KEY] Discarded 103 keypress(es) that were already queued before this screen appeared (FT-149)
+[19:36:31] [STATE] Checkpoint saved: PowerSettings
+[19:36:31] [START] === Apps Audit Started ===
+[19:36:32] [SCREEN] [SCREEN-51] (shown as screen 10) Rendered: APPS AUDIT RESULTS
+[19:36:32] [DONE] === Apps Audit Complete ===
+[19:36:35] [KEY] Look-back opened at: Run-AppsAudit
+[19:37:13] [KEY] Continue accepted at: Run-AppsAudit
+[19:37:13] [STATE] Checkpoint saved: AppsAudit
+[19:37:13] [SCREEN] [SCREEN-52] (shown as screen 11) Rendered: GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+[19:37:26] [KEY] Key '3' accepted at: Select-Mode
+[19:37:26] [INFO] Mode selected: Exit
+[19:37:26] [EXIT] User exited at mode selection
+[19:37:26] [OK] Sleep prevention deactivated -- normal power management restored (called from: W11-SecurityHardening-v3-ascii39-2026-07-30-2208.ps1)
+
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================

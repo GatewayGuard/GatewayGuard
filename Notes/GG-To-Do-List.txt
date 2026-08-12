@@ -1,0 +1,15 @@
+to do: 
+
+1. pricing scheme in guide and online
+2. Eulo and consult
+3. Additional consults
+4. a). Before writing any documents, do Research and discuss ideas with me about the
+  following. b) I need to develop a plan to organize gatewayguard PC files and
+  gatewayguard project files so that the same information in on PC GG\projectdocs is a
+  mirror image of what is in Gatewayguard project files. So claude code and claude cloude are working from a mirror image of each others files.  Like wise a similar
+  procedure for maintaining claude.md and project instructions so that claude cloud
+  and claude code are in sync and remain that way going forward.
+5. Then have I will have claude cloud  provide a zip file of all project files to download to onedrive gatewayguard folder and have claude code compare to all files on gatewayguard folder on onedrive a) which ones are missing from GatewayGuard folder and need to be included in projectdocs. 6. Zip  all files that have older dates and  and move the .zip file for safekeeping into a new folder GG_Old files on. c) Provide a list of files that can be deleted on Project files/knowledge d) Provide all files in projectdocs that are missing from project files/knowledge so I can upload them to have same exact files as project files. e) develop procedure for claude code  similar to what claude cloud did (in projedt files) and claude code have in their instructions. make project instructions and claud.md agree 100%, but ask if this is a good idea, 5) Review with  claude code the setup agreed to with claude cloud and either make a similar document for claude code
+5. fix storage issue
+6, we need to make changes to how we present
+  and market our pricing.  situaion is a) we provide free guide online for all users. b) we sell our guide for $12.99. We sell our Checkup tool for $19.99. We bundle the guide and checkup tool for $29.99.  We have pricing for 3,5 and 10 pack bundles also.  There is an annual upgrade fee for purchasing our latest version of Checkup that handles Microsoft's annual Windows 11 upgrade for home and pro.  

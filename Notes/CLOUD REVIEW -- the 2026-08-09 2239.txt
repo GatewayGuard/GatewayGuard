@@ -1,0 +1,68 @@
+CLOUD REVIEW -- the 2026-08-09 22:39 / 22:58 files
+Reviewed: SyncSetupSteps-2239, READ-FIRST-Briefing-2239,
+ProjectInstructions-2258, SessionLog-2258.
+
+APPLIED CORRECTLY -- confirmed present, no further comment:
+- A5 scope back to four, with the "this is the ONLY scope" line
+- A6 retargeted to CLAUDE.md, with the reasoning recorded
+- PART 0 two-boxes section, including the profile box
+- A3/A4 order inverted; picker described as filtered list, not free-text
+- 0b-1 floor-not-a-set warning; 0b-5 demoted to informational
+- Section 8 priority list: closed item removed, ascii39 field run at #1
+- Section 0 LegalZoomGuide exception restored
+- Section 15 "open-source" ban restored
+- Section 14 NamingStandard and the never-uploaded list restored
+- Business carry-forward detail restored, Gumroad decision recorded
+
+TWO RESIDUALS
+
+1. The connector scope is still stated twice in the briefing.
+   Headline item 9: "The authoritative statement of the scope is
+   SyncSetupSteps A5, nowhere else."
+   Section 8 item 9 then restates it in full.
+   They agree, so nothing breaks -- but it is the state-it-once rule
+   breached inside the document that created the rule two hours earlier.
+   Suggest section 8 item 9 point at A5 rather than repeat it.
+
+2. The commit count now has two homes again, with different numbers.
+   Briefing section 1 (22:39): 34 commits, 709 files tracked.
+   SessionLog (22:58): "35 commits pushed."
+   Nineteen minutes apart, so both may be true. I cannot tell which is
+   current from the documents alone -- which is the condition section 13's
+   new rule exists to prevent. Section 13 says commit counts "have one home
+   now: section 1 here." The SessionLog is a second home.
+   Suggest either the SessionLog drops the count and points at the briefing,
+   or section 13 names the SessionLog as an explicit exception.
+   I have not verified either number against the repository.
+
+NEW FINDING -- REVIEW FINDINGS GO STALE, AND NOTHING SAYS SO
+
+A second Cloud chat reported three stale items in the 22:39 briefing today.
+Two of the three were already fixed in that same briefing:
+  - "connector scope stated three ways, needs reconciling before Part A"
+  - "closed item holds the #1 priority slot"
+Only the Marketing-Notes violation was genuinely open.
+
+All three are verbatim findings from SyncDocsReview-2026-08-09-1635, which
+that chat cites by filename. Inferred: it read the review and reported its
+findings as current defects without checking the revised documents. It is the
+same failure class as transcript-vs-summary -- a derived document read as
+current state.
+
+Proposed rule, for ProjectInstructions or the review header:
+
+  A review's findings expire when the reviewed document is revised. A review
+  states which document version it examined. Before reporting any finding as
+  open, check it against the current version.
+
+SyncDocsReview-1635 says "review only, amends no rule." It does not say
+findings may be stale, and it should. If this rule is adopted, the review
+header format needs the reviewed-version line added.
+
+REQUEST
+
+The 22:39 change log says 28 findings: 23 applied, 2 pushed back, 3 decided
+by Bill. Name the two pushed back and the reasoning. I can see the three Bill
+decided (.claude vs WebSite\Rules, 404.html, recovery keys) and the 23
+applied, but not which two were declined -- and a pushback I never see is a
+pushback I cannot agree or disagree with.

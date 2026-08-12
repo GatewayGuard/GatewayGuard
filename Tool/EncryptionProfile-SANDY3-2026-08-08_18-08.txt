@@ -1,0 +1,42 @@
+﻿================================================================
+ ENCRYPTION PROFILE AND TIMING -- ALL FIXED DRIVES (read-only)
+ Computer : SANDY3
+ Run date : 2026-08-08 18:08:11
+ Checker  : Measure-Encryption-2026-08-02 (rev 2 -- multi-drive)
+================================================================
+
+FIXED DRIVES FOUND: 1
+
+--- C: Windows-SSD ---
+  size / used         : 474.7 GB / 176 GB  (37% full)
+  disk number         : 0
+  drive model         : SOLIDIGM SSDPFINW512GZL
+  media type / bus    : SSD / NVMe
+  physical size       : 477 GB
+  encryption status   : FullyEncrypted
+  percent encrypted   : 100
+  method              : XtsAes128
+  read via            : Get-BitLockerVolume
+
+
+ENCRYPTION MODE PREDICTION
+  sleep support       : Modern Standby (S0 Low Power Idle)
+  predicted mode      : USED-SPACE-ONLY -- only the space in use is encrypted
+  => estimate the time from the USED figures above, not the volume sizes.
+
+CPU  : 12th Gen Intel(R) Core(TM) i5-1235U  (10 cores / 12 threads)
+RAM  : 8 GB
+Edition: Core
+
+NOT CONVERTING RIGHT NOW -- profile captured, nothing to time.
+
+  encrypted     : C:
+  NOT encrypted : none
+
+  All fixed drives are encrypted. Their ORIGINAL durations cannot be
+  recovered -- Windows keeps no start/complete event and the BitLocker
+  Operational log ships disabled. This profile is still a useful
+  baseline row for the timing model.
+
+  Samples CSV : C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\EncryptionSamples-SANDY3-2026-08-08_18-08.csv
+================================================================
