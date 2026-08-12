@@ -1,13 +1,24 @@
-<!-- Dated: 2026-08-12 17:26 ET -->
+<!-- Dated: 2026-08-12 18:00 ET -->
 # GatewayGuard -- Cloud Project Instructions (the text for the settings box)
 - **Document Name:** GatewayGuard_CloudProjectInstructions
-- **Last Modified:** 2026-08-12 17:26 ET
+- **Last Modified:** 2026-08-12 18:00 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **Status:** Cumulative Master Document
 - **Purpose:** the exact text that belongs in the Claude.ai project's
   **Project Instructions** field. Bill copies the block below into that box.
 - **Change History Log:**
-  - 2026-08-12 17:26: **Created.** `SyncPlan` 5a has required since
+  - 2026-08-12 18:00: **First live run. Cloud refused to answer and was right to,
+    and it corrected two errors in this block.** (1) "You cannot run commands"
+    was FALSE -- Cloud has a bash tool, in an isolated container with no
+    checkout and a UTC clock. Restated accurately; the clock rule stands, with
+    its reason. (2) "Do not answer from anything pasted" OVER-BLOCKED -- read
+    literally it forbids Bill pasting CURRENT.md into the chat, which is the
+    main workaround when the connector is down. Pasted content is now
+    explicitly allowed and must be labelled as pasted. **A capability claim
+    about the reader is a factual claim** and falls under RESEARCH BEFORE
+    STATING; the reader knew better than the instruction did.
+    **Also settles the 2026-08-11 failure: there was no GitHub connector in
+    the conversation at all** -- not the glob, not a stale index.  - 2026-08-12 17:26: **Created.** `SyncPlan` 5a has required since
     2026-08-09 that Cloud's Project Instructions hold a POINTER, not a copy.
     **No file ever contained the pointer text**, so there was nothing to copy
     from and the box kept getting a whole document pasted into it instead.
@@ -47,9 +58,22 @@ without anyone noticing.
 
 ---------------- COPY FROM HERE ----------------
 
-This project has a GitHub connector. **Everything you need is in the
-repository. Read it there. Do not answer from anything pasted into these
-instructions or uploaded to project knowledge.**
+This project should have a GitHub connector. **Everything you need is in the
+repository. Read it there.**
+
+**Do not answer from these instructions, from project knowledge, or from
+memory.** Those are all stale by construction -- this box cannot carry an
+expiry date and uploads outrank the connector in retrieval.
+
+**Content Bill pastes into the conversation IS acceptable**, and often it is
+the only path available. Use it, and **say plainly that you are working from
+pasted text rather than from the repository**, so neither of you forgets
+which it was.
+
+**If you cannot reach the repository, say so and stop.** Do not substitute
+memory and do not soften it -- "I cannot open the file" and "I could not find
+the phrase" are different findings with different fixes, and reporting the
+second when the first is true sends Bill after the wrong problem.
 
 **At the start of every conversation, before anything else:**
 
@@ -79,17 +103,62 @@ instructions or uploaded to project knowledge.**
   shown), **sourced** (documented, with the link), **inferred** (reasoning,
   could be wrong), **guess**. An unlabelled claim is being asserted as fact.
   Only *measured* and *sourced* may enter the tool or user-facing copy.
-- **You cannot run commands, list folders, or read a clock.** Say so and ask
-  rather than inferring. Never infer the date from chat metadata -- ask Bill,
-  and say that is why you are asking.
-- **You cannot glob.** If an instruction tells you to find the newest file by
-  filename date, you cannot do it -- use `CURRENT.md` and say so.
+- **You may have a bash tool, in an isolated container with no checkout of
+  this repository and a UTC clock.** It cannot reach Bill's files, and **UTC
+  is not US Eastern** -- it differs by hours or by a calendar day, which is a
+  wrong version label on every file named from it. **Ask Bill for the date and
+  time, and say that is why you are asking.** Use the container for anything
+  it is genuinely good for; never for repository state or the clock.
+- **You cannot glob the repository** -- you cannot list a folder or sort one
+  by filename date. If an instruction tells you to find the newest file that
+  way, say you cannot and use `CURRENT.md`.
 - **If these instructions conflict with the repository, the repository wins**
   and tell Bill about the conflict.
 
 ----------------- COPY TO HERE -----------------
 
 ---
+
+## FIRST LIVE RUN, 2026-08-12 -- IT WORKED, AND IT CORRECTED ME TWICE
+
+**Cloud refused to answer, and that was the right answer.** It measured
+before concluding -- `ls /mnt/project/` returned 0, `find` for `CURRENT.md`,
+`ProjectDocs` and `.git` returned nothing, uploads were empty, and a search of
+the connector directory returned no GitHub connector. Then it said *"Stopping.
+I cannot read the repository"* and answered none of the three questions,
+because every answer would have come from memory.
+
+**It also drew a distinction I had blurred:** *"Not 'cannot find the phrase'
+-- cannot open the file. Reporting 'old snapshot' would itself be a fabricated
+finding."* Correct. Those are different findings with different fixes.
+
+**This settles a question open all day.** The 2026-08-11 failure was blamed on
+the glob instruction, with a stale connector index as the second suspect.
+**Neither.** There was no connector in that conversation at all. A6 passed on
+2026-08-11 at 14:45, so one existed then -- so either the chat was opened
+outside the project, or the connector was removed since. **Check that the
+chat is started inside the GatewayGuard project before diagnosing anything
+else.**
+
+**Two corrections it raised against this block, both of which it was right
+about, both now applied above:**
+
+1. **"You cannot run commands" was false.** Cloud has a bash tool. It runs in
+   an isolated container with no checkout of this repository and a UTC clock,
+   so the effect for repository work is the same -- but the blanket claim
+   could mislead in a session where the container is useful. Now stated
+   accurately, with the clock rule unchanged and its reason given.
+2. **"Do not answer from anything pasted" over-blocked.** Read literally it
+   forbids Bill pasting `CURRENT.md` into the chat -- which is the main
+   workaround when the connector is down. Cloud flagged it rather than
+   quietly picking an interpretation, which is what the instruction to report
+   conflicts is for. Pasted content is now explicitly allowed, and must be
+   labelled as pasted rather than read.
+
+**The lesson for writing these blocks:** a capability claim about the reader
+is a factual claim and falls under RESEARCH BEFORE STATING like any other. I
+wrote "you cannot run commands" from an assumption about what Cloud can do,
+and the reader knew better than the instruction did.
 
 ## WHY THE BOX HOLDS A POINTER AND NOT THE DOCUMENT
 

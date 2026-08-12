@@ -17,9 +17,15 @@ check and git state, none of which Cloud can do.
 
 ---------------- COPY FROM HERE ----------------
 
-Read ProjectDocs/CURRENT.md. It names the current version of every
-document. Then read the briefing and the session log it names, and
-read CLAUDE.md.
+Read ProjectDocs/CURRENT.md from the GitHub connector. It names the
+current version of every document. Then read the briefing and the
+session log it names, and read CLAUDE.md.
+
+If there is no GitHub connector in this conversation, say so and
+stop -- do not answer from memory or from project knowledge. Say
+"cannot open the file", not "cannot find it"; they are different
+problems. If I paste content to you instead, that is fine -- use
+it, and say you are working from pasted text.
 
 First, before anything else: find the exact phrase "local account
 named panther" in the briefing and quote me the WHOLE sentence it
@@ -84,6 +90,28 @@ THE GENERAL RULE: a freshness check is only worth as much as the
 uniqueness of the string it asks for. Before trusting one, grep the
 whole tree for that string and confirm every hit is in a current
 file. If any hit is old, the check can pass while being wrong.
+
+---------------------------------------------------------------
+ FIRST LIVE RUN, 2026-08-12 -- CHECK THE CONNECTOR FIRST
+---------------------------------------------------------------
+
+Cloud refused to answer, correctly. It measured before concluding --
+/mnt/project empty, no CURRENT.md, no ProjectDocs, no .git, no
+uploads, and NO GITHUB CONNECTOR in the conversation -- then said
+"Stopping. I cannot read the repository" and answered none of the
+three questions, because every answer would have come from memory.
+
+THAT SETTLES THE 2026-08-11 FAILURE. It was blamed on the glob
+instruction, with a stale connector index as second suspect.
+NEITHER. There was no connector in the conversation at all.
+
+A6 passed 2026-08-11 at 14:45, so one existed then. So either the
+chat was opened OUTSIDE the GatewayGuard project, or the connector
+has been removed since.
+
+BEFORE DIAGNOSING ANYTHING ELSE: confirm the chat was started
+inside the project, and that the project still lists the GitHub
+connector. A plain claude.ai chat has neither.
 
 WHY IT ASKS FOR ITEM 3: every briefing so far has gone stale within
 hours, including two pointers in one written the same afternoon.

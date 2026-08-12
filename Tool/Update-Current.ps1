@@ -124,7 +124,11 @@ $L.Add('across five briefings and reporting the winner as current. This file giv
 $L.Add('it one fixed name to follow. It is regenerated at session end; a pointer')
 $L.Add('kept by hand is the failure it exists to prevent.')
 
-Set-Content -LiteralPath $outFile -Value ($L -join "`r`n") -Encoding UTF8
+# UTF8 with NO byte-order mark. Set-Content -Encoding UTF8 in PowerShell 5.1
+# writes a BOM, and 63 of the 67 .md files in ProjectDocs have none -- so the
+# BOM is the odd one out, not the convention. Measured 2026-08-12.
+[System.IO.File]::WriteAllText($outFile, (($L -join "`r`n") + "`r`n"),
+    (New-Object System.Text.UTF8Encoding($false)))
 
 Write-Host ""
 Write-Host "  CURRENT.md written -- $($resolved.Count) documents resolved."

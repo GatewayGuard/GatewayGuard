@@ -1,10 +1,11 @@
-<!-- Dated: 2026-08-12 15:12 ET -->
+<!-- Dated: 2026-08-12 17:26 ET -->
 # GatewayGuard -- Sync Plan: Claude Code, Claude Cloud, and Bill
 - **Document Name:** GatewayGuard_SyncPlan
-- **Last Modified:** 2026-08-12 15:12 ET
+- **Last Modified:** 2026-08-12 17:26 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **Status:** Cumulative Master Document
 - **Change History Log:**
+  - 2026-08-12 17:26: **Section 5a rewritten around ProjectDocs\GatewayGuard_CloudProjectInstructions-*.md, the file that finally contains the pointer text this rule has demanded since 2026-08-09. Also removes the "read the newest briefing by the date in the filename" instruction, which Cloud cannot execute.**
   - 2026-08-12 15:12: **Section 5a pointer updated again, for the
     `Check-Claude-Cloud.txt` -> `Start-Claude-Cloud.txt` rename** (2026-08-12,
     to pair with `Start-CC.txt`). Third rename of that file --
@@ -326,11 +327,35 @@ they diverge.
 
 ### 5a. Project Instructions holds a POINTER, not a copy
 
-Cloud's Project Instructions should contain the short block already proven in
-`Start-Claude-Cloud.txt` -- a file at the repo root, outside the connector
-scope, so Cloud cannot open it to confirm the match itself. Read the newest
-briefing by the date in the filename, read CLAUDE.md, then report what is
-stale -- **not** a transcription of CLAUDE.md's 386 lines.
+**THE BLOCK NOW HAS A FILE OF ITS OWN:
+`ProjectDocs\GatewayGuard_CloudProjectInstructions-*.md`.** Copy it from
+there into the box.
+
+**Corrected 2026-08-12, twice over.** This section previously said the block
+was "the short block already proven in `Start-Claude-Cloud.txt`", and
+described it as: *read the newest briefing by the date in the filename, read
+CLAUDE.md, then report what is stale.*
+
+Both halves were wrong in the same way -- they named something Cloud cannot
+reach or cannot do:
+
+1. **No file contained the pointer text.** This rule has stood since
+   2026-08-09 with no artifact to copy from, so the box kept receiving a
+   whole document instead. **Measured 2026-08-12:** it held a full 794-line
+   copy of `ProjectInstructions-2026-08-10-1606`, two days and 175 lines
+   behind. **A rule with no artifact is a rule nobody can follow.**
+2. **"Read the newest briefing by the date in the filename" is impossible for
+   Cloud.** It can neither list a folder nor sort one. The instruction was
+   written for Claude Code, which globs, and handed to Cloud, which cannot --
+   and the failure was silent, because Cloud always found *a* briefing. The
+   block now points at `ProjectDocs/CURRENT.md`, one generated filename that
+   never changes.
+
+**And the new file lives in `ProjectDocs/`, deliberately** -- inside the
+connector scope, unlike `Start-Claude-Cloud.txt` at the repo root. **Cloud can
+now read its own Project Instructions and confirm the box matches. Ask it
+to.** An instructions field nobody can audit is how the box drifted two days
+stale with nothing to catch it.
 
 That block changes almost never. The volatile detail arrives through the
 GitHub connector, where it is versioned and dated.

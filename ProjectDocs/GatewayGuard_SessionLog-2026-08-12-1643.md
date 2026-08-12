@@ -1,4 +1,4 @@
-﻿<!-- Dated: 2026-08-12 16:43 EDT -->
+<!-- Dated: 2026-08-12 16:43 EDT -->
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
