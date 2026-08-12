@@ -1,11 +1,12 @@
-<!-- Dated: 2026-08-12 15:12 ET -->
+<!-- Dated: 2026-08-12 18:11 ET -->
 # GatewayGuard -- Sync Setup Steps (Claude Code <-> Claude Cloud)
 - **Document Name:** GatewayGuard_SyncSetupSteps
-- **Last Modified:** 2026-08-12 15:12 ET
+- **Last Modified:** 2026-08-12 18:11 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **Status:** Working procedure -- follow at the keyboard
 - **Companion to:** `GatewayGuard_SyncPlan-*.md` (the what and why; this is the how)
 - **Change History Log:**
+  - 2026-08-12 18:11: **A5: the four-item scope is split across TWO connector entries -- do not delete either.** The project content list shows `GatewayGuard/GatewayGuard main` twice. They are not duplicates: one carries `WebSite/Rules/`, the other `Tool/`, `ProjectDocs/` and `CLAUDE.md`. **The list shows repository and branch but NOT scope**, so the two are indistinguishable in the interface and "that is a duplicate, remove it" is the natural wrong conclusion. Claude Code recommended exactly that on 2026-08-12, from the list alone; Bill caught it. Deleting either would silently halve Cloud's visibility while the remaining entry still reported the repository as connected.
   - 2026-08-12 15:12: **`Check-Claude-Cloud.txt` renamed to
     `Start-Claude-Cloud.txt`**, to pair with `Start-CC.txt`. Pointer updated in
     PART D. Third name for that file -- `START-HERE.txt`, then
@@ -574,6 +575,36 @@ Then click **Save** (or **Add**).
 
 **This is the ONLY scope. If any other document says three or five, it is
 stale -- this line is the source of truth.**
+
+### THE SCOPE IS SPLIT ACROSS TWO CONNECTOR ENTRIES. DO NOT DELETE EITHER.
+
+**Observed 2026-08-12.** The project's content list shows the repository
+**twice**:
+
+```
+GatewayGuard/GatewayGuard   main   GITHUB
+GatewayGuard/GatewayGuard   main   GITHUB
+```
+
+They are **not duplicates.** One is scoped to `WebSite/Rules/`; the other to
+`Tool/`, `ProjectDocs/` and `CLAUDE.md`. Together they are the four-item
+scope above. **Delete either one and Cloud silently loses half its
+visibility** -- and the half it loses is invisible, because the remaining
+entry still says the repository is connected.
+
+**The list shows repository name and branch. It does not show scope.** So two
+differently-scoped entries are indistinguishable in the interface, and the
+only reasonable-looking conclusion -- "that is a duplicate, remove it" -- is
+wrong.
+
+**Claude Code recommended deleting one on 2026-08-12** on exactly that
+reasoning, from the list alone, before Bill said what the two entries
+covered. He caught it. **Never act on the connector list without first
+opening each entry and reading its paths.**
+
+**Before touching either entry, write down which paths each one carries.**
+If you have to rebuild them, that note is the only record -- nothing in the
+repository can see the connector's configuration.
 
 ### Why not `.claude`
 
