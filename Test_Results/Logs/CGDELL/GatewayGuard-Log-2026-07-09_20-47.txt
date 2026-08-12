@@ -1,0 +1,22 @@
+﻿============================================================
+  GatewayGuard Windows 11 Security Hardening Tool v3.1
+  Build: ascii23
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-07-09 20:47:24
+  Computer: CGDELL
+============================================================
+
+[20:47:24] [START] Tool launched v3.1 build ascii23
+[20:47:24] [WARN] Could not activate sleep prevention: Cannot convert value "-2147483645" to type "System.UInt32". Error: "Value was either too large or too small for a UInt32."
+[20:47:32] [STATE] User chose to START OVER -- checkpoint cleared
+[20:47:50] [CONFIRM] Personal computer confirmed by user
+[20:47:50] [OK] Domain check passed -- not domain joined
+[20:47:50] [OK] Administrator access confirmed
+[20:47:53] [INFO] Windows Edition: Professional -- Windows 11 Pro Professional -- Windows 11 Pro
+[20:47:54] [INFO] RAM: 32 GB (ample)
+[20:48:03] [WARN] User flagged time/date as INCORRECT after auto-fix attempt
+[20:48:07] [INFO] System Baseline Summary displayed
+[20:48:12] [STATE] Checkpoint saved: Baseline
+[20:48:20] [STATE] Checkpoint saved: OfflineScanPending
+[20:48:20] [INFO] Starting Defender Offline Scan -- reboot expected

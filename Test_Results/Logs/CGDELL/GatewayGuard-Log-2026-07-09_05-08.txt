@@ -1,0 +1,24 @@
+﻿[05:08:37] [START] Tool launched v3.1 build ascii23
+[05:08:37] [WARN] Could not activate sleep prevention: Cannot convert value "-2147483648" to type "System.UInt32". Error: "Value was either too large or too small for a UInt32."
+[05:08:46] [STATE] User chose to START OVER -- checkpoint cleared
+[05:12:39] [CONFIRM] Personal computer confirmed by user
+[05:12:39] [OK] Domain check passed -- not domain joined
+[05:12:39] [OK] Administrator access confirmed
+[05:12:43] [INFO] Windows Edition: Professional -- Windows 11 Pro Professional -- Windows 11 Pro
+[05:12:44] [INFO] RAM: 32 GB (ample)
+[05:12:54] [WARN] User flagged time/date as INCORRECT after auto-fix attempt
+[05:12:58] [INFO] System Baseline Summary displayed
+[05:14:58] [STATE] Checkpoint saved: Baseline
+[05:15:20] [SKIP] User skipped Defender Offline Scan
+[05:24:32] [SKIP] User skipped Malwarebytes scan (already installed, state: Unknown)
+[05:42:19] [STATE] Checkpoint saved: Malwarebytes
+[05:44:00] [WARN] Continuing with Defender real-time OFF
+[05:44:05] [STATE] Checkpoint saved: DefenderAV
+[05:44:06] [WARN] Could not activate sleep prevention: Cannot convert value "-2147483648" to type "System.UInt32". Error: "Value was either too large or too small for a UInt32."
+[05:44:06] [OK] AC power confirmed. Battery present: True (100%). Sleep prevention active.
+[05:44:30] [INFO] Power settings: PW=NOT required -- change recommended FastStart=DISABLED -- GOOD WOL=DISABLED -- GOOD Screen=Could not read -- check manually in Settings -> System -> Power & sleep CritBatt=Could not read -- check manually in Power settings
+[05:44:45] [STATE] Checkpoint saved: PowerSettings
+[05:44:45] [START] === Apps Audit Started ===
+[05:44:46] [DONE] === Apps Audit Complete ===
+[05:45:03] [STATE] Checkpoint saved: AppsAudit
+[05:45:15] [INFO] Mode selected: GUI
