@@ -51,7 +51,8 @@ $wanted = @(
     @{ Label = 'Field test plan';             Pattern = 'GatewayGuard_FieldTestPlan-*.md' },
     @{ Label = 'Test history';                Pattern = 'GatewayGuard_TestHistory-*.md' },
     @{ Label = 'Sync plan';                   Pattern = 'GatewayGuard_SyncPlan-*.md' },
-    @{ Label = 'Sync setup steps';            Pattern = 'GatewayGuard_SyncSetupSteps-*.md' }
+    @{ Label = 'Sync setup steps';            Pattern = 'GatewayGuard_SyncSetupSteps-*.md' },
+    @{ Label = 'Cloud Project Instructions';  Pattern = 'GatewayGuard_CloudProjectInstructions-*.md' }
 )
 
 # Resolve every pattern BEFORE writing anything. Newest by the DATE IN THE
