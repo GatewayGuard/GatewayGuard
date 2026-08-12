@@ -1,8 +1,8 @@
-<!-- Dated: 2026-08-12 14:03 EDT -->
+<!-- Dated: 2026-08-12 15:10 EDT -->
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-08-12 14:03 EDT
+- **Last Modified:** 2026-08-12 15:10 EDT
 - **Status:** Append-only running log — newest session at top
 - **Purpose:** Continuous record of all sessions (Claude.ai and Claude
   Code) so any Claude instance can resume with full context.
@@ -167,9 +167,60 @@ the end of a long session -- the worst available reviewer for that job.
 - Every commit is **path-scoped to files touched this session**. Never
   `git add -A`, never `git add .` -- the ignore list is the backstop, not
   the mechanism.
-- **Still asked, every time:** deleting or renaming tracked files, force
-  push, history rewrite, and any new top-level folder that cannot be
-  classified as product content.
+- **Still asked, every time:** deleting **untracked** files, deleting
+  anything with **uncommitted** changes, force push, history rewrite, and any
+  new top-level folder that cannot be classified as product content.
+
+**The first version of this list said "deleting or renaming tracked files"
+and was wrong within the hour.** Bill: *"why ask about tracked-file
+deletions -- aren't they recoverable?"* They are. **"Tracked" was the wrong
+test; "committed" is the test.** A committed file's blob stays in history
+after `git rm`, so the deletion is undoable and asking permission for it is
+friction with no protection attached.
+
+Three cases where deletion is genuinely NOT recoverable, which is what the
+rule should have said:
+
+1. **Untracked** -- never committed, no history to recover from. Permanent.
+   This is the case covering `Test_Results\Ascii39-Test-Results-*.txt` and
+   every other uncommitted file in the tree.
+2. **Tracked with uncommitted changes** -- history holds the last committed
+   version; edits since are gone. The file looks safe and the edits are not.
+3. **Staged, never committed** -- recoverable only via `git fsck` and
+   dangling blobs. That is a rescue, not a recovery.
+
+**The check that replaces the question**, run before any delete: `git log`
+on the path returns a commit, `git diff HEAD` on it returns zero lines, and
+`git cat-file -e HEAD:<path>` succeeds. Seconds, no round trip.
+
+**Recoverable is not the same as findable, and that distinction is the real
+argument for retiring rather than leaving in place.** A retired document
+lives in history, but recovering it requires knowing it existed and knowing
+the commit -- nobody browses history for a document they do not know about.
+That is a discoverability loss, not a data loss, and it is the correct trade:
+Claude Code globs newest-by-filename-date and skips a superseded file, but
+**Cloud cannot glob and would read whichever the search ranks highest.** A
+stale document carrying a dead pointer is a trap aimed precisely at the
+reader the rename was meant to help. Put the recovery command in the commit
+message so the log carries it.
+
+**Force push and history rewrite stay on the ask list for a different reason
+than recoverability** -- they change what *other* copies believe, and this
+repository is read by Cloud and pushed to GitHub.
+
+### Applied the same hour
+
+- **`SyncPlan-2026-08-10-1119.md` and `SyncSetupSteps-2026-08-11-1445.md`
+  retired** (`git rm`, commit `0dea8a3` holds them). Both were superseded by
+  the `-1512` versions and both still carried the dead
+  `Check-Claude-Cloud.txt` pointer.
+- **`Attachments\` deleted -- 803 files.** Verified first, not assumed: the
+  26 personal and medical documents that existed **only** there are
+  **byte-identical by SHA256** to copies in `C:\Users\willi\OneDrive\Personal\`,
+  and every GatewayGuard document unique to it (older CPM schedules,
+  playbooks, briefings, project instructions, a duplicate LegalZoom guide)
+  has a newer version in `ProjectDocs\`. It is inside synced OneDrive, so the
+  online recycle bin holds it for 30 days as well.
 
 ### Bill was holding the ascii39 field results back
 
@@ -195,28 +246,46 @@ briefing line 625 says "rewrite Phase 3" and means the migration plan.
 
 1. **The Cloud connector question** -- ask for the panther line before
    building `CURRENT.md`.
-2. **Two dead pointers to the old filename**, at `SyncPlan-2026-08-10-1119.md:303`
-   and `SyncSetupSteps-2026-08-11-1445.md:752`. Under the DOCUMENT REVISION
-   RULE these need complete new dated versions of both, so they were left to
-   ride with the revision that records the connector outcome rather than
-   spawning two lineages today. **Deliberately not touched:**
-   `ProjectInstructions-2026-08-11-1616.md:562`, which quotes the literal
-   command that earned rule V-1, and the two change-history entries at
-   `SyncPlan:9` and `SyncSetupSteps:72`.
-3. **HTML DELIVERY GATE H-1 to H-4 has not been run** on the new
-   `WebSite\html\`. The files are byte-identical to a build that passed, but
-   `wake-on-lan.html` has had five text edits and a comment block inserted
-   since. Not delivered until the gates run.
+2. ~~Two dead pointers to the old filename.~~ **CLOSED same session.**
+   `GatewayGuard_SyncPlan-2026-08-12-1512.md` and
+   `GatewayGuard_SyncSetupSteps-2026-08-12-1512.md` issued; the superseded
+   versions retired. Deferring them was the wrong call and Bill said so --
+   the deferral optimised for tidy filename lineage over two documents that
+   told the reader to look for a file that no longer exists.
+   **Deliberately not touched:** `ProjectInstructions-2026-08-11-1616.md:562`,
+   which quotes the literal command that earned rule V-1, and the
+   change-history entries recording the previous rename.
+3. **HTML DELIVERY GATE: H-1 PASSED, H-2 to H-4 outstanding.**
+   **H-1 measured 2026-08-12 across all 19 pages: 0 issues.** Nested
+   duplicate class attribute, 0 hits; bare numeric entity, 0 hits.
+   **The documented H-1 check B over-matches and must not be read raw** --
+   `grep -n '#[0-9]\{4,5\};'` flags every valid `&#8212;` and `&#8217;` on
+   the page, 50 KB of hits, because the pattern does not require the leading
+   `&`. The real failures are numeric entities *missing* their `&`; the
+   correct matcher is `grep -nP '(?<!&)#[0-9]{4,5};'`, confirmed against a
+   deliberately broken control line before its zero was believed. **The gate
+   text says to judge each hit, and a raw reading of that grep would either
+   report 19 corrupt pages or teach the reader to ignore the check.**
+   H-2 (browser) and H-3 (W3C validator) are Bill's to run. **H-4 is the only
+   gate that protects meaning and has not been run** -- it requires naming,
+   per page, the guide section its wording came from. `wake-on-lan.html` and
+   `fast-startup.html` are the known no-guide-coverage pages where original
+   copy is expected and flagged in the page header instead.
 4. **The ascii39 field results**, above -- Bill's session to open.
-5. **`Attachments\` is back**, 803 files with its own `.git` nested in the
-   working tree. It was deleted on 2026-08-11 and has returned, presumably
-   via OneDrive. Now ignored by git; still a live trap for a session started
-   in the wrong folder.
+5. ~~`Attachments\` is back.~~ **CLOSED same session -- deleted, 803 files.**
+   See the verification under the commit policy above.
+6. **`Start-CC.txt` step 5 is incomplete.** It asks for "the current build
+   number, and whether a field log exists for it", and this session answered
+   **no** for ascii39 while
+   `Test_Results\Ascii39-Test-Results-2026-08-11-2237.txt` sat on disk. The
+   log was untracked, `git` could not see it, and the check only consulted
+   `git`. **Proposed line, not yet added:** *check `Test_Results\` on disk for
+   field results, not just git -- field logs arrive untracked.*
 
 ### Files produced
 
 - `WebSite\html\` -- 19 pages (new)
-- `ProjectDocs\GatewayGuard_SessionLog-2026-08-12-1403.md` (this file)
+- `ProjectDocs\GatewayGuard_SessionLog-2026-08-12-1510.md` (this file)
 - `Start-Claude-Cloud.txt` (renamed from `Check-Claude-Cloud.txt`)
 - `CLAUDE.md`, `.gitignore`, `Start-CC.txt`, `Check-Connector.txt` (edited)
 
