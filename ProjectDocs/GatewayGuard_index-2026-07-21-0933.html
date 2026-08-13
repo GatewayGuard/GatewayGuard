@@ -1,0 +1,800 @@
+<!-- Dated: 2026-07-21 09:33 EDT -->
+<!-- File: GatewayGuard_index-2026-07-21-0933.html (deploys as index.html) -->
+<!-- GatewayGuard LLC -- gatewayguard.co home page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GatewayGuard -- Harden Your Windows 11 PC in Minutes. In Plain English.</title>
+  <meta name="description" content="GatewayGuard checks 19 Windows 11 security settings, fixes what needs fixing with your approval, and tells you exactly what it changed -- in plain English. One-time purchase, no subscription." />
+  <style>
+    /* ============================================================
+       TOKENS
+    ============================================================ */
+    :root {
+      --black:     #000000;
+      --white:     #FFFFFF;
+      --gray-dark: #333333;
+      --gray-mid:  #666666;
+      --gray-light:#F4F4F4;
+      --gray-rule: #DDDDDD;
+      --green:     #2E7D32;
+      --amber:     #F57F17;
+      --red:       #C62828;
+      --max-w:     960px;
+      --font-body: Arial, Helvetica, sans-serif;
+      --font-mono: Consolas, "Courier New", monospace;
+    }
+
+    /* ============================================================
+       RESET / BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--black);
+      background: var(--white);
+    }
+
+    a { color: var(--black); }
+    a:hover { text-decoration: underline; }
+
+    img { max-width: 100%; display: block; }
+
+    /* ============================================================
+       LAYOUT HELPERS
+    ============================================================ */
+    .wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section { padding: 64px 0; }
+    section + section { border-top: 1px solid var(--gray-rule); }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    nav {
+      background: var(--black);
+      color: var(--white);
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+    }
+
+    .nav-brand {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 14px;
+      opacity: 0.85;
+      transition: opacity 0.15s;
+    }
+
+    .nav-links a:hover { opacity: 1; text-decoration: none; }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      background: var(--black);
+      color: var(--white);
+      padding: 80px 0 72px;
+      border-top: none;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 46px);
+      font-weight: 700;
+      line-height: 1.15;
+      max-width: 700px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      border-bottom: 3px solid var(--white);
+      padding-bottom: 2px;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      line-height: 1.55;
+      color: #ccc;
+      max-width: 580px;
+      margin-bottom: 40px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--white);
+      color: var(--black);
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 700;
+      padding: 14px 32px;
+      text-decoration: none;
+      border: 2px solid var(--white);
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: var(--black);
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 15px;
+      padding: 14px 24px;
+      text-decoration: none;
+      border: 2px solid #555;
+      transition: border-color 0.15s;
+    }
+
+    .btn-secondary:hover {
+      border-color: #999;
+      text-decoration: none;
+    }
+
+    .hero-note {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #888;
+      font-family: var(--font-mono);
+    }
+
+    /* ============================================================
+       WHAT IT DOES -- 3-column grid
+    ============================================================ */
+    .what-it-does { background: var(--white); }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(22px, 3.5vw, 30px);
+      font-weight: 700;
+      margin-bottom: 40px;
+      line-height: 1.25;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .feature-card {
+      border-top: 3px solid var(--black);
+      padding-top: 20px;
+    }
+
+    .feature-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--gray-mid);
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+
+    .feature-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .feature-card p {
+      font-size: 15px;
+      color: var(--gray-dark);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       HOW IT WORKS -- 3 steps
+    ============================================================ */
+    .how-it-works { background: var(--gray-light); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--gray-rule);
+      background: var(--white);
+    }
+
+    .step {
+      padding: 32px 28px;
+      border-right: 1px solid var(--gray-rule);
+    }
+
+    .step:last-child { border-right: none; }
+
+    .step-num {
+      font-family: var(--font-mono);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--gray-rule);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .step h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      font-size: 14px;
+      color: var(--gray-dark);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       WHAT IT DOES NOT DO -- trust builder
+    ============================================================ */
+    .trust { background: var(--white); }
+
+    .trust-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .trust-intro p {
+      font-size: 15px;
+      color: var(--gray-dark);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .trust-list {
+      list-style: none;
+    }
+
+    .trust-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--gray-rule);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .trust-list li:first-child { border-top: 1px solid var(--gray-rule); }
+
+    .trust-list .icon-no {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      background: var(--black);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    /* ============================================================
+       TESTED ON
+    ============================================================ */
+    .tested { background: var(--gray-light); }
+
+    .tested-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: var(--white);
+      border: 1px solid var(--gray-rule);
+    }
+
+    .tested-table th {
+      background: var(--black);
+      color: var(--white);
+      text-align: left;
+      padding: 10px 14px;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+    }
+
+    .tested-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--gray-rule);
+      color: var(--gray-dark);
+    }
+
+    .tested-table tr:last-child td { border-bottom: none; }
+
+    .badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 2px 8px;
+      border: 1px solid var(--gray-rule);
+      color: var(--gray-mid);
+    }
+
+    .tested-note {
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--gray-mid);
+    }
+
+    .tested-note a { color: var(--gray-mid); }
+
+    /* ============================================================
+       DOWNLOAD CTA
+    ============================================================ */
+    .download-cta {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 80px 0;
+    }
+
+    .download-cta h2 {
+      font-size: clamp(22px, 4vw, 36px);
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .download-cta p {
+      font-size: 16px;
+      color: #aaa;
+      margin-bottom: 36px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .download-meta {
+      margin-top: 20px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #666;
+      line-height: 2;
+    }
+
+    /* ============================================================
+       BETA TEASER
+    ============================================================ */
+    .beta-teaser { background: var(--white); }
+
+    .beta-inner {
+      border: 2px solid var(--black);
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .beta-inner h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .beta-inner p {
+      font-size: 15px;
+      color: var(--gray-dark);
+      max-width: 520px;
+      line-height: 1.6;
+    }
+
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--black);
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 28px;
+      text-decoration: none;
+      border: 2px solid var(--black);
+      white-space: nowrap;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .btn-outline:hover {
+      background: var(--black);
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--black);
+      color: #888;
+      padding: 32px 0;
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-brand {
+      font-weight: 700;
+      color: var(--white);
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: #888;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--white); text-decoration: none; }
+
+    .footer-note {
+      width: 100%;
+      padding-top: 16px;
+      border-top: 1px solid #222;
+      margin-top: 16px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 700px) {
+      section { padding: 48px 0; }
+
+      .feature-grid { grid-template-columns: 1fr; gap: 24px; }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        border-right: none;
+        border-bottom: 1px solid var(--gray-rule);
+      }
+
+      .step:last-child { border-bottom: none; }
+
+      .trust-inner { grid-template-columns: 1fr; gap: 32px; }
+
+      .beta-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 28px;
+      }
+
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+
+      .nav-links { display: none; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">GatewayGuard</a>
+      <ul class="nav-links">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/download.html">Download</a></li>
+        <li><a href="/guide/index.html">Guide</a></li>
+        <li><a href="/tips.html">Tips</a></li>
+        <li><a href="/beta.html">Beta</a></li>
+        <li><a href="/compatible.html">Compatible</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="wrap">
+      <p class="hero-eyebrow">Windows 11 Security &nbsp;/&nbsp; One-Time Purchase</p>
+      <h1 id="hero-heading">Harden your Windows 11 PC<br>in minutes. <em>In plain English.</em></h1>
+      <p class="hero-sub">
+        GatewayGuard checks 19 security settings, fixes what needs fixing
+        with your approval, and tells you exactly what it changed &mdash;
+        in plain English. No subscription. No jargon. No surprises.
+      </p>
+      <div class="hero-actions">
+        <a href="/download.html" class="btn-primary">Get GatewayGuard</a>
+        <a href="/guide/index.html" class="btn-secondary">See what it checks &rarr;</a>
+      </div>
+      <p class="hero-note">$19.99, once &nbsp;&bull;&nbsp; Windows 11 Home and Pro &nbsp;&bull;&nbsp; No installation required &nbsp;&bull;&nbsp; No subscription</p>
+    </div>
+  </section>
+
+  <!-- WHAT IT DOES -->
+  <section class="what-it-does" aria-labelledby="what-heading">
+    <div class="wrap">
+      <p class="section-label">What GatewayGuard does</p>
+      <h2 class="section-title" id="what-heading">Your PC. Checked, fixed, and explained.</h2>
+      <div class="feature-grid">
+
+        <div class="feature-card">
+          <p class="feature-num">01</p>
+          <h3>Checks 19 security settings</h3>
+          <p>GatewayGuard looks at the settings that matter most &mdash; antivirus, firewall, drive encryption, automatic updates, and more. It shows you exactly what it found.</p>
+        </div>
+
+        <div class="feature-card">
+          <p class="feature-num">02</p>
+          <h3>Fixes what needs fixing &mdash; with your approval</h3>
+          <p>Nothing changes without you saying so. GatewayGuard explains each issue and asks before it makes any change. You stay in control the whole time.</p>
+        </div>
+
+        <div class="feature-card">
+          <p class="feature-num">03</p>
+          <h3>Tells you exactly what it changed</h3>
+          <p>When it&rsquo;s done, GatewayGuard gives you a plain-English summary of every change it made and why. No mystery, no guesswork.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" aria-labelledby="how-heading">
+    <div class="wrap">
+      <p class="section-label">How it works</p>
+      <h2 class="section-title" id="how-heading">Three steps. Done.</h2>
+      <div class="steps">
+
+        <div class="step">
+          <p class="step-num">1</p>
+          <h3>Download and run</h3>
+          <p>Save two small files to your Desktop and double-click to start. Windows will ask for Administrator permission &mdash; click Yes to continue.</p>
+        </div>
+
+        <div class="step">
+          <p class="step-num">2</p>
+          <h3>Review what was found</h3>
+          <p>GatewayGuard scans your settings and shows you a plain-English report. Green means good. Amber or red means something needs attention.</p>
+        </div>
+
+        <div class="step">
+          <p class="step-num">3</p>
+          <h3>Approve each change</h3>
+          <p>For anything that needs fixing, GatewayGuard explains the issue and asks your permission before changing anything. Say yes or skip &mdash; your choice.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IT DOES NOT DO -->
+  <section class="trust" aria-labelledby="trust-heading">
+    <div class="wrap">
+      <div class="trust-inner">
+
+        <div class="trust-intro">
+          <p class="section-label">What it does NOT do</p>
+          <h2 class="section-title" id="trust-heading">We only touch security settings. Nothing else.</h2>
+          <p>GatewayGuard is a focused tool. It checks specific Windows 11 security settings, fixes the ones that need fixing, and stops there.</p>
+          <p>It does not dig through your files, does not touch your installed apps, and does not make any changes you can&rsquo;t undo. The source code is included with every download so you can see exactly what it does.</p>
+          <p>If you want to review it before running it, you can open the file in Notepad and read every line.</p>
+        </div>
+
+        <ul class="trust-list" aria-label="Things GatewayGuard does not do">
+          <li>
+            <span class="icon-no" aria-hidden="true">&#x2715;</span>
+            <span>Does not uninstall or change any of your apps</span>
+          </li>
+          <li>
+            <span class="icon-no" aria-hidden="true">&#x2715;</span>
+            <span>Does not read, move, or delete your files</span>
+          </li>
+          <li>
+            <span class="icon-no" aria-hidden="true">&#x2715;</span>
+            <span>Does not collect your passwords or personal data</span>
+          </li>
+          <li>
+            <span class="icon-no" aria-hidden="true">&#x2715;</span>
+            <span>Does not make changes without asking you first</span>
+          </li>
+          <li>
+            <span class="icon-no" aria-hidden="true">&#x2715;</span>
+            <span>Does not make changes you cannot reverse</span>
+          </li>
+          <li>
+            <span class="icon-no" aria-hidden="true">&#x2715;</span>
+            <span>Does not require a subscription, renewal, or ongoing fees</span>
+          </li>
+          <li>
+            <span class="icon-no" aria-hidden="true">&#x2715;</span>
+            <span>Does not run in the background or start automatically</span>
+          </li>
+          <li>
+            <span class="icon-no" aria-hidden="true">&#x2715;</span>
+            <span>Does not send anything over the internet</span>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTED ON -->
+  <section class="tested" aria-labelledby="tested-heading">
+    <div class="wrap">
+      <p class="section-label">Tested hardware</p>
+      <h2 class="section-title" id="tested-heading">Runs on real PCs.</h2>
+      <table class="tested-table">
+        <thead>
+          <tr>
+            <th>Make / Model</th>
+            <th>Windows Edition</th>
+            <th>Processor</th>
+            <th>RAM</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>HP Laptop 17-by1xxx</strong></td>
+            <td><span class="badge">Win 11 Home</span></td>
+            <td>Intel Core i5-8265U</td>
+            <td>8 GB</td>
+            <td>Malwarebytes Free installed</td>
+          </tr>
+          <tr>
+            <td><strong>Lenovo IdeaPad</strong></td>
+            <td><span class="badge">Win 11 Home</span></td>
+            <td>&mdash;</td>
+            <td>&mdash;</td>
+            <td>Development and test machine</td>
+          </tr>
+          <tr>
+            <td><strong>Dell Latitude 5430</strong></td>
+            <td><span class="badge">Win 11 Pro</span></td>
+            <td>Intel Core i7-1265U</td>
+            <td>32 GB</td>
+            <td>First Windows 11 Pro test</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="tested-note">
+        Don&rsquo;t see your PC? <a href="/compatible.html">View the full compatible hardware list</a> or <a href="/beta.html">sign up to be a beta tester</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD CTA -->
+  <section class="download-cta" aria-labelledby="dl-heading">
+    <div class="wrap">
+      <h2 id="dl-heading">Ready to check your PC?</h2>
+      <p>$19.99, once. No subscription, no renewal, no upsell. Takes about 30 minutes start to finish.</p>
+      <a href="/download.html" class="btn-primary">Get GatewayGuard</a>
+      <div class="download-meta">
+        Windows 11 Home and Pro &nbsp;&bull;&nbsp; No installation &nbsp;&bull;&nbsp; Source code included<br>
+        Multi-PC packs for families: 3 PCs $34.99 &nbsp;&bull;&nbsp; 5 PCs $49.99 &nbsp;&bull;&nbsp; 10 PCs $79.99<br>
+        Prefer to do it yourself? The complete step-by-step Guide is $8.99 &mdash; in four print sizes.
+      </div>
+    </div>
+  </section>
+
+  <!-- BETA TEASER -->
+  <section class="beta-teaser" aria-labelledby="beta-heading">
+    <div class="wrap">
+      <div class="beta-inner">
+        <div>
+          <h2 id="beta-heading">Not sure if it works on your PC?</h2>
+          <p>
+            If your PC isn&rsquo;t on our tested list, sign up as a beta tester.
+            Run GatewayGuard on your own PC, then send us the results file
+            it creates along with your honest notes &mdash; what you liked,
+            what you didn&rsquo;t, anything that confused you. In return,
+            your license is free. Your feedback shapes what we build next.
+          </p>
+        </div>
+        <a href="/beta.html" class="btn-outline">Sign up as a beta tester</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-brand">GatewayGuard</span>
+      <ul class="footer-links">
+        <li><a href="/download.html">Download</a></li>
+        <li><a href="/guide/index.html">Guide</a></li>
+        <li><a href="/beta.html">Beta</a></li>
+        <li><a href="/compatible.html">Compatible</a></li>
+        <li><a href="mailto:support@gatewayguard.co">Contact</a></li>
+      </ul>
+      <div class="footer-note">
+        GatewayGuard LLC &nbsp;&bull;&nbsp; Brunswick, Maine &nbsp;&bull;&nbsp; support@gatewayguard.co<br>
+        GatewayGuard does not collect personal data or show ads. No subscription &mdash; ever.<br>
+        Source code is included with every download. &copy; 2026 GatewayGuard LLC. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

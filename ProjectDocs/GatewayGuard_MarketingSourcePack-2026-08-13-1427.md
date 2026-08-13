@@ -1,10 +1,10 @@
-<!-- Dated: 2026-08-13 09:26 ET -->
+<!-- Dated: 2026-08-13 14:27 ET -->
 <!-- Editor: Claude Code (CGDELL) -->
 <!-- GENERATED from the source documents. Re-generate rather than hand-edit. -->
 # GatewayGuard Marketing Source Pack
 
 - **Document Name:** GatewayGuard_MarketingSourcePack
-- **Last Modified:** 2026-08-13 09:26 ET
+- **Last Modified:** 2026-08-13 14:27 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **Purpose:** Put the marketing documents where Claude Cloud can read them.
 
@@ -22,8 +22,16 @@ Cloud proposes must be applied to the original by Claude Code, not here.
 
 ## STATE AS OF THIS FILE -- READ BEFORE PROPOSING ANYTHING
 
-- **The open-source violation is CLOSED.** Seven references cleared from
-  `Marketing-Notes.md` on 2026-08-13. `Marketing-Notes.docx` retired.
+- **In `Marketing-Notes.md` the open-source violation is CLOSED** -- seven
+  references cleared 2026-08-13, and `Marketing-Notes.docx` retired.
+  **It is NOT closed across ProjectDocs.** Measured 2026-08-13:
+  `GatewayGuard_ProjectNotes-2026-08-09-1435.md` carries 23 hits, of which
+  **3 are live violations** -- line 2547 `MARKETING COPY: "Open source.
+  Verifiable. Zero data collected."`, line 2741 the pitch line, and line
+  3006 *"they can audit the open source code first"*. The other 20 are
+  third-party tools (NoID Privacy, Hardentools, Notally -- all genuinely
+  open-source) or the historical record of the Option A/B decision itself.
+  **Do not sweep those 20.** Cloud found line 3006 and was right to.
 - **`ExpertPositioning` states the ban correctly** -- *"GatewayGuard is not
   open-source"*. That is the rule, not a breach. Do not sweep it.
 - **Assisted sessions are already compliant everywhere** -- "NOT offered at
@@ -31,6 +39,18 @@ Cloud proposes must be applied to the original by Claude Code, not here.
 - **Two live PL-4 breaches remain, both in the Family Presentation:**
   *"No competitor offers this"* (slide 6) and *"no one else has this
   planned"* (slide 8). Substitution is *no one else* -> *few competitors*.
+- **`Marketing-Notes.md` IS CORRUPTED, and it is not my doing.** The word
+  **"free" was overwritten with "an expensive"** by a find-and-replace that
+  ran before the file ever reached git. **measured 2026-08-13:** 9
+  occurrences of *an expensive*, against 21 *free* and 16 *Free*, plus an
+  orphaned `*ee` fragment and mangled `** **` markup where the replace ran
+  through formatting. The flyer now advertises *"an expensive personal PC
+  security guide"* three lines above *"100% Free"* and *"we never ask for
+  money"*.
+  **Not caused by the 2026-08-13 open-source sweep** -- the count was 9
+  before that commit, 9 after, and `git log -S` traces it to the initial
+  commit of 2026-07-28. **Do not quote any pricing or free-vs-paid wording
+  out of this document until it is repaired.**
 - **One accuracy problem nobody has raised:** the community flyer text in
   `Marketing-Notes.md` opens *"Brought to you by independent tech
   volunteers"*. GatewayGuard LLC is a Maine company selling a product.

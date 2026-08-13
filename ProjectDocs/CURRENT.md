@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-13 14:07 ET -->
-<!-- Commit: 3ef69c2 -->
+<!-- Generated: 2026-08-13 14:27 ET -->
+<!-- Commit: 5aaeeb9 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-13 14:07 ET
-- **Commit at generation:** `3ef69c2`
-- **That commit was made:** 2026-08-13 13:55 ET
-- **Its subject line:** Retire 258 superseded and duplicate files
+- **Generated:** 2026-08-13 14:27 ET
+- **Commit at generation:** `5aaeeb9`
+- **That commit was made:** 2026-08-13 14:07 ET
+- **Its subject line:** Correct a false claim the source pack was about to hand Cloud
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
