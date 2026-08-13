@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-12 23:16 ET -->
-<!-- Commit: 34c1709 -->
+<!-- Generated: 2026-08-13 12:58 ET -->
+<!-- Commit: 1fde4cd -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-12 23:16 ET
-- **Commit at generation:** `34c1709`
-- **That commit was made:** 2026-08-12 23:02 ET
-- **Its subject line:** SYNC NOW is step 0. The sync is manual and nothing says so.
+- **Generated:** 2026-08-13 12:58 ET
+- **Commit at generation:** `1fde4cd`
+- **That commit was made:** 2026-08-13 09:53 ET
+- **Its subject line:** Gate 25 -- the copy gate, and it found something on its first run
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -43,7 +43,7 @@ All paths are relative to `ProjectDocs/`.
 | Coding standards | `GatewayGuard_CodingStandards-2026-08-07-1330.md` | 0 |
 | Defect prevention playbook | `GatewayGuard_DefectPreventionPlaybook-2026-07-26-0619.md` | 0 |
 | Website standards | `GatewayGuard_WebsiteStandards-2026-07-26-0619.md` | 0 |
-| Field test plan | `GatewayGuard_FieldTestPlan-ascii39-2026-08-02-0919.md` | 1 |
+| Field test plan | `GatewayGuard_FieldTestPlan-ascii40-2026-08-13-0944.md` | 2 |
 | Test history | `GatewayGuard_TestHistory-ascii39-2026-08-02-1335.md` | 3 |
 | Sync plan | `GatewayGuard_SyncPlan-2026-08-12-1726.md` | 0 |
 | Sync setup steps | `GatewayGuard_SyncSetupSteps-2026-08-12-2146.md` | 0 |
