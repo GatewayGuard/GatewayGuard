@@ -82,7 +82,7 @@ Whats the best w eay to market needed self help win 11 security guide and automa
 
 To successfully get a self-help security guide and an automated hardening tool into the hands of independent Windows 11 users, your marketing must overcome a massive hurdle: **distribution skepticism.**
 
-In the cybersecurity world, a stranger telling someone to run an "automated tool" to secure their PC looks identical to a phishing scam or a malware trap. To bypass this entirely, your grassroots campaign needs to shift from a *promotional* mindset to an *open-source, community-first educational mission*.
+In the cybersecurity world, a stranger telling someone to run an "automated tool" to secure their PC looks identical to a phishing scam or a malware trap. To bypass this entirely, your grassroots campaign needs to shift from a *promotional* mindset to an *source-visible, community-first educational mission*.
 
 **1. The Strategy: Shifting from "Product" to "Movement"**
 
@@ -90,7 +90,7 @@ To build an organic, highly trusted rollout for a self-help guide and tool, foll
 
 1
 
-Establish absolute trust through open source
+Establish trust by making the code readable
 
 *Phase 1: Radical Transparency*
 
@@ -122,7 +122,7 @@ Go to the spaces where unmanaged PC users, independent contractors, and tech-sav
 
 - **Target Platforms:** Reddit communities (like r/Windows11, r/sysadmin for personal labs, or r/security), independent tech forums (BleepingComputer, ElevenForum), and alternative privacy networks.
 
-- **The Pitch:** Do not say "Download my tool." Say: *"I built a completely free, open-source guide and helper script to help everyday Home and Pro users lock down Windows 11 without enterprise software. I’d love for this community to audit the script, tell me what you think, and use it to protect your **families'** personal PCs."*
+- **The Pitch:** Do not say "Download my tool." Say: *"I built a completely free guide and helper script, with code you can read before you run it to help everyday Home and Pro users lock down Windows 11 without enterprise software. I’d love for this community to audit the script, tell me what you think, and use it to protect your **families'** personal PCs."*
 
 4
 
@@ -423,7 +423,7 @@ We’ve created a **100% Free, Step-by-Step Personal PC Safety Guide** written s
 
 **[FOOTER - The Grassroots Catalyst]**
 
-*Brought to you by independent tech volunteers dedicated to digital safety. If you are the "Family IT **Maven**" who always helps friends and neighbors with their laptops, this guide (and our optional, open-source automated helper script) will save you hours of tech-support cleanup down the road!*
+*Brought to you by independent tech volunteers dedicated to digital safety. If you are the "Family IT **Maven**" who always helps friends and neighbors with their laptops, this guide (and our optional, source-visible automated helper script) will save you hours of tech-support cleanup down the road!*
 
 **[PRINTING ****&**** SETUP ADVICE]**
 
@@ -477,7 +477,7 @@ We’ve created a **100% Free, Step-by-Step Personal PC Safety Guide** written s
 
 **[FOOTER - The Grassroots Catalyst]**
 
-*Brought to you by independent tech volunteers dedicated to digital safety. If you are the "Family IT **Maven**" who always **helps friends and neighbors with their laptops, this guide (and our optional, open-source automated helper script) will save you hours of tech-support cleanup down the road!*
+*Brought to you by independent tech volunteers dedicated to digital safety. If you are the "Family IT **Maven**" who always **helps friends and neighbors with their laptops, this guide (and our optional, source-visible automated helper script) will save you hours of tech-support cleanup down the road!*
 
 **[PRINTING ****&**** SETUP ADVICE]**
 
@@ -531,7 +531,7 @@ We’ve created a **100% Free, Step-by-Step Personal PC Safety Guide** written s
 
 **[FOOTER - The Grassroots Catalyst]**
 
-*Brought to you by independent tech volunteers dedicated to digital safety. If you are the "Family IT **Maven**" who always helps friends and neighbors with their laptops, this guide (and our optional, open-source automated helper script) will save you hours of tech-support cleanup down the road!*
+*Brought to you by independent tech volunteers dedicated to digital safety. If you are the "Family IT **Maven**" who always helps friends and neighbors with their laptops, this guide (and our optional, source-visible automated helper script) will save you hours of tech-support cleanup down the road!*
 
 **[PRINTING ****&**** SETUP ADVICE]**
 
@@ -679,7 +679,7 @@ Here is a structured, 45-minute presentation outline tailored for a local librar
 
 - **The 10-Minute Routine:** Recap of the simple checklist attendees can run through tonight at home.
 
-- **The Open-Source Helper Choice:** Introducing the free, text-based self-help guide and the optional, fully transparent automated script they can use to apply these settings instantly.
+- **The Readable-Code Helper Choice:** Introducing the free, text-based self-help guide and the optional, fully transparent automated script they can use to apply these settings instantly.
 
 - **Distribution:** Handing out the one-page flyer with the website link / QR code for the free materials.
 
