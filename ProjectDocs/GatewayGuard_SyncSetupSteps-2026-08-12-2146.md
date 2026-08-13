@@ -1,11 +1,12 @@
-<!-- Dated: 2026-08-12 18:11 ET -->
+<!-- Dated: 2026-08-12 21:46 ET -->
 # GatewayGuard -- Sync Setup Steps (Claude Code <-> Claude Cloud)
 - **Document Name:** GatewayGuard_SyncSetupSteps
-- **Last Modified:** 2026-08-12 18:11 ET
+- **Last Modified:** 2026-08-12 21:46 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **Status:** Working procedure -- follow at the keyboard
 - **Companion to:** `GatewayGuard_SyncPlan-*.md` (the what and why; this is the how)
 - **Change History Log:**
+  - 2026-08-12 21:46: **A6-PRE added: THE INDEX CAN BE FROZEN WHILE THE CONNECTOR READS "CONNECTED".** Measured -- Cloud's newest visible file was `ProjectInstructions-2026-08-10-2245.md` (commit `212fb8e`, 2026-08-10 22:46); **30 later commits were invisible**, including everything from 2026-08-11 and 2026-08-12. Connector attached, both entries present, four paths in scope, repository and branch correct, all pushed -- and serving a two-day-old snapshot. **A6 passed against that frozen index on 2026-08-11 14:45 and could not have done otherwise:** all three of its targets last changed 2026-08-09 or earlier, so all three sat in the stale index. **A connector proof MUST test a file written AFTER the last proof.** Also records that a GitHub connector is NOT a tool -- it indexes into project knowledge -- so its absence from the tool registry proves nothing, a wrong turn that cost a full day.
   - 2026-08-12 18:11: **A5: the four-item scope is split across TWO connector entries -- do not delete either.** The project content list shows `GatewayGuard/GatewayGuard main` twice. They are not duplicates: one carries `WebSite/Rules/`, the other `Tool/`, `ProjectDocs/` and `CLAUDE.md`. **The list shows repository and branch but NOT scope**, so the two are indistinguishable in the interface and "that is a duplicate, remove it" is the natural wrong conclusion. Claude Code recommended exactly that on 2026-08-12, from the list alone; Bill caught it. Deleting either would silently halve Cloud's visibility while the remaining entry still reported the repository as connected.
   - 2026-08-12 15:12: **`Check-Claude-Cloud.txt` renamed to
     `Start-Claude-Cloud.txt`**, to pair with `Start-CC.txt`. Pointer updated in
@@ -644,6 +645,71 @@ and is not inside any folder. That is not cherry-picking.
 | `Builds/Documents/` | personal documents |
 
 One click on the top-level box puts all of that into project knowledge.
+
+## A6-PRE. THE INDEX CAN BE FROZEN WHILE THE CONNECTOR IS "CONNECTED"
+
+**Measured 2026-08-12, and this is the failure that cost two days.**
+
+The connector was attached, both entries present, all four paths in scope,
+repository correct, branch correct, everything pushed. **And Cloud's index had
+not moved since 2026-08-10 22:46.**
+
+**How it was found.** Cloud was asked to run `project_knowledge_search` and
+name the source file of every hit. The newest file it could see anywhere was
+`ProjectDocs/GatewayGuard_ProjectInstructions-2026-08-10-2245.md`, added in
+commit `212fb8e` at 2026-08-10 22:46. The next commit landed 2026-08-11 00:17.
+**Thirty commits after the freeze point were invisible** -- including every
+document produced on 2026-08-11 and 2026-08-12.
+
+Every file Cloud named was verified against `git log --all --diff-filter=A`
+as having genuinely existed in this repository. They were connector content,
+not uploads. **The connector was working perfectly and serving a two-day-old
+snapshot.**
+
+### A6 PASSED AGAINST THE FROZEN INDEX AND COULD NOT HAVE DONE OTHERWISE
+
+A6 ran 2026-08-11 at 14:45 and passed on three targets. **Measured** dates of
+last change at the freeze point:
+
+| A6 target | Last changed |
+|---|---|
+| `CLAUDE.md` | 2026-08-09 22:38 |
+| `Tool/Run-ExternalCommandCheck.bat` | 2026-08-02 17:54 |
+| `WebSite/Rules/website-copy.md` | 2026-08-09 22:38 |
+
+**All three predate the freeze.** Every one was in the stale index, so all
+three quoted back character-perfect. **A6 proved the index contained files.
+It never proved the index was current, and no arrangement of those targets
+could have.**
+
+### THE RULE
+
+**A connector proof MUST test a file written AFTER the last proof.** Testing a
+stable file proves attachment and nothing about freshness -- and freshness is
+the property that actually fails.
+
+**Do this every time:** pick a string that exists only in a document committed
+since the last successful proof. Ask for it by exact phrase. The panther
+sentinel is the current one -- it entered the tree 2026-08-11 16:17, after
+this freeze, which is why it finally exposed the fault.
+
+**And "no GitHub connector in the tool registry" proves nothing.** A GitHub
+connector is not a tool. It indexes the repository into project knowledge and
+is reached with `project_knowledge_search`. Looking for it in the tool list
+and finding nothing sent this diagnosis down a wrong path for a full day.
+
+### THAWING IT
+
+1. **Open each connector entry and write down its paths first.** Two entries,
+   different scopes -- see A5. Nothing in the repository can see this
+   configuration; that note is the only record.
+2. Look for a re-sync, refresh, or re-index control on the source. Use it if
+   it exists.
+3. If none exists, remove and re-add each entry with the paths you wrote down.
+4. **Re-prove with a post-freeze sentinel**, per the rule above. Do not accept
+   a stable-file test.
+
+---
 
 ## A6. PROVE it is connected -- do not trust the badge
 

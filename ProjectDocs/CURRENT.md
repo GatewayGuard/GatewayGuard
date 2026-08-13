@@ -1,10 +1,10 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-12 21:34 ET -->
+<!-- Generated: 2026-08-12 21:46 ET -->
 
 # CURRENT -- which file is the live one
 
-**Generated 2026-08-12 21:34 ET by `Tool\Update-Current.ps1`.**
+**Generated 2026-08-12 21:46 ET by `Tool\Update-Current.ps1`.**
 
 This filename never changes, so it can be named in an instruction without
 going stale. The filenames BELOW change constantly -- always take them from
@@ -23,7 +23,7 @@ All paths are relative to `ProjectDocs/`.
 | Field test plan | `GatewayGuard_FieldTestPlan-ascii39-2026-08-02-0919.md` | 1 |
 | Test history | `GatewayGuard_TestHistory-ascii39-2026-08-02-1335.md` | 3 |
 | Sync plan | `GatewayGuard_SyncPlan-2026-08-12-1726.md` | 0 |
-| Sync setup steps | `GatewayGuard_SyncSetupSteps-2026-08-12-1811.md` | 0 |
+| Sync setup steps | `GatewayGuard_SyncSetupSteps-2026-08-12-2146.md` | 0 |
 | Cloud Project Instructions | `GatewayGuard_CloudProjectInstructions-2026-08-12-2134.md` | 0 |
 
 Also read `CLAUDE.md`, at the repository root. That name never changes.
