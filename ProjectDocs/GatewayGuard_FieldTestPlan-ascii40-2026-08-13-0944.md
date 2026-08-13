@@ -124,8 +124,29 @@ Next free FT number was **171**. Next free screen ID is **83** (gate 12 PASS,
 | **FT-180** | 24 | **Guide links, and whether the reader bought the guide** | **Scope decision -- Bill** |
 | **FT-181** | 25, 29, 31, 46 | **Malwarebytes flow** -- scan starts itself, cannot cancel | **Partial** |
 | **FT-182** | 34, 36 | **Screen timeout and sleep during encryption** | **YES** |
+| **FT-183** | -- | **16 of 19 guide pages never introduce the full product name in visible copy** -- found by gate 25 on its first run, see below | **YES -- website** |
 | -- | 1, 2, 8, 11, 16, 26, 47 | Observations, or absorbed above | -- |
 | -- | 48, 49 | Blank in the source file | -- |
+
+### FT-183 -- raised by the new gate, and it corrects an earlier answer
+
+**measured 2026-08-13** by `Tool\Run-CopyCheck.bat` on its first run: on **16 of
+the 19 guide pages the only occurrence of "GatewayGuard Checkup" sits inside
+the `<meta name="description">` attribute.** The visible body then says
+"Checkup" three to six times without ever introducing it.
+
+The CHECKUP NAME RULE says *"Never use 'Checkup' before the full name has
+appeared."* A name in a metadata attribute has not appeared to the reader.
+
+**Earlier the same day a raw text search reported all 19 pages compliant**, and
+that was passed on as a clean result. The search was right about the bytes and
+wrong about the rule, because it counted occurrences anywhere in the file
+rather than in what the reader sees. The gate now strips tags before counting,
+and reports metadata-only separately from absent.
+
+**This is the argument for gate 25 in one finding:** a human reading the rule
+and a grep counting strings both said compliant; only a check that models what
+the reader sees caught it.
 
 ---
 
