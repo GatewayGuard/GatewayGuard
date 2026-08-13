@@ -20,7 +20,11 @@
 #
 # READ-ONLY except for ProjectDocs\CURRENT.md.
 # DOES NOT NEED ADMINISTRATOR.
-# NO EXTERNAL COMMANDS -- nothing for gate 24 to verify.
+# EXTERNAL COMMANDS: three read-only git calls for the freshness stamp, each
+#   carrying a VERIFIED comment beside it per gate 24. (This header claimed
+#   "no external commands" until 2026-08-12, when the stamp was added -- the
+#   claim was true when written and false the moment the file changed. A
+#   header assertion about a file's own contents decays like any other fact.)
 # PS 5.1 COMPATIBLE: -join only, no Join-String, no ternary.
 
 $ErrorActionPreference = 'Stop'
@@ -85,14 +89,57 @@ if ($missing.Count -gt 0) {
     return
 }
 
+# --- the freshness stamp -------------------------------------------------
+# Claude Cloud reads a SYNCED COPY of this repository, of unknown age, with no
+# way to see how old it is. Confirmed by Anthropic support 2026-08-12: the
+# GitHub connector syncs files into project knowledge and exposes no live repo
+# tool, and there is no documented way to see which commit a snapshot reflects.
+#
+# So the stamp travels INSIDE the payload. Reading this file IS reading the
+# sync date. Cloud's own proposal, and better than the sentinel phrase it
+# replaces: a sentinel says stale or not stale, a stamp says stale BY HOW MUCH.
+#
+# The hash is HEAD at generation time -- i.e. the commit BEFORE the one that
+# carries this file. That is the honest label and it is what to compare.
+# VERIFIED 2026-08-12 measured on CGDELL: returned "795caf0"
+$headHash  = (git rev-parse --short HEAD  2>$null)
+# VERIFIED 2026-08-12 measured on CGDELL: returned "2026-08-12 21:46"
+$headDate  = (git log -1 --format='%ad' --date=format:'%Y-%m-%d %H:%M' 2>$null)
+# VERIFIED 2026-08-12 measured on CGDELL: returned the HEAD commit subject line
+$headSubj  = (git log -1 --format='%s'   2>$null)
+if (-not $headHash) { $headHash = 'unknown'; $headDate = 'unknown'; $headSubj = 'not a git working tree' }
+
 $L = New-Object System.Collections.Generic.List[string]
 $L.Add('<!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->')
 $L.Add('<!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->')
 $L.Add(('<!-- Generated: ' + $stamp + ' ET -->'))
+$L.Add(('<!-- Commit: ' + $headHash + ' -->'))
 $L.Add('')
 $L.Add('# CURRENT -- which file is the live one')
 $L.Add('')
-$L.Add(('**Generated ' + $stamp + ' ET by `Tool\Update-Current.ps1`.**'))
+$L.Add('## FRESHNESS STAMP -- read this out before anything else')
+$L.Add('')
+$L.Add(('- **Generated:** ' + $stamp + ' ET'))
+$L.Add(('- **Commit at generation:** `' + $headHash + '`'))
+$L.Add(('- **That commit was made:** ' + $headDate + ' ET'))
+$L.Add(('- **Its subject line:** ' + $headSubj))
+$L.Add('')
+$L.Add('**If you are reading a synced copy rather than the live repository --')
+$L.Add('Claude Cloud always is -- state these four values in your first reply.**')
+$L.Add('Bill compares them against what Claude Code last pushed. A mismatch is')
+$L.Add('one line instead of five searches.')
+$L.Add('')
+$L.Add('**Why this is here.** Anthropic support confirmed 2026-08-12 that the')
+$L.Add('GitHub connector syncs into project knowledge, exposes no live repository')
+$L.Add('tool, and offers no way to see which commit a snapshot reflects. So the')
+$L.Add('stamp travels inside the payload: reading this file IS reading the sync')
+$L.Add('date. It replaces a sentinel phrase that could only say stale or not')
+$L.Add('stale -- this says stale **by how much**.')
+$L.Add('')
+$L.Add('*The hash is HEAD at generation time, so it is the commit before the one')
+$L.Add('carrying this file. That is deliberate and it is the value to compare.*')
+$L.Add('')
+$L.Add('---')
 $L.Add('')
 $L.Add('This filename never changes, so it can be named in an instruction without')
 $L.Add('going stale. The filenames BELOW change constantly -- always take them from')

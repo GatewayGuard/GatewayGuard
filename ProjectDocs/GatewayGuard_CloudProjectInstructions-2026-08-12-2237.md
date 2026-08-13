@@ -1,12 +1,13 @@
-<!-- Dated: 2026-08-12 21:34 ET -->
+<!-- Dated: 2026-08-12 22:37 ET -->
 # GatewayGuard -- Cloud Project Instructions (the text for the settings box)
 - **Document Name:** GatewayGuard_CloudProjectInstructions
-- **Last Modified:** 2026-08-12 21:34 ET
+- **Last Modified:** 2026-08-12 22:37 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **Status:** Cumulative Master Document
 - **Purpose:** the exact text that belongs in the Claude.ai project's
   **Project Instructions** field. Bill copies the block below into that box.
 - **Change History Log:**
+  - 2026-08-12 22:37: **Anthropic support answered. Sync is manual; there is NO way to see which commit a snapshot reflects.** So a stale snapshot is indistinguishable from a current one from inside the conversation -- a design constraint, not a bug. **Fix, proposed by Cloud: put the stamp inside the payload.** `CURRENT.md` now opens with its generation time, commit hash, commit date and commit subject; reading the file IS reading the sync date. A sentinel says stale or not stale, a stamp says stale BY HOW MUCH. **Also corrects this block's opening false premise** -- it said "Everything you need is in the repository. Read it there", which Cloud can never do; it reads a copy of unknown age. Third capability error in this file. **And Cloud withdrew its own bug report**: what it remembered as live repo access on 2026-08-11 was path-prefixed project-knowledge results. Nothing regressed; there was never a live tool.
   - 2026-08-12 21:34: **THE CONNECTOR IS NOT A TOOL -- IT IS PROJECT KNOWLEDGE, and this block forbade it.** A GitHub connector indexes the repository INTO project knowledge, reachable via `project_knowledge_search`. It never appears in the tool registry. This block said "do not answer from project knowledge", written to block stale uploads; it blocked the connector, because both live in the same place. Cloud obeyed exactly. **Three wrong diagnoses preceded this one** -- the glob instruction, a stale index, then no connector at all -- each consistent with the evidence at the time. Corrected: use `project_knowledge_search`, and distrust a SOURCE rather than a TOOL, discriminating by source filename against `CURRENT.md`. **Second capability claim in this block written from assumption and corrected by the reader.**
   - 2026-08-12 18:00: **First live run. Cloud refused to answer and was right to,
     and it corrected two errors in this block.** (1) "You cannot run commands"
@@ -59,8 +60,21 @@ without anyone noticing.
 
 ---------------- COPY FROM HERE ----------------
 
-This project should have a GitHub connector. **Everything you need is in the
-repository. Read it there.**
+This project has a GitHub connector. **It does not give you live repository
+access.** It syncs selected files into project knowledge, and you read that
+copy. The copy can be days old and nothing in the interface will tell you.
+Confirmed by Anthropic support, 2026-08-12.
+
+**So the first thing you do is say how old your copy is.**
+
+Search project knowledge for `ProjectDocs/CURRENT.md` and read out its
+FRESHNESS STAMP -- generated time, commit hash, commit date, commit subject.
+**Four values, in your first reply, before anything else.** Bill compares them
+against what Claude Code last pushed. That is the only way either of you can
+tell what you are actually looking at.
+
+**If `CURRENT.md` does not surface at all, your copy predates 2026-08-12.
+Say so and stop.**
 
 **USE `project_knowledge_search`. That is where the connector puts the
 repository.** A GitHub connector on a Claude.ai project is not a tool you
@@ -177,6 +191,47 @@ about, both now applied above:**
 is a factual claim and falls under RESEARCH BEFORE STATING like any other. I
 wrote "you cannot run commands" from an assumption about what Cloud can do,
 and the reader knew better than the instruction did.
+
+## SYNC IS MANUAL. THE FRESHNESS STAMP IS THE ONLY SIGNAL. (2026-08-12)
+
+**Anthropic support, 2026-08-12, on a report Cloud filed itself:**
+
+1. **The GitHub connector exposes no live "read repo" tool.** It syncs
+   selected files into project knowledge ahead of time. Seeing no GitHub tool
+   in the session is **expected behaviour, not a fault.**
+2. **To refresh: the "Sync now" icon in the project's GitHub connector
+   settings.** If it fails silently, check Settings -> Connectors -> GitHub,
+   then disconnect and reconnect.
+3. **There is no documented way to see which commit a snapshot reflects.**
+   Support could not confirm one exists.
+
+**Point 3 is the one that matters, and it is a design constraint, not a bug.**
+A stale snapshot is indistinguishable from a current one from inside the
+conversation. In a project whose documents change several times a day, that
+produces confident answers about a version that no longer exists -- worse than
+no access, because it looks like success.
+
+**The fix needs nobody's permission: put the stamp inside the payload.**
+`CURRENT.md` now carries its own generation time, commit hash, commit date and
+commit subject as its first section. **Reading the file IS reading the sync
+date.** Cloud proposed this, and it is better than the sentinel phrase it
+replaces: **a sentinel says stale or not stale; a stamp says stale by how
+much.** The sentinel stays as a second check -- it is what caught this at all.
+
+**And Cloud corrected its own bug report, which is the part worth keeping.**
+It had reported the connector as regressed -- working 2026-08-11, absent
+2026-08-12. On support's answer it withdrew that: what it remembered as "naming
+repo file paths" was path-prefixed project-knowledge results, exactly what it
+saw on both days. **There was never a live tool. Nothing regressed.** The
+apparent regression was an inference from its own memory of a previous session,
+which is the one source these rules say not to trust.
+
+**What this block got wrong, now fixed above:** it opened *"Everything you need
+is in the repository. Read it there."* **That is not possible and never was.**
+Cloud can only ever read a copy of unknown age. An instruction resting on a
+false premise about the reader's capability is the third such error in this
+file -- see the two entries below on "you cannot run commands" and "do not
+answer from project knowledge."
 
 ## THE CONNECTOR IS NOT A TOOL. IT IS PROJECT KNOWLEDGE.
 

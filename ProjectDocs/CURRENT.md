@@ -1,10 +1,33 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-12 21:46 ET -->
+<!-- Generated: 2026-08-12 22:37 ET -->
+<!-- Commit: 795caf0 -->
 
 # CURRENT -- which file is the live one
 
-**Generated 2026-08-12 21:46 ET by `Tool\Update-Current.ps1`.**
+## FRESHNESS STAMP -- read this out before anything else
+
+- **Generated:** 2026-08-12 22:37 ET
+- **Commit at generation:** `795caf0`
+- **That commit was made:** 2026-08-12 21:46 ET
+- **Its subject line:** The index was frozen at 2026-08-10 22:46. A6 could not have caught it.
+
+**If you are reading a synced copy rather than the live repository --
+Claude Cloud always is -- state these four values in your first reply.**
+Bill compares them against what Claude Code last pushed. A mismatch is
+one line instead of five searches.
+
+**Why this is here.** Anthropic support confirmed 2026-08-12 that the
+GitHub connector syncs into project knowledge, exposes no live repository
+tool, and offers no way to see which commit a snapshot reflects. So the
+stamp travels inside the payload: reading this file IS reading the sync
+date. It replaces a sentinel phrase that could only say stale or not
+stale -- this says stale **by how much**.
+
+*The hash is HEAD at generation time, so it is the commit before the one
+carrying this file. That is deliberate and it is the value to compare.*
+
+---
 
 This filename never changes, so it can be named in an instruction without
 going stale. The filenames BELOW change constantly -- always take them from
@@ -24,7 +47,7 @@ All paths are relative to `ProjectDocs/`.
 | Test history | `GatewayGuard_TestHistory-ascii39-2026-08-02-1335.md` | 3 |
 | Sync plan | `GatewayGuard_SyncPlan-2026-08-12-1726.md` | 0 |
 | Sync setup steps | `GatewayGuard_SyncSetupSteps-2026-08-12-2146.md` | 0 |
-| Cloud Project Instructions | `GatewayGuard_CloudProjectInstructions-2026-08-12-2134.md` | 0 |
+| Cloud Project Instructions | `GatewayGuard_CloudProjectInstructions-2026-08-12-2237.md` | 0 |
 
 Also read `CLAUDE.md`, at the repository root. That name never changes.
 
