@@ -1,12 +1,13 @@
-<!-- Dated: 2026-08-12 22:37 ET -->
+<!-- Dated: 2026-08-12 23:16 ET -->
 # GatewayGuard -- Cloud Project Instructions (the text for the settings box)
 - **Document Name:** GatewayGuard_CloudProjectInstructions
-- **Last Modified:** 2026-08-12 22:37 ET
+- **Last Modified:** 2026-08-12 23:16 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **Status:** Cumulative Master Document
 - **Purpose:** the exact text that belongs in the Claude.ai project's
   **Project Instructions** field. Bill copies the block below into that box.
 - **Change History Log:**
+  - 2026-08-12 23:16: **THE TEN-MINUTE RULE added.** If ten minutes of diagnosis has not produced a cause, stop and write up an issue for Bill to take to Claude support -- environment, expectation, what happened, every check with its actual output, numbered questions, why it matters. Then stop. **Earned the same day:** four wrong diagnoses over most of a day, settled by one support reply, on facts no amount of measuring the repository could have found.
   - 2026-08-12 22:37: **Anthropic support answered. Sync is manual; there is NO way to see which commit a snapshot reflects.** So a stale snapshot is indistinguishable from a current one from inside the conversation -- a design constraint, not a bug. **Fix, proposed by Cloud: put the stamp inside the payload.** `CURRENT.md` now opens with its generation time, commit hash, commit date and commit subject; reading the file IS reading the sync date. A sentinel says stale or not stale, a stamp says stale BY HOW MUCH. **Also corrects this block's opening false premise** -- it said "Everything you need is in the repository. Read it there", which Cloud can never do; it reads a copy of unknown age. Third capability error in this file. **And Cloud withdrew its own bug report**: what it remembered as live repo access on 2026-08-11 was path-prefixed project-knowledge results. Nothing regressed; there was never a live tool.
   - 2026-08-12 21:34: **THE CONNECTOR IS NOT A TOOL -- IT IS PROJECT KNOWLEDGE, and this block forbade it.** A GitHub connector indexes the repository INTO project knowledge, reachable via `project_knowledge_search`. It never appears in the tool registry. This block said "do not answer from project knowledge", written to block stale uploads; it blocked the connector, because both live in the same place. Cloud obeyed exactly. **Three wrong diagnoses preceded this one** -- the glob instruction, a stale index, then no connector at all -- each consistent with the evidence at the time. Corrected: use `project_knowledge_search`, and distrust a SOURCE rather than a TOOL, discriminating by source filename against `CURRENT.md`. **Second capability claim in this block written from assumption and corrected by the reader.**
   - 2026-08-12 18:00: **First live run. Cloud refused to answer and was right to,
@@ -146,6 +147,17 @@ second when the first is true sends Bill after the wrong problem.
   way, say you cannot and use `CURRENT.md`.
 - **If these instructions conflict with the repository, the repository wins**
   and tell Bill about the conflict.
+- **THE TEN-MINUTE RULE.** If roughly ten minutes of diagnosis has not
+  produced a cause -- not a theory, a cause -- **stop and write up an issue
+  for Bill to take to Claude support.** Include the environment, what you
+  expected, what happened, **every check you ran with its actual output**,
+  numbered questions, and why it matters. Then stop; do not keep theorising
+  while he asks. **When the answer comes back, apply it and correct anything
+  you got wrong** -- that correction is the most valuable part.
+  *Earned 2026-08-12: "why can't Cloud see the current files" took most of a
+  day and four wrong diagnoses. One support exchange settled it. Nothing in
+  the repository could have revealed the answer, so more measuring would never
+  have found it.*
 
 ----------------- COPY TO HERE -----------------
 

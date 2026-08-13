@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-12 22:37 ET -->
-<!-- Commit: 795caf0 -->
+<!-- Generated: 2026-08-12 23:16 ET -->
+<!-- Commit: 34c1709 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-12 22:37 ET
-- **Commit at generation:** `795caf0`
-- **That commit was made:** 2026-08-12 21:46 ET
-- **Its subject line:** The index was frozen at 2026-08-10 22:46. A6 could not have caught it.
+- **Generated:** 2026-08-12 23:16 ET
+- **Commit at generation:** `34c1709`
+- **That commit was made:** 2026-08-12 23:02 ET
+- **Its subject line:** SYNC NOW is step 0. The sync is manual and nothing says so.
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -38,7 +38,7 @@ All paths are relative to `ProjectDocs/`.
 | What it is | The current file | Older versions present |
 |---|---|---|
 | Briefing -- read this first | `_READ-FIRST-Briefing-2026-08-11-1616.md` | 0 |
-| Session log | `GatewayGuard_SessionLog-2026-08-12-1643.md` | 0 |
+| Session log | `GatewayGuard_SessionLog-2026-08-12-2316.md` | 0 |
 | Project instructions | `GatewayGuard_ProjectInstructions-2026-08-12-1652.md` | 2 |
 | Coding standards | `GatewayGuard_CodingStandards-2026-08-07-1330.md` | 0 |
 | Defect prevention playbook | `GatewayGuard_DefectPreventionPlaybook-2026-07-26-0619.md` | 0 |
@@ -47,7 +47,7 @@ All paths are relative to `ProjectDocs/`.
 | Test history | `GatewayGuard_TestHistory-ascii39-2026-08-02-1335.md` | 3 |
 | Sync plan | `GatewayGuard_SyncPlan-2026-08-12-1726.md` | 0 |
 | Sync setup steps | `GatewayGuard_SyncSetupSteps-2026-08-12-2146.md` | 0 |
-| Cloud Project Instructions | `GatewayGuard_CloudProjectInstructions-2026-08-12-2237.md` | 0 |
+| Cloud Project Instructions | `GatewayGuard_CloudProjectInstructions-2026-08-12-2316.md` | 0 |
 
 Also read `CLAUDE.md`, at the repository root. That name never changes.
 

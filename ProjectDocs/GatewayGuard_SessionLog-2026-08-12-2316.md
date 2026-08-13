@@ -396,6 +396,104 @@ answer.
 2. **The ask habit returned three times after two corrections**, which is why
    it is now a `CLAUDE.md` section rather than a conversation.
 
+### Evening: the Cloud connector, solved -- by support, in one reply
+
+**The question was "why can't Cloud see the current files?" It took most of a
+day, produced FOUR wrong diagnoses, and was settled by a single support
+exchange.**
+
+| # | Diagnosis | Why it looked right | Why it was wrong |
+|---|---|---|---|
+| 1 | The glob instruction | Cloud genuinely cannot list or sort a folder | True, but not the cause |
+| 2 | Stale connector index | A6 passed at 14:45, docs committed 16:17 | Right shape, wrong mechanism |
+| 3 | No connector at all | Cloud measured an empty tool registry | A connector was never going to appear there |
+| 4 | Platform fault | Config verified correct on every checkable axis | The config was fine; the sync had not been clicked |
+
+**The answer, from Anthropic support:** the GitHub connector **exposes no
+live repository tool**. It **syncs selected files into project knowledge**.
+**The sync is manual.** And **there is no documented way to see which commit a
+snapshot reflects.**
+
+**Nothing in the repository could have revealed any of that.** No amount of
+further measuring would have found it -- which is precisely what makes the
+ten-minute rule below the real lesson of the day.
+
+### What the measurements did establish
+
+**The index was frozen at commit `212fb8e`, 2026-08-10 22:46** -- thirty
+commits behind. Found two ways that agreed: Cloud's newest visible file was
+`ProjectInstructions-2026-08-10-2245.md`, and `git log --all --diff-filter=A`
+confirmed every file it named had genuinely existed here. So they were
+connector content, not uploads.
+
+**A6 passed against that frozen index on 2026-08-11 and could not have done
+otherwise.** Its three targets last changed 2026-08-09 22:38, 2026-08-02
+17:54 and 2026-08-09 22:38 -- all sitting in the stale copy, all quoting back
+character-perfect. **A6 proved the index contained files; it never proved the
+index was current.** Now A6-PRE: **a connector proof must test a file written
+after the last proof.**
+
+### Four capability errors of mine, three caught by Cloud reading its own instructions
+
+1. **"You cannot run commands"** -- false. Cloud has bash, in an isolated
+   container with no checkout and a UTC clock.
+2. **"Do not answer from anything pasted"** -- over-blocked. It forbade Bill
+   pasting `CURRENT.md`, the main workaround when sync is down.
+3. **"Do not answer from project knowledge"** -- **banned the connector.**
+   Written to block stale uploads; repository content and uploads share one
+   search surface. **Distrust a SOURCE, not a TOOL** -- discriminate by source
+   filename against `CURRENT.md`.
+4. **"Everything you need is in the repository. Read it there."** -- Cloud can
+   never do that. It reads a copy of unknown age.
+
+**A capability claim about the reader is a factual claim** and falls under
+RESEARCH BEFORE STATING like any other. Four times in one file, the reader
+knew better than the instruction did.
+
+**And I told Bill to delete one of the two GitHub entries as a duplicate.**
+They are one repository added twice with **different scopes** -- one carries
+`WebSite/Rules/`, the other `Tool/`, `ProjectDocs/`, `CLAUDE.md`. The list
+shows repository and branch but **not scope**, so they are indistinguishable
+and the obvious conclusion is wrong. Deleting either would have silently
+halved Cloud's visibility. Bill caught it.
+
+### The fix: the freshness stamp travels inside the payload
+
+**Cloud's proposal, and better than anything I had.** `CURRENT.md` now opens
+with its generation time, commit hash, commit date and commit subject.
+**Reading the file IS reading the sync date.** It supersedes the sentinel
+phrase as the primary check: **a sentinel says stale or not stale; a stamp
+says stale by how much.**
+
+**Cloud also withdrew its own bug report** when support answered -- what it
+remembered as live repo access on 2026-08-11 was path-prefixed project-
+knowledge results, the same thing it saw on 2026-08-12. **Nothing regressed;
+there was never a live tool.** The withdrawal was the most valuable line in
+the exchange, and it came from Cloud distrusting its own memory of a previous
+session.
+
+### Rule added: THE TEN-MINUTE RULE
+
+Bill: *"If an issue can't be solved in 10 minutes or so, write up an issue and
+ask Bill to check with Claude support."* In `CLAUDE.md` and in the Cloud
+instructions -- both daily-read documents.
+
+**The tell is repeated re-diagnosis.** A second theory is normal. A third
+means the answer is somewhere you cannot reach, and the next hour produces a
+fourth. **This is EXHAUST THE FORMS BEFORE CONCLUDING ABSENCE with a clock on
+it.**
+
+### And the operational fact that makes it all work
+
+**THE SYNC IS MANUAL.** Bill clicked **Sync now** and Cloud saw `CLAUDE.md`
+immediately. Nothing in the interface says the sync must be triggered, and
+nothing shows how old the copy is.
+
+**`Start-Claude-Cloud.txt` now opens with STEP 0: click SYNC NOW.**
+**`Start-CC.txt` session-end now ends with reminding Bill to click it.**
+Claude Code pushing is not the end of the chain -- it is the middle of it.
+Reporting `0 0` and treating the work as delivered was the gap.
+
 ### Files produced
 
 - `WebSite\html\` -- 19 pages (new)
@@ -405,7 +503,7 @@ answer.
 - `ProjectDocs\GatewayGuard_SyncPlan-2026-08-12-1512.md` and
   `GatewayGuard_SyncSetupSteps-2026-08-12-1512.md` (both predecessors retired)
 - `Test_Results\Logs\` -- 104 files consolidated
-- `ProjectDocs\GatewayGuard_SessionLog-2026-08-12-1643.md` (this file)
+- `ProjectDocs\GatewayGuard_SessionLog-2026-08-12-2316.md` (this file)
 - `Start-Claude-Cloud.txt` (renamed from `Check-Claude-Cloud.txt`, rewritten)
 - `CLAUDE.md`, `.gitignore`, `Start-CC.txt`, `Check-Connector.txt` (edited)
 

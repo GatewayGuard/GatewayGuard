@@ -287,6 +287,50 @@ the whole lesson: a gate with no check is a wish.
 
 ---
 
+## THE TEN-MINUTE RULE -- STOP AND WRITE IT UP
+
+Bill, 2026-08-12: *"If an issue can't be solved in 10 minutes or so, write up
+an issue and ask Bill to check with Claude support."*
+
+**Applies to Claude Code and Claude Cloud alike.** When roughly ten minutes of
+diagnosis has not produced a cause -- not a theory, a cause -- **stop
+diagnosing and write the report.**
+
+**What earned this.** On 2026-08-12 the question *"why can't Cloud see the
+current files?"* consumed most of a day and produced **four wrong
+diagnoses in sequence**: the glob instruction, a stale connector index, no
+connector at all, then a platform fault. Each was consistent with the evidence
+available when it was made. **One support exchange settled it in a single
+reply** -- the GitHub connector exposes no live repository tool, it syncs into
+project knowledge, sync is manual, and there is no way to see which commit a
+snapshot reflects. **Nothing in the repository could have revealed any of
+that**, so no amount of further measuring would have found it.
+
+**The tell is repeated re-diagnosis.** A second theory is normal. A third
+means the answer is somewhere you cannot reach, and the next hour will produce
+a fourth.
+
+**The write-up carries, at minimum:**
+
+- **Environment** -- interface, model, project, date and time
+- **What was expected**, and what happened instead
+- **Every check run, with its actual output.** Measured, not summarised.
+  Cloud's report listed its `ls`, `find` and `curl` results verbatim, and
+  support's answer engaged with them directly.
+- **The specific questions to be answered**, numbered
+- **Why it matters here** -- what the fault costs this project
+
+**Then hand it to Bill and stop.** Do not keep theorising while he asks. And
+**when the answer comes back, apply it and correct the record** -- Cloud's
+report was partly wrong, it withdrew that part on support's reply, and the
+withdrawal was the most valuable line in the exchange.
+
+**This is EXHAUST THE FORMS BEFORE CONCLUDING ABSENCE with a clock on it.**
+Exhausting the forms is right; doing it for eight hours against a system whose
+behaviour is documented elsewhere is not.
+
+---
+
 ## DO NOT ASK. ACT, THEN REPORT.
 
 Bill, 2026-08-12, after saying it three times in one session:
