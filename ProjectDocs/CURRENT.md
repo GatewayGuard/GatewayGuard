@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-13 12:58 ET -->
-<!-- Commit: 1fde4cd -->
+<!-- Generated: 2026-08-13 14:07 ET -->
+<!-- Commit: 3ef69c2 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-13 12:58 ET
-- **Commit at generation:** `1fde4cd`
-- **That commit was made:** 2026-08-13 09:53 ET
-- **Its subject line:** Gate 25 -- the copy gate, and it found something on its first run
+- **Generated:** 2026-08-13 14:07 ET
+- **Commit at generation:** `3ef69c2`
+- **That commit was made:** 2026-08-13 13:55 ET
+- **Its subject line:** Retire 258 superseded and duplicate files
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -44,7 +44,7 @@ All paths are relative to `ProjectDocs/`.
 | Defect prevention playbook | `GatewayGuard_DefectPreventionPlaybook-2026-07-26-0619.md` | 0 |
 | Website standards | `GatewayGuard_WebsiteStandards-2026-07-26-0619.md` | 0 |
 | Field test plan | `GatewayGuard_FieldTestPlan-ascii40-2026-08-13-0944.md` | 2 |
-| Test history | `GatewayGuard_TestHistory-ascii39-2026-08-02-1335.md` | 3 |
+| Test history | `GatewayGuard_TestHistory-ascii39-2026-08-02-1335.md` | 2 |
 | Sync plan | `GatewayGuard_SyncPlan-2026-08-12-1726.md` | 0 |
 | Sync setup steps | `GatewayGuard_SyncSetupSteps-2026-08-12-2146.md` | 0 |
 | Cloud Project Instructions | `GatewayGuard_CloudProjectInstructions-2026-08-12-2316.md` | 0 |
