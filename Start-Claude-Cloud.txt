@@ -5,6 +5,32 @@
  (renamed to Start-Claude-Cloud.txt 2026-08-12, to pair with Start-CC.txt)
 ===============================================================
 
+===============================================================
+ STEP 0 -- CLICK "SYNC NOW" FIRST. EVERY TIME.
+===============================================================
+
+In the project, open the GitHub connector settings and click the
+SYNC NOW icon. Wait for it to finish. THEN start the chat.
+
+THE SYNC IS MANUAL. IT DOES NOT HAPPEN ON ITS OWN.
+
+Cloud never reads your repository. It reads a COPY that only
+changes when you click that icon. Confirmed by Anthropic support
+2026-08-12, including that there is no way to see how old the
+copy is from inside a chat.
+
+Skipping this is not a small mistake. On 2026-08-10 the copy
+froze, and Cloud spent two days answering from a snapshot that
+was two days and thirty commits behind -- confidently, and
+looking exactly like correct answers. That is the whole reason
+for the freshness stamp in step 1.
+
+Rule: CLAUDE CODE PUSHES, THEN YOU CLICK SYNC NOW. Every push
+that matters to Cloud. If you did not click it, Cloud has not
+seen the work.
+
+---------------------------------------------------------------
+
 Open a new chat at claude.ai, then copy the block between the
 lines below and paste it as your first message.
 
@@ -17,9 +43,13 @@ check and git state, none of which Cloud can do.
 
 ---------------- COPY FROM HERE ----------------
 
-Read ProjectDocs/CURRENT.md from the GitHub connector. It names the
-current version of every document. Then read the briefing and the
-session log it names, and read CLAUDE.md.
+Search project knowledge for ProjectDocs/CURRENT.md. Read out its
+FRESHNESS STAMP first -- generated time, commit hash, commit date,
+commit subject. All four, before anything else. That tells us both
+how old your copy is.
+
+Then read the briefing and the session log CURRENT.md names, and
+read CLAUDE.md.
 
 If there is no GitHub connector in this conversation, say so and
 stop -- do not answer from memory or from project knowledge. Say

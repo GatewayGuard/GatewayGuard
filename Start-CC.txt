@@ -90,7 +90,9 @@ Before anything else:
 Do not start work until I confirm your report.
 
 At session end: update the SessionLog, run
-Tool\Run-UpdateCurrent.bat, then commit and push.
+Tool\Run-UpdateCurrent.bat, then commit and push. Then remind me
+to click SYNC NOW in the Cloud project -- the sync is manual and
+Cloud sees nothing until I do.
 
 Task: [what you want]
 
