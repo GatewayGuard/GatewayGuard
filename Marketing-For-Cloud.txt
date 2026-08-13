@@ -1,0 +1,169 @@
+===============================================================
+ MARKETING-FOR-CLOUD -- HAND THE MARKETING WORK TO CLAUDE CLOUD
+ Dated: 2026-08-13 09:26 ET
+===============================================================
+
+THIS FILENAME CARRIES NO DATE ON PURPOSE, like Start-Claude-Cloud.txt,
+Start-CC.txt and Check-Connector.txt. You open it when you need it, so
+it must never move.
+
+---------------------------------------------------------------
+ BEFORE YOU PASTE -- TWO STEPS, IN THIS ORDER
+---------------------------------------------------------------
+
+STEP 0. CLICK SYNC NOW.
+
+  The GitHub connector does NOT read the repository live. It syncs
+  files into project knowledge, and THE SYNC IS MANUAL. Nothing in the
+  interface says so and nothing shows how old the copy is. If you skip
+  this, Cloud reads whatever it last received -- on 2026-08-12 that was
+  thirty commits behind and it answered confidently the whole time.
+
+  Open Projects -> GatewayGuard -> Project knowledge panel -> find the
+  repository entry -> Sync now. Use 100% browser zoom; the control is
+  unreachable at 150%.
+
+STEP 1. BE INSIDE THE PROJECT.
+
+  Look at the top of the page for the project name. A plain new chat
+  answers "I do not have access to a local filesystem or repository
+  environment" -- that is the wrong window, not a broken connector.
+
+---------------- COPY FROM HERE ----------------
+
+You are working on GatewayGuard marketing. Before answering anything,
+do these three checks and report the results in your first reply.
+
+1. Open ProjectDocs/CURRENT.md and read out its four freshness values:
+   Generated, Commit at generation, That commit was made, and Its
+   subject line. If you cannot find that file, stop and say so.
+
+2. Find the sentence in the current briefing about SANDY and a local
+   account named "panther". Quote it. If it is not there, you are
+   reading an old snapshot -- say so and stop.
+
+3. Confirm you can see ProjectDocs/GatewayGuard_MarketingSourcePack
+   and quote its "STATE AS OF THIS FILE" heading.
+
+Once those pass, here is the work.
+
+WHAT IS ALREADY DONE. Do not redo it and do not report it as open:
+
+  - The open-source violation is CLOSED. Seven references were cleared
+    from Marketing-Notes.md on 2026-08-13. Marketing-Notes.docx was
+    retired; the .md is the master.
+  - ExpertPositioning says "GatewayGuard is not open-source". That is
+    the rule being stated correctly. Do not change it.
+  - Assisted sessions are already described as planned or roadmap in
+    every place they appear. No fix is owed.
+  - Nineteen guide pages were swept for unverified superlatives. Two
+    claims now carry FBI IC3 and FTC citations.
+
+WHAT I WANT FROM YOU, in this order:
+
+  1. REVISE THE GRASSROOTS PLAN. Marketing-Notes.md built its trust
+     argument on "open-source, community-first". The false half is
+     gone and the wording now says "source-visible". Tell me whether
+     the plan still holds together, and rewrite the sections that only
+     worked because of the old claim. The trust argument has to stand
+     on readable code, a private repository, and no data collection.
+
+  2. FIX TWO CLAIMS I CANNOT DEFEND. In the Family Presentation:
+     "No competitor offers this" (slide 6) and "no one else has this
+     planned" (slide 8). Rule PL-4 bans unverified superlatives about
+     the market or competitors. Substitution is "few competitors".
+     Give me replacement wording.
+
+  3. DECIDE ONE ACCURACY PROBLEM. The community flyer text opens
+     "Brought to you by independent tech volunteers dedicated to
+     digital safety." GatewayGuard LLC is a Maine company selling a
+     product. Tell me what that line should say instead without
+     losing the neighbourly tone it is reaching for.
+
+  4. SLIDE 8 PROMISES A PAGE THAT DOES NOT EXIST -- "All marketing
+     claims are sourced and verifiable. Links published at
+     gatewayguard.co/sources". Either draft that page's contents or
+     tell me to cut the sentence.
+
+RULES THAT BIND THIS WORK:
+
+  - Never "open source". Use source-visible, fully auditable, or
+    transparent plaintext code.
+  - Never "whether", never "whereas", never "switch" as a verb for a
+    setting -- it is "turn on" and "turn off".
+  - First mention is GatewayGuard Checkup, every mention after that is
+    Checkup. Never "the tool" or "the program".
+  - No unverified superlatives about the market, competitors or users.
+  - Assisted sessions are PLANNED, never available.
+  - Plain English. The reader is a non-technical senior.
+
+WHAT YOU MUST NOT DO:
+
+  - Do not write or revise a governing document. Those are Claude
+    Code's: ProjectInstructions, CodingStandards, the Playbook,
+    WebsiteStandards, TestHistory, ScreenContents, the briefing,
+    CLAUDE.md, SyncPlan, SyncSetupSteps.
+  - Do not write an exact filename into anything that will be filed.
+    Take filenames from CURRENT.md and say where you got them.
+  - Do not state a build number, line count, machine state or test
+    result from memory. Ask for it to be measured.
+  - Do not edit the source pack. It is generated, and a hand edit is
+    lost the next time it is rebuilt. Give me the new wording and
+    Claude Code will apply it to the original document.
+
+----------------- COPY TO HERE -----------------
+
+SELECT ONLY BETWEEN THE TWO LINES ABOVE. On 2026-08-10 a copy ran four
+lines past the end of a block and put explanatory prose into the
+profile instructions box, where it read as a rule.
+
+---------------------------------------------------------------
+ WHY CLOUD GETS THIS WORK AND CLAUDE CODE DID THE REST
+---------------------------------------------------------------
+
+Marketing strategy is Cloud's under the two-Claudes split. Clearing a
+banned claim is not strategy -- it is a compliance sweep against a rule
+that already names its replacements, it needs the .docx archives opened
+and counted, and it has to be committed. Cloud cannot do any of that:
+it reads a text extraction of a document, it cannot write to the tree,
+and everything it produces comes back through you by hand.
+
+So the split is: Claude Code fixed the claims, Cloud rebuilds the plan
+those claims were holding up.
+
+---------------------------------------------------------------
+ WHAT CLOUD CAN AND CANNOT SEE
+---------------------------------------------------------------
+
+IN SCOPE -- Cloud can read these:
+  ProjectDocs/  Tool/  WebSite/Rules/  CLAUDE.md
+
+  which includes ProjectDocs/Marketing-Notes.md, the market research
+  (ProjectDocs/GatewayGuard_MarketResearch.docx and .md), and the new
+  ProjectDocs/GatewayGuard_MarketingSourcePack-*.md.
+
+NOT IN SCOPE -- Cloud is blind to these:
+  Marketing/       the five positioning and pitch .docx
+  Presentation/    the family deck
+  WebSite/         everything except Rules/
+
+That is why the source pack exists. Rather than widening the connector
+scope -- which costs capacity, and all of WebSite/ once ran it to 116%
+-- the five marketing documents and the deck were extracted to text
+into ProjectDocs/, where Cloud already reads.
+
+DO NOT ADD Marketing/ TO THE CONNECTOR. Thirty-seven of its forty-three
+tracked files were saved-webpage junk, 9.3 MB of JavaScript and CSS.
+They were removed on 2026-08-13. The five real documents total 67 KB
+and are in the source pack.
+
+---------------------------------------------------------------
+ WHEN CLOUD ANSWERS
+---------------------------------------------------------------
+
+Cloud cannot write to the tree. Whatever it gives you comes back here:
+download it, and Claude Code applies it to the ORIGINAL document, not
+to the source pack, then commits and pushes.
+
+If a decision only ever exists in the chat, it will be lost when the
+chat is. Say so explicitly and get it filed.
