@@ -1,6 +1,0 @@
-One tip going forward: at the start of each GatewayGuard session, upload just two files:
-
-GatewayGuard_ProjectNotes.md — gives me full context instantly
-Latest .ps1 build — ready to work on immediately
-
-That way we get straight to work without spending messages re-establishing context. Saves messages and time.
