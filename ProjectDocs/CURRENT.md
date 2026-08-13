@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-13 14:27 ET -->
-<!-- Commit: 5aaeeb9 -->
+<!-- Generated: 2026-08-13 14:37 ET -->
+<!-- Commit: aed4de3 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-13 14:27 ET
-- **Commit at generation:** `5aaeeb9`
-- **That commit was made:** 2026-08-13 14:07 ET
-- **Its subject line:** Correct a false claim the source pack was about to hand Cloud
+- **Generated:** 2026-08-13 14:37 ET
+- **Commit at generation:** `aed4de3`
+- **That commit was made:** 2026-08-13 14:27 ET
+- **Its subject line:** Tell Cloud the marketing source is corrupted before it writes from it
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -37,8 +37,8 @@ All paths are relative to `ProjectDocs/`.
 
 | What it is | The current file | Older versions present |
 |---|---|---|
-| Briefing -- read this first | `_READ-FIRST-Briefing-2026-08-11-1616.md` | 0 |
-| Session log | `GatewayGuard_SessionLog-2026-08-12-2316.md` | 0 |
+| Briefing -- read this first | `_READ-FIRST-Briefing-2026-08-13-1433.md` | 0 |
+| Session log | `GatewayGuard_SessionLog-2026-08-13-1433.md` | 0 |
 | Project instructions | `GatewayGuard_ProjectInstructions-2026-08-12-1652.md` | 2 |
 | Coding standards | `GatewayGuard_CodingStandards-2026-08-07-1330.md` | 0 |
 | Defect prevention playbook | `GatewayGuard_DefectPreventionPlaybook-2026-07-26-0619.md` | 0 |

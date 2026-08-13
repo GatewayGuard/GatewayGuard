@@ -1,8 +1,8 @@
-<!-- Dated: 2026-08-12 16:43 EDT -->
+<!-- Dated: 2026-08-13 14:33 EDT -->
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-08-12 16:43 EDT
+- **Last Modified:** 2026-08-13 14:33 EDT
 - **Status:** Append-only running log â€” newest session at top
 - **Purpose:** Continuous record of all sessions (Claude.ai and Claude
   Code) so any Claude instance can resume with full context.
@@ -26,6 +26,290 @@ Upload it to the Claude project immediately after downloading.
 This is the shared memory between all Claude instances.
 
 ---
+---
+
+## Session: 2026-08-13 08:10 to 14:33 [Claude Code -- CGDELL]
+
+**No build work. The ascii39 crashes turned out not to be crashes, two new
+gates exist, the assert-guarded wrapper is finally committed, and 262 files
+were retired. Seven of my own rule breaches recorded, three of them caught
+only because Bill asked.**
+
+### The headline -- Checkup never crashed
+
+ascii39 field findings 14, 15 and 39 report the program crashing or vanishing.
+**The logs show no crash.** Every one ended through Checkup's own code path
+after accepting an input event nobody sent.
+
+`GatewayGuard-Log-2026-08-11_17-46.txt`, three lines inside one second:
+
+```
+[17:50:08] [SCREEN] [SCREEN-31] Rendered: QUICK RE-CHECK BEFORE RESUMING
+[17:50:08] [KEY] Key 'N' accepted at: Show-ResumeReverify
+[17:50:08] [EXIT] Resume re-check: user said not personal PC -- exit
+```
+
+Two mechanisms, both in the source:
+
+1. **`Clear-PendingKeys` line 2487 caps its drain at 256 and logs 256 as a
+   count.** `while ($Host.UI.RawUI.KeyAvailable -and $ggDrained -lt 256 ...)`.
+   "Discarded 256 keypress(es) that were already queued" means **the drain hit
+   its ceiling and gave up with events still queued**, and the next read
+   consumes one. Eleven cap-hits in that run. Same defect class as FT-162,
+   where `[GOOD]` printed over a command that never ran.
+2. **`Disable-QuickEdit` line 2318 masks with `-band 4294967231`**, which
+   clears QuickEdit and **leaves `ENABLE_MOUSE_INPUT` set**. Measured against
+   the standard console modes: on the Windows default `0x01F7`, mouse input
+   survives. Every mouse move, click and wheel tick becomes a record in the
+   same 256-record buffer the tool reads answers from. **That is why
+   right-click ended it.**
+
+**The sting: the flag that makes the wheel scroll -- which field finding 5a
+asks us to promote everywhere -- is the flag that ended the run twice.**
+
+It also explains finding 30, which had read as unexplainable: the 22-10 log
+holds **~25 "the window's X was clicked" exits in 49 seconds**.
+
+### A false trade-off I invented, and then had to withdraw
+
+The field test plan first offered Bill a choice: keep the mouse wheel and fix
+the drain, or clear mouse input and lose the wheel. **There is no such
+trade-off.** Microsoft's `SetConsoleMode` documentation: the flag governs
+"whether user interactions involving window resizing and mouse actions are
+**reported in the input buffer or discarded**." It controls delivery to the
+*application*. Wheel scrolling of the window belongs to the console host.
+
+And the build **never reads a mouse event** -- zero uses of `ReadConsoleInput`
+or `MOUSE_EVENT` in 8,075 lines. Checkup is handed something it never asked
+for, cannot use, and chokes on.
+
+**I asserted what a Windows flag did without reading the documentation, inside
+the plan that cites RESEARCH BEFORE STATING.** Corrected: do all three -- clear
+mouse input, fix the drain properly, and stop letting one keystroke end the
+session.
+
+### Files produced
+
+- `ProjectDocs\GatewayGuard_FieldTestPlan-ascii40-2026-08-13-0944.md` -- all 47
+  findings triaged into FT-171..FT-183, three blockers in build order, five
+  phases. Phases 0 and 1 run **before** the build.
+- `Tool\gg_edit.py` + `Run-GGEditSelfTest.bat` -- the assert-guarded wrapper.
+- `Tool\Check-Copy-2026-08-13.ps1` + `Run-CopyCheck.bat` -- **gate 25**.
+- `Tool\Check-ConsoleInputMode-2026-08-13.ps1` + `Run-ConsoleInputModeCheck.bat`
+  -- read-only, **to be run on SANDY**.
+- `Tool\build_marketing_sourcepack.py` and
+  `ProjectDocs\GatewayGuard_MarketingSourcePack-2026-08-13-1427.md`.
+- `Marketing-For-Cloud.txt` at the root -- the paste block.
+- `ProjectDocs\GatewayGuard_ProjectPanelSnapshot-2026-08-13-0903.md`.
+
+### The assert-guarded wrapper exists again, and is committed
+
+CodingStandards has required it since 2026-07-26. Measured 2026-08-07 and
+again today: **zero `.py` in the tree, zero in git history.** The spec
+survived; the code did not.
+
+`gg_edit.py` implements PYTHON EDITING RULES 1-7 and fails closed -- on any
+failure the original is untouched and the working copy is kept. Verification
+runs against the working copy **before** the real file is touched.
+
+**Its self-test earned a correction.** Case 4 claimed duplication was caught by
+the size assertion; it was actually caught by the post-replace check, because
+the original block is a substring of its own 200-fold duplicate so the size
+guard was never reached. The test now builds a duplicate that is
+brace-balanced and **not** a substring, and asserts the error text contains
+`SIZE ASSERTION FAILED`. **A test whose name misdescribes what it proved is
+the same defect as reporting a regex answer as a word answer.**
+
+### Gate 25 -- the copy gate, and FT-183 on its first run
+
+Field finding 12 asked whether Grammarly or Word could check "all of these
+kind of things before we publish". They cannot -- they check grammar, not
+"whether", not the Checkup name rule, not the open-source ban.
+
+`Run-CopyCheck.bat` checks the tool and the website in one pass, which is the
+point: RULE W-07 exists because the two drift, and today they did.
+
+**FT-183, found on its first run:** on **16 of the 19 guide pages the only
+"GatewayGuard Checkup" sits inside the `<meta description>` attribute.** The
+visible body then says "Checkup" three to six times without ever introducing
+it. **A raw grep had reported all 19 compliant that morning and I passed that
+on** -- it was right about the bytes and wrong about the rule.
+
+Two bugs found while building it, both producing confident wrong answers:
+
+- Tag stripping turned `<b>GatewayGuard</b> Checkup` into a **double space**,
+  so a two-word match missed it -- undercounting the name rule 19 -> 3.
+- Comment stripping **deleted the suppression markers** before the suppression
+  check could see them, so `COPYCHECK-OK` silently did nothing.
+
+Both are absences produced by the matcher. The gate runs a V-2 control first
+and **exits 2 -- results invalid** -- if any matcher cannot match its own
+control.
+
+### The superlatives: sourced, not softened
+
+18 PL-4 breaches across 9 pages. Two now carry real citations. **The research
+changed the job -- two claims were not merely unsourced, they were wrong:**
+
+- *"Phishing is the most common way people get hacked"* -- the Verizon DBIR
+  ranks phishing behind credential abuse and vulnerability exploitation. It is
+  also the **wrong population**: DBIR counts enterprise breaches, not seniors
+  at home. Replaced with the FBI IC3 finding for the audience the page serves.
+- *"The single most common scam used against home computer users today"* --
+  IC3 shows phishing/spoofing leads by complaint count for 60+, investment
+  fraud by losses. Replaced with the FTC finding.
+
+**Still owed:** the same "single most common scam" claim ships in the tool's
+own screens (`GatewayGuard_ScreenContents` line 933), so the build and the
+website now disagree until ascii40. The written guide carries two PL-4
+breaches of its own.
+
+### The open-source violation, closed in one place and not another
+
+Seven occurrences in `Marketing-Notes.md`, not the three the briefing
+recorded. The 2026-07-17 summary said the rewrites were done; the transcript
+said "no and no". **Transcript outranks summary, and the violation outlived
+four briefings.** `Marketing-Notes.docx` retired -- content-identical, 4,591
+words each, and fixing only the `.md` would have left the breach live in the
+other copy.
+
+**`ExpertPositioning` states the ban correctly** -- *"GatewayGuard is not
+open-source"* -- and was nearly swept. That is the V-6 error and it is now
+called out in the source pack.
+
+### Cloud caught two things I got wrong
+
+1. **The source pack said "the open-source violation is CLOSED"** as a blanket
+   claim. Cloud read line 3006 of ProjectNotes and pushed back correctly.
+   Measured: 23 hits in the newest ProjectNotes, of which **3 are live
+   violations** (2547, 2741, 3006) and **20 are legitimate** -- third-party
+   tools that genuinely are open-source, or the record of the Option A/B
+   decision. The pack now says so and says **do not sweep those 20.**
+2. **I asked Cloud to enumerate every file named CLAUDE.md.** That is a glob,
+   and Cloud cannot glob. `Start-Claude-Cloud.txt` was rewritten on 2026-08-12
+   for exactly this reason. **I re-made the error the day after it was written
+   up**, in a test designed to check the connector. Cloud refused, explained
+   why, and handed the measurement back. It was right.
+
+**Cloud's own diagnosis was refuted:** it inferred the 2026-08-13 sweep wrote
+"an expensive" over "free" in `Marketing-Notes.md`. Measured three ways --
+count unchanged at 9 before and after, `git log -S` traces it to the **initial
+commit of 2026-07-28**, and the sweep's diff is six lines all
+`open-source` -> `source-visible`. **Cloud got the what right and the who
+wrong.** The corruption is real: 9 × "an expensive", an orphaned `*ee`, and
+mangled `** **` markup, with the flyer advertising *"an expensive personal PC
+security guide"* three lines above *"100% Free"*. Now recorded in the source
+pack with **do not quote pricing wording out of this document until repaired.**
+
+### 262 files retired, with a guard that earned its place
+
+Duplicate families **152 -> 54**, redundant files **312 -> 63**.
+
+Everything removed was verified to survive first -- tracked (git keeps the
+blob) or byte-identical to a file that stays. **The guard held 20 files back**
+because their only other copy was *also* in the delete list. Bill had
+authorised `files (6)` and `Notes\Older Files` on my statement that they were
+duplicates; for those 20 that was false, so deleting would have been permanent
+loss on a stale premise.
+
+Its first version was too strict -- it did not count **git history** as a
+survivor, so set A in `files (6)` and its tracked twin each made the other
+look like the last copy. Corrected, and 20 more files became safely
+deletable.
+
+`ForCloudUpload-2026-08-02-1218` held a **second `CLAUDE.md`**, the exact file
+`Check-Connector.txt` names as its FAIL case. **But Cloud is right that it was
+never in connector scope** -- scope names `CLAUDE.md` as a single path, not a
+pattern -- so my "the hazard was in the tree the whole time" was overstated
+for Cloud's purposes.
+
+Four more deleted on Bill's instruction after verification: two fake PDFs
+(`PK` headers, no `%%EOF` -- project-knowledge extractions, not documents) and
+the two `GatewayGuide_Project_Instructions` files, confirmed fully mined
+against all twelve of their rules.
+
+**PROTECTED and untouched:** `WebSite\html` (the deploy copy) and
+`All19_Final-2026-08-02-1820` (the delivered artifact of record).
+
+### Found while globbing, and nobody was looking for it
+
+**`CLAUDE-Sandy.md` -- 21,725 bytes at the repository root, tracked, dated
+2026-07-26.** `CLAUDE.md` is dated 2026-08-09. It is **eighteen days stale**,
+its build line is identical so it looks current, and it is missing exactly two
+sections: **THE TEN-MINUTE RULE** and **DO NOT ASK. ACT, THEN REPORT.**
+
+There is a matching `.claude\rules\website-copy-Sandy.md` carrying the old
+full rule text rather than the pointer.
+
+**Same shape as the `-r3` file:** reads as authoritative, is materially
+behind, and is invisible to newest-wins because the name differs. A session on
+SANDY loading it gets a rulebook without the two most recent rules -- including
+the one telling it not to ask for permission. **Not touched. Bill's call.**
+
+### `GatewayGuard_ProjectNotes-2026-07-12-r3.md` was not ProjectNotes
+
+Its internal header reads `# GatewayGuard Project Instructions`,
+`Document Name: GatewayGuard_ProjectInstructions`, `Dated: 2026-08-02 18:20`.
+**The filename is three weeks earlier than its own contents**, under the wrong
+document family -- so newest-wins put it fifth of six in a family it did not
+belong to, while the family it did belong to could not see it. ORPHAN LINEAGE
+with a false date on top. Rules superseded; retired.
+
+### Research settled before planning
+
+- **Sleep during BitLocker encryption cannot corrupt it** -- Microsoft
+  BitLocker FAQ, quoted: *"the BitLocker encryption and decryption process
+  will resume where it stopped the next time Windows starts."* It **does**
+  stall it, and SANDY has Modern Standby, so the on-screen estimate misleads.
+- **Field finding 37 is partly a misreading** -- the three phishing toggles are
+  **Windows** settings, not Edge. All three `WebThreatDefense` registry paths
+  absent on CGDELL, i.e. unconfigured. **The plan measures SANDY before
+  anything changes.**
+- **OneDrive personal on SANDY is safe with a local Windows account.** The
+  documented Device Encryption trigger is a Microsoft account at **OOBE on a
+  clean install**; in-place upgrade does not flip it. SANDY already sat on a
+  full Microsoft *Windows* account for over a week with Modern Standby and
+  nothing engaged. The real risk is the **folder-backup prompt** -- decline it.
+
+### Seven rule breaches of my own, and what they have in common
+
+Jargon in a table ("notch") on the project that deletes jargon. Asserting a
+Windows flag's behaviour unread. Writing *"not in this tree"* about
+`GatewayGuard_MarketResearch.docx` **before running the search** -- it is in
+five places. Reporting a raw grep as a compliance answer. A self-test whose
+name misdescribed it. Flagging four assisted-session "breaches" that were
+already compliant. Forgetting to deliver the Cloud block until asked.
+
+**Every rule that held today had machinery** -- the `.ps1` integrity hook fired
+twice unprompted, gate 12 ran, the website-copy rule loaded on a path trigger,
+gate 25's control refused to report. **Every rule broken was one I had to
+remember.** Three of the seven were committed *inside* the artifact whose
+purpose was enforcing that rule.
+
+**Two of the seven were caught only because Bill asked.** That is the number
+that matters, and it is the argument for gates over prose.
+
+### Left open
+
+1. **`CLAUDE-Sandy.md` and `website-copy-Sandy.md`** -- deliberate machine
+   variants, or drift? Eighteen days stale either way.
+2. **`Marketing-Notes.md` "an expensive" corruption** -- 9 occurrences,
+   measured, not repaired.
+3. **20 held files** -- untracked and byte-unique, still on disk pending
+   Bill's decision with the real facts.
+4. **63 remaining duplicate files**, of which 19 pairs are deliberate.
+5. **Personal identity documents in `Certificates\`** -- 10.6 MB of licence
+   photographs and a utility bill, permanent in git history. `.gitignore`
+   excludes banking and medical, not identity. Never a decision; just where
+   `git add` landed.
+6. **The two ascii33 files with the same name and different contents** --
+   `Builds\` (5,497 lines, FT-113, carries an **ascii34** comment block dated
+   2026-07-25) and `ProjectDocs\` (5,425 lines, FT-105). The `Builds\` copy is
+   a documented recovery point and **is not what its filename says.**
+7. **Does a connector re-sync remove deleted files from project knowledge?**
+   Unmeasurable from here. Test with a content probe on a file changed today,
+   never by asking Cloud to enumerate.
+
 ---
 
 ## Session: 2026-08-11 22:00 to 2026-08-12 14:03 [Claude Code -- CGDELL]
