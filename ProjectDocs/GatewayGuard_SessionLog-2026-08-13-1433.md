@@ -159,6 +159,20 @@ content that Claude Code deliberately does not repeat in chat**, named by
 location instead: *"quote the final line of file X."* Naming the location
 rather than the string is what keeps route 3 shut.
 
+**THE CHEAP ANSWER, and it is Bill's: open a new Cloud chat.** A new chat has
+no conversation history, so routes 1 and 2 die without any machinery -- Cloud
+cannot echo a serial it was never given. Route 3 stays only as far as Bill
+chooses to paste.
+
+**But a new chat does not prove the sync landed.** Project knowledge is shared
+across every chat in the project, so a fresh chat reads the same snapshot as a
+stale one. It buys clean memory, not fresh files.
+
+**So the procedure is two things, and only two:** open a new chat, and have it
+state the commit hash from CURRENT.md. The first removes the cheating, the
+second proves the snapshot. No withheld marker is needed once the chat is
+clean.
+
 **This also weakens the sentinel fixed earlier the same day.** The generated
 sentinel now moves with the session log, which repairs the decay problem --
 but the heading it quotes carries a timestamp Cloud itself supplied and a
