@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-14 00:43 ET -->
-<!-- Commit: b79ef1d -->
+<!-- Generated: 2026-08-14 01:09 ET -->
+<!-- Commit: 4862c90 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-14 00:43 ET
-- **Commit at generation:** `b79ef1d`
-- **That commit was made:** 2026-08-14 00:08 ET
-- **Its subject line:** File the five-step chain -- it existed only in a chat
+- **Generated:** 2026-08-14 01:09 ET
+- **Commit at generation:** `4862c90`
+- **That commit was made:** 2026-08-14 00:43 ET
+- **Its subject line:** Revise the Cloud instructions so they actually work, and sweep the binaries
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
