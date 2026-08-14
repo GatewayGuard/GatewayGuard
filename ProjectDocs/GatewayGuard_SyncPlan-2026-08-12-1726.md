@@ -514,6 +514,40 @@ Two consequences, and they point in opposite directions:
 after the stamp was generated left the stamp pointing behind HEAD, so a
 correct sync would have returned the previous hash and read as a failure.
 
+### 9c. The auto-sync checkbox: undocumented, and support cannot explain it
+
+**Do not spend another day on this. It has already been asked and answered as
+far as it can be.**
+
+There is a checkbox beside the Sync button on a GitHub-connected repository in
+project knowledge. **Nobody outside Bill's screen can say what it does.**
+
+- **Anthropic chat support asked Bill whether he had turned auto-sync on**,
+  then **denied knowledge of the checkbox** he was looking at. Re-reading the
+  transcript, their actual guidance was **"try it and see if anything
+  changes."** That is a handoff, not an answer.
+- **Anthropic's public documentation does not mention it.** Searched
+  2026-08-14 across `anthropic.com` and `docs.anthropic.com`: the Projects and
+  GitHub-integration pages describe syncing a repository into project
+  knowledge and say nothing about any automatic mode.
+- **Measured 2026-08-14: it is not keeping Cloud current.** Four snapshot
+  moves in one day, each shortly after a manual click. `624c930` was pushed at
+  18:27 and Cloud was still reading the 17:20 snapshot afterwards.
+
+**THE STANDING POSITION: tick the checkbox, and keep clicking sync anyway.**
+They do not conflict. The checkbox can only help; the click is what
+guarantees. Nothing is lost by doing both, and treating sync as manual has
+never once been wrong.
+
+**The measurement then runs itself, at zero cost.** Every stamp read is a data
+point: **if Cloud ever reports the current hash before Bill has clicked, auto
+-sync is real.** That is strictly better than holding commits back to run an
+experiment, which risks leaving Cloud stale while waiting for a result -- and
+a stale snapshot is worst for deletions, which it renders as live files.
+
+**If it is ever proved working, this section gets rewritten with the
+evidence.** Until then: manual.
+
 ### 9b. The stamp certifies its own file, not the reply it appears in
 
 **Cloud's observation, 2026-08-14, and it is right.** Each knowledge search
