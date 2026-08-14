@@ -287,30 +287,60 @@ the whole lesson: a gate with no check is a wish.
 
 ---
 
-## GETTING A FILE TO CLAUDE CLOUD -- FIVE STEPS, ALL SILENT
+## GETTING A FILE TO CLAUDE CLOUD -- WHO DOES WHAT
 
-```
-1. Put the file in the folder     OneDrive syncs it. Cloud sees NOTHING.
-2. git add <path>                 Git now knows it exists.
-3. git commit                     Now it is in the repository.
-4. git push                       Now it is on GitHub.
-5. Bill clicks SYNC NOW           Now the connector has fetched it.
-```
+**Cloud sees a file ONLY after it has been added, committed, pushed and
+synced. Proven repeatedly: it does not see it before then, and there is no
+partial credit.**
+
+The earlier version of this section listed the five steps and left out the
+handoffs, so it read as "Bill puts the file somewhere and syncs." **That
+instruction is false** -- between those two acts, Claude Code has to commit and
+push, and nothing was triggering it. A file can sit in `ProjectDocs\`
+indefinitely while everyone believes it is done. Bill caught this.
+
+### BILL
+
+1. **Put the file in `ProjectDocs\`.** That folder is always in Cloud's scope.
+2. **Say so, in one line** -- *"I put X in ProjectDocs."* **This is the
+   trigger. Without it, nothing else happens.**
+3. **Click SYNC NOW when, and only when, Claude Code says
+   "committed and pushed -- sync now."**
+
+### CLAUDE CODE
+
+4. **Commit and push it, and VERIFY the push landed** --
+   `git rev-list --count origin/main..HEAD` must read 0. Never report a push
+   that was not confirmed.
+5. **If it is `.docx`, `.pdf` or `.pptx`, generate a `.md` twin** into
+   `ProjectDocs\` and push that too. Cloud cannot read the binary. **A push
+   without the twin is not done.**
+6. **Then, and only then, say "committed and pushed -- sync now."** That line
+   is Bill's only cue. Do not say it before the push is verified, and do not
+   say it when nothing Cloud can see has changed.
+7. **Check the four Cloud folders at session start and session end** --
+   `ProjectDocs\`, `Tool\`, `WebSite\Rules\`, `CLAUDE.md`. This is the safety
+   net for a file Bill forgot to mention, not a replacement for step 2.
+
+### WHY EACH STEP IS THERE
 
 **A file in the folder is not in the repo.** OneDrive syncs the folder; the
 connector syncs the repo; only the repo reaches Cloud. Nothing in either
-interface tells you which steps have happened, and **only 1 and 5 are
-visible**.
+interface tells you which steps have happened.
 
-**Step 6, and it defeats all five:** if the file is `.docx`, `.pdf` or
-`.pptx`, **Cloud still cannot read it**. Measured 2026-08-13 --
+Every step has already failed here: five guide PDFs untracked until
+2026-08-09; 99 files untracked that nobody had decided on; field logs arriving
+untracked so a session reported "no field log exists" while it sat on disk;
+and the connector index frozen thirty commits behind while answering
+confidently.
+
+**Step 5 defeats all the others.** Measured 2026-08-13 --
 `MarketResearch.docx` and `MarketResearch.md`, same folder, same scope, same
 commit: only the `.md` ever surfaces. The guide `.docx` was committed and
-pushed for **sixteen days** while invisible.
-
-Keep the binary for safekeeping -- git stores and versions it fine, it just
-cannot diff it -- and **generate a `.md` beside it**. Proven twice:
-`Tool\build_marketing_sourcepack.py`, `Tool\build_guide_sourcepack.py`.
+pushed for **sixteen days** while invisible. Keep the binary for safekeeping
+-- git stores and versions it fine, it just cannot diff it -- and generate the
+`.md` beside it. Proven: `Tool\build_marketing_sourcepack.py`,
+`Tool\build_guide_sourcepack.py`, `Tool\build_readable_twins.py`.
 
 Full detail, with the evidence for each failed step: briefing section 8a.
 

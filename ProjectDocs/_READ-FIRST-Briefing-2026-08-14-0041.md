@@ -1,16 +1,25 @@
-<!-- Dated: 2026-08-14 00:07 ET -->
+<!-- Dated: 2026-08-14 00:41 ET -->
 # READ FIRST -- Session Briefing
 **Document Name:** _READ-FIRST-Briefing
-**Last Modified:** 2026-08-14 00:07 ET
+**Last Modified:** 2026-08-14 00:41 ET
 **Last Editor:** Claude Code (CGDELL)
 **Purpose:** Read this before anything else at the start of every session.
-**Supersedes:** `_READ-FIRST-Briefing-2026-08-13-1433.md`, and through it
-`-2026-08-11-1616.md`, which had **nine
+**Supersedes:** `_READ-FIRST-Briefing-2026-08-14-0007.md`, and through it
+`-2026-08-13-1433.md` and `-2026-08-11-1616.md`, which had **nine
 wrong or overtaken items** by the morning of 2026-08-13 -- including the two
 that block work: it said ascii39 had never been field run, and it said no
 ascii40 may be scoped.
 
 **Change History Log:**
+- 2026-08-14 00:41: **Section 8a corrected -- it was giving an instruction
+  that does not work.** It listed the steps without saying who does each, so
+  it read as "Bill puts the file somewhere and syncs." Bill caught it: nothing
+  triggers Claude Code to commit and push, so the file just sits there. Step 2
+  -- *Bill tells Claude Code it is there* -- is now the named trigger, and
+  step 5 -- the "sync now" line -- is Claude Code's obligation.
+  `Tool\build_readable_twins.py` added and run: **16 Word and PowerPoint files
+  in `ProjectDocs\` now have readable twins.** 9 PDFs reported as unextractable
+  (no PDF library installed) rather than silently skipped.
 - 2026-08-14 00:07: **Added section 8a, THE FIVE-STEP CHAIN.** The most
   useful thing learned on 2026-08-13, and it existed only in a chat until
   now. Every step fails silently; only the first and last are visible. Step 6
@@ -361,22 +370,35 @@ on a file changed that day** -- never by asking Cloud to enumerate.
 
 ---
 
-## 8a. THE FIVE-STEP CHAIN -- HOW A FILE ACTUALLY REACHES CLOUD
+## 8a. HOW A FILE ACTUALLY REACHES CLOUD -- AND WHO DOES EACH STEP
 
-**This is the single most useful thing learned on 2026-08-13. Every step
-fails SILENTLY, and only the first and last are visible to anyone.**
+**Every step fails SILENTLY. Cloud sees a file only after ALL of them, and
+there is no partial credit.**
 
 ```
-1. Put the file in the folder      OneDrive syncs it. Cloud sees NOTHING.
-2. git add <path>                  Git now knows the file exists.
-3. git commit                      Now it is in the repository.
-4. git push                        Now it is on GitHub.
-5. Click SYNC NOW in the project    Now the connector has fetched it.
+1. Put the file in ProjectDocs\    BILL.  OneDrive syncs it. Cloud sees NOTHING.
+2. Tell Claude Code it is there    BILL.  THE TRIGGER. Nothing follows without it.
+3. add / commit / push             CLAUDE CODE. Verified, never assumed.
+4. Generate a .md twin if binary   CLAUDE CODE. A push without it is not done.
+5. "committed and pushed -- sync"  CLAUDE CODE. Bill's only cue.
+6. Click SYNC NOW                  BILL.
 ```
+
+**The earlier version of this list left out step 2**, so it read as *"Bill puts
+the file somewhere and syncs."* **That is false.** Claude Code has to commit and
+push in between, and nothing was triggering it -- a file can sit in
+`ProjectDocs\` indefinitely while everyone believes the job is done. Bill
+caught it: *"you haven't added via git, or committed it, or pushed it yet, and
+Claude Cloud has proved he does not see it unless you have."*
+
+**Step 2 is the fix.** One line -- *"I put X in ProjectDocs"* -- and the rest
+follows. Claude Code also checks the four Cloud folders at session start and
+end, but that is a safety net for a forgotten file, **not a substitute for the
+trigger.**
 
 **A file sitting in the folder is not in the repo.** OneDrive syncs the
 folder; the connector syncs the repo; **only the repo reaches Cloud.** Nothing
-in either interface tells you which of these five has happened.
+in either interface tells you which of these steps has happened.
 
 **Each step has already failed here at least once:**
 
