@@ -168,10 +168,28 @@ chooses to paste.
 across every chat in the project, so a fresh chat reads the same snapshot as a
 stale one. It buys clean memory, not fresh files.
 
-**So the procedure is two things, and only two:** open a new chat, and have it
-state the commit hash from CURRENT.md. The first removes the cheating, the
-second proves the snapshot. No withheld marker is needed once the chat is
-clean.
+**MEASURED, and it removes the last reason to open one: A SNAPSHOT MOVES
+MID-CONVERSATION.** Cloud read `CURRENT.md` twice in a single chat on
+2026-08-14 and got two different answers:
+
+| Read | Commit at generation | Generated |
+|---|---|---|
+| Early in the session | `4862c90` | 2026-08-14 01:09 ET |
+| After Bill clicked sync | `925a24f` | 2026-08-14 16:44 ET |
+
+Both figures check out against the repository -- `4862c90` was HEAD when
+CURRENT.md was last generated overnight. **Project knowledge is not frozen at
+chat start.** Bill's sync reached a conversation already in progress.
+
+**Cloud caught it only because it re-read the file instead of quoting its own
+earlier answer.** That is the whole lesson and it is a familiar one here: an
+answer from earlier in the session is memory, not measurement, and this
+project has been bitten by that distinction repeatedly.
+
+**So the procedure is one thing, not two:** after syncing, have Cloud
+**re-read** `CURRENT.md` and state the commit hash. A new chat is optional --
+it removes contamination when a marker has been pasted in, and nothing else.
+No withheld marker is needed either way.
 
 **This also weakens the sentinel fixed earlier the same day.** The generated
 sentinel now moves with the session log, which repairs the decay problem --
