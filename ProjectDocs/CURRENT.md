@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-14 16:28 ET -->
-<!-- Commit: f910234 -->
+<!-- Generated: 2026-08-14 16:40 ET -->
+<!-- Commit: 8ab78b8 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-14 16:28 ET
-- **Commit at generation:** `f910234`
-- **That commit was made:** 2026-08-14 01:09 ET
-- **Its subject line:** Launch plan -- 18 days, and one item can miss the date
+- **Generated:** 2026-08-14 16:40 ET
+- **Commit at generation:** `8ab78b8`
+- **That commit was made:** 2026-08-14 16:28 ET
+- **Its subject line:** Gate 0 is closed -- the certificate exists, and I checked it myself
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -53,10 +53,24 @@ Also read `CLAUDE.md`, at the repository root. That name never changes.
 
 ## If you are Claude Cloud, do this check first
 
-Quote the sentence in the briefing about SANDY and a local account named
-`panther`. It exists only in the current version. **If you cannot find it,
-you are reading an old snapshot -- say so and stop.** Do not report on a
-document you could not confirm you are actually reading.
+**Quote the heading below back, word for word, from the session log --
+not from this file.** It is the newest entry in the log, so it can only
+be found in a snapshot taken after that session was filed.
+
+```
+## Session: 2026-08-14 16:23 ET [Claude Cloud + Claude Code -- CGDELL]
+```
+
+**If it is not in your copy of the session log, you are reading an old
+snapshot. Say so and stop.** Do not report on a document you could not
+confirm you are actually reading.
+
+This heading is COPIED FROM the live log when this file is generated, so
+it moves forward on its own. The version before 2026-08-14 named a fixed
+sentence about SANDY and a local account called `panther`, which proved
+only that the snapshot post-dated the day that sentence was written --
+the same pointer-that-lies failure this script exists to prevent, wearing
+a different hat.
 
 ## Why this file is generated and not written
 

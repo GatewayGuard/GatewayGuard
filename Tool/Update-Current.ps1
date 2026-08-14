@@ -89,6 +89,31 @@ if ($missing.Count -gt 0) {
     return
 }
 
+# --- the sentinel, GENERATED not typed -----------------------------------
+# Cloud is asked to quote a phrase that exists only in a current snapshot.
+# That phrase must MOVE, or it decays into "proves the snapshot is newer than
+# some day in the past" and quietly passes for weeks. So it is lifted from the
+# top entry of the live session log every time this file is written.
+$logName = ($resolved | Where-Object { $_.Label -eq 'Session log' }).Name
+$logPath = Join-Path $docs $logName
+$sessionHead = ''
+$hit = @(Select-String -LiteralPath $logPath -Pattern '^## Session:' -SimpleMatch:$false |
+         Select-Object -First 1)
+if ($hit.Count -gt 0) { $sessionHead = $hit[0].Line.Trim() }
+
+if ($sessionHead -eq '') {
+    Write-Host ""
+    Write-Host "  STOPPED -- CURRENT.md was NOT changed."
+    Write-Host "  No '## Session:' heading was found in:"
+    Write-Host ("    " + $logName)
+    Write-Host ""
+    Write-Host "  The sentinel is copied from that heading. Without it this file"
+    Write-Host "  would tell Cloud to prove itself against nothing, and Cloud"
+    Write-Host "  would pass. The old CURRENT.md is intact."
+    Write-Host ""
+    return
+}
+
 # --- the freshness stamp -------------------------------------------------
 # Claude Cloud reads a SYNCED COPY of this repository, of unknown age, with no
 # way to see how old it is. Confirmed by Anthropic support 2026-08-12: the
@@ -158,10 +183,24 @@ $L.Add('Also read `CLAUDE.md`, at the repository root. That name never changes.'
 $L.Add('')
 $L.Add('## If you are Claude Cloud, do this check first')
 $L.Add('')
-$L.Add('Quote the sentence in the briefing about SANDY and a local account named')
-$L.Add('`panther`. It exists only in the current version. **If you cannot find it,')
-$L.Add('you are reading an old snapshot -- say so and stop.** Do not report on a')
-$L.Add('document you could not confirm you are actually reading.')
+$L.Add('**Quote the heading below back, word for word, from the session log --')
+$L.Add('not from this file.** It is the newest entry in the log, so it can only')
+$L.Add('be found in a snapshot taken after that session was filed.')
+$L.Add('')
+$L.Add('```')
+$L.Add($sessionHead)
+$L.Add('```')
+$L.Add('')
+$L.Add('**If it is not in your copy of the session log, you are reading an old')
+$L.Add('snapshot. Say so and stop.** Do not report on a document you could not')
+$L.Add('confirm you are actually reading.')
+$L.Add('')
+$L.Add('This heading is COPIED FROM the live log when this file is generated, so')
+$L.Add('it moves forward on its own. The version before 2026-08-14 named a fixed')
+$L.Add('sentence about SANDY and a local account called `panther`, which proved')
+$L.Add('only that the snapshot post-dated the day that sentence was written --')
+$L.Add('the same pointer-that-lies failure this script exists to prevent, wearing')
+$L.Add('a different hat.')
 $L.Add('')
 $L.Add('## Why this file is generated and not written')
 $L.Add('')
