@@ -547,20 +547,42 @@ documented. The wording on syncing is manual throughout: *"You can use the
 'Sync' icon to ensure you're working with the most up-to-date version of your
 codebase."*
 
+**Take only the manual-sync line from that article.** Its description of the
+controls does not match the shipped UI -- see the correction below.
+
 **The "Sync automatically" toggle that support surfaced is a different
 feature** -- it governs GitHub-synced **plugin marketplaces** in organization
 settings, not project knowledge
 (`support.claude.com/en/articles/13837433-manage-plugins-for-your-organization`).
 Do not let its name settle this question.
 
-**Why not tick it, when ticking looks free:** the one control it sits beside
-is **Configure files**, which decides *which files Claude sees*. An
-undocumented checkbox that narrowed scope would produce **silent absence** --
-Cloud stops seeing files and nothing announces it. That is this project's most
-expensive failure mode, and the whole reason CURRENT.md exists. **Saving one
-click is not worth an unknown control on Cloud's only channel.**
+**THE ARTICLE IS OUT OF DATE. Bill's screen is the authority.** Corrected
+2026-08-14 by direct observation, which outranks the documentation:
 
-Treating sync as manual has never once been wrong here.
+- **There is no "Configure files" button.** Reconfiguring is done by
+  **clicking the repository in project knowledge**, which opens its file
+  directory; you change the selection and press **Add** to save.
+- **The checkbox does nothing observable.** Ticking it produces a checkmark
+  and no other visible change.
+
+**That second line is the answer to support's own suggestion.** They said
+*"try it and see if anything changes."* It has been tried. **Nothing
+changes.**
+
+**My earlier reason for avoiding it was wrong and is withdrawn.** It argued
+the checkbox might narrow file scope because it sat beside a Configure-files
+control -- and that control is not there. Reasoning from a stale document
+about a live UI, when the person looking at the UI was in the conversation.
+
+**The recommendation still stands, on better grounds:** ticking it has been
+observed to do nothing, so there is nothing to gain, and Cloud went stale four
+times today regardless. **Keep clicking Sync.** Treating sync as manual has
+never once been wrong here.
+
+**The wider lesson, and the reason this is filed rather than fixed quietly:
+Anthropic's support documentation does not match the shipped project-knowledge
+UI.** Do not settle a UI question from those articles again without Bill
+confirming what is actually on screen.
 
 **The measurement then runs itself, at zero cost.** Every stamp read is a data
 point: **if Cloud ever reports the current hash before Bill has clicked, auto
