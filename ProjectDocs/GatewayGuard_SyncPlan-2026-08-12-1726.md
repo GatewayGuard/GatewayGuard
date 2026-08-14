@@ -534,10 +534,33 @@ project knowledge. **Nobody outside Bill's screen can say what it does.**
   moves in one day, each shortly after a manual click. `624c930` was pushed at
   18:27 and Cloud was still reading the 17:20 snapshot afterwards.
 
-**THE STANDING POSITION: tick the checkbox, and keep clicking sync anyway.**
-They do not conflict. The checkbox can only help; the click is what
-guarantees. Nothing is lost by doing both, and treating sync as manual has
-never once been wrong.
+**THE STANDING POSITION: DO NOT TICK IT. Keep clicking sync.**
+
+**This reverses the advice written here an hour earlier**, which said to tick
+it because *"it can only help."* That was unfounded, and support's own
+documentation is what withdrew it.
+
+**sourced**, `support.claude.com/en/articles/10167454-use-the-github-integration`,
+read 2026-08-14: a connected repository in project knowledge has **exactly two
+controls -- a Sync icon and a Configure files icon.** No checkbox is
+documented. The wording on syncing is manual throughout: *"You can use the
+'Sync' icon to ensure you're working with the most up-to-date version of your
+codebase."*
+
+**The "Sync automatically" toggle that support surfaced is a different
+feature** -- it governs GitHub-synced **plugin marketplaces** in organization
+settings, not project knowledge
+(`support.claude.com/en/articles/13837433-manage-plugins-for-your-organization`).
+Do not let its name settle this question.
+
+**Why not tick it, when ticking looks free:** the one control it sits beside
+is **Configure files**, which decides *which files Claude sees*. An
+undocumented checkbox that narrowed scope would produce **silent absence** --
+Cloud stops seeing files and nothing announces it. That is this project's most
+expensive failure mode, and the whole reason CURRENT.md exists. **Saving one
+click is not worth an unknown control on Cloud's only channel.**
+
+Treating sync as manual has never once been wrong here.
 
 **The measurement then runs itself, at zero cost.** Every stamp read is a data
 point: **if Cloud ever reports the current hash before Bill has clicked, auto
@@ -547,6 +570,17 @@ a stale snapshot is worst for deletions, which it renders as live files.
 
 **If it is ever proved working, this section gets rewritten with the
 evidence.** Until then: manual.
+
+**How to find out what it is, cheaply, without ticking it:**
+
+1. **Hover for a tooltip.** Costs nothing and may name it outright.
+2. **Screenshot it and send the picture to support.** Their last question was
+   *"could you describe what happens when you click it?"* -- and *"it puts a
+   checkmark in the box"* is a true answer that cannot help them. **A picture
+   ends the round trip**, because they can see the control they have no
+   documentation for.
+3. Claude Code can look at the page directly through the Chrome extension if
+   that is ever worth the setup. Not needed for a screenshot.
 
 ### 9b. The stamp certifies its own file, not the reply it appears in
 
