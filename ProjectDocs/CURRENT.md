@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-14 16:44 ET -->
-<!-- Commit: 925a24f -->
+<!-- Generated: 2026-08-14 16:53 ET -->
+<!-- Commit: c711a1c -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-14 16:44 ET
-- **Commit at generation:** `925a24f`
-- **That commit was made:** 2026-08-14 16:40 ET
-- **Its subject line:** Make the sync sentinel move by itself
+- **Generated:** 2026-08-14 16:53 ET
+- **Commit at generation:** `c711a1c`
+- **That commit was made:** 2026-08-14 16:52 ET
+- **Its subject line:** Measured: a Cloud snapshot moves mid-conversation
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
