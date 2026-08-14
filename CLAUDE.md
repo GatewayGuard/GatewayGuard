@@ -287,6 +287,35 @@ the whole lesson: a gate with no check is a wish.
 
 ---
 
+## GETTING A FILE TO CLAUDE CLOUD -- FIVE STEPS, ALL SILENT
+
+```
+1. Put the file in the folder     OneDrive syncs it. Cloud sees NOTHING.
+2. git add <path>                 Git now knows it exists.
+3. git commit                     Now it is in the repository.
+4. git push                       Now it is on GitHub.
+5. Bill clicks SYNC NOW           Now the connector has fetched it.
+```
+
+**A file in the folder is not in the repo.** OneDrive syncs the folder; the
+connector syncs the repo; only the repo reaches Cloud. Nothing in either
+interface tells you which steps have happened, and **only 1 and 5 are
+visible**.
+
+**Step 6, and it defeats all five:** if the file is `.docx`, `.pdf` or
+`.pptx`, **Cloud still cannot read it**. Measured 2026-08-13 --
+`MarketResearch.docx` and `MarketResearch.md`, same folder, same scope, same
+commit: only the `.md` ever surfaces. The guide `.docx` was committed and
+pushed for **sixteen days** while invisible.
+
+Keep the binary for safekeeping -- git stores and versions it fine, it just
+cannot diff it -- and **generate a `.md` beside it**. Proven twice:
+`Tool\build_marketing_sourcepack.py`, `Tool\build_guide_sourcepack.py`.
+
+Full detail, with the evidence for each failed step: briefing section 8a.
+
+---
+
 ## THE TEN-MINUTE RULE -- STOP AND WRITE IT UP
 
 Bill, 2026-08-12: *"If an issue can't be solved in 10 minutes or so, write up

@@ -1,15 +1,21 @@
-<!-- Dated: 2026-08-13 14:33 ET -->
+<!-- Dated: 2026-08-14 00:07 ET -->
 # READ FIRST -- Session Briefing
 **Document Name:** _READ-FIRST-Briefing
-**Last Modified:** 2026-08-13 14:33 ET
+**Last Modified:** 2026-08-14 00:07 ET
 **Last Editor:** Claude Code (CGDELL)
 **Purpose:** Read this before anything else at the start of every session.
-**Supersedes:** `_READ-FIRST-Briefing-2026-08-11-1616.md`, which had **nine
+**Supersedes:** `_READ-FIRST-Briefing-2026-08-13-1433.md`, and through it
+`-2026-08-11-1616.md`, which had **nine
 wrong or overtaken items** by the morning of 2026-08-13 -- including the two
 that block work: it said ascii39 had never been field run, and it said no
 ascii40 may be scoped.
 
 **Change History Log:**
+- 2026-08-14 00:07: **Added section 8a, THE FIVE-STEP CHAIN.** The most
+  useful thing learned on 2026-08-13, and it existed only in a chat until
+  now. Every step fails silently; only the first and last are visible. Step 6
+  -- binaries need extraction -- defeats all five and cost sixteen days on the
+  guide.
 - 2026-08-13 14:33: **Full reissue.** The ascii39 crashes are not crashes --
   root cause found in the logs and the source, section 2. ascii40 is
   UNBLOCKED and its field test plan exists. Two new gates and the
@@ -352,6 +358,67 @@ fully loaded and answering correctly.
 **Unresolved:** whether a re-sync **removes** deleted files from project
 knowledge. 262 files were retired on 2026-08-13. Test with a **content probe
 on a file changed that day** -- never by asking Cloud to enumerate.
+
+---
+
+## 8a. THE FIVE-STEP CHAIN -- HOW A FILE ACTUALLY REACHES CLOUD
+
+**This is the single most useful thing learned on 2026-08-13. Every step
+fails SILENTLY, and only the first and last are visible to anyone.**
+
+```
+1. Put the file in the folder      OneDrive syncs it. Cloud sees NOTHING.
+2. git add <path>                  Git now knows the file exists.
+3. git commit                      Now it is in the repository.
+4. git push                        Now it is on GitHub.
+5. Click SYNC NOW in the project    Now the connector has fetched it.
+```
+
+**A file sitting in the folder is not in the repo.** OneDrive syncs the
+folder; the connector syncs the repo; **only the repo reaches Cloud.** Nothing
+in either interface tells you which of these five has happened.
+
+**Each step has already failed here at least once:**
+
+| Step missed | What it looked like | When |
+|---|---|---|
+| 2-4 | Five guide PDFs invisible to Cloud | untracked until 2026-08-09 |
+| 2-4 | 99 files untracked, nobody had decided that | 2026-08-12 |
+| 2-4 | Field logs arrive untracked, so `git` cannot see them and a session reports "no field log exists" | 2026-08-12 |
+| 5 | Connector index frozen **thirty commits behind** while answering confidently | 2026-08-12 |
+
+### STEP 6, AND IT DEFEATS ALL FIVE
+
+```
+6. Is it .docx / .pdf / .pptx?     Then Cloud STILL cannot read it.
+                                   Extract the text to .md in ProjectDocs\.
+```
+
+**measured 2026-08-13, a controlled result** -- one document, two formats,
+same folder, same connector scope, same commit:
+
+| File | Cloud |
+|---|---|
+| `ProjectDocs/GatewayGuard_MarketResearch.docx` | **never surfaces** |
+| `ProjectDocs/GatewayGuard_MarketResearch.md` | surfaces immediately |
+
+Across roughly a dozen searches Cloud has never returned a `.docx` source
+path. `windows_security_walkthrough_guide_v9.docx` was committed and pushed
+**sixteen days** before this was noticed, and was invisible the whole time.
+
+**So a binary can pass all five steps and still be unreadable.** Committing
+harder does not help. Extraction does.
+
+**The fix is already built and proven twice:**
+`Tool\build_marketing_sourcepack.py` and `Tool\build_guide_sourcepack.py`
+both generate a `.md` into `ProjectDocs\`, and Cloud read each within the
+hour. **Keep the binary for safekeeping -- git stores and versions it
+perfectly well; it simply cannot diff it -- and generate the `.md` for
+working.**
+
+*Anthropic's connector documentation gives no file-type list either way, so
+"binaries are not indexed" is **inferred**, not settled. The MarketResearch
+pair is the clean case to take to support if you want it established.*
 
 ---
 
