@@ -112,7 +112,7 @@ Even the best existing guides (such as Citadel Frame's hardening guide) emphasiz
 | CIS-CAT Pro | IT/Security pros | Benchmark compliance | Too technical | Simplify CIS-style guidance for home users |
 | O&O ShutUp10++ | Home users | Easy privacy toggles | No security depth | Add real security hardening with explanations |
 | Win11Debloat | Power users | Removes bloat | Risky, no guidance | Provide safe, explained, reversible changes |
-| GatewayGuard | Home & Pro users | Guided, educational, reversible, free | New product — building reputation | FILL THE EXPLAIN + HARDEN GAP |
+| GatewayGuard | Home & Pro users | Guided, educational, reversible, $19.99 one-time | New product — building reputation | FILL THE EXPLAIN + HARDEN GAP |
 
 # 5. The Non-Obvious Insight — Why GatewayGuard Could Win
 
@@ -134,7 +134,7 @@ The following capabilities are offered by NO other tool in this space:
 
 - **PLAIN ENGLISH WHY — Every setting explained in non-technical terms. ****'****Here is what was found, here is what was changed, here is exactly why.****'**
 
-- **HUMAN-ASSISTED SESSIONS — Beta tester program with screen share and text guidance. Personal security consultant experience at no cost.**
+- **HUMAN-ASSISTED SESSIONS (PLANNED, NOT AT LAUNCH) — a roadmap offering of screen share and text guidance. Beta-testing screen-share sessions are the testing methodology and are active now; the paid assisted-session product is not.**
 
 - **HARDWARE-AWARE — Detects your specific PC configuration (battery, edition, RAM, AV state) and adapts recommendations accordingly.**
 
