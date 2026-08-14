@@ -108,6 +108,44 @@ problem?"* was answered by asking what actually ships, which is one command,
 rather than by planning around the worst case. EXHAUST THE FORMS, and check
 what the thing is before deciding what it needs.
 
+### THE .cs LAUNCHER IS DELETED. IT SELF-ELEVATES.
+
+Bill asked whether the `.cs` launcher written to replace the `.bat` was still
+needed. **No, and it must never be compiled.** Two byte-identical copies
+existed, `ProjectDocs\launcher.cs` and `Builds\Ascii-ps1-launcher.cs`, both
+from 2026-07-19/21. Both removed.
+
+**Three defects, the first of them the banned one:**
+
+1. **`Verb = "runas"` -- that is self-elevation**, the exact pattern
+   Malwarebytes flagged as exploit payload. CLAUDE.md forbids it in three
+   separate places and the field record carries it as a standing rule. **A
+   compiled version of this file would have re-earned the AV flag**, and this
+   time on a signed binary carrying the company name.
+2. **It hardcodes `ascii33`.** The build is ascii39. It would launch nothing.
+3. **It prints "Press any key to exit"** -- the banned phrase.
+
+**The idea behind it was sound and is worth stating, because it will come
+back:** a `.bat` cannot carry an Authenticode signature, so an `.exe` launcher
+would be signable and a `.bat` never will be. That argument got stronger the
+day the certificate arrived.
+
+**Decision: keep the `.bat` for launch. Recommendation, not a measurement.**
+
+- **The signature belongs on the thing that does the work**, and that is the
+  `.ps1`. It is signed. The `.bat` is two lines that start it.
+- **An `.exe` launcher is where self-elevation becomes tempting** -- this file
+  is the proof, since that is precisely what the last attempt did.
+- **A new binary artifact is a new AV surface**, eighteen days out, in a
+  product whose entire promise is that it is safe to run.
+- **A signed `.ps1` may also relax execution policy.** Under `RemoteSigned` a
+  signed script should run without the `-ExecutionPolicy Bypass` the launcher
+  passes today. **Unverified -- worth measuring before ascii40 ships**, since
+  dropping `Bypass` would be a real reduction in how alarming the tool looks
+  to security software.
+
+**Recoverable:** both files are in git history at `92b7ac1` and `745dfde`.
+
 ### The wrong installer -- most of an afternoon
 
 Bill ran `SACCustomizationPackage-10_9-R1` instead of
