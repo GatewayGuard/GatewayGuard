@@ -1,10 +1,17 @@
 <!-- Dated: 2026-08-12 17:26 ET -->
 # GatewayGuard -- Sync Plan: Claude Code, Claude Cloud, and Bill
 - **Document Name:** GatewayGuard_SyncPlan
-- **Last Modified:** 2026-08-12 17:26 ET
+- **Last Modified:** 2026-08-14 17:00 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **Status:** Cumulative Master Document
 - **Change History Log:**
+  - 2026-08-14 17:00: **Sections 9a and 9b added, both from measurement on the
+    day the connector was finally proved working.** 9a: a snapshot moves
+    mid-conversation, so re-read rather than recall, and regenerate the stamp
+    last. 9b: Cloud's own limit -- the stamp certifies the file it sits in,
+    not the reply it appears in, because two knowledge searches can hit two
+    snapshots. Step 4 of the standing loop reworded from "ask what stamp it
+    sees" to "ask it to RE-READ", which is the whole of 9a in one word.
   - 2026-08-12 17:26: **Section 5a rewritten around ProjectDocs\GatewayGuard_CloudProjectInstructions-*.md, the file that finally contains the pointer text this rule has demanded since 2026-08-09. Also removes the "read the newest briefing by the date in the filename" instruction, which Cloud cannot execute.**
   - 2026-08-12 15:12: **Section 5a pointer updated again, for the
     `Check-Claude-Cloud.txt` -> `Start-Claude-Cloud.txt` rename** (2026-08-12,
@@ -481,10 +488,49 @@ explicitly -- *"this is in chat only, not yet filed in [filename]."*
 1. **Edit locally** -- Claude Code, in the one tree
 2. **Commit and push** -- at the end of any session with work worth keeping
 3. **Click Sync** in Cloud's project knowledge panel -- Bill
-4. **Ask Cloud what stamp it sees** when it matters
+4. **Ask Cloud to RE-READ CURRENT.md and state the hash** when it matters
 
 A remote that is 21 commits stale is a recovery point for a version you no
 longer have. The push is not optional.
+
+### 9a. Re-read, do not recall. And regenerate the stamp last.
+
+**A snapshot moves mid-conversation. Measured 2026-08-14**, three reads in one
+Cloud chat: `4862c90` at 01:09, `925a24f` at 16:44, `c711a1c` at 16:53. Bill's
+sync reached a conversation already in progress. **Project knowledge is not
+frozen at chat start.**
+
+Two consequences, and they point in opposite directions:
+
+- **A new chat is not required to see fresh files.** It removes contamination
+  -- a marker Bill pasted earlier, or Cloud's own prior report -- and nothing
+  else. Freshness needs a re-read, not a new chat.
+- **An answer from earlier in the session is memory, not measurement.** Cloud
+  caught the move only because it re-read rather than quoting itself. Same
+  distinction the rest of this project runs on.
+
+**Claude Code's half: regenerate `CURRENT.md` as the LAST act before saying
+"sync now", never before another commit.** Caught 2026-08-14 -- a commit filed
+after the stamp was generated left the stamp pointing behind HEAD, so a
+correct sync would have returned the previous hash and read as a failure.
+
+### 9b. The stamp certifies its own file, not the reply it appears in
+
+**Cloud's observation, 2026-08-14, and it is right.** Each knowledge search
+returns whatever snapshot exists at call time. A reply that quotes the stamp
+from one call and file content from another **cannot prove both came from the
+same snapshot** -- and the snapshot demonstrably moves on the scale of
+seconds.
+
+**In practice the exposure is small** and the failure is benign: the worst
+case is a reply mixing two snapshots minutes apart, which here means slightly
+older content reported under a slightly newer hash. Nobody should build a
+mechanism against it.
+
+**What it does forbid is over-claiming.** "Hash `c711a1c`" means *the
+CURRENT.md I read was from that snapshot*. It does not mean *everything else
+in this reply was*. Where a conclusion depends on two files agreeing, read
+them and say plainly that they were separate calls.
 
 ---
 
