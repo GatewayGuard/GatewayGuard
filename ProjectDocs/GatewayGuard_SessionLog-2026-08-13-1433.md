@@ -28,6 +28,127 @@ This is the shared memory between all Claude instances.
 ---
 ---
 
+## Session: 2026-08-14 16:23 ET [Claude Cloud + Claude Code -- CGDELL]
+
+**GATE 0 IS ANSWERED. The DigiCert OV code signing certificate is issued and
+installed on the token.** Reported by Claude Cloud, then verified
+independently by Claude Code from the certificate store on CGDELL.
+
+### The certificate -- measured twice, by two instances
+
+Cloud measured it from SAC Tools. Claude Code measured it from
+`Cert:\CurrentUser\My` at 16:25 ET. **Serial numbers match exactly.**
+
+| Field | Value |
+|---|---|
+| Subject | `CN=GatewayGuard LLC, O=GatewayGuard LLC, L=Brunswick, S=Maine, C=US` |
+| Issuer | `CN=DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1` |
+| Serial | `01CB7A973EBF26A608319C22D7ACB78A` |
+| Thumbprint | `0995F50D9496116A36624D8A81B404439C55B796` |
+| Valid | NotBefore **2026-08-14 00:00 UTC**, NotAfter **2027-08-16** |
+| `HasPrivateKey` | **True** -- the key is reachable from this machine |
+| Key | 4096-bit, `AT_KEYEXCHANGE`, container `p11#5848bf2daf069a8f` |
+| Token | SafeNet eToken 5110+ FIPS, serial `A4EF7B2419018BA8`, FIPS 140-2 L2 |
+| KSP | SafeNet Smart Card Key Storage Provider |
+
+### HARD DEADLINE -- the token password expires 2026-09-13
+
+A thirty-day expiry was set at initialization. **That is twelve days after
+launch.** Password is 16 characters maximum and lives in Proton Pass; the
+replacement goes into Proton Pass the same minute it is changed.
+
+**The admin password is deliberately left at factory default.** It is the only
+unlock path, and a lost admin password bricks the token permanently -- DigiCert
+has no override.
+
+### NO TEST SIGNATURE HAS BEEN PRODUCED -- and the signing tool is missing
+
+The certificate has never signed anything. **Measured on CGDELL, two queries
+of different shape (V-1):** `signtool.exe` returns **0 hits** across `PATH`
+and four SDK/Visual Studio root paths. It is not installed.
+
+**It may not be needed.** `Set-AuthenticodeSignature` is present and is the
+native way to sign a `.ps1`, which is what Checkup is. **Open question for the
+next session:** does the shipped artifact include an `.exe` or installer? If
+it is `.ps1` + `.bat` only, no SDK install is required. (`.bat` files cannot
+carry an Authenticode signature at all -- that is a property of batch files,
+not a defect.)
+
+**Next action is B4: sign a throwaway file and verify it, before anything
+depends on it.**
+
+### The wrong installer -- most of an afternoon
+
+Bill ran `SACCustomizationPackage-10_9-R1` instead of
+`SafeNetAuthenticationClient-x64-10_9-R1`. Both shipped in the same folder
+from the CA.
+
+The customization package is an **enterprise tool that builds MSIs for
+deploying SAC to other machines** -- features tree, Graphics page, MSI signing
+page, `[ProgramFilesFolder]` placeholder paths. It needs Domain Admin. It
+never installs a working client, so there was no driver, no service, no token.
+
+**It presents as the main event:** largest file in the folder at 63 MB, while
+the client MSIs are named `610-013075-006`, which says "client" no more
+clearly than the other says "customization".
+
+**Cloud took five rounds** -- a service-name check sourced from an unrelated
+deployment guide, an uninstall-registry sweep, and a download link for a file
+Bill already had. **One command settled it:** reading the MSI summary streams
+returned the internal titles, *"SafeNet Authentication Client Customization
+Tool"* against *"SafeNet Authentication Client 10.9 R1"*.
+
+**NEW RULE -- FILE IDENTITY IS MEASURED, NOT INFERRED.** The existing counting
+rule (*"if a number can be counted by a command, it is not allowed to be
+counted any other way"*) now extends to **which file is which**. Ask for the
+folder listing first. Do not diagnose a machine from symptoms when the
+artifacts are sitting there readable.
+
+### A clean negative was second-guessed, and it was right
+
+`Get-Service SACSrv` returned not-found. That was accurate and meant SAC was
+absent. Cloud hedged it as possibly a renamed service. **After the real
+install the service is named `SACSrv` exactly.**
+
+**RULE: a clean negative from a check that later proves correct should be
+trusted, not softened.** Hedging a correct measurement costs the same as a
+wrong one -- it removes the evidence from play.
+
+### The date was wrong all session
+
+Bill gave 8/13 twice; it was **8/14**. Cloud flagged the conflict at session
+open -- `CURRENT.md` carried commit `4862c90` dated 2026-08-14 00:43, which
+cannot post-date the present -- then proceeded on Bill's date, per the rule
+that his answer stands.
+
+**RULE: A DATE CONFLICT IS A STOP, NOT A FLAG.** *"Once Bill gives a time it
+stands"* was written to stop nagging, not to override measurement. When a
+measured timestamp contradicts the stated date, **file nothing** -- ask for
+`Get-Date` output and wait. Nothing was filed wrongly this session only
+because Cloud produced no file until the conflict resolved.
+
+**One correction to the evidence, not the conclusion.** Cloud cited the
+certificate's validity date as the strongest proof because it is DigiCert's
+timestamp rather than CGDELL's clock. **The `NotBefore` is 2026-08-14 00:00
+UTC, which is 2026-08-13 20:00 local** -- so read in local time it would have
+supported the wrong date. The conclusion was right and the token expiry
+argument holds; the certificate argument was weaker than stated. `Get-Date`
+on CGDELL returned **2026-08-14 16:25 ET**, which settles it directly.
+Corrected session time: **2026-08-14 16:23 ET**.
+
+### What this changes
+
+- **GATE 0 in the launch plan is closed, best case.** The certificate is in
+  hand on day 18 of 18. `GatewayGuard_LaunchPlan-2026-08-14-0107.md` updated:
+  A6 is unblocked, B1-B3 are done, and the token password expiry is added to
+  the risk section.
+- **The longest pole is gone.** The critical path is now purely
+  build -> freeze -> sign -> screenshots, all of it internal work.
+- **A new dated risk replaces it,** and it is smaller: one password change
+  before 2026-09-13.
+
+---
+
 ## Session: 2026-08-13 08:10 to 14:33 [Claude Code -- CGDELL]
 
 **No build work. The ascii39 crashes turned out not to be crashes, two new

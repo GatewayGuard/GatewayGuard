@@ -3,12 +3,17 @@
 # GatewayGuard Launch Plan -- 18 days to 1 September
 
 - **Document Name:** GatewayGuard_LaunchPlan
-- **Last Modified:** 2026-08-14 01:07 ET
+- **Last Modified:** 2026-08-14 16:30 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **Built from:** `GatewayGuard_CPM_Schedule-2026-08-02-1201.md` (critical path
   and float), the ascii39 field results, and the repository as measured today.
 
 **Change History Log:**
+- 2026-08-14 16:30: **GATE 0 CLOSED -- the certificate is issued and
+  installed.** Gate 0 rewritten from a question into a result, Track B marked
+  done except the test signature, and the risk section replaced: the longest
+  pole is gone and a smaller dated risk takes its place (the token password
+  expires 2026-09-13).
 - 2026-08-14 01:07: Created. The CPM schedule is 12 days old, its feature
   freeze date is **today**, and ascii40 is not built. This re-orders the
   remaining work against 18 calendar days.
@@ -25,45 +30,53 @@ something nobody has confirmed in twelve days.
 
 ---
 
-## GATE 0 -- DO THIS TODAY, BEFORE ANYTHING ELSE
+## GATE 0 -- CLOSED, 2026-08-14. BEST CASE.
 
-### Confirm the code-signing certificate status. One phone call or one login.
+### The code-signing certificate is issued and installed.
 
-**This has read "STATUS UNCONFIRMED" since 2026-08-02.** The CPM named it
-*"the most likely thing to break this plan"* and told you to confirm it on
-Monday 3 August. Twelve days later it is still unknown.
+The answer came back on the day this plan asked for it, and it is the good
+one: **validated, token in hand.** The fallbacks below are struck through --
+none of them is needed.
 
-**Why it outranks everything:** signing gates screenshots, screenshots gate
-the download page, and the download page gates launch. And the validation
-response we filed says it plainly -- without a certificate, Windows shows
-**"Unknown Publisher"**, which *"would prevent non-technical users from
-running the software."* That is the entire audience.
+**Measured twice, by two instances, serial numbers matching exactly.** Cloud
+read it from SAC Tools; Claude Code read it from `Cert:\CurrentUser\My` at
+16:25 ET.
 
-**What is on file:** `Certificates\DigiCert OV Token Confirmation.pdf`, dated
-**18 July**, and a completed
-`ProjectDocs\GatewayGuard_DigiCert_Validation_Response.txt`. So a token was
-assigned and answers were prepared. **Whether validation completed is not
-recorded anywhere.**
+| Field | Value |
+|---|---|
+| Subject | `CN=GatewayGuard LLC, O=GatewayGuard LLC, L=Brunswick, S=Maine, C=US` |
+| Issuer | `CN=DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1` |
+| Serial | `01CB7A973EBF26A608319C22D7ACB78A` |
+| Thumbprint | `0995F50D9496116A36624D8A81B404439C55B796` |
+| Valid | 2026-08-14 to 2027-08-16 |
+| `HasPrivateKey` | **True** -- the key is reachable from CGDELL |
+| Token | SafeNet eToken 5110+ FIPS, FIPS 140-2 L2 |
 
-**Three possible answers, three different plans:**
+**What this buys:** no "Unknown Publisher" warning. The validation response on
+file said that warning *"would prevent non-technical users from running the
+software"* -- the entire audience. That risk is gone.
 
-| Answer | What it means | What changes |
-|---|---|---|
-| **Validated, token in hand** | Best case | Nothing. Follow this plan as written |
-| **Submitted, still pending** | Typical OV takes 3-5 business days | Chase it daily. Everything else stays parallel |
-| **Not submitted / blocked on bank or D&B** | **The September date is at risk** | Decide TODAY between the fallbacks below |
+~~Launch unsigned with a SmartScreen warning page. Move the date to 15
+September. Try a faster issuer.~~ **All three withdrawn.**
 
-### If the certificate cannot land in time -- decide now, not on 30 August
+### The one thing still owed on the certificate
 
-1. **Launch unsigned with an honest SmartScreen warning page.** Buildable,
-   but it fights the product's core promise and this audience is the least
-   equipped to click past a scary warning. **Weakest option.**
-2. **Move the date.** 15 September costs two weeks and nothing else.
-3. **A faster issuer.** Some resellers turn OV around quicker for an
-   established LLC with an EIN. Worth one call.
+**It has never signed anything.** A certificate that cannot be demonstrated to
+sign is not yet an asset. See **B4** -- do it before anything depends on it,
+not on freeze day.
 
-**Do not let this drift another twelve days. It is the only item on this page
-that money and time cannot fix late.**
+### The new dated risk -- read this, it is smaller but real
+
+**The token password expires 2026-09-13**, a thirty-day expiry set at
+initialization. That is **twelve days after launch**, so it does not threaten
+1 September -- but it will land during the first fortnight of selling, when a
+patch build is most likely.
+
+- Password is **16 characters maximum**, held in Proton Pass.
+- The replacement goes into Proton Pass **the same minute** it is changed.
+- **The admin password stays at factory default on purpose.** It is the only
+  unlock path, and losing it bricks the token permanently. DigiCert has no
+  override.
 
 ---
 
@@ -81,7 +94,7 @@ critical path.**
 | A3 | **Field test ascii40 on SANDY** | Bill | 0.5 | Phase 3 of the field test plan. Provoke the input bug deliberately |
 | A4 | Fix what A3 finds | Claude Code | 1 | The allowance. Beyond it, ship with known cosmetic defects |
 | A5 | **FEATURE FREEZE** | Bill | -- | Was scheduled for today. Realistically **Wed 20 Aug** |
-| A6 | **Sign the build** | Bill | 0.5 | **BLOCKED ON GATE 0** |
+| A6 | **Sign the build** | Bill | 0.5 | **UNBLOCKED 2026-08-14.** Needs B4 proved first |
 | A7 | Hash + `download.html` | Claude Code | 0.5 | Content draftable now; hash after A6 |
 
 **A2 is only three defects, not the 47 findings.** FT-171 stops sessions
@@ -89,18 +102,34 @@ ending by themselves. FT-172 stops screens lying about their own numbers.
 FT-175 makes the Defender scan actually run -- it never has, on any machine.
 **Everything else in the field results waits for ascii41.**
 
-### TRACK B -- THE CERTIFICATE (Bill, external, longest pole)
+### TRACK B -- THE CERTIFICATE (was the longest pole; now nearly done)
 
-| # | Task | Owner |
-|---|---|---|
-| B1 | **Confirm validation status** | Bill -- **TODAY** |
-| B2 | If not submitted, submit. The answers are already written | Bill |
-| B3 | If blocked on the bank letter or D&B, escalate or switch issuer | Bill |
-| B4 | Test-sign a throwaway file the day the token works | Bill + Claude Code |
+| # | Task | Owner | Status |
+|---|---|---|---|
+| B1 | Confirm validation status | Bill | **DONE 2026-08-14** |
+| B2 | Submit if not submitted | Bill | **DONE** -- issued |
+| B3 | Escalate if blocked on bank letter or D&B | Bill | **NOT NEEDED** |
+| B4 | **Test-sign a throwaway file and verify it** | Bill + Claude Code | **OPEN -- do it next** |
+| B5 | **Change the token password before 2026-09-13** | Bill | Diarise it. New password into Proton Pass the same minute |
 
-**The bank account is the hidden dependency.** DigiCert wants a qualifying
-**checking** account named explicitly in the bank letter. If Maine Community
-Bank is not open yet, B2 cannot complete.
+**B4 is now the top item in this track and takes minutes.** One open question
+first: **what artifact actually ships?**
+
+- **If Checkup ships as `.ps1` + `.bat`** -- `Set-AuthenticodeSignature` is
+  built into PowerShell and signs the `.ps1` directly. **Nothing to install.**
+  (A `.bat` cannot carry an Authenticode signature at all. That is how batch
+  files work, not a defect, and the `.bat` is a two-line launcher for a signed
+  `.ps1`.)
+- **If anything is packaged as `.exe` or an installer** -- that needs
+  `signtool.exe`, and **measured on CGDELL with two queries of different
+  shape, signtool is not installed**: 0 hits across `PATH` and four SDK and
+  Visual Studio root paths. Installing the Windows SDK is a change to Bill's
+  machine, so it is his call, and it wants doing **now** rather than on
+  freeze day.
+
+**The bank-account dependency is dead.** DigiCert wanted a qualifying checking
+account named in the bank letter; the certificate issued, so that question is
+settled whatever the answer was.
 
 ### TRACK C -- SELLING (Bill, parallel, no dependency on the build)
 
@@ -155,23 +184,40 @@ price.
 
 ---
 
-## THE HONEST RISK
+## THE HONEST RISK -- rewritten 2026-08-14 16:30
 
-**One item can miss the date and nothing else can: the certificate.**
+~~One item can miss the date and nothing else can: the certificate.~~
+**The certificate landed. That risk is closed**, and with it the only item on
+this plan that money and time could not fix late. Nothing on the critical path
+now depends on an outside party's queue -- **every remaining item is work in
+this room.**
 
-Every other line on this page is work that can be compressed, cut, or shipped
-imperfect. The certificate is an external party's queue, it has been unmoving
-for twelve days, and its dependency chain runs through a **bank account that
-may not be open**.
+**The risk that replaces it is the ordinary one: 12 working days, one solo
+developer, and a build that is not written yet.** That is a scheduling
+problem, not a hazard. It responds to cutting scope, and the cut list above is
+the response.
 
-**The second risk is smaller and real:** ascii40 surfaces a new blocker in
-field test. The allowance is A4. Beyond that, ship with known cosmetic
-defects and fix them in ascii41 -- the product does not need to be perfect on
-1 September, it needs to be **signed, honest, and buyable.**
+**The three live risks, in order:**
 
-**What is genuinely in good shape:** the 19 website pages are built, verified
+1. **The test signature has never been produced (B4).** A certificate that has
+   not signed anything is an unproven asset. Discovering on freeze day that a
+   Windows SDK install is needed would cost the schedule real hours. **Minutes
+   now, hours later.**
+2. **ascii40 surfaces a new blocker in field test.** The allowance is A4.
+3. **The token password expires 2026-09-13**, twelve days after launch, during
+   the fortnight a patch build is most likely. Diarised as B5.
+
+**On risk 2, the standing allowance:** beyond A4, ship with known cosmetic
+defects and fix them in ascii41. The product does not need to be perfect on
+1 September. It needs to be **signed, honest, and buyable** -- and as of today
+the first of those three is possible for the first time.
+
+**What is genuinely in good shape:** the certificate is issued and the private
+key is reachable from this machine; the 19 website pages are built, verified
 and clean; the field test plan for ascii40 exists with the root cause found;
 the tooling (gates 12, 24, 25, the assert-guarded wrapper) is committed; the
 LLC, EIN and domain are done.
 
-**The build is closer than the paperwork.**
+~~The build is closer than the paperwork.~~ **The paperwork is done. The build
+is now the whole job** -- which is the position you would have chosen 18 days
+out, because it is the part nobody else controls.
