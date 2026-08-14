@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-14 17:20 ET -->
-<!-- Commit: e5c3339 -->
+<!-- Generated: 2026-08-14 18:27 ET -->
+<!-- Commit: 624c930 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-14 17:20 ET
-- **Commit at generation:** `e5c3339`
-- **That commit was made:** 2026-08-14 17:20 ET
-- **Its subject line:** B4 passed -- the certificate signs, and the signature is timestamped
+- **Generated:** 2026-08-14 18:27 ET
+- **Commit at generation:** `624c930`
+- **That commit was made:** 2026-08-14 18:27 ET
+- **Its subject line:** Delete the .cs launcher -- it self-elevates
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
