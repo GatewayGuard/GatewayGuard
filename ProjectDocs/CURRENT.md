@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-14 16:40 ET -->
-<!-- Commit: 8ab78b8 -->
+<!-- Generated: 2026-08-14 16:44 ET -->
+<!-- Commit: 925a24f -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-14 16:40 ET
-- **Commit at generation:** `8ab78b8`
-- **That commit was made:** 2026-08-14 16:28 ET
-- **Its subject line:** Gate 0 is closed -- the certificate exists, and I checked it myself
+- **Generated:** 2026-08-14 16:44 ET
+- **Commit at generation:** `925a24f`
+- **That commit was made:** 2026-08-14 16:40 ET
+- **Its subject line:** Make the sync sentinel move by itself
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**

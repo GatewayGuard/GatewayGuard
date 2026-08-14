@@ -136,6 +136,36 @@ argument holds; the certificate argument was weaker than stated. `Get-Date`
 on CGDELL returned **2026-08-14 16:25 ET**, which settles it directly.
 Corrected session time: **2026-08-14 16:23 ET**.
 
+### RULE: A FRESHNESS TEST MUST USE A STRING THAT COULD ONLY HAVE COME FROM THE REPOSITORY
+
+**Bill caught this the same afternoon it was written.** Claude Code proposed
+that Cloud prove its snapshot was current by stating the certificate serial
+number. **Cloud already had the serial -- Bill uploaded it at Cloud's request,
+to prove the token was live.** So Cloud could pass that test from a three-week
+-old snapshot, out of its own conversation history, and report success.
+
+**A proof-of-sync string is disqualified if it reached Cloud by any other
+route.** Three routes, all live here:
+
+1. **Bill pasted it.** Anything uploaded or quoted into a Cloud session.
+2. **Cloud produced it.** Its own report, echoed back, proves nothing.
+3. **Claude Code quoted it to Bill in chat**, and Bill forwarded it. This is
+   the quiet one: any marker named in a Claude Code reply is compromised the
+   moment it is pasted across, which is normal practice here.
+
+**What survives:** the **commit hash** in the CURRENT.md freshness stamp --
+unguessable, and present nowhere but the repository. And **a line of file
+content that Claude Code deliberately does not repeat in chat**, named by
+location instead: *"quote the final line of file X."* Naming the location
+rather than the string is what keeps route 3 shut.
+
+**This also weakens the sentinel fixed earlier the same day.** The generated
+sentinel now moves with the session log, which repairs the decay problem --
+but the heading it quotes carries a timestamp Cloud itself supplied and a
+format Cloud has seen, so it is partly reconstructable. It is a *staleness*
+check, not a proof. The commit hash is the proof. Do not let the moving
+sentinel be mistaken for one.
+
 ### What this changes
 
 - **GATE 0 in the launch plan is closed, best case.** The certificate is in
