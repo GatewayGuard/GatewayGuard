@@ -1,0 +1,37 @@
+﻿
+=== CODE SIGNING TEST -- launch plan B4 ===
+    Run: 2026-08-14 17:17 ET
+
+STEP 1 -- certificate found
+  Subject     : CN=GatewayGuard LLC, O=GatewayGuard LLC, L=Brunswick, S=Maine, C=US
+  Issuer      : CN=DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1, O="DigiCert, Inc.", C=US
+  Serial      : 01CB7A973EBF26A608319C22D7ACB78A
+  Valid to    : 2027-08-16
+  Private key : True
+
+STEP 2 -- throwaway file written
+  C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Test_Results\SignTest-2026-08-14-1717\throwaway-DO-NOT-SHIP.ps1
+
+STEP 3 -- signing
+  SafeNet will now ask for the TOKEN PASSWORD in its own window.
+  That prompt is the eToken, not this script. The key never leaves it.
+
+  Set-AuthenticodeSignature returned: Valid
+
+STEP 4 -- reading the signature back
+  Status         : Valid
+  Status message : Signature verified.
+  Signed by      : CN=GatewayGuard LLC, O=GatewayGuard LLC, L=Brunswick, S=Maine, C=US
+  Thumbprint     : 0995F50D9496116A36624D8A81B404439C55B796
+  Timestamped by : CN=DigiCert SHA256 RSA4096 Timestamp Responder 2025 1, O="DigiCert, Inc.", C=US
+
+=== VERDICT ===
+
+  PASS. The certificate signs, and the signature verifies.
+
+  B4 is done. Signing the real build is the same command against the
+  build file instead of the throwaway.
+
+  Throwaway file and this report are in: C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Test_Results\SignTest-2026-08-14-1717
+  Nothing in the build was touched. The folder is safe to delete.
+

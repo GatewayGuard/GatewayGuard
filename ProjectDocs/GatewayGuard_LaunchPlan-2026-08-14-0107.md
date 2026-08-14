@@ -59,11 +59,27 @@ software"* -- the entire audience. That risk is gone.
 ~~Launch unsigned with a SmartScreen warning page. Move the date to 15
 September. Try a faster issuer.~~ **All three withdrawn.**
 
-### The one thing still owed on the certificate
+### It signs. Proved 2026-08-14 17:17 ET.
 
-**It has never signed anything.** A certificate that cannot be demonstrated to
-sign is not yet an asset. See **B4** -- do it before anything depends on it,
-not on freeze day.
+**B4 PASSED on the first attempt**, on CGDELL, against a throwaway file. Full
+report: `Test_Results\SignTest-2026-08-14-1717\SignTest-Report.txt`.
+
+| Check | Result |
+|---|---|
+| Signature status | **Valid** -- *"Signature verified."* |
+| Signer thumbprint | `0995F50D...B796` -- matches the issued certificate |
+| **Timestamped** | **Yes** -- DigiCert SHA256 RSA4096 Timestamp Responder 2025 1 |
+| Signature block written into the file | Yes |
+
+**The timestamp is the one worth naming.** Without it every signature would
+stop verifying on 2027-08-16 when the certificate expires -- silently breaking
+copies already sold. It is present, so signatures outlive the certificate.
+
+**Signing the real build is the same command against the build file.** No
+Windows SDK, no signtool: zero `.exe` or `.msi` ship here, so
+`Set-AuthenticodeSignature` is the whole toolchain.
+
+**A6 is now a known quantity rather than a hope.**
 
 ### The new dated risk -- read this, it is smaller but real
 
@@ -109,7 +125,7 @@ FT-175 makes the Defender scan actually run -- it never has, on any machine.
 | B1 | Confirm validation status | Bill | **DONE 2026-08-14** |
 | B2 | Submit if not submitted | Bill | **DONE** -- issued |
 | B3 | Escalate if blocked on bank letter or D&B | Bill | **NOT NEEDED** |
-| B4 | **Test-sign a throwaway file and verify it** | Bill + Claude Code | **OPEN -- do it next** |
+| B4 | Test-sign a throwaway file and verify it | Bill + Claude Code | **DONE 2026-08-14 17:17 -- PASS, timestamped** |
 | B5 | **Change the token password before 2026-09-13** | Bill | Diarise it. New password into Proton Pass the same minute |
 
 **B4 is now the top item in this track and takes minutes.** One open question
@@ -197,15 +213,17 @@ developer, and a build that is not written yet.** That is a scheduling
 problem, not a hazard. It responds to cutting scope, and the cut list above is
 the response.
 
-**The three live risks, in order:**
+**The live risks, in order:**
 
-1. **The test signature has never been produced (B4).** A certificate that has
-   not signed anything is an unproven asset. Discovering on freeze day that a
-   Windows SDK install is needed would cost the schedule real hours. **Minutes
-   now, hours later.**
-2. **ascii40 surfaces a new blocker in field test.** The allowance is A4.
-3. **The token password expires 2026-09-13**, twelve days after launch, during
+1. **ascii40 surfaces a new blocker in field test.** The allowance is A4.
+   **This is now the top risk on the plan**, and it is the ordinary kind.
+2. **The token password expires 2026-09-13**, twelve days after launch, during
    the fortnight a patch build is most likely. Diarised as B5.
+
+~~The test signature has never been produced.~~ **Retired the same day it was
+written.** B4 passed at 17:17 ET, timestamp and all. The fear behind it -- a
+Windows SDK install discovered on freeze day -- turned out not to exist: there
+is nothing here that signtool would sign.
 
 **On risk 2, the standing allowance:** beyond A4, ship with known cosmetic
 defects and fix them in ascii41. The product does not need to be perfect on

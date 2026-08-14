@@ -61,21 +61,52 @@ replacement goes into Proton Pass the same minute it is changed.
 unlock path, and a lost admin password bricks the token permanently -- DigiCert
 has no override.
 
-### NO TEST SIGNATURE HAS BEEN PRODUCED -- and the signing tool is missing
+### THE CERTIFICATE SIGNS -- B4 PASSED 17:17 ET, same day it was issued
 
-The certificate has never signed anything. **Measured on CGDELL, two queries
-of different shape (V-1):** `signtool.exe` returns **0 hits** across `PATH`
-and four SDK/Visual Studio root paths. It is not installed.
+`Tool\Test-CodeSignature-2026-08-14.ps1`, run by Bill on CGDELL. **Passed on
+the first attempt.** Report kept at
+`Test_Results\SignTest-2026-08-14-1717\SignTest-Report.txt`.
 
-**It may not be needed.** `Set-AuthenticodeSignature` is present and is the
-native way to sign a `.ps1`, which is what Checkup is. **Open question for the
-next session:** does the shipped artifact include an `.exe` or installer? If
-it is `.ps1` + `.bat` only, no SDK install is required. (`.bat` files cannot
-carry an Authenticode signature at all -- that is a property of batch files,
-not a defect.)
+| Check | Result |
+|---|---|
+| `Set-AuthenticodeSignature` returned | `Valid` |
+| Read back with `Get-AuthenticodeSignature` | `Valid` -- *"Signature verified."* |
+| Signer thumbprint | `0995F50D9496116A36624D8A81B404439C55B796` -- matches |
+| **Timestamped by** | **DigiCert SHA256 RSA4096 Timestamp Responder 2025 1** |
+| Signature block present in the file | Yes |
 
-**Next action is B4: sign a throwaway file and verify it, before anything
-depends on it.**
+**Verified twice on purpose.** The script reads the signature back rather than
+trusting the write, because a write reporting success while a read disagrees is
+this project's signature failure -- FT-162, where `[GOOD]` printed over a
+command that returned an invalid-argument error in 0.0 seconds. Claude Code
+then verified a third time, independently of the script.
+
+**The timestamp is the part that mattered.** The script was written to FAIL a
+signature with no timestamp: an unstamped signature stops verifying on
+2027-08-16 when the certificate expires, which would silently break every copy
+already sold. It is present.
+
+**A6 -- signing the real build -- is the same command against the build file.**
+
+### WHAT THE MISSING SIGNING TOOL TURNED OUT TO MEAN -- nothing
+
+**Measured on CGDELL, two queries of different shape (V-1):** `signtool.exe`
+returns **0 hits** across `PATH` and four SDK and Visual Studio root paths. It
+is not installed. That looked like a schedule risk for about forty minutes.
+
+**It is not one, because nothing here needs it.** `git ls-files` returns
+**zero `.exe` and zero `.msi`** -- Checkup ships as a `.ps1` with a `.bat`
+launcher, and `Set-AuthenticodeSignature` is built into PowerShell. **No
+Windows SDK install, no change to Bill's machine.**
+
+(`.bat` files cannot carry an Authenticode signature at all. That is a
+property of batch files, not a defect, and the `.bat` is a launcher for a
+signed `.ps1`.)
+
+**The lesson is the cheap one, again:** the question *"is signtool missing a
+problem?"* was answered by asking what actually ships, which is one command,
+rather than by planning around the worst case. EXHAUST THE FORMS, and check
+what the thing is before deciding what it needs.
 
 ### The wrong installer -- most of an afternoon
 
