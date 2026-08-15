@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-14 23:14 ET -->
-<!-- Commit: 3f39b57 -->
+<!-- Generated: 2026-08-14 23:21 ET -->
+<!-- Commit: a218242 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-14 23:14 ET
-- **Commit at generation:** `3f39b57`
-- **That commit was made:** 2026-08-14 23:14 ET
-- **Its subject line:** Project knowledge hit 390% -- move unreadable files out of Cloud's scope
+- **Generated:** 2026-08-14 23:21 ET
+- **Commit at generation:** `a218242`
+- **That commit was made:** 2026-08-14 23:21 ET
+- **Its subject line:** Move the guide PDFs and superseded builds out of Cloud's scope
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
