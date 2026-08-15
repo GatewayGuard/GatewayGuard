@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-15 14:39 ET -->
-<!-- Commit: e3f025b -->
+<!-- Generated: 2026-08-15 14:54 ET -->
+<!-- Commit: 37090c2 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-15 14:39 ET
-- **Commit at generation:** `e3f025b`
-- **That commit was made:** 2026-08-15 14:39 ET
-- **Its subject line:** PDF converter: written, and it does not work yet -- recorded, not hidden
+- **Generated:** 2026-08-15 14:54 ET
+- **Commit at generation:** `37090c2`
+- **That commit was made:** 2026-08-15 14:53 ET
+- **Its subject line:** Bill's three answers: the hub is exempt, v3.1 everywhere, A3 on SANDY
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
