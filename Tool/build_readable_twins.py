@@ -48,12 +48,22 @@ COVERED = {
     "GatewayGuard_ACBL_Pitch-2026-07-16.docx": "build_marketing_sourcepack.py",
     "GatewayGuard_CommunityFlyer.docx": "build_marketing_sourcepack.py",
     "GatewayGuard_MarketResearch.docx": "GatewayGuard_MarketResearch.md exists",
-    "MB Privacy policy..pdf": "third-party, no project value",
-    "MB_Privacy_policy_.pdf": "third-party, no project value",
-    "Getting started with OneDrive.pdf": "third-party, no project value",
     "mainellc6.pdf": "scanned filing, image-only",
-    "20260726_161618.jpg": "photograph",
 }
+
+# MOVED OUT OF ProjectDocs\ 2026-08-14, not deleted. Project knowledge hit
+# 390% of capacity, and 21 of ProjectDocs' 24 MB was files Cloud cannot read
+# at all -- so they cost capacity and returned nothing. Their COVERED entries
+# went with them; an entry for a file that is no longer here can never match.
+#
+#   DigiCert-Token-Instructions.pdf  6.97 MB -> Certificates\
+#   20260726_161618.jpg              4.90 MB -> Presentation\
+#   MB_Privacy_policy_.pdf           4.39 MB -> MB\
+#   MB Privacy policy..pdf           0.23 MB -> MB\
+#   Getting started with OneDrive.pdf 0.38 MB -> Notes\
+#
+# THE RULE THIS ESTABLISHES: a file Cloud cannot read does not belong in a
+# folder Cloud syncs. Keep it in the repository, keep it out of scope.
 
 HEADING = {"Heading1": "##", "Heading2": "###", "Heading3": "####",
            "Title": "#", "Heading4": "#####"}
