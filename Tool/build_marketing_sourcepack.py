@@ -31,6 +31,20 @@ SOURCES = [
      "Customer-facing phrasing pass."),
     ("Family Presentation v3", r"Presentation\GatewayGuard_FamilyPresentation_v3-2026-07-03.pptx",
      "Slide deck. Carries two live PL-4 breaches -- see the header note."),
+    # NOT ADDED HERE, and the reason matters more than the entry would.
+    # GatewayGuard_CommunityFlyer.docx CANNOT be extracted by this script:
+    # measured 2026-08-15, it is not a Word document at all. Its first bytes
+    # are "**IS YOUR HOME C", not a ZIP signature -- it is 2,238 bytes of plain
+    # Markdown wearing a .docx extension, and doc_text() dies on it with
+    # BadZipFile.
+    #
+    # That mislabelling is the whole reason Cloud has never read the flyer. It
+    # was never a scope or sync problem; the text was readable all along.
+    # Its twin is therefore written directly as ProjectDocs\
+    # GatewayGuard_CommunityFlyer.md rather than extracted through here.
+    #
+    # If the master is ever renamed to .md and the .docx retired -- which is
+    # the right fix and is recommended in that twin -- this comment can go.
 ]
 
 

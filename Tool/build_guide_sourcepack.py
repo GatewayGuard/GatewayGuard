@@ -29,7 +29,11 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SRC = ROOT / "ProjectDocs" / "windows_security_walkthrough_guide_v9.docx"
+# 2026-08-15: the master moved to Masters\, OUT of connector scope. Cloud
+# cannot read a .docx anyway, so carrying it in ProjectDocs\ cost connector
+# capacity and returned nothing. The extraction this script writes INTO
+# ProjectDocs\ is what Cloud reads and rewrites from.
+SRC = ROOT / "Masters" / "windows_security_walkthrough_guide_v9.docx"
 
 STAMP = subprocess.run(
     ["powershell", "-NoProfile", "-Command", "Get-Date -Format 'yyyy-MM-dd HH:mm'"],
@@ -85,7 +89,7 @@ def main():
 
 - **Document Name:** GatewayGuard_GuideV9-SourcePack
 - **Last Modified:** {STAMP} ET
-- **Source of record:** `ProjectDocs/windows_security_walkthrough_guide_v9.docx`
+- **Source of record:** `Masters/windows_security_walkthrough_guide_v9.docx`
 - **Status:** GENERATED extraction. The `.docx` remains the master.
 
 ---
