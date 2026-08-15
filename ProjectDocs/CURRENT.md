@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-15 13:44 ET -->
-<!-- Commit: f80e1ba -->
+<!-- Generated: 2026-08-15 14:39 ET -->
+<!-- Commit: e3f025b -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-15 13:44 ET
-- **Commit at generation:** `f80e1ba`
-- **That commit was made:** 2026-08-15 13:44 ET
-- **Its subject line:** Close the session: FT-172 design is in discussion, and nothing gets built yet
+- **Generated:** 2026-08-15 14:39 ET
+- **Commit at generation:** `e3f025b`
+- **That commit was made:** 2026-08-15 14:39 ET
+- **Its subject line:** PDF converter: written, and it does not work yet -- recorded, not hidden
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
