@@ -9,11 +9,17 @@
   and float), the ascii39 field results, and the repository as measured today.
 
 **Change History Log:**
+- 2026-08-15 12:40: **A3 PUT BACK ON SANDY. It was moved on a misread.** Bill
+  said he was working on CGDELL that day; Claude Code read that as a decision
+  to move the field test and wrote it into this plan as settled. It was not
+  settled and was never Bill's to have implied. The console measurement stands
+  and is kept as information, clearly marked as not a decision. **A plan may
+  record a decision; it may not make one.**
 - 2026-08-15 09:50: **ascii40 IS BUILT -- A1 done, A2 two-thirds done, and the
   critical path is now one question long.** Track A re-cut: A1 marked done with
-  its measurement, A2 split into A2a (Bill approves the FT-172 approach) and
-  A2b (build it), and A3 opened up to CGDELL with the measurement that justifies
-  it. Everything that does not depend on Bill's answer is finished.
+  its measurement, and A2 split into A2a (Bill approves the FT-172 approach)
+  and A2b (build it). Everything that does not depend on Bill's answer is
+  finished.
 - 2026-08-14 16:30: **GATE 0 CLOSED -- the certificate is issued and
   installed.** Gate 0 rewritten from a question into a result, Track B marked
   done except the test signature, and the risk section replaced: the longest
@@ -114,7 +120,7 @@ critical path.**
 | A2 | **Build ascii40** -- FT-171, FT-172, FT-175 | Claude Code | 2 | **TWO OF THREE DONE 2026-08-15.** FT-171 and FT-175 in and gated. **FT-172 held on A2a** |
 | A2a | **Approve the FT-172 approach** (`$script:GGScreenOrder`) | **Bill** | 5 min | **THE ONLY THING BLOCKING THE CRITICAL PATH.** Bill asked to approve it before it is built |
 | A2b | Build FT-172 | Claude Code | 0.5 | Starts the moment A2a is answered |
-| A3 | **Field test ascii40** | Bill | 0.5 | Phase 3 of the field test plan. Provoke the input bug deliberately. **CGDELL now qualifies -- see below** |
+| A3 | **Field test ascii40 on SANDY** | Bill | 0.5 | Phase 3 of the field test plan. Provoke the input bug deliberately. **Which machine is Bill's call** -- see below |
 | A4 | Fix what A3 finds | Claude Code | 1 | The allowance. Beyond it, ship with known cosmetic defects |
 | A5 | **FEATURE FREEZE** | Bill | -- | Was scheduled for 14 Aug. Realistically **Wed 20 Aug** |
 | A6 | **Sign the build** | Bill | 0.5 | **UNBLOCKED 2026-08-14**, and B4 has since proved the command |
@@ -136,17 +142,27 @@ CGDELL.
 
 **A2a is the whole delay.** Everything not depending on Bill's answer is done.
 
-**A3 CAN RUN ON CGDELL, and the earlier objection has expired.** The field
-test plan says "CGDELL did not fail, so measuring CGDELL proves nothing" --
-true of **phase 0**, which asked whether the flag survives the mask. Phase 3
-asks something different: does ascii40 resist deliberate provocation.
-**measured 2026-08-15: CGDELL's console starts at `0x01F7` -- QuickEdit AND
-mouse input both ON.** SANDY was `0x01B7`, with QuickEdit already off. CGDELL
-therefore reports *more* mouse activity into the input buffer than SANDY did,
-which makes it the harsher host for this test, not the weaker one. **SANDY is
-still worth a run** -- it is the machine that actually failed, and it is a
-different Windows edition -- but it is no longer the only machine that can
-answer A3.
+**A3 STAYS ON SANDY UNLESS BILL MOVES IT. The plan does not get to decide
+this.** An earlier version of this paragraph declared that A3 could run on
+CGDELL. **That was not Bill's decision and it should not have been written as
+one** -- he had said he was working on CGDELL that day, nothing more, and
+Claude Code read a machine preference as a scope change. Corrected 2026-08-15.
+The measurement below is real and is offered as information; the choice is
+Bill's and is not made here.
+
+**What is measured, and it is only that:** the field test plan's objection
+("CGDELL did not fail, so measuring CGDELL proves nothing") was about
+**phase 0**, which asked whether the flag survives the mask. Phase 3 asks a
+different question -- does ascii40 resist deliberate provocation. measured
+2026-08-15, CGDELL's console starts at `0x01F7`, QuickEdit **and** mouse input
+both ON; SANDY was `0x01B7` with QuickEdit already off. So CGDELL would feed
+more mouse activity into the input buffer than SANDY did.
+
+**What that does NOT settle:** SANDY is the machine that actually failed, on a
+different Windows edition, with the field history attached to it. Reproducing
+on hardware that never broke is weaker evidence than reproducing on the
+hardware that did, whatever the console mode says. **If Bill wants A3 on
+CGDELL, or on both, he says so.**
 
 ### TRACK B -- THE CERTIFICATE (was the longest pole; now nearly done)
 
