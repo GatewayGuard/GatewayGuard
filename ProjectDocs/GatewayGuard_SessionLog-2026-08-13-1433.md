@@ -28,6 +28,182 @@ This is the shared memory between all Claude instances.
 ---
 ---
 
+## Session: 2026-08-15 08:28 ET [Claude Code -- CGDELL]
+
+**ascii40 IS BUILT. Two of the three field blockers are in, the third is held
+on Bill's answer, and every standing gate passes.** A2 in the launch plan.
+
+`Tool\W11-SecurityHardening-v3-ascii40-2026-08-15-0828.ps1`
+SHA256 `01DDD2BBFDFB58429E88B9BBDDA7C6BC423210EFF89780297651AEB13F88406F`
+8,346 non-blank / 8,721 total (ascii39 was 8,075 / 8,448).
+
+### FT-171 -- the input path. Six parts, and the sixth was not on the list.
+
+The plan named five. The sixth was found while reading for the first.
+
+| | What | Basis |
+|---|---|---|
+| 171a | `ENABLE_MOUSE_INPUT` is cleared, not only QuickEdit | measured |
+| 171b | the drain is `FlushConsoleInputBuffer`, not a 256-read loop | measured |
+| 171c | a cap is never again reported as a count | code |
+| 171d | `Show-ResumeReverify` no longer exits on a bare `N` | code |
+| 171e | `Reset-GGInputGate` timestamp-gates every screen centrally | measured |
+| 171f | **the console flags are asserted before EVERY screen** | measured |
+
+**171f is the one nobody had written down.** measured on the ascii39 source:
+`Disable-QuickEdit` had exactly **two call sites and both were inside
+`Get-AllStatuses`**, which does not run until the user is most of the way
+through the session. So every screen before it -- the personal-computer
+question, the font screen, the resume re-check -- ran with the console in
+whatever state it started in. **SCREEN-02 told the user "mouse highlighting
+and right-click copy are switched OFF in this window" several screens before
+any code had switched them off.** The screen was telling the truth about the
+intent and not about the machine.
+
+That also explains why 171a alone would not have been enough. Clearing bit 4
+in a function that does not run yet fixes nothing for the first thirty
+screens, which is exactly where a user right-clicks while finding their
+bearings.
+
+**The fix is one function, called centrally.** `Reset-GGInputGate` runs at the
+end of `Write-GGBox`, so every screen gets it and a screen added next build
+cannot forget it -- the same construction FT-153's trailing blank line uses,
+for the same reason.
+
+**WHY THIS IS NOT FT-29, and it is the whole design.** FT-29 was a flush
+immediately **before the read**, after the prompt had been on screen, and it
+ate the first keypress of anyone who answered promptly -- reported five or
+more times as "had to press twice". It stays removed. This flush happens
+**before the prompt is printed**. The only window it discards from is the
+paint itself, and nothing typed in answer to a question the user has actually
+seen can be inside it.
+
+### THE CHECK EXISTS, AND IT PASSED 9/9 ON CGDELL
+
+`Tool\Test-InputGate-2026-08-15.ps1` (launcher `Run-InputGateTest.bat`).
+Report: `Test_Results\InputGate-CGDELL-2026-08-15_08-41.txt`.
+
+**It lifts the three functions out of the build by AST rather than carrying
+its own copy.** A test with its own copy proves the copy works. This one
+cannot drift from what ships.
+
+| Console mode | Value |
+|---|---|
+| Before, CGDELL default | `0x000001F7` -- QuickEdit **SET**, mouse input **SET** |
+| After `Disable-QuickEdit` | `0x000001A7` -- both **clear**, extended flags set |
+| Dirtied on purpose, then re-gated | forced to `0x01F7`, gate returned `0x01A7` |
+| Restored on exit | `0x000001F7` -- exactly as found |
+
+**The first run of it failed correctly, and that is worth recording.** Run
+inside a redirected session it found no real console handle and stopped at
+exit 2 rather than reporting a pass it could not support. FT-162's whole
+lesson is a check that prints [GOOD] over nothing.
+
+**Still owed, and only SANDY can answer it:** that the mouse wheel still
+scrolls with bit 4 cleared, and that right-click / drag / wheel at a live
+prompt no longer advance, answer or end the session. sourced reasoning says
+the wheel survives; the opposite claim was written down first and was wrong,
+so it gets measured.
+
+### FT-175 -- and the obvious fix was wrong
+
+`MpCmdRun.exe -Scan -ScanType 4`. **VERIFIED 2026-08-15 measured on CGDELL:**
+`MpCmdRun.exe -?` documents ScanType 0, 1, 2 and 3. There is no 4.
+
+**Correcting the field test plan on its own evidence:** the plan says "Gate 24
+exists to catch exactly this and **passes today**." measured 2026-08-15 on the
+unmodified ascii39 source, **gate 24 FAILED** -- three findings on those exact
+MpCmdRun lines, plus 24b for showing the user the command line. The gate was
+working. Nobody had run it against this file.
+
+**THE OBVIOUS FIX IS ALSO WRONG AND WAS NOT MADE.** `Start-MpWDOScan` is the
+correct call and is already in the file. **VERIFIED sourced**, Microsoft's
+cmdlet reference: *"This command causes the computer to start in Windows
+Defender offline and begin the scan."* **It reboots there and then.** It does
+not queue anything for a later restart. Dropped into a SYSTEM task at 2AM it
+would restart a sleeping senior's computer, unannounced, four times a year.
+
+**So the quarterly task is now a reminder popup**, on the pattern of the
+monthly Malwarebytes reminder already in the file: it says the scan is due,
+gives the steps, says the computer will restart, and lets the user start it.
+The task **name is unchanged** -- CLAUDE.md lists it as an identifier and a
+recovery point, and renaming it would orphan the task on every machine that
+already has one. The interactive path (SCREEN-38) is untouched; it already
+called `Start-MpWDOScan` correctly and already warned about the restart.
+
+**The user-visible claim is replaced too.** The old screen said the task
+"SCHEDULES the offline scan for your NEXT PC restart", which never happened
+once on any machine.
+
+### FT-172 IS NOT IN THIS BUILD. It is question 2, still held.
+
+Bill asked to approve the `$script:GGScreenOrder` approach before it is built.
+Everything that does not depend on that answer is done; FT-172 is the only
+part that does.
+
+### DEBTS PAID WHILE THE FILE WAS OPEN
+
+- **"whether" x3, the ones CLAUDE.md assigned to ascii40 by name.** measured
+  after: zero in any user-facing string. Box lines length-preserved --
+  `Write-GGBox` takes the box width from its longest line, and FT-117/FT-122
+  are both width defects.
+- **"switch" as a verb x3**, found by gate 25, not by reading. The website was
+  swept for this on 2026-08-02 and **the build was not**, so the tool kept
+  saying what the website had stopped saying -- RULE W-07's drift, pointed
+  inward. The noun is untouched.
+- **36 non-ASCII characters -> 0.** All U+2500 on nine comment separator
+  lines, inherited from ascii39, never rendered. Fixed so pre-build item 5
+  returns a zero a script can hold, instead of "36, but I looked".
+
+### GATE 25 NEEDS SCOPING, AND THAT IS A REAL FINDING
+
+`Run-CopyCheck.bat` reports **1,329 superlatives and 147 "whether"** across 70
+files. It is scanning code comments, the launcher `.bat` headers, its own
+build scripts, and **`W11-...-ascii34-...CORRUPT.ps1`** -- the 240,000-line
+duplication wreck, which alone contributes hundreds of duplicate findings.
+
+The three real breaches it found in the build were worth having. They were
+buried in noise at roughly 400:1. **Recommend: exclude `_corrupt`, restrict
+`.ps1` scanning to quoted string literals rather than whole lines, and skip
+`build_*.py`.** Until then gate 25 is a useful grep and not a gate, and it is
+not in the standing pre-build list.
+
+### EVERY EDIT WENT THROUGH THE WRAPPER
+
+Four passes, all through `gg_edit.PS1Edit`, each one committed:
+`build_ascii40.py` (the blockers), `_copy.py` ("whether" + gate 24b),
+`_ascii.py` (item 5), `_switch.py` (the verb). 21 sites, every count asserted
+before the substitution, parse checked on the working copy before the real
+file was touched. `gg_edit.py`'s own self-test: 4 passed, 0 failed.
+
+**The lint pass went through the wrapper too**, with no cosmetic exemption.
+That is the rule ascii34 was destroyed for ignoring on 2026-07-25.
+
+### GATES ON THE FINISHED FILE
+
+| Gate | Result |
+|---|---|
+| 12 -- unique screen IDs | **PASS**, 66 screens, next free 84 |
+| 12b -- 26-line rule | **PASS**, 10 carried, **0 new** |
+| 24 -- external commands | **PASS** (ascii39 **FAILED** -- 3 findings) |
+| 24b -- command lines shown to the user | **PASS**, 0 findings (ascii39: 2) |
+| Parse (`[Parser]::ParseFile`) | 0 errors |
+| Duplicate function definitions | 0, of 80 functions |
+| Non-ASCII characters | 0 |
+| `Join-String` | 0 (the one hit is a comment recording its removal) |
+| CRLF + UTF-8 BOM | both present |
+| Five build-ID locations | all five updated |
+
+### WHAT IS NEXT
+
+1. **Bill: question 2** -- approve `$script:GGScreenOrder`, and FT-172 gets
+   built. It is the last blocker.
+2. **Bill: phase 3 on SANDY** -- provoke the input bug deliberately, and check
+   the wheel still scrolls.
+3. **Then A4, A5 freeze, A6 sign.** The signing command is proved (B4).
+
+---
+
 ## Session: 2026-08-14 16:23 ET [Claude Cloud + Claude Code -- CGDELL]
 
 **GATE 0 IS ANSWERED. The DigiCert OV code signing certificate is issued and

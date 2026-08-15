@@ -6,7 +6,7 @@
 - **Product:** GatewayGuard — Windows 11 security hardening tool for non-technical home users
 - **Developer:** Solo (William F. Burns III / GatewayGuard LLC)
 - **Target launch:** September 1, 2026
-- **Current build:** ascii39 (8,075 non-blank lines / 8,448 total) — always confirm current build number before any edit session
+- **Current build:** ascii40 (8,346 non-blank lines / 8,721 total) — always confirm current build number before any edit session
   - **Line-count convention:** the quoted figure is the `Measure-Object -Line`
     **non-blank** number, per Playbook Appendix A. The old "ascii36 (6,134
     lines)" entry used the total-lines figure instead — two different methods
@@ -14,8 +14,8 @@
     meaningless. Both numbers are given above so the method is unambiguous.
   - **This line is one of five build-ID locations** (filename, `FILE:` header, `BUILD:` header, `$BuildID`, and here). Pre-Build Audit item 9 checks all five; update this line in the same edit that increments the build. It sat at ascii28 while the tree was on ascii34 — six builds stale, on the very line telling you to confirm the build number. A pointer that lies is worse than no pointer.
 - **Tool name:** the tool is **Checkup**. "GatewayGuard Checkup" on first mention, "Checkup" thereafter. GatewayGuard is the company. Certified 2026-07-29. Do **not** rename the MachineID hash salt (`"GatewayGuard|"`), the Task Scheduler task names (`GatewayGuard - Quarterly…`, `GatewayGuard - Monthly…`), `C:\GatewayGuard\`, `Run-GatewayGuard.bat`, `gatewayguard.co`, or the LLC name — those are identifiers and recovery points, not prose. A blanket find-and-replace on "GatewayGuard" would corrupt every machine's ID and orphan the scheduled tasks.
-- **Screen numbers:** on screen the user sees **position** in their journey ("Screen 6"); the log carries the **stable ID** plus the position (`[SCREEN-02] (shown as screen 6)`). Gate 12 / C-15's "fixed forever, never renumber" governs the **log only** — Bill overruled the user-facing half on 2026-07-28, because a user on a support call must be able to say which screen they are on. Run `Tool\Check-ScreenCoverage-2026-07-30.ps1` before every build (launcher: `Run-ScreenCoverageCheck.bat`); it is the mechanical gate-12 check and reports the next free ID (83 as of ascii39).
-- **Review every screen:** `Tool\Show-AllScreens.bat` walks all 65 screens without running checks or changing anything. It reads the .ps1's own source via the AST, so it cannot drift from the real screens.
+- **Screen numbers:** on screen the user sees **position** in their journey ("Screen 6"); the log carries the **stable ID** plus the position (`[SCREEN-02] (shown as screen 6)`). Gate 12 / C-15's "fixed forever, never renumber" governs the **log only** — Bill overruled the user-facing half on 2026-07-28, because a user on a support call must be able to say which screen they are on. Run `Tool\Check-ScreenCoverage-2026-07-30.ps1` before every build (launcher: `Run-ScreenCoverageCheck.bat`); it is the mechanical gate-12 check and reports the next free ID (84 as of ascii40 — 83 went to the FT-171d exit confirmation).
+- **Review every screen:** `Tool\Show-AllScreens.bat` walks all 66 screens without running checks or changing anything. It reads the .ps1's own source via the AST, so it cannot drift from the real screens.
 - **26 lines per screen maximum, and every screen ends with a blank line.**
   Bill's rule, 2026-07-30 (field note 11), superseding the ascii37 25-line
   rule. The trailing blank line is produced centrally in `Write-GGBox`, so a
@@ -213,9 +213,13 @@ given a reason to distrust the program.
   **"Windows does not allow any program to change this one, so Checkup shows
   you the exact steps to do it yourself."**
 
-Applied to all 19 guide pages 2026-08-02. **Still owed in the build:** three
-user-facing strings in ascii39 still say "whether" — the convenience-review
-line, and two Device Encryption screens. Fix in ascii40.
+Applied to all 19 guide pages 2026-08-02. **Paid off in ascii40, 2026-08-15**
+— the three user-facing strings that still said "whether" (the
+convenience-review line and two Device Encryption screens) are gone.
+**measured on the ascii40 source: zero occurrences of "whether" in any
+user-facing string.** The two box lines were length-preserved, because
+`Write-GGBox` sets the box width from its longest line and FT-117/FT-122 are
+both width defects not worth re-earning over a copy fix.
 
 ---
 

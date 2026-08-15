@@ -14,6 +14,11 @@
 # but there is no value in versioning an unparseable artifact.
 Tool/_corrupt/
 
+# Python bytecode cache. Created whenever gg_edit.py is imported by a
+# build_*.py pass. Regenerated on demand and machine-specific.
+__pycache__/
+*.pyc
+
 # Windows and Office artifacts
 Thumbs.db
 desktop.ini
