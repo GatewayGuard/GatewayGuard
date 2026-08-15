@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-15 14:54 ET -->
-<!-- Commit: 37090c2 -->
+<!-- Generated: 2026-08-15 17:52 ET -->
+<!-- Commit: 7945b93 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-15 14:54 ET
-- **Commit at generation:** `37090c2`
-- **That commit was made:** 2026-08-15 14:53 ET
-- **Its subject line:** Bill's three answers: the hub is exempt, v3.1 everywhere, A3 on SANDY
+- **Generated:** 2026-08-15 17:52 ET
+- **Commit at generation:** `7945b93`
+- **That commit was made:** 2026-08-15 14:54 ET
+- **Its subject line:** Refresh the stamp -- last act before sync
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -51,6 +51,9 @@ All paths are relative to `ProjectDocs/`.
 | Launch plan | `GatewayGuard_LaunchPlan-2026-08-14-0107.md` | 0 |
 | CPM schedule | `GatewayGuard_CPM_Schedule-2026-08-02-1201.md` | 1 |
 | Screen numbering design | `GatewayGuard_ScreenNumberDesign-2026-08-15-1430.md` | 0 |
+| Website source pack (19 guide pages) | `GatewayGuard_WebsiteSourcePack-2026-08-15-1751.md` | 0 |
+| Guide v9 source pack | `GatewayGuard_GuideV9-SourcePack-2026-08-15-1436.md` | 0 |
+| Marketing source pack | `GatewayGuard_MarketingSourcePack-2026-08-13-1427.md` | 0 |
 
 Also read `CLAUDE.md`, at the repository root. That name never changes.
 

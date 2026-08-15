@@ -74,7 +74,24 @@ $wanted = @(
     # design is in discussion, not built. Named here so neither Cloud nor the
     # next Claude Code session picks up the SUPERSEDED flat-numbering proposal
     # (ScreenNumberTable) and starts building from it.
-    @{ Label = 'Screen numbering design';     Pattern = 'GatewayGuard_ScreenNumberDesign-*.md' }
+    @{ Label = 'Screen numbering design';     Pattern = 'GatewayGuard_ScreenNumberDesign-*.md' },
+    # --- THE THREE SOURCE PACKS, added 2026-08-15 -------------------------
+    # Each is a readable extraction of material Cloud cannot otherwise reach,
+    # and each was invisible to Cloud for the same reason the Launch Plan was:
+    # it is in scope, but its name carries a date and CLOUD CANNOT GLOB. A file
+    # Cloud cannot name is a file Cloud cannot open, however well it is synced.
+    #
+    # Website pack: the 19 guide pages live in WebSite\html\, which is OUTSIDE
+    # the connector scope entirely -- so Cloud could read the RULE governing
+    # website copy (WebSite\Rules\website-copy.md, in scope) and not one line of
+    # the copy itself. Every website review it has given was made blind.
+    @{ Label = 'Website source pack (19 guide pages)'; Pattern = 'GatewayGuard_WebsiteSourcePack-*.md' },
+    # Guide pack: the .docx master is in Masters\, out of scope, and Cloud has
+    # never surfaced a .docx path even when one was in scope. Measured 2026-08-13.
+    @{ Label = 'Guide v9 source pack';        Pattern = 'GatewayGuard_GuideV9-SourcePack-*.md' },
+    # Marketing pack: Marketing\ and Presentation\ are out of scope on purpose --
+    # adding them would spend capacity on 9.3 MB of saved-webpage junk.
+    @{ Label = 'Marketing source pack';       Pattern = 'GatewayGuard_MarketingSourcePack-*.md' }
 )
 
 # Resolve every pattern BEFORE writing anything. Newest by the DATE IN THE
