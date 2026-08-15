@@ -68,7 +68,9 @@
 
 ### General
 - No self-elevation in the launcher (Malwarebytes flagged self-elevation as exploit payload — do not reintroduce)
-- Tool version is always **v3.0** in all user-facing text
+- Tool version is always **v3.1** in all user-facing text. Bill,
+  2026-08-15: "use 3.1 everywhere." The build has shipped 3.1 all along;
+  this rule was the thing that was wrong.
 - For personal computers only — do not generalize to enterprise or server scenarios
 
 ---

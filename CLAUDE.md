@@ -68,7 +68,14 @@
 
 ### General
 - No self-elevation in the launcher (Malwarebytes flagged self-elevation as exploit payload — do not reintroduce)
-- Tool version is always **v3.0** in all user-facing text
+- Tool version is always **v3.1** in all user-facing text. **Bill, 2026-08-15:
+  "use 3.1 everywhere."** This rule said **v3.0** until that decision, while
+  the build had been shipping `$ScriptVersion = "3.1"` and printing `v3.1` in
+  eight user-facing places. The rule was the thing that was wrong, not the
+  build — so the rule moved. **Still carrying v3.0 and needing Bill's hand:**
+  `Masters\gatewayguard projects.docx`, which says *"Version: v3.0 (always —
+  this is the customer-facing version)"*; its generated twin cannot be edited
+  directly because the next regeneration would overwrite it.
 - For personal computers only — do not generalize to enterprise or server scenarios
 
 ---

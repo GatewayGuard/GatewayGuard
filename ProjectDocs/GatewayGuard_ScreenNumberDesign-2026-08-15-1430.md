@@ -101,9 +101,36 @@ sees 8, **8a**, 9. Pro sees 8, **8b**, 9. Both ascend, neither has a hole.
 
 ---
 
-## THE FIVE OPEN QUESTIONS -- settle these before any work
+## THE OPEN QUESTIONS -- 1 IS ANSWERED, 2 TO 5 ARE NOT
 
-### 1. The checklist hub. START HERE -- it is the only one that can change the scheme itself.
+### 1. The checklist hub. ANSWERED -- Bill, 2026-08-15: "no".
+
+**The question put to him:** *does returning to a hub that keeps its own label
+count as seeing a lower number?* **His answer: no.**
+
+**So revisits are exempt, and the scheme closes.** A screen the user returns to
+re-shows its own number. Only **first encounters** must ascend. The checklist
+keeps its number and stays numbered like everything else -- no `Checklist`
+special case, no unnumbered hub.
+
+**What this settles, beyond the hub:** the same exemption covers every
+returned-to screen, so `Test-NonRecommendedSelections` showing at both the
+"review" and "final" stages, the BitLocker screens reachable by more than one
+route, and the B look-back are all fine as they stand.
+
+**What it does NOT settle, and this is now the main technical risk:** rule 3
+still binds on first encounters. Nothing yet proves that two screens cannot be
+**first seen in opposite orders on different paths**. If such a pair exists, no
+single numbering satisfies rule 3 for both users, and the flow must be
+reordered or an exception accepted. **This is what the path-walking gate has to
+prove**, and it should be built alongside the numbering rather than after it.
+
+The original text of this question is kept below, because the reasoning is what
+makes the answer legible later.
+
+---
+
+### 1 (original text). The checklist hub.
 
 **The checklist is a hub, not a step.** `:checklistLoop while ($true)`, source
 line 7808. The run is: checklist -> pick a setting -> setting screen -> **back
@@ -217,14 +244,32 @@ is a wish.
 
 ---
 
-## RELATED OPEN ITEMS, not part of FT-172
+## RELATED ITEMS -- both settled 2026-08-15
 
-- **`v3.0` or `v3.1`?** CLAUDE.md says the version is always **v3.0** in
-  user-facing text. The build says **v3.1**, in eight user-facing places. One
-  is wrong; it is Bill's call which.
+- **`v3.1` everywhere. SETTLED**, Bill: *"use 3.1 everywhere."* CLAUDE.md said
+  v3.0 while the build shipped v3.1 in eight user-facing places, so **the rule
+  was what was wrong**. Updated in `CLAUDE.md`, in `CLAUDE-Sandy.md`, and in
+  the `download` page draft. measured after: **no `v3.0` remains in any
+  `.html`, `.ps1` or `.bat`.** One place still carries it and needs Bill's
+  hand: `Masters\gatewayguard projects.docx` says *"Version: v3.0 (always --
+  this is the customer-facing version)"*. Its twin is generated, so editing
+  the twin would be undone at the next regeneration.
+- **A3 runs on SANDY. SETTLED**, Bill. The Launch Plan already says so; this
+  confirms it rather than changing it. CGDELL was measured as the harsher
+  console (`0x01F7` against SANDY's `0x01B7`) but SANDY is the machine that
+  actually failed, on a different Windows edition, and reproducing on hardware
+  that never broke is the weaker evidence.
+
+## STILL OPEN, not part of FT-172
+
 - **The build number is nearly invisible.** `ascii40` appears on screen twice,
   both in the colours this file reserves for de-emphasized chrome. Since
   numbers renumber between builds, *"screen 6"* only resolves if the build is
   known. It is in the log, so support can ask -- but worth deciding whether it
   belongs somewhere the user can read out.
-- **A3's machine** -- SANDY, CGDELL, or both. Still Bill's.
+- **`CLAUDE-Sandy.md` has drifted badly.** measured 2026-08-15: **386 lines
+  against `CLAUDE.md`'s 571**. Both are tracked; both claim to be the project
+  instructions. A second copy of the governing document, 185 lines behind, is
+  the exact failure `SyncPlan` 7b exists to prevent -- and it is the file a
+  session started on SANDY would read. **Decide whether it should exist at
+  all**, rather than patching it line by line as this session just had to.
