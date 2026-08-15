@@ -81,16 +81,60 @@ the same 256-record buffer keypresses use.
 **This is why right-click "crashed" it.** Right-click is not a key. It is a
 burst of mouse records into a buffer the tool then reads as answers.
 
-**And it is why the mouse wheel scrolls so well** -- finding 5a, which asks
-that the wireless mouse be recommended everywhere. *The feature Bill wants to
-promote and the defect that ended his run twice are the same console flag.*
-That is the single most important thing on this page.
+~~And it is why the mouse wheel scrolls so well -- the feature Bill wants to
+promote and the defect that ended his run twice are the same console flag.
+That is the single most important thing on this page.~~
+
+**WITHDRAWN 2026-08-13. There is no trade-off, and there never was.** The
+paragraph above claimed clearing `ENABLE_MOUSE_INPUT` would cost the mouse
+wheel, forcing a choice between finding 5a and the FT-171 fix.
+
+**sourced**, Microsoft `SetConsoleMode`: the flag controls whether mouse
+events are **reported in the input buffer or discarded**. It does not create
+wheel scrolling; it decides who receives the record. **Checkup never reads a
+mouse event.** So clearing it discards records the build was never going to
+use -- which is the entire fix.
+
+The claim was written as a conclusion without reading the API it described,
+inside a document that cites RESEARCH BEFORE STATING. **Confirm the wheel
+still scrolls during phase 3 field test** rather than trusting either version
+of this paragraph.
 
 **Basis:** the mask arithmetic is **measured**. That mouse events specifically
-filled SANDY's buffer is **inferred** -- strongly, from eleven cap-hits, two
-right-click endings and zero crash records. `Tool\Run-ConsoleInputModeCheck.bat`
-settles it, and **must be run on SANDY before ascii40 is built**, because
-CGDELL did not fail.
+filled SANDY's buffer was **inferred** -- strongly, from eleven cap-hits, two
+right-click endings and zero crash records.
+
+### SETTLED ON SANDY, 2026-08-14 22:25
+
+`Tool\Run-ConsoleInputModeCheck.bat`, output at
+`Test_Results\ConsoleInputMode-SANDY-2026-08-14_22-25.txt`:
+
+```
+CURRENT INPUT MODE: 0x000001B7
+  ENABLE_MOUSE_INPUT              YES
+  ENABLE_QUICK_EDIT_MODE           no
+  ENABLE_EXTENDED_FLAGS           YES
+After -band 4294967231:  ENABLE_MOUSE_INPUT still True
+```
+
+**Two things this settles, and one it does not.**
+
+1. **`ENABLE_MOUSE_INPUT` is set on SANDY and survives the mask.** Root cause
+   confirmed on the machine that showed the symptom.
+2. **QuickEdit was ALREADY OFF before the mask ran.** So on this machine
+   `Disable-QuickEdit` cleared a bit that was not set, changed nothing, and
+   left the flag that actually fills the buffer switched on. **The one
+   protective call in this area was a no-op on the failing machine.**
+3. **NOT settled: the buffer did not visibly fill.** Depth held at **2 events
+   across all five samples** -- flat, not climbing. Either the mouse was not
+   moved over the window during sampling, or events are not accumulating the
+   way the mechanism predicts. **The flag survival is measured; the
+   accumulation is still inferred.**
+
+**It does not block the fix.** Clearing a flag the build never reads is
+correct whether or not the demo ran. But **do not write "confirmed" against
+the accumulation** until a run shows the count climbing -- that is exactly the
+cap-reported-as-a-count error this plan was written about.
 
 ### It also explains finding 30, which read as unexplainable
 
@@ -382,13 +426,21 @@ Unchanged from the ascii39 plan, plus:
 
 ## QUESTIONS FOR BILL -- held, as asked
 
-1. **The mouse wheel, or the input fix?** Clearing `ENABLE_MOUSE_INPUT` is the
-   clean fix for FT-171 and it **turns off wheel scrolling**, which finding 5a
-   asks to promote everywhere. The alternative is to keep mouse input and drain
-   properly with `FlushConsoleInputBuffer` plus the timestamp gate -- more code,
-   keeps the wheel. **My recommendation: keep the wheel, fix the drain.** The
-   wheel is a real accessibility win for seniors and the drain has to be fixed
-   regardless.
+1. ~~**The mouse wheel, or the input fix?**~~ **WITHDRAWN -- this was not a
+   question.** It claimed clearing `ENABLE_MOUSE_INPUT` turns off wheel
+   scrolling, so Bill had to choose between finding 5a and the FT-171 fix.
+   **The flag decides who receives mouse records, not whether the wheel
+   works**, and Checkup never reads one. Asking Bill to arbitrate a trade-off
+   that does not exist would have cost him a decision and bought nothing.
+
+   **Do both, because they are not alternatives:** clear the flag *and* fix
+   the drain. The drain has to be fixed regardless -- it caps at 256 and
+   reports the cap as a count -- and clearing the flag stops the buffer
+   filling in the first place. Belt and braces on the defect that ended two
+   field runs.
+
+   **Verify in phase 3 that the wheel still scrolls.** Cheap, and it settles
+   the paragraph in the direction of evidence instead of argument.
 2. **Finding 35's table** -- approve the `$script:GGScreenOrder` approach above
    before it is built.
 3. **Finding 24** -- how should Checkup know if the reader bought the guide?
