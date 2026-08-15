@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-15 12:35 ET -->
-<!-- Commit: 6827966 -->
+<!-- Generated: 2026-08-15 13:20 ET -->
+<!-- Commit: d0f0b2a -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-15 12:35 ET
-- **Commit at generation:** `6827966`
-- **That commit was made:** 2026-08-15 12:35 ET
-- **Its subject line:** A3 goes back on SANDY -- it was moved on a misread, not a decision
+- **Generated:** 2026-08-15 13:20 ET
+- **Commit at generation:** `d0f0b2a`
+- **That commit was made:** 2026-08-15 13:16 ET
+- **Its subject line:** Screen inventory: the list the FT-172 table has to account for
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
