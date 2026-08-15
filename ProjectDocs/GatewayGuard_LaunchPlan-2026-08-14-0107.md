@@ -118,8 +118,8 @@ critical path.**
 |---|---|---|---|---|
 | A1 | Run `Tool\Run-ConsoleInputModeCheck.bat` **on SANDY** | Bill | 5 min | **DONE 2026-08-14 22:25.** Root cause confirmed: mouse input was ON and survived the mask |
 | A2 | **Build ascii40** -- FT-171, FT-172, FT-175 | Claude Code | 2 | **TWO OF THREE DONE 2026-08-15.** FT-171 and FT-175 in and gated. **FT-172 held on A2a** |
-| A2a | **Approve the FT-172 approach** (`$script:GGScreenOrder`) | **Bill** | 5 min | **THE ONLY THING BLOCKING THE CRITICAL PATH.** Bill asked to approve it before it is built |
-| A2b | Build FT-172 | Claude Code | 0.5 | Starts the moment A2a is answered |
+| A2a | **Agree the FT-172 screen-numbering design** | **Bill + Claude Code** | -- | **THE ONLY THING BLOCKING THE CRITICAL PATH.** Scheme agreed (branch letters, 8a/8b). **Five questions open** -- see `GatewayGuard_ScreenNumberDesign-2026-08-15-1430.md`. Start with question 1, the checklist hub |
+| A2b | Build FT-172 | Claude Code | 1 | **Starts only when A2a is fully agreed.** Bill 2026-08-15: "Stop doing work before we have 100% agreement on complex issues like this" |
 | A3 | **Field test ascii40 on SANDY** | Bill | 0.5 | Phase 3 of the field test plan. Provoke the input bug deliberately. **Which machine is Bill's call** -- see below |
 | A4 | Fix what A3 finds | Claude Code | 1 | The allowance. Beyond it, ship with known cosmetic defects |
 | A5 | **FEATURE FREEZE** | Bill | -- | Was scheduled for 14 Aug. Realistically **Wed 20 Aug** |

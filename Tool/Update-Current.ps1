@@ -69,7 +69,12 @@ $wanted = @(
     # visible: if the two ever disagree, the Launch Plan is the newer reading
     # of the same critical path and the CPM is the baseline it was measured
     # against.
-    @{ Label = 'CPM schedule';                Pattern = 'GatewayGuard_CPM_Schedule-2*.md' }
+    @{ Label = 'CPM schedule';                Pattern = 'GatewayGuard_CPM_Schedule-2*.md' },
+    # Added 2026-08-15. FT-172 is the last blocker on the critical path and its
+    # design is in discussion, not built. Named here so neither Cloud nor the
+    # next Claude Code session picks up the SUPERSEDED flat-numbering proposal
+    # (ScreenNumberTable) and starts building from it.
+    @{ Label = 'Screen numbering design';     Pattern = 'GatewayGuard_ScreenNumberDesign-*.md' }
 )
 
 # Resolve every pattern BEFORE writing anything. Newest by the DATE IN THE

@@ -1,6 +1,29 @@
 <!-- Dated: 2026-08-15 13:30 ET -->
 <!-- Editor: Claude Code (CGDELL) -->
-# GatewayGuard Screen Number Table -- FT-172, proposed for Bill's check
+# GatewayGuard Screen Number Table -- FT-172
+
+> # SUPERSEDED, 2026-08-15 14:30. DO NOT BUILD FROM THIS FILE.
+>
+> **The live document is
+> `GatewayGuard_ScreenNumberDesign-2026-08-15-1430.md`.**
+>
+> **Why it was superseded, on the same day it was written.** This file proposes
+> **flat numbering** -- branch screens consuming main-line numbers, with gaps
+> left where a path skips a branch. Bill chose the **branch-letter** scheme
+> instead (8a, 8b), which is better on his own rule 3: branch content never
+> consumes a main-line number, so every user walks 1..N unbroken instead of
+> seeing gaps that mean nothing to them.
+>
+> **And it should not have been written yet.** Bill: *"Stop doing work before
+> we have 100% agreement on complex issues like this... discuss before you do
+> the work."* The requirement was still arriving across five messages while
+> this was being produced, which is why it landed with an unresolved cell in
+> the middle of it.
+>
+> **Kept, not deleted,** because the measurements in it are real and
+> reproducible (`Tool\Run-ScreenInventory.bat`), and because a superseded
+> proposal that says why it lost is worth more than a gap in the record.
+> **The numbers in the tables below are dead. The measurements are not.**
 
 - **Document Name:** GatewayGuard_ScreenNumberTable
 - **Last Modified:** 2026-08-15 13:30 ET
