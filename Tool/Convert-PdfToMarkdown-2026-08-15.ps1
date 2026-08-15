@@ -29,6 +29,47 @@
 #  will produce an almost-empty file. That is REPORTED, not silently written --
 #  an unreported gap is how the guide stayed invisible for sixteen days.
 #
+#  ###################################################################
+#  #  DOES NOT WORK YET. MEASURED FAILURE, 2026-08-15. READ BEFORE   #
+#  #  SPENDING ANY TIME ON THIS.                                     #
+#  ###################################################################
+#
+#  Run against Guide\GatewayGuard_Guide-Standard-14pt-2026-07-16.pdf (0.5 MB,
+#  36 pages) it HUNG. Measured after 50 minutes: WINWORD.EXE alive, **11.8
+#  seconds of CPU consumed**, MainWindowTitle empty. That is not slow work --
+#  a process doing work burns CPU. It is blocked on a modal dialog.
+#
+#  The dialog is almost certainly Word's "Word will now convert your PDF to an
+#  editable Word document", which `DisplayAlerts = 0` does NOT suppress, and
+#  which is invisible because the instance is running with Visible = $false.
+#  So it waits forever for a click nobody can see.
+#
+#  ConfirmConversions:$false (passed as Open()'s 2nd positional argument here)
+#  suppresses the FILE-FORMAT conversion prompt. It does not suppress the PDF
+#  reflow prompt, which is a different dialog.
+#
+#  UNTRIED, in rough order of promise:
+#    1. Registry: HKCU\Software\Microsoft\Office\<ver>\Word\Options
+#       DisablePdfReflowNotice = 1 (DWORD). Changes Bill's machine, so it is
+#       his call, not a script's.
+#    2. Run Word VISIBLE once by hand, convert one PDF, tick "don't show this
+#       again". The setting then persists for automated runs.
+#    3. Install a PDF text library (pypdf). Also a machine change -- and the
+#       original objection build_readable_twins.py raised.
+#
+#  THE TEN-MINUTE RULE APPLIES AND WAS APPLIED. Fifty minutes of a hung Word
+#  process is exactly the case that rule exists for: stop, write it up, do not
+#  keep trying. Killed the process, recorded the measurement, moved on.
+#
+#  AND CHECK IT IS WORTH DOING AT ALL FIRST. The five Guide-*.pdf print
+#  editions are RENDERINGS of windows_security_walkthrough_guide_v9.docx,
+#  which already has a full-text twin in ProjectDocs\ at 9,363 words. Adding a
+#  second copy of the same guide to connector scope makes Cloud hold two
+#  versions of one document with no way to tell which wins -- the exact
+#  second-copy-goes-stale failure the twins system exists to prevent. If a PDF
+#  ever turns out to be NEWER than its .docx, fix the .docx; do not ship a
+#  rival text of it.
+#
 #  USAGE
 #    .\Convert-PdfToMarkdown-2026-08-15.ps1 -Pdf "..\Guide\Some-Guide.pdf"
 #    .\Convert-PdfToMarkdown-2026-08-15.ps1 -Pdf "..." -OutDir "..\ProjectDocs"
