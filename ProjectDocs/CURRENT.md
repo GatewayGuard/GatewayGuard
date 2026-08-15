@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-15 17:52 ET -->
-<!-- Commit: 7945b93 -->
+<!-- Generated: 2026-08-15 17:53 ET -->
+<!-- Commit: 4383b38 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-15 17:52 ET
-- **Commit at generation:** `7945b93`
-- **That commit was made:** 2026-08-15 14:54 ET
-- **Its subject line:** Refresh the stamp -- last act before sync
+- **Generated:** 2026-08-15 17:53 ET
+- **Commit at generation:** `4383b38`
+- **That commit was made:** 2026-08-15 17:53 ET
+- **Its subject line:** The website was never in Cloud's scope -- the pages now have a reading copy
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
