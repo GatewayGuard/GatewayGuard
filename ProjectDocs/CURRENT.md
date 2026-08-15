@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-14 23:21 ET -->
-<!-- Commit: a218242 -->
+<!-- Generated: 2026-08-15 08:45 ET -->
+<!-- Commit: 4ce433b -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-14 23:21 ET
-- **Commit at generation:** `a218242`
-- **That commit was made:** 2026-08-14 23:21 ET
-- **Its subject line:** Move the guide PDFs and superseded builds out of Cloud's scope
+- **Generated:** 2026-08-15 08:45 ET
+- **Commit at generation:** `4ce433b`
+- **That commit was made:** 2026-08-15 08:45 ET
+- **Its subject line:** ascii40: two of the three field blockers, and a sixth part nobody had listed
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -58,7 +58,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-08-14 16:23 ET [Claude Cloud + Claude Code -- CGDELL]
+## Session: 2026-08-15 08:28 ET [Claude Code -- CGDELL]
 ```
 
 **If it is not in your copy of the session log, you are reading an old
