@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-15 08:45 ET -->
-<!-- Commit: 4ce433b -->
+<!-- Generated: 2026-08-15 12:25 ET -->
+<!-- Commit: a2c502f -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-15 08:45 ET
-- **Commit at generation:** `4ce433b`
+- **Generated:** 2026-08-15 12:25 ET
+- **Commit at generation:** `a2c502f`
 - **That commit was made:** 2026-08-15 08:45 ET
-- **Its subject line:** ascii40: two of the three field blockers, and a sixth part nobody had listed
+- **Its subject line:** Refresh the stamp -- last act before sync
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -48,6 +48,8 @@ All paths are relative to `ProjectDocs/`.
 | Sync plan | `GatewayGuard_SyncPlan-2026-08-12-1726.md` | 0 |
 | Sync setup steps | `GatewayGuard_SyncSetupSteps-2026-08-12-2146.md` | 0 |
 | Cloud Project Instructions | `GatewayGuard_CloudProjectInstructions-2026-08-12-2316.md` | 0 |
+| Launch plan | `GatewayGuard_LaunchPlan-2026-08-14-0107.md` | 0 |
+| CPM schedule | `GatewayGuard_CPM_Schedule-2026-08-02-1201.md` | 1 |
 
 Also read `CLAUDE.md`, at the repository root. That name never changes.
 

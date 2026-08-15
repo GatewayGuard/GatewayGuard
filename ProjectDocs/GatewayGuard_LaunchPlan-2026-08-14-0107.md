@@ -9,6 +9,11 @@
   and float), the ascii39 field results, and the repository as measured today.
 
 **Change History Log:**
+- 2026-08-15 09:50: **ascii40 IS BUILT -- A1 done, A2 two-thirds done, and the
+  critical path is now one question long.** Track A re-cut: A1 marked done with
+  its measurement, A2 split into A2a (Bill approves the FT-172 approach) and
+  A2b (build it), and A3 opened up to CGDELL with the measurement that justifies
+  it. Everything that does not depend on Bill's answer is finished.
 - 2026-08-14 16:30: **GATE 0 CLOSED -- the certificate is issued and
   installed.** Gate 0 rewritten from a question into a result, Track B marked
   done except the test signature, and the risk section replaced: the longest
@@ -105,18 +110,43 @@ critical path.**
 
 | # | Task | Owner | Days | Notes |
 |---|---|---|---|---|
-| A1 | Run `Tool\Run-ConsoleInputModeCheck.bat` **on SANDY** | Bill | 5 min | Confirms the FT-171 root cause. **Do this first** -- if the result is unexpected, the ascii40 fix changes |
-| A2 | **Build ascii40** -- FT-171, FT-172, FT-175 | Claude Code | 2 | The three blockers, in that order |
-| A3 | **Field test ascii40 on SANDY** | Bill | 0.5 | Phase 3 of the field test plan. Provoke the input bug deliberately |
+| A1 | Run `Tool\Run-ConsoleInputModeCheck.bat` **on SANDY** | Bill | 5 min | **DONE 2026-08-14 22:25.** Root cause confirmed: mouse input was ON and survived the mask |
+| A2 | **Build ascii40** -- FT-171, FT-172, FT-175 | Claude Code | 2 | **TWO OF THREE DONE 2026-08-15.** FT-171 and FT-175 in and gated. **FT-172 held on A2a** |
+| A2a | **Approve the FT-172 approach** (`$script:GGScreenOrder`) | **Bill** | 5 min | **THE ONLY THING BLOCKING THE CRITICAL PATH.** Bill asked to approve it before it is built |
+| A2b | Build FT-172 | Claude Code | 0.5 | Starts the moment A2a is answered |
+| A3 | **Field test ascii40** | Bill | 0.5 | Phase 3 of the field test plan. Provoke the input bug deliberately. **CGDELL now qualifies -- see below** |
 | A4 | Fix what A3 finds | Claude Code | 1 | The allowance. Beyond it, ship with known cosmetic defects |
-| A5 | **FEATURE FREEZE** | Bill | -- | Was scheduled for today. Realistically **Wed 20 Aug** |
-| A6 | **Sign the build** | Bill | 0.5 | **UNBLOCKED 2026-08-14.** Needs B4 proved first |
+| A5 | **FEATURE FREEZE** | Bill | -- | Was scheduled for 14 Aug. Realistically **Wed 20 Aug** |
+| A6 | **Sign the build** | Bill | 0.5 | **UNBLOCKED 2026-08-14**, and B4 has since proved the command |
 | A7 | Hash + `download.html` | Claude Code | 0.5 | Content draftable now; hash after A6 |
 
 **A2 is only three defects, not the 47 findings.** FT-171 stops sessions
 ending by themselves. FT-172 stops screens lying about their own numbers.
 FT-175 makes the Defender scan actually run -- it never has, on any machine.
 **Everything else in the field results waits for ascii41.**
+
+**UPDATED 2026-08-15. The critical path is now one question long.**
+`W11-SecurityHardening-v3-ascii40-2026-08-15-0828.ps1` is built, and gates 12,
+12b, 24 and 24b all pass -- ascii39 failed 24 and 24b. FT-171 came in at six
+parts rather than the five the field test plan named: the sixth is that
+ascii39 only ever asserted the console flags from inside `Get-AllStatuses`,
+most of the way through the run, so every earlier screen ran with the console
+as it started. Proved by `Tool\Run-InputGateTest.bat`, 9 passed 0 failed on
+CGDELL.
+
+**A2a is the whole delay.** Everything not depending on Bill's answer is done.
+
+**A3 CAN RUN ON CGDELL, and the earlier objection has expired.** The field
+test plan says "CGDELL did not fail, so measuring CGDELL proves nothing" --
+true of **phase 0**, which asked whether the flag survives the mask. Phase 3
+asks something different: does ascii40 resist deliberate provocation.
+**measured 2026-08-15: CGDELL's console starts at `0x01F7` -- QuickEdit AND
+mouse input both ON.** SANDY was `0x01B7`, with QuickEdit already off. CGDELL
+therefore reports *more* mouse activity into the input buffer than SANDY did,
+which makes it the harsher host for this test, not the weaker one. **SANDY is
+still worth a run** -- it is the machine that actually failed, and it is a
+different Windows edition -- but it is no longer the only machine that can
+answer A3.
 
 ### TRACK B -- THE CERTIFICATE (was the longest pole; now nearly done)
 

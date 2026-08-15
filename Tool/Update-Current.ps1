@@ -56,7 +56,20 @@ $wanted = @(
     @{ Label = 'Test history';                Pattern = 'GatewayGuard_TestHistory-*.md' },
     @{ Label = 'Sync plan';                   Pattern = 'GatewayGuard_SyncPlan-*.md' },
     @{ Label = 'Sync setup steps';            Pattern = 'GatewayGuard_SyncSetupSteps-*.md' },
-    @{ Label = 'Cloud Project Instructions';  Pattern = 'GatewayGuard_CloudProjectInstructions-*.md' }
+    @{ Label = 'Cloud Project Instructions';  Pattern = 'GatewayGuard_CloudProjectInstructions-*.md' },
+    # Added 2026-08-15. The Launch Plan is the schedule Bill works from and the
+    # one document he hands Cloud to say what happens next -- it is built from
+    # the CPM's critical path and float, re-ordered against the real calendar.
+    # It was tracked and pushed since 2026-08-14 and Cloud could read it, but
+    # it was NOT named here, so Cloud had no way to know it was the current
+    # plan. That is the exact failure this file exists to prevent, applied to
+    # the one document whose whole purpose is telling everyone what to do next.
+    @{ Label = 'Launch plan';                 Pattern = 'GatewayGuard_LaunchPlan-*.md' },
+    # The CPM the Launch Plan is built from. Named so the derivation is
+    # visible: if the two ever disagree, the Launch Plan is the newer reading
+    # of the same critical path and the CPM is the baseline it was measured
+    # against.
+    @{ Label = 'CPM schedule';                Pattern = 'GatewayGuard_CPM_Schedule-2*.md' }
 )
 
 # Resolve every pattern BEFORE writing anything. Newest by the DATE IN THE
