@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-15 13:20 ET -->
-<!-- Commit: d0f0b2a -->
+<!-- Generated: 2026-08-15 13:44 ET -->
+<!-- Commit: f80e1ba -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-15 13:20 ET
-- **Commit at generation:** `d0f0b2a`
-- **That commit was made:** 2026-08-15 13:16 ET
-- **Its subject line:** Screen inventory: the list the FT-172 table has to account for
+- **Generated:** 2026-08-15 13:44 ET
+- **Commit at generation:** `f80e1ba`
+- **That commit was made:** 2026-08-15 13:44 ET
+- **Its subject line:** Close the session: FT-172 design is in discussion, and nothing gets built yet
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -50,6 +50,7 @@ All paths are relative to `ProjectDocs/`.
 | Cloud Project Instructions | `GatewayGuard_CloudProjectInstructions-2026-08-12-2316.md` | 0 |
 | Launch plan | `GatewayGuard_LaunchPlan-2026-08-14-0107.md` | 0 |
 | CPM schedule | `GatewayGuard_CPM_Schedule-2026-08-02-1201.md` | 1 |
+| Screen numbering design | `GatewayGuard_ScreenNumberDesign-2026-08-15-1430.md` | 0 |
 
 Also read `CLAUDE.md`, at the repository root. That name never changes.
 
@@ -60,7 +61,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-08-15 08:28 ET [Claude Code -- CGDELL]
+## Session: 2026-08-15 08:28 to 14:30 ET [Claude Code -- CGDELL] -- PART 2: FT-172 DESIGN, AND THREE CORRECTIONS TO HOW I WORK
 ```
 
 **If it is not in your copy of the session log, you are reading an old
