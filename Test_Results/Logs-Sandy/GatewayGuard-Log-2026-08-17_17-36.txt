@@ -1,0 +1,35 @@
+﻿============================================================
+  GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+  Build: ascii40
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-08-17 17:36:33
+  Computer: SANDY
+  Machine:  HP HP Laptop 17-by1xxx
+  Machine ID: F7F13A97D58D (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[17:36:33] [OK] Console control handler registered -- Ctrl+C in Mark mode can no longer end the session (FT-150), and closing the window still writes the log footer (FT-160)
+[17:36:33] [START] Tool launched v3.1 build ascii40
+[17:36:33] [INFO] Machine: HP HP Laptop 17-by1xxx | MachineID: F7F13A97D58D
+[17:36:33] [OK] Sleep/shutdown prevention activated
+[17:36:33] [OK] QuickEdit AND mouse input reporting disabled for this session (FT-01, FT-171a) -- re-asserted silently from here on
+[17:36:33] [SCREEN] [SCREEN-25] (shown as screen 1) Rendered: WELCOME BACK
+[17:39:05] [KEY] Key 'R' accepted at: Show-ResumePrompt
+[17:39:05] [STATE] User chose to RESUME from checkpoint: AppsAudit
+[17:40:27] [KEY] Continue accepted at: Show-ResumePrompt
+[17:40:27] [SCREEN] [SCREEN-31] (shown as screen 2) Rendered: QUICK RE-CHECK BEFORE RESUMING
+[17:40:38] [KEY] Key 'N' accepted at: Show-ResumeReverify
+[17:40:38] [SCREEN] [SCREEN-83] (shown as screen 3) Rendered: ARE YOU SURE YOU WANT TO CLOSE CHECKUP?
+[17:42:00] [KEY] Key 'Y' accepted at: Show-ResumeReverify
+[17:42:00] [EXIT] Resume re-check: user said not personal PC, and confirmed the exit -- exit
+[17:42:00] [OK] Sleep prevention deactivated -- normal power management restored (called from: Show-ResumeReverify)
+
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================

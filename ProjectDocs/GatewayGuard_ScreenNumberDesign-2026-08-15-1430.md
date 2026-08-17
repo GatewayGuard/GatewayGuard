@@ -5,8 +5,12 @@
 - **Document Name:** GatewayGuard_ScreenNumberDesign
 - **Last Modified:** 2026-08-15 14:30 ET
 - **Last Editor:** Claude Code (CGDELL)
-- **Status:** **DESIGN IN DISCUSSION. NOTHING IS BUILT AND NOTHING SHOULD BE
-  BUILT FROM THIS YET.** Five questions are open. The build is untouched.
+- **Status:** **THE SCHEME IS APPROVED. Bill, 2026-08-17: "172 is approved."**
+  The branch-letter scheme below is settled and is what gets built. **Two
+  sub-decisions remain open (questions 2 and 4)** and are the only things
+  still blocking the build; question 3 is analysis for Claude Code, not a
+  question for Bill, and question 5 is settled by the approval itself. The
+  build is still untouched.
 - **Supersedes:** `GatewayGuard_ScreenNumberTable-2026-08-15-1330.md`, which
   proposed flat numbering. Bill rejected that in favour of branch letters.
 
@@ -14,7 +18,22 @@
 
 ## READ THIS FIRST IF YOU ARE THE NEXT SESSION
 
-**Do not build anything.** Bill, 2026-08-15: *"Stop doing work before we have
+**The scheme is approved. Two sub-decisions are not.** Bill approved FT-172 on
+2026-08-17. What that settles is the **branch-letter scheme** -- integers for
+main-line screens, letters for branches. What it does not settle is **how deep
+letters nest (question 2)** and **whether BitLocker gets its own integer run
+(question 4)**. Both change what a senior reads out on the phone, so both are
+Bill's call, not Claude Code's.
+
+**Question 3 is not a question for Bill.** Establishing the true main line
+requires walking the call flow, and it is required under every answer to 2 and
+4. **That analysis can and should proceed now.**
+
+**Question 5 is settled by the approval.** Home seeing 8a while Pro sees 8b is
+not a side effect of the scheme, it is the scheme -- approving one approves the
+other.
+
+Bill, 2026-08-15: *"Stop doing work before we have
 100% agreement on complex issues like this... discuss before you do the work."*
 
 That instruction was earned. This session produced an inventory tool and a
@@ -241,6 +260,14 @@ is a wish.
 5. **Update CLAUDE.md**, which records the opposite decision today -- *"on
    screen the user sees position in their journey."* That was the runtime model
    and this supersedes it.
+6. **Make the checklist log its number.** **measured 2026-08-17, ascii40 field
+   run 1:** the log jumps `(shown as screen 21)` -> `(shown as screen 23)`,
+   because `SCREEN-76` logs `Checklist render: page 1, window width 121` and no
+   position at all. Bill called it "screen 22" in his findings -- read off the
+   header bar at source line 7668, the third numbering surface this document
+   identified. **So the number the user reads out to support is the one number
+   missing from the log support would be reading.** Whatever the table
+   assigns to the checklist must reach both surfaces.
 
 ---
 

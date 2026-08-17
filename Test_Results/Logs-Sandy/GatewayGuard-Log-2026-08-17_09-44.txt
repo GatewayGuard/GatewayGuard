@@ -1,0 +1,168 @@
+﻿============================================================
+  GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+  Build: ascii40
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-08-17 09:44:08
+  Computer: SANDY
+  Machine:  HP HP Laptop 17-by1xxx
+  Machine ID: F7F13A97D58D (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[09:44:09] [OK] Console control handler registered -- Ctrl+C in Mark mode can no longer end the session (FT-150), and closing the window still writes the log footer (FT-160)
+[09:44:09] [START] Tool launched v3.1 build ascii40
+[09:44:09] [INFO] Machine: HP HP Laptop 17-by1xxx | MachineID: F7F13A97D58D
+[09:44:09] [OK] Sleep/shutdown prevention activated
+[09:44:09] [OK] QuickEdit AND mouse input reporting disabled for this session (FT-01, FT-171a) -- re-asserted silently from here on
+[09:44:09] [SCREEN] [SCREEN-25] (shown as screen 1) Rendered: WELCOME BACK
+[09:54:57] [KEY] Key 'S' accepted at: Show-ResumePrompt
+[09:54:57] [STATE] User chose to START OVER -- checkpoint cleared
+[09:54:58] [KEY] Continue accepted at: Show-FontInstructions
+[09:57:07] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[09:57:07] [SCREEN] [SCREEN-28] (shown as screen 2) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[09:58:11] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[09:58:12] [SCREEN] [SCREEN-29] (shown as screen 3) Rendered: BEFORE YOU START -- YOUR WINDOW  (Screen 4 of 6)
+[09:58:14] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[09:58:14] [SCREEN] [SCREEN-78] (shown as screen 4) Rendered: BEFORE YOU START -- YOUR KEYBOARD  (Screen 5 of 6)
+[09:58:15] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[09:58:15] [SCREEN] [SCREEN-30] (shown as screen 5) Rendered: WHAT HAPPENS NEXT -- PLEASE READ  (Screen 6 of 6)
+[09:58:30] [KEY] Nav 'BACK' at: Show-FontInstructions
+[09:58:30] [SCREEN] [SCREEN-78] (shown as screen 4) Rendered: BEFORE YOU START -- YOUR KEYBOARD  (Screen 5 of 6)
+[09:58:45] [KEY] Nav 'BACK' at: Show-FontInstructions
+[09:58:45] [SCREEN] [SCREEN-29] (shown as screen 3) Rendered: BEFORE YOU START -- YOUR WINDOW  (Screen 4 of 6)
+[09:58:45] [KEY] Nav 'BACK' at: Show-FontInstructions
+[09:58:45] [SCREEN] [SCREEN-28] (shown as screen 2) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[09:58:46] [KEY] Nav 'BACK' at: Show-FontInstructions
+[09:58:46] [KEY] Nav 'BACK' at: Show-FontInstructions
+[09:58:46] [KEY] Look-back opened at: Show-FontInstructions
+[09:58:54] [KEY] Continue accepted at: Show-FontInstructions
+[09:58:54] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[09:58:55] [SCREEN] [SCREEN-28] (shown as screen 2) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[09:58:55] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[09:58:55] [SCREEN] [SCREEN-29] (shown as screen 3) Rendered: BEFORE YOU START -- YOUR WINDOW  (Screen 4 of 6)
+[09:58:56] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[09:58:56] [SCREEN] [SCREEN-78] (shown as screen 4) Rendered: BEFORE YOU START -- YOUR KEYBOARD  (Screen 5 of 6)
+[09:58:56] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[09:58:56] [SCREEN] [SCREEN-30] (shown as screen 5) Rendered: WHAT HAPPENS NEXT -- PLEASE READ  (Screen 6 of 6)
+[09:58:57] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[09:58:57] [SCREEN] [SCREEN-02] (shown as screen 6) Rendered: HOW TO SCROLL BACK (AND COPY) IN THIS WINDOW
+[09:58:59] [KEY] Continue accepted at: Show-ScrollCopyTip
+[09:58:59] [SCREEN] [SCREEN-05] (shown as screen 7) Rendered: !  IMPORTANT -- READ BEFORE CONTINUING
+[09:59:05] [KEY] Key 'Y' accepted at: Test-PersonalComputer
+[09:59:06] [CONFIRM] Personal computer confirmed by user
+[09:59:06] [OK] Domain check passed -- not domain joined
+[09:59:06] [OK] Administrator access confirmed
+[09:59:19] [KEY] Continue accepted at: Test-AdminAccess
+[09:59:19] [INFO] Windows Edition: Core -- Windows 11 Home
+[09:59:19] [SCREEN] [SCREEN-34] (shown as screen 8) Rendered: WINDOWS EDITION DETECTED
+[09:59:19] [INFO] Home edition -- Remote Desktop and Group Policy unavailable
+[09:59:20] [KEY] Continue accepted at: Get-WinEdition
+[09:59:20] [SCREEN] [SCREEN-35] (shown as screen 9) Rendered: YOUR PC -- RAM: 8 GB
+[09:59:20] [WARN] RAM: 8 GB (minimal)
+[09:59:24] [KEY] Continue accepted at: Get-RAMStatus
+[09:59:39] [KEY] Key 'Y' accepted at: Test-TimeDateSync
+[09:59:39] [OK] Time/date confirmed correct by user: Monday, August 17, 2026 -- 9:59 AM (UTC-05:00) Eastern Time (US & Canada)
+[09:59:42] [INFO] Secure Boot state read on all editions (FT-143): True
+[09:59:42] [SCREEN] [SCREEN-09] (shown as screen 10) Rendered: YOUR SYSTEM AT A GLANCE
+[09:59:42] [INFO] System Baseline Summary displayed
+[10:00:01] [KEY] Look-back opened at: Show-SystemBaselineSummary
+[10:00:06] [KEY] Continue accepted at: Show-SystemBaselineSummary
+[10:00:06] [STATE] Checkpoint saved: Baseline
+[10:00:06] [SCREEN] [SCREEN-26] (shown as screen 11) Rendered: YOUR PC'S SECURITY TOOLS -- A QUICK INTRODUCTION
+[10:00:06] [KEY] Continue accepted at: Show-SecurityToolsBriefing
+[10:00:07] [SCREEN] [SCREEN-27] (shown as screen 12) Rendered: THE SCANS WE RECOMMEND -- AND WHY
+[10:00:07] [KEY] Continue accepted at: Show-ScanPlanBriefing
+[10:00:07] [STATE] Checkpoint saved: Briefing
+[10:00:07] [SCREEN] [SCREEN-39] (shown as screen 13) Rendered: REMINDER: PRE-SCAN RECOMMENDED
+[10:00:33] [KEY] Key 'Y' accepted at: Show-PreScanGate
+[10:00:33] [CONFIRM] Repeat run -- user confirmed to continue
+[10:00:34] [SCREEN] [SCREEN-43] (shown as screen 14) Rendered: OK  ANTIVIRUS STATUS -- HEALTHY SETUP
+[10:00:34] [OK] Defender active as primary AV. MB Free installed as companion.
+[10:03:26] [KEY] Continue accepted at: Test-DefenderPrimary
+[10:03:26] [STATE] Checkpoint saved: DefenderAV
+[10:03:26] [SCREEN] [SCREEN-73] (shown as screen 15) Rendered: MALWAREBYTES DETECTED ON THIS PC
+[10:03:40] [KEY] Key 'N' accepted at: Show-MalwarebytesFollowUp
+[10:03:40] [SKIP] User skipped Malwarebytes scan (already installed, state: FreeCompanion)
+[10:03:42] [KEY] Continue accepted at: Show-MalwarebytesFollowUp
+[10:03:42] [STATE] Checkpoint saved: Malwarebytes
+[10:03:42] [OK] Sleep/shutdown prevention activated
+[10:03:42] [OK] AC power confirmed. Battery present: True (100%). Sleep prevention active.
+[10:03:46] [KEY] Look-back opened at: Test-PowerStatus
+[10:03:57] [KEY] Continue accepted at: Test-PowerStatus
+[10:04:23] [KEY] Look-back opened at: Run-PowerSettingsCheck
+[10:04:45] [KEY] Continue accepted at: Run-PowerSettingsCheck
+[10:04:45] [SCREEN] [SCREEN-50] (shown as screen 16) Rendered: POWER SETTINGS -- SECURITY REVIEW
+[10:04:45] [INFO] Power settings: PW=NOT required -- change recommended FastStart=DISABLED -- GOOD WOL=DISABLED -- GOOD Screen=Found: NEVER (your existing setting) -- recommend 5 min: Settings -> System -> Power & sleep CritBatt=HIBERNATE -- GOOD
+[10:05:26] [KEY] Key 'N' accepted at: Run-PowerSettingsCheck
+[10:05:48] [KEY] Look-back opened at: Run-PowerSettingsCheck
+[10:05:51] [KEY] Continue accepted at: Run-PowerSettingsCheck
+[10:05:51] [STATE] Checkpoint saved: PowerSettings
+[10:05:51] [START] === Apps Audit Started ===
+[10:05:52] [SCREEN] [SCREEN-51] (shown as screen 17) Rendered: APPS AUDIT RESULTS
+[10:05:52] [DONE] === Apps Audit Complete ===
+[10:05:58] [KEY] Look-back opened at: Run-AppsAudit
+[10:06:00] [KEY] Continue accepted at: Run-AppsAudit
+[10:06:00] [STATE] Checkpoint saved: AppsAudit
+[10:06:00] [SCREEN] [SCREEN-52] (shown as screen 18) Rendered: GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+[10:06:06] [KEY] Key '1' accepted at: Select-Mode
+[10:06:06] [INFO] Mode selected: Console
+[10:06:07] [INFO] Item 6 (Edge phishing protection): registry read BLOCKED by Tamper Protection -- reporting Unknown rather than a fault (FT-141)
+[10:06:09] [DONE] Get-AllStatuses complete -- all 19 settings probed
+[10:06:09] [SCREEN] [SCREEN-53] (shown as screen 19) Rendered: QUICK QUESTION -- YOUR PASSWORDS
+[10:06:09] [ERROR] SILENT ERROR at Show-ScopeDisclaimer: Requested registry access is not allowed. | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii40-2026-08-15-0828.ps1:5486 char:31
+[10:06:09] [ERROR] SILENT ERROR at Show-ScopeDisclaimer: Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Edge' because it does not exist. | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii40-2026-08-15-0828.ps1:5587 char:27
+[10:06:09] [ERROR] SILENT ERROR at Show-ScopeDisclaimer: Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Dsh' because it does not exist. | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii40-2026-08-15-0828.ps1:5603 char:27
+[10:06:09] [ERROR] SILENT ERROR at Show-ScopeDisclaimer: Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Edge' because it does not exist. | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii40-2026-08-15-0828.ps1:5617 char:28
+[10:10:19] [KEY] Key 'Y' accepted at: Show-ScopeDisclaimer
+[10:10:19] [INFO] User has a password manager -- Edge Password Saving change stays available
+[10:10:21] [KEY] Continue accepted at: Show-ScopeDisclaimer
+[10:10:21] [SCREEN] [SCREEN-54] (shown as screen 20) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 1 of 2)
+[10:11:50] [KEY] Nav 'NEXT' at: Show-ScopeDisclaimer
+[10:11:50] [SCREEN] [SCREEN-75] (shown as screen 21) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 2 of 2)
+[10:11:52] [KEY] Nav 'NEXT' at: Show-ScopeDisclaimer
+[10:11:52] [SCREEN] [SCREEN-76] Checklist render: page 1, window width 121, 7 item(s) selected
+[10:11:52] [INFO] Checklist columns: window 121, name 24 (content needed 51), status 86 (content needed 94)
+[10:12:35] [SCREEN] [SCREEN-76] Checklist render: page 1, window width 121, 7 item(s) selected
+[10:12:35] [INFO] Checklist columns: window 121, name 24 (content needed 51), status 86 (content needed 94)
+[10:31:00] [KEY] Checklist command 'N' accepted at: Run-ConsoleMode
+[10:31:01] [SCREEN] [SCREEN-76] Checklist render: page 1, window width 121, 0 item(s) selected
+[10:31:01] [INFO] Checklist columns: window 121, name 24 (content needed 51), status 86 (content needed 94)
+[10:31:22] [KEY] Checklist command '8' accepted at: Run-ConsoleMode
+[10:31:23] [SCREEN] [SCREEN-76] Checklist render: page 1, window width 175, 1 item(s) selected
+[10:31:23] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[10:31:30] [KEY] Checklist command 'R' accepted at: Run-ConsoleMode
+[10:31:30] [SCREEN] [SCREEN-55] (shown as screen 23) Rendered: REVIEW YOUR SELECTIONS -- NO CHANGES MADE YET
+[10:31:30] [INFO] Review listing rendered -- awaiting Ready-to-proceed
+[10:31:39] [KEY] Key 'Y' accepted at: Run-ConsoleMode
+[10:31:39] [START] === Console Mode Hardening Run Started ===
+[10:31:42] [INFO] Device Encryption state: Not encrypted (0%), account type: Local -- raw: FullyDecrypted
+[10:31:42] [SCREEN] [SCREEN-61] (shown as screen 24) Rendered: FINAL ITEM: DEVICE ENCRYPTION (Windows 11 Home)
+[10:32:22] [KEY] Continue accepted at: Show-BitLockerHomeScreen
+[10:32:23] [GOOD] Device Encryption prereq check -- TPM: True, SecureBoot: True, WinRE: True
+[10:32:23] [SCREEN] [SCREEN-62] (shown as screen 25) Rendered: YOUR PC MEETS THE REQUIREMENTS
+[10:32:47] [KEY] Continue accepted at: Show-BitLockerHomeScreen
+[10:32:47] [SCREEN] [SCREEN-79] (shown as screen 26) Rendered: BEFORE YOU TURN IT ON -- YOUR RECOVERY KEY
+[10:35:15] [KEY] Continue accepted at: Show-BitLockerHomeScreen
+[10:35:15] [SCREEN] [SCREEN-80] (shown as screen 27) Rendered: HOW TO SIGN IN WITH A MICROSOFT ACCOUNT
+[10:38:12] [KEY] Continue accepted at: Show-BitLockerHomeScreen
+[10:38:12] [SCREEN] [SCREEN-81] (shown as screen 28) Rendered: HOW TO TELL IF ENCRYPTION IS ACTUALLY RUNNING
+[10:38:12] [SKIP] BitLocker/Device Encryption: Home edition -- manual path shown across 4 screens, no changes made by Checkup
+[10:42:06] [KEY] Continue accepted at: Show-BitLockerHomeScreen
+[10:42:06] [SCREEN] [SCREEN-69] (shown as screen 29) Rendered: ALL SELECTED ITEMS PROCESSED
+[10:42:06] [SCREEN] [SCREEN-70] (shown as screen 30) Rendered: AUTOMATED SCAN SCHEDULE SETUP
+[10:42:07] [GOOD] Scheduled task created: GatewayGuard - Quarterly Defender Offline Scan (reminder popup -- FT-175)
+[10:42:07] [GOOD] Scheduled task created: GatewayGuard - Monthly Malwarebytes Reminder
+[10:42:20] [KEY] Continue accepted at: Setup-ScheduledTasks
+[10:42:20] [SCREEN] [SCREEN-72] (shown as screen 31) Rendered: AUTOMATED STEPS COMPLETE
+[10:42:20] [OK] Sleep prevention deactivated -- normal power management restored (called from: Run-ConsoleMode)
+
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================
+[10:42:21] [KEY] Look-back opened at: Run-ConsoleMode
+[10:42:40] [KEY] Look-back opened at: Run-ConsoleMode
