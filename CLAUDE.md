@@ -266,6 +266,59 @@ conclusion, and each cost a round trip to disprove.
 **The asymmetry:** checking costs seconds, a wrong assertion costs a build.
 That is FT-116 and FT-120 in this project's own defect record.
 
+### THE FIRST EXPLANATION THAT FITS IS NOT THE ANSWER (added 2026-08-17)
+
+Bill: *"How can I get you to research all possible alternatives and not
+generalize on the first one you think is the obvious answer?"*
+
+**This is not a research failure. It is a stopping failure.** In both cases
+that earned this rule, the evidence that disproved the conclusion was
+**already on the table when the conclusion was published.** No further
+searching was needed — one question was.
+
+**Before any "X is the mechanism / X is the cause / it affects N things"
+claim, run these three. All three, every time.**
+
+1. **What ELSE could produce this symptom? Name the alternatives out loud,
+   even to dismiss them.** For a mechanism in code, the concrete form is: *is
+   this the only function that does this job?* Grep for the others. It costs
+   ten seconds.
+2. **Does this contradict anything already known?** The field report, an
+   earlier measurement, or Bill's direct experience at the keyboard.
+   **THE FIELD WINS.** If the conclusion disagrees with what Bill saw, the
+   conclusion is wrong until it can also explain what he saw. Do not publish
+   a claim that cannot account for the contradicting evidence.
+3. **Am I counting the thing, or a proxy for it?** A count looks measured even
+   when it answers the wrong question, which is where false confidence comes
+   from.
+
+**What earned this (2026-08-17, both in one session):**
+
+- **"Back is broken on 34 screens."** Read `Read-ValidKey`, found 34 Y/N
+  prompts with no `B`, published. **Never asked whether it was the only
+  reader.** It is not: `Pause-ForUser` has 71 call sites and `Read-NavKey` 7,
+  and both handle Back. Back works on **pages** and not at **questions** —
+  a much smaller and differently-shaped defect. **Bill's own field report,
+  the document being triaged at that moment, said "B works on every screen
+  except 19."** Two contradicting claims were in front of each other and were
+  not reconciled.
+- **"BitLocker is 14 screens across 5 functions."** A decision was put to Bill
+  built on that structure. When it was finally checked, **three of the
+  fourteen were somewhere else entirely** — inside the checklist loop, not the
+  BitLocker block. The question had to be withdrawn and re-asked.
+
+**Proportionality — this is not a demand to exhaust everything.** Cheap checks
+always; exhaustive search only when the claim is load-bearing. The test for
+load-bearing: **would Bill make a decision, or would a build change, if this
+were true?** If yes, check the alternatives before saying it. The two failures
+above were both load-bearing — one asked Bill for a decision, the other set
+scope for a build.
+
+**This is the same asymmetry as the rule above it, one level earlier.** That
+rule says verify a claim before asserting it. This one says a verified claim
+can still be the wrong claim, if nothing checked whether something else fits
+the same evidence.
+
 ### This covers COMMAND FLAGS, not just behaviour (added 2026-08-02, FT-162)
 
 An argument you pass to an external program is a factual claim about that
