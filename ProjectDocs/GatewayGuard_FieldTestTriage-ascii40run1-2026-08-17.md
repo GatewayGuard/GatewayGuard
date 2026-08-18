@@ -114,8 +114,20 @@ those two appearances is this banner, and it is not de-emphasized, it is
 **erased**. The Machine ID goes with it -- the one string support would ask a
 caller to read out.
 
-**The fix is a decision, not a patch.** Either the banner earns a pause, or it
-folds into SCREEN-25, or it goes. It cannot stay where it is.
+**RESOLVED 2026-08-17. The banner is CUT, and replaced by FT-189.**
+
+Bill: *"no senior including me is going to remember that. Better you provide a
+button the user can select and read it right off the screen, or a file the user
+can open in Notepad."*
+
+**He is right, and it disposes of the option I recommended.** I had proposed
+promoting the banner to screen 1. That fails for a reason no amount of screen
+design fixes: **the information is needed during a support call, which happens
+hours or days after the run.** A screen shown at launch -- however long it is
+held -- is being asked to work as memory, and it cannot. Cutting the flash was
+never the hard part; making the build number and Machine ID *retrievable* is.
+
+The banner is deleted. **The table's integers do not shift.** See FT-189.
 
 ### FT-173-residual -- SCREEN-53 has no Back option
 
@@ -134,6 +146,42 @@ Worth noting the shape of it: `Show-ScopeDisclaimer` already handles Back
 correctly further down (line 6273 re-asks this very question when the user
 backs out of page 1). The Back path exists. **The screen that asks the
 question first is the only one that cannot reach it.**
+
+### It is not one screen. It is 34. -- measured 2026-08-17
+
+Bill found one because it is the one where he wanted to go back. **The defect
+is everywhere `Read-ValidKey` is called.**
+
+**measured**, every key set passed to `Read-ValidKey` in the build:
+
+| Key set | Prompts |
+|---|---|
+| `Y,N` | **34** |
+| `Y,N,S` | 5 |
+| `1,2,3` | 2 |
+| **`Y,N,B`** | **2** |
+| `E,R` | 1 |
+| `Y,N,Q` | 1 |
+| `R,S` | 1 |
+
+**Two prompts out of 46 accept B.**
+
+**And `Read-ValidKey` has no Back handling of its own** -- line 2329 is
+`while ($ch -notin $ValidKeys)`, a bare loop. An unrecognised key is **silently
+discarded with no message at all.** So a user pressing B at any of the other 44
+prompts gets no response, no explanation, and no way to tell whether the key
+registered. That is a dead end by this project's own definition, and it is
+*invisible* -- which is why it has survived this long and why Bill met it only
+once.
+
+**The fix belongs in `Read-ValidKey` itself, not at 44 call sites.** The
+precedent is already in this build: the 26-line rule's trailing blank line is
+produced centrally in `Write-GGBox` *"so a new screen gets it automatically and
+cannot forget it."* Same reasoning, same place to put it. **One change closes
+FT-173 completely and makes it impossible to reintroduce.**
+
+Where B is genuinely meaningless -- the very first screen -- it should say so
+rather than ignore the key.
 
 ### FT-178 -- only one disk is reported
 
@@ -280,6 +328,60 @@ reports `Unknown`. The user saw nothing wrong, and nothing was wrong.
 **But the log says `ERROR` four times, and the log is the file the user is told
 to email to support.** A clean run should not look like a broken one. These
 are `INFO`, not `ERROR`.
+
+---
+
+### FT-189 (NEW) -- the user must be able to FETCH their build and Machine ID
+
+**Bill, 2026-08-17**, replacing FT-184's proposed fix: *"provide a button the
+user can select and read it right off the screen, or a file the user can open
+in Notepad."*
+
+**The requirement, stated properly:** the build number and Machine ID are
+support-call information. They are needed **later**, by a person who is on the
+phone and does not have the run in front of them. Anything that shows them
+once, at launch, is asking a screen to work as memory.
+
+**Both halves of Bill's instruction should be built. They serve different
+moments.**
+
+**(a) The button -- an `I` key available at every prompt.**
+
+**measured 2026-08-17: `I` is free.** Keys currently in use as valid keys
+anywhere in the build are **B, E, N, Q, R, S, Y**, plus the checklist's **P**
+and **A** and the digits **1, 2, 3**. `I` collides with nothing.
+
+It paints a small screen carrying the build, the Machine ID, the full log path,
+and how to open the log. Under FT-172 it is a branch screen and takes a letter,
+not an integer -- it is reachable from everywhere and is on nobody's main line.
+
+**It goes inside `Read-ValidKey` and `Read-NavKey`, not at the call sites.**
+Same argument as the FT-173 fix above, and the two changes should be made
+together in the same place -- they are the same omission with two symptoms.
+
+**(b) The file -- already exists, and is not findable.**
+
+The log header already carries all of it:
+
+```
+  Build: ascii40
+  Computer: SANDY
+  Machine ID: F7F13A97D58D
+  Run Date: 2026-08-17 09:44:08
+```
+
+**So the file half of Bill's request is 90% built and 0% delivered** -- it sits
+at `C:\GatewayGuard\Logs\GatewayGuard-Log-<timestamp>.txt`, which a senior
+cannot be expected to navigate to. **Ship an `Open-My-Log.bat`** in
+`C:\GatewayGuard\` that opens the newest log in Notepad on a double-click, and
+name it on the `I` screen and in the closing screen.
+
+This is Bill's ascii39 finding 7 arriving again from a different direction --
+*"add 'which you can open in Notepad'"*. Same instinct, and it was right then
+too.
+
+**Launcher rules apply** (`CLAUDE.md`): no date in the name, `cd /d "%~dp0"`,
+never self-elevate, Enter-only wait rather than `pause`, CRLF endings.
 
 ---
 

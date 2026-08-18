@@ -184,10 +184,14 @@ off. Both climb. Neither has a hole.
 
 ## WHAT THIS DOES NOT COVER
 
-- **The identity banner (FT-184)** has no number because it currently has no
-  screen -- it is painted and wiped inside one second. **If Bill decides it
-  stays, it becomes screen 1 and everything shifts by one.** That decision
-  should be made before the table is built into the tool, not after.
+- **The identity banner (FT-184) is CUT. Bill, 2026-08-17.** It is deleted
+  rather than promoted to screen 1, so **the integers above are final and do
+  not shift.** Bill's reason disposed of my recommendation: *"no senior
+  including me is going to remember that"* -- the build number and Machine ID
+  are needed on a support call days later, and no screen shown at launch can
+  serve that. They are fetched on demand instead, under **FT-189** (an `I` key
+  at every prompt, plus `Open-My-Log.bat`). **The `I` screen is a branch and
+  takes a letter, so it does not disturb this table either.**
 - **SCREEN-63, 82 and 01** are marked conditional in the inventory but their
   exact trigger was not confirmed in this walk. They are lettered on their
   position, which is safe, but their titles above are inferred and must be
@@ -199,9 +203,14 @@ off. Both climb. Neither has a hole.
 
 ## NEXT, IN ORDER
 
-1. **Bill decides the banner** -- FT-184. It is the only thing that shifts the
-   integers.
-2. Confirm the three inferred titles above against source.
-3. Build the table into the tool as the six steps in the design document.
-4. Extend gate 12 to fail the build on a duplicate, a gap in the letters, a
+**The integers are final.** The banner decision that could have shifted them
+was made on 2026-08-17 and went the way that leaves them alone.
+
+1. Confirm the three inferred titles above against source (SCREEN-01, 63, 82).
+2. Build the table into the tool as the six steps in the design document.
+3. Extend gate 12 to fail the build on a duplicate, a gap in the letters, a
    typed `N of M`, or any path that produces a decrease.
+4. **Add the `I` screen as a branch letter** once FT-189 is built. It hangs off
+   whatever integer the user is on, so it needs no reserved number -- but gate
+   12 must know it is legitimately reachable from everywhere, or it will read
+   as 46 duplicate definitions.
