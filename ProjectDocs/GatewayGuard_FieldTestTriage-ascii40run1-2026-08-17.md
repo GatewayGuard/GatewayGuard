@@ -424,7 +424,40 @@ never self-elevate, Enter-only wait rather than `pause`, CRLF endings.
 
 ---
 
-### FT-190 (NEW) -- nothing tells the user they can STOP encryption
+### FT-190 -- REJECTED BY BILL, 2026-08-17. Recorded, not built.
+
+**Bill:** *"Look, if we have explained encryption and they have approved it,
+there is nothing left to tell them and let the encryption rip."*
+
+**He is right, and the proposal below was wrong in the direction he has been
+correcting all session.** It answered "the user is missing a fact" with "add a
+screen", while the standing instruction is fewer screens and less of the
+user's time. That alone kills it.
+
+**The product argument is the stronger one though.** The explanation belongs
+BEFORE the approval. Telling someone mid-encryption that they can stop plants
+doubt at precisely the moment we want them committed -- it is an invitation to
+abandon the single most valuable thing Checkup does, delivered after they had
+already decided to do it.
+
+**What survives, and it is at most a clause:** if the cancel fact earns a place
+anywhere, it is inside the existing pre-approval explanation on SCREEN-79,
+where it would RAISE the approval rate rather than undermine it. Not a screen.
+Not after the decision. **Nothing is being built from this without Bill saying
+so.**
+
+**One residual worth naming, and it is a Guide item rather than a screen:** a
+user who panics mid-encryption and hard-powers-off the PC is the scenario the
+cancel fact would have covered. That belongs in the written guide, where
+somebody looks when they are frightened, not on a screen they are trying to
+get past.
+
+The original proposal is kept below because the measurement in it is still
+true and the reasoning is what makes the rejection legible later.
+
+---
+
+### FT-190 (ORIGINAL PROPOSAL, not built)
 
 **Bill, 2026-08-17:** *"I started encryption on Sandy and then cancelled it and
 it decrypted what it had done."*
