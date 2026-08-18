@@ -5,12 +5,18 @@
 - **Document Name:** GatewayGuard_ScreenNumberDesign
 - **Last Modified:** 2026-08-15 14:30 ET
 - **Last Editor:** Claude Code (CGDELL)
-- **Status:** **THE SCHEME IS APPROVED. Bill, 2026-08-17: "172 is approved."**
-  The branch-letter scheme below is settled and is what gets built. **Two
-  sub-decisions remain open (questions 2 and 4)** and are the only things
-  still blocking the build; question 3 is analysis for Claude Code, not a
-  question for Bill, and question 5 is settled by the approval itself. The
-  build is still untouched.
+- **Status:** **APPROVED AND FULLY SETTLED. Bill, 2026-08-17: "172 is
+  approved."** All five questions are closed -- 1, 2 and 4 by Bill, 5 by the
+  approval itself, 3 being Claude Code's own analysis. **Nothing blocks the
+  build.** The remaining work is the call-flow walk (question 3), then the
+  table, then the six build steps at the foot of this document.
+- **Decisions, in one place:**
+  1. Revisits are exempt -- only first encounters must ascend.
+  2. Letters never nest. One level: 8a, 8b, 8c. There is no 8a1.
+  3. Main line = every user reaches it. Establishing it is the walk.
+  4. The BitLocker end block is main line and gets **integers**. Its three
+     decline screens are a checklist branch and get letters.
+  5. Home 8a / Pro 8b is the scheme working, not a flaw in it.
 - **Supersedes:** `GatewayGuard_ScreenNumberTable-2026-08-15-1330.md`, which
   proposed flat numbering. Bill rejected that in favour of branch letters.
 
@@ -18,23 +24,23 @@
 
 ## READ THIS FIRST IF YOU ARE THE NEXT SESSION
 
-**The scheme is approved. Two sub-decisions are not.** Bill approved FT-172 on
-2026-08-17. What that settles is the **branch-letter scheme** -- integers for
-main-line screens, letters for branches. What it does not settle is **how deep
-letters nest (question 2)** and **whether BitLocker gets its own integer run
-(question 4)**. Both change what a senior reads out on the phone, so both are
-Bill's call, not Claude Code's.
+**The design is agreed. Build it.** Bill approved FT-172 on 2026-08-17 and
+closed the last two sub-decisions the same day. The five decisions are listed
+in the Status block at the top of this document; the reasoning behind each is
+in THE OPEN QUESTIONS below.
 
-**Question 3 is not a question for Bill.** Establishing the true main line
-requires walking the call flow, and it is required under every answer to 2 and
-4. **That analysis can and should proceed now.**
+**The remaining work is question 3 -- the call-flow walk.** It is not a
+question for Bill. It establishes which screens every user reaches (integers)
+and which hang off them (letters), and it is the input the table is built
+from. **It is also the gate:** it must prove no user ever sees a first-encounter
+number lower than one already shown. That proof does not exist yet.
 
-**Question 5 is settled by the approval.** Home seeing 8a while Pro sees 8b is
-not a side effect of the scheme, it is the scheme -- approving one approves the
-other.
-
-Bill, 2026-08-15: *"Stop doing work before we have
-100% agreement on complex issues like this... discuss before you do the work."*
+**Why this section still opens with a warning.** Bill, 2026-08-15: *"Stop doing
+work before we have 100% agreement on complex issues like this... discuss
+before you do the work."* That instruction was earned on this exact document --
+an earlier session shipped a 262-line numbering table built on a scheme Bill
+had already rejected. **The agreement now exists. It did not on 2026-08-15,
+and the difference is the only thing that makes building correct today.**
 
 That instruction was earned. This session produced an inventory tool and a
 262-line numbering table while the requirement was still arriving across five
@@ -120,7 +126,12 @@ sees 8, **8a**, 9. Pro sees 8, **8b**, 9. Both ascend, neither has a hole.
 
 ---
 
-## THE OPEN QUESTIONS -- 1 IS ANSWERED, 2 TO 5 ARE NOT
+## THE OPEN QUESTIONS -- ALL FIVE NOW CLOSED
+
+**As of 2026-08-17 nothing here blocks the build.** 1, 2 and 4 answered by
+Bill; 5 settled by the approval; 3 is Claude Code's analysis and is the
+remaining work. The question text is kept in full because the reasoning is
+what makes each answer legible later.
 
 ### 1. The checklist hub. ANSWERED -- Bill, 2026-08-15: "no".
 
@@ -183,7 +194,20 @@ its own label count as *seeing a lower number*?
 "going back is fine."** But Bill has not said so, and this document does not
 assume it.
 
-### 2. Nesting -- how deep do letters go?
+### 2. Nesting -- ANSWERED. Bill, 2026-08-17: one level only.
+
+**Letters never nest.** Every branch screen hanging off 8 gets a, b, c in
+visit order, whatever its depth in the code. There is no 8a1.
+
+A branch inside a branch simply takes the next letter. `Show-BitLockerHomeScreen`
+holds seven screens with conditionals inside it; under this answer they are
+lettered in the order they are seen, and the code's nesting is invisible to the
+user -- which is the point. **One level is what a senior can say out loud on
+the phone.**
+
+The original text of this question is kept below.
+
+### 2 (original text). Nesting -- how deep do letters go?
 
 Some branches contain branches. `Show-BitLockerHomeScreen` alone holds seven
 screens with conditionals inside it.
@@ -203,17 +227,38 @@ conditionally even when its screens are not syntactically nested. **Establishing
 the true main line is the first real analysis and no number can be assigned
 before it.** It requires walking the call flow, not reading the file.
 
-### 4. Letter depth in practice
+### 4. BitLocker -- ANSWERED. Bill, 2026-08-17: "use integers for the end block."
 
-BitLocker is fourteen screens across five functions. Off one anchor that is
-40a-40n. Workable -- but is *"screen 40n"* something to say to a senior on the
-phone, or should BitLocker get **its own integer run**, since it is a distinct
-phase every user reaches?
+**The end block gets integers.** The contiguous BitLocker run at the close of
+`Run-ConsoleMode` is main line, not a branch, and is numbered with plain
+integers. A caller says *"screen 47"*, never *"screen 40k"*.
 
-### 5. Two users, different letters
+**The question as first posed was wrong, and was corrected before it was
+answered.** It said *"BitLocker is fourteen screens across five functions"* and
+asked whether they should hang off one anchor. **measured 2026-08-17: they are
+not in one place.**
 
-Confirm Bill is content that a Home user sees **8a** and a Pro user sees **8b**
-for what is, to each of them, simply "the next screen."
+| Group | Where | Screens | Numbering |
+|---|---|---|---|
+| Decline heads-up + follow-ups | line 7825, **inside the checklist loop** | 58, 60, 68 | **Letters off the checklist** -- they appear only if the user unticks BitLocker |
+| The main run | line 8090, end of `Run-ConsoleMode` | 61, 62, 63, 79, 80, 81, 82 (Home) / 64, 65, 66, 67 (Pro) | **Integers** |
+
+So option 2's stated advantage -- *"BitLocker stays visibly one thing"* -- was
+not real. Three of its screens already live with the checklist and belong
+there.
+
+**measured, and this is what made integers safe:** the console run enters the
+main BitLocker block **once**, walks it in one direction, and never returns.
+Home and Pro are mutually exclusive. `Run-ConsoleMode` (line 8090) and
+`Run-GUIMode` (line 8437) are mutually exclusive -- the user picks one at
+`Show-ModeSelector`. **No user sees a decrease inside BitLocker under either
+option.** A Home user climbs and then skips a gap; rule 4 permits exactly that.
+
+### 5. Two users, different letters -- SETTLED BY THE APPROVAL.
+
+Home seeing **8a** where Pro sees **8b** is not a side effect of the scheme, it
+is the scheme -- it is the specific case the scheme was chosen to handle
+(see THE AGREED SCHEME above). Approving branch letters approves this.
 
 ---
 
