@@ -147,10 +147,44 @@ correctly further down (line 6273 re-asks this very question when the user
 backs out of page 1). The Back path exists. **The screen that asks the
 question first is the only one that cannot reach it.**
 
-### It is not one screen. It is 34. -- measured 2026-08-17
+### CORRECTED 2026-08-17. An earlier version of this section said the defect was 34 screens. It is not.
 
-Bill found one because it is the one where he wanted to go back. **The defect
-is everywhere `Read-ValidKey` is called.**
+**That claim was wrong and is withdrawn.** It came from reading
+`Read-ValidKey` and generalising to the whole program without checking whether
+it is the only reader. **It is not. There are three**, and Bill's field
+experience -- *"I was able to readily go back and forth on all the screens
+before console selection"* -- is correct and was the thing that caught it.
+
+**measured 2026-08-17:**
+
+| Reader | Call sites | Handles Back? |
+|---|---|---|
+| `Pause-ForUser` | **71** | **Yes** -- snapshot look-back, line 2231 |
+| `Read-NavKey` | 7 | **Yes** -- `B` returns `BACK`, line 2363 |
+| `Read-ValidKey` | 56 | **No** |
+
+**Back works on PAGES. It does not work at QUESTIONS.** The 78 page-and-nav
+sites are why it feels universal, and it genuinely is universal for pages.
+`Read-ValidKey` is the reader for decisions -- *"Is this your personal
+computer? Y/N"*, *"Start the offline scan now? Y/N"* -- and most of those sit
+immediately after a page the user has already read and left deliberately.
+
+**So the defect is two smaller things, not one big one:**
+
+1. **SCREEN-53 specifically** -- a question a user would reasonably want to
+   reverse out of, with no way to. That is the one Bill hit, and it is real.
+   **This is a per-prompt judgment about which questions are reversible, not a
+   sweep.** Some correctly should not take B: *"Are you sure you want to close
+   Checkup? Y/N"* has no meaningful Back.
+2. **The silent discard, which IS everywhere.** See below. That part of the
+   original claim survives.
+
+**The lesson, since this is the second time this session that a count was
+asserted from one measurement:** counting occurrences of a function is not the
+same as counting the behaviour. The number 34 was accurate about
+`Read-ValidKey` and false about Checkup.
+
+### The silent discard -- this part stands, and it is all 56
 
 **measured**, every key set passed to `Read-ValidKey` in the build:
 
@@ -166,22 +200,27 @@ is everywhere `Read-ValidKey` is called.**
 
 **Two prompts out of 46 accept B.**
 
-**And `Read-ValidKey` has no Back handling of its own** -- line 2329 is
-`while ($ch -notin $ValidKeys)`, a bare loop. An unrecognised key is **silently
-discarded with no message at all.** So a user pressing B at any of the other 44
-prompts gets no response, no explanation, and no way to tell whether the key
-registered. That is a dead end by this project's own definition, and it is
-*invisible* -- which is why it has survived this long and why Bill met it only
-once.
+**`Read-ValidKey` line 2329 is `while ($ch -notin $ValidKeys)` -- a bare
+loop.** An unrecognised key is **silently discarded with no message at all.**
+No response, no beep, nothing on screen, and no way for the user to tell
+whether the key even registered.
 
-**The fix belongs in `Read-ValidKey` itself, not at 44 call sites.** The
+**This is a dead end by this project's own definition, and it applies at all
+56 sites regardless of whether Back belongs there.** A user who presses B at
+*"Are you sure you want to close Checkup?"* should be told B is not available
+here -- not met with silence. Silence is the reason the SCREEN-53 defect went
+unreported for two builds: nothing distinguishes "that key does nothing here"
+from "the program has frozen", which is exactly the fear this tool's audience
+already has.
+
+**The fix belongs in `Read-ValidKey` itself, not at 56 call sites.** The
 precedent is already in this build: the 26-line rule's trailing blank line is
 produced centrally in `Write-GGBox` *"so a new screen gets it automatically and
-cannot forget it."* Same reasoning, same place to put it. **One change closes
-FT-173 completely and makes it impossible to reintroduce.**
+cannot forget it."* Same reasoning, same place to put it -- **one change, and
+no future prompt can reintroduce it.**
 
-Where B is genuinely meaningless -- the very first screen -- it should say so
-rather than ignore the key.
+The message should name the keys that ARE valid, since `Read-ValidKey` already
+knows them.
 
 ### FT-178 -- only one disk is reported
 
