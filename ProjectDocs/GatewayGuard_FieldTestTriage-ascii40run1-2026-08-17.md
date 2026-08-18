@@ -424,6 +424,69 @@ never self-elevate, Enter-only wait rather than `pause`, CRLF endings.
 
 ---
 
+### FT-190 (NEW) -- nothing tells the user they can STOP encryption
+
+**Bill, 2026-08-17:** *"I started encryption on Sandy and then cancelled it and
+it decrypted what it had done."*
+
+**measured on the ascii41 source: no screen anywhere mentions cancelling,
+stopping, or reversing encryption.** The closest is SCREEN-81, which says
+Windows *"shows NOTHING while it removes encryption, which is why this is
+confusing"* -- so the build knows decryption happens and still never tells the
+user they are allowed to trigger it.
+
+**Why this is worth a screen rather than a footnote.** Look at what we ask a
+senior to accept at SCREEN-79, in our own words:
+
+> *"WITHOUT IT, THE FILES ARE GONE. Not locked. Gone. Nobody can recover them,
+> including us and including Microsoft."*
+
+That is the correct warning and it should stay. But it is the last thing they
+read before deciding, and it is followed by *"this takes an hour or more."*
+**The one fact that makes the decision reversible is the one fact we withhold:
+they can stop it, and Windows puts the drive back.** Bill has now done exactly
+that on SANDY and the drive returned to `FullyDecrypted` -- confirmed by
+`EncryptionProfile-SANDY-2026-08-11`, both drives, 0%.
+
+**This is a conversion problem, not just a copy problem.** Encryption is the
+single most valuable thing Checkup offers and the one most likely to be
+declined out of fear. A reader who knows the door opens from the inside walks
+through it.
+
+---
+
+### FT-144 -- the wording is wrong, the substance is not
+
+**The record says SANDY "encrypted itself".** It did not. **Bill started it.**
+
+That word has been carried since 2026-07-29 through TestHistory-ascii38, the
+build's own FT-144 comment block, and into **user-facing copy** at SCREEN-79:
+
+> *"...and it will encrypt on a local account anyway -- with the key saved
+> nowhere. We have seen exactly that happen on a real PC."*
+
+**"Encrypted itself" and "encrypted when I told it to" are different claims,
+and only one of them is true here.** The first says a PC may encrypt
+spontaneously; the second says Windows will not stop YOU encrypting without
+making sure your key is safe.
+
+**The real finding is the second one, and it is the one that matters to this
+product** -- because Checkup is the thing that walks the user up to that
+switch. A warning about spontaneous encryption is a warning about something
+Checkup cannot influence. A warning that *the step we are about to recommend*
+will not protect your key is a warning about our own advice.
+
+**Nothing about the danger changes. The evidence label does.** The copy should
+say what was actually observed, and the word "anyway" should go with it.
+
+**This is the second time a machine-state claim in this project has drifted
+from what was measured.** The first produced a false "your machine has
+encrypted itself" alert to Bill on 2026-08-06, from a stale line that outlived
+its own correction by 19 hours. SyncPlan 7b exists because of it: state every
+fact exactly once, and everywhere else, point.
+
+---
+
 ## ONE MORE THING, FOR FT-172
 
 **measured**, run 1 log. The checklist logs no position number:
