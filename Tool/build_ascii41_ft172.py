@@ -124,6 +124,8 @@ BRANCH = [
     ("80", "30b", "How to sign in with a Microsoft account"),
     ("23", "33a", "Convenience review"),
     ("71", "33b", "Convenience review -- result"),
+    ("88", "33c", "OneDrive offer -- shown only when there is no OneDrive"),
+    ("89", "33d", "How to set up OneDrive"),
 ]
 
 # Reachable from EVERY prompt, so it hangs off no integer and takes no number.

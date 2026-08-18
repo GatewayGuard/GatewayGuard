@@ -1493,7 +1493,44 @@ $StateDir       = "C:\GatewayGuard"
 # The profile root is never redirected by KFM.
 # $StateDir itself does NOT move -- CLAUDE.md, it is an identifier and a
 # recovery point, and the scheduled tasks and checkpoint file live there.
-$GGUserDir      = Join-Path $env:USERPROFILE "GatewayGuard"
+# ---- WHERE THE LOG AND THE RECOVERY KEY GO (Bill, 2026-08-18) ----
+# Three tiers: OneDrive if it is already set up, local if it is not, and
+# local permanently if the user is offered OneDrive and declines.
+#
+# NO QUESTION IS ASKED WHEN ONEDRIVE EXISTS. Bill: "if they are using
+# OneDrive they already understand the benefit." Asking a second time is
+# the needless prompt this project has a standing rule against.
+#
+# This runs at LOAD, before any screen can be drawn, because the log header
+# is written in the first instant of launch (FT-63) so that an abnormal
+# exit still leaves a log with a header. The destination therefore cannot
+# be a question -- detection has to answer it.
+#
+# measured on CGDELL 2026-08-18: $env:OneDriveConsumer is the personal
+# folder, and HKCU:\Software\Microsoft\OneDrive\Accounts\Personal carries
+# UserFolder and UserEmail. Both are checked, and the folder must actually
+# EXIST -- a stale registry entry from a removed account would otherwise
+# send the log somewhere that is not there.
+#
+# The DECLINE is remembered in the state file so the offer is made once.
+function Get-GGOneDriveFolder {
+    try {
+        $ggOD = $env:OneDriveConsumer
+        if (-not $ggOD) {
+            $ggK = 'HKCU:\Software\Microsoft\OneDrive\Accounts\Personal'
+            if (Test-Path $ggK) { $ggOD = (Get-ItemProperty $ggK -EA SilentlyContinue).UserFolder }
+        }
+        if ($ggOD -and (Test-Path -LiteralPath $ggOD)) { return $ggOD }
+    } catch {}
+    return $null
+}
+$global:GGOneDrive     = Get-GGOneDriveFolder
+$global:GGUsingOneDrive = [bool]$global:GGOneDrive
+$GGUserDir = if ($global:GGUsingOneDrive) {
+    Join-Path $global:GGOneDrive "GatewayGuard"
+} else {
+    Join-Path $env:USERPROFILE "GatewayGuard"
+}
 $StateFilePath  = "$StateDir\gg_state.txt"
 
 # AFFILIATE LINK PLACEHOLDERS -- replace with actual affiliate URLs before publishing
@@ -1856,6 +1893,8 @@ $script:GGScreenLabels = @{
     "80" = "30b"          # How to sign in with a Microsoft account
     "23" = "33a"          # Convenience review
     "71" = "33b"          # Convenience review -- result
+    "88" = "33c"          # OneDrive offer -- shown only when there is no OneDrive
+    "89" = "33d"          # How to set up OneDrive
     # -- reachable from everywhere, so deliberately unnumbered ----
     "84" = ""             # About this Checkup run (the I key)
 }
@@ -3509,6 +3548,10 @@ function Save-Checkpoint {
     $ggState = @($Checkpoint)
     if ($null -ne $global:HasPasswordManager) {
         $ggState += ("PM=" + $(if ($global:HasPasswordManager) { "Y" } else { "N" }))
+        # FT-191 (ascii41): the OneDrive decline rides the SAME state file as
+        # the password-manager answer rather than inventing a second store
+        # for one boolean. Same shape, same restore path, one thing to break.
+        if ($global:GGOneDriveDeclined) { $ggState += "OD=N" }
     }
     ($ggState -join "`r`n") | Out-File -FilePath $StateFilePath -Encoding UTF8 -Force
     Write-Log -Message "Checkpoint saved: $Checkpoint" -Status "STATE"
@@ -3536,6 +3579,10 @@ function Restore-SessionAnswers {
     try {
         $ggAll = @(Get-Content -Path $StateFilePath -EA Stop)
         foreach ($ggLine in $ggAll) {
+            if ($ggLine -match '^\s*OD=N\s*$') {
+                $global:GGOneDriveDeclined = $true
+                Write-Log -Message "Restored saved answer: OneDrive declined" -Status "STATE"
+            }
             if ($ggLine -match '^\s*PM=([YN])\s*$') {
                 $global:HasPasswordManager = ($Matches[1] -eq "Y")
                 Write-Log -Message "Restored saved answer: password manager = $($global:HasPasswordManager)" -Status "STATE"
@@ -6742,6 +6789,83 @@ function Show-ConvenienceReview {
 # ============================================================
 # MANUAL STEPS REMINDER
 # ============================================================
+function Show-OneDriveOffer {
+    # FT-191 (ascii41). Shown ONLY when no OneDrive folder was found.
+    if ($global:GGUsingOneDrive) { return }
+    if ($global:GGOneDriveDeclined) {
+        Write-Log -Message "OneDrive offer skipped -- user declined on an earlier run" -Status "SKIP"
+        return
+    }
+    Clear-Host
+    Write-Host ""
+    Draw-Box -ScreenId "88" -Color Yellow -Lines @(
+        "  ONE THING CHECKUP CANNOT PROTECT YOU FROM                 ",
+        "---",
+        "  Everything on the checklist protects THIS computer. None  ",
+        "  of it helps if the computer itself is gone -- stolen, or  ",
+        "  dropped, or the drive simply stops one morning.           ",
+        "                                                            ",
+        "  It also does not stop RANSOMWARE -- where your own files  ",
+        "  are locked and money is demanded. That needs no weakness   ",
+        "  in Windows, only one wrong click. A second copy of your    ",
+        "  files, somewhere that is not this PC, is what defeats it.  ",
+        "                                                            ",
+        "  Windows already includes that: OneDrive. It is free for   ",
+        "  5 GB, it is made by Microsoft, and it is already on this  ",
+        "  PC -- it has just never been set up. Your files copy      ",
+        "  themselves as you work, and you can reach them from a     ",
+        "  phone or any other computer.                              ",
+        "                                                            ",
+        "  Checkup would also keep your log and your encryption      ",
+        "  recovery key there. A recovery key saved only on the      ",
+        "  encrypted PC is no use on the day that PC will not start. ",
+        "                                                            ",
+        "  [Y] Show me how to set up OneDrive                        ",
+        "  [N] No thank you -- keep everything on this PC only       "
+    )
+    Write-Host ""
+    $ggODAns = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Set up OneDrive? (Y = show me how / N = no thank you): "
+    if ($ggODAns.ToUpper() -eq "Y") {
+        Write-Log -Message "User asked for OneDrive setup" -Status "INFO"
+        Clear-Host
+        Write-Host ""
+        Draw-Box -ScreenId "89" -Color White -Lines @(
+            "  HOW TO SET UP ONEDRIVE                                    ",
+            "---",
+            "  1. Press the Windows key, type  onedrive  and press Enter ",
+            "  2. Sign in. If you have no Microsoft account, click       ",
+            "     'Create one' -- it is free and takes a minute.         ",
+            "  3. Accept the folder it offers. That is the right one.    ",
+            "  4. When it asks which folders to back up, tick Desktop,   ",
+            "     Documents and Pictures.                                ",
+            "                                                            ",
+            "  YOU DO NOT HAVE TO DO IT NOW. Nothing here is waiting on  ",
+            "  it and Checkup will finish either way.                    ",
+            "                                                            ",
+            "  This run's log has already been written to this PC, so    ",
+            "  Checkup starts using OneDrive the NEXT time you run it.   "
+        )
+        Write-Host ""
+        try { Start-Process "onedrive.exe" -EA Stop; Write-Log -Message "OneDrive setup launched" -Status "INFO" }
+        catch { Write-Log -Message ("Could not launch OneDrive: " + $_) -Status "WARN" }
+        Pause-ForUser
+    } else {
+        $global:GGOneDriveDeclined = $true
+        # Re-save the CURRENT checkpoint so the decline reaches the state file
+        # without inventing a checkpoint name. Save-Checkpoint's -Checkpoint is
+        # mandatory and line 1 of that file must stay the checkpoint and nothing
+        # else (FT-127), so the existing value is read back and rewritten.
+        $ggCurCp = Get-SavedCheckpoint
+        if ($ggCurCp) { Save-Checkpoint -Checkpoint $ggCurCp }
+        Write-Log -Message "User declined OneDrive -- log and key stay on this PC only" -Status "SKIP"
+        Write-Host ""
+        Write-Host "  Understood. Your log and recovery key stay on this PC only." -ForegroundColor Gray
+        Write-Host "  You will not be asked again." -ForegroundColor Gray
+        Write-Host ""
+        Pause-ForUser
+    }
+}
+
 function Show-ManualSteps {
     Write-Host ""
     Show-StepHeader -Key "ManualSteps" -Section "Wrapping Up"
@@ -8400,6 +8524,7 @@ function Run-ConsoleMode {
                 )
                 Setup-ScheduledTasks
                 Show-ConvenienceReview   # FT-70 (ascii29): was called twice back-to-back -- deduped
+                Show-OneDriveOffer       # FT-191: only if no OneDrive
                 Show-ManualSteps
                 Disable-SleepPrevention
                 Restore-ScreenSaver
@@ -8830,6 +8955,7 @@ if ($Gallery) {
 }
 
 Write-Log -Message "Tool launched v$ScriptVersion build $BuildID" -Status "START"
+Write-Log -Message ("Log location: " + (Split-Path $LogPath -Parent) + $(if ($global:GGUsingOneDrive) { "  (OneDrive -- already set up on this PC)" } else { "  (local -- no OneDrive found)" })) -Status "INFO"
 Write-Log -Message "Machine: $global:MachineMake $global:MachineModel | MachineID: $global:MachineID" -Status "INFO"
 
 # Detect admin status IMMEDIATELY -- must happen before Show-FontInstructions,
