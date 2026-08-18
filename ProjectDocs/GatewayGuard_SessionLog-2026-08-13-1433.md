@@ -28,6 +28,85 @@ This is the shared memory between all Claude instances.
 ---
 ---
 
+## Session: 2026-08-17 [Claude Code -- CGDELL] -- ascii40 FIELD RESULTS, AND ascii41 BUILT
+
+**Build: ascii40 -> ascii41** (`W11-SecurityHardening-v3-ascii41-2026-08-17-2246.ps1`,
+9,022 total / 8,644 non-blank, SHA256 `05C7EB86...F5732`).
+
+### ascii40's first field run: it held
+
+Two runs on SANDY, 58 minutes and 6 minutes. **Neither crashed.** FT-171 is
+confirmed fixed in the field -- Bill's ascii39 right-click crashes did not
+recur, and finding 1b confirms the wheel still scrolls, which was the open
+risk in clearing `ENABLE_MOUSE_INPUT`.
+
+**FT-175a proven the only way it could be:** Bill read the real next-run times
+out of Task Scheduler. Monthly 9/1, quarterly 10/1, both recurring. The log
+claiming `[GOOD] Scheduled task created` had been lying for months.
+
+**FT-171d proven:** finding 10 is SCREEN-83 behaving exactly as designed.
+
+All 11 findings triaged and located in source --
+`GatewayGuard_FieldTestTriage-ascii40run1-2026-08-17.md`.
+
+### Two claims of mine that the field overturned
+
+- **Finding 5.** Bill thought the offline scan was offered. The log says it
+  was not, and gives the cause: `Show-PreScanGate`'s repeat-run branch has no
+  offer in it. **His ascii39 guess -- "check if running resume had anything to
+  do with it" -- was right.**
+- **"Back is broken on 34 screens."** WRONG, withdrawn. I read
+  `Read-ValidKey` and generalised without checking whether it was the only
+  reader. `Pause-ForUser` has 71 call sites and `Read-NavKey` 7; both handle
+  Back. **Back works on pages, not at questions.** Bill's own field report
+  said so in the document I was triaging at the time.
+
+**That produced a new CLAUDE.md rule:** THE FIRST EXPLANATION THAT FITS IS NOT
+THE ANSWER. Name what else could cause it; reconcile against what is already
+known, where the field beats the code reading; check whether the count
+measures the thing or a proxy.
+
+### FT-172 approved, settled, and built
+
+Bill: *"172 is approved"*, then *"one level only"* on nesting and *"use
+integers for the end block"* on BitLocker. All five design questions closed.
+
+**The call-flow walk cleared the risk the design doc called "the main
+technical risk"**: no user ever meets a first-encounter decrease. Every place
+an inversion could have lived turned out to be a mutually exclusive pair.
+
+**Two things I decided under question 3, both recorded:** "every user reaches
+it" is too strict to be usable as the definition of main line; and the
+canonical journey takes the integers (my first version said alternatives all
+take letters, which would have made SCREEN-43 -- what almost every user sees
+-- a letter).
+
+### ascii41 contents
+
+FT-172 (table replaces the runtime counter, 3 intro screens get IDs, 6 typed
+numbers deleted, checklist logs its number), FT-184 (banner cut), FT-189
+(`I` key + `Open-My-Log.bat`), FT-173 (no more silent key discards), FT-178
+(+b) (every disk listed; estimate reads C:), FT-175b (repeat branch offers the
+scan), FT-186, FT-188, and finding 4 (`STEP 1 OF 2` had no step 2).
+
+**Gates 12, 12b, 24 PASS. 0 parse errors, 0 duplicate functions, 0 typed
+`N of M`, 0 non-ASCII, no `Join-String` in code.** Gate 12b earned its keep:
+the FT-186 wording pushed SCREEN-81 to 27 lines and failed the build.
+
+### Deliberately NOT done, and why
+
+- **FT-185** (Edge item 6 / SmartScreen). The replacement registry read has
+  not been verified on a live machine and gate 24 forbids shipping one that
+  has not been. Guessing it is what FT-162 was about.
+- **Gate 12's FT-172 extension.** The build script asserts no duplicate IDs or
+  labels, a gapless main line, and one-level-only branches -- but a build
+  script only checks the build it runs. **Until the gate checks the file, the
+  walk is measured and not enforced.**
+- **ascii41 has not been field-run.** Bench evidence only.
+
+---
+---
+
 ## Session: 2026-08-15 08:28 to 14:30 ET [Claude Code -- CGDELL] -- PART 2: FT-172 DESIGN, AND THREE CORRECTIONS TO HOW I WORK
 
 **Nothing was built for FT-172 and nothing should be.** The design is in

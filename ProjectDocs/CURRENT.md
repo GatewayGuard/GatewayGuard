@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-15 17:53 ET -->
-<!-- Commit: 4383b38 -->
+<!-- Generated: 2026-08-17 23:06 ET -->
+<!-- Commit: 306aca8 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-15 17:53 ET
-- **Commit at generation:** `4383b38`
-- **That commit was made:** 2026-08-15 17:53 ET
-- **Its subject line:** The website was never in Cloud's scope -- the pages now have a reading copy
+- **Generated:** 2026-08-17 23:06 ET
+- **Commit at generation:** `306aca8`
+- **That commit was made:** 2026-08-17 23:05 ET
+- **Its subject line:** FT-172: the screen number is now a property of the screen, not of the run
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -51,6 +51,8 @@ All paths are relative to `ProjectDocs/`.
 | Launch plan | `GatewayGuard_LaunchPlan-2026-08-14-0107.md` | 0 |
 | CPM schedule | `GatewayGuard_CPM_Schedule-2026-08-02-1201.md` | 1 |
 | Screen numbering design | `GatewayGuard_ScreenNumberDesign-2026-08-15-1430.md` | 0 |
+| Screen numbering table | `GatewayGuard_ScreenNumberTable-2026-08-17.md` | 1 |
+| Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii40run1-2026-08-17.md` | 0 |
 | Website source pack (19 guide pages) | `GatewayGuard_WebsiteSourcePack-2026-08-15-1751.md` | 0 |
 | Guide v9 source pack | `GatewayGuard_GuideV9-SourcePack-2026-08-15-1436.md` | 0 |
 | Marketing source pack | `GatewayGuard_MarketingSourcePack-2026-08-13-1427.md` | 0 |
@@ -64,7 +66,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-08-15 08:28 to 14:30 ET [Claude Code -- CGDELL] -- PART 2: FT-172 DESIGN, AND THREE CORRECTIONS TO HOW I WORK
+## Session: 2026-08-17 [Claude Code -- CGDELL] -- ascii40 FIELD RESULTS, AND ascii41 BUILT
 ```
 
 **If it is not in your copy of the session log, you are reading an old

@@ -75,6 +75,14 @@ $wanted = @(
     # next Claude Code session picks up the SUPERSEDED flat-numbering proposal
     # (ScreenNumberTable) and starts building from it.
     @{ Label = 'Screen numbering design';     Pattern = 'GatewayGuard_ScreenNumberDesign-*.md' },
+    # Added 2026-08-17. The walk that answered design question 3, and the
+    # as-built table -- generated from Tool\build_ascii41_ft172.py so the
+    # document cannot drift from the code it describes.
+    @{ Label = 'Screen numbering table';      Pattern = 'GatewayGuard_ScreenNumberTable-*.md' },
+    # Added 2026-08-17. Bill's 11 ascii40 field findings, triaged and located
+    # in source. This is the document a session should read before touching
+    # ascii41 -- it is the reason every fix in that build exists.
+    @{ Label = 'Field test triage (latest)';  Pattern = 'GatewayGuard_FieldTestTriage-*.md' },
     # --- THE THREE SOURCE PACKS, added 2026-08-15 -------------------------
     # Each is a readable extraction of material Cloud cannot otherwise reach,
     # and each was invisible to Cloud for the same reason the Launch Plan was:
