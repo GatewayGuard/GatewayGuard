@@ -83,6 +83,9 @@ $wanted = @(
     # in source. This is the document a session should read before touching
     # ascii41 -- it is the reason every fix in that build exists.
     @{ Label = 'Field test triage (latest)';  Pattern = 'GatewayGuard_FieldTestTriage-*.md' },
+    # Added 2026-08-18. The at-the-keyboard checklist for the current build --
+    # what to check, what good looks like, and what not to re-report.
+    @{ Label = 'Field checklist (current build)'; Pattern = 'GatewayGuard_FieldChecklist-*.md' },
     # --- THE THREE SOURCE PACKS, added 2026-08-15 -------------------------
     # Each is a readable extraction of material Cloud cannot otherwise reach,
     # and each was invisible to Cloud for the same reason the Launch Plan was:
