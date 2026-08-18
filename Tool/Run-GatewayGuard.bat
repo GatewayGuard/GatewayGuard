@@ -1,7 +1,7 @@
 @echo off
-REM Dated: 2026-08-15 09:12 EDT
+REM Dated: 2026-08-17 23:05 EDT
 REM File: Run-GatewayGuard.bat (always-current launcher -- paired build below)
-REM CURRENT BUILD: W11-SecurityHardening-v3-ascii40-2026-08-15-0828.ps1
+REM CURRENT BUILD: W11-SecurityHardening-v3-ascii41-2026-08-17-2246.ps1
 REM
 REM  To review every screen without running any checks, use the companion
 REM  launcher Show-AllScreens.bat instead (gallery mode -- changes nothing).
@@ -12,7 +12,7 @@ REM  2026-07-04). To run: RIGHT-CLICK this file -> Run as administrator.
 REM
 cd /d "%~dp0"
 
-set "GGBUILD=W11-SecurityHardening-v3-ascii40-2026-08-15-0828.ps1"
+set "GGBUILD=W11-SecurityHardening-v3-ascii41-2026-08-17-2246.ps1"
 
 REM  Gate 6 / audit item 10: this launcher names its build explicitly, so a
 REM  stale reference is a silent failure -- it would launch nothing and the
