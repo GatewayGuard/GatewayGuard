@@ -5,11 +5,15 @@
 - **Document Name:** GatewayGuard_ScreenNumberTable
 - **Last Modified:** 2026-08-17 19:15 ET
 - **Last Editor:** Claude Code (CGDELL)
-- **Status:** **This is question 3 of the design document, answered.** The
-  design itself is approved and closed -- see
-  `GatewayGuard_ScreenNumberDesign-2026-08-15-1430.md`. This document is the
-  walk and the table it produces. **The build has not been touched.**
+- **Status:** **BUILT AND SHIPPED IN ascii41, 2026-08-17.** This document is
+  question 3 of the design document answered -- the call-flow walk, and the
+  table it produced. The design is approved and closed; see
+  `GatewayGuard_ScreenNumberDesign-2026-08-15-1430.md`.
+- **Where the table now lives:** `$script:GGScreenLabels` in the build. The
+  tables below are **generated from `Tool\build_ascii41_ft172.py`**, so this
+  document cannot drift from the code. Regenerate rather than hand-edit.
 - **Build walked:** `W11-SecurityHardening-v3-ascii40-2026-08-15-0828.ps1`
+  (the walk); shipped in `W11-SecurityHardening-v3-ascii41-2026-08-17-2246.ps1`
 - **Checked against:** `Test_Results\Logs-Sandy\GatewayGuard-Log-2026-08-17_09-44.txt`
   (31 screens, Home, Console mode) and `..._17-36.txt` (resume path)
 
@@ -71,114 +75,147 @@ This keeps 1..N gapless for the ordinary user, which was the whole argument for
 branch letters over flat numbering. It also matches how Bill talks about it --
 *"position in their journey."*
 
-### 2. Mutually exclusive alternatives all take letters -- none takes the integer
+### 2. Mutually exclusive alternatives -- CORRECTED WHILE BUILDING
 
-`Test-DefenderPrimary` paints exactly one of SCREEN-41 through 46 depending on
-what antivirus is present. Rule 1 forbids giving them one shared number.
+**The first version of this section was wrong and is withdrawn.** It said
+*"mutually exclusive alternatives all take letters -- none takes the
+integer"*, generalising from the design document's Home/Pro example. Applying
+it to the build broke immediately.
 
-The design document already set the precedent with Home and Pro: *"Home and Pro
-are both branches -- neither is a main-line screen. Home sees 8, 8a, 9. Pro
-sees 8, 8b, 9."* **Neither alternative takes the integer.** They all hang off
-the integer that precedes them.
+**What broke it.** `Test-DefenderPrimary` paints one of SCREEN-41 to 46 by
+antivirus state. Under "none takes the integer", **SCREEN-43 -- the healthy
+setup, which is what almost every user sees -- becomes a letter**, and the
+main line acquires a hole at the most-visited screen in that stretch. The same
+rule made SCREEN-62 ("your PC meets the requirements") a letter while the
+failure case sat beside it, equally lettered.
 
-So the antivirus family becomes 16a-16f, and the user walks 16 -> 16c -> 17.
-Same rule, no special case, and it means **no integer is ever assigned to a
-screen some users never see.**
+**The Home/Pro precedent does not say what I read into it.** There, screen 8
+is a *shared* screen that both editions reach, and the branches hang off it.
+There is no shared screen among the six antivirus states -- one of them simply
+*is* the journey.
+
+**The rule that is actually consistent, and the one the build uses:**
+
+> **The canonical journey takes integers. Everything off it takes letters.**
+
+That is the definition already committed to in point 1, applied without an
+exception. Under it: SCREEN-43 is 17 and 41/42/44/45/46 are 17a-17e; SCREEN-62
+is 29 and SCREEN-63 is 28a; Home walks the integers and Pro branches. **No
+integer belongs to a screen that the ordinary user does not see**, which is
+the property that mattered all along -- I had simply stated it backwards.
 
 ---
 
-## THE CANONICAL JOURNEY -- the main line, 27 integers
+## THE CANONICAL JOURNEY -- 34 integers, AS BUILT
 
-Walked from the entry point at line 8476. Confirmed against the SANDY log,
-which followed exactly this path and rendered 31 screens.
+**These are the values in the shipped table**, generated from
+`Tool\build_ascii41_ft172.py` so this document cannot drift from the code.
+Walked from the entry point and confirmed against the 2026-08-17 SANDY logs.
 
-| # | ID | Screen | Where |
-|---|---|---|---|
-| -- | -- | *(identity banner -- currently erased, see FT-184)* | 8486 |
-| 1 | *(none)* | Welcome to GatewayGuard Checkup | 2833 |
-| 2 | *(none)* | Scrolling | 2841 |
-| 3 | *(none)* | Set your console font | 2852 |
-| 4 | 28 | FONT CHECK: if this box has clean lines | 2873 |
-| 5 | 29 | BEFORE YOU START -- YOUR WINDOW | 2885 |
-| 6 | 78 | BEFORE YOU START -- YOUR KEYBOARD | 2907 |
-| 7 | 30 | WHAT HAPPENS NEXT -- PLEASE READ | 2931 |
-| 8 | 02 | HOW TO SCROLL BACK (AND COPY) | 3459 |
-| 9 | 05 | IMPORTANT -- READ BEFORE CONTINUING | 2984 |
-| 10 | 34 | WINDOWS EDITION DETECTED | 3163 |
-| 11 | 35 | YOUR PC -- RAM | 3193 |
-| 12 | 09 | YOUR SYSTEM AT A GLANCE | 3687 |
-| 13 | 26 | YOUR PC'S SECURITY TOOLS | 3713 |
-| 14 | 27 | THE SCANS WE RECOMMEND -- AND WHY | 3754 |
-| 15 | 10 | PRE-SCAN PREP CHECKLIST | 3805 |
-| 16 | 38 | DEFENDER OFFLINE SCAN | 3864 |
-| 17 | 50 | POWER SETTINGS -- SECURITY REVIEW | 4620 |
-| 18 | 51 | APPS AUDIT RESULTS | 5023 |
-| 19 | 52 | MODE SELECTOR | 7497 |
-| 20 | 54 | WHAT CHECKUP DOES AND DOES NOT DO (1 of 2) | 6247 |
-| 21 | 75 | WHAT CHECKUP DOES AND DOES NOT DO (2 of 2) | 6286 |
-| 22 | 76 | THE SECURITY CHECKLIST *(hub)* | 7628/7668 |
-| 23 | 55 | REVIEW YOUR SELECTIONS -- NO CHANGES YET | 7836 |
-| 24 | 61 | FINAL ITEM: DEVICE ENCRYPTION | 7018 |
-| 25 | 62 | YOUR PC MEETS THE REQUIREMENTS | 7071 |
-| 26 | 79 | BEFORE YOU TURN IT ON -- YOUR RECOVERY KEY | 7093 |
-| 27 | 81 | HOW TO TELL IF ENCRYPTION IS RUNNING | 7168 |
-| 28 | 69 | ALL SELECTED ITEMS PROCESSED | 8094 |
-| 29 | 70 | AUTOMATED SCAN SCHEDULE SETUP | 6549 |
-| 30 | 72 | AUTOMATED STEPS COMPLETE | 6458 |
+**An earlier draft of this section said 30 integers.** It was written before
+the build and before the correction in point 2 above -- restoring SCREEN-43
+and SCREEN-62 to the main line, and giving the checklist's two pages
+consecutive numbers rather than one shared one, took it to 34.
 
-**30 integers.** Bill's approved decision -- integers for the BitLocker end
-block -- is rows 24 to 27.
+| # | ID | Screen |
+|---|---|---|
+| **1** | 85 | Welcome / maximize |
+| **2** | 86 | Scrolling |
+| **3** | 87 | Set your console font |
+| **4** | 28 | FONT CHECK |
+| **5** | 29 | Before you start -- your window |
+| **6** | 78 | Before you start -- your keyboard |
+| **7** | 30 | What happens next |
+| **8** | 02 | How to scroll back and copy |
+| **9** | 05 | Important -- read before continuing |
+| **10** | 34 | Windows edition detected |
+| **11** | 35 | Your PC -- RAM |
+| **12** | 09 | Your system at a glance |
+| **13** | 26 | Your PC's security tools |
+| **14** | 27 | The scans we recommend |
+| **15** | 10 | Pre-scan prep checklist |
+| **16** | 38 | Defender offline scan |
+| **17** | 43 | Antivirus status -- healthy setup |
+| **18** | 73 | Malwarebytes detected |
+| **19** | 50 | Power settings -- security review |
+| **20** | 51 | Apps audit results |
+| **21** | 52 | Mode selector |
+| **22** | 53 | Quick question -- your passwords |
+| **23** | 54 | What Checkup does and does not do (1 of 2) |
+| **24** | 75 | What Checkup does and does not do (2 of 2) |
+| **25** | 76 | The security checklist, page 1 |
+| **26** | 77 | The security checklist, page 2 |
+| **27** | 55 | Review your selections |
+| **28** | 61 | Final item: device encryption |
+| **29** | 62 | Your PC meets the requirements |
+| **30** | 79 | Before you turn it on -- your recovery key |
+| **31** | 81 | How to tell if encryption is running |
+| **32** | 69 | All selected items processed |
+| **33** | 70 | Automated scan schedule setup |
+| **34** | 72 | Automated steps complete |
 
-**Sanity check against the field.** SANDY's run rendered its screens in exactly
-this relative order, and the numbers it *showed* were 1-31 with the checklist
-missing. Under this table the same run reads 4,5,6,7,8,9,10,11,12,13,14,
-**15a**,16b,17a,17,18,19,**20a**,20,21,22,23,24,25,26,**26a**,27,28,29,30 --
-climbing throughout, which is the requirement.
+**34 integers, 1..34, gapless.** Bill's approved BitLocker
+decision -- integers for the end block -- is rows 28 to 31.
 
 ---
 
 ## THE BRANCHES -- letters off the integer they follow
 
-One level only, per Bill's 2026-08-17 answer. No 8a1.
+One level only, per Bill's 2026-08-17 answer. There is no 8a1.
 
-| Letter | ID | Screen | Seen when |
-|---|---|---|---|
-| **1a** | 25 | WELCOME BACK | A saved checkpoint exists |
-| **1b** | 31 | QUICK RE-CHECK BEFORE RESUMING | Resuming |
-| **1c** | 83 | ARE YOU SURE YOU WANT TO CLOSE CHECKUP? | Answering N at 1b |
-| **3a** | 01 | *(font instructions variant)* | Not administrator |
-| **9a** | 32 | DOMAIN-JOINED WARNING | PC is domain joined |
-| **9b** | 33 | ADMINISTRATOR ACCESS REQUIRED | Not elevated |
-| **11a** | 36 | TIME AND DATE -- CHECK | Clock check offered |
-| **11b** | 37 | TIME AND DATE -- OUT OF SYNC | Clock is wrong |
-| **15a** | 39 | REMINDER: PRE-SCAN RECOMMENDED | **Repeat run** -- and note FT-175b: this branch never offers the scan |
-| **15b** | 40 | WELCOME BACK -- OFFLINE SCAN COMPLETE | Resuming after the scan reboot |
-| **16a-16f** | 41,42,43,44,45,46 | Antivirus status, six states | Exactly one, by AV state. SANDY got 43 = **16c** |
-| **17a-17d** | 13,73,47,48 | Malwarebytes follow-up, four states | Exactly one. SANDY got 73 = **17b** |
-| **17e** | 49 | POWER / BATTERY WARNING | On battery, or no AC |
-| **20a** | 53 | QUICK QUESTION -- YOUR PASSWORDS | First run -- **no Back option today, FT-173-residual** |
-| **20b** | 74 | YOUR PASSWORDS -- WE REMEMBERED | Answer restored from a previous run |
-| **22a** | 56 | NON-RECOMMENDED SELECTIONS | Unticking a recommended item |
-| **22b** | 57 | NON-RECOMMENDED -- CONFIRM | Confirming that |
-| **22c** | 58 | HEADS UP -- SKIPPING ENCRYPTION | Unticking BitLocker |
-| **22d** | 60 | WHY ENCRYPT? | From 22c |
-| **22e** | 68 | ENCRYPTION DECLINED | From 22d |
-| **23a** | 59 | APPLYING YOUR CHANGES | During the apply loop |
-| **24a** | 63 | YOUR PC DOES NOT MEET THE REQUIREMENTS | Prereq check fails |
-| **24b** | 64 | BITLOCKER (Windows 11 **Pro**) | Pro edition |
-| **24c** | 65 | BITLOCKER -- WHAT WILL HAPPEN | Pro |
-| **24d** | 66 | BITLOCKER -- CONFIRM | Pro |
-| **24e** | 67 | BITLOCKER ENABLED | Pro |
-| **26a** | 80 | HOW TO SIGN IN WITH A MICROSOFT ACCOUNT | Local account on Home |
-| **26b** | 82 | *(recovery key variant)* | Conditional |
-| **29a** | 23 | CONVENIENCE REVIEW | Items deferred to the end |
-| **29b** | 71 | CONVENIENCE REVIEW -- RESULT | From 29a |
+| Letter | ID | Screen |
+|---|---|---|
+| **1a** | 25 | Welcome back -- a checkpoint exists |
+| **1b** | 31 | Quick re-check before resuming |
+| **1c** | 83 | Are you sure you want to close Checkup? |
+| **3a** | 01 | Font instructions -- not administrator |
+| **9a** | 32 | Domain-joined warning |
+| **9b** | 33 | Administrator access required |
+| **11a** | 36 | Time and date -- check |
+| **11b** | 37 | Time and date -- out of sync |
+| **14a** | 39 | Reminder: pre-scan recommended (repeat run) |
+| **14b** | 40 | Welcome back -- offline scan complete |
+| **17a** | 41 | Antivirus -- alternative state |
+| **17b** | 42 | Antivirus -- alternative state |
+| **17c** | 44 | Antivirus -- alternative state |
+| **17d** | 45 | Antivirus -- alternative state |
+| **17e** | 46 | Antivirus -- alternative state |
+| **18a** | 13 | Malwarebytes -- alternative state |
+| **18b** | 47 | Malwarebytes -- alternative state |
+| **18c** | 48 | Malwarebytes -- alternative state |
+| **18d** | 49 | Power / battery warning |
+| **22a** | 74 | Your passwords -- we remembered your answer |
+| **25a** | 56 | Non-recommended selections |
+| **25b** | 57 | Non-recommended -- confirm |
+| **25c** | 58 | Heads up -- skipping encryption |
+| **25d** | 60 | Why encrypt? |
+| **25e** | 68 | Encryption declined |
+| **27a** | 59 | Applying your changes |
+| **27b** | 64 | BitLocker (Windows 11 Pro) |
+| **27c** | 65 | BitLocker -- what will happen (Pro) |
+| **27d** | 66 | BitLocker -- confirm (Pro) |
+| **27e** | 67 | BitLocker enabled (Pro) |
+| **28a** | 63 | Your PC does not meet the requirements |
+| **30a** | 82 | Recovery key -- variant |
+| **30b** | 80 | How to sign in with a Microsoft account |
+| **33a** | 23 | Convenience review |
+| **33b** | 71 | Convenience review -- result |
+| *(none)* | 84 | About this Checkup run (the I key) |
 
-**Note on 24b-24e.** The Pro BitLocker screens are letters while the Home ones
-are integers. That is not favouritism -- it is Bill's approved rule applied:
-the canonical journey is Home (the majority of the target market and the
-machine the product is tested on), so Home walks the integers and Pro branches
-off. Both climb. Neither has a hole.
+**35 lettered branches and 1 deliberately unnumbered
+screen. 70 screens in total**, which
+matches gate 12's count exactly: 65 `Draw-Box` screens, 2 hand-drawn checklist
+pages, and the 3 intro screens that FT-172 finally gave IDs to.
+
+**Why SCREEN-84 has no number.** The `I` screen is reachable from every
+prompt, so it hangs off no integer. Any number would be a claim about where
+the user is in their journey, and it would be false everywhere except one
+place. Its title says what it is; that is enough.
+
+**Note on the Pro screens (27b-27e).** Pro branches while Home walks the
+integers. That is not favouritism -- it is the approved rule applied: the
+canonical journey is Home, which is the majority of the target market and the
+edition the product is tested on. Both climb, neither has a hole.
 
 ---
 
@@ -190,12 +227,26 @@ off. Both climb. Neither has a hole.
   including me is going to remember that"* -- the build number and Machine ID
   are needed on a support call days later, and no screen shown at launch can
   serve that. They are fetched on demand instead, under **FT-189** (an `I` key
-  at every prompt, plus `Open-My-Log.bat`). **The `I` screen is a branch and
-  takes a letter, so it does not disturb this table either.**
-- **SCREEN-63, 82 and 01** are marked conditional in the inventory but their
-  exact trigger was not confirmed in this walk. They are lettered on their
-  position, which is safe, but their titles above are inferred and must be
-  read off the source before the table ships.
+  at every prompt, plus `Open-My-Log.bat`). **The `I` screen takes NO number
+  at all** -- an earlier line here said it "takes a letter", which was wrong.
+  It is reachable from every prompt, so any letter would anchor it to one
+  integer and be false everywhere else.
+- **SCREEN-01, 63 and 82 were INFERRED when this table was drafted, and one
+  was materially wrong.** Read off the source 2026-08-17 and corrected in both
+  the build script and the shipped comments:
+
+  | ID | I had written | It actually is | Trigger |
+  |---|---|---|---|
+  | 01 | "Font instructions -- not administrator" | "IMPORTANT -- HOW TO RUN GATEWAYGUARD CORRECTLY" | `if (-not $global:IsAdmin)` |
+  | 63 | "Your PC does not meet the requirements" | "DEVICE ENCRYPTION MAY NOT BE AVAILABLE ON THIS PC" | `if (-not $allGood)` |
+  | 82 | "Recovery key -- variant" | "YOU ARE ALREADY SIGNED IN WITH A MICROSOFT ACCOUNT" | `if ($ggAcct -eq "Microsoft")` |
+
+  **82 is the one that mattered.** It is not a recovery-key screen at all --
+  it is the alternative to SCREEN-80, shown when the user already has a
+  Microsoft account. The letters survive the correction: 80 and 82 are a
+  genuine either/or with no dominant case, so the user climbs 30 -> 30a or
+  30b -> 31 either way. That is the Home/Pro shape the design document already
+  blessed.
 - **`Run-GUIMode` paints no `Draw-Box` screens of its own** -- it is a WPF
   window. Its shared screens are already in the table.
 
@@ -203,14 +254,25 @@ off. Both climb. Neither has a hole.
 
 ## NEXT, IN ORDER
 
-**The integers are final.** The banner decision that could have shifted them
-was made on 2026-08-17 and went the way that leaves them alone.
+**Built and shipped in ascii41 on 2026-08-17.** Gates 12, 12b and 24 pass;
+0 parse errors, 0 duplicate function definitions, 0 typed `N of M` remaining.
+Gate 12 counts 70 numbered screens, which matches this table exactly.
 
-1. Confirm the three inferred titles above against source (SCREEN-01, 63, 82).
-2. Build the table into the tool as the six steps in the design document.
-3. Extend gate 12 to fail the build on a duplicate, a gap in the letters, a
-   typed `N of M`, or any path that produces a decrease.
-4. **Add the `I` screen as a branch letter** once FT-189 is built. It hangs off
-   whatever integer the user is on, so it needs no reserved number -- but gate
-   12 must know it is legitimately reachable from everywhere, or it will read
-   as 46 duplicate definitions.
+**Done:**
+
+1. ~~Confirm the three inferred titles against source.~~ Done -- see above.
+   One was wrong.
+2. ~~Build the table into the tool.~~ Done -- `$script:GGScreenLabels`,
+   `Get-ScreenNumber` reads it, the three intro screens carry IDs 85/86/87,
+   all six typed numbers deleted, the checklist logs its own number.
+
+**Still open:**
+
+3. **Extend gate 12 to fail the build** on a screen missing from the table, a
+   duplicate label, a gap in the main line, a typed `N of M` reappearing, or
+   any path that produces a first-encounter decrease. **The build script
+   asserts the first four on every run today** -- duplicate IDs, duplicate
+   labels, gapless 1..N, and one-level-only branches -- but a build script only
+   checks the build it runs. Gate 12 checks the file. **Until this is done, the
+   walk's conclusion is measured and not enforced**, which is exactly the
+   "a rule with no check is a wish" position FT-162 earned.

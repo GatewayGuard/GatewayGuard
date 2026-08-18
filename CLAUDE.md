@@ -6,7 +6,7 @@
 - **Product:** GatewayGuard — Windows 11 security hardening tool for non-technical home users
 - **Developer:** Solo (William F. Burns III / GatewayGuard LLC)
 - **Target launch:** September 1, 2026
-- **Current build:** ascii41 (8,519 non-blank lines / 8,896 total) — always confirm current build number before any edit session
+- **Current build:** ascii41 (8,644 non-blank lines / 9,022 total) — always confirm current build number before any edit session
   - **Line-count convention:** the quoted figure is the `Measure-Object -Line`
     **non-blank** number, per Playbook Appendix A. The old "ascii36 (6,134
     lines)" entry used the total-lines figure instead — two different methods
@@ -14,7 +14,29 @@
     meaningless. Both numbers are given above so the method is unambiguous.
   - **This line is one of five build-ID locations** (filename, `FILE:` header, `BUILD:` header, `$BuildID`, and here). Pre-Build Audit item 9 checks all five; update this line in the same edit that increments the build. It sat at ascii28 while the tree was on ascii34 — six builds stale, on the very line telling you to confirm the build number. A pointer that lies is worse than no pointer.
 - **Tool name:** the tool is **Checkup**. "GatewayGuard Checkup" on first mention, "Checkup" thereafter. GatewayGuard is the company. Certified 2026-07-29. Do **not** rename the MachineID hash salt (`"GatewayGuard|"`), the Task Scheduler task names (`GatewayGuard - Quarterly…`, `GatewayGuard - Monthly…`), `C:\GatewayGuard\`, `Run-GatewayGuard.bat`, `gatewayguard.co`, or the LLC name — those are identifiers and recovery points, not prose. A blanket find-and-replace on "GatewayGuard" would corrupt every machine's ID and orphan the scheduled tasks.
-- **Screen numbers:** on screen the user sees **position** in their journey ("Screen 6"); the log carries the **stable ID** plus the position (`[SCREEN-02] (shown as screen 6)`). Gate 12 / C-15's "fixed forever, never renumber" governs the **log only** — Bill overruled the user-facing half on 2026-07-28, because a user on a support call must be able to say which screen they are on. Run `Tool\Check-ScreenCoverage-2026-07-30.ps1` before every build (launcher: `Run-ScreenCoverageCheck.bat`); it is the mechanical gate-12 check and reports the next free ID (85 as of ascii41 — 83 went to the FT-171d exit confirmation, 84 to the FT-189 "about this run" screen).
+- **Screen numbers:** the number comes from **a static table**, `$script:GGScreenLabels`, and the log carries the stable ID beside it (`[SCREEN-02] (shown as screen 8)`). Gate 12 / C-15's "fixed forever, never renumber" governs the **log only** — Bill overruled the user-facing half on 2026-07-28, because a user on a support call must be able to say which screen they are on.
+  - **FT-172, ascii41. This replaces the runtime counter and the sentence that
+    used to stand here** — *"on screen the user sees position in their
+    journey."* That was the old model, and it was the defect: `Get-ScreenNumber`
+    counted in **encounter order at runtime**, so the number was a property of
+    **the run** and not of **the screen**, and two users got different numbers
+    for the same screen. Bill's finding 35 exists to kill exactly that.
+  - **The scheme, approved by Bill 2026-08-17.** Integers for the canonical
+    journey (first run, Console mode, Home, nothing skipped). Letters for
+    departures from it — **one level only, there is no 8a1**. The BitLocker end
+    block is main line and takes integers. Revisits are exempt: only **first
+    encounters** must ascend, so the checklist hub keeps its number however
+    often the user returns. A screen reachable from everywhere — the FT-189 `I`
+    screen — takes **no number**, because any number would be a lie about where
+    the user is.
+  - **Adding a screen:** give it an ID, put it in the table **in the position
+    the user reaches it**, and renumber. The table is written in viewing order
+    so a human can see a decrease. **Never type a number into screen text** —
+    that was cause 3 of FT-172, it put two disagreeing numbers on the same
+    screen, and all six instances are now gone.
+  - Full design and the call-flow walk that proves no user meets a
+    first-encounter decrease: `ProjectDocs\GatewayGuard_ScreenNumberDesign-*.md`
+    and `ProjectDocs\GatewayGuard_ScreenNumberTable-*.md`. Run `Tool\Check-ScreenCoverage-2026-07-30.ps1` before every build (launcher: `Run-ScreenCoverageCheck.bat`); it is the mechanical gate-12 check and reports the next free ID (88 as of ascii41 — 83 went to the FT-171d exit confirmation, 84 to the FT-189 "about this run" screen, and 85/86/87 to the three intro screens that FT-172 finally gave IDs to).
 - **Review every screen:** `Tool\Show-AllScreens.bat` walks all 66 screens without running checks or changing anything. It reads the .ps1's own source via the AST, so it cannot drift from the real screens.
 - **26 lines per screen maximum, and every screen ends with a blank line.**
   Bill's rule, 2026-07-30 (field note 11), superseding the ascii37 25-line

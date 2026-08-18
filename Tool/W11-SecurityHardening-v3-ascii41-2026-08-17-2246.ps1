@@ -1741,17 +1741,133 @@ function Save-Log {
 # NO "of N" TOTAL: the flow is conditional, so a Pro/AC/admin run sees roughly
 # half the screens. A total would climb partway and stop, which is worse than
 # no total. The Gallery does show "of N", because there the total is real.
+# ============================================================
+# FT-172 (ascii41): THE SCREEN NUMBER TABLE.
+#
+# Before this, Get-ScreenNumber COUNTED AT RUNTIME in encounter order,
+# so the number was a property of THE RUN and not of THE SCREEN. Two
+# users got different numbers for the same screen. That is Bill's
+# finding 35: "so when a user refers to it we know exactly which screen
+# he is talking about."
+#
+# THE SCHEME, approved by Bill 2026-08-17:
+#   * Integers  = the canonical journey. A first run, Console mode,
+#                 Home edition, nothing skipped.
+#   * Letters   = a departure from it. ONE LEVEL ONLY -- there is no
+#                 8a1. A branch inside a branch takes the next letter.
+#   * Revisits are exempt. Only FIRST encounters must ascend, so the
+#                 checklist hub keeps its own number however often the
+#                 user returns to it.
+#   * A screen reachable from everywhere (the I screen) takes NO
+#                 number, because any number would be a lie about
+#                 where the user is.
+#
+# THE ORDER BELOW IS VIEWING ORDER, not ID order and not source order.
+# It is written that way so a human reviewer can see a decrease. The
+# call-flow walk that produced it, and the proof that no user ever meets
+# a first-encounter decrease, are in
+# ProjectDocs\GatewayGuard_ScreenNumberTable-2026-08-17.md.
+#
+# ADDING A SCREEN: give it an ID, put it in this table in the position
+# the user reaches it, and renumber. Do NOT type a number into screen
+# text -- that is cause 3 of this defect and it is now gone.
+# ============================================================
+$script:GGScreenLabels = @{
+    # -- the canonical journey ------------------------------------
+    "85" = "1"            # Welcome / maximize
+    "86" = "2"            # Scrolling
+    "87" = "3"            # Set your console font
+    "28" = "4"            # FONT CHECK
+    "29" = "5"            # Before you start -- your window
+    "78" = "6"            # Before you start -- your keyboard
+    "30" = "7"            # What happens next
+    "02" = "8"            # How to scroll back and copy
+    "05" = "9"            # Important -- read before continuing
+    "34" = "10"           # Windows edition detected
+    "35" = "11"           # Your PC -- RAM
+    "09" = "12"           # Your system at a glance
+    "26" = "13"           # Your PC's security tools
+    "27" = "14"           # The scans we recommend
+    "10" = "15"           # Pre-scan prep checklist
+    "38" = "16"           # Defender offline scan
+    "43" = "17"           # Antivirus status -- healthy setup
+    "73" = "18"           # Malwarebytes detected
+    "50" = "19"           # Power settings -- security review
+    "51" = "20"           # Apps audit results
+    "52" = "21"           # Mode selector
+    "53" = "22"           # Quick question -- your passwords
+    "54" = "23"           # What Checkup does and does not do (1 of 2)
+    "75" = "24"           # What Checkup does and does not do (2 of 2)
+    "76" = "25"           # The security checklist, page 1
+    "77" = "26"           # The security checklist, page 2
+    "55" = "27"           # Review your selections
+    "61" = "28"           # Final item: device encryption
+    "62" = "29"           # Your PC meets the requirements
+    "79" = "30"           # Before you turn it on -- your recovery key
+    "81" = "31"           # How to tell if encryption is running
+    "69" = "32"           # All selected items processed
+    "70" = "33"           # Automated scan schedule setup
+    "72" = "34"           # Automated steps complete
+    # -- branches, one level deep ---------------------------------
+    "25" = "1a"           # Welcome back -- a checkpoint exists
+    "31" = "1b"           # Quick re-check before resuming
+    "83" = "1c"           # Are you sure you want to close Checkup?
+    "01" = "3a"           # Not administrator -- how to run Checkup correctly
+    "32" = "9a"           # Domain-joined warning
+    "33" = "9b"           # Administrator access required
+    "36" = "11a"          # Time and date -- check
+    "37" = "11b"          # Time and date -- out of sync
+    "39" = "14a"          # Reminder: pre-scan recommended (repeat run)
+    "40" = "14b"          # Welcome back -- offline scan complete
+    "41" = "17a"          # Antivirus -- alternative state
+    "42" = "17b"          # Antivirus -- alternative state
+    "44" = "17c"          # Antivirus -- alternative state
+    "45" = "17d"          # Antivirus -- alternative state
+    "46" = "17e"          # Antivirus -- alternative state
+    "13" = "18a"          # Malwarebytes -- alternative state
+    "47" = "18b"          # Malwarebytes -- alternative state
+    "48" = "18c"          # Malwarebytes -- alternative state
+    "49" = "18d"          # Power / battery warning
+    "74" = "22a"          # Your passwords -- we remembered your answer
+    "56" = "25a"          # Non-recommended selections
+    "57" = "25b"          # Non-recommended -- confirm
+    "58" = "25c"          # Heads up -- skipping encryption
+    "60" = "25d"          # Why encrypt?
+    "68" = "25e"          # Encryption declined
+    "59" = "27a"          # Applying your changes
+    "64" = "27b"          # BitLocker (Windows 11 Pro)
+    "65" = "27c"          # BitLocker -- what will happen (Pro)
+    "66" = "27d"          # BitLocker -- confirm (Pro)
+    "67" = "27e"          # BitLocker enabled (Pro)
+    "63" = "28a"          # Device encryption may not be available on this PC
+    "82" = "30a"          # Already signed in with a Microsoft account
+    "80" = "30b"          # How to sign in with a Microsoft account
+    "23" = "33a"          # Convenience review
+    "71" = "33b"          # Convenience review -- result
+    # -- reachable from everywhere, so deliberately unnumbered ----
+    "84" = ""             # About this Checkup run (the I key)
+}
+
+# Counts DISTINCT screens shown this run. Not the displayed number --
+# that comes from the table above. Kept because the look-back snapshot
+# uses it as an ordinal.
 $script:GGScreenNo   = 0
 $script:GGScreenSeen = @{}
 
 function Get-ScreenNumber {
     param([string]$ScreenId)
-    if (-not $ScreenId) { return 0 }
+    if (-not $ScreenId) { return "" }
     if (-not $script:GGScreenSeen.ContainsKey($ScreenId)) {
         $script:GGScreenNo++
-        $script:GGScreenSeen[$ScreenId] = $script:GGScreenNo
+        $script:GGScreenSeen[$ScreenId] = $true
     }
-    return $script:GGScreenSeen[$ScreenId]
+    # A screen missing from the table shows NO number rather than a
+    # wrong one. Gate 12 fails the build for it, which is where that
+    # belongs -- the user should never be the one who finds out.
+    if ($script:GGScreenLabels.ContainsKey($ScreenId)) {
+        return $script:GGScreenLabels[$ScreenId]
+    }
+    return ""
 }
 
 # FT-133 (ascii38): LOOK-BACK. Field note 1 (2026-07-28): "Tried to go back and
@@ -1946,7 +2062,7 @@ function Write-GGBox {
         [string[]]$Lines,
         [System.ConsoleColor]$Color = "White",
         [System.ConsoleColor]$TextColor = "White",
-        [int]$Number = 0,
+        [string]$Number = "",
         [string]$Total = ""
     )
     $Width = 44
@@ -1958,7 +2074,7 @@ function Write-GGBox {
     # content line, so a numbered box and an unnumbered box are exactly the
     # same width and FT-117 cannot regress through it.
     $topBorder = $border
-    if ($Number -gt 0) {
+    if ($Number) {
         $ggTag = if ($Total) { "[ Screen " + $Number + " of " + $Total + " ]" } else { "[ Screen " + $Number + " ]" }
         if (($ggTag.Length + 4) -le $Width) {
             $topBorder = "+==" + $ggTag + ("=" * ($Width - $ggTag.Length - 2)) + "+"
@@ -2161,7 +2277,7 @@ function Write-GalleryBox {
         [switch]$NoHistory,
         [string]$Total = ""
     )
-    Write-GGBox -Lines $Lines -Color $Color -TextColor $TextColor -Number 0
+    Write-GGBox -Lines $Lines -Color $Color -TextColor $TextColor -Number ""
 }
 
 function Draw-Box {
@@ -2174,7 +2290,7 @@ function Draw-Box {
     # FT-132 (ascii38): the user sees the POSITION number; the log keeps the
     # stable ID. Painting is delegated to Write-GGBox so the Gallery renders
     # through the identical code path and cannot drift from the real screen.
-    $ggNum = 0
+    $ggNum = ""
     if ($ScreenId) { $ggNum = Get-ScreenNumber -ScreenId $ScreenId }
     Write-GGBox -Lines $Lines -Color $Color -TextColor $TextColor -Number $ggNum
     # FT-49 instrumentation (ascii28): every rendered box logs its title so
@@ -2942,7 +3058,13 @@ function Show-FontInstructions {
     # B goes back one screen (except on the first screen).
     $introScreens = @(
         {   # Screen 1 of 5: Welcome + maximize (FT-10 final wording)
-            Write-Host "  Welcome to GatewayGuard Checkup.  (Screen 1 of 6)" -ForegroundColor Cyan
+            # FT-172 (ascii41): this screen and the two below never reached
+            # Draw-Box, so the counter had never seen them and EVERY screen
+            # after them read low by a constant. That is the arithmetic Bill
+            # reported five separate times in ascii39 -- "Scr 3 -> 4 of 6",
+            # "Scr 4 -> 5 of 6", "Scr 5 = 5 of 6" -- one defect, not five.
+            # They now carry IDs and read the same table as everything else.
+            Write-Host ("  Welcome to GatewayGuard Checkup.  (Screen " + (Get-ScreenNumber -ScreenId "85") + ")") -ForegroundColor Cyan
             Write-Host ""
             Write-Host "  For the best experience, please maximize this window now" -ForegroundColor White
             Write-Host "  by clicking the square button in the upper right corner" -ForegroundColor White
@@ -2950,7 +3072,7 @@ function Show-FontInstructions {
             Write-Host "  Up arrow." -ForegroundColor White
         },
         {   # Screen 2 of 5: Scroll instruction (FT-05/06 final wording)
-            Write-Host "  SCROLLING  (Screen 2 of 6)" -ForegroundColor Cyan
+            Write-Host ("  SCROLLING  (Screen " + (Get-ScreenNumber -ScreenId "86") + ")") -ForegroundColor Cyan
             Write-Host ""
             Write-Host "  Now scroll to the TOP and BOTTOM of this window AND" -ForegroundColor White
             Write-Host "  FOLLOWING WINDOWS -- use your mouse wheel, or click the" -ForegroundColor White
@@ -2959,9 +3081,9 @@ function Show-FontInstructions {
         },
         {   # Screen 3 of 5: Font setup (FT-04: now AFTER the welcome screens)
             Write-Host "  +==============================================================+" -ForegroundColor Yellow
-            Write-Host "  |  STEP 1 OF 2: SET YOUR CONSOLE FONT (takes 30 seconds)       |" -ForegroundColor Yellow
+            Write-Host "  |  SET YOUR CONSOLE FONT (takes 30 seconds)                    |" -ForegroundColor Yellow
             Write-Host "  +==============================================================+" -ForegroundColor Yellow
-            Write-Host "  (Screen 3 of 6)" -ForegroundColor DarkGray
+            Write-Host ("  (Screen " + (Get-ScreenNumber -ScreenId "87") + ")") -ForegroundColor DarkGray
             Write-Host ""
             Write-Host ("  Running: " + (Split-Path -Leaf $PSCommandPath)) -ForegroundColor DarkCyan
             Write-Host "  Version: GatewayGuard Checkup v$ScriptVersion  Build: $BuildID" -ForegroundColor DarkCyan
@@ -2995,7 +3117,7 @@ function Show-FontInstructions {
             # past the 26-line rule. Items 1-3 (the window itself) are here;
             # items 4-6 (keys, going back, copying) are the next screen.
             Draw-Box -ScreenId "29" -Color White -Lines @(
-                "  BEFORE YOU START -- YOUR WINDOW  (Screen 4 of 6)             ",
+        "  BEFORE YOU START -- YOUR WINDOW                                      ",
                 "---",
                 "  1. IF YOU HAVEN'T MAXIMIZED THIS WINDOW YET, DO IT NOW!      ",
                 "     Click the small SQUARE icon at the TOP RIGHT of this      ",
@@ -3017,7 +3139,7 @@ function Show-FontInstructions {
         },
         {   # Screen 5 of 6: Window setup, part 2 (FT-153 split)
             Draw-Box -ScreenId "78" -Color White -Lines @(
-                "  BEFORE YOU START -- YOUR KEYBOARD  (Screen 5 of 6)           ",
+        "  BEFORE YOU START -- YOUR KEYBOARD                                    ",
                 "---",
                 "  4. KEYBOARD: Use ENTER or SPACE BAR to continue on screens   ",
                 "     that just need you to read and move on. When asked for    ",
@@ -3041,7 +3163,7 @@ function Show-FontInstructions {
         },
         {   # Screen 6 of 6: What happens next
             Draw-Box -ScreenId "30" -Color White -Lines @(
-                "  WHAT HAPPENS NEXT -- PLEASE READ  (Screen 6 of 6)         ",
+        "  WHAT HAPPENS NEXT -- PLEASE READ                                  ",
                 "---",
                 "  Checkup runs a series of quick checks before reaching     ",
                 "  the main security settings. Some screens appear briefly   ",
@@ -7747,7 +7869,11 @@ function Run-ConsoleMode {
             $ggLogW = 0
             try { $ggLogW = $Host.UI.RawUI.WindowSize.Width } catch {}
             $ggSelN = @($Settings | Where-Object { $_.Selected }).Count
-            Write-Log -Message ("[SCREEN-" + $(if ($script:ChecklistPage -eq 1) { "76" } else { "77" }) + "] Checklist render: page " + $script:ChecklistPage + ", window width " + $ggLogW + ", " + $ggSelN + " item(s) selected") -Status "SCREEN"
+            # FT-172 (ascii41): the checklist logged NO position, so the log
+        # jumped 21 -> 23 while the user was looking at a header bar that
+        # said 22. Bill called it "screen 22" in his ascii40 findings and
+        # the log support would read had no such screen. It logs it now.
+        Write-Log -Message ("[SCREEN-" + $(if ($script:ChecklistPage -eq 1) { "76" } else { "77" }) + "] (shown as screen " + (Get-ScreenNumber -ScreenId $(if ($script:ChecklistPage -eq 1) { "76" } else { "77" })) + ") Checklist render: page " + $script:ChecklistPage + ", window width " + $ggLogW + ", " + $ggSelN + " item(s) selected") -Status "SCREEN"
         } catch {}
         Write-Host ""
         # FT-56/FT-58 (ascii28): the ascii23-era table was fixed at 79 chars
