@@ -1455,7 +1455,10 @@
 .DESCRIPTION
     Automates security settings from the Windows 11 Security Walkthrough Guide.
     FOR PERSONAL COMPUTERS ONLY. No changes made without user approval.
-    All actions logged to C:\GatewayGuard\Logs\ (with a backup copy in
+    All actions logged to <your user folder>\GatewayGuard\Logs\ -- Bill,
+    2026-08-18, no cloud. The profile ROOT is used because OneDrive Known
+    Folder Move redirects Desktop and Documents into the cloud silently.
+    (with a backup copy in
     C:\ProgramData\GatewayGuard\Logs).
 
 .NOTES
@@ -1482,13 +1485,22 @@ $GuideURL       = "gatewayguard.co"
 
 # STATE/RESUME SYSTEM (UX-05, UX-06) -- survives the offline-scan reboot
 $StateDir       = "C:\GatewayGuard"
+# Bill, 2026-08-18: "No cloud and just use local user's account drive."
+# The PROFILE ROOT, deliberately -- not Desktop and not Documents, because
+# OneDrive Known Folder Move redirects both of those INTO the cloud, and it
+# does it silently. measured on CGDELL 2026-08-18: Desktop resolved to
+# C:\Users\willi\OneDrive\Desktop while still reading as a local path.
+# The profile root is never redirected by KFM.
+# $StateDir itself does NOT move -- CLAUDE.md, it is an identifier and a
+# recovery point, and the scheduled tasks and checkpoint file live there.
+$GGUserDir      = Join-Path $env:USERPROFILE "GatewayGuard"
 $StateFilePath  = "$StateDir\gg_state.txt"
 
 # AFFILIATE LINK PLACEHOLDERS -- replace with actual affiliate URLs before publishing
 $AffiliateMalwarebytes = "https://www.malwarebytes.com/"            # FT-81: gatewayguard.co redirect deferred; SSL not yet configured
 $AffiliateMicrosoft    = "https://gatewayguard.co/microsoft365"      # AFFILIATE PLACEHOLDER
 
-$LogPath        = "C:\GatewayGuard\Logs\GatewayGuard-Log-$(Get-Date -Format 'yyyy-MM-dd_HH-mm').txt"
+$LogPath        = Join-Path $GGUserDir ("Logs\GatewayGuard-Log-" + (Get-Date -Format 'yyyy-MM-dd_HH-mm') + ".txt")
 $FirstRunFlag   = "$env:USERPROFILE\AppData\Local\W11Hardening\firstrun.flag"
 $LogEntries     = [System.Collections.Generic.List[string]]::new()
 
@@ -1629,7 +1641,7 @@ function Initialize-LogFile {
         # more. NEVER self-elevates -- the Malwarebytes exploit-payload flag
         # from 2026-07-04 stands.
         try {
-            if (-not (Test-Path $StateDir)) { New-Item -Path $StateDir -ItemType Directory -Force | Out-Null }
+            if (-not (Test-Path $GGUserDir)) { New-Item -Path $GGUserDir -ItemType Directory -Force | Out-Null }
             $ggOpenerBody = @'
 @echo off
 REM  GatewayGuard -- opens your most recent Checkup log in Notepad.
@@ -1654,7 +1666,7 @@ if not defined GGLOG (
 )
 start "" notepad.exe "%GGLOG%"
 '@
-            $ggOpenerBody | Out-File -FilePath (Join-Path $StateDir "Open-My-Log.bat") -Encoding ascii -Force
+            $ggOpenerBody | Out-File -FilePath (Join-Path $GGUserDir "Open-My-Log.bat") -Encoding ascii -Force
         } catch {}
         $header = @"
 ============================================================
@@ -2470,9 +2482,9 @@ function Show-CheckupInfo {
             "  They are saved in your log file, and you can open it       ",
             "  any time -- during this run or weeks from now:             ",
             "                                                             ",
-            "  Open the folder  C:\GatewayGuard  and double-click         ",
-            "  Open-My-Log.bat -- your log opens in Notepad. The build     ",
-            "  and Machine ID are in the first few lines.                  ",
+            ("  Open this folder:  " + $GGUserDir),
+            "  and double-click  Open-My-Log.bat  -- your log opens in    ",
+            "  Notepad. The build and Machine ID are in the first lines.  ",
             "                                                             ",
             "  Nothing on your PC has been changed by this screen, and    ",
             "  nothing has been sent anywhere.                            "
@@ -3154,7 +3166,7 @@ function Show-FontInstructions {
                 "                                                               ",
                 "  6. COPYING: You never need to copy anything off these        ",
                 "     screens -- everything is saved automatically to your      ",
-                "     log file in C:\GatewayGuard\Logs.                         ",
+                "     log file in your GatewayGuard folder. Press I to see it.  ",
                 "                                                               ",
                 "  7. IF YOU CLICK THE X BY ACCIDENT: Checkup closes, but it    ",
                 "     finishes writing your log first, and nothing is left      ",
@@ -3997,7 +4009,7 @@ function Show-SecurityToolsBriefing {
         "                                                             ",
         "  YOUR RECORDS                                               ",
         "  Checkup keeps a record of everything it does, saved        ",
-        "  in C:\GatewayGuard\Logs. If you ever need help, that      ",
+        "  in your own GatewayGuard folder. If you need help, that   ",
         "  file shows exactly what happened on your PC.               "
     )
     Write-Host ""
@@ -6778,7 +6790,7 @@ function Show-ManualSteps {
         "      (Custom Scan with rootkits, then Deep Scan overnight) ",
         "      Verify: Task Scheduler -> GatewayGuard tasks          ",
         "---",
-        "  Log saved to C:\GatewayGuard\Logs\: $(Split-Path $LogPath -Leaf)",
+        "  Log saved to: $(Split-Path $LogPath -Parent)",
         "  Guide and support: $GuideURL",
         "---",
         "  GATEWAYGUARD IS NOW FINISHED FOR THIS SESSION.               ",
@@ -7053,7 +7065,14 @@ function Get-BitLockerTimeEstimate {
 
 function Save-BitLockerKey {
     param($Key)
-    $global:BitLockerKeyPath = "$([Environment]::GetFolderPath('Desktop'))\BitLocker-Recovery-Key-$(Get-Date -Format 'yyyy-MM-dd').txt"   # FT-75
+    # Bill, 2026-08-18: no cloud. This wrote to GetFolderPath('Desktop'),
+    # which on any machine with OneDrive Known Folder Move resolves INTO
+    # OneDrive -- measured on CGDELL, C:\Users\willi\OneDrive\Desktop.
+    # The recovery key is the most sensitive file Checkup produces and it
+    # has been going to the cloud on every such machine by accident. The
+    # user is taken to this folder on screen, so it is no harder to find.
+    if (-not (Test-Path $GGUserDir)) { New-Item -Path $GGUserDir -ItemType Directory -Force | Out-Null }
+    $global:BitLockerKeyPath = Join-Path $GGUserDir ("BitLocker-Recovery-Key-" + (Get-Date -Format 'yyyy-MM-dd') + ".txt")   # FT-75
     @"
 ========================================================
   BITLOCKER / DEVICE ENCRYPTION RECOVERY KEY
@@ -7647,7 +7666,7 @@ function Show-BitLockerScreen {
         "medium" { Write-Host "  [2] Enable overnight -- convenient for this time estimate" -ForegroundColor White }
         "high"   { Write-Host "  [2] Enable overnight -- RECOMMENDED for your PC" -ForegroundColor Cyan }
     }
-    Write-Host "      Sleep will be set to Never automatically. Check the GatewayGuard log (C:\GatewayGuard\Logs) in the morning." -ForegroundColor DarkGray
+    Write-Host "      Sleep will be set to Never automatically. Check your GatewayGuard log in the morning." -ForegroundColor DarkGray
     Write-Host ""
 
     Write-Host "  [3] Skip for now -- enable manually when ready:" -ForegroundColor White
@@ -7691,7 +7710,7 @@ function Show-BitLockerScreen {
     if ($choice -eq "2") {
         if ($blSleepChanged) {
             Write-Host "  Starting encryption -- PC will continue overnight." -ForegroundColor Cyan
-            Write-Host "  Sleep and display are set to Never. Check the GatewayGuard log (C:\GatewayGuard\Logs) in the morning." -ForegroundColor Yellow
+            Write-Host "  Sleep and display are set to Never. Check your GatewayGuard log in the morning." -ForegroundColor Yellow
         } else {
             # FT-111 (ascii34): sleep/display auto-set failed above (the Yellow
             # "Could not auto-set" note already printed) -- this line used to
@@ -7780,7 +7799,7 @@ function Show-ModeSelector {
         "  Port Authority of New York & New Jersey                   ",
         "---",
         "  No changes are made without your approval.                ",
-        "  A complete log is saved to C:\GatewayGuard\Logs\ after each run.  ",
+        "  A complete log is saved to your GatewayGuard folder each run.     ",
         "  Guide and support: $GuideURL  (ends in .co -- NOT .com)   ",
         "---",
         "  SELECT A MODE:                                            ",
@@ -8376,7 +8395,7 @@ function Run-ConsoleMode {
                 Write-Host ""
                 Draw-Box -ScreenId "69" -Color White -Lines @(
                     "  ALL SELECTED ITEMS PROCESSED                           ",
-                    "  Log saved to C:\GatewayGuard\Logs\.                          ",
+                    "  Log saved to your GatewayGuard folder.                       ",
                     "  See manual steps below for items needing your action.  "
                 )
                 Setup-ScheduledTasks
@@ -8461,7 +8480,7 @@ function Run-GUIMode {
     $form.Controls.Add($lblStatus)
 
     $lblNote = New-Object System.Windows.Forms.Label
-    $lblNote.Text = "Select settings to apply. No changes made without approval. Log saved to C:\GatewayGuard\Logs\ after run."
+    $lblNote.Text = "Select settings to apply. No changes made without approval. Log saved to your GatewayGuard folder after run."
     $lblNote.Font = New-Object System.Drawing.Font("Garamond", 9, [System.Drawing.FontStyle]::Italic)
     $lblNote.ForeColor = [System.Drawing.Color]::FromArgb(255,200,0)
     $lblNote.Location = New-Object System.Drawing.Point(15, 82)
