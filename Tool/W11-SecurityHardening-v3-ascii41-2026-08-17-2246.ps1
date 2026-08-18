@@ -7375,11 +7375,10 @@ function Show-BitLockerHomeScreen {
     # ---- Screen 3 of 4: the recovery key, as a PRECONDITION (FT-144) ----
     Clear-Host
     Write-Host ""
-    $ggAcctLine = switch ($ggAcct) {
-        "Microsoft" { "  This PC is signed in with a MICROSOFT ACCOUNT -- good." }
-        "Local"     { "  This PC is signed in with a LOCAL account. READ ON --  " }
-        default     { "  Checkup could not tell which kind of account this is.  " }
-    }
+    # FT-144 REMOVED (ascii41, Bill 2026-08-17). The account-type line and
+    # the warning it introduced are gone -- see build_ascii41_ft144.py for
+    # the full reasoning. Get-SignInAccountType is still called above: it
+    # is logged, and it still decides between SCREEN-80 and SCREEN-82.
     Draw-Box -ScreenId "79" -Color Yellow -Lines @(
         "  BEFORE YOU TURN IT ON -- YOUR RECOVERY KEY                ",
         "---",
@@ -7389,20 +7388,10 @@ function Show-BitLockerHomeScreen {
         "  locked. Gone. Nobody can recover them, including us and   ",
         "  including Microsoft.                                      ",
         "                                                            ",
-        $ggAcctLine,
-        "                                                            ",
-        "  WINDOWS DOES NOT FORCE YOU TO SAVE THE KEY. It asks you   ",
-        "  to sign in with a Microsoft account, and it will encrypt  ",
-        "  on a local account anyway -- with the key saved nowhere.  ",
-        "  We have seen exactly that happen on a real PC.            ",
-        "                                                            ",
-        "  SO: sign in with a Microsoft account, and BE ONLINE when  ",
-        "  encryption turns on. If the PC is offline, the key cannot ",
-        "  reach your account even with the right account signed in. ",
-        "                                                            ",
-        "  THE ORDER, because it is easy to get wrong: the key is    ",
-        "  saved when encryption STARTS, not when it finishes. Check ",
-        "  for it as soon as it begins -- not hours later."
+        "  Windows shows you the key when encryption STARTS, not     ",
+        "  when it finishes. Look for it as soon as it begins --     ",
+        "  not hours later. Print it, or copy it to a USB drive,     ",
+        "  and keep that away from this computer.                    "
     )
     Write-Host ""
     Pause-ForUser "  Press Enter or Space for the step-by-step sign-in..."
