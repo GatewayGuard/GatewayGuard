@@ -28,6 +28,76 @@ This is the shared memory between all Claude instances.
 ---
 ---
 
+## Session: 2026-08-17 to 08-18 [Claude Code -- CGDELL] -- PART 2: ascii41 BUILT, AND FIVE WRONG ASSERTIONS
+
+**Build: ascii41** (`W11-SecurityHardening-v3-ascii41-2026-08-17-2246.ps1`,
+9,156 total / 8,777 non-blank). **Twelve fixes. Never field-run.**
+
+### What went into ascii41
+
+| Item | What changed |
+|---|---|
+| **FT-172** | Static table replaces the runtime counter. 34 integers, 37 branch letters, 1 unnumbered. Three intro screens get IDs 85/86/87; six typed numbers deleted; the checklist logs its own number. |
+| **FT-184** | The erased identity banner is cut. |
+| **FT-189** | `I` at any prompt shows build + Machine ID. `Open-My-Log.bat` written beside the logs. |
+| **FT-173** | Unrecognised keys no longer discarded in silence at 56 prompts. |
+| **FT-178/b** | Every disk listed; the BitLocker estimate reads the disk holding C:. |
+| **FT-175b** | The repeat-run branch finally offers the offline scan. |
+| **FT-186** | One universal Settings route. |
+| **FT-188** | Absent policy keys log INFO, not ERROR. |
+| **FT-144** | **Removed.** The warning rested on "Sandy encrypted itself"; Bill started it. |
+| **FT-190** | **Rejected by Bill.** Explain before approval, then let it rip. |
+| **no-cloud** | Logs and recovery key off the Desktop -- KFM was silently syncing the BitLocker key to OneDrive. |
+| **FT-191** | OneDrive first, local fallback, decline remembered. |
+
+**Gates 12, 12b, 24 pass. 0 parse errors, 0 duplicate functions, 0 non-ASCII.**
+
+### THE PART WORTH READING: five wrong assertions in one day
+
+1. *"Back is broken on 34 screens."* Read `Read-ValidKey`, never asked whether
+   it was the only reader. `Pause-ForUser` (71 sites) and `Read-NavKey` (7)
+   both handle Back. **Bill's field report said so in the document I was
+   triaging at that moment.**
+2. *"BitLocker is 14 screens across 5 functions."* A decision was put to Bill
+   on that shape; three of the fourteen were elsewhere. Question withdrawn.
+3. *"Device Encryption requires a Microsoft account."* **Our own build says the
+   opposite**, field-confirmed 2026-07-29, in a comment I had not read.
+4. *"24H2 turns on encryption by default."* True only for clean installs where
+   OOBE used a Microsoft account -- never on an upgrade, never retroactively.
+   Bill's SANDY observation was right and predicted by the documentation.
+5. *"SANDY has no OneDrive."* **No source at all.** SANDY has two, and
+   `Test_Results\OneDriveSync-SANDY-2026-08-12_13-15.txt` says so -- a file
+   listed in this session's very first command and never opened.
+
+**Common cause: reasoning from something adjacent instead of reading what is
+on disk.** In all five the disproving evidence was already in the repository.
+
+**The rule written at 09:00 to stop this did not stop it.** Three of the five
+came after it. It asked for a judgment at a moment when no judgment happens.
+**Replaced 2026-08-18 with a format requirement** -- every state claim carries
+its path, command or file inline, or it is not written. And Bill's four-word
+lever: **"What did you read?"**
+
+**The asymmetry worth keeping in view: the code was fine.** `gg_edit` and the
+gates caught four mistakes before they shipped -- two screens over the 26-line
+rule, a banner one character wider than its border, and an anchor that matched
+two functions. The guarded pipeline has assertions. Conversation had none.
+
+### Next
+
+1. **Field-run ascii41 on SANDY.** Twelve unverified changes is the risk that
+   dwarfs everything else on the list.
+2. **Gate 12's FT-172 check** -- the build script asserts the numbering, the
+   gate does not. Until it does, "no user sees a decrease" is measured and not
+   enforced.
+3. **FT-185** -- Edge item 6 needs a replacement registry read, verified on a
+   live machine before it ships.
+4. **The upfront approval screen** -- font, mouse, window in one Y/N. Four
+   screens become one. Blocked on nothing.
+
+---
+---
+
 ## Session: 2026-08-17 [Claude Code -- CGDELL] -- ascii40 FIELD RESULTS, AND ascii41 BUILT
 
 **Build: ascii40 -> ascii41** (`W11-SecurityHardening-v3-ascii41-2026-08-17-2246.ps1`,

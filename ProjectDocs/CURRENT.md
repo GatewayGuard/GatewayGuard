@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-17 23:06 ET -->
-<!-- Commit: 306aca8 -->
+<!-- Generated: 2026-08-18 00:33 ET -->
+<!-- Commit: 1856b78 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-17 23:06 ET
-- **Commit at generation:** `306aca8`
-- **That commit was made:** 2026-08-17 23:05 ET
-- **Its subject line:** FT-172: the screen number is now a property of the screen, not of the run
+- **Generated:** 2026-08-18 00:33 ET
+- **Commit at generation:** `1856b78`
+- **That commit was made:** 2026-08-18 00:11 ET
+- **Its subject line:** OneDrive first, local as the fallback, and the reasons are not about our log
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -66,7 +66,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-08-17 [Claude Code -- CGDELL] -- ascii40 FIELD RESULTS, AND ascii41 BUILT
+## Session: 2026-08-17 to 08-18 [Claude Code -- CGDELL] -- PART 2: ascii41 BUILT, AND FIVE WRONG ASSERTIONS
 ```
 
 **If it is not in your copy of the session log, you are reading an old

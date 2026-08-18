@@ -341,6 +341,54 @@ rule says verify a claim before asserting it. This one says a verified claim
 can still be the wrong claim, if nothing checked whether something else fits
 the same evidence.
 
+### EVERY STATE CLAIM CARRIES ITS SOURCE INLINE, OR IT IS NOT MADE (added 2026-08-18)
+
+Bill, 2026-08-18: *"It seems to me that your design is constantly causing
+errors and mishaps which cause delays in my completing my project. What can I
+do about it?"*
+
+**Five wrong assertions in one session, all the same shape.** "Back is broken
+on 34 screens." "BitLocker is 14 screens across 5 functions." "Device
+Encryption requires a Microsoft account." "SANDY has no OneDrive." Each was
+reasoning from something adjacent instead of reading what was on disk, and
+**in every case the disproving evidence was already in the repository.**
+
+**THE RULE ADDED THIS MORNING DID NOT WORK.** "The first explanation that fits
+is not the answer" was written at 09:00 and three more wrong claims followed
+it the same day. It failed because it asks for a judgment at a moment when no
+judgment is happening -- the claim comes out mid-sentence, not at a checkpoint.
+This one replaces the judgment with a **format requirement**, which is
+checkable by eye.
+
+**Any sentence asserting the state of a machine, a file, or a behaviour must
+carry, in that sentence, the thing it was read from:**
+
+- a **path and line** -- `Read-ValidKey, line 2329`
+- or a **command and its output** -- `measured: Get-PhysicalDisk returns MediaType SSD`
+- or a **file in the repo** -- `Test_Results\OneDriveSync-SANDY-2026-08-12_13-15.txt`
+
+**With no source, the sentence does not get written.** Write "not measured" or
+run the check. **"Not measured" is always acceptable and never costs a round
+trip. A wrong assertion always does.**
+
+**WHAT BILL CAN DO, and it is four words: "What did you read?"**
+
+Ask it of any claim that matters. It takes seconds, it cannot be answered
+plausibly without a real source, and every one of today's five errors would
+have died on it. He should not have to -- but it is the fastest lever he has,
+and it works immediately.
+
+**THE PART THAT ALREADY WORKS, AND WHY.** Today's build went through
+`gg_edit` and the gates, and **the guards caught four of my mistakes before
+they shipped**: SCREEN-81 and SCREEN-88 over the 26-line rule, the console-font
+banner one character wider than its own border, and an ambiguous Ctrl+C anchor
+that matched two functions. Nothing corrupt reached the file.
+
+**So the errors are not in the code. They are in the talking.** The guarded
+pipeline has assertions; conversation had none. That is the asymmetry this
+rule closes -- a claim in chat now needs the same evidence a replacement in
+`gg_edit` needs, for the same reason.
+
 ### This covers COMMAND FLAGS, not just behaviour (added 2026-08-02, FT-162)
 
 An argument you pass to an external program is a factual claim about that
