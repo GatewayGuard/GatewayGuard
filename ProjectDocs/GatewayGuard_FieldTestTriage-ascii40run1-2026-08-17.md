@@ -310,6 +310,57 @@ I can settle it on CGDELL in minutes -- it has Tamper Protection on and
 Defender active. **No key will be written into the build until it has been
 read on a live machine**, per the rule FT-162 earned.
 
+### FT-185 -- RESOLVED BY MEASUREMENT 2026-08-18. The read cannot be fixed; the label can.
+
+**I was about to fix the wrong half.** The plan was to find a working registry
+read to replace the blocked one. **There isn't one.**
+
+**measured on CGDELL 2026-08-18**, elevated, Windows 11 Pro, Tamper Protection
+confirmed on (`IsTamperProtected: True`) --
+`Test_Results\PhishingProtection-CGDELL-2026-08-18_22-33.txt`:
+
+| Candidate read | Result |
+|---|---|
+| `HKLM\...\WTDS\Components` `ServiceEnabled` *(what Checkup reads today)* | **BLOCKED** -- SecurityException |
+| `NotifyMalicious`, `NotifyPasswordReuse`, `NotifyUnsafeApp`, `CaptureThreatWindow` | **BLOCKED** -- all four |
+| `HKLM\SOFTWARE\Policies\...\WTDS\Components` (policy mirror) | **KEY ABSENT**, all values |
+| `Get-MpPreference` | READ OK, **but exposes no phishing-protection property** |
+
+**Tamper Protection blocks the whole key, not one value.** So no replacement
+read exists -- and any read that DID work would only work on machines where
+Tamper Protection is off, which are exactly the machines we are trying to fix.
+
+### What this changes
+
+**Checkup's current behaviour is CORRECT and must not be "fixed".** Reporting
+`Unknown -- could not check` is the truthful answer, and the FT-141 handling
+that produces it is doing its job. **FT-120 is the cautionary case: a check
+that did not establish the state must never invent a definite one.**
+
+**Two things are still wrong, and both are labels rather than logic:**
+
+1. **The item is named for the wrong product.** It says Edge phishing
+   protection. Cloud's guide rewrite names it correctly --
+   **Enhanced Phishing Protection**, at *Windows Security > App & browser
+   control > Reputation-based protection*. That is Windows, not Edge. Bill's
+   ascii39 finding 37 said exactly this and was right:
+   *"No longer exists in Edge, Edge using windows smartscreen."*
+2. **`Unknown` with no route is a dead end**, which CLAUDE.md forbids. The user
+   is told Checkup could not check, and nothing else. It should say **why**
+   (Tamper Protection is on, which is good) and **where to look themselves** --
+   the path above, which we now have from the guide.
+
+### Deliberately NOT built into ascii41
+
+**Bill is field-testing ascii41 right now.** Editing the file mid-test would
+mean his findings refer to a build that no longer exists on disk. **This is an
+ascii42 item**, and it is a copy change plus a rename -- no new read, no new
+logic.
+
+**Unverified:** measured on CGDELL only, which is **Pro**. SANDY is **Home**.
+Tamper Protection is on by default on both so the result is expected to match,
+but that is inference, not measurement, and the Home run has not been done.
+
 ### FT-186 (NEW) -- the Settings route is not universal
 
 **Bill's findings 7 and 8.** Both are the same fix.

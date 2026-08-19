@@ -1,0 +1,55 @@
+﻿================================================================
+ ENHANCED PHISHING PROTECTION -- WHERE DOES IT ACTUALLY LIVE?
+================================================================
+  Computer  : CGDELL
+  Run date  : 2026-08-18 22:33:31
+  Elevated  : True
+  Windows   : Microsoft Windows 11 Pro
+
+---- 1. WHAT CHECKUP READS TODAY (the FT-185 defect) ----
+  HKLM\...\WTDS\Components  ServiceEnabled
+     state : BLOCKED (SecurityException -- Tamper Protection)
+     value : 
+
+---- 2. THE THREE PARTS THE GUIDE NAMES ----
+  Windows Security > App & browser control > Reputation-based protection
+  The three toggles under Phishing protection, per the guide's setting 6.
+     ServiceEnabled         BLOCKED (SecurityException -- Tamper Protection)     
+     NotifyMalicious        BLOCKED (SecurityException -- Tamper Protection)     
+     NotifyPasswordReuse    BLOCKED (SecurityException -- Tamper Protection)     
+     NotifyUnsafeApp        BLOCKED (SecurityException -- Tamper Protection)     
+     CaptureThreatWindow    BLOCKED (SecurityException -- Tamper Protection)     
+
+---- 3. POLICY MIRROR (HKLM Policies -- what an admin would set) ----
+     ServiceEnabled         KEY ABSENT                                           
+     NotifyMalicious        KEY ABSENT                                           
+     NotifyPasswordReuse    KEY ABSENT                                           
+     NotifyUnsafeApp        KEY ABSENT                                           
+
+---- 4. SMARTSCREEN, the other half of App & browser control ----
+     Explorer SmartScreenEnabled        value not set                  
+     AppHost EnableWebContentEvaluation value not set                  
+     Edge SmartScreenEnabled key        READ OK                        1
+
+---- 5. THE CMDLET ROUTE -- does Defender expose it without registry? ----
+     Get-MpPreference: READ OK
+     PUAProtection              1
+     EnableNetworkProtection    0
+     SubmitSamplesConsent       1
+     IsTamperProtected          True
+     AntivirusEnabled           True
+     RealTimeProtectionEnabled  True
+
+================================================================
+ WHAT TO CONCLUDE
+================================================================
+  A read is usable for Checkup ONLY if it says READ OK above.
+  'BLOCKED' means Tamper Protection -- that read can never be the
+  answer, because it fails on exactly the machines that are
+  correctly configured.
+  'KEY ABSENT' on a HOME PC usually means the setting is at its
+  default and nothing has written a value -- which FT-123 says must
+  report Unknown, never a definite answer.
+
+  Nothing was changed by this script.
+================================================================
