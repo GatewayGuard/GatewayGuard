@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-18 00:40 ET -->
-<!-- Commit: d1b8bd6 -->
+<!-- Generated: 2026-08-19 19:44 ET -->
+<!-- Commit: fb6488d -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-18 00:40 ET
-- **Commit at generation:** `d1b8bd6`
-- **That commit was made:** 2026-08-18 00:33 ET
-- **Its subject line:** Session close: the rule that failed, replaced with one that is checkable
+- **Generated:** 2026-08-19 19:44 ET
+- **Commit at generation:** `fb6488d`
+- **That commit was made:** 2026-08-19 19:42 ET
+- **Its subject line:** The undo told you it had restored your settings when it had restored nothing
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -52,8 +52,8 @@ All paths are relative to `ProjectDocs/`.
 | CPM schedule | `GatewayGuard_CPM_Schedule-2026-08-02-1201.md` | 1 |
 | Screen numbering design | `GatewayGuard_ScreenNumberDesign-2026-08-15-1430.md` | 0 |
 | Screen numbering table | `GatewayGuard_ScreenNumberTable-2026-08-17.md` | 1 |
-| Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii40run1-2026-08-17.md` | 0 |
-| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii41-2026-08-18.md` | 0 |
+| Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii41run1-2026-08-19.md` | 1 |
+| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii42-2026-08-19.md` | 1 |
 | Website source pack (19 guide pages) | `GatewayGuard_WebsiteSourcePack-2026-08-15-1751.md` | 0 |
 | Guide v9 source pack | `GatewayGuard_GuideV9-SourcePack-2026-08-15-1436.md` | 0 |
 | Marketing source pack | `GatewayGuard_MarketingSourcePack-2026-08-13-1427.md` | 0 |
