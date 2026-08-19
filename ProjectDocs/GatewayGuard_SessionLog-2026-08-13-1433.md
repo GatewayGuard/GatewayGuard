@@ -28,6 +28,114 @@ This is the shared memory between all Claude instances.
 ---
 ---
 
+## Session: 2026-08-18 to 08-19 [Claude Code -- CGDELL] -- ascii41 FIELD-RUN, ascii42 BUILT
+
+**Build: ascii41 -> ascii42** (`W11-SecurityHardening-v3-ascii42-2026-08-19-1830.ps1`,
+9,301 total / 8,921 non-blank). **Never field-run.**
+
+### ascii41's field run, and the number that matters
+
+Four runs on SANDY, 38 findings --
+`Test_Results\Ascii41-Test-Reults-2026-08-18-1110.txt`, all triaged in
+`GatewayGuard_FieldTestTriage-ascii41run1-2026-08-19.md`.
+
+**253 screen renders, ZERO first-encounter decreases.** The property the whole
+FT-172 walk existed to guarantee holds in the field. Bill reported numbering
+broken five times and was right that it *reads* broken -- `1a` renders
+immediately before `1`, and resume gaps (1a, 1b, 10, 11, 21) look like faults.
+**I predicted the `1a`/`1` collision in the design doc on 2026-08-17 and wrote
+"awkward but harmless". It is the path Bill takes on every test.**
+
+**Verified working:** both drives, the log landing in OneDrive with
+`Open-My-Log.bat` beside it, the unrecognised-key message.
+
+### ascii42 -- four fixes, all about Checkup saying what it is doing
+
+| FT | Fix |
+|---|---|
+| **193** | A stray key at the checklist no longer repaints the screen. Input gate asserted, ignored keys logged and announced, burst drained |
+| **194** | The `I` key works on the 71 `Pause-ForUser` pages, not only the 56 `Read-ValidKey` questions |
+| **201** | The gallery takes arrow keys and says what it ignored |
+| **202** | Gallery `[A]` prints all 67 screens in one scrollable list |
+
+### FT-193, and the theory that was wrong
+
+Three explanations were offered. **Bill's was the best** -- his mouse body
+pressing SANDY's keys while he moved it across the laptop. Mine (console mode
+being reset behind Checkup's back) was **disproven by measurement**:
+`MarkModeReset-SANDY-2026-08-19_18-14.txt` shows ascii41's mask clears
+`ENABLE_MOUSE_INPUT` and Mark mode does not hand it back.
+
+**The cause never mattered.** All three deliver characters that are not
+commands, and the defect was that line 8202 swallowed them silently and
+repainted the whole screen.
+
+**SANDY runs conhost, not Windows Terminal.** The two test machines differ,
+which also withdraws the FT-186 claim that our font instructions are wrong for
+"the host most users will be in".
+
+### Settled by measurement
+
+- **FT-185.** No readable path exists -- Tamper Protection blocks every value
+  under `WTDS\Components`, not just the one Checkup reads. **Reporting Unknown
+  is correct.** Only the label is wrong.
+- **FT-192, mine.** I wrote *"Windows shows you the key when encryption
+  starts"* into SCREEN-79 on 2026-08-17. **Windows 11 Home shows nothing** --
+  Device Encryption is silent. Filed, not yet fixed.
+- **FT-144 removed** from Checkup at Bill's instruction. The guide never had it.
+
+### Also done
+
+- **Storage:** logs and the BitLocker recovery key moved off the Desktop, which
+  OneDrive Known Folder Move was silently syncing to the cloud. Then OneDrive
+  first / local fallback / decline remembered, per Bill's three tiers.
+- **Deck:** seven claims fixed against the marketing plan's banned list.
+- **Guide + marketing plan reviewed;** Cloud acted on both and **found two
+  stale cross-references I had missed.**
+- **Mouse setup tool** built, and it shipped with a real bug -- see below.
+
+### FIVE ERRORS, AND WHAT BILL ASKED ABOUT THEM
+
+Bill, 2026-08-19: *"Why are you continuing to make simple programming errors
+and repeat errors as well?"*
+
+**Two distinct causes, which I had been treating as one.**
+
+**The repeats: I fix an instance, never the class, and the count is always
+already in front of me.** I spent a morning establishing that Back works on
+pages and not questions -- counting three readers, 71/56/7 sites -- and the
+next day added the `I` key to one of them. I fixed silent key-swallowing in
+`Read-ValidKey`, then in the checklist, and never asked how many readers do
+it. The gallery was the third.
+
+**The simple errors: I do not run what I write.** `$undo` collides with the
+`-Undo` switch parameter -- PowerShell names are case-insensitive -- and it
+would have died on first execution. Instead Bill ran it, on both machines, and
+**lost his undo on each**. `gg_edit` asserts an edit LANDED; it cannot assert
+the result WORKS.
+
+**Two rules, both preconditions on an action rather than states of mind:**
+
+1. **Any standalone script handed to Bill gets run first, on this machine,
+   before he is told it exists.** No exception for "it is simple".
+2. **Before fixing a defect, count the instances of its shape and say the
+   number.** A fix with no count in the message means nobody looked.
+
+**Recorded honestly: the second rule was written between my saying "two lines
+break" in the guide review and Cloud finding four.**
+
+### Open for the next session
+
+1. **ascii42 field run.** Checklist: `GatewayGuard_FieldChecklist-ascii42-2026-08-19.md`
+2. **FT-184** -- the flash before screen 1, reported three builds running, still unlocated
+3. **FT-195(a)** -- resume screens should take no number
+4. **FT-175b** -- a checklist route to the offline scan, not gated on the checkpoint
+5. **FT-192** -- the recovery-key screen still tells Home users to watch for something Windows never shows
+6. **Refund policy** -- the only marketing decision that blocks opening a store, twelve days out
+
+---
+---
+
 ## Session: 2026-08-17 to 08-18 [Claude Code -- CGDELL] -- PART 2: ascii41 BUILT, AND FIVE WRONG ASSERTIONS
 
 **Build: ascii41** (`W11-SecurityHardening-v3-ascii41-2026-08-17-2246.ps1`,

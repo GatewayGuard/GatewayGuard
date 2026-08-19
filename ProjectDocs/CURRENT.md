@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-19 19:44 ET -->
-<!-- Commit: fb6488d -->
+<!-- Generated: 2026-08-19 19:59 ET -->
+<!-- Commit: ed83353 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-19 19:44 ET
-- **Commit at generation:** `fb6488d`
-- **That commit was made:** 2026-08-19 19:42 ET
-- **Its subject line:** The undo told you it had restored your settings when it had restored nothing
+- **Generated:** 2026-08-19 19:59 ET
+- **Commit at generation:** `ed83353`
+- **That commit was made:** 2026-08-19 19:52 ET
+- **Its subject line:** Cloud acted on the review, and found two cross-references I missed
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -67,7 +67,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-08-17 to 08-18 [Claude Code -- CGDELL] -- PART 2: ascii41 BUILT, AND FIVE WRONG ASSERTIONS
+## Session: 2026-08-18 to 08-19 [Claude Code -- CGDELL] -- ascii41 FIELD-RUN, ascii42 BUILT
 ```
 
 **If it is not in your copy of the session log, you are reading an old
