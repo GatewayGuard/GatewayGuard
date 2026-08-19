@@ -98,8 +98,16 @@ if ($Undo) {
     }
     Write-Host "  Putting your previous settings back..."
     Write-Host ""
+    # A file written by the 2026-08-19 buggy version contains the single word
+    # "False" -- $undo WAS the -Undo switch parameter, so the array assignment
+    # threw and the switch's own value got written instead. Such a file matches
+    # no line below, restores nothing, and the old code then deleted it and
+    # printed "Done" -- telling the user their settings were back when nothing
+    # had been touched. Count what is actually restored and say so.
+    $ggRestored = 0
     foreach ($line in (Get-Content -LiteralPath $undoFile)) {
         if ($line -match '^(.+?)\|(.+?)\|(.*)$') {
+            $ggRestored++
             $k = $Matches[1]; $n = $Matches[2]; $v = $Matches[3]
             try {
                 if ($v -eq '<absent>') {
@@ -112,9 +120,28 @@ if ($Undo) {
             } catch { Write-Host ("    {0,-22} COULD NOT RESTORE: {1}" -f $n, $_.Exception.Message) }
         }
     }
+    if ($ggRestored -eq 0) {
+        Write-Host "  NOTHING WAS RESTORED." -ForegroundColor Red
+        Write-Host ""
+        Write-Host "  The undo file for this PC is unreadable. It was written by a"
+        Write-Host "  version of this script that had a fault, so your previous mouse"
+        Write-Host "  values were never recorded and cannot be recovered from it."
+        Write-Host ""
+        Write-Host "  Your settings have NOT been changed by this run. If you want to"
+        Write-Host "  go back to Windows' own defaults, set them by hand in:"
+        Write-Host "    Settings > Bluetooth & devices > Mouse"
+        Write-Host "    Settings > Accessibility > Mouse pointer and touch"
+        Write-Host ""
+        Write-Host "  The file has been left in place, not deleted, so nothing is lost."
+        Write-Host ""
+        Write-Host "  Press Enter to close."
+        $null = Read-Host
+        return
+    }
     Remove-Item -LiteralPath $undoFile -Force -EA SilentlyContinue
     Write-Host ""
-    Write-Host "  Done. Sign out and back in for every setting to take effect."
+    Write-Host ("  Done -- " + $ggRestored + " setting(s) restored. Sign out and back in for")
+    Write-Host "  every one of them to take effect."
     Write-Host ""
     Write-Host "  Press Enter to close."
     $null = Read-Host
