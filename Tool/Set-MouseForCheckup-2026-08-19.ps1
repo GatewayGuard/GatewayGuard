@@ -187,16 +187,34 @@ try {
     [void][GG.SPI]::SystemParametersInfo($SPI_SETDOUBLECLICKTIME, [uint32]$dc, [IntPtr]::Zero, $SPIF_UPDATE)
     $wl = ($WANT | Where-Object { $_.Name -eq 'WheelScrollLines' }).Want
     [void][GG.SPI]::SystemParametersInfo($SPI_SETWHEELSCROLLLINES, [uint32]$wl, [IntPtr]::Zero, $SPIF_UPDATE)
-    Write-Host ""
-    Write-Host "  Double-click speed and wheel scrolling are live now -- try them."
+    $dw = ($WANT | Where-Object { $_.Name -eq 'DoubleClickWidth' }).Want
+    [void][GG.SPI]::SystemParametersInfo(0x001D, [uint32]$dw, [IntPtr]::Zero, $SPIF_UPDATE)
+    $dh = ($WANT | Where-Object { $_.Name -eq 'DoubleClickHeight' }).Want
+    [void][GG.SPI]::SystemParametersInfo(0x001E, [uint32]$dh, [IntPtr]::Zero, $SPIF_UPDATE)
+    $sn = ($WANT | Where-Object { $_.Name -eq 'SnapToDefaultButton' }).Want
+    [void][GG.SPI]::SystemParametersInfo(0x0060, [uint32]$sn, [IntPtr]::Zero, $SPIF_UPDATE)
 } catch {
     Write-Host ""
     Write-Host "  (Could not apply the two live settings; they will work after sign-out.)"
 }
 
 Write-Host ""
-Write-Host "  SIGN OUT AND BACK IN for the pointer size and hover-scrolling to"
-Write-Host "  take effect. Everything else is already working."
+Write-Host "  WHAT IS WORKING RIGHT NOW -- try them, no restart needed:" -ForegroundColor Green
+Write-Host "    * Double-click speed and the wiggle it allows"
+Write-Host "    * How far the wheel scrolls per notch"
+Write-Host "    * Pointer jumping to the default button"
+Write-Host ""
+Write-Host "  ONE SETTING IS WAITING: scrolling whatever is under the pointer." -ForegroundColor Yellow
+Write-Host "  Windows only reads that one when your session starts, so it will"
+Write-Host "  begin working the next time you sign in. Nothing is wrong."
+Write-Host ""
+Write-Host "  If you want it now, SIGN OUT AND BACK IN. That means:"
+Write-Host "    1. Click Start"
+Write-Host "    2. Click your name or picture at the bottom"
+Write-Host "    3. Click Sign out"
+Write-Host "    4. Sign back in as usual"
+Write-Host "  It is not a restart and it does not take long. Save your work"
+Write-Host "  first, because signing out closes your open programs."
 Write-Host ""
 Write-Host "  To undo all of this: run Run-MouseSetup.bat again and answer U"
 Write-Host "  at the prompt, or run this script with  -Undo"
