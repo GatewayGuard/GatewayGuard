@@ -1,0 +1,6 @@
+﻿HKCU:\Control Panel\Desktop|MouseWheelRouting|0
+HKCU:\Control Panel\Desktop|WheelScrollLines|3
+HKCU:\Control Panel\Mouse|DoubleClickSpeed|200
+HKCU:\Control Panel\Mouse|DoubleClickWidth|4
+HKCU:\Control Panel\Mouse|DoubleClickHeight|4
+HKCU:\Control Panel\Mouse|SnapToDefaultButton|0

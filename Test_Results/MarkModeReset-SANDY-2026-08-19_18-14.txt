@@ -1,0 +1,43 @@
+﻿============================================================
+ DOES SELECTING TEXT HAND ENABLE_MOUSE_INPUT BACK?  (FT-193)
+============================================================
+  Machine : SANDY
+  Run     : 2026-08-19 18:14:31 ET
+  Host    : ConsoleHost   WT_SESSION set: False
+
+READING 1 -- as the window opened
+  before                 0x000001F7   MOUSE_INPUT=True   QUICK_EDIT=True
+
+READING 2 -- after applying ascii41's mask (Checkup's startup)
+  after clearing         0x000001A7   MOUSE_INPUT=False  QUICK_EDIT=False
+     MOUSE_INPUT is now OFF, which is what Checkup relies on.
+
+------------------------------------------------------------
+ NOW SELECT SOME TEXT IN THIS WINDOW, then come back.
+
+   This is the CLASSIC CONSOLE (conhost). Do this:
+
+     1. RIGHT-CLICK the title bar
+     2. Choose  Edit  ->  Mark
+     3. Drag over a few words to select them
+     4. Press  Esc  to leave Mark mode
+
+   Then press Enter back here.
+------------------------------------------------------------
+
+READING 3 -- after selecting text in the window
+  after selecting        0x000001A7   MOUSE_INPUT=False  QUICK_EDIT=False
+
+============================================================
+ ANSWER
+============================================================
+  NO. Selecting text left the flag alone.
+
+  The FT-193 theory is WRONG and must not be built on. Something
+  else is feeding events to the checklist's ReadKey. Do not apply
+  the planned fix on this reasoning -- find the real source first.
+
+  raw: before=0x000001F7  cleared=0x000001A7  after-select=0x000001A7
+
+  Console mode restored to what it was when this window opened.
+============================================================

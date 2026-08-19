@@ -8174,6 +8174,16 @@ function Run-ConsoleMode {
         # implemented centrally so that no NEW screen could forget it. It had
         # one hole, and the hole was the screen the user spends most of the
         # run on. A central fix protects what is routed through the centre.
+        #
+        # THE REASON THIS MATTERS IS THE FLUSH, NOT THE FLAGS. Measured on
+        # SANDY 2026-08-19 (MarkModeReset-SANDY-2026-08-19_18-14.txt): the
+        # ascii41 mask DOES clear ENABLE_MOUSE_INPUT (0x1F7 -> 0x1A7), and
+        # using Mark mode does NOT hand it back (0x1A7 before and after). The
+        # theory that the console mode was being reset behind Checkup's back
+        # is DISPROVEN and must not be repeated. What this call is actually
+        # worth here is Clear-PendingKeys: anything queued before the screen
+        # was drawn gets discarded, which is FT-171e's purpose applied to the
+        # one screen that never received it.
         Reset-GGInputGate
 
         # FT-193: re-prompt WITHOUT repainting. Before this, an unmatched key

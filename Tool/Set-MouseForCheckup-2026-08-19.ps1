@@ -32,6 +32,13 @@
 
 param([switch]$Undo)
 
+# NOTE 2026-08-19: the collection below was called $undo, which IS the -Undo
+# switch parameter -- PowerShell variable names are case-insensitive. Assigning
+# an array to a SwitchParameter threw, the undo file was written containing the
+# word "False", and the settings were applied with no way back. Renamed
+# $ggUndoLines. A switch parameter and a working variable must never differ
+# only by case.
+
 $ErrorActionPreference = 'Continue'
 
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -154,12 +161,12 @@ if ($ans.ToUpper().Trim() -ne 'Y') {
 }
 
 # ---------------- APPLY ----------------
-$undo = @()
+$ggUndoLines = @()
 foreach ($w in $changes) {
     $cur = Get-Val $w.Key $w.Name
-    $undo += ($w.Key + '|' + $w.Name + '|' + $(if ($null -eq $cur) { '<absent>' } else { [string]$cur }))
+    $ggUndoLines += ($w.Key + '|' + $w.Name + '|' + $(if ($null -eq $cur) { '<absent>' } else { [string]$cur }))
 }
-$undo -join "`r`n" | Out-File -FilePath $undoFile -Encoding UTF8 -Force
+$ggUndoLines -join "`r`n" | Out-File -FilePath $undoFile -Encoding UTF8 -Force
 Write-Host ""
 Write-Host ("  Previous values saved to: " + (Split-Path $undoFile -Leaf))
 Write-Host ""
