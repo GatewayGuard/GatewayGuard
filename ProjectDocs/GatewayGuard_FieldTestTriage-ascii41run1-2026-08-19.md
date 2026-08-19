@@ -46,30 +46,87 @@ and it is a real defect -- just not the one it looked like.
 
 ## NEW DEFECTS
 
-### FT-193 -- THE MOUSE IS BACK, AND IT IS THE WORST FINDING HERE
+### FT-193 -- DIAGNOSED 2026-08-19. The checklist is the one screen the FT-171 fix cannot reach.
 
-**Findings 15, 24, 32, 10, 17.** Bill:
+**My prime suspect was wrong.** I named the `I` key, on the reasoning that
+`Read-ValidKey` now reacts to characters it used to discard. **That is not it.
+Nothing I changed in ascii41 causes this.**
 
-> *"a series of lf feeds occurred and after that about 20+ command screens
-> appeared with \users\willi on Sandy. Had to close them all."*
-> *"Mouse goes crazy again and puts a number of things in this document
-> continuously until I do something with the mouse."*
-> *"the same question repeated multiple times after my pressing left hand
-> button on my mouse repeatedly."*
+### The evidence
 
-**This is FT-171 territory and ascii40 did not do it.** ascii40 ran 58 minutes
-on this machine with the mouse in use and never did this. **Something in
-ascii41 reintroduced it, and twenty command windows opening is the most severe
-symptom this project has recorded.**
+**measured**, `Logs-Sandy-ascii41\GatewayGuard-Log-2026-08-18_16-18.txt`:
 
-**Prime suspect, and it is mine: the `I` key.** `Read-ValidKey` now reacts to a
-character it previously discarded. A mouse click that produces a stray
-character, or a paste, can now trigger a screen render mid-prompt. Finding 9
-is the proof of concept -- **Bill reached the `I` screen by right-clicking and
-choosing paste**, not by pressing I.
+```
+[17:35:15] Checklist render: page 1 ...      <- no key
+[17:35:15] Checklist render: page 1 ...      <- no key
+[17:35:15] Checklist render: page 1 ...      <- no key
+   ... 10 renders inside one second, ZERO [KEY] lines ...
+```
 
-**Nothing else should be built until this is understood.** *unverified -- the
-suspect is reasoned, not measured.*
+Against the normal case ninety minutes earlier, where **every** render is
+preceded by an accepted key:
+
+```
+[17:03:18] [KEY] Checklist command 'P' accepted
+[17:03:18] Checklist render: page 1
+[17:03:20] [KEY] Checklist command 'P' accepted
+[17:03:20] Checklist render: page 2
+```
+
+**Accepted keys peak at 2 per second across the whole run.** So the burst is
+not input being accepted. It is the loop re-rendering on input it discards.
+
+### The mechanism, in four measured steps
+
+1. **The checklist is hand-drawn.** SCREEN-76 and 77 are the only screens that
+   do not go through `Draw-Box` -- gate 12 has always reported them as
+   "hand-drawn (no Draw-Box)".
+2. **`Reset-GGInputGate` is called from exactly one place: line 2159, inside
+   `Draw-Box`.** So it never runs on the checklist. `Disable-QuickEdit`, which
+   clears `ENABLE_MOUSE_INPUT`, has three call sites and **none is in the
+   checklist loop** -- measured, zero occurrences between lines 7980 and 8200.
+3. **An unmatched key is discarded and the loop repaints.** Line 8202:
+   `$userInput = ""  # Invalid -- swallow silently`. No log line, full
+   `Clear-Host` and redraw.
+4. **So any event that reaches `ReadKey` and is not a command repaints the
+   entire screen, silently.** Ten mouse events a second is ten repaints a
+   second, which is what the log shows and what Bill saw.
+
+### The one link that is INFERRED, not measured
+
+**That Mark mode restores the console mode.** Bill used right-click and Mark
+repeatedly in this run -- findings 8, 9, 17 and 24 -- and entering or leaving
+Mark mode is the documented way console mode gets reset by the host. That
+would re-enable `ENABLE_MOUSE_INPUT` behind Checkup's back.
+
+**This is measurable and should be, before the fix is written.**
+`Tool\Check-ConsoleInputMode-2026-08-13.ps1` already exists and reads the
+mode. Run it on SANDY, use Mark mode, run it again. **If bit 4 comes back, the
+chain is closed end to end.**
+
+### Why FT-171f did not cover this
+
+FT-171f's stated claim is *"console flags asserted before EVERY screen"*, and
+it was implemented by putting `Reset-GGInputGate` inside `Draw-Box` --
+deliberately, so that "no new screen can forget it". **That reasoning is sound
+and it has exactly one hole: the two screens that do not use `Draw-Box`.**
+They are the checklist. Which is the screen the user spends most of the run on,
+and the screen field note 14's crash happened on.
+
+**A central fix protects everything routed through the centre.** The checklist
+was never routed through it, and nothing checked that.
+
+### The fix
+
+1. **Call `Reset-GGInputGate` at the top of the checklist loop.** One line, and
+   it closes the gap FT-171f left.
+2. **Stop swallowing silently.** Line 8202 is FT-173's defect in a second
+   reader -- an unrecognised key produces no message and a full repaint. It
+   should log, and it should not repaint.
+3. **Do not repaint on an unmatched key at all.** The repaint is what turns one
+   stray event into visible chaos.
+4. **Gate it:** a check that every screen-painting path asserts the input gate.
+   The rule existed; nothing verified it.
 
 ### FT-194 -- the `I` key is dead on 71 of 127 screens. Mine.
 
