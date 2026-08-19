@@ -2274,17 +2274,44 @@ function Show-ScreenGallery {
             }
         }
         Write-Host ""
-        Write-Host "  [Enter or Space] Next screen      [B] Previous screen" -ForegroundColor White
-        Write-Host "  [J] Jump to a screen number       [Q] Quit the gallery" -ForegroundColor White
+        Write-Host "  [Enter, Space or right arrow] Next    [B or left arrow] Previous" -ForegroundColor White
+        Write-Host "  [J] Jump to a screen number           [Q] Quit the gallery" -ForegroundColor White
         Write-Host ""
+        # FT-201 (ascii42): this is the THIRD hand-rolled reader in this file to
+        # discard an unrecognised key in silence. Read-ValidKey was the first
+        # (fixed ascii41), the checklist loop the second (FT-193, fixed above).
+        # Here it cost Bill the whole feature: 2026-08-19, "I ran all
+        # screen.bat and it only showed me one screed". The gallery was working
+        # perfectly -- measured, "SCREEN GALLERY -- screen 1 of 67" rendered and
+        # waited -- but it advanced ONLY on Enter or Space, and any other key
+        # did nothing and said nothing. A tool that ignores you looks broken.
+        #
+        # Arrow keys are now accepted because they are what a person reaches for
+        # in a "next / previous" viewer, and N because the checklist next to it
+        # uses letters. The rule this file keeps re-learning: a reader must
+        # never swallow a key without saying so.
         $ggNav = ""
+        $ggGalBad = 0
         while ($ggNav -eq "") {
             try { [Console]::TreatControlCAsInput = $true } catch {}
             $ggK = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-            if ($ggK.VirtualKeyCode -in @(13, 32)) { $ggNav = "NEXT"; break }
+            $ggVK = $ggK.VirtualKeyCode
+            # Enter, Space, right arrow, down arrow, PageDown
+            if ($ggVK -in @(13, 32, 39, 40, 34)) { $ggNav = "NEXT"; break }
+            # Left arrow, up arrow, PageUp
+            if ($ggVK -in @(37, 38, 33)) { $ggNav = "B"; break }
+            if ($ggVK -eq 27) { $ggNav = "Q"; break }   # Esc
             $ggCh = ""
             try { $ggCh = $ggK.Character.ToString().ToUpper() } catch {}
-            if ($ggCh -in @("B", "J", "Q")) { $ggNav = $ggCh }
+            if ($ggCh -eq "N") { $ggNav = "NEXT"; break }
+            if ($ggCh -in @("B", "J", "Q")) { $ggNav = $ggCh; break }
+            # Nothing matched. SAY SO -- do not swallow it.
+            $ggGalBad++
+            if ($ggGalBad -le 2) {
+                Write-Host "  That key does nothing here. Press Enter, Space or the right arrow for the next screen." -ForegroundColor Yellow
+            } elseif ($ggGalBad -eq 3) {
+                Write-Host "  Still nothing. [Q] or Esc closes the gallery." -ForegroundColor Yellow
+            }
         }
         switch ($ggNav) {
             "Q" { Clear-Host; Write-Host ""; Write-Host "  Gallery closed. Nothing was changed." -ForegroundColor Green; Write-Host ""; return }
