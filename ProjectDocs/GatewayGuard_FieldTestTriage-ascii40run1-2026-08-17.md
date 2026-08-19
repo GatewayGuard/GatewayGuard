@@ -361,6 +361,71 @@ logic.
 Tamper Protection is on by default on both so the result is expected to match,
 but that is inference, not measurement, and the Home run has not been done.
 
+### FT-192 (NEW, and it is MINE) -- SCREEN-79 tells Home users to look for something Windows never shows them
+
+**Bill, 2026-08-18:** *"Deep research if Windows shows the recovery key when
+encryption starts on a Windows 11 Home PC."*
+
+**It does not. And the screen that says it does was written by me today.**
+
+### What I put on screen this afternoon
+
+Rewriting FT-144 out of SCREEN-79, I wrote:
+
+> *"Windows shows you the key when encryption STARTS, not when it finishes.
+> Look for it as soon as it begins -- not hours later."*
+
+**The text I replaced said something different and narrower:** *"the key is
+SAVED when encryption starts"*. **Saved and shown are not the same claim, and
+I swapped one for the other while editing, with no evidence for the new one.**
+That is the exact failure the 2026-08-18 rule was written for, committed
+roughly eight hours after writing it.
+
+### What Windows 11 Home actually does -- sourced 2026-08-18
+
+- **There is no recovery-key prompt on Home.** Device Encryption turns on
+  silently. No dialog, no print option, nothing displayed. The
+  "How do you want to back up your recovery key?" dialog with save/print
+  options is **BitLocker on Pro**, not Device Encryption on Home.
+- **With a Microsoft account** the key is uploaded silently to
+  `account.microsoft.com/devices/recoverykey`.
+- **With a local account the sources conflict** -- one says Windows refuses
+  with *"Sign in with your Microsoft account to finish encrypting this
+  device"*, another says the key is written to disk and no recovery prompt
+  ever occurs. **UNRESOLVED. This needs measuring on SANDY**, which is Home
+  and local, and is the only machine that can answer it.
+
+### Why this one matters more than a wording defect
+
+**SCREEN-79 is the last thing a Home user reads before deciding to encrypt**,
+and the screen above it says *"WITHOUT IT, THE FILES ARE GONE. Not locked.
+Gone."* A reader who follows my instruction watches for a key that never
+appears, concludes they must have missed it, and proceeds anyway -- **with no
+key and the belief that they had a chance to catch one.** That is worse than
+saying nothing, because it converts a known gap into a false sense of having
+handled it.
+
+### What it should say instead
+
+**Not "look for it" -- "go and get it".** Windows will not offer. The
+replacement has to name the route, and the route differs by account type,
+which `Get-SignInAccountType` already detects at line 7222:
+
+- **Microsoft account:** the key is at `account.microsoft.com/devices/recoverykey`,
+  reachable from a phone. Tell them to check it is there **before** encrypting.
+- **Local account:** unresolved above. `Tool\Get-BitLockerRecoveryKey-2026-08-08.ps1`
+  already exists in this project and retrieves it, so the capability is built
+  even if the guidance is not written.
+
+### NOT fixed in ascii41, deliberately
+
+**Bill is field-testing ascii41 as this is written.** Editing the file mid-test
+would make his findings refer to a build that is no longer on disk. **ascii42.**
+
+**It is contained:** ascii41 is not shipped, and Bill is the only person
+running it. But it is the highest-priority copy defect open, because it is the
+one that can cost a real person their files.
+
 ### FT-186 (NEW) -- the Settings route is not universal
 
 **Bill's findings 7 and 8.** Both are the same fix.
