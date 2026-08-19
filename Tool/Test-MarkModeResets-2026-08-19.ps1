@@ -1,18 +1,27 @@
 # Test-MarkModeResets-2026-08-19.ps1
 # Dated: 2026-08-19 18:10 ET
 #
-# THE ONE QUESTION: does entering and leaving Mark mode hand
-# ENABLE_MOUSE_INPUT back after Checkup has cleared it?
+# THE QUESTION: does selecting text in the window hand ENABLE_MOUSE_INPUT
+# back after Checkup has cleared it?
+#
+# NOTE 2026-08-19: this now tests the WEAKER of two theories. Bill's finding 9
+# already proves a stronger one from the field -- right-click in Windows
+# Terminal PASTES, and his paste was consumed as keystrokes, opening the I
+# screen without him pressing I. A multi-line paste is many characters, each
+# one an unmatched key, each one a silent full repaint of the checklist. That
+# needs no console-mode change at all. Run this anyway: if selection DOES
+# restore the flag there are two independent causes, and knowing that is worth
+# two minutes.
 #
 # WHY IT MATTERS: FT-193. On 2026-08-18 the ascii41 checklist repainted ten
 # times in one second with no keypress at all -- measured in
 # Logs-Sandy-ascii41\GatewayGuard-Log-2026-08-18_16-18.txt at 17:35:15. The
 # mechanism needs mouse events to be reaching ReadKey. Checkup clears
 # ENABLE_MOUSE_INPUT at startup, so something must be turning it back on, and
-# Mark mode is the suspect. That link is currently INFERRED. This measures it.
+# selection is the suspect here. That link is INFERRED. This measures it.
 #
-# WHAT IT DOES: clears the flag exactly the way ascii41 does, asks you to use
-# Mark mode, then reads the flag again. Three readings, one run.
+# WHAT IT DOES: clears the flag exactly the way ascii41 does, asks you to
+# select text, then reads the flag again. Three readings, one run.
 #
 # READ-ONLY in the sense that matters: it changes only this window's console
 # mode, and it restores what it found before exiting. Nothing on the PC is
@@ -59,7 +68,7 @@ function Show-Mode {
 }
 
 Add-Line "============================================================"
-Add-Line " DOES MARK MODE HAND ENABLE_MOUSE_INPUT BACK?  (FT-193)"
+Add-Line " DOES SELECTING TEXT HAND ENABLE_MOUSE_INPUT BACK?  (FT-193)"
 Add-Line "============================================================"
 Add-Line ("  Machine : " + $env:COMPUTERNAME)
 Add-Line ("  Run     : " + (Get-Date -Format 'yyyy-MM-dd HH:mm:ss') + " ET")
@@ -86,32 +95,44 @@ $mouseAfterClear = Show-Mode "after clearing" $after
 if ($mouseAfterClear) {
     Add-Line ""
     Add-Line "  !! The mask did NOT clear MOUSE_INPUT. Stop here -- that alone"
-    Add-Line "     is the defect, and Mark mode is not needed to explain FT-193."
+    Add-Line "     is the defect, and selection is not needed to explain FT-193."
 } else {
     Add-Line "     MOUSE_INPUT is now OFF, which is what Checkup relies on."
 }
 Add-Line ""
 
 Add-Line "------------------------------------------------------------"
-Add-Line " NOW DO THIS, in this window:"
+Add-Line " NOW SELECT SOME TEXT IN THIS WINDOW, then come back."
 Add-Line ""
-Add-Line "   1. RIGHT-CLICK the title bar"
-Add-Line "   2. Choose  Edit  ->  Mark"
-Add-Line "   3. Drag over a few words to select them"
-Add-Line "   4. Press  Esc  to leave Mark mode"
-Add-Line "   5. Come back here and press Enter"
+if ($env:WT_SESSION) {
+    Add-Line "   This is WINDOWS TERMINAL. It has no Edit -> Mark menu --"
+    Add-Line "   right-click here PASTES. Do this instead:"
+    Add-Line ""
+    Add-Line "     1. Click and DRAG across a few words above"
+    Add-Line "     2. Press  Ctrl+Shift+C  to copy them"
+    Add-Line "     3. Click once to clear the selection"
+    Add-Line ""
+    Add-Line "   If Ctrl+Shift+M opens a Mark mode on your version, use that"
+    Add-Line "   too, then press Esc to leave it."
+} else {
+    Add-Line "   This is the CLASSIC CONSOLE (conhost). Do this:"
+    Add-Line ""
+    Add-Line "     1. RIGHT-CLICK the title bar"
+    Add-Line "     2. Choose  Edit  ->  Mark"
+    Add-Line "     3. Drag over a few words to select them"
+    Add-Line "     4. Press  Esc  to leave Mark mode"
+}
 Add-Line ""
-Add-Line "   If your window has no title-bar menu, try right-clicking"
-Add-Line "   inside the window instead, or press Ctrl+Shift+M."
+Add-Line "   Then press Enter back here."
 Add-Line "------------------------------------------------------------"
 Write-Host ""
-Write-Host "  Press Enter when you have finished using Mark mode..." -ForegroundColor White -NoNewline
+Write-Host "  Press Enter when you have finished selecting..." -ForegroundColor White -NoNewline
 [void](Read-Host)
 Add-Line ""
 
 $final = Read-Mode
-Add-Line "READING 3 -- after using Mark mode"
-$mouseAfterMark = Show-Mode "after Mark" $final
+Add-Line "READING 3 -- after selecting text in the window"
+$mouseAfterSelect = Show-Mode "after selecting" $final
 Add-Line ""
 
 Add-Line "============================================================"
@@ -119,23 +140,23 @@ Add-Line " ANSWER"
 Add-Line "============================================================"
 if ($mouseAfterClear) {
     Add-Line "  INCONCLUSIVE -- the mask never cleared the flag, so there was"
-    Add-Line "  nothing for Mark mode to undo."
-} elseif ($mouseAfterMark) {
-    Add-Line "  YES. Mark mode handed ENABLE_MOUSE_INPUT BACK."
+    Add-Line "  nothing for selection to undo."
+} elseif ($mouseAfterSelect) {
+    Add-Line "  YES. Selecting text handed ENABLE_MOUSE_INPUT BACK."
     Add-Line ""
     Add-Line "  FT-193's chain is now closed end to end: Checkup clears the flag,"
-    Add-Line "  Mark mode restores it, the checklist never re-asserts it because"
+    Add-Line "  selection restores it, the checklist never re-asserts it because"
     Add-Line "  it does not go through Draw-Box, and every mouse event then"
     Add-Line "  repaints the screen. The fix is to re-assert on the checklist."
 } else {
-    Add-Line "  NO. Mark mode left the flag alone."
+    Add-Line "  NO. Selecting text left the flag alone."
     Add-Line ""
     Add-Line "  The FT-193 theory is WRONG and must not be built on. Something"
     Add-Line "  else is feeding events to the checklist's ReadKey. Do not apply"
     Add-Line "  the planned fix on this reasoning -- find the real source first."
 }
 Add-Line ""
-Add-Line ("  raw: before=0x{0:X8}  cleared=0x{1:X8}  after-Mark=0x{2:X8}" -f $original, $after, $final)
+Add-Line ("  raw: before=0x{0:X8}  cleared=0x{1:X8}  after-select=0x{2:X8}" -f $original, $after, $final)
 
 # Put the window back the way it was found.
 [void][GG.K32]::SetConsoleMode($h, $original)
