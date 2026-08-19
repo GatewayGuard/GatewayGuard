@@ -2276,6 +2276,7 @@ function Show-ScreenGallery {
         Write-Host ""
         Write-Host "  [Enter, Space or right arrow] Next    [B or left arrow] Previous" -ForegroundColor White
         Write-Host "  [J] Jump to a screen number           [Q] Quit the gallery" -ForegroundColor White
+        Write-Host "  [A] Print ALL screens in one list -- then you can scroll and copy" -ForegroundColor White
         Write-Host ""
         # FT-201 (ascii42): this is the THIRD hand-rolled reader in this file to
         # discard an unrecognised key in silence. Read-ValidKey was the first
@@ -2304,7 +2305,7 @@ function Show-ScreenGallery {
             $ggCh = ""
             try { $ggCh = $ggK.Character.ToString().ToUpper() } catch {}
             if ($ggCh -eq "N") { $ggNav = "NEXT"; break }
-            if ($ggCh -in @("B", "J", "Q")) { $ggNav = $ggCh; break }
+            if ($ggCh -in @("A", "B", "J", "Q")) { $ggNav = $ggCh; break }
             # Nothing matched. SAY SO -- do not swallow it.
             $ggGalBad++
             if ($ggGalBad -le 2) {
@@ -2315,6 +2316,55 @@ function Show-ScreenGallery {
         }
         switch ($ggNav) {
             "Q" { Clear-Host; Write-Host ""; Write-Host "  Gallery closed. Nothing was changed." -ForegroundColor Green; Write-Host ""; return }
+            "A" {
+                # FT-202 (ascii42). Bill, 2026-08-19: the gallery "would not
+                # scroll or accept mouse clicks". Both are true and neither is a
+                # navigation fault. There is nothing to scroll TO -- the loop
+                # Clear-Hosts every screen, so the one before it is gone -- and
+                # there is nothing to click, because the gallery is keyboard-only
+                # and never said so.
+                #
+                # measured: gallery mode never calls Disable-QuickEdit, so console
+                # text selection is left ON and copying works normally. What was
+                # missing was anything worth selecting, because each screen wiped
+                # the last.
+                #
+                # This prints every screen in one continuous list with no clearing
+                # at all. That is what "show me all the screens" should mean:
+                # scroll the window back through the lot, select any of it, copy it.
+                Clear-Host
+                Write-Host ""
+                Write-Host ("  ALL " + $ggTotal + " SCREENS, IN ORDER -- nothing is cleared, so you can") -ForegroundColor Cyan
+                Write-Host "  scroll back through the whole list and copy any of it." -ForegroundColor Cyan
+                Write-Host "  REVIEW ONLY -- nothing on this PC is read or changed." -ForegroundColor DarkGray
+                Write-Host ""
+                $ggI = 0
+                foreach ($ggA in $ggDefs) {
+                    $ggI++
+                    Write-Host ""
+                    Write-Host ("  ---- screen " + $ggI + " of " + $ggTotal +
+                                "   (log ID: SCREEN-" + $ggA.ScreenId + ")  " +
+                                $ggA.Function + ", line " + $ggA.Line + " ----") -ForegroundColor DarkCyan
+                    Write-Host ""
+                    try {
+                        Invoke-Expression ($ggA.Source -replace "Draw-Box", "Write-GalleryBox")
+                    } catch {
+                        Write-Host ("  (could not render outside the live flow: " + $_.Exception.Message + ")") -ForegroundColor Yellow
+                    }
+                }
+                Write-Host ""
+                Write-Host ("  End of all " + $ggTotal + " screens. SCROLL BACK to read them.") -ForegroundColor Cyan
+                Write-Host "  To copy: drag over the text, then press Ctrl+C." -ForegroundColor Cyan
+                Write-Host ""
+                Write-Host "  Press Enter to return to the gallery, or Q then Enter to close: " -ForegroundColor White -NoNewline
+                $ggAfter = Read-Host
+                if ($ggAfter.ToUpper().Trim() -eq "Q") {
+                    Write-Host ""
+                    Write-Host "  Gallery closed. Nothing was changed." -ForegroundColor Green
+                    Write-Host ""
+                    return
+                }
+            }
             "B" { if ($ggIdx -gt 0) { $ggIdx-- } }
             "J" {
                 Write-Host ""
