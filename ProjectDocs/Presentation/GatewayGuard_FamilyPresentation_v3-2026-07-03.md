@@ -2,7 +2,7 @@
 <!-- Dated: 2026-08-19 09:30 ET -->
 # GatewayGuard_FamilyPresentation_v3-2026-07-03 -- readable twin
 
-**Source:** `GatewayGuard_FamilyPresentation_v3-2026-07-03.pptx` (57,238 bytes, 12 slides)
+**Source:** `GatewayGuard_FamilyPresentation_v3-2026-07-03.pptx` (57,290 bytes, 12 slides)
 
 **This file is generated. Edit the .pptx, then re-run `Tool/build_pptx_twin.py`.** It exists because Claude Cloud cannot read a .pptx -- the binary syncs and stays invisible, which is worse than being absent, because everyone believes it arrived.
 
@@ -131,7 +131,7 @@
 
 **Speaker notes:**
 
-> One billion Windows 11 users worldwide. A $47.75 billion consumer security market. And zero tools that do what GatewayGuard does for home users. NoID charges $43 per device with no explanations. GatewayGuard at $19.99 serves the home user who just wants to be safe.
+> One billion Windows 11 users worldwide. A $47.75 billion consumer security market. GatewayGuard is aimed at the person who owns the PC rather than at a sysadmin. Comparable tools cost more and explain less. GatewayGuard at $19.99 serves the home user who just wants to be safe.
 
 ---
 
@@ -158,12 +158,12 @@
 - Assisted Session (Planned)
 - Real person, screen share.
 - Step-by-step guidance.
-- No competitor offers this.
+- Written for the person who owns the PC.
 - GatewayGuard LLC (Maine) filed · gatewayguard.co secured · EIN application pending
 
 **Speaker notes:**
 
-> Pricing is straightforward. Single PC $19.99 one-time. Multi-PC packs for families. Annual update subscriptions for recurring revenue. Assisted sessions — a real person helping you over screen share — for users who want human support. No competitor offers that last one at any price.
+> Pricing is straightforward. Single PC $19.99 one-time. Multi-PC packs for families. Optional annual updates at $12.99 a year -- optional, so not a subscription. Assisted sessions — a real person helping you over screen share — for users who want human support. Assisted sessions are on the roadmap and are not available today.
 
 ---
 
@@ -209,12 +209,12 @@
 - The Privacy Promise
 - Zero data collected — not by policy, but by design. Nothing to collect means nothing to breach. A genuine advantage in GDPR markets.
 - The Human Advantage
-- Every competitor is a tool. We plan to offer a person, too. Assisted sessions are a future differentiator on our roadmap — no one else has this planned.
+- Every competitor is a tool. We plan to offer a person, too. Assisted sessions are a future differentiator on our roadmap — they are not available today.
 - All marketing claims are sourced and verifiable. Links published at gatewayguard.co/sources
 
 **Speaker notes:**
 
-> Every statement is factual and defensible. No named competitors. The tagline refers to Microsoft Defender — built into every Windows 11 PC for free. The 2FA hook is powerful: blocks 99.9% of automated attacks, takes 5 minutes, costs nothing. GDPR angle: zero data by design, not policy.
+> Every statement is factual and defensible. One competitor is named, on slide 5, with its price sourced. The tagline refers to Microsoft Defender — built into every Windows 11 PC for free. The 2FA hook is powerful: blocks 99.9% of automated attacks, takes 5 minutes, costs nothing. GDPR angle: zero data by design, not policy.
 
 ---
 
