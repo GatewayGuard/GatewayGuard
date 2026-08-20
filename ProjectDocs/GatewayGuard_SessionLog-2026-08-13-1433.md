@@ -28,6 +28,95 @@ This is the shared memory between all Claude instances.
 ---
 ---
 
+## Session: 2026-08-20 [Claude Code -- CGDELL] -- A MISSING FILE, AND WHAT IT UNCOVERED
+
+**Build: ascii42, unchanged.** No build work. Bill reported
+`Show-AllScreens.bat` gone from SANDY and absent from both Recycle Bins.
+
+### The file: restored in one command, then explained
+
+It is tracked, so it was never lost -- `git checkout` returned the ascii42
+version. **The interesting part is that Bill's "not in any recycle bin" was an
+honest look and still wrong.** Deleted files sit in the bin under a scrambled
+name; the original path lives in a companion index file starting `$I`.
+`Tool\Check-FileDelete-2026-08-19.ps1` decodes those, and SANDY's newest entry
+read:
+
+    08/19/2026 21:09:40   ...\GatewayGuard\Tool\Show-AllScreens.bat
+
+**The full sequence, every step measured:**
+
+| Time | What |
+|---|---|
+| ~21:08 | Bill double-clicks `Show-AllScreens.bat` on SANDY |
+| 21:08-21:09 | Console frozen ~1 min -- `GatewayGuard-Log-2026-08-19_21-08.txt` logs `FT-63: startup was delayed 1 minute(s)... Mark mode` |
+| 21:09:00 | Gallery opens |
+| **21:09:40** | **The .bat is deleted to SANDY's Recycle Bin -- 40 seconds later** |
+| 21:41:41 | Gallery closed. It ran 32 minutes without trouble |
+| 21:48:21 | Bill launches the full tool |
+
+SharePoint's recycle bin names the account and the minute, matching. *inferred:*
+during the freeze he pressed keys at an unresponsive console while the Explorer
+window behind it still had that file selected -- it was the file he had just
+double-clicked. Windows 11 ships the delete-confirmation dialog **off**, so one
+Delete key removes a selected file with no prompt and no sound.
+
+**This does not need the mouse resting on the keyboard.** Bill said he stopped
+doing that, and he was right to reject that explanation -- I had offered it and
+withdrawn it. It needs only a frozen console and someone trying to unstick it.
+
+**Ruled out by their own records, not by argument:** Defender (zero detections,
+zero events, empty quarantine, both machines), Malwarebytes (SANDY's quarantine
+items all dated 08-11), my scripts (none delete files), and my session (last
+commit 20:05:44, 64 minutes earlier).
+
+**The asymmetry that proved direction:** SANDY's copy went *to* the Recycle Bin
+with its original path; CGDELL's vanished with **no** bin entry at all
+(CGDELL's newest is 08/17). That is the difference between an originating
+delete and a sync-driven removal.
+
+**Fixed, on both machines:** Recycle Bin -> Properties -> "Display delete
+confirmation dialog". Measured beforehand on CGDELL: the `ConfirmFileDelete`
+policy value was not present, i.e. the Windows 11 default of no prompt.
+
+### What the search uncovered, which matters more than the file
+
+**The repository lives inside the synced OneDrive folder.** All **1,441 items
+under `.git`** carry the ReparsePoint attribute -- OneDrive replicates every one
+of git's internal files to SANDY. It had already written **seven conflict
+copies**, including `index`, `config`, and **both references to `main`**.
+
+**Nobody ran git on SANDY, and this is provable.** Five of the seven are stamped
+**2026-08-09 14:39:27** -- the same second as commit `094743b`, which the reflog
+shows was made on CGDELL -- and they are exactly the five files one `git commit`
+rewrites. **One commit here is enough.** So "only run git on one machine" is not
+a mitigation; it was already true and prevented nothing. I recommended it before
+checking, and Bill's flat contradiction is what sent me to the timestamps.
+
+Nothing was damaged: `fsck` shows 76 dangling objects and no missing objects or
+broken links, and `main-Sandy` pointed at an *ancestor* of `main`. **What was
+missing was anything that would notice** -- they sat unread eleven days, and two
+had been committed: `CLAUDE-Sandy.md`, a stale 21,849-byte snapshot of the
+governing instructions **in the repository root where Cloud reads it**, and
+`.claude\rules\website-copy-Sandy.md`, an entire stale rule in the folder Claude
+Code loads rules from. Both removed. The six inside `.git` were backed up and
+removed on Bill's instruction; the check now reports ALL CLEAR.
+
+**The mitigation that works is the remote.** Every commit is pushed the same
+day, so a damaged `.git` is a re-clone.
+
+**New, and it is step 8 of the Cloud handoff in CLAUDE.md so it actually runs:**
+`Tool\Run-RepoHealthCheck.bat` -- fsck damage, new conflict copies, unpushed
+count. A guard nobody runs is a wish.
+
+### Carried to ascii43
+
+**The gallery froze for one minute at startup on SANDY**, logged as FT-63 Mark
+mode. It is what put Bill at a dead console pressing keys, and it is the
+upstream cause of the deleted file. Worth a finding of its own.
+
+---
+
 ## Session: 2026-08-18 to 08-19 [Claude Code -- CGDELL] -- ascii41 FIELD-RUN, ascii42 BUILT
 
 **Build: ascii41 -> ascii42** (`W11-SecurityHardening-v3-ascii42-2026-08-19-1830.ps1`,
