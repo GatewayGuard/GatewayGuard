@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-20 11:49 ET -->
-<!-- Commit: ccd711c -->
+<!-- Generated: 2026-08-20 13:06 ET -->
+<!-- Commit: 6db40d6 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-20 11:49 ET
-- **Commit at generation:** `ccd711c`
-- **That commit was made:** 2026-08-20 11:43 ET
-- **Its subject line:** Session close: a missing file that led to the repository, and a task that never fires
+- **Generated:** 2026-08-20 13:06 ET
+- **Commit at generation:** `6db40d6`
+- **That commit was made:** 2026-08-20 11:50 ET
+- **Its subject line:** The briefing said "Active build: ascii39" and "Build ascii40" as its first task
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -37,7 +37,7 @@ All paths are relative to `ProjectDocs/`.
 
 | What it is | The current file | Older versions present |
 |---|---|---|
-| Briefing -- read this first | `_READ-FIRST-Briefing-2026-08-20-1150.md` | 0 |
+| Briefing -- read this first | `_READ-FIRST-Briefing-2026-08-20-1306.md` | 0 |
 | Session log | `GatewayGuard_SessionLog-2026-08-13-1433.md` | 0 |
 | Project instructions | `GatewayGuard_ProjectInstructions-2026-08-12-1652.md` | 2 |
 | Coding standards | `GatewayGuard_CodingStandards-2026-08-07-1330.md` | 0 |

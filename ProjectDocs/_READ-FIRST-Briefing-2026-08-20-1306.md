@@ -1,7 +1,7 @@
-<!-- Dated: 2026-08-20 11:50 ET -->
+<!-- Dated: 2026-08-20 13:06 ET -->
 # READ FIRST -- Session Briefing
 **Document Name:** _READ-FIRST-Briefing
-**Last Modified:** 2026-08-20 11:50 ET
+**Last Modified:** 2026-08-20 13:06 ET
 **Last Editor:** Claude Code (CGDELL)
 **Purpose:** Read this before anything else at the start of every session.
 **Supersedes:** `_READ-FIRST-Briefing-2026-08-14-0041.md`, which by this
@@ -10,6 +10,12 @@ The tree was on **ascii42**. Three builds stale, on the first two lines any new
 session reads.
 
 **Change History Log:**
+- 2026-08-20 13:06: **`Run-DocCheck.bat` is built.** It was open item 11 and
+  the "still a wish" line in section 5; both now say what is true. The gate
+  ran on this document and found the commit count one behind the repository
+  and ten dead pointers in the live set, so **the first thing it caught was
+  this file.** Section 5 carries the row, its baselines and its first-run
+  findings.
 - 2026-08-20 11:50: **Status brought to ascii42 -- it had said ascii39 for six
   days and three builds.** Open item 1 said "Build ascii40"; ascii40, 41 and 42
   are all built and two have been field run. Item 4 (`CLAUDE-Sandy.md`) is
@@ -301,11 +307,35 @@ someone had to remember.** That is the strongest argument in this document.
 | **25** | `Run-CopyCheck.bat` | **NEW** -- banned words, superlatives, open-source ban, Checkup name rule, across tool AND website in one pass |
 | wrapper | `Run-GGEditSelfTest.bat` | **NEW** -- proves all four `gg_edit.py` guards fire |
 | input mode | `Run-ConsoleInputModeCheck.bat` | **NEW** -- FT-171 diagnosis, run on SANDY |
+| documents | `Run-DocCheck.bat` | **NEW** -- SyncPlan 6c's five checks: volatile facts, dead pointers, filename vs `Dated:`, one live copy, content stamp |
 | `.ps1` integrity | automatic hook | parse errors, line count, brace balance |
 
-**Still a wish, with no check behind it:** `Run-DocCheck.bat` (no two documents
-state the same volatile fact) -- named on 2026-08-09, still unbuilt. And
-**H-4**, the guide-wording gate, which is human-only and **has never been run.**
+**`Run-DocCheck.bat` was built 2026-08-20** and this row replaces the "still a
+wish" line that stood here -- named on 2026-08-09, unbuilt for eleven days,
+during which this document sat three builds stale on its own first line.
+**Run it at session end, beside `Run-RepoHealthCheck.bat`.**
+
+**It reads the live filenames out of `CURRENT.md` and never carries its own
+list**, because a checker with a hand-kept set of filenames would be the exact
+failure it exists to catch. Sections 2 and 4 run as a **ratchet** with the
+baseline measured on the day it was built -- 10 dead pointers in the live
+documents, 52 across all of `ProjectDocs\`, 1 date mismatch, 4 document
+families with no anchor. Going above a baseline fails the run. **The numbers
+are only ever allowed to go down.**
+
+**What it found on its first run:** section 1 said this briefing's commit count
+was one behind the repository, and the dead-pointer list is led by the SANDY
+log for 21:08 on 2026-08-19 -- the evidence for open item 1's first bullet,
+never collected off that machine and so unreadable from here.
+
+**It then caught two more that were ten minutes old, both mine**, written into
+this section while recording the gate: that log named a second time, and a
+filename typed without its `GatewayGuard_` prefix. **A checker that finds
+nothing on the day it is built has usually been fitted to the ground it was
+built on.**
+
+**Still a wish:** **H-4**, the guide-wording gate, which is human-only and
+**has never been run.**
 
 **Gate 25 found FT-183 on its first run:** on **16 of the 19 guide pages the
 only "GatewayGuard Checkup" is inside the `<meta description>`** -- the reader
@@ -573,7 +603,16 @@ the real documents survive under hyphenated names.
    protects meaning.
 10. **Upload the 19 guide pages.** `gatewayguard.co` has shown UNDER
     CONSTRUCTION since 2026-07-21. `WebSite\html\` is the one deploy copy.
-11. **`Run-DocCheck.bat`** -- still unbuilt.
+11. **CLOSED 2026-08-20. `Run-DocCheck.bat` is built, run and committed** --
+    `Tool\Check-Docs-2026-08-20.ps1` behind it. Section 5 carries the row and
+    the baselines. What remains open is not the gate but **the four findings it
+    reports**: the 10 dead pointers in the live documents (7 of them in
+    ProjectInstructions alone), the 4 document families with several copies and
+    nothing saying which is live,
+    `GatewayGuard_TestHistory-ascii39-2026-08-02-1335.md`
+    whose header says 11:16 against a filename saying 1335, and the content
+    stamp of 6c's last item, which is **still not adopted** -- 0 of 6 live
+    documents carry one.
 12. **Business:** Maine Community Bank **checking** account (the qualifying
     account for DigiCert, must be named explicitly in the bank letter);
     SAM.gov EFT; D&B DUNS; DigiCert validation; six open LegalZoom licence
