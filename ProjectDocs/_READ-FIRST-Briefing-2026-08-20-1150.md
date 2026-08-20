@@ -1,16 +1,23 @@
-<!-- Dated: 2026-08-14 00:41 ET -->
+<!-- Dated: 2026-08-20 11:50 ET -->
 # READ FIRST -- Session Briefing
 **Document Name:** _READ-FIRST-Briefing
-**Last Modified:** 2026-08-14 00:41 ET
+**Last Modified:** 2026-08-20 11:50 ET
 **Last Editor:** Claude Code (CGDELL)
 **Purpose:** Read this before anything else at the start of every session.
-**Supersedes:** `_READ-FIRST-Briefing-2026-08-14-0007.md`, and through it
-`-2026-08-13-1433.md` and `-2026-08-11-1616.md`, which had **nine
-wrong or overtaken items** by the morning of 2026-08-13 -- including the two
-that block work: it said ascii39 had never been field run, and it said no
-ascii40 may be scoped.
+**Supersedes:** `_READ-FIRST-Briefing-2026-08-14-0041.md`, which by this
+morning said **"Active build: ascii39"** and **"Build ascii40"** as open item 1.
+The tree was on **ascii42**. Three builds stale, on the first two lines any new
+session reads.
 
 **Change History Log:**
+- 2026-08-20 11:50: **Status brought to ascii42 -- it had said ascii39 for six
+  days and three builds.** Open item 1 said "Build ascii40"; ascii40, 41 and 42
+  are all built and two have been field run. Item 4 (`CLAUDE-Sandy.md`) is
+  **closed** -- it was an OneDrive conflict copy, not a machine variant, and it
+  is removed. **New section 1a: the repository lives inside a synced OneDrive
+  folder and OneDrive conflicts on git's own files.** FT-203 added to open
+  items. Git figures re-measured: 176 commits, 551 tracked files, three methods
+  agreeing.
 - 2026-08-14 00:41: **Section 8a corrected -- it was giving an instruction
   that does not work.** It listed the steps without saying who does each, so
   it read as "Bill puts the file somewhere and syncs." Bill caught it: nothing
@@ -69,19 +76,29 @@ This is the only known pair where the filename date lies about which is newer.
 
 ---
 
-## 1. CURRENT STATUS -- 2026-08-13 14:33 ET
+## 1. CURRENT STATUS -- 2026-08-20 11:50 ET
 
-**Active build: ascii39** -- 8,075 non-blank lines / 8,448 total. 65 numbered
-screens, **next free screen ID 83**, gate 12 PASS, 10 carried oversize screens.
+**Active build: ascii42** --
+`Tool\W11-SecurityHardening-v3-ascii42-2026-08-19-1830.ps1`, **8,921 non-blank
+lines / 9,301 total**. 70 screen IDs, **next free screen ID 88**, gates 12, 12b
+and 24 PASS, 10 carried oversize screens in the named baseline.
 
-**ascii39 HAS BEEN FIELD RUN. ascii40 IS UNBLOCKED.**
-The field log is `Test_Results\Ascii39-Test-Results-2026-08-11-2237.txt` -- 49
-numbered findings from the SANDY Phase 3 run of 2026-08-11 -- plus 15 run logs
-in `Test_Results\Logs\SANDY\`. All tracked.
+**ascii42 HAS NOT BEEN FIELD RUN.** Bill's checklist for it is
+`ProjectDocs\GatewayGuard_FieldChecklist-ascii42-2026-08-19.md`. It is a small
+build: FT-193 (a stray key no longer repaints the checklist), FT-194 (the `I`
+key works on pages, not only questions), and FT-201/202 (the gallery takes
+arrows and can print all 67 screens at once).
 
-**The plan exists:** `ProjectDocs\GatewayGuard_FieldTestPlan-ascii40-2026-08-13-0944.md`
-triages all 47 findings into **FT-171 to FT-183** with three blockers in build
-order. **Next free FT number: 184.**
+**ascii41 WAS field run** -- four sessions on SANDY, **38 findings**, in
+`Test_Results\Ascii41-Test-Reults-2026-08-18-1110.txt`, all triaged in
+`GatewayGuard_FieldTestTriage-ascii41run1-2026-08-19.md`. **ascii42 fixed five
+of the 38.** Which five, and why so few:
+`GatewayGuard_ascii41Findings-FixedOrNot-2026-08-19.md`.
+
+**The number that matters from that run: 253 screen renders, ZERO
+first-encounter decreases.** FT-172's numbering scheme holds in the field.
+
+**Next free FT number: 204.**
 
 **THE STATUS LINE IS NOT THE RULE.** On 2026-08-12 a session reported "no field
 log exists" while the log sat on disk untracked, because the check asked `git`
@@ -89,18 +106,53 @@ and git was blind to it. **Look on disk.**
 
 **Target launch:** September 1, 2026 at gatewayguard.co
 
-### Git -- measured 2026-08-13 14:33, and stated HERE ONLY
+### Git -- measured 2026-08-20 11:47, and stated HERE ONLY
 
 | | |
 |---|---|
-| Commits | **85** |
-| Tracked files | **444** |
+| Commits | **176** |
+| Tracked files | **551** |
 | Unpushed | **0** |
-| Untracked | **8** |
-| Modified | 1 (`WebSite.lnk`, a shortcut Explorer rewrites) |
-| Tracked bytes on disk | **42.3 MB** |
-| `.git` | **29 MB** |
-| Whole working tree | 86 MB |
+| Untracked | 21 |
+| Modified | 3 |
+| Deleted on disk, still tracked | 10 -- Bill's folder reorganisation, moves not losses |
+| `.git` | **48 MB** |
+| Whole working tree | 462 MB |
+
+**The tracked-file count was taken three ways and all three agree** --
+`ls-files`, `ls-files -z`, and `ls-tree -r HEAD` each return 551. That is the
+method the 2026-08-13 caution below demands, and it is cheap.
+
+---
+
+## 1a. THE REPOSITORY LIVES INSIDE ONEDRIVE, AND ONEDRIVE FIGHTS GIT
+
+**Found 2026-08-20 while chasing a file that vanished.** All **1,441 items
+under `.git`** carry the ReparsePoint attribute -- OneDrive manages every one of
+git's internal files as a cloud item and replicates them to SANDY. It had
+already written **seven conflict copies**, including `index`, `config`, and
+**both references to `main`**.
+
+**This does not need anyone to run git on the second machine, and Bill never
+has.** Five of the seven were stamped **2026-08-09 14:39:27** -- the same second
+as commit `094743b`, made on CGDELL -- and they are exactly the five files a
+single `git commit` rewrites. **One commit here is enough.**
+
+**So "only run git on one machine" is not a mitigation.** It was already true
+and prevented nothing. **The mitigation that works is the remote:** every commit
+is pushed the same day, so a damaged `.git` is a re-clone and nothing is lost.
+
+**Nothing was damaged** -- `fsck` reports dangling objects only, and
+`main-Sandy` pointed at an *ancestor* of `main`. **What was missing was anything
+that would notice.** They sat unread eleven days, and two had been committed:
+`CLAUDE-Sandy.md`, a stale snapshot of the governing instructions in the
+repository root **where Cloud reads it**, and `.claude\rules\website-copy-Sandy.md`,
+an entire stale rule in the folder Claude Code loads rules from. All are gone.
+
+**`Tool\Run-RepoHealthCheck.bat` is now step 8 of the Cloud handoff in
+CLAUDE.md** -- fsck damage, new conflict copies, unpushed count. It reports ALL
+CLEAR as of 2026-08-20. **Run it at session end.** A guard nobody runs is a
+wish.
 
 **A measurement caution earned today.** Three different size figures were
 reported during this session (41.19, 31.99, 22.9 MB) because the methods used
@@ -154,11 +206,16 @@ holds **~25 "the window's X was clicked" exits in 49 seconds.**
 flag as controlling whether mouse events are *"reported in the input buffer or
 discarded"* -- delivery to the **application**. Wheel scrolling of the window
 belongs to the console host. And the build **never reads a mouse event** --
-zero uses of `ReadConsoleInput` or `MOUSE_EVENT` in 8,075 lines. Clear the
-flag, fix the drain, and stop letting one keystroke end the session.
+zero uses of `ReadConsoleInput` or `MOUSE_EVENT` -- **re-measured on ascii42,
+2026-08-20: still 0 and 0.** Clear the flag, fix the drain, and stop letting one
+keystroke end the session.
 
-**Before building ascii40, run `Tool\Run-ConsoleInputModeCheck.bat` ON SANDY.**
-Read-only. CGDELL did not fail, so measuring CGDELL proves nothing.
+**Before any build, run `Tool\Run-ConsoleInputModeCheck.bat` ON SANDY.**
+Read-only. CGDELL did not fail, so measuring CGDELL proves nothing. **The two
+machines differ in the way that matters: SANDY is conhost, CGDELL is Windows
+Terminal** (measured, `MarkModeReset-SANDY-2026-08-19_18-14.txt`,
+`WT_SESSION: False`). A probe written for one console does not answer the other,
+which cost a round trip on 2026-08-19.
 
 ---
 
@@ -209,9 +266,10 @@ Read-only. CGDELL did not fail, so measuring CGDELL proves nothing.
   RTL8821CE Wi-Fi is a confirmed hardware failure.
 - **Sandy3's touchpad is disabled in Settings; use a mouse.**
 - **Folder backup is OFF on SANDY and SANDY3. Leave it off.**
-- **Before the ascii40 field run, right-click the project folder on SANDY and
-  choose "Always keep on this device"** -- 307 of its 1,110 files are cloud
-  placeholders and it has no internet without the adapter.
+- **Before any field run, right-click the project folder on SANDY and choose
+  "Always keep on this device"** -- files in it are cloud placeholders and
+  SANDY has no internet without the adapter. Counted 307 of 1,110 before the
+  ascii40 run; not re-counted since.
 
 ### Adding OneDrive personal to SANDY -- safe, with one condition
 
@@ -462,10 +520,26 @@ the real documents survive under hyphenated names.
 
 ## 10. OPEN ITEMS, IN ORDER
 
-1. **Build ascii40.** Blockers in order: **FT-171** (input queue), **FT-172**
-   (screen numbering -- the `$script:GGScreenOrder` table needs Bill's
-   approval), **FT-175** (the Defender offline scan that has never run).
-   Run Phase 0 and Phase 1 of the field test plan **first**.
+1. **Field-run ascii42, then build ascii43.** FT-171, FT-172 and FT-175 are
+   all done -- they were this item when it said "build ascii40", and ascii40,
+   41 and 42 have all shipped since. ascii43's content is already known and
+   blocked on nothing:
+   - **The gallery froze for one minute at startup on SANDY**, logged as FT-63
+     Mark mode in `GatewayGuard-Log-2026-08-19_21-08.txt`. It is what left Bill
+     at a dead console pressing keys, and it is the upstream cause of a deleted
+     file. A finding in its own right.
+   - **FT-203** -- both scheduled reminders carry
+     `DisallowStartIfOnBatteries = True` and `StartWhenAvailable = False`, so on
+     a laptop on battery they **never run and are never shown afterwards**,
+     while the log writes `[GOOD] Scheduled task created`. Measured, with the
+     fix and one product decision, in
+     `ProjectDocs\GatewayGuard_ScheduledTaskDefects-2026-08-20.md`.
+   - **FT-184** (something flashes before screen 1, unlocated after three
+     builds), **FT-195(a)** (`1a` renders before `1`), **FT-192**, **FT-197**,
+     **FT-198**, **FT-199**.
+   - **The ~20 wording and screen-splitting findings** from the ascii41 run --
+     findings 3-8, 12-14, 16, 19-21, 23, 28-31, 37. **The largest remaining
+     block, and none of it is blocked on anything.**
 2. **`Marketing-Notes.md` is corrupted** -- 9 × "an expensive" written over
    "free" by a find-and-replace that ran **before the file reached git**
    (traced to the initial commit, 2026-07-28). Orphaned `*ee` fragment,
@@ -475,12 +549,13 @@ the real documents survive under hyphenated names.
 3. **3 live open-source violations remain** in
    `GatewayGuard_ProjectNotes-2026-08-09-1435.md`, lines 2547, 2741, 3006.
    **Do not touch the other 20 hits.**
-4. **`CLAUDE-Sandy.md`** -- 21,725 bytes at the root, tracked, dated
-   2026-07-26 against `CLAUDE.md`'s 2026-08-09. **Eighteen days stale**, build
-   line identical so it looks current, missing exactly **THE TEN-MINUTE RULE**
-   and **DO NOT ASK. ACT, THEN REPORT.** Same for
-   `.claude\rules\website-copy-Sandy.md`. **Deliberate machine variants, or
-   drift? Bill's call.**
+4. **CLOSED 2026-08-20. `CLAUDE-Sandy.md` was neither a machine variant nor
+   drift -- it was an OneDrive conflict copy**, and so was
+   `.claude\rules\website-copy-Sandy.md`. Both are removed, along with five more
+   inside `.git`. See section 1a. **The open question was the wrong question:**
+   it asked Bill to choose between two explanations when a third had never been
+   considered, and the answer was on disk the whole time in the form of five
+   more copies with the same suffix.
 5. **Two `W11-...ascii33-2026-07-19.ps1` files, same name, different
    contents** -- `Builds\` (5,497 lines, FT-113, carries an **ascii34** comment
    block dated 2026-07-25) and `ProjectDocs\` (5,425 lines, FT-105). **The
