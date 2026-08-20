@@ -455,6 +455,40 @@ indefinitely while everyone believes it is done. Bill caught this.
 7. **Check the four Cloud folders at session start and session end** --
    `ProjectDocs\`, `Tool\`, `WebSite\Rules\`, `CLAUDE.md`. This is the safety
    net for a file Bill forgot to mention, not a replacement for step 2.
+8. **Run `Tool\Run-RepoHealthCheck.bat` at session end**, before the final
+   commit. See THE REPOSITORY LIVES INSIDE ONEDRIVE below for what it watches
+   and why it exists.
+
+### THE REPOSITORY LIVES INSIDE ONEDRIVE, AND ONEDRIVE FIGHTS GIT
+
+**Measured 2026-08-20:** all **1,441 items under `.git`** carry the
+ReparsePoint attribute -- OneDrive manages every one of git's internal files as
+a cloud item and replicates them to SANDY. It has already written **seven
+conflict copies**, including `index`, `config`, and **both references to
+`main`**.
+
+**This does not need anyone to run git on the second machine, and the evidence
+is exact.** Five of the seven are stamped **2026-08-09 14:39:27** -- the same
+second as commit `094743b`, which the reflog shows was made on CGDELL -- and
+they are precisely the five files a single `git commit` rewrites. Bill has
+never run git on SANDY. One commit here rewrites five files, OneDrive
+replicates all five, and the other machine's client conflicts on them.
+
+**So "only run git on one machine" is not a mitigation.** It was already true
+and did not prevent this. The mitigation that works is the remote: every commit
+is pushed the same day, so a broken `.git` is a re-clone and nothing is lost.
+
+**What was missing was anything that would notice.** The seven copies sat
+unread for eleven days, and `CLAUDE-Sandy.md` -- a stale 21,849-byte snapshot
+of this file against the live 38,325 -- sat **committed, in the repository
+root, where Cloud reads it.** `.claude\rules\website-copy-Sandy.md` was a whole
+stale rule in the folder Claude Code loads rules from. Both are now removed.
+
+`Tool\Run-RepoHealthCheck.bat` is the check. Read-only, no admin. It reports
+real `fsck` damage (dangling objects are normal and are filtered out), any new
+conflict copy that sits beside a file of the same name, and the unpushed count.
+**A guard nobody runs is a wish** -- which is why it is step 8 above and not a
+suggestion.
 
 ### WHY EACH STEP IS THERE
 
