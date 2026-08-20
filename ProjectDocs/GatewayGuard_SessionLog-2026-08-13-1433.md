@@ -109,11 +109,57 @@ day, so a damaged `.git` is a re-clone.
 `Tool\Run-RepoHealthCheck.bat` -- fsck damage, new conflict copies, unpushed
 count. A guard nobody runs is a wish.
 
+### FT-203 -- both scheduled reminders are off by default on a laptop
+
+Bill asked if it was safe to leave a PC hibernating overnight. It is -- hibernate
+draws about what a shut-down PC draws, and with BitLocker it is safer than sleep
+because the key is not left sitting in powered memory. **The question was worth
+more than the answer**, because it led to the two GatewayGuard tasks.
+
+Measured on CGDELL with a throwaway task of the identical shape, read back,
+deleted, deletion verified:
+
+| Setting | Default | Effect |
+|---|---|---|
+| `StartWhenAvailable` | **False** | PC off at 10:00 -> skipped, and never shown later |
+| `WakeToRun` | False | Will not wake the machine |
+| `DisallowStartIfOnBatteries` | **True** | **On a laptop on battery it does not run at all** |
+| `StopIfGoingOnBatteries` | True | Unplug mid-popup and it is killed |
+
+`DisallowStartIfOnBatteries` matters more than the hibernate case. SANDY is an
+HP laptop; a senior unplugged at ten in the morning gets no reminder, and with
+`StartWhenAvailable` off they do not get it on plugging in either. **The log
+writes `[GOOD] Scheduled task created`, which is true -- the task exists and
+never fires.** Same shape as ScanType 4.
+
+**Not the code's fault.** Measured: `schtasks /create` has no switch for any of
+the four. And the build is on `schtasks` for good reasons (FT-93/93b, FT-109)
+that must not be undone. The fix adjusts settings *after* creation with named
+parameters -- C-14 was `$false` passed **positionally**, a different bug.
+
+**Product call recorded: leave `WakeToRun` off.** Waking a senior's laptop to
+throw a message box at them is what gets software uninstalled.
+`StartWhenAvailable` alone shows it next time they turn the PC on.
+
+Full detail, including what is *not* known:
+`ProjectDocs\GatewayGuard_ScheduledTaskDefects-2026-08-20.md`. Not built --
+Bill asked for a check, not a change.
+
 ### Carried to ascii43
 
-**The gallery froze for one minute at startup on SANDY**, logged as FT-63 Mark
-mode. It is what put Bill at a dead console pressing keys, and it is the
-upstream cause of the deleted file. Worth a finding of its own.
+1. **The gallery froze for one minute at startup on SANDY**, logged as FT-63
+   Mark mode. It is what put Bill at a dead console pressing keys, and it is
+   the upstream cause of the deleted file. A finding in its own right.
+2. **FT-203**, above.
+3. The ~20 wording and screen-splitting findings from the ascii41 run, which
+   are blocked on nothing.
+
+### Unknowns left open, deliberately
+
+- Neither scheduled task exists on CGDELL, so there is **no field evidence
+  either has ever fired on any machine.**
+- SANDY's tasks have not been checked since 2026-08-02, before the FT-175
+  rewrite. `Tool\Run-ScheduledTasksCheck.bat` answers it in a minute.
 
 ---
 

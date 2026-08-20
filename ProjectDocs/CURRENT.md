@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-20 00:55 ET -->
-<!-- Commit: 221611d -->
+<!-- Generated: 2026-08-20 11:43 ET -->
+<!-- Commit: 0c74154 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-20 00:55 ET
-- **Commit at generation:** `221611d`
-- **That commit was made:** 2026-08-20 00:44 ET
-- **Its subject line:** The six .git conflict copies are gone, and the repository reports ALL CLEAR
+- **Generated:** 2026-08-20 11:43 ET
+- **Commit at generation:** `0c74154`
+- **That commit was made:** 2026-08-20 01:18 ET
+- **Its subject line:** FT-203: both reminders are switched off by default on a laptop, and the log says GOOD
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
