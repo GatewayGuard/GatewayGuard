@@ -128,38 +128,57 @@ that is already documented and already safe.
 
 ## 5. TWO DEFECTS THE RESEARCH FOUND, BOTH WORSE THAN THE QUESTION
 
-### FT-233 -- Checkup can encrypt a drive and later demand a recovery key at boot
+### FT-233 -- DOWNGRADED BY THE FIELD, 2026-08-21. Not the defect I first wrote.
 
-**sourced, Microsoft Learn, and it is marked Important on the page:**
+**I published this as a near-certainty and Bill refuted it from the field in
+one sentence:** *"we have never needed our recovery key on sandy3 and cgdell
+both fully encrypted."*
 
-> *"If BitLocker is enabled on the system drive, suspend BitLocker protection
-> before running Microsoft Defender Offline. Otherwise, you may be prompted to
-> enter the BitLocker recovery key when the system restarts into the offline
-> environment."*
+**He is right. Measured on CGDELL, 2026-08-21:**
 
-**measured on the ascii42 source: the build contains no `Suspend-BitLocker`,
-and no screen anywhere mentions suspending BitLocker before a scan.**
+```
+Event ID 2030 (Defender offline scan configured for next reboot):
+    2026-07-01, 07-04, 07-06, 07-07, 07-09      -- five occasions
 
-**Checkup offers both of these things to the same user.** It walks them
-through turning on drive encryption, and it offers -- and schedules
-quarterly -- a scan that reboots the machine into the offline environment.
+manage-bde -protectors -get C:
+    TPM
+    Numerical Password  x4
+```
 
-**For a non-technical senior this is the worst failure the product could
-have.** They approve encryption. Weeks later the quarterly scan fires. The
-machine reboots to a screen demanding a 48-digit recovery key. **It looks
-exactly like ransomware**, and the person most likely to be hit is the person
-this tool exists to protect.
+**Five offline scans configured on a fully encrypted machine over nine days,
+and the recovery key was never demanded.** Sandy3 is also fully encrypted with
+the same result.
 
-**This is not hypothetical on the fleet.** CGDELL is fully encrypted
-(**measured**, `manage-bde -status`, Protection On) and the quarterly task
-ships on every machine.
+**The mechanism I missed.** The drive carries a **TPM protector**. WinRE is a
+signed Microsoft environment, so booting into it does not change the
+measurement the TPM seals against -- the key is released unattended and the
+user sees nothing. That is the normal path on any machine with a working TPM
+and Secure Boot, which is every machine on this fleet.
 
-**Fix:** before starting or scheduling an offline scan, check encryption
-state. If the system drive is protected, either suspend for one reboot
-(`Suspend-BitLocker -RebootCount 1`) or tell the user plainly that they will
-need their recovery key and show them where it is. **This needs Bill's
-decision** -- suspending protection automatically is a real security action
-and should not be taken silently.
+**What the source actually said, and what I did with it.** Microsoft's page
+says *"you **may** be prompted."* I wrote it up as though it said *will*, and
+then escalated to "it looks exactly like ransomware." **The word doing the
+work in that sentence was one I had read and not weighted.**
+
+**What survives, and it is much smaller.** The prompt is real, but only where
+the TPM cannot release the key by itself:
+
+- BitLocker configured with **no TPM protector** -- password or USB startup
+  key only. Common on older or self-configured machines, **not present on this
+  fleet.**
+- A machine whose boot measurement has changed since encryption -- a firmware
+  update, or Secure Boot being turned on or off between the two events.
+
+**Revised recommendation: no code change in ascii43.** Checkup does not create
+TPM-less BitLocker configurations -- it uses the Windows path, which uses the
+TPM. **Worth one line in the guide** for readers who encrypted their machine
+some other way, and nothing more.
+
+**Why this entry is kept rather than deleted.** The reasoning failure is more
+useful than the finding was. A documented caution was read, its hedge was
+dropped, and the result was published with a severity the evidence never
+supported -- while three machines sat in the next room disproving it. **THE
+FIELD WINS is in CLAUDE.md precisely for this, and it took Bill to apply it.**
 
 ### FT-234 -- if WinRE is off, the offline scan silently does nothing
 
