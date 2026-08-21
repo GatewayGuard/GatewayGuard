@@ -2670,6 +2670,7 @@ function Read-ValidKey {
                     Write-Host ""
                     Write-Host ("  That key does nothing here. Please press " + ($ValidKeys -join " or ") + ".") -ForegroundColor Yellow
                     Write-Host "  Press I at any time to see your build and Machine ID." -ForegroundColor DarkGray
+                    Write-Host "  To leave Checkup at any time, press Ctrl+C." -ForegroundColor DarkGray
                     if ($Prompt) { Write-Host "  $Prompt" -ForegroundColor White -NoNewline }
                 }
             }
@@ -8230,8 +8231,10 @@ function Run-ConsoleMode {
         Write-Host ""
         Write-Host "  Commands:" -ForegroundColor Yellow
         Write-Host "    R = Run selected items     [number] = toggle item on/off" -ForegroundColor Yellow
-        Write-Host "    A = Select all             N = Deselect all    Q = Quit" -ForegroundColor Yellow
+        Write-Host "    A = Select all             C = Clear all       Q = Quit" -ForegroundColor Yellow
         Write-Host "    P = show the other page of the list" -ForegroundColor Yellow
+        Write-Host "    I = show build and Machine ID" -ForegroundColor Yellow
+        Write-Host "    Item numbers: 1-9 then Enter; 10-19 apply on the second digit." -ForegroundColor DarkGray
         Write-Host ""
 
         # Main command input -- special handler for R/A/N/Q + multi-digit numbers
@@ -8269,7 +8272,7 @@ function Run-ConsoleMode {
         # a burst was ten repaints a second. Measured 2026-08-18 at 17:35:15.
         $ggBadKeys = 0
         :keyLoop while ($true) {
-        Write-Host "  Enter command (R/A/N/Q/P or item number 1-19): " -ForegroundColor White -NoNewline
+        Write-Host "  Enter command (R/A/C/Q/P or item number 1-19): " -ForegroundColor White -NoNewline
         $userInput = ""
         $firstKey = $null   # FT-69 (ascii29): never test a stale key object
         # FT-46 (ascii28): re-assert Ctrl+C-as-input before every read
@@ -8286,7 +8289,7 @@ function Run-ConsoleMode {
         # FT-69 (ascii29): Ctrl+C opens the exit confirmation
         if ($firstKey -and $firstKey.Character -eq [char]3) { Invoke-CtrlCExit; continue checklistLoop }
 
-        if ($firstCh -in @("R","A","N","Q","P")) {
+        if ($firstCh -in @("R","A","C","Q","P")) {
             $userInput = $firstCh
             Write-Host $userInput -ForegroundColor Cyan
             break keyLoop
@@ -8322,6 +8325,13 @@ function Run-ConsoleMode {
                 Write-Host ""
             }
             break keyLoop
+        } elseif ($firstCh -eq "I") {
+            # FT-206 (ascii43): I works on the checklist too. FT-189 promised
+            # "at any time" and this hand-rolled reader was the one prompt
+            # where it failed -- the screen the user spends most of the run on.
+            Write-Host ""
+            Show-CheckupInfo
+            continue keyLoop
         } else {
             # FT-193 (ascii42): was '$userInput = ""  # Invalid -- swallow
             # silently', which fell through and repainted the whole screen.
@@ -8331,7 +8341,7 @@ function Run-ConsoleMode {
             $ggBadKeys++
             Write-Host ""
             if ($ggBadKeys -le 3) {
-                Write-Host "  That key does nothing here. Press R, A, N, Q, P or an item number 1-19." -ForegroundColor Yellow
+                Write-Host "  That key does nothing here. Press R, A, C, Q, P, I or an item number 1-19." -ForegroundColor Yellow
                 # Rate-limited: a flood must not fill the log, but the FIRST
                 # few must appear or a future flood is invisible again --
                 # which is exactly why FT-193 could not be diagnosed from the
@@ -8366,7 +8376,26 @@ function Run-ConsoleMode {
         switch ($userInput.ToUpper()) {
             "P" { $script:ChecklistPage = if ($script:ChecklistPage -eq 1) { 2 } else { 1 } }
             "A" { $Settings | ForEach-Object { $_.Selected = $true } }
-            "N" { $Settings | ForEach-Object { $_.Selected = $false } }
+            "C" {
+                # FT-204 (ascii43): clearing every selection is the only
+                # destructive command on this screen and used to be N -- the
+                # safe key everywhere else -- with no confirmation. It wiped
+                # 19 selections five seconds after they were made (field,
+                # 2026-08-21). Moved to C and gated behind a Y/N.
+                $selCount = ($Settings | Where-Object { $_.Selected }).Count
+                if ($selCount -eq 0) {
+                    Write-Host ""
+                    Write-Host "  Nothing is selected -- nothing to clear." -ForegroundColor Yellow
+                    Pause-ForUser "  Press Enter or Space to return to the checklist..."
+                } else {
+                    Write-Host ""
+                    $clearResp = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Clear all $selCount selection(s)? (Y = Clear / N = Keep them): "
+                    if ($clearResp.ToUpper() -eq "Y") {
+                        $Settings | ForEach-Object { $_.Selected = $false }
+                        try { Write-Log -Message "Checklist: all selections cleared (C, confirmed)" -Status "KEY" } catch {}
+                    }
+                }
+            }
             "Q" { Confirm-Exit "All changes from this session would be lost."; continue checklistLoop }
             "R" {
                 $selectedCount = ($Settings | Where-Object { $_.Selected }).Count
@@ -8687,7 +8716,18 @@ function Run-ConsoleMode {
                 if ($userInput -match '^\d+$') {
                     $id = [int]$userInput
                     $item = $Settings | Where-Object { $_.ID -eq $id }
-                    if ($item) { $item.Selected = -not $item.Selected }
+                    if ($item) {
+                        $item.Selected = -not $item.Selected
+                    } else {
+                        # FT-232 (ascii43): an out-of-range number was logged as
+                        # accepted and did nothing -- worse than an unknown key,
+                        # because it looked like it worked. Reject it out loud.
+                        $maxId = ($Settings | Measure-Object -Property ID -Maximum).Maximum
+                        Write-Host ""
+                        Write-Host "  There is no item $id. Item numbers run 1 to $maxId." -ForegroundColor Yellow
+                        try { Write-Log -Message ("Checklist: item number out of range (" + $id + ") -- rejected") -Status "KEY" } catch {}
+                        Pause-ForUser "  Press Enter or Space to return to the checklist..."
+                    }
                 }
             }
         }
