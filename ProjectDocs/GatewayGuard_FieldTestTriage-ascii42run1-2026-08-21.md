@@ -731,4 +731,71 @@ lines away.**
 
 ---
 
-**Next free FT number after this run: 233.**
+## L. ALL TEN ascii42 LOGS READ -- AND THE GALLERY DIES WITHOUT A FOOTER
+
+**Prompted by Bill, 2026-08-21: "there were two logs with ascii42, did you
+check both."** There were not two -- there were **ten**, and only one had been
+read. All ten are now read in full. Measured inventory:
+
+| Log | Machine | Lines | What it is |
+|---|---|---|---|
+| 2026-08-19_21-48 | SANDY | 334 | **The field run.** The whole of sections A-K rests on this one, correctly |
+| 2026-08-19_21-08 | SANDY | 26 | Screen gallery. The FT-63 freeze (section E) is here, not in the run |
+| 2026-08-20_10-13 | SANDY | 25 | Screen gallery, 12 min, clean close |
+| 2026-08-19_19-14 | CGDELL | 24 | Gallery, ended on window-X |
+| 2026-08-19_19-19 | CGDELL | 24 | Gallery, ended on window-X |
+| 2026-08-19_19-37 | CGDELL | 24 | Gallery, opened 19:37, X-clicked **05:18 next morning** (FT-231 again) |
+| 2026-08-19_19-26 | CGDELL | 17 | Gallery -- **no exit line, no footer, log ends mid-session** |
+| 2026-08-19_19-27 | CGDELL | 17 | Gallery -- **no exit line, no footer** |
+| 2026-08-19_19-32 | CGDELL | 17 | Gallery -- **no exit line, no footer** |
+| 2026-08-19_20-01 | CGDELL | 17 | Gallery -- **no exit line, no footer** |
+
+**Nine of the ten are screen-gallery sessions** -- `Show-AllScreens.bat`, no
+checks, no selections, no scans. **Zero ascii41 data in any log.** The triage
+was built on the one file that matters, and misses nothing from the others.
+
+*Numbering note: FT-233 and FT-234 were assigned in
+`GatewayGuard_OfflineScanResearch-2026-08-21.md`, so this finding takes the
+next free number,* **FT-235.**
+
+### FT-235 -- the gallery is hard-killed and its log ends with no footer
+
+**Measured, four CGDELL logs (19-26, 19-27, 19-32, 20-01):** each opens with
+`SCREEN GALLERY opened` and then **stops.** No `[EXIT]` line. No footer. Not
+even the last-resort `PowerShell.Exiting` cleanup that every other log in this
+set fired.
+
+**That signature means the process was terminated outright** -- not closed
+through any code path, not even the window-X handler, which does write a
+footer (see 19-14, 19-19, 19-37). Something killed the process dead.
+
+**It is the same mechanism as FT-218.** There, Ctrl+C ended the main run and
+the log stopped at the last-resort cleanup line. Here it stops one line
+earlier still -- before even that. Both cases contradict the promise printed
+in every log header:
+
+> *"if the program ends unexpectedly, the LAST LINE below shows exactly where
+> it was."*
+
+**When the process is hard-killed, the last line shows where it was when it
+last chose to write -- not where it was when it died.** The promise holds for
+a clean or window-X exit and fails for a kill, which is exactly the case a
+worried user's log most needs to explain.
+
+**Scope: gallery, developer tool -- but the mechanism is shared.** Fixing the
+gallery's exit is post-launch (section 4). But the log-footer promise is made
+by `Write-Log`'s header on **every** run, including customer runs, so **the
+header wording should be softened in ascii43** to not promise more than a
+hard-kill can deliver. That part is not gallery-only and is cheap.
+
+### One more thing this settles
+
+**FT-231's date bug is confirmed on a second, independent machine.** Log
+19-37 opened `19:37:59` on 08-19 and its exit is stamped `05:18:39` -- a
+gallery window left open overnight on CGDELL, the clock apparently running
+backwards by fourteen hours. FT-231 was found on SANDY; it is not
+machine-specific.
+
+---
+
+**Next free FT number after this run: 236.**
