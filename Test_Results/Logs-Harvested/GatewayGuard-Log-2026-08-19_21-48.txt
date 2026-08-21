@@ -1,0 +1,334 @@
+﻿============================================================
+  GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+  Build: ascii42
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-08-19 21:48:21
+  Computer: SANDY
+  Machine:  HP HP Laptop 17-by1xxx
+  Machine ID: F7F13A97D58D (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[21:48:21] [OK] Console control handler registered -- Ctrl+C in Mark mode can no longer end the session (FT-150), and closing the window still writes the log footer (FT-160)
+[21:48:21] [START] Tool launched v3.1 build ascii42
+[21:48:21] [INFO] Log location: C:\Users\willi\OneDrive\GatewayGuard\Logs  (OneDrive -- already set up on this PC)
+[21:48:21] [INFO] Machine: HP HP Laptop 17-by1xxx | MachineID: F7F13A97D58D
+[21:48:21] [OK] Sleep/shutdown prevention activated
+[21:48:22] [OK] QuickEdit AND mouse input reporting disabled for this session (FT-01, FT-171a) -- re-asserted silently from here on
+[21:48:22] [SCREEN] [SCREEN-25] (shown as screen 1a) Rendered: WELCOME BACK
+[10:25:57] [KEY] Key 'S' accepted at: Show-ResumePrompt
+[10:25:57] [STATE] User chose to START OVER -- checkpoint cleared
+[10:26:04] [KEY] Continue accepted at: Show-FontInstructions
+[10:26:05] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[10:26:06] [SCREEN] [SCREEN-28] (shown as screen 4) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[10:26:35] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[10:26:35] [SCREEN] [SCREEN-29] (shown as screen 5) Rendered: BEFORE YOU START -- YOUR WINDOW
+[10:26:44] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[10:26:44] [SCREEN] [SCREEN-78] (shown as screen 6) Rendered: BEFORE YOU START -- YOUR KEYBOARD
+[10:26:52] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[10:26:53] [SCREEN] [SCREEN-30] (shown as screen 7) Rendered: WHAT HAPPENS NEXT -- PLEASE READ
+[10:26:54] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[10:26:54] [SCREEN] [SCREEN-02] (shown as screen 8) Rendered: HOW TO SCROLL BACK (AND COPY) IN THIS WINDOW
+[10:52:28] [KEY] Continue accepted at: Show-ScrollCopyTip
+[10:52:28] [SCREEN] [SCREEN-05] (shown as screen 9) Rendered: !  IMPORTANT -- READ BEFORE CONTINUING
+[10:56:29] [KEY] Key 'Y' accepted at: Test-PersonalComputer
+[10:56:29] [CONFIRM] Personal computer confirmed by user
+[10:56:29] [OK] Domain check passed -- not domain joined
+[10:56:29] [OK] Administrator access confirmed
+[10:56:34] [KEY] Continue accepted at: Test-AdminAccess
+[10:56:34] [INFO] Windows Edition: Core -- Windows 11 Home
+[10:56:35] [SCREEN] [SCREEN-34] (shown as screen 10) Rendered: WINDOWS EDITION DETECTED
+[10:56:35] [INFO] Home edition -- Remote Desktop and Group Policy unavailable
+[10:57:07] [KEY] Continue accepted at: Get-WinEdition
+[10:57:08] [SCREEN] [SCREEN-35] (shown as screen 11) Rendered: YOUR PC -- RAM: 8 GB
+[10:57:08] [WARN] RAM: 8 GB (minimal)
+[10:57:12] [KEY] Continue accepted at: Get-RAMStatus
+[10:57:34] [KEY] Key 'N' accepted at: Test-TimeDateSync
+[10:57:34] [WARN] User flagged time/date as INCORRECT after auto-fix attempt
+[10:57:34] [SCREEN] [SCREEN-37] (shown as screen 11b) Rendered: FIX THE TIME NOW?
+[10:59:04] [KEY] Key 'N' accepted at: Test-TimeDateSync
+[10:59:04] [SKIP] User declined to open Date & Time settings
+[10:59:11] [INFO] Secure Boot state read on all editions (FT-143): True
+[10:59:11] [SCREEN] [SCREEN-09] (shown as screen 12) Rendered: YOUR SYSTEM AT A GLANCE
+[10:59:11] [INFO] System Baseline Summary displayed
+[11:01:27] [KEY] Continue accepted at: Show-SystemBaselineSummary
+[11:01:27] [STATE] Checkpoint saved: Baseline
+[11:01:27] [SCREEN] [SCREEN-26] (shown as screen 13) Rendered: YOUR PC'S SECURITY TOOLS -- A QUICK INTRODUCTION
+[11:01:27] [KEY] Continue accepted at: Show-SecurityToolsBriefing
+[11:01:27] [SCREEN] [SCREEN-27] (shown as screen 14) Rendered: THE SCANS WE RECOMMEND -- AND WHY
+[11:01:27] [KEY] Continue accepted at: Show-ScanPlanBriefing
+[11:01:27] [STATE] Checkpoint saved: Briefing
+[11:01:27] [SCREEN] [SCREEN-39] (shown as screen 14a) Rendered: REMINDER: PRE-SCAN RECOMMENDED
+[11:04:45] [KEY] Key 'Y' accepted at: Show-PreScanGate
+[11:04:45] [CONFIRM] Repeat run -- user confirmed to continue
+[11:04:45] [SCREEN] [SCREEN-38] (shown as screen 16) Rendered: DEFENDER OFFLINE SCAN
+[11:06:10] [KEY] Key 'N' accepted at: Invoke-OfflineScanOffer
+[11:06:10] [SKIP] User skipped Defender Offline Scan
+[11:06:16] [KEY] Continue accepted at: Invoke-OfflineScanOffer
+[11:06:17] [SCREEN] [SCREEN-43] (shown as screen 17) Rendered: OK  ANTIVIRUS STATUS -- HEALTHY SETUP
+[11:06:17] [OK] Defender active as primary AV. MB Free installed as companion.
+[11:06:49] [KEY] Continue accepted at: Test-DefenderPrimary
+[11:06:49] [STATE] Checkpoint saved: DefenderAV
+[11:06:50] [SCREEN] [SCREEN-73] (shown as screen 18) Rendered: MALWAREBYTES DETECTED ON THIS PC
+[11:07:00] [KEY] Key 'N' accepted at: Show-MalwarebytesFollowUp
+[11:07:00] [SKIP] User skipped Malwarebytes scan (already installed, state: FreeCompanion)
+[11:07:06] [KEY] Continue accepted at: Show-MalwarebytesFollowUp
+[11:07:06] [STATE] Checkpoint saved: Malwarebytes
+[11:07:06] [OK] Sleep/shutdown prevention activated
+[11:07:06] [OK] AC power confirmed. Battery present: True (100%). Sleep prevention active.
+[11:07:14] [KEY] Continue accepted at: Test-PowerStatus
+[11:07:30] [KEY] Look-back opened at: Run-PowerSettingsCheck
+[11:09:01] [KEY] Continue accepted at: Run-PowerSettingsCheck
+[11:09:02] [SCREEN] [SCREEN-50] (shown as screen 19) Rendered: POWER SETTINGS -- SECURITY REVIEW
+[11:09:02] [INFO] Power settings: PW=NOT required -- change recommended FastStart=DISABLED -- GOOD WOL=DISABLED -- GOOD Screen=Found: NEVER (your existing setting) -- recommend 5 min: Settings -> System -> Power & sleep CritBatt=HIBERNATE -- GOOD
+[11:10:59] [KEY] Key 'Y' accepted at: Run-PowerSettingsCheck
+[11:10:59] [APPLIED] Password on wake: was 'NOT required -- change recommended' -> now 'could not re-read -- check manually'
+[11:18:49] [KEY] Continue accepted at: Run-PowerSettingsCheck
+[11:18:49] [STATE] Checkpoint saved: PowerSettings
+[11:18:49] [START] === Apps Audit Started ===
+[11:18:50] [SCREEN] [SCREEN-51] (shown as screen 20) Rendered: APPS AUDIT RESULTS
+[11:18:50] [DONE] === Apps Audit Complete ===
+[11:18:58] [KEY] Continue accepted at: Run-AppsAudit
+[11:18:58] [STATE] Checkpoint saved: AppsAudit
+[11:18:58] [SCREEN] [SCREEN-52] (shown as screen 21) Rendered: GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+[11:19:07] [KEY] Key '1' accepted at: Select-Mode
+[11:19:07] [INFO] Mode selected: Console
+[11:19:08] [INFO] Item 6 (Edge phishing protection): registry read BLOCKED by Tamper Protection -- reporting Unknown rather than a fault (FT-141)
+[11:19:13] [DONE] Get-AllStatuses complete -- all 19 settings probed
+[11:19:13] [SCREEN] [SCREEN-53] (shown as screen 22) Rendered: QUICK QUESTION -- YOUR PASSWORDS
+[11:19:13] [ERROR] SILENT ERROR at Show-ScopeDisclaimer: Requested registry access is not allowed. | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii42-2026-08-19-1830.ps1:5920 char:31
+[11:19:13] [INFO] NOT SET (expected) at Show-ScopeDisclaimer: Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Edge' because it does not exist. | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii42-2026-08-19-1830.ps1:6021 char:27
+[11:19:13] [INFO] NOT SET (expected) at Show-ScopeDisclaimer: Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Dsh' because it does not exist. | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii42-2026-08-19-1830.ps1:6037 char:27
+[11:19:13] [INFO] NOT SET (expected) at Show-ScopeDisclaimer: Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Edge' because it does not exist. | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii42-2026-08-19-1830.ps1:6051 char:28
+[11:23:31] [KEY] Key 'Y' accepted at: Show-ScopeDisclaimer
+[11:23:31] [INFO] User has a password manager -- Edge Password Saving change stays available
+[11:23:38] [KEY] Look-back opened at: Show-ScopeDisclaimer
+[11:24:35] [KEY] Continue accepted at: Show-ScopeDisclaimer
+[11:24:35] [SCREEN] [SCREEN-54] (shown as screen 23) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 1 of 2)
+[11:24:36] [KEY] Nav 'NEXT' at: Show-ScopeDisclaimer
+[11:24:36] [SCREEN] [SCREEN-75] (shown as screen 24) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 2 of 2)
+[11:24:45] [KEY] Nav 'BACK' at: Show-ScopeDisclaimer
+[11:24:45] [SCREEN] [SCREEN-54] (shown as screen 23) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 1 of 2)
+[11:25:00] [KEY] Nav 'NEXT' at: Show-ScopeDisclaimer
+[11:25:00] [SCREEN] [SCREEN-75] (shown as screen 24) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 2 of 2)
+[11:25:26] [KEY] Nav 'NEXT' at: Show-ScopeDisclaimer
+[11:25:26] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 7 item(s) selected
+[11:25:26] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[11:25:29] [KEY] Checklist command '2' accepted at: Run-ConsoleMode
+[11:25:29] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 8 item(s) selected
+[11:25:29] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[11:25:33] [KEY] Checklist command 'N' accepted at: Run-ConsoleMode
+[11:25:33] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 0 item(s) selected
+[11:25:33] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[11:25:34] [KEY] Checklist command 'N' accepted at: Run-ConsoleMode
+[11:25:34] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 0 item(s) selected
+[11:25:34] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[11:27:20] [KEY] Checklist: key ignored (X)
+[11:27:20] [KEY] Checklist: key ignored (X)
+[11:27:21] [KEY] Checklist: key ignored (X)
+[11:27:21] [WARN] Checklist: 4+ ignored keys in one prompt -- burst suppressed (FT-193)
+[11:27:26] [KEY] Checklist command 'R' accepted at: Run-ConsoleMode
+[11:28:08] [KEY] Continue accepted at: Run-ConsoleMode
+[11:28:08] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 0 item(s) selected
+[11:28:08] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[11:29:00] [KEY] Checklist: key ignored ()
+[11:29:01] [KEY] Checklist: key ignored ()
+[11:29:01] [KEY] Checklist: key ignored ()
+[11:29:08] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[11:29:08] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 86, 0 item(s) selected
+[11:29:08] [INFO] Checklist columns: window 86, name 37 (content needed 41), status 38 (content needed 38)
+[11:29:20] [KEY] Checklist: key ignored (B)
+[11:29:21] [KEY] Checklist: key ignored (B)
+[11:29:24] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[11:29:24] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 0 item(s) selected
+[11:29:24] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[11:29:43] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[11:29:43] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 86, 0 item(s) selected
+[11:29:43] [INFO] Checklist columns: window 86, name 37 (content needed 41), status 38 (content needed 38)
+[11:29:45] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[11:29:45] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 0 item(s) selected
+[11:29:45] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[11:30:41] [KEY] Checklist: key ignored (I)
+[11:30:42] [KEY] Checklist: key ignored (I)
+[11:30:42] [KEY] Checklist: key ignored (I)
+[11:30:42] [WARN] Checklist: 4+ ignored keys in one prompt -- burst suppressed (FT-193)
+[11:32:16] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[11:32:16] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 86, 0 item(s) selected
+[11:32:16] [INFO] Checklist columns: window 86, name 37 (content needed 41), status 38 (content needed 38)
+[11:32:24] [KEY] Checklist: key ignored (I)
+[11:32:24] [KEY] Checklist: key ignored (I)
+[11:32:25] [KEY] Checklist: key ignored (I)
+[11:37:00] [KEY] Checklist command 'R' accepted at: Run-ConsoleMode
+[07:43:43] [KEY] Look-back opened at: Run-ConsoleMode
+[07:46:44] [KEY] Continue accepted at: Run-ConsoleMode
+[07:46:44] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 86, 0 item(s) selected
+[07:46:44] [INFO] Checklist columns: window 86, name 37 (content needed 41), status 38 (content needed 38)
+[07:49:23] [KEY] Checklist: key ignored ( )
+[07:49:23] [KEY] Checklist: key ignored ( )
+[07:49:23] [KEY] Checklist: key ignored ( )
+[07:49:24] [WARN] Checklist: 4+ ignored keys in one prompt -- burst suppressed (FT-193)
+[07:58:57] [KEY] Checklist command 'A' accepted at: Run-ConsoleMode
+[07:58:57] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 86, 19 item(s) selected
+[07:58:57] [INFO] Checklist columns: window 86, name 37 (content needed 41), status 38 (content needed 38)
+[07:59:02] [KEY] Checklist command 'N' accepted at: Run-ConsoleMode
+[07:59:02] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 86, 0 item(s) selected
+[07:59:02] [INFO] Checklist columns: window 86, name 37 (content needed 41), status 38 (content needed 38)
+[08:06:40] [KEY] Checklist: key ignored (I)
+[08:08:44] [KEY] Checklist: key ignored ( )
+[08:08:59] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[08:08:59] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 0 item(s) selected
+[08:08:59] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[08:09:10] [KEY] Checklist command '6' accepted at: Run-ConsoleMode
+[08:09:10] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 1 item(s) selected
+[08:09:10] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[08:09:16] [KEY] Checklist command '9' accepted at: Run-ConsoleMode
+[08:09:16] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 2 item(s) selected
+[08:09:16] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[08:09:25] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[08:09:25] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 86, 2 item(s) selected
+[08:09:25] [INFO] Checklist columns: window 86, name 37 (content needed 41), status 38 (content needed 38)
+[08:09:34] [KEY] Checklist command '12' accepted at: Run-ConsoleMode
+[08:09:34] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 86, 3 item(s) selected
+[08:09:34] [INFO] Checklist columns: window 86, name 37 (content needed 41), status 38 (content needed 38)
+[08:09:35] [KEY] Checklist: key ignored ()
+[08:09:36] [KEY] Checklist command '13' accepted at: Run-ConsoleMode
+[08:09:36] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 86, 4 item(s) selected
+[08:09:36] [INFO] Checklist columns: window 86, name 37 (content needed 41), status 38 (content needed 38)
+[08:09:37] [KEY] Checklist: key ignored ()
+[08:09:39] [KEY] Checklist command '14' accepted at: Run-ConsoleMode
+[08:09:39] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 86, 5 item(s) selected
+[08:09:39] [INFO] Checklist columns: window 86, name 37 (content needed 41), status 38 (content needed 38)
+[08:09:39] [KEY] Checklist: key ignored ()
+[08:09:41] [KEY] Checklist command '15' accepted at: Run-ConsoleMode
+[08:09:41] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 86, 6 item(s) selected
+[08:09:41] [INFO] Checklist columns: window 86, name 37 (content needed 41), status 38 (content needed 38)
+[08:09:42] [KEY] Checklist: key ignored ()
+[08:09:50] [KEY] Checklist command '17' accepted at: Run-ConsoleMode
+[08:09:50] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 86, 7 item(s) selected
+[08:09:50] [INFO] Checklist columns: window 86, name 37 (content needed 41), status 38 (content needed 38)
+[08:09:55] [KEY] Checklist: key ignored ()
+[08:10:01] [KEY] Checklist command 'R' accepted at: Run-ConsoleMode
+[08:10:02] [SCREEN] [SCREEN-58] (shown as screen 25c) Rendered: HEADS UP -- YOU HAVE NOT SELECTED DRIVE ENCRYPTION
+[08:10:15] [KEY] Key 'Y' accepted at: Show-BitLockerDeclineHeadsUp
+[08:10:15] [SCREEN] [SCREEN-68] (shown as screen 25e) Rendered: YOUR CHOICE IS NOTED -- NO ENCRYPTION WILL BE APPLIED
+[08:10:37] [KEY] Key 'Y' accepted at: Show-BitLockerFinalDecline
+[08:10:37] [NOTED] NOTED: User chose not to apply: Drive Encryption (BitLocker) -- Status: not encrypted -- can be enabled later by re-running the tool
+[08:10:37] [SCREEN] [SCREEN-55] (shown as screen 27) Rendered: REVIEW YOUR SELECTIONS -- NO CHANGES MADE YET
+[08:10:37] [INFO] Review listing rendered -- awaiting Ready-to-proceed
+[08:10:49] [KEY] Key 'Y' accepted at: Run-ConsoleMode
+[08:10:49] [START] === Console Mode Hardening Run Started ===
+[08:17:51] [KEY] Key 'Y' accepted at: Run-ConsoleMode
+[08:17:51] [ERROR] SILENT ERROR at Apply-Setting: Requested registry access is not allowed. | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii42-2026-08-19-1830.ps1:6368 char:17
+[08:40:24] [KEY] Continue accepted at: Apply-Setting
+[08:40:24] [INFO] Edge Phishing Protection (all 3) | Before: Unknown -- Tamper Protection blocks this check; verify by hand | Result: MANUAL REQUIRED -- registry is protected on this PC (Tamper Protection)
+[08:40:39] [KEY] Continue accepted at: Run-ConsoleMode
+[08:40:39] [MANUAL] Windows Hello (check only) | Manual action required
+[08:40:42] [KEY] Continue accepted at: Run-ConsoleMode
+[08:59:05] [KEY] Key 'Y' accepted at: Run-ConsoleMode
+[08:59:05] [INFO] Diagnostic Data -- Required Only | Deferred to individual convenience review (FT-94)
+[09:00:46] [KEY] Continue accepted at: Run-ConsoleMode
+[09:03:59] [KEY] Key 'Y' accepted at: Run-ConsoleMode
+[09:03:59] [INFO] Edge Startup Boost and Background | Deferred to individual convenience review (FT-94)
+[09:04:11] [KEY] Continue accepted at: Run-ConsoleMode
+[09:14:05] [SCREEN] [SCREEN-84] (shown as screen ) Rendered: ABOUT THIS CHECKUP RUN
+[09:14:07] [KEY] Info screen opened at: Show-CheckupInfo
+[09:14:14] [KEY] Continue accepted at: Show-CheckupInfo
+[09:14:24] [KEY] Key 'B' accepted at: Run-ConsoleMode
+[09:14:24] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 86, 7 item(s) selected
+[09:14:24] [INFO] Checklist columns: window 86, name 37 (content needed 41), status 38 (content needed 38)
+[09:16:11] [KEY] Checklist command '12' accepted at: Run-ConsoleMode
+[09:16:11] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 86, 6 item(s) selected
+[09:16:11] [INFO] Checklist columns: window 86, name 37 (content needed 41), status 38 (content needed 38)
+[09:16:12] [KEY] Checklist: key ignored ()
+[09:16:19] [KEY] Checklist command '13' accepted at: Run-ConsoleMode
+[09:16:19] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 86, 5 item(s) selected
+[09:16:19] [INFO] Checklist columns: window 86, name 37 (content needed 41), status 38 (content needed 38)
+[09:16:30] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[09:16:30] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 5 item(s) selected
+[09:16:30] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[09:16:34] [KEY] Checklist command '6' accepted at: Run-ConsoleMode
+[09:16:34] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 4 item(s) selected
+[09:16:34] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[09:16:39] [KEY] Checklist command '9' accepted at: Run-ConsoleMode
+[09:16:39] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 3 item(s) selected
+[09:16:39] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[09:16:43] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[09:16:43] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 86, 3 item(s) selected
+[09:16:43] [INFO] Checklist columns: window 86, name 37 (content needed 41), status 38 (content needed 38)
+[09:18:29] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[09:18:29] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 3 item(s) selected
+[09:18:29] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[09:18:36] [KEY] Checklist command '2' accepted at: Run-ConsoleMode
+[09:18:36] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 4 item(s) selected
+[09:18:36] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[09:18:45] [KEY] Checklist command '2' accepted at: Run-ConsoleMode
+[09:18:45] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 3 item(s) selected
+[09:18:45] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[09:18:51] [KEY] Checklist command '21' accepted at: Run-ConsoleMode
+[09:18:51] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 3 item(s) selected
+[09:18:51] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[09:18:55] [KEY] Checklist command '2' accepted at: Run-ConsoleMode
+[09:18:55] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 4 item(s) selected
+[09:18:55] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[09:18:58] [KEY] Checklist command '2' accepted at: Run-ConsoleMode
+[09:18:58] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 3 item(s) selected
+[09:18:58] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[09:19:02] [KEY] Checklist command '2' accepted at: Run-ConsoleMode
+[09:19:02] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 4 item(s) selected
+[09:19:02] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[09:19:12] [KEY] Checklist command '2' accepted at: Run-ConsoleMode
+[09:19:12] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 3 item(s) selected
+[09:19:12] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[09:23:36] [KEY] Checklist command 'R' accepted at: Run-ConsoleMode
+[09:23:36] [SCREEN] [SCREEN-58] (shown as screen 25c) Rendered: HEADS UP -- YOU HAVE NOT SELECTED DRIVE ENCRYPTION
+[09:26:27] [KEY] Key 'Y' accepted at: Show-BitLockerDeclineHeadsUp
+[09:26:27] [SCREEN] [SCREEN-68] (shown as screen 25e) Rendered: YOUR CHOICE IS NOTED -- NO ENCRYPTION WILL BE APPLIED
+[09:29:25] [KEY] Key 'Y' accepted at: Show-BitLockerFinalDecline
+[09:29:25] [NOTED] NOTED: User chose not to apply: Drive Encryption (BitLocker) -- Status: not encrypted -- can be enabled later by re-running the tool
+[09:29:25] [SCREEN] [SCREEN-55] (shown as screen 27) Rendered: REVIEW YOUR SELECTIONS -- NO CHANGES MADE YET
+[09:29:25] [INFO] Review listing rendered -- awaiting Ready-to-proceed
+[09:33:42] [KEY] Key 'Y' accepted at: Run-ConsoleMode
+[09:33:42] [START] === Console Mode Hardening Run Started ===
+[09:47:40] [KEY] Key 'B' accepted at: Run-ConsoleMode
+[09:47:40] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 3 item(s) selected
+[09:47:40] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[09:47:47] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[09:47:47] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 86, 3 item(s) selected
+[09:47:47] [INFO] Checklist columns: window 86, name 37 (content needed 41), status 38 (content needed 38)
+[09:49:22] [KEY] Checklist command '14' accepted at: Run-ConsoleMode
+[09:49:22] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 86, 2 item(s) selected
+[09:49:22] [INFO] Checklist columns: window 86, name 37 (content needed 41), status 38 (content needed 38)
+[09:49:30] [KEY] Checklist command 'R' accepted at: Run-ConsoleMode
+[09:49:30] [SCREEN] [SCREEN-58] (shown as screen 25c) Rendered: HEADS UP -- YOU HAVE NOT SELECTED DRIVE ENCRYPTION
+[09:49:49] [KEY] Key 'Y' accepted at: Show-BitLockerDeclineHeadsUp
+[09:49:49] [SCREEN] [SCREEN-68] (shown as screen 25e) Rendered: YOUR CHOICE IS NOTED -- NO ENCRYPTION WILL BE APPLIED
+[09:49:55] [KEY] Key 'Y' accepted at: Show-BitLockerFinalDecline
+[09:49:55] [NOTED] NOTED: User chose not to apply: Drive Encryption (BitLocker) -- Status: not encrypted -- can be enabled later by re-running the tool
+[09:49:55] [SCREEN] [SCREEN-55] (shown as screen 27) Rendered: REVIEW YOUR SELECTIONS -- NO CHANGES MADE YET
+[09:49:55] [INFO] Review listing rendered -- awaiting Ready-to-proceed
+[09:50:03] [KEY] Key 'Y' accepted at: Run-ConsoleMode
+[09:50:03] [START] === Console Mode Hardening Run Started ===
+[09:56:10] [KEY] Key 'Y' accepted at: Run-ConsoleMode
+[09:56:10] [INFO] Edge Password Saving -- Disable | Deferred to individual convenience review (FT-94)
+[10:06:36] [KEY] Continue accepted at: Run-ConsoleMode
+[10:07:51] [KEY] Key 'Y' accepted at: Run-ConsoleMode
+[10:07:51] [APPLIED] Password Required on Wake | Before: Not required -- needs attention | Result: Password required on wake -- enabled for both AC and battery -- GOOD
+[10:08:10] [KEY] Continue accepted at: Run-ConsoleMode
+[10:08:10] [SCREEN] [SCREEN-69] (shown as screen 32) Rendered: ALL SELECTED ITEMS PROCESSED
+[10:08:10] [SCREEN] [SCREEN-70] (shown as screen 33) Rendered: AUTOMATED SCAN SCHEDULE SETUP
+[10:08:11] [GOOD] Scheduled task created: GatewayGuard - Quarterly Defender Offline Scan (reminder popup -- FT-175)
+[10:08:11] [GOOD] Scheduled task created: GatewayGuard - Monthly Malwarebytes Reminder
+[10:09:39] [KEY] Continue accepted at: Setup-ScheduledTasks
+[10:09:39] [SCREEN] [SCREEN-23] (shown as screen 33a) Rendered: CONVENIENCE CHOICES -- NOTHING CHANGED YET
+[10:09:59] [KEY] Continue accepted at: Show-ConvenienceReview
+[10:09:59] [SCREEN] [SCREEN-71] (shown as screen 33b) Rendered: YOUR CHOICE [1 of 1]: Edge Password Saving
+[10:12:01] [OK] Sleep prevention deactivated -- normal power management restored (called from: PowerShell.Exiting engine event (last-resort cleanup))
+
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================

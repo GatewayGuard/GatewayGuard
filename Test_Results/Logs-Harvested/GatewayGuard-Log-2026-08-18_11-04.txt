@@ -1,0 +1,30 @@
+﻿============================================================
+  GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+  Build: ascii41
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-08-18 11:04:36
+  Computer: SANDY
+  Machine:  HP HP Laptop 17-by1xxx
+  Machine ID: F7F13A97D58D (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[11:04:36] [OK] Console control handler registered -- Ctrl+C in Mark mode can no longer end the session (FT-150), and closing the window still writes the log footer (FT-160)
+[11:04:36] [START] Tool launched v3.1 build ascii41
+[11:04:36] [INFO] Log location: C:\Users\willi\OneDrive\GatewayGuard\Logs  (OneDrive -- already set up on this PC)
+[11:04:36] [INFO] Machine: HP HP Laptop 17-by1xxx | MachineID: F7F13A97D58D
+[11:04:36] [OK] Sleep/shutdown prevention activated
+[11:04:36] [OK] QuickEdit AND mouse input reporting disabled for this session (FT-01, FT-171a) -- re-asserted silently from here on
+[11:04:36] [SCREEN] [SCREEN-01] (shown as screen 3a) Rendered: IMPORTANT -- HOW TO RUN GATEWAYGUARD CORRECTLY
+[11:05:08] [KEY] Continue accepted at: Show-FontInstructions
+[11:05:08] [EXIT] Not running as Administrator -- instructions shown, tool closed
+[11:05:08] [OK] Sleep prevention deactivated -- normal power management restored (called from: Show-FontInstructions)
+
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================
