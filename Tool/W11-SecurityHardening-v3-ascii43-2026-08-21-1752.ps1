@@ -1728,7 +1728,7 @@ start "" notepad.exe "%GGLOG%"
 
 function Write-Log {
     param([string]$Message, [string]$Status = "INFO")
-    $entry = "[$(Get-Date -Format 'HH:mm:ss')] [$Status] $Message"
+    $entry = "[$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')] [$Status] $Message"
     $LogEntries.Add($entry)
     if (Test-Path (Split-Path $LogPath -Parent) -ErrorAction SilentlyContinue) {
         try { $entry | Out-File -FilePath $LogPath -Append -Encoding UTF8 -ErrorAction SilentlyContinue } catch {}
