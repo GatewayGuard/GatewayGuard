@@ -28,6 +28,115 @@ This is the shared memory between all Claude instances.
 ---
 ---
 
+## Session: 2026-08-21 [Claude Code -- CGDELL] -- ascii42 FIELD RUN TRIAGED, OFFLINE-SCAN RESEARCH, CLOUD REVIEW ACTIONED
+
+**Build: ascii42, unchanged. No build work -- this was a triage, research and
+handoff session.** ascii43 is planned but not started.
+
+### ascii42 field run (SANDY) fully triaged -- FT-204 to FT-235
+
+Bill ran ascii42 on SANDY. Results in `Test_Results\Ascii42-test-results-2026-08-21-.odt`
+(+ `.txt` twin), run log `GatewayGuard-Log-2026-08-19_21-48.txt` (harvested).
+Triaged in `ProjectDocs\GatewayGuard_FieldTestTriage-ascii42run1-2026-08-21.md`,
+**32 findings, FT-204 to FT-235. Next free FT: 236.**
+
+- **FT-204** -- `N` on the checklist silently wipes every selection (both pages,
+  no confirm). Reported in the field in July as note 14; never guarded. The
+  log proves it: 19 selections destroyed 5 seconds after being made.
+- **FT-217** -- `Write-GGBox` measures a line with an embedded newline as one
+  line and has no width cap, so a 328-char string painted a **378-char box into
+  an 86-column window**. Five convenience screens over-wide. The checklist
+  already measures the window and truncates -- the fix is to do the same in
+  `Write-GGBox`.
+- **FT-218** -- Ctrl+C in Mark mode ended the run while Bill tried to copy. The
+  log has no `[EXIT]`, only the last-resort cleanup: a hard kill. Contradicts
+  FT-150's claim, printed in the same log's header.
+- **FT-219** -- asks permission for a change the user already selected;
+  reported 5 times, the run's most frequent complaint.
+- **FT-231** -- the log filename is stamped once at launch, entries carry no
+  date, so a 3-day session reads as if the clock runs backwards. This is why
+  "today's log" appeared missing. One format string in `Write-Log`.
+- **FT-235** -- four gallery logs end with no footer/exit line: hard kills.
+  The header's "last line shows where it was" promise fails on a kill.
+- Plus the ascii41 carry-over block and FT-232 (out-of-range item number
+  logged as accepted, does nothing).
+
+**Correction on the record:** FT-218 first guessed Ctrl+C went through
+Confirm-Exit; the log refuted it (no exit line). Logged as a correction, not
+quietly changed.
+
+### Offline-scan research (closes ascii41 finding 16)
+
+`ProjectDocs\GatewayGuard_OfflineScanResearch-2026-08-21.md`. Measured +
+sourced, no forum speculation used as basis.
+
+- **`Start-MpWDOScan` has no scope parameter** (measured). The offline scan
+  cannot be aimed at a drive; Microsoft documents its job as firmware/rootkits/
+  MBR and never states which drives. A **full scan** covers "all mounted fixed
+  drives" -- and Checkup never runs one. That reframes FT-230's fix (F4): add a
+  full scan when a second drive is present, do not just warn.
+- **FT-234** -- if WinRE is disabled the offline scan silently does nothing;
+  Checkup already parses `reagentc /info` but only on the encryption path. Same
+  class as FT-162.
+- **FT-233 raised then DOWNGRADED by Bill's field evidence.** I claimed
+  encryption + offline scan could demand a recovery key at reboot ("looks like
+  ransomware"). Bill: "we have never needed our recovery key on sandy3 and
+  cgdell both fully encrypted." Measured on CGDELL: **5 offline scans (Event
+  2030) on a TPM-protected encrypted drive, no key ever asked.** The TPM
+  releases the key unattended in signed WinRE. I read "may be prompted" as
+  "will." No code change; one guide line for TPM-less setups. THE FIELD WON.
+
+### ascii43 plan, and the guide decision
+
+- `ProjectDocs\GatewayGuard_ascii43BuildPlan-2026-08-21.md`: ~70 open items are
+  really **six families** (keyboard contract, console width, the log, second
+  drive, flow/sequencing, wording), one commit each through `gg_edit`.
+- **Decisions (Bill):** ascii44 WILL follow a field run, so ascii43 can carry
+  the big wording block. **FT-220 waits for the guide rewrite** (W-07). FT-221
+  and FT-226's data half stay in ascii43.
+- **AV coverage test kit built** (`Tool\Run-AVTestKit.bat` + cleanup + protocol
+  `GatewayGuard_AVScanCoverageTest-2026-08-21.md`) -- EICAR specimens across
+  C:/D: in six placements, to measure what each scan finds. Declined to build
+  real malware/a rootkit; reframed the rootkit question as coverage. Run on
+  SANDY (only machine with D:).
+
+### Cloud handoff and Cloud's review, actioned
+
+- **Three Cloud request docs** in `ProjectDocs\`, stamped READ ORDER 1/2/3:
+  `-Review` (triage + business), `-GuideRewrite` (FT-220, corrected after I
+  found the 1,553-line draft already existed), `-PricingCopy` (renewal-model
+  copy brief). Moved from root paste-blocks to ProjectDocs so sync replaces
+  paste.
+- **Cloud's review actioned:** CURRENT.md now lists the Marketing plan and
+  Guide rewrite draft (added generator patterns); the panther freshness check
+  retired for the four-value stamp in both the CPI doc and `Start-Claude-Cloud.txt`;
+  the live footer on all 19 pages + both indexes changed -- **"No subscription
+  -- ever" -> "Annual updates are optional"** (Bill's model: one-time buy +
+  optional annual updates) and **"Source code is included" -> "The full source
+  is included and readable..."** (open-source read removed). WebsiteStandards
+  spec updated in step so it cannot drift.
+- **Pricing/renewal copy briefed to Cloud** (`GatewayGuard_CloudRequest-PricingCopy`):
+  remove no-subscription/no-renewal claims, present buy-once + optional annual
+  updates + multi-year renewal plans (10%/yr). Prices left as tokens -- annual
+  price and the "10% per year" math are Bill's to lock (open item 12).
+
+### Probes added (read-only)
+
+`Tool\Run-EncryptionReversibilityCheck.bat`, `Tool\Run-LogSyncCheck.bat` --
+both read-only, both tested on CGDELL first.
+
+### Open for Bill
+
+1. **Lock the annual-update price and the "10% per year" rule** so PricingCopy
+   can be finished.
+2. **Confirm F4 route** for the second drive (recommend: add a full scan +
+   warn once).
+3. Sync, and have Cloud read back CURRENT.md's four freshness values FIRST --
+   its snapshot lagged this session and it could not see the read-order stamps
+   until re-synced.
+
+---
+
 ## Session: 2026-08-20 [Claude Code -- CGDELL] -- A MISSING FILE, AND WHAT IT UNCOVERED
 
 **Build: ascii42, unchanged.** No build work. Bill reported
