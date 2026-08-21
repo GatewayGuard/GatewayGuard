@@ -93,7 +93,7 @@ Home | Download | Guide | Tips | Beta | Compatible
 **Footer (identical on every page):**
 - GatewayGuard LLC · Brunswick, Maine · support@gatewayguard.co
 - "GatewayGuard does not collect personal data or show ads. Annual updates are optional."
-- "Source code is included with every download. © 2026 GatewayGuard LLC. All rights reserved."
+- "The full source is included and readable, so you can check exactly what it does. © 2026 GatewayGuard LLC. All rights reserved."
 - Footer email is always support@gatewayguard.co -- never a personal email address.
 
 ---
