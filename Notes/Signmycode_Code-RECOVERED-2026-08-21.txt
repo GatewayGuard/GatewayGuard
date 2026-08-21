@@ -1,0 +1,43 @@
+# Dated: 2026-08-21 06:40 ET
+# Recovered by Claude Code on CGDELL from deleted data in C: free space.
+
+THE SECOND CODE:   Xc78eHz#ZHnp*u$N
+
+Character by character, to remove any doubt when typing it:
+  X  c  7  8  e  H  z  #  Z  H  n  p  *  u  $  N
+
+It is stored with a LEADING SPACE (" Xc78eHz#ZHnp*u$N").
+The code itself is 16 characters: Xc78eHz#ZHnp*u$N
+
+
+---------------- recovered content, exactly as stored ----------------
+Thank you for contacting us.
+
+We apologize for the inconvenience.
+
+Kindly try the new initialization code below:
+k1vc6pl449qwltlxl2mj7rjg2m68
+ Xc78eHz#ZHnp*u$N
+Please use this code to initialize your DigiCert-provided eToken and let
+us know if you encounter any further issues.
+----------------------------------------------------------------------
+
+
+WHERE IT CAME FROM
+
+Raw volume C:, offset 72831414727, cluster 17781107. It was a deleted
+Notepad tab record sitting in free space. Verified by reading that disk
+offset a second time, not copied from a working file.
+
+The record carries the original path inside it:
+  C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Notes\Signmycode_Code.txt
+
+So there was never a second file. It was THIS file, with the phoned-in
+code typed into it. Notepad's tab cache held that edited version; the tab
+record was later deleted, and the copy left on disk is the older 268-byte
+version stamped 2026-08-14 10:36. That is why searching for a second
+filename found nothing -- no second filename ever existed.
+
+NOT RECOVERED: the "additional lines" recalled beyond the second code.
+This snapshot does not contain them. The full-disk pass that would have
+looked for a longer version was stopped before it finished.
