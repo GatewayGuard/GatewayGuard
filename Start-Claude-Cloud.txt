@@ -57,10 +57,12 @@ stop -- do not answer from memory or from project knowledge. Say
 problems. If I paste content to you instead, that is fine -- use
 it, and say you are working from pasted text.
 
-First, before anything else: find the exact phrase "local account
-named panther" in the briefing and quote me the WHOLE sentence it
-sits in. The phrase, not just the word. If you cannot find it, you
-are reading an old snapshot -- say so and stop.
+First, before anything else: read back the four freshness values
+at the top of ProjectDocs/CURRENT.md -- Generated, Commit at
+generation, That commit was made, and Its subject line. State them
+in your first reply so I can compare them against what Claude Code
+last pushed. If CURRENT.md does not surface, or its stamp looks
+old, say so and stop.
 
 Then tell me, before doing any work:
 1. The current build number and whether it has been field run.
@@ -98,20 +100,22 @@ exists to prevent: 15 of 49 filename references in this project had
 already gone dead. It refuses to write at all if any document is
 missing, rather than publish a list with a hole in it.
 
-WHY THE PANTHER LINE: that sentence exists only in documents dated
-2026-08-11 or later. If Cloud can quote it, it is genuinely reading
-current files. If it cannot, it is on an old snapshot -- a different
-problem with a different fix, and worth knowing before you trust
-anything else it says.
+WHY THE FRESHNESS STAMP, NOT THE PANTHER PHRASE (changed 2026-08-21):
+this block used to ask Cloud to find the phrase "local account named
+panther" in the briefing as a freshness discriminator. CURRENT.md now
+opens with a generated stamp -- generation time, commit hash, commit
+date, commit subject -- and that is strictly better. It cannot be
+forgotten or drift the way a hand-placed phrase does, and it says
+stale BY HOW MUCH, not merely stale or not. Reading the stamp IS
+reading the sync date.
 
-IT ASKS FOR THE PHRASE, NOT THE WORD, AND THAT MATTERS. Measured
-2026-08-12: "panther" alone appears 23 times across 14 files,
-including two dated 2026-08-03 and 2026-08-05 where it is simply
-Bill's name on a document header -- "Prepared for: Panther (William
-F. Burns III)". Cloud searches by relevance. Asked for the word, it
-could land on a file eight days stale, quote it confidently, and
-PASS A TEST THAT PROVED NOTHING -- which is the exact failure this
-test exists to catch, wearing the test's own clothes.
+WHY THE PHRASE WAS RETIRED: a discriminator is worth only what its
+string's uniqueness is worth. Measured 2026-08-12, "panther" alone
+appeared 23 times across 14 files, including two where it was just
+Bill's name on a header -- "Prepared for: Panther (William F. Burns
+III)". The check had to ask for the whole phrase to be safe, and even
+then it could only ever answer stale or not-stale. A commit hash is as
+unique as a check can get, so the stamp replaced it.
 
 The phrase "local account named panther" appears ONLY in documents
 dated 2026-08-11 or later. That is what makes it a discriminator.
