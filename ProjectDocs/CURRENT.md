@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-21 13:19 ET -->
-<!-- Commit: c3a37c5 -->
+<!-- Generated: 2026-08-21 14:18 ET -->
+<!-- Commit: 58e7ee0 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-21 13:19 ET
-- **Commit at generation:** `c3a37c5`
-- **That commit was made:** 2026-08-21 13:07 ET
-- **Its subject line:** The Cloud requests move into ProjectDocs -- sync replaces paste
+- **Generated:** 2026-08-21 14:18 ET
+- **Commit at generation:** `58e7ee0`
+- **That commit was made:** 2026-08-21 14:13 ET
+- **Its subject line:** Stamp the read order on the three Cloud request docs
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
