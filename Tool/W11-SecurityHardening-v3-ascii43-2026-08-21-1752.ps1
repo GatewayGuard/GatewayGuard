@@ -8496,7 +8496,7 @@ function Run-ConsoleMode {
                     Write-Host ""
                 }
                 Write-Host ""
-                Write-Host "  $selectedCount item(s) will be applied. Y/N prompt shown for each." -ForegroundColor Yellow
+                Write-Host "  $selectedCount item(s) will be applied -- selecting them was your approval. Any that need a manual step will show you how." -ForegroundColor Yellow
                 Write-Host ""
                 Write-Log -Message "Review listing rendered -- awaiting Ready-to-proceed" -Status "INFO"   # FT-68 (ascii29): brackets the listing loop in the log
 
@@ -8638,7 +8638,7 @@ function Run-ConsoleMode {
 
                     if (-not $s.CanAuto) {
                         Write-Host ""
-                        Write-Host "  Manual action required -- cannot be automated." -ForegroundColor Red
+                        Write-Host "  This one needs you to do it by hand -- Checkup will show you the steps." -ForegroundColor Red
                         $r = Apply-Setting -Setting $s
                         Write-Host "  INSTRUCTIONS: $r" -ForegroundColor Yellow
                         Pause-ForUser
@@ -8655,17 +8655,15 @@ function Run-ConsoleMode {
                         continue
                     }
 
+                    # FT-219 (ascii43): selecting an item on the checklist IS your
+                    # approval to apply it (Bill, 2026-08-21), and the whole run was
+                    # confirmed at the review gate. A setting Checkup can apply is
+                    # applied now, with no second "Apply? Y/N". The ONLY exception is
+                    # a setting that needs you to act by hand -- handled above
+                    # (-not $s.CanAuto), where Checkup shows the steps rather than
+                    # changing anything itself.
                     Write-Host ""
-                    Write-Host "  Y = Apply this change   N = Skip   B = Back to checklist" -ForegroundColor White
-                    $confirm = Read-ValidKey -ValidKeys @("Y","N","B") -Prompt "Apply? (Y = Yes / N = Skip / B = Back): "
-                    switch ($confirm.ToUpper()) {
-                        "B" { continue checklistLoop }
-                        "N" {
-                            Write-Host "  Skipped." -ForegroundColor Gray
-                            Write-Log -Message "$($s.Name) -- Skipped by user" -Status "SKIP"
-                            continue
-                        }
-                    }
+                    Write-Host "  You selected this item, so Checkup is applying it now." -ForegroundColor Cyan
                     Write-Host "  Applying..." -ForegroundColor Cyan
                     $result = Apply-Setting -Setting $s
                     $resultColor = if ($result -match "GOOD|enabled|disabled|set to|Already") { "Green" } elseif ($result -match "NOTE:|MANUAL|manual") { "Yellow" } else { "Red" }
