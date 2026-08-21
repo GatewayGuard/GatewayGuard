@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-20 13:06 ET -->
-<!-- Commit: 6db40d6 -->
+<!-- Generated: 2026-08-21 10:23 ET -->
+<!-- Commit: 17fd2a5 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-20 13:06 ET
-- **Commit at generation:** `6db40d6`
-- **That commit was made:** 2026-08-20 11:50 ET
-- **Its subject line:** The briefing said "Active build: ascii39" and "Build ascii40" as its first task
+- **Generated:** 2026-08-21 10:23 ET
+- **Commit at generation:** `17fd2a5`
+- **That commit was made:** 2026-08-21 10:23 ET
+- **Its subject line:** The key that means "no" everywhere else wipes the checklist
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -52,7 +52,7 @@ All paths are relative to `ProjectDocs/`.
 | CPM schedule | `GatewayGuard_CPM_Schedule-2026-08-02-1201.md` | 1 |
 | Screen numbering design | `GatewayGuard_ScreenNumberDesign-2026-08-15-1430.md` | 0 |
 | Screen numbering table | `GatewayGuard_ScreenNumberTable-2026-08-17.md` | 1 |
-| Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii41run1-2026-08-19.md` | 1 |
+| Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii42run1-2026-08-21.md` | 2 |
 | Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii42-2026-08-19.md` | 1 |
 | Website source pack (19 guide pages) | `GatewayGuard_WebsiteSourcePack-2026-08-15-1751.md` | 0 |
 | Guide v9 source pack | `GatewayGuard_GuideV9-SourcePack-2026-08-15-1436.md` | 0 |
