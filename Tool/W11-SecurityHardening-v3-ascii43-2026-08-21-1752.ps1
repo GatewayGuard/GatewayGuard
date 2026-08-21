@@ -2116,6 +2116,31 @@ function Write-GGBox {
         [string]$Number = "",
         [string]$Total = ""
     )
+    # FT-217 (ascii43): a $Lines entry can contain an embedded newline -- the
+    # convenience items wrap their prose with `n. .Length and PadRight treat
+    # such a string as ONE long line, so a 328-char string with a newline in
+    # the middle painted a 378-column box into an 86-column window. Split every
+    # entry on its newlines FIRST, so each becomes its own box line.
+    $ggExpanded = New-Object System.Collections.Generic.List[string]
+    foreach ($ggLn in $Lines) {
+        if ($ggLn -eq "---") { $ggExpanded.Add("---"); continue }
+        foreach ($ggPart in ([string]$ggLn -split "`n")) { $ggExpanded.Add(($ggPart -replace "`r$", "")) }
+    }
+    $Lines = $ggExpanded.ToArray()
+    # FT-217: never paint wider than the window. Reserve the "|..|" frame.
+    # Reuse the checklist's window measure (it logs "window 86") rather than
+    # inventing a second one (D-18). Truncate an over-long line with ".." and
+    # log it, instead of silently ballooning the box.
+    $ggWin = 80
+    try { if ([Console]::WindowWidth -gt 0) { $ggWin = [Console]::WindowWidth } } catch {}
+    $ggMaxContent = $ggWin - 4
+    if ($ggMaxContent -lt 16) { $ggMaxContent = 16 }
+    for ($ggWi = 0; $ggWi -lt $Lines.Count; $ggWi++) {
+        if ($Lines[$ggWi] -ne "---" -and ([string]$Lines[$ggWi]).Length -gt $ggMaxContent) {
+            $Lines[$ggWi] = ([string]$Lines[$ggWi]).Substring(0, $ggMaxContent - 2) + ".."
+            try { Write-Log -Message ("Write-GGBox: a line was truncated to fit the window (" + $ggWin + " cols) -- FT-217") -Status "WARN" } catch {}
+        }
+    }
     $Width = 44
     foreach ($line in $Lines) {
         if ($line -ne "---" -and ([string]$line).Length -gt $Width) { $Width = ([string]$line).Length }
