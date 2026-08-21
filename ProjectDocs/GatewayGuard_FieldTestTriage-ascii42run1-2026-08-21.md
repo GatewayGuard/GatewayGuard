@@ -16,8 +16,9 @@
   when Ctrl+C in Mark mode closed the program** -- FT-218. Sections A-E below
   cover the first half; **section H covers items 12-26 of Bill's notes** and
   is where the heaviest findings are.
-- **Encryption:** NOT run. Held for ascii43 by decision on 2026-08-21.
-  SANDY remains the only unencrypted machine in the fleet.
+- **Encryption:** not reached in this run. **See section I -- the premise
+  that running it would spend SANDY's unencrypted state is WRONG, and the
+  evidence was already in the repository.**
 
 **Run log not yet available.** The tool writes to
 `<user folder>\GatewayGuard\Logs\`, which on SANDY is the personal OneDrive
@@ -518,4 +519,109 @@ FT and no build work follows from it.
 
 ---
 
-**Next free FT number after this run: 229.**
+---
+
+## I. CHECKUP DOES NOT ENCRYPT ON WINDOWS 11 HOME -- CORRECTING A PREMISE
+
+**Basis: measured, `Test_Results\Logs-Harvested\GatewayGuard-Log-2026-08-18_16-18.txt`,
+SANDY, ascii41, lines 513-524.**
+
+```
+[22:31:15] [INFO] Device Encryption state: Not encrypted (0%), account type:
+           Local -- raw: FullyDecrypted
+[22:31:29] [GOOD] Device Encryption prereq check -- TPM: True, SecureBoot:
+           True, WinRE: True
+[22:49:23] [SKIP] BitLocker/Device Encryption: Home edition -- manual path
+           shown across 4 screens, no changes made by Checkup
+```
+
+**On Windows 11 Home, Checkup changes nothing.** It renders SCREEN-61, 62, 79,
+80 and 81 -- the requirements, the recovery key, the Microsoft account route
+and how to tell encryption is running -- and then skips. SANDY is Home.
+
+**What this corrects.** Both the briefing and this session's advice treated
+SANDY's unencrypted state as something a Checkup run could spend, and the
+recommendation on 2026-08-21 was to hold the encryption path for ascii43 to
+protect it. **There was nothing to protect.** The path can be walked on any
+build at no cost. The state is spent only if Bill follows the on-screen
+instructions to completion in Windows Settings himself.
+
+**Briefing section 4 should be corrected**: *"Its value is spent permanently
+the first time encryption completes on it"* is true of the machine, but it is
+**not** a reason to avoid running Checkup's encryption screens.
+
+**How this was missed.** The advice was given three times before anyone read
+the log, and the log had been in the personal OneDrive folder since
+2026-08-18. This is the CLAUDE.md rule about state claims carrying their
+source, failing in the ordinary way -- reasoning from the fleet table instead
+of from a run record.
+
+### FT-229 -- two encryption screens were never seen by the user
+
+**Basis: measured, same log.** SCREEN-79 rendered at **22:31:41**. The next
+key was accepted at **22:49:23** -- eighteen minutes later -- and then
+SCREEN-80, a second accepted key, SCREEN-81 and the SKIP **all carry the
+timestamp 22:49:23.**
+
+Two keypresses in the same second advanced three screens. **The user did not
+read screen 30b or screen 31**, and screen 31 is the one that tells them how
+to confirm encryption is actually running. This is the FT-171 input-queue
+pattern reaching the most consequential screens in the tool.
+
+---
+
+## J. THE SECOND DRIVE IS INVISIBLE TO THE WHOLE TOOL
+
+### FT-230 -- the offline scan covers only `C:`, and no screen says so
+
+**Basis: field (Bill, 2026-08-21) + source.**
+
+The build calls `Start-MpWDOScan` bare, line 4349, with no scope argument.
+**Whether Defender's offline environment covers non-system fixed volumes is
+NOT MEASURED here** -- it is a claim about Defender, not about Checkup, and
+per gate 24's rule it does not get asserted without evidence. Bill reports
+from the field that it does `C:` only. **The field wins until measured
+otherwise.**
+
+**But the defect does not depend on settling that**, which is why it is
+written up now. The offline scan screen, lines 4319-4340, tells the user the
+scan *"runs BEFORE Windows loads"*, how long the blue screen lasts, and that
+scan time varies. **It says nothing whatsoever about which drives are
+covered.** A user with a second data drive is given no way to know it was
+skipped.
+
+**This is the third face of FT-167, and that is the real finding.**
+
+| Where | What only sees `C:` |
+|---|---|
+| FT-167 | Encryption status -- confirmed by ascii39 field finding 13 |
+| **FT-230** | **The offline scan** |
+| section I | The Home encryption walkthrough, which describes encrypting "your drive", singular |
+
+**SANDY carries a second fixed drive `D:`, 931.5 GB, fully decrypted** --
+briefing section 4, measured 2026-08-11. On that machine the tool reports on
+roughly a fifth of the storage and describes the result as if it covered the
+computer.
+
+**This is a product-scope question, not just a wording fix, and it is Bill's
+call.** Three routes:
+
+1. **Say so plainly.** Cheapest and honest -- every scan and encryption
+   screen names the drive it covers, and says what to do about the others.
+   Fixes the misleading part without widening the tool.
+2. **Detect additional fixed drives and warn once.** A single screen: "this PC
+   has a second drive, `D:`. Checkup does not check it. Here is how to."
+   Costs one screen and a `Get-Volume` call the build already makes.
+3. **Cover them.** Widest, and it changes what the product is.
+
+**Recommendation: 2.** It closes the honesty gap, it is one screen, and it
+scales to any machine rather than being written for SANDY. Route 1 alone
+leaves a senior with a 931 GB drive nobody ever mentioned.
+
+**A prior claim to re-examine while doing this:** the ascii39 quarterly task
+shipped a scan that never ran for months while the log printed `[GOOD]`
+(FT-162). Scope claims about scans have already been wrong here once.
+
+---
+
+**Next free FT number after this run: 231.**
