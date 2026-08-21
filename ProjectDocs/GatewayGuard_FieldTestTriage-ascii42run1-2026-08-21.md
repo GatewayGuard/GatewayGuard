@@ -10,10 +10,12 @@
   both drives unencrypted, conhost not Windows Terminal)
 - **Source:** `Test_Results\Ascii42-test-results-2026-08-21-.odt`, Bill's
   notes taken at the keyboard during the run
-- **Run status:** **INCOMPLETE.** The run stopped at the checklist
-  (shown as screen 25) and did not reach the review, encryption or
-  scheduling screens. Everything from shown-screen 27 onward is untested
-  in this run.
+- **Run status:** **The run continued past the checklist** after the first
+  batch of notes was handed over. Bill ran items 6, 9, 12, 13, 14, 15 and 17,
+  reached the convenience review (shown-screen 33b), and **the run ended there
+  when Ctrl+C in Mark mode closed the program** -- FT-218. Sections A-E below
+  cover the first half; **section H covers items 12-26 of Bill's notes** and
+  is where the heaviest findings are.
 - **Encryption:** NOT run. Held for ascii43 by decision on 2026-08-21.
   SANDY remains the only unencrypted machine in the fleet.
 
@@ -278,22 +280,242 @@ remembered.** A guard nobody runs is a wish.
 
 ## G. WHAT ascii43 SHOULD CARRY, IN ORDER
 
-1. **FT-204** -- move deselect-all off `N`, and confirm before wiping.
+1. **FT-218** -- Ctrl+C must not end the session while the user is trying to
+   copy. It cost the rest of this run, and the build's own log claims this was
+   fixed in FT-150.
+2. **FT-217** -- split box lines on the newline before measuring, and clamp
+   the width. Five convenience screens are over-wide, one at 378 characters.
+   Add a width check to gate 12b, which currently measures only lines.
+3. **FT-204** -- move deselect-all off `N`, and confirm before wiping.
    Smallest edit, largest protection, twice-reported.
-2. **FT-207** -- say the exit exists in the unrecognised-key message.
+4. **FT-225 with FT-204** -- **make `B` the only Back key, everywhere.** `N`
+   currently means skip, exit, go back and deselect-all depending on the
+   screen. One key, four meanings, and two separate findings in this run.
+5. **FT-219** -- stop asking permission for a change the user already
+   selected. Reported five times; the most frequent complaint in the run.
+6. **FT-207** -- say the exit exists in the unrecognised-key message.
    One edit, all 47 prompts.
-3. **FT-206** -- make `I` work on the checklist, or stop promising "at any
-   time" on screens where it does not.
-4. **FT-214 / FT-215** -- the gallery reader. Reproduced twice with a known
+7. **FT-206 / FT-227** -- make `I` work on the checklist, or stop promising
+   "at any time" on screens where it does not.
+8. **FT-221 / FT-220** -- tie setting 15 to the password-manager answer, and
+   say why the current state is bad on settings 9, 12, 13 and 17. The guide is
+   silent on these too, so it moves in the same pass.
+9. **FT-214 / FT-215** -- the gallery reader. Reproduced twice with a known
    trigger key, and FT-215 contradicts the briefing's mouse-flag reasoning,
    which has to be settled either way.
-5. **FT-208** -- establish the real count of user-visible screens by a method
-   that does not assume `Draw-Box`, then number the ones that have no number.
-6. The carried block from ascii41 -- FT-203, and the ~20 wording and
-   screen-splitting findings.
+10. **FT-208** -- establish the real count of user-visible screens by a method
+    that does not assume `Draw-Box`, then number the ones that have no number.
+11. **FT-222 / FT-223 / FT-224 / FT-226** -- the checklist state and
+    consistency block.
+12. The carried block from ascii41 -- FT-203, and the ~20 wording and
+    screen-splitting findings.
 
 **Then field-run ascii43 on SANDY, and run the encryption path on that
 build.** SANDY's unencrypted state is spent once and should be spent on the
 build closest to launch.
 
-**Next free FT number after this run: 217.**
+---
+
+## H. THE SECOND HALF OF THE RUN -- ITEMS 12 TO 26
+
+Bill ran items **6, 9, 12, 13, 14, 15 and 17** from the checklist and worked
+through to the convenience review. These are the findings from that stretch.
+
+### FT-217 -- a box line containing a newline is measured as one line, and blows the box to 378 characters
+
+**Basis: field + source, and this is the most precisely located finding in
+the run.**
+
+Bill pasted the screen. **Measured on his paste: every border and content
+line of shown-screen 33b is exactly 378 characters wide.**
+
+`Write-GGBox`, lines 2119-2122:
+
+```
+$Width = 44
+foreach ($line in $Lines) {
+    if ($line -ne "---" -and ([string]$line).Length -gt $Width) { $Width = ([string]$line).Length }
+}
+```
+
+**There is no upper bound, and `.Length` does not know about newlines.** The
+convenience items embed PowerShell newline escapes in their prose so it will
+wrap. Line 6804, the Edge Password Saving item -- **the exact screen Bill
+pasted** -- holds a `Why` string of **328 characters** with a backtick-n in
+the middle. `Write-GGBox` measures the whole thing as a single 328-character
+line, adds the padding, and paints a 378-wide box on a console perhaps 120
+columns across.
+
+**Six strings across five convenience items carry embedded newlines and are
+all over-length**, measured on the ascii42 source:
+
+| Line | Field | Length |
+|---|---|---|
+| 6760 | Why -- Advertising ID | 211 |
+| 6771 | Why -- Diagnostic data | 214 |
+| 6782 | Why -- Edge Startup Boost | 285 |
+| 6783 | Revert -- Edge Startup Boost | 140 |
+| 6793 | Why -- Widgets | 257 |
+| **6804** | **Why -- Edge Password Saving** | **328** |
+
+So **five of the convenience screens are over-wide**, not one. Bill met the
+worst of them.
+
+**Why no gate caught it.** Gate 12b measures screens in **lines**, not
+columns. Nothing in the build measures box **width** at all, and
+`Write-GGBox` is documented as guarding width regressions (FT-117, FT-122)
+while having no maximum.
+
+**Fix for ascii43:** split on the newline before measuring, so a two-line
+string counts as two lines; and clamp `$Width` to the console width with a
+loud failure rather than a silent 378. Add a width check to gate 12b.
+
+### FT-218 -- Ctrl+C in Mark mode ended the program
+
+**Basis: field.** *"tried mark and highlighted but did not copy tried mark
+again highlighted and hit cntl-c and pgm ended."*
+
+**This is the single most damaging finding in the run**, because it ended
+the session and cost the rest of the test.
+
+**It also sits against a claim the build makes about itself.** Every log
+opens with:
+
+```
+[OK] Console control handler registered -- Ctrl+C in Mark mode can no longer
+     end the session (FT-150), and closing the window still writes the log footer
+```
+
+**The field says otherwise.** The likely path is that Ctrl+C reached
+`Read-ValidKey` line 2648, opened `Confirm-Exit`, and the confirmation was
+answered -- so the program ended "legitimately" while the user believed they
+were pressing copy. Either way the user's intent was **copy** and the outcome
+was **exit**.
+
+**The deeper problem: Ctrl+C is what copy means to everyone.** Checkup's own
+documented copy sequence is Alt+Space, E, M, select, then **Enter** to copy.
+Nothing on screen says Enter is the copy key and Ctrl+C is the quit key, and
+the natural key does the destructive thing. **field, unlocated** as to
+whether Confirm-Exit was shown; the run log will settle it.
+
+### FT-219 -- the tool asks permission for a change the user already selected
+
+**Basis: field, reported five separate times** -- against settings 6, 12, 13,
+15 and again in Bill's item 24. His words: *"asks if I want to apply this
+change, but above already said verify by hand, and before that the user
+selected #6 to run, so next screen should have been the screen explaining how
+to do it."*
+
+And: *"Says you will approve or skip this one next. That is not next."* The
+screen promises the next screen will be the approve/skip step, and it is not.
+
+This is the highest-frequency complaint in the run and it is a flow defect,
+not a wording one: **selection, advisory and consent are being asked in an
+order that repeats itself.**
+
+### FT-220 -- settings state what will change but not why the current state is bad
+
+**Basis: field, four settings** -- 9, 12, 13 and 17. *"Doesn't explain why
+this is not good. Fix this."*
+
+Setting 9 is the sharpest case: *"on SANDY the PIN for restart sign-on is
+active and also for sleep or hibernate continuation. Does not explain here or
+in the guide why they should do this, why they need to use the MS account,
+and why not using the MS account is bad."*
+
+**Neither the tool nor the guide answers it**, so this is a RULE W-07 item as
+well as a screen item -- the guide and the screens have to agree, and right
+now they agree by both being silent.
+
+### FT-221 -- setting 15 does not tie into the password-manager answer
+
+**Basis: field.** *"it doesn't tie into the P/W manager selection. We don't
+want them turning it off until they have a password manager set up and the
+Edge and other browser passwords imported into it."*
+
+Checkup already asks whether the user has a password manager (shown-screen
+22, `SCREEN-53`). Turning off browser password saving before that is in place
+**leaves the user with no password store at all**, which is worse than where
+they started.
+
+Bill's item 24 adds the wording fix: setting 15 should say **"Requires manual
+change by you"**, and should carry **two different wordings** depending on the
+earlier password-manager answer.
+
+### FT-222 -- an applied setting keeps its X on the checklist
+
+**Basis: field.** *"When we apply a setting the X should also be removed, so
+if you go back only the settings you haven't handled still have an X in their
+box."*
+
+Correct, and it interacts with FT-204: after the deselect-all wipe, there is
+no way to tell what has already been applied from what has not.
+
+### FT-223 -- two-digit selections apply instantly, one-digit selections do not
+
+**Basis: field.** *"selecting 12 and 13 it instantly removed the X when you
+type the second digit. On previous screen you still had to hit spacebar or
+enter. Which it doesn't tell you."*
+
+The checklist reader must accept two-digit numbers, so it commits on the
+second keystroke. Single digits wait for Enter. **The user is given no way to
+know which behaviour they are getting**, which is the User-Facing Clarity Rule
+test again.
+
+### FT-224 -- the encryption question is asked again after it was already answered
+
+**Basis: field.** *"Removed all applied X's and typed R, went next to 25c and
+re-asked about drive encryption. This is not necessary as the user had already
+gone through this once. Same thing with screen 25e. Also can't go back on this
+screen."*
+
+Shown-screens 25c and 25e are `SCREEN-58` and `SCREEN-68`. Two defects in one:
+the question repeats, and the screen has no Back.
+
+### FT-225 -- shown-screen 27 uses N for "go back", inconsistently
+
+**Basis: field.** *"On this screen N is go back. Inconsistent. Use B."*
+
+**This is FT-204's problem from the other direction.** `N` means skip, exit,
+go back and deselect-all depending on which screen you are standing on.
+**One key, four meanings.** Bill's instruction is the right one: Back is `B`,
+everywhere.
+
+### FT-226 -- setting 17 has no guide page number and no explanation, and Y did nothing
+
+**Basis: field.** *"Setting 17 -- No guide page number -- No explanation. Y
+did nothing, hit spacebar."* The missing `GuideRef` is checkable in the source
+and has not yet been checked. **field, unlocated.**
+
+### FT-227 -- `I` works on the setting screens but not on the checklist, and Back is erratic between them
+
+**Basis: field, and it confirms FT-206 from the field.** *"Setting 14 -- tried
+I and it worked, but to go back spacebar and enter did nothing. B went back to
+screen 26 where I did not work again."*
+
+So `I` works where `Read-ValidKey` is the reader and fails on the checklist,
+exactly as the source predicted. Bill crossed that boundary and felt it.
+
+### FT-228 -- Edge settings cannot be changed without a Microsoft account sign-in
+
+**Basis: field.** *"Checked Edge and it won't let me do anything to Edge
+Settings unless I sign in to MS account."*
+
+Environmental, on a machine deliberately running a **local account**. If Edge
+hardening cannot be applied on a local account, the tool must say so rather
+than offering the change. **Not yet reproduced on CGDELL; worth confirming
+there, where a Microsoft account is signed in.**
+
+### Not a defect -- a business decision for Cloud
+
+Bill's item 15: *"when we sell the guide to someone we need to put their name
+on every page -- licensed to John Doe, for personal use only, or some such
+wording."*
+
+Per-buyer watermarking of the guide. **This is Cloud's lane** (licensing and
+product packaging) and is recorded here only so it is not lost. It is not an
+FT and no build work follows from it.
+
+---
+
+**Next free FT number after this run: 229.**
