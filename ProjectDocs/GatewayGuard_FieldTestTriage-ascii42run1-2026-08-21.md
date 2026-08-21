@@ -624,4 +624,111 @@ shipped a scan that never ran for months while the log printed `[GOOD]`
 
 ---
 
-**Next free FT number after this run: 231.**
+## K. THE RUN LOG -- WHAT IT PROVED, AND THE ONE THING IT REFUTED
+
+**Source: `Test_Results\Logs-Harvested\GatewayGuard-Log-2026-08-19_21-48.txt`,
+334 lines, SANDY, ascii42.** Everything in this section is measured from it.
+
+### FT-231 -- the log is named at launch and its entries carry no date, so a multi-day session hides inside a file named days earlier
+
+**This is why the logs appeared to be missing, and it is the first thing to
+fix.**
+
+That one file covers **three calendar days**. It opens `Run Date: 2026-08-19
+21:48:21` and its last line is `10:12:01` on **2026-08-21**. **Measured: 314
+entries carry a time-only prefix and ZERO carry a date.** So read top to
+bottom the clock appears to run backwards:
+
+```
+[21:48:22]  SCREEN-25 WELCOME BACK              <- 2026-08-19
+[10:25:57]  Key 'S' -- START OVER               <- 2026-08-20
+[11:37:00]  Checklist command 'R'               <- 2026-08-20
+[07:43:43]  Look-back opened                    <- 2026-08-21
+[10:12:01]  Sleep prevention deactivated        <- 2026-08-21
+```
+
+**Three consequences, in order of cost:**
+
+1. **Today's field run is invisible to anyone looking for today's file.** Two
+   sessions were spent this morning searching for a log dated 2026-08-21. It
+   does not exist and never will -- the work is inside the 08-19 file. The
+   filename is stamped once, at launch.
+2. **The footer tells the user to email this file to
+   `support@gatewayguard.co`.** Support would receive a log whose timestamps
+   jump backwards twice, with nothing on any line explaining why.
+3. **Any duration read from it is wrong.** "18 minutes on the recovery key
+   screen" in section I is unsafe for exactly this reason -- across a day
+   boundary the arithmetic is meaningless.
+
+**Fix for ascii43:** put the date in every entry prefix, or at minimum write a
+day-change marker when the date rolls over. The cheapest correct fix is
+`yyyy-MM-dd HH:mm:ss` in `Write-Log`, which is one format string.
+
+### FT-232 -- an out-of-range item number is accepted and does nothing
+
+**Measured, 09:18:51.** There are 19 items. Bill typed **21**:
+
+```
+[09:18:51] [KEY] Checklist command '21' accepted at: Run-ConsoleMode
+[09:18:51] [SCREEN] SCREEN-76 ... 3 item(s) selected
+```
+
+Three selected before, three after. The command was **logged as accepted**,
+changed nothing, and told the user nothing. Compare the neighbouring lines,
+where an unrecognised key at least logs `key ignored`. A number outside the
+range is worse than an unknown key: it looks like it worked.
+
+### FT-218 IS CORRECTED -- Ctrl+C did NOT go through the exit confirmation
+
+**The triage above guessed wrong and the log refutes it.** Section H said the
+likely path was Ctrl+C reaching `Read-ValidKey`, opening `Confirm-Exit`, and
+the confirmation being answered. **Measured: the log contains no `[EXIT]`
+line, no `Confirm-Exit`, and no accepted exit key anywhere in 334 lines.** It
+ends:
+
+```
+[10:09:59] SCREEN-71 (shown as screen 33b) Rendered: YOUR CHOICE [1 of 1]: Edge Password Saving
+[10:12:01] [OK] Sleep prevention deactivated -- normal power management restored
+           (called from: PowerShell.Exiting engine event (last-resort cleanup))
+```
+
+**Only the last-resort cleanup handler ran.** The process was terminated; it
+did not exit through its own code path. So **FT-150 is false in the field** --
+every log opens by claiming *"Ctrl+C in Mark mode can no longer end the
+session"* and this log is the counter-example, written by the build that makes
+the claim.
+
+**This is the same shape as the ascii39 "crashes" in briefing section 2, with
+the opposite answer.** There, the logs proved Checkup exited through its own
+code and no crash occurred. Here the log proves the reverse: no code path ran,
+so something outside the program ended it. **The method that settled both was
+reading the log rather than reasoning about the source.**
+
+### What the log confirms outright
+
+| Finding | Measured evidence |
+|---|---|
+| **FT-204** | `07:58:57 'A' -> 19 item(s) selected`, then `07:59:02 'N' -> 0 item(s) selected`. **Nineteen selections destroyed five seconds after being made.** Also at 11:25:29-11:25:33, eight wiped. |
+| **FT-206** | **`I` ignored 7 times** on the checklist, across two sessions. `B` ignored twice. |
+| **FT-224** | **SCREEN-58 rendered 3 times.** The encryption question is re-asked on *every* `R`, not once -- 08:10, 09:23, 09:49, each after the decline was already `[NOTED]`. |
+| **FT-223** | `08:09:34 '12' accepted` then `08:09:35 key ignored (newline)`. Bill's Enter was discarded after every two-digit entry, five times running. |
+| **FT-219** | Item 6 sat from `08:17:51` to `08:40:24` -- **22 minutes on one screen** -- ending in `MANUAL REQUIRED -- registry is protected on this PC (Tamper Protection)`. |
+| **FT-203** | `10:08:11 [GOOD] Scheduled task created` for both reminders, exactly as FT-203 predicts: the log says GOOD for tasks that will never fire on battery. |
+
+### FT-217 -- the fix already exists in this file
+
+**Measured:** `[11:25:26] [INFO] Checklist columns: window 86, name 24
+(content needed 51), status 51 (content needed 94)`.
+
+**The console window was 86 columns and the checklist knew it.** It measures
+the window, works out that it needs 51 and 94, and truncates to fit.
+`Write-GGBox` does none of that -- which is how the same run painted a box
+**378 characters wide into an 86-column window.**
+
+So ascii43 does not need a new technique for FT-217. **It needs
+`Write-GGBox` to do what the checklist renderer already does eleven hundred
+lines away.**
+
+---
+
+**Next free FT number after this run: 233.**
