@@ -8446,7 +8446,14 @@ function Run-ConsoleMode {
                 # not selected. N at either screen returns here so the
                 # user can type 8 and select it.
                 $blItem = $Settings | Where-Object { $_.ID -eq 8 } | Select-Object -First 1
-                if ($blItem -and -not $blItem.Selected -and $blItem.Status -match "NOT Encrypted") {
+                # FT-224 (ascii43): this decline heads-up was shown on EVERY R
+                # press -- the run log caught SCREEN-58 rendered three times, each
+                # after the decline was already noted. Once the user chooses to
+                # continue without encryption, remember it for the session and do
+                # not re-ask. A GoBack does not set the flag: they have not
+                # decided to skip, so the reminder stands until they either select
+                # item 8 or acknowledge declining.
+                if ($blItem -and -not $blItem.Selected -and $blItem.Status -match "NOT Encrypted" -and -not $script:GGBitLockerDeclineAcknowledged) {
                     $blDecision = Show-BitLockerDeclineHeadsUp
                     if ($blDecision -eq "GoBack") {
                         Write-Host ""
@@ -8454,6 +8461,7 @@ function Run-ConsoleMode {
                         Pause-ForUser "  Press Enter or Space to return to the checklist..."
                         continue checklistLoop
                     }
+                    $script:GGBitLockerDeclineAcknowledged = $true
                 }
 
                 Clear-Host
