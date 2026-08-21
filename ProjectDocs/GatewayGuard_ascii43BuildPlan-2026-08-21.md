@@ -212,11 +212,59 @@ finished product.
 
 ---
 
-## 6. WHAT IS NEEDED FROM BILL BEFORE F4
+## 6. DECISIONS TAKEN, 2026-08-21
 
-**One answer, and only F4 waits on it.** Everything else starts now.
+### ascii44 WILL FOLLOW -- ascii43 is not the shipping build
 
-**The second drive -- which route?** Say so and F4 goes in with the rest.
-Recommendation: route 2, warn once on one screen.
+**Bill, 2026-08-21.** ascii43 is built in full, field run on SANDY, and a
+smaller ascii44 ships on 2026-09-01.
+
+**This is what makes the plan above safe.** F6 -- the wording and
+screen-splitting block, the largest and the one touching the most screens --
+can go into ascii43 rather than being gambled on or deferred, because the
+field run catches what it breaks. Without the follow-up build the correct
+plan was a much smaller ascii43.
+
+**It costs schedule.** The run and ascii44 need roughly four of the eleven
+remaining days, so ascii43 has to be finished and handed over with time to
+spare. Section 5's per-family commits are what make that recoverable if a
+family has to be dropped late.
+
+### FT-220 WAITS FOR THE GUIDE -- W-07 applied strictly
+
+**Bill, 2026-08-21: wait for the guide rewrite before FT-220.**
+
+Settings 9, 12, 13 and 17 ship in ascii43 **exactly as they are**. They state
+what will change and not why the current state is bad. **That is thin, and it
+is not wrong** -- nothing on those screens is incorrect.
+
+**This is the strictly correct reading of RULE W-07:** the guide settles
+substance, the screens follow it. Writing the explanations into the tool first
+would mean inventing substance in the screens and then making the guide agree
+with it afterwards, which is the drift W-07 exists to prevent, pointed inward.
+
+**So FT-220 moves out of F6 and becomes ascii44 scope**, gated on the guide
+rewrite from v9 landing. Commissioned from Cloud 2026-08-21 --
+`Cloud-GuideRewrite-2026-08-21.txt` names the four settings and exactly what
+the guide must answer for each.
+
+**FT-221 is NOT affected and stays in ascii43.** It is not a wording item: the
+tool already knows the user's password-manager answer and ignores it, and
+turning off browser password saving before a manager exists leaves them with
+no password store at all. That is a logic fix and needs no guide text.
+
+**FT-226 stays in ascii43 in part.** Setting 17's missing `GuideRef` is a
+data fix in the settings table and does not wait. Its *explanation* waits with
+FT-220.
+
+---
+
+## 7. STILL OPEN -- ONE ANSWER, AND ONLY F4 WAITS ON IT
+
+**The second drive -- which route?** Three are set out in the ascii42 triage
+section J. Recommendation: **route 2**, detect additional fixed drives and warn
+once on a single screen.
+
+Everything else starts now.
 
 **Next free FT number: 233.**
