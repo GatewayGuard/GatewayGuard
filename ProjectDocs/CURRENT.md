@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-21 12:58 ET -->
-<!-- Commit: c60ba99 -->
+<!-- Generated: 2026-08-21 13:19 ET -->
+<!-- Commit: c3a37c5 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-21 12:58 ET
-- **Commit at generation:** `c60ba99`
-- **That commit was made:** 2026-08-21 12:54 ET
-- **Its subject line:** All ten ascii42 logs read, and the gallery dies without a footer
+- **Generated:** 2026-08-21 13:19 ET
+- **Commit at generation:** `c3a37c5`
+- **That commit was made:** 2026-08-21 13:07 ET
+- **Its subject line:** The Cloud requests move into ProjectDocs -- sync replaces paste
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -54,6 +54,8 @@ All paths are relative to `ProjectDocs/`.
 | Screen numbering table | `GatewayGuard_ScreenNumberTable-2026-08-17.md` | 1 |
 | Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii42run1-2026-08-21.md` | 2 |
 | Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii42-2026-08-19.md` | 1 |
+| Marketing plan (current) | `GatewayGuard_MarketingPlan-2026-08-19-1753.md` | 1 |
+| Guide rewrite draft (current) | `GatewayGuard_GuideRewrite-Draft-2026-08-19-1753.md` | 2 |
 | Website source pack (19 guide pages) | `GatewayGuard_WebsiteSourcePack-2026-08-15-1751.md` | 0 |
 | Guide v9 source pack | `GatewayGuard_GuideV9-SourcePack-2026-08-15-1436.md` | 0 |
 | Marketing source pack | `GatewayGuard_MarketingSourcePack-2026-08-13-1427.md` | 0 |

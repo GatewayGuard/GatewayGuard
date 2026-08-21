@@ -15,19 +15,28 @@ values at the top: Generated, Commit at generation, That commit was made,
 and Its subject line. If they do not match what Claude Code last pushed,
 say so and stop -- your snapshot is stale.
 
-TASK: rewrite the guide from v9. This is now on the critical path for the
-next tool build, so I need it before 2026-09-01.
+CORRECTION FROM CLAUDE CODE, 2026-08-21: this file first asked you to
+"rewrite the guide from v9." That was wrong -- you ALREADY DID that rewrite.
+It is `ProjectDocs/GatewayGuard_GuideRewrite-Draft-2026-08-19-1753.md`,
+1,553 lines, and it already covers all four settings below, several with a
+"Why this matters" paragraph. Claude Code missed that it existed. Do not
+redo it.
 
-Read ProjectDocs/GatewayGuard_GuideV9-SourcePack-2026-08-15-1436.md for
-the current content. Do not work from memory of it.
+TASK, REVISED: VERIFY and, where thin, STRENGTHEN the four FT-220 settings
+in the existing draft. This is on the critical path for the next tool build.
 
-WHY IT IS URGENT NOW. The tool has four settings that tell the user what
-will change but never why their current state is bad. Claude Code logged
-that as FT-220 in
-ProjectDocs/GatewayGuard_FieldTestTriage-ascii42run1-2026-08-21.md.
-The rule in this project is that the guide settles substance and the
-screens follow it -- so the tool cannot write those explanations until the
-guide says them. The build is waiting on you for this one item.
+Work from `GatewayGuard_GuideRewrite-Draft-2026-08-19-1753.md` (the draft),
+checking it against `GatewayGuard_GuideV9-SourcePack-2026-08-15-1436.md`
+(the source) only where the draft looks incomplete. Do not work from memory.
+
+WHY THIS IS THE BLOCKING ITEM. The tool has four settings that tell the
+user WHAT will change but never WHY their current state is bad. Claude Code
+logged that as FT-220 in
+`GatewayGuard_FieldTestTriage-ascii42run1-2026-08-21.md`. The rule here is
+that the guide settles substance and the screens follow it, so the tool
+cannot write those explanations until the guide says them. The draft
+mostly does -- this task is to confirm each of the four is complete, not to
+start over.
 
 THE FOUR THAT ARE BLOCKING. For each, the guide must answer plainly, for
 a non-technical American senior:

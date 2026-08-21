@@ -96,6 +96,8 @@ $wanted = @(
     # the connector scope entirely -- so Cloud could read the RULE governing
     # website copy (WebSite\Rules\website-copy.md, in scope) and not one line of
     # the copy itself. Every website review it has given was made blind.
+    @{ Label = 'Marketing plan (current)';    Pattern = 'GatewayGuard_MarketingPlan-*.md' },
+    @{ Label = 'Guide rewrite draft (current)'; Pattern = 'GatewayGuard_GuideRewrite-Draft-*.md' },
     @{ Label = 'Website source pack (19 guide pages)'; Pattern = 'GatewayGuard_WebsiteSourcePack-*.md' },
     # Guide pack: the .docx master is in Masters\, out of scope, and Cloud has
     # never surfaced a .docx path even when one was in scope. Measured 2026-08-13.
