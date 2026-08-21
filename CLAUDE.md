@@ -6,7 +6,7 @@
 - **Product:** GatewayGuard — Windows 11 security hardening tool for non-technical home users
 - **Developer:** Solo (William F. Burns III / GatewayGuard LLC)
 - **Target launch:** September 1, 2026
-- **Current build:** ascii42 (8,921 non-blank lines / 9,301 total) — always confirm current build number before any edit session
+- **Current build:** ascii43 (9,301 total lines — non-blank/line counts refreshed at build completion; base is a copy of ascii42 with the build-ID bumped) — always confirm current build number before any edit session
   - **Line-count convention:** the quoted figure is the `Measure-Object -Line`
     **non-blank** number, per Playbook Appendix A. The old "ascii36 (6,134
     lines)" entry used the total-lines figure instead — two different methods
