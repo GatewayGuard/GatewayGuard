@@ -1,5 +1,7 @@
-<!-- Dated: 2026-08-21 17:32 ET -->
+<!-- Dated: 2026-08-21 17:50 ET -->
 <!-- Editor: Claude Code (CGDELL) -->
+<!-- Update 2026-08-21 17:50: F4 second drive decided -- route 3 (cover the
+     other drives). READ-FIRST point 2 and the F4 section updated. -->
 # ascii43 Field-Run Instructions -- what to skip, what to look for
 
 - **Document Name:** GatewayGuard_FieldChecklist-ascii43
@@ -17,10 +19,9 @@
    also the scope confirmation: if anything in "what to look for" is not what
    you expect ascii43 to do, say so before I build, not after.
 
-2. **One decision still open, and it changes one section below.** The **second
-   drive (F4)** -- route 2 (detect D: and warn once on a screen) is the
-   recommendation and is not yet confirmed. If you approve route 2, look for the
-   warn screen (F4 below). If you do not, that section does not apply.
+2. **The one decision that was open is now made.** The **second drive (F4)** is
+   **route 3 -- Checkup covers the other drives** (Bill, 2026-08-21). See F4
+   below for what to look for. Nothing else about this build is open.
 
 ---
 
@@ -109,14 +110,23 @@ The build is six families. Test them roughly in this order.
   *(FT-235, the part that ships.)*
 - **Absent registry keys read as INFO, not ERROR** in your log. *(FT-188.)*
 
-### F4 -- THE SECOND DRIVE  *(ONLY if you approved route 2 -- otherwise skip)*
+### F4 -- THE SECOND DRIVE  *(route 3 -- Checkup COVERS the other drives)*
 
-- **A screen names your second drive (D:) and says Checkup does not cover it,**
-  with what to do about it. SANDY has D:, so this is the machine that shows it.
-  *(FT-230 / FT-167 / FT-178 -- you have raised the invisible second drive four
-  times across four builds.)*
-- **If you do not see this screen, tell me** -- it means route 2 was not built,
-  and I need to know the route decision landed differently.
+On SANDY (which has the 931 GB `D:`), look for all of these:
+
+- **A FULL scan that covers all your drives, D: included.** This is **not** the
+  pre-boot "offline" scan -- that one can only do the system drive. The screen
+  should say **"full scan of all your drives,"** and warn you it takes a while.
+  Confirm it actually runs against `D:`. *(FT-230.)*
+- **Encryption status reported for D: too,** not only `C:`. *(FT-167 / FT-178.)*
+- **The encryption walkthrough names D:** where it applies.
+- **A WinRE guard:** if the offline scan is unavailable (WinRE turned off), the
+  tool should say so, not silently do nothing. *(FT-234.)*
+
+**Note:** the full-scan behaviour is measured on SANDY **during the build**,
+before it ships -- so by the time you run ascii43 it is already verified. If any
+of the four above is missing, or the full scan does not touch `D:`, that is a
+real finding.
 
 ### F5 -- FLOW AND SEQUENCING
 

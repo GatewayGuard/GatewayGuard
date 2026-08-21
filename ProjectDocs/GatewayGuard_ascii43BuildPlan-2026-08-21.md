@@ -1,10 +1,13 @@
-<!-- Dated: 2026-08-21 12:05 ET -->
+<!-- Dated: 2026-08-21 17:50 ET -->
 <!-- Editor: Claude Code (CGDELL) -->
 # ascii43 Build Plan -- everything outstanding from ascii39 on
 
 - **Document Name:** GatewayGuard_ascii43BuildPlan
-- **Last Modified:** 2026-08-21 12:05 ET
+- **Last Modified:** 2026-08-21 17:50 ET
 - **Last Editor:** Claude Code (CGDELL)
+- **Update 2026-08-21 17:50:** F4 route **decided by Bill -- route 3, cover the
+  other drives.** Section 3 F4 and section 7 updated with the decomposition and
+  the measured scan constraint. Next-free-FT corrected 233 -> 236.
 - **Asked for by Bill, 2026-08-21:** *"I want the next build to incorporate all
   the outstanding test results from ascii39 on."*
 - **Base:** ascii42 -- `Tool\W11-SecurityHardening-v3-ascii42-2026-08-19-1830.ps1`,
@@ -121,17 +124,35 @@ the ascii43 run itself benefits.
 
 ### F4 -- THE SECOND DRIVE
 
-*Closes: FT-167, FT-178, FT-230, ascii41 finding 16.*
+*Closes: FT-167, FT-178, FT-230, FT-234, ascii41 finding 16.*
 
-**Blocked on one decision from Bill, and only one.** Three routes are set out
-in the ascii42 triage section J; the recommendation there is **route 2** --
-detect additional fixed drives and warn once on a single screen, naming what
-Checkup does and does not cover.
+**DECIDED, Bill 2026-08-21: route 3 -- cover the other drives.** Not route 2's
+warn-once. The widest of the six families and the one that must be field-run on
+SANDY before it is trusted.
 
-The research half of ascii41 finding 16 -- whether Defender's offline scan can
-be pointed at other volumes -- **has never been started** and must be settled
-by measurement before any screen text claims anything. Gate 24 applies: a
-scan-scope claim is a claim about an external program.
+**"Cover them" splits across the three surfaces that today see only `C:`:**
+
+| Surface | Build | Basis |
+|---|---|---|
+| **AV coverage** (FT-230) | Keep the offline scan for the boot/rootkit job on `C:`; **add `Start-MpScan -ScanType FullScan`** (covers all mounted fixed drives, `D:` included) when a second fixed drive is detected | see constraint below |
+| **Encryption status** (FT-167/178) | Report **each** fixed drive's encryption state, not only `C:` | the build already enumerates every disk since FT-178 |
+| **Encryption walkthrough (Home)** | Extend the manual-steps screens to name `D:` as well | wording on existing screens |
+| **FT-234** | If WinRE is disabled the offline scan silently does nothing -- guard it here | same class as the ScanType-4 defect (FT-162) |
+
+**The measured constraint that shaped this.** *measured on CGDELL 2026-08-21:*
+`Start-MpWDOScan` (the offline scan Checkup runs today) has **no scope, path or
+drive parameter** -- it cannot be aimed at a volume. `Start-MpScan` **does**
+take `-ScanType {FullScan | QuickScan | CustomScan}` and `-ScanPath`. So D:
+coverage comes from a **full online scan, not the pre-boot offline scan.** That
+is the correct tool for `D:` regardless: `D:` is a **data drive, not bootable**,
+so the offline scan's rootkit job never applied to it. **The screen wording
+must say "full scan of all your drives," not "offline scan."**
+
+**Gate 24 prerequisite, and it is a hard gate.** The behavioural claim that a
+full scan actually completes and covers `D:` **must be measured on SANDY**
+(which has the 931 GB `D:`; CGDELL has no large second drive) **before any
+screen text claims coverage.** The cmdlet surface is measured; the behaviour is
+not yet. A full scan is also slow -- the screen must set that expectation.
 
 ### F5 -- FLOW AND SEQUENCING
 
@@ -259,12 +280,15 @@ FT-220.
 
 ---
 
-## 7. STILL OPEN -- ONE ANSWER, AND ONLY F4 WAITS ON IT
+## 7. NOTHING BLOCKS THE BUILD -- F4's DECISION IS MADE
 
-**The second drive -- which route?** Three are set out in the ascii42 triage
-section J. Recommendation: **route 2**, detect additional fixed drives and warn
-once on a single screen.
+**The second drive is decided: route 3, cover the other drives** (Bill,
+2026-08-21). See section 3 F4 for the decomposition. **One gate-24 prerequisite
+remains inside F4, not blocking the other five families:** the full-scan
+behaviour must be measured on SANDY before F4's screen text claims coverage.
 
 Everything else starts now.
 
-**Next free FT number: 233.**
+**Next free FT number: 236.** *(Corrected from 233 -- FT-233 and FT-234 were
+assigned in the offline-scan research and FT-235 in the ascii42 triage
+section L.)*
