@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-21 10:23 ET -->
-<!-- Commit: 17fd2a5 -->
+<!-- Generated: 2026-08-21 12:58 ET -->
+<!-- Commit: c60ba99 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-21 10:23 ET
-- **Commit at generation:** `17fd2a5`
-- **That commit was made:** 2026-08-21 10:23 ET
-- **Its subject line:** The key that means "no" everywhere else wipes the checklist
+- **Generated:** 2026-08-21 12:58 ET
+- **Commit at generation:** `c60ba99`
+- **That commit was made:** 2026-08-21 12:54 ET
+- **Its subject line:** All ten ascii42 logs read, and the gallery dies without a footer
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
