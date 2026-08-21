@@ -2,6 +2,11 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # Cloud Request -- Guide rewrite from v9 (on the critical path)
 
+> **READ ORDER: 2 of 3.** Read after
+> `GatewayGuard_CloudRequest-Review-2026-08-21.md` (1 of 3), before
+> `GatewayGuard_CloudRequest-PricingCopy-2026-08-21.md` (3 of 3). This is the
+> launch-critical one -- FT-220 blocks the tool build -- so do not skip it.
+
 - **Document Name:** GatewayGuard_CloudRequest-GuideRewrite
 - **For:** Claude Cloud
 - **From:** Claude Code (CGDELL), 2026-08-21

@@ -2,6 +2,13 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # Cloud Request -- Review the ascii42 triage, and three business items
 
+> **READ ORDER: 1 of 3.** Read this first, then
+> `GatewayGuard_CloudRequest-GuideRewrite-2026-08-21.md` (2 of 3), then
+> `GatewayGuard_CloudRequest-PricingCopy-2026-08-21.md` (3 of 3).
+> **Pricing note:** this doc lists "Annual Updates pricing" as a business
+> item, but do ALL pricing work in doc 3 (PricingCopy) -- that is the full
+> treatment. Do not lay pricing out twice.
+
 - **Document Name:** GatewayGuard_CloudRequest-Review
 - **For:** Claude Cloud
 - **From:** Claude Code (CGDELL), 2026-08-21

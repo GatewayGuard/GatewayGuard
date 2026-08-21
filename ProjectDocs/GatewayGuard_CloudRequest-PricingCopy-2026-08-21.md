@@ -2,6 +2,13 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # Cloud Request -- Rewrite the pricing / renewal copy across the site
 
+> **READ ORDER: 3 of 3.** Read after
+> `GatewayGuard_CloudRequest-Review-2026-08-21.md` (1 of 3) and
+> `GatewayGuard_CloudRequest-GuideRewrite-2026-08-21.md` (2 of 3). All pricing
+> work lives HERE -- doc 1 only points to it. This one may wait on Bill's
+> price decisions (section 5); draft the structure, leave the numbers as
+> tokens.
+
 - **Document Name:** GatewayGuard_CloudRequest-PricingCopy
 - **For:** Claude Cloud
 - **From:** Claude Code (CGDELL), 2026-08-21, on Bill's instruction
