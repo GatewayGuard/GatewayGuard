@@ -28,6 +28,104 @@ This is the shared memory between all Claude instances.
 ---
 ---
 
+## Session: 2026-08-22 13:16 [Claude Code -- CGDELL] -- CLOUD'S HANDOFF WAS FOUR-FIFTHS ALREADY DONE; NINE DOCUMENTS MADE NAMEABLE
+
+**No build change. ascii43 untouched.**
+
+### WHAT CLOUD ASKED FOR, AND WHAT WAS ACTUALLY OUTSTANDING
+
+Cloud handed over five items "before the next session is useful." **Four were
+already done and committed** in the session that ended at 12:31 -- Cloud was
+reading a snapshot taken before it. Checked, not assumed:
+
+| Cloud's item | State when checked |
+|---|---|
+| Commit the three 08-22 files | 2 of 3 committed (`97b3383`, `b1b057c`); working tree clean against HEAD for `ProjectDocs\`. **The third does not exist** -- see below |
+| Add `CloudRequest-*`, `ascii43BuildPlan-*`, `GuideFT220-Sections-*` patterns | **Already present**, added 2026-08-22 with their own comment block |
+| Fix the Field test plan row | **Already fixed** -- the row was REMOVED, not repointed, with a comment saying the pattern only ever resolved to the ascii40 plan |
+| Close guide gaps G1-G6 | **Already closed** -- `GatewayGuard_GuideGapFill-fromV9-2026-08-22.md`, 524 lines, committed 12:24 |
+| Carry the FT-226 correction | **Already filed**, in this log, with the six-setting class |
+| Add `PricingCopy-*` pattern | **Genuinely outstanding.** Done today |
+
+**`GatewayGuard_PricingCopy-2026-08-22-1000.md` IS NOT ON DISK AND NEVER WAS.**
+Searched the whole tree and all of git history; the only pricing-copy file is
+`GatewayGuard_PricingCopy-Draft-2026-08-21-1445.md`, Cloud-authored 08-21
+14:45, committed in `b1b057c` whose subject reads *"add pricing copy draft"*.
+Either Cloud means that file under a remembered-wrong name, or an 08-22 version
+was produced in chat and never downloaded. **Not resolved -- it needs Bill.**
+The pattern added today matches both forms, so no rework either way.
+
+### NINE DOCUMENTS WERE IN SCOPE AND UNNAMEABLE, NOT ONE
+
+Cloud reported one missing pattern. Auditing every `.md` in `ProjectDocs\`
+against `CURRENT.md` found **eight more** in the same state: tracked, pushed,
+synced, and impossible for Cloud to open because **Cloud cannot glob**. All
+nine now have rows. `Update-Current.ps1` resolves **36 documents**, 0 missing.
+
+Pricing copy, annual price decision, pricing reconciliation, guide gap-fill,
+marketing plan amendment, offline scan research, AV scan coverage test,
+scheduled task defects (FT-203), ascii41 findings fixed-or-not.
+
+**The sharpest one: the gap-fill.** The file that closes Cloud's own open item
+G1-G6 was committed and synced and Cloud could not name it -- so Cloud asked
+for the work again. That is this script's whole failure mode, landing on the
+document written to answer the question being re-asked.
+
+**A row costs nothing.** The file is in the payload either way; the row only
+makes it nameable. So the bar for adding one is "is it live", not "did someone
+ask".
+
+### A SORTING HAZARD, FOUND WHILE ADDING THE PRICING ROW
+
+`Update-Current.ps1` takes the **last name in an ascending Name sort**, which
+means "newest" **only while every name in the family ends in its date**. The
+pricing family breaks that: `...PricingCopy-Draft-2026-08-21-1445.md` sorts
+**after** a plain `...PricingCopy-2026-08-22-1000.md`, because `D` > `2`. A
+newer file would silently lose to an older one and nothing would say so.
+Written into the file beside the pattern. **Keep the `-Draft-` token or drop it
+from both; never mix the two forms in one family.**
+
+### gg_edit REWRITES ANY .ps1 TO CRLF + BOM. THAT IS WRONG FOR Tool2 SCRIPTS
+
+`Tool2\Update-Current.ps1` is **LF, no BOM** -- verified by hexdump of the
+committed blob (`23 20 55 70` at offset 0, `0a` line endings). `gg_edit` wrote
+it back **CRLF with a UTF-8 BOM**, turning a 39-line change into a 632-line
+whole-file diff. Correct for the build `.ps1`, which is CRLF+BOM; wrong for
+every helper script in `Tool2\`.
+
+Restored to LF/no-BOM and re-parsed: **0 errors**, diff now **39 insertions,
+1 deletion**.
+
+**A caution about the check I used to catch it.** My first test was
+`git show HEAD:file | grep -c $'\r'`, which returned 297 -- one per line -- and
+I concluded from it that the original was already CRLF. **That was wrong**, and
+the hexdump proved it. A grep count agreed with the wrong answer; only reading
+the bytes settled it. *Am I counting the thing, or a proxy for it?* -- the third
+question of THE FIRST EXPLANATION THAT FITS IS NOT THE ANSWER, earning itself
+again.
+
+**What to do about it:** `gg_edit` is the right tool for the build file and
+should keep writing CRLF+BOM there. For a `Tool2` script, either check the
+encoding back afterwards as done here, or teach `gg_edit` to preserve what it
+found. Not built today; recorded so the next session does not lose the same
+twenty minutes.
+
+### STILL OPEN, AND WAITING ON MEASUREMENT OR ON BILL
+
+Cloud listed these and none moved today:
+
+- **The eleven *VERIFY* claims** in the guide draft, section 0.4. **None has
+  been measured on live Windows 11.** Two can cost a reader their files: the
+  **BitLocker recovery-key** claim and the **sleep-versus-hibernate** claim.
+  SANDY and Sandy3 cover both the local-account and Microsoft-account cases.
+- **The W-07 diagnostic-data collision.**
+- **Multi-year terms**, and the flat-versus-deepening reading of "10% per year".
+- **Refund policy -- still the only store blocker.**
+
+---
+
+---
+
 ## Session: 2026-08-21 16:40 to 2026-08-22 12:31 [Claude Code -- CGDELL] -- ascii43 STARTED AND HALF BUILT, CLOUD'S FIVE ITEMS ACTIONED
 
 **Build: ascii42 -> ascii43 (IN PROGRESS).**

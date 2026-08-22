@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-22 13:10 ET -->
-<!-- Commit: d635b4e -->
+<!-- Generated: 2026-08-22 13:27 ET -->
+<!-- Commit: c584b18 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-22 13:10 ET
-- **Commit at generation:** `d635b4e`
-- **That commit was made:** 2026-08-22 13:02 ET
-- **Its subject line:** Tool split: Tool\ keeps only the current build; everything else -> Tool2\ (out of scope)
+- **Generated:** 2026-08-22 13:27 ET
+- **Commit at generation:** `c584b18`
+- **That commit was made:** 2026-08-22 13:10 ET
+- **Its subject line:** Bring the briefing, session log and CURRENT.md up to date for the next session
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -64,6 +64,15 @@ All paths are relative to `ProjectDocs/`.
 | Website source pack (19 guide pages) | `GatewayGuard_WebsiteSourcePack-2026-08-15-1751.md` | 0 |
 | Guide v9 source pack | `GatewayGuard_GuideV9-SourcePack-2026-08-15-1436.md` | 0 |
 | Marketing source pack | `GatewayGuard_MarketingSourcePack-2026-08-13-1427.md` | 0 |
+| Pricing copy (website) | `GatewayGuard_PricingCopy-Draft-2026-08-21-1445.md` | 0 |
+| Annual price decision | `GatewayGuard_PriceDecision-Annual-2026-08-21-1445.md` | 0 |
+| Pricing reconciliation (one-time packs) | `PricingReconciliation-2026-07-16.md` | 0 |
+| Guide gap-fill (G1-G6, v9 source) | `GatewayGuard_GuideGapFill-fromV9-2026-08-22.md` | 0 |
+| Marketing plan amendment | `GatewayGuard_MarketingPlanAmendment-2026-08-22-1000.md` | 1 |
+| Offline scan research | `GatewayGuard_OfflineScanResearch-2026-08-21.md` | 0 |
+| AV scan coverage test | `GatewayGuard_AVScanCoverageTest-2026-08-21.md` | 0 |
+| Scheduled task defects (FT-203) | `GatewayGuard_ScheduledTaskDefects-2026-08-20.md` | 0 |
+| ascii41 findings -- fixed or not | `GatewayGuard_ascii41Findings-FixedOrNot-2026-08-19.md` | 0 |
 
 Also read `CLAUDE.md`, at the repository root. That name never changes.
 
@@ -74,7 +83,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-08-21 16:40 to 2026-08-22 12:31 [Claude Code -- CGDELL] -- ascii43 STARTED AND HALF BUILT, CLOUD'S FIVE ITEMS ACTIONED
+## Session: 2026-08-22 13:16 [Claude Code -- CGDELL] -- CLOUD'S HANDOFF WAS FOUR-FIFTHS ALREADY DONE; NINE DOCUMENTS MADE NAMEABLE
 ```
 
 **If it is not in your copy of the session log, you are reading an old

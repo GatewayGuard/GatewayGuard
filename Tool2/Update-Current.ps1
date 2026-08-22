@@ -116,7 +116,45 @@ $wanted = @(
     @{ Label = 'Guide v9 source pack';        Pattern = 'GatewayGuard_GuideV9-SourcePack-*.md' },
     # Marketing pack: Marketing\ and Presentation\ are out of scope on purpose --
     # adding them would spend capacity on 9.3 MB of saved-webpage junk.
-    @{ Label = 'Marketing source pack';       Pattern = 'GatewayGuard_MarketingSourcePack-*.md' }
+    @{ Label = 'Marketing source pack';       Pattern = 'GatewayGuard_MarketingSourcePack-*.md' },
+    # --- Added 2026-08-22. NINE DOCUMENTS THAT WERE IN SCOPE AND UNNAMED ---
+    # Cloud reported PricingCopy invisible and asked for one pattern. Checking
+    # the whole folder against this list found eight more live documents in the
+    # same state: tracked, pushed, synced, and impossible for Cloud to open
+    # because it cannot glob. Adding a row costs nothing -- the file is already
+    # in the payload either way; the row only makes it nameable.
+    #
+    # PRICING. The copy is quoted from two sources, so both are named with it.
+    # A price quoted without its source is the unlabelled-claim failure applied
+    # to money.
+    #
+    # SORTING HAZARD, read before adding to this family: the resolver below
+    # takes the LAST name in an ascending Name sort, which only means "newest"
+    # while every name in the family ends in its date. It does not here --
+    # 'GatewayGuard_PricingCopy-Draft-2026-08-21-1445.md' sorts AFTER a plain
+    # 'GatewayGuard_PricingCopy-2026-08-22-1000.md', because 'D' > '2'. A newer
+    # plain-dated file would lose to an older -Draft- one and nothing would say
+    # so. Keep the -Draft- token or drop it from both; never mix the two forms.
+    @{ Label = 'Pricing copy (website)';      Pattern = 'GatewayGuard_PricingCopy-*.md' },
+    @{ Label = 'Annual price decision';       Pattern = 'GatewayGuard_PriceDecision-Annual-*.md' },
+    @{ Label = 'Pricing reconciliation (one-time packs)'; Pattern = 'PricingReconciliation-*.md' },
+    # The v9 extraction that CLOSES retrieval gaps G1-G6 in the guide rewrite
+    # draft. Built and committed 2026-08-22 12:24 -- and unnamed here, so Cloud
+    # could not open the one file that answers its own open item.
+    @{ Label = 'Guide gap-fill (G1-G6, v9 source)'; Pattern = 'GatewayGuard_GuideGapFill-*.md' },
+    @{ Label = 'Marketing plan amendment';    Pattern = 'GatewayGuard_MarketingPlanAmendment-*.md' },
+    # The two measurements that unblock F4, the second drive: Start-MpWDOScan
+    # has no scope parameter, so D: coverage needs a full ONLINE scan and the
+    # screen wording must say so. Gate 24 blocks the text until this is read.
+    @{ Label = 'Offline scan research';       Pattern = 'GatewayGuard_OfflineScanResearch-*.md' },
+    @{ Label = 'AV scan coverage test';       Pattern = 'GatewayGuard_AVScanCoverageTest-*.md' },
+    # FT-203: both scheduled reminders carry DisallowStartIfOnBatteries, so on
+    # a laptop on battery they never run -- while the log writes [GOOD]. Carries
+    # one product decision for Bill.
+    @{ Label = 'Scheduled task defects (FT-203)'; Pattern = 'GatewayGuard_ScheduledTaskDefects-*.md' },
+    # Which five of the ascii41 run's 38 findings ascii42 actually fixed, and
+    # why so few. Named in the briefing; unopenable by Cloud until now.
+    @{ Label = 'ascii41 findings -- fixed or not'; Pattern = 'GatewayGuard_ascii41Findings-*.md' }
 )
 
 # Resolve every pattern BEFORE writing anything. Newest by the DATE IN THE
