@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-22 13:40 ET -->
-<!-- Commit: d50284f -->
+<!-- Generated: 2026-08-22 14:02 ET -->
+<!-- Commit: 4574688 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-22 13:40 ET
-- **Commit at generation:** `d50284f`
-- **That commit was made:** 2026-08-22 13:27 ET
-- **Its subject line:** Name nine in-scope documents Cloud could not glob; session log
+- **Generated:** 2026-08-22 14:02 ET
+- **Commit at generation:** `4574688`
+- **That commit was made:** 2026-08-22 13:41 ET
+- **Its subject line:** Field checklist: FT-226 withdrawn -- it does not ship in ascii43
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -64,7 +64,7 @@ All paths are relative to `ProjectDocs/`.
 | Website source pack (19 guide pages) | `GatewayGuard_WebsiteSourcePack-2026-08-15-1751.md` | 0 |
 | Guide v9 source pack | `GatewayGuard_GuideV9-SourcePack-2026-08-15-1436.md` | 0 |
 | Marketing source pack | `GatewayGuard_MarketingSourcePack-2026-08-13-1427.md` | 0 |
-| Pricing copy (website) | `GatewayGuard_PricingCopy-Draft-2026-08-21-1445.md` | 0 |
+| Pricing copy (website) | `GatewayGuard_PricingCopy-Draft-2026-08-21-1445.md` | 1 |
 | Annual price decision | `GatewayGuard_PriceDecision-Annual-2026-08-21-1445.md` | 0 |
 | Pricing reconciliation (one-time packs) | `PricingReconciliation-2026-07-16.md` | 0 |
 | Guide gap-fill (G1-G6, v9 source) | `GatewayGuard_GuideGapFill-fromV9-2026-08-22.md` | 0 |
