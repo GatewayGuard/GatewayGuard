@@ -99,11 +99,10 @@ Stated so each is a decision, not a gap.
 > | **[TESTABLE]** | The mechanism is in the build. A failure here is a real finding |
 > | **[PARTIAL]** | Built in one place, not everywhere the bullet claims. The bullet says where |
 > | **[NOT BUILT -- SKIP]** | Not written yet. It WILL fail. **Do not report it** |
-> | **[WRONG AS WRITTEN]** | The bullet contradicts a decision you already made. Read the correction |
+> | **[FT-236]** | The bullet contradicts a decision you already made. A defect in THIS document, not a build fact -- so it carries an FT number and gets fixed once, instead of being re-tagged every build. Cloud's point, 2026-08-22 |
 >
-> **Count, by bullet: 11 testable, 1 partial, 8 not built, 1 wrong as
-> written, 1 withdrawn -- 22 in all. Four of the eight not-built are the whole
-> of F4.**
+> **Count, by bullet: 11 testable, 1 partial, 8 not built, 1 defect (FT-236),
+> 1 withdrawn -- 22 in all. Four of the eight not-built are the whole of F4.**
 > **Families F1, F2, F3 and F5 are worth a run now. F4 is entirely absent.**
 >
 > Measured against `Tool\W11-SecurityHardening-v3-ascii43-2026-08-21-1752.ps1`,
@@ -114,7 +113,7 @@ The build is six families. Test them roughly in this order.
 
 ### F1 -- THE KEYBOARD CONTRACT  *(the biggest behaviour change -- test it hard)*
 
-- **[WRONG AS WRITTEN]** ~~**B is the ONLY "Back" key, everywhere.** `N` must
+- **[FT-236]** ~~**B is the ONLY "Back" key, everywhere.** `N` must
   **never** take you back.~~ **This bullet contradicts your own decision.** You
   ruled that **`N = go back` STAYS** as the natural answer in a real Y/N
   question; FT-225 was then scoped down to **the one genuinely inconsistent

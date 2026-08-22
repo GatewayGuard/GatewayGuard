@@ -6,7 +6,9 @@
 - **Source:** GatewayGuard_GuideV9-SourcePack-2026-08-15-1436.md
 - **Nature:** BYTE-FAITHFUL EXTRACTION, not a rewrite. Each block is the raw v9 text for that gap, verbatim, with its source line range. Apply the plain-language / RULE W-07 / audience pass when weaving it in -- Claude Code extracts, Cloud writes the substance.
 - **G2 note:** the Windows Hello section is already finished in the draft; this is the FULL v9 Step 4 for reference -- do not overwrite the finished Hello copy.
-- **G4 note:** two v9 sections sit between Phase 5 and the Appendix -- Quick decision tree (src 713-737) and When to call for help (src 738-746). Not requested in G4; say if you want them too.
+- **G4 note -- CORRECTED 2026-08-22 14:35. My original note said neither of these was requested. That was wrong about the first one, and I read the v9 line range instead of the draft's own G4 scope.**
+  - **Quick decision tree (src 713-737): ALREADY IN SCOPE. Carry it, no decision needed.** The draft asks for it twice in its own words -- section 0.2's G4 row reads *"Phase 5 -- hardening, habits, performance hygiene, decision tree"*, and the in-place G4 marker lists *"The quick decision tree for when something looks wrong"*.
+  - **When to call for help (src 738-746): NOT a duplicate, but do not carry it as a section.** The draft already has a `Getting help` back-matter section. Measured overlap: the draft covers ransomware/do-not-pay, the option not to do Phase 3 alone, who to call, and the fake-warning scam. **Four things in v9 are NOT in it** -- active-compromise indicators (unfamiliar sign-ins, sent mail you did not send, forwarding rules, money missing), the *50+ items or erratic behaviour* escalation threshold, employer/work accounts -> notify their IT, and harassment/stalking/domestic-abuse -> named professional resources. **Recommendation: fold those four into the existing `Getting help` section, in second person.** The v9 text carries **4 occurrences of "the user"** in 34 lines and is written for a technician working on somebody else's PC -- the exact voice section 0.1 removed.
 
 ---
 

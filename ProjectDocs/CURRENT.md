@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-22 14:12 ET -->
-<!-- Commit: 81b257f -->
+<!-- Generated: 2026-08-22 14:39 ET -->
+<!-- Commit: a196eac -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-22 14:12 ET
-- **Commit at generation:** `81b257f`
-- **That commit was made:** 2026-08-22 14:09 ET
-- **Its subject line:** Restamp Last Modified on the briefing and the session log
+- **Generated:** 2026-08-22 14:39 ET
+- **Commit at generation:** `a196eac`
+- **That commit was made:** 2026-08-22 14:13 ET
+- **Its subject line:** Pricing copy 08-22: name it properly, and fix the sort that hid it
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
