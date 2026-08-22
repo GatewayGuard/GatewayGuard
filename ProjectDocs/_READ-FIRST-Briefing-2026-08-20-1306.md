@@ -1,7 +1,7 @@
 <!-- Dated: 2026-08-20 13:06 ET -->
 # READ FIRST -- Session Briefing
 **Document Name:** _READ-FIRST-Briefing
-**Last Modified:** 2026-08-20 13:06 ET
+**Last Modified:** 2026-08-22 14:10 ET
 **Last Editor:** Claude Code (CGDELL)
 **Purpose:** Read this before anything else at the start of every session.
 **Supersedes:** `_READ-FIRST-Briefing-2026-08-14-0041.md`, which by this
@@ -10,6 +10,12 @@ The tree was on **ascii42**. Three builds stale, on the first two lines any new
 session reads.
 
 **Change History Log:**
+- 2026-08-22 14:10: **`Last Modified` restamped -- it said 2026-08-20 13:06
+  while section 1's status block was dated 2026-08-22 13:05.** Cloud caught
+  it. The `Dated:` line and the filename stay at 2026-08-20 13:06 on purpose:
+  this is a cumulative document, so those two record when it was created and
+  `Last Modified` records the edit. Also repointed the ascii43 field checklist
+  to its 2026-08-22 filename.
 - 2026-08-20 13:06: **`Run-DocCheck.bat` is built.** It was open item 11 and
   the "still a wish" line in section 5; both now say what is true. The gate
   ran on this document and found the commit count one behind the repository

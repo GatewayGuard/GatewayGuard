@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-22 14:02 ET -->
-<!-- Commit: 4574688 -->
+<!-- Generated: 2026-08-22 14:09 ET -->
+<!-- Commit: a771384 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-22 14:02 ET
-- **Commit at generation:** `4574688`
-- **That commit was made:** 2026-08-22 13:41 ET
-- **Its subject line:** Field checklist: FT-226 withdrawn -- it does not ship in ascii43
+- **Generated:** 2026-08-22 14:09 ET
+- **Commit at generation:** `a771384`
+- **That commit was made:** 2026-08-22 14:02 ET
+- **Its subject line:** Field checklist Part B: mark every bullet testable / not built
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**

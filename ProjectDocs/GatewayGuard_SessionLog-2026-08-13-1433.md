@@ -2,7 +2,11 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-08-13 14:33 EDT
+- **Last Modified:** 2026-08-22 14:10 ET
+- *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
+  is append-only, so they record when it was opened, not when it last grew.
+  `Last Modified` had been left at the creation date through nine days of
+  entries; Cloud caught it 2026-08-22.)*
 - **Status:** Append-only running log â€” newest session at top
 - **Purpose:** Continuous record of all sessions (Claude.ai and Claude
   Code) so any Claude instance can resume with full context.
