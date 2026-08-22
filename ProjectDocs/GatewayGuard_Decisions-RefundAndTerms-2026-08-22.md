@@ -110,9 +110,14 @@ nothing.
 
 ### THE SETTING
 
-Gumroad offers **none / 7 / 14 / 30 / 183 days**, and it is **account-wide** --
-per-product refund policies were sunset 2025-03-31. **One policy covers the
-Guide, Checkup and the annual updates.** Set it to **30**.
+Gumroad offers **none / 7 / 14 / 30 / 183 days**. Set it to **30**.
+
+**Treat it as account-wide.** *The sources disagree and this is not settled:*
+one says per-product policies were sunset 2025-03-31, another describes a
+per-product toggle on the product edit page. **It does not matter here** -- the
+same 30 days is right for the Guide, Checkup and the annual updates, so the
+account-wide setting covers all three whichever is true. Recorded rather than
+resolved, because a claim with two sources against each other is not a fact.
 
 **Why not the others:**
 
