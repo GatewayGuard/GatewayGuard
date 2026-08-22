@@ -137,6 +137,11 @@ $wanted = @(
     # so. Keep the -Draft- token or drop it from both; never mix the two forms.
     @{ Label = 'Pricing copy (website)';      Pattern = 'GatewayGuard_PricingCopy-*.md' },
     @{ Label = 'Annual price decision';       Pattern = 'GatewayGuard_PriceDecision-Annual-*.md' },
+    # Added 2026-08-22. Bill's refund policy and the annual-only decision. Both
+    # belong to documents Cloud is actively rewriting, so they are filed here
+    # instead -- a decision written only into a file about to be re-delivered is
+    # a decision that can vanish.
+    @{ Label = 'Refund policy and terms';     Pattern = 'GatewayGuard_Decisions-RefundAndTerms-*.md' },
     @{ Label = 'Pricing reconciliation (one-time packs)'; Pattern = 'PricingReconciliation-*.md' },
     # The v9 extraction that CLOSES retrieval gaps G1-G6 in the guide rewrite
     # draft. Built and committed 2026-08-22 12:24 -- and unnamed here, so Cloud

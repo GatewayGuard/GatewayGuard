@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-22 14:48 ET -->
-<!-- Commit: ad48473 -->
+<!-- Generated: 2026-08-22 15:44 ET -->
+<!-- Commit: 4ab37bb -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-22 14:48 ET
-- **Commit at generation:** `ad48473`
-- **That commit was made:** 2026-08-22 14:40 ET
-- **Its subject line:** Answer Cloud's G-3, correct my own gap-fill note, assign FT-236
+- **Generated:** 2026-08-22 15:44 ET
+- **Commit at generation:** `4ab37bb`
+- **That commit was made:** 2026-08-22 14:48 ET
+- **Its subject line:** Work Cloud's defect pass: all ten findings checked, M-5 fixed
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -66,6 +66,7 @@ All paths are relative to `ProjectDocs/`.
 | Marketing source pack | `GatewayGuard_MarketingSourcePack-2026-08-13-1427.md` | 0 |
 | Pricing copy (website) | `GatewayGuard_PricingCopy-2026-08-22-1000.md` | 1 |
 | Annual price decision | `GatewayGuard_PriceDecision-Annual-2026-08-21-1445.md` | 0 |
+| Refund policy and terms | `GatewayGuard_Decisions-RefundAndTerms-2026-08-22.md` | 0 |
 | Pricing reconciliation (one-time packs) | `PricingReconciliation-2026-07-16.md` | 0 |
 | Guide gap-fill (G1-G6, v9 source) | `GatewayGuard_GuideGapFill-fromV9-2026-08-22.md` | 0 |
 | Marketing plan amendment | `GatewayGuard_MarketingPlanAmendment-2026-08-22-1000.md` | 1 |

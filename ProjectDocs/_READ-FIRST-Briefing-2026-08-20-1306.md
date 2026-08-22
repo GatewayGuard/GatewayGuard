@@ -663,8 +663,25 @@ the real documents survive under hyphenated names.
     SAM.gov EFT; D&B DUNS; DigiCert validation; six open LegalZoom licence
     decisions and two attorney follow-ups; Google Business profile; guide
     rewrite from v9; batch 2 website pages. **Gumroad for all sales
-    (decided 2026-08-09).** **Annual Updates pricing is still open** --
-    recovered 2026-08-13 from a 2026-07-13 snapshot and settled nowhere since.
+    (decided 2026-08-09).**
+
+    **TWO OF THESE CLOSED 2026-08-22** --
+    `GatewayGuard_Decisions-RefundAndTerms-2026-08-22.md`:
+    - **Refunds: 30 days, no questions asked.** This was the ONLY genuine
+      store-opening blocker. *Sourced:* "no refunds" was never available --
+      Gumroad refunds at its own discretion within 90 days and card networks
+      allow chargebacks regardless, so a restrictive policy converts refunds
+      into chargebacks and risks account suspension. **Bill still has to set
+      the Gumroad account setting to 30** -- it is account-wide.
+    - **Annual updates only. Multi-year pre-pay dropped.** $12.99 / $22.99 /
+      $32.99 / $51.99 for 1 / 3 / 5 / 10 PCs. The "10% per year" question is
+      **removed, not answered** -- there are no multi-year terms, so there is
+      no discount rule. `PricingCopy` section 5 never publishes.
+
+    **Annual Updates pricing is CLOSED** -- locked 2026-08-21, and this line
+    said "still open" for a day after that. **Still open: the multi-PC licence
+    TERMS** (not the prices), and **how a buyer receives and pays for a yearly
+    update at all** -- `FP-21`, the larger hole.
 
 ---
 
