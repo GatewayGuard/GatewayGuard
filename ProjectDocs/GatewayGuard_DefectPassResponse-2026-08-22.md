@@ -271,9 +271,48 @@ form.**
 `<meta name="description" content="... One-time purchase, no subscription." />`
 
 A meta description is not body copy, so a body-copy sweep would not have found
-it. **It is what Google prints under the search result.** Not fixed here --
-`WebSite/` edits go through the website-copy rule and this is customer-facing.
-**Say the word and it is a one-line change.**
+it. **It is what Google prints under the search result.**
+
+### RESOLVED 2026-08-22 15:45 -- AND THE SWEEP WOULD HAVE BROKEN A TRUE SENTENCE
+
+**Bill chose the replacement. Both breaches are fixed.**
+
+**`GatewayGuard_index-2026-07-21-1625.html` line 17.** The old description was
+also **191 characters** -- Google truncates around 155, so its tail was already
+invisible in search results and the banned claim sat in the invisible part.
+Replaced with **149 characters**:
+
+```
+GatewayGuard Checkup reviews 19 Windows 11 security settings and changes only
+what you approve. Plain English, no jargon. $19.99 once, yours to keep.
+```
+
+*"$19.99 once, yours to keep"* is approved wording lifted from `PricingCopy`
+section 3, and it does honestly what *"no subscription"* was doing falsely --
+it answers the antivirus-subscription objection by naming the one-time price
+instead of denying a renewal that now exists.
+
+**`GatewayGuard_404-2026-07-21-1625.html` line 134** said *"no jargon, no
+subscription."* Now *"no jargon. One-time purchase, yours to keep."*
+
+### THE THIRD OCCURRENCE IS TRUE AND MUST NOT BE SWEPT
+
+`WebSite/html/defender-realtime.html` line 115:
+
+> *"Microsoft Defender is the antivirus built into every copy of Windows 11 --
+> already paid for, **no subscription required**."*
+
+**That is about Microsoft Defender, not GatewayGuard, and Defender genuinely has
+no subscription.** A find-and-replace on the banned phrase would have turned a
+true sentence false.
+
+**This is the same shape as the "switch" rule in CLAUDE.md**, which bans the
+verb and keeps the noun. **The ban is on claiming GatewayGuard has no
+subscription. It is not a ban on the words.** Any future sweep must check the
+subject of the sentence before touching it -- and the marketing plan's BANNED
+row should say so, or this gets "fixed" by somebody being thorough.
+
+**Index-Builds copies are delivered artifacts and were not touched.**
 
 ---
 

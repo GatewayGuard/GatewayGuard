@@ -183,7 +183,17 @@ legal work.
 
 **Bill:**
 1. **Set the Gumroad account refund policy to 30 days.** It is account-wide, so
-   this is one setting, once.
+   this is one setting, once. **Neither Claude can do this** -- it is a
+   browser-only setting on Bill's own account.
+   - gumroad.com > sign in > **Settings** > the refund policy section > set the
+     refund period to **30 days**. **Leave the optional fine print blank.**
+   - **Check what it says before changing it.** *Sourced 2026-08-22:* Gumroad
+     switched every store to a 30-day money-back guarantee at some point,
+     including stores selling only digital goods. It may already be right.
+   - *One caveat, because the sources disagree:* one says per-product policies
+     were retired 2025-03-31, another describes a per-product toggle on the
+     product edit page. **Set the account-wide one either way** -- that is the
+     policy decided here.
 2. **Show the refund clause to the attorney** alongside the EULA
    (`LegalZoom\Attorney_Consult-GGLicense-EULA-2026-08-04-1200.docx`). The
    licence-ends-on-refund sentence is a licensing term, and it should not be the

@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-22 15:54 ET -->
-<!-- Commit: ccc424b -->
+<!-- Generated: 2026-08-22 16:08 ET -->
+<!-- Commit: 2f246cb -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-22 15:54 ET
-- **Commit at generation:** `ccc424b`
-- **That commit was made:** 2026-08-22 15:44 ET
-- **Its subject line:** Bill settles two: 30-day refunds, and annual updates only
+- **Generated:** 2026-08-22 16:08 ET
+- **Commit at generation:** `2f246cb`
+- **That commit was made:** 2026-08-22 15:54 ET
+- **Its subject line:** Advertising ID label: all three copies were wrong, two fixed
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
