@@ -3,7 +3,7 @@
 # Response to Cloud's defect pass, 2026-08-22
 
 - **Document Name:** GatewayGuard_DefectPassResponse
-- **Last Modified:** 2026-08-22 14:55 ET
+- **Last Modified:** 2026-08-22 15:25 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **Answers:** Cloud's defect pass over `GuideRewrite-Draft-2026-08-22-1000.md`
   and `MarketingPlan-2026-08-22-1000.md` (findings G-1 to G-5, M-1 to M-5)
@@ -11,6 +11,9 @@
   One is fixed; the rest are specified here for Cloud to fold in.
 
 **Change History Log:**
+- 2026-08-22 15:25: **G-1 RESOLVED.** Bill read the Advertising ID toggle on
+  CGDELL. Website and guide both corrected; Checkup's own copy filed as
+  FT-237. Seven British spellings found in the guide while checking.
 - 2026-08-22 14:55: Created.
 
 ---
@@ -32,7 +35,7 @@ and it was a wrong price in drafted customer copy. **Fixed, committed.**
 
 | # | Verdict | Basis |
 |---|---|---|
-| G-1 | **Stands, and the closure is now proven** | Measured both files -- see below |
+| G-1 | **Stands. Diagnostic-data half proven closed; setting 11 half RESOLVED and FIXED** | Measured both files, then Bill read the live toggle |
 | G-2 | **Stands** | `GuideRewrite-Draft` line 209 only |
 | G-3 | **Answered** -- see `GatewayGuard_GuideGapFill-fromV9-2026-08-22.md`, G4 note | The draft's own G4 scope |
 | G-4 | **Stands** | `GuideRewrite-Draft` line 134 against line 48 |
@@ -79,12 +82,70 @@ The two files quote **different on-screen labels for the same toggle**:
 **One of them is not what the screen says**, and RULE W-07's literal-label
 requirement means a reader hunting for the guide's wording will not find it.
 
-**Not measured -- and it needs ten seconds at a real machine, not a search.**
-*Inferred:* the guide's wording looks like current Windows 11 and the website's
-looks like the older Windows 10 phrasing, but that is a guess and this rule
-exists because guesses about on-screen labels have been wrong here before.
-**Bill: open Settings > Privacy & security > General on CGDELL and read the
-toggle out.** Whichever it is, the other document changes to match.
+> **ANSWERED 2026-08-22 15:25 -- see the next section.** This paragraph asked
+> Bill to read the toggle rather than guessing at it, and the guess recorded
+> here was **half wrong**: the guide's wording was indeed the current one, but
+> its spelling was not, and **a third copy in Checkup itself had not been
+> checked at all.** Left in place because the guess and its correction are more
+> useful together than the answer alone.
+
+---
+
+## G-1 RESOLVED, 2026-08-22 15:25 -- AND ALL THREE DOCUMENTS WERE WRONG
+
+**Bill read the toggle on CGDELL. The label is:**
+
+```
+Let apps show me personalized ads by using my advertising ID
+```
+
+**Three documents carried three different versions of it, and not one matched
+the screen:**
+
+| Where | What it said | Verdict |
+|---|---|---|
+| **Website**, `html/advertising-id.html` lines 134, 142 | *"Let apps use advertising ID to make ads more interesting to you based on your app activity"* | **Wrong.** Windows 10-era wording. **FIXED** |
+| **Guide**, `GuideRewrite-Draft` line 776 | *"Let apps show me personali**s**ed ads..."* | **Right words, British spelling. FIXED** |
+| **Checkup itself**, ascii43 line 6796 | *"...General -> Let apps use advertising ID -> On"* | **Truncated to a stem that is not the label. FT-237** |
+
+**Two things this earns beyond the fix.**
+
+**One: the guide was closest and still wrong, by a single letter.** A senior
+scanning their screen for *"personalised"* does not find *"personalized"*. The
+literal-label rule is not a style preference, and one letter defeats it exactly
+as thoroughly as a whole wrong sentence.
+
+**Two: the tool was checked last and is the one that governs.** D-18 says the
+tool is the dictionary -- *"where the tool already says something on screen,
+reuse the tool's wording rather than writing a parallel version."* Had that been
+applied here, all three would now read `Let apps use advertising ID`, which is
+**also not the label.** The tool is the dictionary for *phrasing Checkup owns*.
+For a string Windows owns, **the screen is the dictionary and the tool is just
+another copy that can be wrong.**
+
+### FT-237 -- Checkup's Advertising ID revert path names a label that is not on screen
+
+`Tool\W11-SecurityHardening-v3-ascii43-2026-08-21-1752.ps1` line 6796:
+
+```
+Revert = "Settings -> Privacy & security -> General -> Let apps use advertising ID -> On"
+```
+
+**Should read** `... -> Let apps show me personalized ads by using my advertising ID -> On`.
+
+**Not built today, deliberately.** ascii43 is half built and this belongs to the
+**F6 wording block**, which is unbuilt -- so it goes in with that work rather
+than as a one-line edit to a build mid-flight. **Check the line width when it is
+applied:** the replacement is 42 characters longer and this string is shown on
+screen, so FT-217's width rule applies.
+
+### ALSO FOUND -- SEVEN BRITISH SPELLINGS IN THE GUIDE
+
+`GuideRewrite-Draft` carries **7 instances of "recognise" / "recognisable"**
+(lines 181, 486, 509, 548, 595, 687, 699). None is an on-screen label, so no
+rule is breached -- but CLAUDE.md already settled the register question when it
+retired *"switch off"*: **GatewayGuard is Maine, writing for American seniors.**
+**Cloud: sweep to "recognize" / "recognizable" at the next delivery.**
 
 ---
 

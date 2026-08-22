@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-22 15:44 ET -->
-<!-- Commit: 4ab37bb -->
+<!-- Generated: 2026-08-22 15:54 ET -->
+<!-- Commit: ccc424b -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-22 15:44 ET
-- **Commit at generation:** `4ab37bb`
-- **That commit was made:** 2026-08-22 14:48 ET
-- **Its subject line:** Work Cloud's defect pass: all ten findings checked, M-5 fixed
+- **Generated:** 2026-08-22 15:54 ET
+- **Commit at generation:** `ccc424b`
+- **That commit was made:** 2026-08-22 15:44 ET
+- **Its subject line:** Bill settles two: 30-day refunds, and annual updates only
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**

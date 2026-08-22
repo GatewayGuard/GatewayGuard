@@ -105,7 +105,10 @@ gate-24-blocked until a full scan is measured covering `D:` **on SANDY**), the
 screen), and the **F6 wording block** (~20 items + FT-222).
 
 **Field checklist for it:** `GatewayGuard_FieldChecklist-ascii43-2026-08-22.md`.
-**Next free FT number: 237.** *(FT-236 assigned 2026-08-22: the ascii43 field
+**Next free FT number: 238.** *(FT-237 assigned 2026-08-22: Checkup's
+Advertising ID revert path names `Let apps use advertising ID`, which is a
+stem, not the on-screen label. Belongs to the unbuilt F6 wording block --
+see `GatewayGuard_DefectPassResponse-2026-08-22.md`.)* *(FT-236 assigned 2026-08-22: the ascii43 field
 checklist demanded "B is the ONLY Back key, N must never take you back",
 contradicting Bill's own ruling that `N = go back` stays in real Y/N
 questions. Cloud's point, and it is right: a checklist that contradicts a

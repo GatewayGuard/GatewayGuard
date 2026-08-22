@@ -773,7 +773,11 @@ do on this computer.
 
 **Where it lives:** **Settings › Privacy & security › General**.
 
-Turn off **Let apps show me personalised ads by using my advertising ID**.
+Turn off **Let apps show me personalized ads by using my advertising ID**.
+
+*(Spelling corrected 2026-08-22: this read "personalised". The label is a
+literal on-screen string and the screen says "personalized" -- measured by
+Bill on CGDELL. One letter, but it is the letter a reader searches for.)*
 
 **What changes:** you see the same number of adverts. They are simply less
 tailored to you. No restart needed.
