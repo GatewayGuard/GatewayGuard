@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-22 14:39 ET -->
-<!-- Commit: a196eac -->
+<!-- Generated: 2026-08-22 14:48 ET -->
+<!-- Commit: ad48473 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-22 14:39 ET
-- **Commit at generation:** `a196eac`
-- **That commit was made:** 2026-08-22 14:13 ET
-- **Its subject line:** Pricing copy 08-22: name it properly, and fix the sort that hid it
+- **Generated:** 2026-08-22 14:48 ET
+- **Commit at generation:** `ad48473`
+- **That commit was made:** 2026-08-22 14:40 ET
+- **Its subject line:** Answer Cloud's G-3, correct my own gap-fill note, assign FT-236
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -69,6 +69,7 @@ All paths are relative to `ProjectDocs/`.
 | Pricing reconciliation (one-time packs) | `PricingReconciliation-2026-07-16.md` | 0 |
 | Guide gap-fill (G1-G6, v9 source) | `GatewayGuard_GuideGapFill-fromV9-2026-08-22.md` | 0 |
 | Marketing plan amendment | `GatewayGuard_MarketingPlanAmendment-2026-08-22-1000.md` | 1 |
+| Defect pass response | `GatewayGuard_DefectPassResponse-2026-08-22.md` | 0 |
 | Offline scan research | `GatewayGuard_OfflineScanResearch-2026-08-21.md` | 0 |
 | AV scan coverage test | `GatewayGuard_AVScanCoverageTest-2026-08-21.md` | 0 |
 | Scheduled task defects (FT-203) | `GatewayGuard_ScheduledTaskDefects-2026-08-20.md` | 0 |

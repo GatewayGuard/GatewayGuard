@@ -143,6 +143,11 @@ $wanted = @(
     # could not open the one file that answers its own open item.
     @{ Label = 'Guide gap-fill (G1-G6, v9 source)'; Pattern = 'GatewayGuard_GuideGapFill-*.md' },
     @{ Label = 'Marketing plan amendment';    Pattern = 'GatewayGuard_MarketingPlanAmendment-*.md' },
+    # Added 2026-08-22. Claude Code's response to Cloud's defect pass -- the
+    # verdict on each of its ten findings, with the measurement behind each, and
+    # what is left for whom. Cloud must be able to open the answer to its own
+    # pass by name.
+    @{ Label = 'Defect pass response';        Pattern = 'GatewayGuard_DefectPassResponse-*.md' },
     # The two measurements that unblock F4, the second drive: Start-MpWDOScan
     # has no scope parameter, so D: coverage needs a full ONLINE scan and the
     # screen wording must say so. Gate 24 blocks the text until this is read.

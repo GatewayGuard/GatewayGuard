@@ -1194,6 +1194,16 @@ Suggested starting point:
 | Annual update subscription | $TBD/yr | Recurring |
 | Assisted session | $39-49 | One-time |
 
+> **PRICE SUPERSEDED 2026-08-22 -- DO NOT QUOTE THE FIGURES BELOW.**
+> The annual update price is **$12.99/yr for 1 PC, locked by Bill 2026-08-21**
+> (`GatewayGuard_PriceDecision-Annual-2026-08-21-1445.md`), with 3, 5 and
+> 10-PC rates derived from it. Every `$9.99` in this block is a superseded
+> 2026-07 estimate. It is left in place because this is a historical notes
+> document and rewriting the reasoning would hide how the number was reached
+> -- but the marketing line further down was drafted as customer copy, and
+> **customer copy quoting $9.99 is simply wrong.** Live copy lives in
+> `GatewayGuard_PricingCopy-2026-08-22-1000.md`.
+
 Annual subscription pricing considerations:
 - Must be low enough that one-time buyers convert easily
 - Suggested range: $9.99 - $14.99/year per PC
@@ -1235,7 +1245,12 @@ Assume 1,000 customers in year 1 (conservative):
 ### Marketing Angle for Annual Updates
 "Windows changes every year. So do the threats.
 GatewayGuard updates keep your security current automatically.
-$9.99/year -- less than one month of any antivirus subscription."
+$12.99/year -- less than one month of any antivirus subscription."
+
+*(Price corrected 2026-08-22: this line read `$9.99/year` and is drafted
+CUSTOMER copy, not a working estimate -- the one place in this file where a
+superseded number would have reached a buyer. $12.99 locked 2026-08-21.
+Found by Cloud, finding M-5.)*
 
 ### Important Policy Decision
 NEVER make the existing tool stop working when subscription expires.
