@@ -163,10 +163,87 @@ only genuine store-opening blocker, made sharper by the annual charge.
 
 **Cloud:** the guide's setting 11 reframe, and the G1-G6 fill.
 
-**Note on model attribution:** this session ran on **Opus 4.8**, so its 20
-commits carry `Co-Authored-By: Claude Opus 4.8`. The other 178 model-stamped
-commits in the repository say Opus 5. Bill switched the default back to Opus 5
-at the end of the session.
+### CLOUD CAPACITY -- ProjectDocs 84% smaller, Tool\ down to one file
+
+**Bill, after the session-end commit: "we are over 300% in github files in repo,
+projectdocs is at 250%."** Then, after the first pass: **"89% in
+tool/projectdocs/claude, 87% website, 86% of clouds project capacity."**
+
+**Pass 1 -- ProjectDocs: 16 MB -> 2.5 MB, 147 -> 130 files.**
+
+**13 of the 16 MB was five binaries Cloud provably cannot read** (briefing
+section 9: `.docx` never surfaces, `.pdf` arrives as a zip of page JPEGs) --
+an 8.0 MB `SecurityGuide` PDF, a 5.0 MB JPG that was a **duplicate** of copies
+in `LegalZoom\` and `Presentation\`, a duplicate `.pptx`, and two `.docx` whose
+`.md` twins remain. Plus 6 superseded `.md` and 6 unreferenced strays.
+
+**Moved, not deleted**, to `Archive\ProjectDocs-Retired-2026-08-22\` -- outside
+the connector scope, so the files leave Cloud's project knowledge while staying
+tracked, on disk, and one `git mv` from coming back. **Deleting would not have
+helped anyway**: blobs stay in history, so scope is the only thing that moves
+the capacity number.
+
+**Every file was reference-checked first.** The two *operational* references
+(`build_readable_twins.py`, `build_marketing_sourcepack.py`) point at the
+**root** `Presentation\` copies, not the ProjectDocs duplicates -- verified
+before moving, not assumed.
+
+**It IMPROVED the DocCheck ratchet rather than hurting it:** dead pointers
+10 -> 9 governing and 52 -> 51 overall, families with no anchor 4 -> 2. The
+baselines were lowered to match, per the gate's own rule that they may only
+ever shrink.
+
+**Pass 2 -- Tool\ 3.4 MB / 102 files -> 556 KB / 1 file.** Bill: *"Tool should
+only need the ascii43 and the .bat"*, then *"move the .bat files as well"*, then
+*"create a Tool2 folder and put them there."*
+
+- `Tool\` = the current build `.ps1`, nothing else.
+- **`Tool2\`** = 30 `.bat` + 67 helper scripts. **Deliberately outside the
+  connector scope.**
+- `Builds\` = the superseded ascii41/42 builds. ascii39/40 were already there
+  and the Tool copies were byte-identical, so they were dropped.
+
+**The .bat moved WITH the scripts they call**, so `cd /d "%~dp0"` still resolves
+and **not one helper path needed rewriting.** Only the four build-aware
+launchers changed to `..\Tool\`; the two that scan with `dir /b` also had to
+qualify `BUILD=%%F`, because `dir /b` returns a bare filename.
+
+**Proven, not assumed:** gates 12 and 24 were run through their launchers from
+`Tool2\` after the move -- both PASS, both resolving `..\Tool\...ascii43`. The
+gg_edit self-test and Update-Current were run too.
+
+**36 stale `Tool\<script>` references** repointed to `Tool2\` across CLAUDE.md
+and 9 live governing documents, byte-exact so no line ending moved. References
+to *old builds* were reported rather than rewritten -- they are historical
+citations, and rewriting them would falsify the record.
+
+### TWO DEFECTS FOUND WHILE MOVING FILES, AND ONE BAD MATCHER OF MINE
+
+1. **`Run-GatewayGuard.bat` and `Show-AllScreens.bat` still named ascii42.**
+   They were never updated when ascii43 was built, so **double-clicking ran the
+   OLD build.** Mine, from the build session. Fixed.
+2. **Those same two `.bat` were stored LF-only**, against the CLAUDE.md rule
+   that `.bat` must be CRLF because bare LF misbehaves in cmd.exe. Measured:
+   the other 28 are CRLF. This one predates the session. Normalised.
+
+**And the method failure worth keeping:** my first CRLF check reported
+"41 of 41 lines CRLF" and had verified **nothing** -- `$'\r'` was not expanded,
+so grep matched the letter **r**, which nearly every line of a REM-heavy `.bat`
+contains. Python found the truth. **A matcher that has not been proved on a
+control produces absences, not findings** -- the rule is already in the
+briefing, and I walked into it anyway. `sed` also ate backslashes on the same
+job and read the `\U` of `Update-Current.ps1` as its uppercase operator,
+deleting a character; the work was redone in Python with asserted counts.
+
+**One thing for Bill to confirm in the connector UI:** `Tool2\` should be
+invisible to Cloud, because the scope is `Tool/` and not `Tool*`. **If Cloud
+ever shows `Tool2` content, the connector is prefix-matching** -- rename the
+folder rather than moving the scripts back. CLAUDE.md records this.
+
+**Note on model attribution:** this session ran on **Opus 4.8**, so its commits
+carry `Co-Authored-By: Claude Opus 4.8`. The other 178 model-stamped commits in
+the repository say Opus 5. Bill switched the default back to Opus 5 at the end
+of the session.
 
 ---
 

@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-22 12:59 ET -->
-<!-- Commit: a282a4a -->
+<!-- Generated: 2026-08-22 13:10 ET -->
+<!-- Commit: d635b4e -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-22 12:59 ET
-- **Commit at generation:** `a282a4a`
-- **That commit was made:** 2026-08-22 12:44 ET
-- **Its subject line:** Retire 17 files out of ProjectDocs to cut Cloud project-knowledge capacity
+- **Generated:** 2026-08-22 13:10 ET
+- **Commit at generation:** `d635b4e`
+- **That commit was made:** 2026-08-22 13:02 ET
+- **Its subject line:** Tool split: Tool\ keeps only the current build; everything else -> Tool2\ (out of scope)
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**

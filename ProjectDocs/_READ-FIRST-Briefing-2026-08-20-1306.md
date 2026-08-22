@@ -82,18 +82,36 @@ This is the only known pair where the filename date lies about which is newer.
 
 ---
 
-## 1. CURRENT STATUS -- 2026-08-20 11:50 ET
+## 1. CURRENT STATUS -- 2026-08-22 13:05 ET
 
-**Active build: ascii42** --
-`Tool\W11-SecurityHardening-v3-ascii42-2026-08-19-1830.ps1`, **8,921 non-blank
-lines / 9,301 total**. 70 screen IDs, **next free screen ID 88**, gates 12, 12b
-and 24 PASS, 10 carried oversize screens in the named baseline.
+**Active build: ascii43, HALF BUILT AND NEVER FIELD RUN** --
+`Tool\W11-SecurityHardening-v3-ascii43-2026-08-21-1752.ps1`, **9,002 non-blank
+lines / 9,382 total**. Gates 12, 12b and 24 PASS, 0 non-ASCII, 0 duplicate
+functions, 10 carried oversize screens. **Next free screen ID 90.**
 
-**ascii42 HAS NOT BEEN FIELD RUN.** Bill's checklist for it is
-`ProjectDocs\GatewayGuard_FieldChecklist-ascii42-2026-08-19.md`. It is a small
-build: FT-193 (a stray key no longer repaints the checklist), FT-194 (the `I`
-key works on pages, not only questions), and FT-201/202 (the gallery takes
-arrows and can print all 67 screens at once).
+**BUILT SO FAR, one family per commit, every edit through `gg_edit.py`:** F1
+keyboard (FT-204, 206, 207, 223, 232), F2 width (FT-217/199), F3 log (FT-231),
+F5 flow (FT-219 selection=approval, FT-224), F6 part (FT-221).
+
+**NOT BUILT:** **F4 the second drive** (route 3, and its screen text is
+gate-24-blocked until a full scan is measured covering `D:` **on SANDY**), the
+**F5 remnants** (FT-195a, FT-175b, FT-225 -- scoped to the one inconsistent
+screen), and the **F6 wording block** (~20 items + FT-222).
+
+**Field checklist for it:** `GatewayGuard_FieldChecklist-ascii43-2026-08-21.md`.
+**Next free FT number: 236.**
+
+### THE TREE MOVED, 2026-08-22 -- READ THIS BEFORE LOOKING FOR A SCRIPT
+
+Cloud was at 89% of project-knowledge capacity, so the connector scope was cut.
+
+- **`Tool\` now holds ONLY the current build `.ps1`.** 3.4 MB / 102 files ->
+  556 KB / 1 file.
+- **`Tool2\` holds every `.bat` and every helper script**, and is deliberately
+  **outside** the connector scope. **Run every gate from `Tool2\`.**
+- **`Builds\`** holds the superseded builds; **`Archive\ProjectDocs-Retired-2026-08-22\`**
+  holds 17 files retired out of ProjectDocs (16 MB -> 2.5 MB).
+- Nothing was deleted -- it was all moved, still tracked, still on disk.
 
 **ascii41 WAS field run** -- four sessions on SANDY, **38 findings**, in
 `Test_Results\Ascii41-Test-Reults-2026-08-18-1110.txt`, all triaged in
@@ -104,7 +122,9 @@ of the 38.** Which five, and why so few:
 **The number that matters from that run: 253 screen renders, ZERO
 first-encounter decreases.** FT-172's numbering scheme holds in the field.
 
-**Next free FT number: 204.**
+*(Superseded 2026-08-22: the next free FT is **236** -- see the status block
+above. This line said 204 and is kept only so the ascii41 paragraph above it
+still reads in sequence.)*
 
 **THE STATUS LINE IS NOT THE RULE.** On 2026-08-12 a session reported "no field
 log exists" while the log sat on disk untracked, because the check asked `git`
@@ -550,10 +570,24 @@ the real documents survive under hyphenated names.
 
 ## 10. OPEN ITEMS, IN ORDER
 
-1. **Field-run ascii42, then build ascii43.** FT-171, FT-172 and FT-175 are
-   all done -- they were this item when it said "build ascii40", and ascii40,
-   41 and 42 have all shipped since. ascii43's content is already known and
-   blocked on nothing:
+1. **FINISH ascii43, then field-run it on SANDY.** *(Updated 2026-08-22.
+   ascii42 WAS field run on 2026-08-21 -- 32 findings, FT-204 to FT-235, all
+   triaged. ascii43 is half built; see the status block in section 1 for what
+   is in and what is not.)* What remains:
+   - **F4, the second drive.** Route 3 -- Checkup covers the other drives.
+     Its screen text is **gate-24-blocked** until a full scan is measured
+     actually covering `D:` **on SANDY** -- CGDELL has no large second drive.
+     *measured 2026-08-21: `Start-MpWDOScan` has no scope parameter at all, so
+     `D:` coverage comes from `Start-MpScan -ScanType FullScan`, a full ONLINE
+     scan. The wording must say "full scan of all your drives", never
+     "offline scan".*
+   - **F5 remnants** -- FT-195a, FT-175b, and FT-225 scoped to the one
+     genuinely inconsistent screen (Bill's call: `N = go back` stays as the
+     natural answer in real Y/N/S questions).
+   - **F6 wording block** -- ~20 items plus FT-222.
+   - **FT-220 is ascii44, not ascii43** -- it waits on the guide (W-07).
+
+   The older ascii43 content, still valid:
    - **The gallery froze for one minute at startup on SANDY**, logged as FT-63
      Mark mode in `GatewayGuard-Log-2026-08-19_21-08.txt`. It is what left Bill
      at a dead console pressing keys, and it is the upstream cause of a deleted
