@@ -1,7 +1,11 @@
-<!-- Dated: 2026-08-21 17:50 ET -->
+<!-- Dated: 2026-08-22 13:40 ET -->
 <!-- Editor: Claude Code (CGDELL) -->
 <!-- Update 2026-08-21 17:50: F4 second drive decided -- route 3 (cover the
      other drives). READ-FIRST point 2 and the F4 section updated. -->
+<!-- Update 2026-08-22 13:40: FT-226 corrected in two places -- the checklist
+     said setting 17's guide page number ships in ascii43. It does not; the fix
+     was reverted and the finding was misfiled. Left as a testable item it
+     would have produced a false field finding. See PART A item 2 and PART C. -->
 # ascii43 Field-Run Instructions -- what to skip, what to look for
 
 - **Document Name:** GatewayGuard_FieldChecklist-ascii43
@@ -41,8 +45,16 @@ Stated so each is a decision, not a gap.
    these four screens still say **what** changes, not **why** the current state
    is bad. **Do not re-report "doesn't explain why" for 9/12/13/17** -- it is
    known and deliberately held.
-   - *(Setting 17's missing guide page number, FT-226, is a data fix and IS in
-     ascii43 -- see F6. Only the explanation waits.)*
+   - *(**CORRECTED 2026-08-22. This bullet said the FT-226 data fix "IS in
+     ascii43." It is not, and the finding itself was misfiled.** Setting 17
+     always HAD a guide reference -- `GuideRef="Keep vs. Disable Table"`, in
+     ascii40, 41, 42 and 43. The real defect is a **class**: settings **10, 11,
+     12, 17, 18 and 19** all point at that same table name, which is not a page
+     number, so all six show a reference the reader cannot turn to. The class
+     fix is **deferred until the guide structure is locked** -- 17 has already
+     moved between sections in one draft revision, and setting 10 has no
+     section at all. **Do not report setting 17's guide reference.** Measured:
+     `Tool\W11-SecurityHardening-v3-ascii43-2026-08-21-1752.ps1` line 5634.)*
 
 3. **FT-198** (M / K / left-click behaviour) -- needs a separate SANDY
    measurement before it can be fixed. Not in this build.
@@ -151,8 +163,11 @@ real finding.
 - **Applied settings lose their X on the checklist.** After you apply a
   setting, its checkbox X should clear, so on the way back you can see what is
   still unhandled. *(FT-222.)*
-- **Setting 17 now has a guide page number.** *(FT-226 -- the data fix ships;
-  the explanation waits with FT-220.)*
+- ~~**Setting 17 now has a guide page number.**~~ **WITHDRAWN 2026-08-22 --
+  this does NOT ship in ascii43 and nothing here is testable.** The fix was
+  made, then reverted (`eb972b7`) because FT-226 was misfiled on both halves:
+  setting 17 already had a reference, and the real defect is the six-setting
+  class described in PART A item 2. **Skip it.**
 - The block of ~20 wording and screen-splitting items from the ascii41 run.
 
 ---

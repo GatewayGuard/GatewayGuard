@@ -98,7 +98,7 @@ gate-24-blocked until a full scan is measured covering `D:` **on SANDY**), the
 **F5 remnants** (FT-195a, FT-175b, FT-225 -- scoped to the one inconsistent
 screen), and the **F6 wording block** (~20 items + FT-222).
 
-**Field checklist for it:** `GatewayGuard_FieldChecklist-ascii43-2026-08-21.md`.
+**Field checklist for it:** `GatewayGuard_FieldChecklist-ascii43-2026-08-22.md`.
 **Next free FT number: 236.**
 
 ### THE TREE MOVED, 2026-08-22 -- READ THIS BEFORE LOOKING FOR A SCRIPT

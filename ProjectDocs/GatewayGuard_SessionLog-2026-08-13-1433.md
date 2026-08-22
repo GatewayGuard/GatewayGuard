@@ -243,7 +243,7 @@ gap-ridden draft would only have to be redone.
   in the page header and briefed to Cloud
   (`CloudRequest-GuideSetting11-2026-08-21.md`).
 - **ascii43 field checklist written** --
-  `GatewayGuard_FieldChecklist-ascii43-2026-08-21.md`: Part A what to SKIP,
+  `GatewayGuard_FieldChecklist-ascii43-2026-08-22.md` *(renamed 2026-08-22 with the FT-226 correction)*: Part A what to SKIP,
   Part B what to LOOK FOR by family, Part C the encryption path, Part D the
   already-working set.
 - **The $12.99 price-decision record committed**, resolving the dead pointer

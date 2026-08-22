@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-22 13:27 ET -->
-<!-- Commit: c584b18 -->
+<!-- Generated: 2026-08-22 13:40 ET -->
+<!-- Commit: d50284f -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-22 13:27 ET
-- **Commit at generation:** `c584b18`
-- **That commit was made:** 2026-08-22 13:10 ET
-- **Its subject line:** Bring the briefing, session log and CURRENT.md up to date for the next session
+- **Generated:** 2026-08-22 13:40 ET
+- **Commit at generation:** `d50284f`
+- **That commit was made:** 2026-08-22 13:27 ET
+- **Its subject line:** Name nine in-scope documents Cloud could not glob; session log
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -52,7 +52,7 @@ All paths are relative to `ProjectDocs/`.
 | Screen numbering design | `GatewayGuard_ScreenNumberDesign-2026-08-15-1430.md` | 0 |
 | Screen numbering table | `GatewayGuard_ScreenNumberTable-2026-08-17.md` | 1 |
 | Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii42run1-2026-08-21.md` | 2 |
-| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii43-2026-08-21.md` | 1 |
+| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii43-2026-08-22.md` | 1 |
 | Build plan (current) | `GatewayGuard_ascii43BuildPlan-2026-08-21.md` | 0 |
 | Guide FT-220 sections | `GatewayGuard_GuideFT220-Sections-2026-08-21-1445.md` | 0 |
 | Cloud request | `GatewayGuard_CloudRequest-GuideRewrite-2026-08-21.md` | -- |
