@@ -6475,10 +6475,20 @@ function Apply-Setting {
         }
         15 {
             try {
-                $rp = "HKLM:\SOFTWARE\Policies\Microsoft\Edge"
-                if (-not (Test-Path $rp)) { New-Item -Path $rp -Force | Out-Null }
-                Set-ItemProperty -Path $rp -Name PasswordManagerEnabled -Value 0 -Type DWord -Force
-                $result = "Edge password saving disabled. Use a dedicated password manager. See Guide: Phase 5 at $GuideURL"
+                # FT-221 (ascii43): never disable Edge password saving while the
+                # user has no password manager -- that would leave them with no
+                # password store at all. The checklist deselects item 15 when the
+                # user says they have no manager, but a manual re-select could
+                # still reach here, so the guard lives at the point of change.
+                if (-not $global:HasPasswordManager) {
+                    $result = "LEFT ON -- set up a password manager first, or your saved passwords would have nowhere to live. See Guide: Phase 5 at $GuideURL"
+                    Write-Log -Message "Edge Password Saving (ID 15) NOT disabled -- no password manager (FT-221)" -Status "SKIP"
+                } else {
+                    $rp = "HKLM:\SOFTWARE\Policies\Microsoft\Edge"
+                    if (-not (Test-Path $rp)) { New-Item -Path $rp -Force | Out-Null }
+                    Set-ItemProperty -Path $rp -Name PasswordManagerEnabled -Value 0 -Type DWord -Force
+                    $result = "Edge password saving disabled. Use a dedicated password manager. See Guide: Phase 5 at $GuideURL"
+                }
             } catch { $result = "ERROR: $_" }
         }
         16 {
