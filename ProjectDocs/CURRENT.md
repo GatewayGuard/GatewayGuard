@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-22 12:33 ET -->
-<!-- Commit: 40847a9 -->
+<!-- Generated: 2026-08-22 12:43 ET -->
+<!-- Commit: fb807b2 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-22 12:33 ET
-- **Commit at generation:** `40847a9`
-- **That commit was made:** 2026-08-22 12:28 ET
-- **Its subject line:** Refresh CURRENT.md: marketing plan 2026-08-22, guide draft, gap-fill
+- **Generated:** 2026-08-22 12:43 ET
+- **Commit at generation:** `fb807b2`
+- **That commit was made:** 2026-08-22 12:33 ET
+- **Its subject line:** Session log 2026-08-21/22: ascii43 half built, Cloud's five items actioned
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -39,11 +39,11 @@ All paths are relative to `ProjectDocs/`.
 |---|---|---|
 | Briefing -- read this first | `_READ-FIRST-Briefing-2026-08-20-1306.md` | 0 |
 | Session log | `GatewayGuard_SessionLog-2026-08-13-1433.md` | 0 |
-| Project instructions | `GatewayGuard_ProjectInstructions-2026-08-12-1652.md` | 2 |
+| Project instructions | `GatewayGuard_ProjectInstructions-2026-08-12-1652.md` | 1 |
 | Coding standards | `GatewayGuard_CodingStandards-2026-08-07-1330.md` | 0 |
 | Defect prevention playbook | `GatewayGuard_DefectPreventionPlaybook-2026-07-26-0619.md` | 0 |
 | Website standards | `GatewayGuard_WebsiteStandards-2026-07-26-0619.md` | 0 |
-| Test history | `GatewayGuard_TestHistory-ascii39-2026-08-02-1335.md` | 2 |
+| Test history | `GatewayGuard_TestHistory-ascii39-2026-08-02-1335.md` | 1 |
 | Sync plan | `GatewayGuard_SyncPlan-2026-08-12-1726.md` | 0 |
 | Sync setup steps | `GatewayGuard_SyncSetupSteps-2026-08-12-2146.md` | 0 |
 | Cloud Project Instructions | `GatewayGuard_CloudProjectInstructions-2026-08-12-2316.md` | 0 |
@@ -52,7 +52,7 @@ All paths are relative to `ProjectDocs/`.
 | Screen numbering design | `GatewayGuard_ScreenNumberDesign-2026-08-15-1430.md` | 0 |
 | Screen numbering table | `GatewayGuard_ScreenNumberTable-2026-08-17.md` | 1 |
 | Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii42run1-2026-08-21.md` | 2 |
-| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii43-2026-08-21.md` | 2 |
+| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii43-2026-08-21.md` | 1 |
 | Build plan (current) | `GatewayGuard_ascii43BuildPlan-2026-08-21.md` | 0 |
 | Guide FT-220 sections | `GatewayGuard_GuideFT220-Sections-2026-08-21-1445.md` | 0 |
 | Cloud request | `GatewayGuard_CloudRequest-GuideRewrite-2026-08-21.md` | -- |
@@ -60,7 +60,7 @@ All paths are relative to `ProjectDocs/`.
 | Cloud request | `GatewayGuard_CloudRequest-PricingCopy-2026-08-21.md` | -- |
 | Cloud request | `GatewayGuard_CloudRequest-Review-2026-08-21.md` | -- |
 | Marketing plan (current) | `GatewayGuard_MarketingPlan-2026-08-22-1000.md` | 3 |
-| Guide rewrite draft (current) | `GatewayGuard_GuideRewrite-Draft-2026-08-22-1000.md` | 3 |
+| Guide rewrite draft (current) | `GatewayGuard_GuideRewrite-Draft-2026-08-22-1000.md` | 2 |
 | Website source pack (19 guide pages) | `GatewayGuard_WebsiteSourcePack-2026-08-15-1751.md` | 0 |
 | Guide v9 source pack | `GatewayGuard_GuideV9-SourcePack-2026-08-15-1436.md` | 0 |
 | Marketing source pack | `GatewayGuard_MarketingSourcePack-2026-08-13-1427.md` | 0 |

@@ -66,10 +66,20 @@ $problems = 0
 #   The 4 families with no anchor:
 #     GuideRewrite-Draft (3), License-TEXT (3), MarketingPlan (2),
 #     Profile_Instructions_Universal (2)
-$BASE_DEAD_POINTERS_GOVERNING = 10
-$BASE_DEAD_POINTERS_ALL       = 52
+# RATCHET LOWERED 2026-08-22, after 17 files were retired out of ProjectDocs
+# into Archive\ProjectDocs-Retired-2026-08-22\ (out of Cloud's connector scope)
+# to cut project-knowledge capacity. The retirement removed superseded copies
+# and unreadable binaries, so all three numbers IMPROVED and the baselines
+# follow them down. They are only ever allowed to get smaller.
+#   dead pointers governing : 10 -> 9
+#   dead pointers all       : 52 -> 51
+#   families with no anchor :  4 -> 2  (GuideRewrite-Draft and MarketingPlan
+#                                       now resolve; License-TEXT and one other
+#                                       remain)
+$BASE_DEAD_POINTERS_GOVERNING = 9
+$BASE_DEAD_POINTERS_ALL       = 51
 $BASE_DATE_MISMATCH           = 1
-$BASE_UNRESOLVED_FAMILIES     = 4
+$BASE_UNRESOLVED_FAMILIES     = 2
 
 $bt = [char]96   # backtick, built by code point so the regex below stays legible
 
