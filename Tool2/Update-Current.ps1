@@ -161,9 +161,28 @@ $wanted = @(
 # FILENAME -- sorting by Name does that, because every name ends -YYYY-MM-DD[-HHMM].
 $resolved = @()
 $missing  = @()
+# --- THE SORT KEY: THE DATE IN THE NAME, NOT THE WHOLE NAME --------------
+# Sorting by Name means "newest" ONLY while every name in a family ends in its
+# date. That premise held until 2026-08-22, when it broke in the field:
+#   GatewayGuard_PricingCopy-2026-08-22-1000.md        <- the new one
+#   GatewayGuard_PricingCopy-Draft-2026-08-21-1445.md  <- sorts LAST, 'D' > '2'
+# The OLDER file won, CURRENT.md pointed Cloud at superseded pricing, and
+# nothing said so. A silent wrong answer is the one failure this whole file
+# exists to prevent, so the premise is now enforced instead of assumed: pull
+# the trailing date out of the name and sort on THAT.
+# A name with no date sorts first and can only ever win if it is alone.
+function Get-GGNameDate {
+    param([string]$Name)
+    $m = [regex]::Matches($Name, '(\d{4}-\d{2}-\d{2})(?:-(\d{4}))?')
+    if ($m.Count -eq 0) { return '0000-00-00-0000' }
+    $last = $m[$m.Count - 1]
+    $time = if ($last.Groups[2].Success) { $last.Groups[2].Value } else { '0000' }
+    return ($last.Groups[1].Value + '-' + $time)
+}
+
 foreach ($w in $wanted) {
     $hits = @(Get-ChildItem -LiteralPath $docs -Filter $w.Pattern -File -EA SilentlyContinue |
-              Sort-Object Name)
+              Sort-Object @{ Expression = { Get-GGNameDate $_.Name } }, Name)
     if ($hits.Count -eq 0) {
         $missing += $w.Pattern
     } elseif ($w.ContainsKey('Multi') -and $w.Multi) {

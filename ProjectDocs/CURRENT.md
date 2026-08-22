@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-22 14:09 ET -->
-<!-- Commit: a771384 -->
+<!-- Generated: 2026-08-22 14:12 ET -->
+<!-- Commit: 81b257f -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-22 14:09 ET
-- **Commit at generation:** `a771384`
-- **That commit was made:** 2026-08-22 14:02 ET
-- **Its subject line:** Field checklist Part B: mark every bullet testable / not built
+- **Generated:** 2026-08-22 14:12 ET
+- **Commit at generation:** `81b257f`
+- **That commit was made:** 2026-08-22 14:09 ET
+- **Its subject line:** Restamp Last Modified on the briefing and the session log
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -64,7 +64,7 @@ All paths are relative to `ProjectDocs/`.
 | Website source pack (19 guide pages) | `GatewayGuard_WebsiteSourcePack-2026-08-15-1751.md` | 0 |
 | Guide v9 source pack | `GatewayGuard_GuideV9-SourcePack-2026-08-15-1436.md` | 0 |
 | Marketing source pack | `GatewayGuard_MarketingSourcePack-2026-08-13-1427.md` | 0 |
-| Pricing copy (website) | `GatewayGuard_PricingCopy-Draft-2026-08-21-1445.md` | 1 |
+| Pricing copy (website) | `GatewayGuard_PricingCopy-2026-08-22-1000.md` | 1 |
 | Annual price decision | `GatewayGuard_PriceDecision-Annual-2026-08-21-1445.md` | 0 |
 | Pricing reconciliation (one-time packs) | `PricingReconciliation-2026-07-16.md` | 0 |
 | Guide gap-fill (G1-G6, v9 source) | `GatewayGuard_GuideGapFill-fromV9-2026-08-22.md` | 0 |
