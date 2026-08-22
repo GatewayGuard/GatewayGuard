@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-21 14:30 ET -->
-<!-- Commit: 95dc545 -->
+<!-- Generated: 2026-08-22 12:21 ET -->
+<!-- Commit: eb972b7 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-21 14:30 ET
-- **Commit at generation:** `95dc545`
-- **That commit was made:** 2026-08-21 14:30 ET
-- **Its subject line:** Session log: 2026-08-21 -- ascii42 triage, offline research, Cloud review actioned
+- **Generated:** 2026-08-22 12:21 ET
+- **Commit at generation:** `eb972b7`
+- **That commit was made:** 2026-08-22 12:18 ET
+- **Its subject line:** ascii43: correct FT-226 -- restore setting 17, defer the class fix (Cloud's finding)
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -43,7 +43,6 @@ All paths are relative to `ProjectDocs/`.
 | Coding standards | `GatewayGuard_CodingStandards-2026-08-07-1330.md` | 0 |
 | Defect prevention playbook | `GatewayGuard_DefectPreventionPlaybook-2026-07-26-0619.md` | 0 |
 | Website standards | `GatewayGuard_WebsiteStandards-2026-07-26-0619.md` | 0 |
-| Field test plan | `GatewayGuard_FieldTestPlan-ascii40-2026-08-13-0944.md` | 2 |
 | Test history | `GatewayGuard_TestHistory-ascii39-2026-08-02-1335.md` | 2 |
 | Sync plan | `GatewayGuard_SyncPlan-2026-08-12-1726.md` | 0 |
 | Sync setup steps | `GatewayGuard_SyncSetupSteps-2026-08-12-2146.md` | 0 |
@@ -53,9 +52,15 @@ All paths are relative to `ProjectDocs/`.
 | Screen numbering design | `GatewayGuard_ScreenNumberDesign-2026-08-15-1430.md` | 0 |
 | Screen numbering table | `GatewayGuard_ScreenNumberTable-2026-08-17.md` | 1 |
 | Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii42run1-2026-08-21.md` | 2 |
-| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii42-2026-08-19.md` | 1 |
-| Marketing plan (current) | `GatewayGuard_MarketingPlan-2026-08-19-1753.md` | 1 |
-| Guide rewrite draft (current) | `GatewayGuard_GuideRewrite-Draft-2026-08-19-1753.md` | 2 |
+| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii43-2026-08-21.md` | 2 |
+| Build plan (current) | `GatewayGuard_ascii43BuildPlan-2026-08-21.md` | 0 |
+| Guide FT-220 sections | `GatewayGuard_GuideFT220-Sections-2026-08-21-1445.md` | 0 |
+| Cloud request | `GatewayGuard_CloudRequest-GuideRewrite-2026-08-21.md` | -- |
+| Cloud request | `GatewayGuard_CloudRequest-GuideSetting11-2026-08-21.md` | -- |
+| Cloud request | `GatewayGuard_CloudRequest-PricingCopy-2026-08-21.md` | -- |
+| Cloud request | `GatewayGuard_CloudRequest-Review-2026-08-21.md` | -- |
+| Marketing plan (current) | `GatewayGuard_MarketingPlan-2026-08-21-1645.md` | 2 |
+| Guide rewrite draft (current) | `GatewayGuard_GuideRewrite-Draft-2026-08-22-1000.md` | 3 |
 | Website source pack (19 guide pages) | `GatewayGuard_WebsiteSourcePack-2026-08-15-1751.md` | 0 |
 | Guide v9 source pack | `GatewayGuard_GuideV9-SourcePack-2026-08-15-1436.md` | 0 |
 | Marketing source pack | `GatewayGuard_MarketingSourcePack-2026-08-13-1427.md` | 0 |

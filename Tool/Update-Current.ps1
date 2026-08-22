@@ -52,7 +52,10 @@ $wanted = @(
     @{ Label = 'Coding standards';            Pattern = 'GatewayGuard_CodingStandards-*.md' },
     @{ Label = 'Defect prevention playbook';  Pattern = 'GatewayGuard_DefectPreventionPlaybook-*.md' },
     @{ Label = 'Website standards';           Pattern = 'GatewayGuard_WebsiteStandards-*.md' },
-    @{ Label = 'Field test plan';             Pattern = 'GatewayGuard_FieldTestPlan-*.md' },
+    # 'Field test plan' removed 2026-08-22: superseded by 'Field checklist
+    # (current build)' below. Its pattern only ever resolved to the ascii40 plan
+    # (no 41/42/43 plan was ever written), so the row named a stale build --
+    # Cloud flagged it. The checklist row is the live field artifact.
     @{ Label = 'Test history';                Pattern = 'GatewayGuard_TestHistory-*.md' },
     @{ Label = 'Sync plan';                   Pattern = 'GatewayGuard_SyncPlan-*.md' },
     @{ Label = 'Sync setup steps';            Pattern = 'GatewayGuard_SyncSetupSteps-*.md' },
@@ -86,6 +89,15 @@ $wanted = @(
     # Added 2026-08-18. The at-the-keyboard checklist for the current build --
     # what to check, what good looks like, and what not to re-report.
     @{ Label = 'Field checklist (current build)'; Pattern = 'GatewayGuard_FieldChecklist-*.md' },
+    # Added 2026-08-22. Cloud reported these missing: the build plan for the
+    # current build, the FT-220 guide drop-in sections, and the Cloud request
+    # handoffs. All were tracked and synced but unnamed here, so Cloud could not
+    # open them -- the exact failure this file exists to prevent.
+    @{ Label = 'Build plan (current)';        Pattern = 'GatewayGuard_ascii*BuildPlan-*.md' },
+    @{ Label = 'Guide FT-220 sections';       Pattern = 'GatewayGuard_GuideFT220-Sections-*.md' },
+    # Cloud requests are distinct handoffs, not versions of one file, so ALL are
+    # listed (Multi = newest-sorted), never just the newest one.
+    @{ Label = 'Cloud request';               Pattern = 'GatewayGuard_CloudRequest-*.md'; Multi = $true },
     # --- THE THREE SOURCE PACKS, added 2026-08-15 -------------------------
     # Each is a readable extraction of material Cloud cannot otherwise reach,
     # and each was invisible to Cloud for the same reason the Launch Plan was:
@@ -116,11 +128,18 @@ foreach ($w in $wanted) {
               Sort-Object Name)
     if ($hits.Count -eq 0) {
         $missing += $w.Pattern
+    } elseif ($w.ContainsKey('Multi') -and $w.Multi) {
+        # A collection of distinct docs sharing a prefix (e.g. Cloud requests).
+        # List every one, newest-sorted -- they are not versions of each other.
+        foreach ($h in $hits) {
+            $resolved += [pscustomobject]@{ Label = $w.Label; Name = $h.Name; Count = 1; Multi = $true }
+        }
     } else {
         $resolved += [pscustomobject]@{
             Label = $w.Label
             Name  = $hits[$hits.Count - 1].Name
             Count = $hits.Count
+            Multi = $false
         }
     }
 }
@@ -223,8 +242,12 @@ $L.Add('')
 $L.Add('| What it is | The current file | Older versions present |')
 $L.Add('|---|---|---|')
 foreach ($r in $resolved) {
-    $older = $r.Count - 1
-    $L.Add(('| ' + $r.Label + ' | `' + $r.Name + '` | ' + $older + ' |'))
+    if ($r.Multi) {
+        $L.Add(('| ' + $r.Label + ' | `' + $r.Name + '` | -- |'))
+    } else {
+        $older = $r.Count - 1
+        $L.Add(('| ' + $r.Label + ' | `' + $r.Name + '` | ' + $older + ' |'))
+    }
 }
 $L.Add('')
 $L.Add('Also read `CLAUDE.md`, at the repository root. That name never changes.')
