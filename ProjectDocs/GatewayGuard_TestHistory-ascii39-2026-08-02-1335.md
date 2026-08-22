@@ -268,7 +268,7 @@ attributable.
 ## 5a. FT-109 CLOSED / FT-161 OPENED -- SANDY, 2026-08-02
 
 **Evidence:** `Test_Results\ScheduledTasks-SANDY-2026-08-02_06-24.txt`, produced
-by `Tool\Check-ScheduledTasks-2026-08-02.ps1` (rev 2). Read-only.
+by `Tool2\Check-ScheduledTasks-2026-08-02.ps1` (rev 2). Read-only.
 
 ### FT-109: CLOSED
 
@@ -444,7 +444,7 @@ RESEARCH BEFORE STATING already forbade this and had been mandatory for
 weeks. **It did not hold, because nothing checked it.** Enforcement is now
 mechanical:
 
-- **Gate 24** in CodingStandards, run by `Tool\Run-ExternalCommandCheck.bat`.
+- **Gate 24** in CodingStandards, run by `Tool2\Run-ExternalCommandCheck.bat`.
   24a fails any external command without a `# VERIFIED <date>
   measured|sourced:` comment within 20 lines. 24b fails any screen showing
   the user a raw command line (`# GATE24-OK: <reason>` declares a deliberate
@@ -492,7 +492,7 @@ or a photo-card reader attached gets a different answer than one without.
 
 **Fix:** resolve the disk that actually hosts the volume —
 `C: -> Get-Partition -> DiskNumber -> Get-Disk -> Get-PhysicalDisk`. Already
-implemented and field-proven in `Tool\Measure-Encryption-2026-08-02.ps1`,
+implemented and field-proven in `Tool2\Measure-Encryption-2026-08-02.ps1`,
 which also reports when other disks are attached so the condition is visible.
 
 ### FT-164 -- the SSD estimate keys off RAM, which is nearly irrelevant
@@ -535,7 +535,7 @@ way to obtain a real figure is to sample `EncryptionPercentage` while a drive
 converts — which makes SANDY's upcoming encryption the single opportunity to
 capture the project's first measured data point.
 
-**Tooling shipped for it:** `Tool\Measure-Encryption-2026-08-02.ps1` +
+**Tooling shipped for it:** `Tool2\Measure-Encryption-2026-08-02.ps1` +
 `Run-EncryptionMeasure.bat`. Started before encryption begins, it samples
 every 60s to CSV and reports elapsed time, %/min, and GB/min against both
 used and total volume. On an already-encrypted machine it still captures a

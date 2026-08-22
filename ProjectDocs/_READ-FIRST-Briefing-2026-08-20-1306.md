@@ -30,7 +30,7 @@ session reads.
   triggers Claude Code to commit and push, so the file just sits there. Step 2
   -- *Bill tells Claude Code it is there* -- is now the named trigger, and
   step 5 -- the "sync now" line -- is Claude Code's obligation.
-  `Tool\build_readable_twins.py` added and run: **16 Word and PowerPoint files
+  `Tool2\build_readable_twins.py` added and run: **16 Word and PowerPoint files
   in `ProjectDocs\` now have readable twins.** 9 PDFs reported as unextractable
   (no PDF library installed) rather than silently skipped.
 - 2026-08-14 00:07: **Added section 8a, THE FIVE-STEP CHAIN.** The most
@@ -57,7 +57,7 @@ session reads.
 
 **Read `ProjectDocs\CURRENT.md` first. That filename never changes.**
 
-It is **generated** by `Tool\Update-Current.ps1`, never typed, and it opens
+It is **generated** by `Tool2\Update-Current.ps1`, never typed, and it opens
 with a freshness stamp -- generation time, commit hash, commit date, commit
 subject. Reading it *is* reading the sync date. It refuses to write if any
 pattern matches nothing, so it cannot publish a pointer with a hole.
@@ -155,7 +155,7 @@ that would notice.** They sat unread eleven days, and two had been committed:
 repository root **where Cloud reads it**, and `.claude\rules\website-copy-Sandy.md`,
 an entire stale rule in the folder Claude Code loads rules from. All are gone.
 
-**`Tool\Run-RepoHealthCheck.bat` is now step 8 of the Cloud handoff in
+**`Tool2\Run-RepoHealthCheck.bat` is now step 8 of the Cloud handoff in
 CLAUDE.md** -- fsck damage, new conflict copies, unpushed count. It reports ALL
 CLEAR as of 2026-08-20. **Run it at session end.** A guard nobody runs is a
 wish.
@@ -216,7 +216,7 @@ zero uses of `ReadConsoleInput` or `MOUSE_EVENT` -- **re-measured on ascii42,
 2026-08-20: still 0 and 0.** Clear the flag, fix the drain, and stop letting one
 keystroke end the session.
 
-**Before any build, run `Tool\Run-ConsoleInputModeCheck.bat` ON SANDY.**
+**Before any build, run `Tool2\Run-ConsoleInputModeCheck.bat` ON SANDY.**
 Read-only. CGDELL did not fail, so measuring CGDELL proves nothing. **The two
 machines differ in the way that matters: SANDY is conhost, CGDELL is Windows
 Terminal** (measured, `MarkModeReset-SANDY-2026-08-19_18-14.txt`,
@@ -232,7 +232,7 @@ which cost a round trip on 2026-08-19.
    and written up as a crash. It already cost one whole field run's
    confidence.
 2. **The assert-guarded Python wrapper now EXISTS and is COMMITTED** --
-   `Tool\gg_edit.py`, with `Run-GGEditSelfTest.bat`. It was a named ascii40
+   `Tool2\gg_edit.py`, with `Run-GGEditSelfTest.bat`. It was a named ascii40
    blocker and had been missing since the ascii37 wrappers were lost
    uncommitted. **Every `.ps1` build edit goes through it. No cosmetic
    exemption.**
@@ -291,7 +291,7 @@ folder. Also decline any "sign in to all your apps / use this account
 everywhere" offer -- that one *would* attach the account to Windows.
 
 Verify after with **Settings › Accounts › Your info** (should read "Local
-account") and `Tool\Run-OneDriveSyncCheck.bat`.
+account") and `Tool2\Run-OneDriveSyncCheck.bat`.
 
 ---
 
@@ -424,7 +424,7 @@ so:** *"this is in chat only, not yet filed in [filename]."*
 root -- a paste block with copy markers, opening with SYNC NOW and a freshness
 check. Its source material is
 `ProjectDocs\GatewayGuard_MarketingSourcePack-*.md`, **generated** by
-`Tool\build_marketing_sourcepack.py`, because `Marketing\` and `Presentation\`
+`Tool2\build_marketing_sourcepack.py`, because `Marketing\` and `Presentation\`
 are **not in connector scope** and adding them would cost capacity for 9.3 MB
 of saved-webpage junk.
 
@@ -520,7 +520,7 @@ path. `windows_security_walkthrough_guide_v9.docx` was committed and pushed
 harder does not help. Extraction does.
 
 **The fix is already built and proven twice:**
-`Tool\build_marketing_sourcepack.py` and `Tool\build_guide_sourcepack.py`
+`Tool2\build_marketing_sourcepack.py` and `Tool2\build_guide_sourcepack.py`
 both generate a `.md` into `ProjectDocs\`, and Cloud read each within the
 hour. **Keep the binary for safekeeping -- git stores and versions it
 perfectly well; it simply cannot diff it -- and generate the `.md` for
@@ -604,7 +604,7 @@ the real documents survive under hyphenated names.
 10. **Upload the 19 guide pages.** `gatewayguard.co` has shown UNDER
     CONSTRUCTION since 2026-07-21. `WebSite\html\` is the one deploy copy.
 11. **CLOSED 2026-08-20. `Run-DocCheck.bat` is built, run and committed** --
-    `Tool\Check-Docs-2026-08-20.ps1` behind it. Section 5 carries the row and
+    `Tool2\Check-Docs-2026-08-20.ps1` behind it. Section 5 carries the row and
     the baselines. What remains open is not the gate but **the four findings it
     reports**: the 10 dead pointers in the live documents (7 of them in
     ProjectInstructions alone), the 4 document families with several copies and

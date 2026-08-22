@@ -23,7 +23,7 @@ REM  writes nothing, and runs none of the commands it inspects.
 REM
 REM  DOES NOT NEED ADMINISTRATOR.
 REM
-REM  It finds the newest W11-SecurityHardening .ps1 in this folder by itself.
+REM  It finds the newest W11-SecurityHardening .ps1 in ..\Tool\ by itself.
 REM
 cd /d "%~dp0"
 
@@ -40,13 +40,13 @@ if not exist "%GGPS1%" (
 )
 
 set "BUILD="
-for /f "delims=" %%F in ('dir /b /o-d "W11-SecurityHardening-v3-*.ps1" 2^>nul') do (
-  if not defined BUILD set "BUILD=%%F"
+for /f "delims=" %%F in ('dir /b /o-d "..\Tool\W11-SecurityHardening-v3-*.ps1" 2^>nul') do (
+  if not defined BUILD set "BUILD=..\Tool\%%F"
 )
 
 if not defined BUILD (
   echo.
-  echo   ERROR: no W11-SecurityHardening-v3-*.ps1 found in this folder.
+  echo   ERROR: no W11-SecurityHardening-v3-*.ps1 found in ..\Tool\.
   echo.
   echo   Press Enter to close this window.
   set /p "GGCLOSE="

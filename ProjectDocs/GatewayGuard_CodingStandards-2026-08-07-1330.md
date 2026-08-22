@@ -62,7 +62,7 @@
     scan has never run on any machine while the log said [GOOD] every time).
     Extended RESEARCH BEFORE STATING to state that a command flag IS a
     factual claim, that parameter NAMES need verifying too, and that CGDELL
-    is the test bench. Checker: `Tool\Check-ExternalCommands-2026-08-02.ps1`,
+    is the test bench. Checker: `Tool2\Check-ExternalCommands-2026-08-02.ps1`,
     launcher `Run-ExternalCommandCheck.bat`.
   - 2026-07-26 06:19: Added guide-wording requirement to the HTML
     DELIVERY GATE (pre-build step 3 and new report line H-4), mirroring
@@ -411,7 +411,7 @@ consumes it in the same edit. The following tokens are locked:
 GOOD, Required Only, ENCRYPTED, ALL ON, primary, N/A on Home.
 
 ### 24. External Command Verification (anchored: FT-162)
-**MECHANICAL. Run `Tool\Run-ExternalCommandCheck.bat` before every build.**
+**MECHANICAL. Run `Tool2\Run-ExternalCommandCheck.bat` before every build.**
 
 **24a -- every external command carries its evidence.** Any invocation of
 MpCmdRun, schtasks, powercfg, manage-bde, reagentc, bcdedit, netsh, wmic,
@@ -654,7 +654,7 @@ Claude must, before producing any output:
 Before presenting final output:
 - [ ] All 24 mandatory pre-build gates passed (for .ps1) -- gates 1-24,
       including gate 24 (external command verification, run mechanically
-      via `Tool\Run-ExternalCommandCheck.bat`)
+      via `Tool2\Run-ExternalCommandCheck.bat`)
 - [ ] HTML Delivery Gate H-1/H-2/H-3/H-4 reported (for .html)
 - [ ] PSScriptAnalyzer run; any warnings documented
 - [ ] Brace balance verified (open == close)

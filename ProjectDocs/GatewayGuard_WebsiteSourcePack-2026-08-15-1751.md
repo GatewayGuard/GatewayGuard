@@ -62,7 +62,7 @@ the `the\s+\w+\s+` branch does. So it matches *"switch off"* and *"switch the
 firewall on"*, and **cannot match "switch it off"** -- the commonest form of
 the banned verb, and the exact phrasing the rule itself quotes as its example
 (*"It can switch it off with your permission"*). The pattern here is corrected;
-**`Tool\Check-Copy-2026-08-13.ps1` still carries the original and should be
+**`Tool2\Check-Copy-2026-08-13.ps1` still carries the original and should be
 fixed before gate 25 is trusted on this word.** This is the same class as the
 3-versus-5 undercount: an absence produced by the matcher.
 

@@ -207,7 +207,7 @@ Stated so it is a decision and not an omission.
 **This is the part that matters most, because a seventy-item build is exactly
 how ascii34 was corrupted on 2026-07-25.**
 
-- **Every edit through `Tool\gg_edit.py`.** Assert-guarded. **No cosmetic
+- **Every edit through `Tool2\gg_edit.py`.** Assert-guarded. **No cosmetic
   exemption** -- the ascii34 corruption came from a lint pass.
 - **One family per commit**, six commits, each independently revertable. If F6
   goes wrong, F1 through F5 survive.

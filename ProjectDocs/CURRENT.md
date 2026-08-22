@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-22 12:43 ET -->
-<!-- Commit: fb807b2 -->
+<!-- Generated: 2026-08-22 12:59 ET -->
+<!-- Commit: a282a4a -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-22 12:43 ET
-- **Commit at generation:** `fb807b2`
-- **That commit was made:** 2026-08-22 12:33 ET
-- **Its subject line:** Session log 2026-08-21/22: ascii43 half built, Cloud's five items actioned
+- **Generated:** 2026-08-22 12:59 ET
+- **Commit at generation:** `a282a4a`
+- **That commit was made:** 2026-08-22 12:44 ET
+- **Its subject line:** Retire 17 files out of ProjectDocs to cut Cloud project-knowledge capacity
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**

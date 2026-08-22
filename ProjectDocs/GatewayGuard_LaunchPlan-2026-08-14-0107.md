@@ -116,7 +116,7 @@ critical path.**
 
 | # | Task | Owner | Days | Notes |
 |---|---|---|---|---|
-| A1 | Run `Tool\Run-ConsoleInputModeCheck.bat` **on SANDY** | Bill | 5 min | **DONE 2026-08-14 22:25.** Root cause confirmed: mouse input was ON and survived the mask |
+| A1 | Run `Tool2\Run-ConsoleInputModeCheck.bat` **on SANDY** | Bill | 5 min | **DONE 2026-08-14 22:25.** Root cause confirmed: mouse input was ON and survived the mask |
 | A2 | **Build ascii40** -- FT-171, FT-172, FT-175 | Claude Code | 2 | **TWO OF THREE DONE 2026-08-15.** FT-171 and FT-175 in and gated. **FT-172 held on A2a** |
 | A2a | **Agree the FT-172 screen-numbering design** | **Bill + Claude Code** | -- | **THE ONLY THING BLOCKING THE CRITICAL PATH.** Scheme agreed (branch letters, 8a/8b). **Five questions open** -- see `GatewayGuard_ScreenNumberDesign-2026-08-15-1430.md`. Start with question 1, the checklist hub |
 | A2b | Build FT-172 | Claude Code | 1 | **Starts only when A2a is fully agreed.** Bill 2026-08-15: "Stop doing work before we have 100% agreement on complex issues like this" |
@@ -137,7 +137,7 @@ FT-175 makes the Defender scan actually run -- it never has, on any machine.
 parts rather than the five the field test plan named: the sixth is that
 ascii39 only ever asserted the console flags from inside `Get-AllStatuses`,
 most of the way through the run, so every earlier screen ran with the console
-as it started. Proved by `Tool\Run-InputGateTest.bat`, 9 passed 0 failed on
+as it started. Proved by `Tool2\Run-InputGateTest.bat`, 9 passed 0 failed on
 CGDELL.
 
 **A2a is the whole delay.** Everything not depending on Bill's answer is done.

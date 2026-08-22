@@ -36,8 +36,8 @@
     screen, and all six instances are now gone.
   - Full design and the call-flow walk that proves no user meets a
     first-encounter decrease: `ProjectDocs\GatewayGuard_ScreenNumberDesign-*.md`
-    and `ProjectDocs\GatewayGuard_ScreenNumberTable-*.md`. Run `Tool\Check-ScreenCoverage-2026-07-30.ps1` before every build (launcher: `Run-ScreenCoverageCheck.bat`); it is the mechanical gate-12 check and reports the next free ID (88 as of ascii41 — 83 went to the FT-171d exit confirmation, 84 to the FT-189 "about this run" screen, and 85/86/87 to the three intro screens that FT-172 finally gave IDs to).
-- **Review every screen:** `Tool\Show-AllScreens.bat` walks all 66 screens without running checks or changing anything. It reads the .ps1's own source via the AST, so it cannot drift from the real screens.
+    and `ProjectDocs\GatewayGuard_ScreenNumberTable-*.md`. Run `Tool2\Check-ScreenCoverage-2026-07-30.ps1` before every build (launcher: `Run-ScreenCoverageCheck.bat`); it is the mechanical gate-12 check and reports the next free ID (88 as of ascii41 — 83 went to the FT-171d exit confirmation, 84 to the FT-189 "about this run" screen, and 85/86/87 to the three intro screens that FT-172 finally gave IDs to).
+- **Review every screen:** `Tool2\Show-AllScreens.bat` walks all 66 screens without running checks or changing anything. It reads the .ps1's own source via the AST, so it cannot drift from the real screens.
 - **26 lines per screen maximum, and every screen ends with a blank line.**
   Bill's rule, 2026-07-30 (field note 11), superseding the ascii37 25-line
   rule. The trailing blank line is produced centrally in `Write-GGBox`, so a
@@ -414,7 +414,7 @@ the whole lesson: a gate with no check is a wish.
 - **Every external command carries its evidence, in a comment beside it:**
   `# VERIFIED 2026-08-02 measured on CGDELL: ...` — basis must be
   **measured** or **sourced**. *inferred* and *guess* are not shippable.
-- **Gate 24 enforces both.** Run `Tool\Run-ExternalCommandCheck.bat` before
+- **Gate 24 enforces both.** Run `Tool2\Run-ExternalCommandCheck.bat` before
   every build. It fails any external command with no VERIFIED comment, and
   any screen that shows the user a raw command line (`# GATE24-OK: reason`
   suppresses a deliberate "type this" instruction).
@@ -455,7 +455,24 @@ indefinitely while everyone believes it is done. Bill caught this.
 7. **Check the four Cloud folders at session start and session end** --
    `ProjectDocs\`, `Tool\`, `WebSite\Rules\`, `CLAUDE.md`. This is the safety
    net for a file Bill forgot to mention, not a replacement for step 2.
-8. **Run `Tool\Run-RepoHealthCheck.bat` at session end**, before the final
+
+   **`Tool\` NOW HOLDS ONLY THE CURRENT BUILD .ps1 (Bill, 2026-08-22).**
+   Everything else that used to live there -- every `.bat` launcher, every
+   `Check-*`/`Test-*`/`Get-*` script, `gg_edit.py` and the `build_*.py`
+   wrappers -- moved to **`Tool2\`, which is deliberately OUTSIDE the connector
+   scope.** Cloud was at 89% of capacity on Tool+ProjectDocs+CLAUDE.md and the
+   five superseded build `.ps1` alone were 2.1 MB of it. Superseded builds went
+   to `Builds\`.
+
+   - **Run every gate from `Tool2\`.** The `.bat` and the script it calls sit
+     together, so `cd /d "%~dp0"` still works and no path was rewritten.
+   - **The four build-aware launchers point at `..\Tool\`** --
+     `Run-GatewayGuard`, `Show-AllScreens`, `Run-ScreenCoverageCheck`,
+     `Run-ExternalCommandCheck`. Verified by running gates 12 and 24 after the
+     move.
+   - **If the connector ever shows `Tool2\` content, it is matching `Tool` as a
+     prefix.** Rename the folder rather than moving the scripts back.
+8. **Run `Tool2\Run-RepoHealthCheck.bat` at session end**, before the final
    commit. See THE REPOSITORY LIVES INSIDE ONEDRIVE below for what it watches
    and why it exists.
 
@@ -484,7 +501,7 @@ of this file against the live 38,325 -- sat **committed, in the repository
 root, where Cloud reads it.** `.claude\rules\website-copy-Sandy.md` was a whole
 stale rule in the folder Claude Code loads rules from. Both are now removed.
 
-`Tool\Run-RepoHealthCheck.bat` is the check. Read-only, no admin. It reports
+`Tool2\Run-RepoHealthCheck.bat` is the check. Read-only, no admin. It reports
 real `fsck` damage (dangling objects are normal and are filtered out), any new
 conflict copy that sits beside a file of the same name, and the unpushed count.
 **A guard nobody runs is a wish** -- which is why it is step 8 above and not a
@@ -507,8 +524,8 @@ confidently.
 commit: only the `.md` ever surfaces. The guide `.docx` was committed and
 pushed for **sixteen days** while invisible. Keep the binary for safekeeping
 -- git stores and versions it fine, it just cannot diff it -- and generate the
-`.md` beside it. Proven: `Tool\build_marketing_sourcepack.py`,
-`Tool\build_guide_sourcepack.py`, `Tool\build_readable_twins.py`.
+`.md` beside it. Proven: `Tool2\build_marketing_sourcepack.py`,
+`Tool2\build_guide_sourcepack.py`, `Tool2\build_readable_twins.py`.
 
 Full detail, with the evidence for each failed step: briefing section 8a.
 

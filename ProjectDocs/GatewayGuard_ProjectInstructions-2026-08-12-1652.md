@@ -289,7 +289,7 @@ subordinate to this table.
 |---|---|---|---|---|
 | **CGDELL** | **Microsoft account** | **Fully encrypted** (`Encrypted / 100 / FullyEncrypted`) | `False` | **measured** 2026-08-02, TestHistory-ascii39 FT-143/144/145 |
 | **SANDY** | **Local account** `panther` -- **converted from a MICROSOFT account 2026-08-11** | **Not encrypted** (`FullyDecrypted`, both `C:` and `D:`) | unverified | **measured** 2026-08-11, `Tool\EncryptionProfile-SANDY-2026-08-11_15-15.txt` |
-| **Sandy3** | unverified | **Fully encrypted** (`FullyEncrypted / 100 / XtsAes128`) | unverified | **measured** 2026-08-08, `Tool\Run-EncryptionMeasure.bat` |
+| **Sandy3** | unverified | **Fully encrypted** (`FullyEncrypted / 100 / XtsAes128`) | unverified | **measured** 2026-08-08, `Tool2\Run-EncryptionMeasure.bat` |
 
 **What this matrix means for testing:**
 
@@ -459,9 +459,9 @@ document:
   every machine's ID and orphan every scheduled task on every
   customer machine.
 - **The required pre-build tool runs** --
-  `Tool\Check-ScreenCoverage-2026-07-30.ps1` (launcher
+  `Tool2\Check-ScreenCoverage-2026-07-30.ps1` (launcher
   `Run-ScreenCoverageCheck.bat`), the mechanical gate-12 check that
-  also reports the next free screen ID, and `Tool\Show-AllScreens.bat`
+  also reports the next free screen ID, and `Tool2\Show-AllScreens.bat`
   to walk every screen without running checks or changing anything.
 
 **Why this was added:** until 2026-08-06 this document named
@@ -736,7 +736,7 @@ because it was run before being written down.
 
 **This rule existed before FT-162 and did not prevent it, because
 nothing checked it.** Enforcement is now mechanical: CodingStandards
-gate 24, via `Tool\Run-ExternalCommandCheck.bat`, which fails any
+gate 24, via `Tool2\Run-ExternalCommandCheck.bat`, which fails any
 external command lacking a `# VERIFIED <date> measured|sourced:`
 comment and any screen that shows the user a raw command line. A gate
 with no check is a wish.

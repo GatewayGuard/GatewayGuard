@@ -264,7 +264,7 @@ is the scheme -- it is the specific case the scheme was chosen to handle
 
 ## WHAT IS MEASURED, AND WHAT IS NOT
 
-**measured** -- reproducible with `Tool\Run-ScreenInventory.bat`:
+**measured** -- reproducible with `Tool2\Run-ScreenInventory.bat`:
 
 | | |
 |---|---|

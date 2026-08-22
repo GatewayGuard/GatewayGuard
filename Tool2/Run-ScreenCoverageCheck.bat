@@ -20,20 +20,20 @@ REM  nothing and writes nothing.
 REM
 REM  DOES NOT NEED ADMINISTRATOR.
 REM
-REM  It finds the newest W11-SecurityHardening .ps1 in this folder by itself,
+REM  It finds the newest W11-SecurityHardening .ps1 in ..\Tool\ by itself,
 REM  so it does not need updating when the build number changes -- which is
 REM  the cross-file sync problem that has bitten Run-GatewayGuard.bat before.
 REM
 cd /d "%~dp0"
 
 set "BUILD="
-for /f "delims=" %%F in ('dir /b /o-d "W11-SecurityHardening-v3-*.ps1" 2^>nul') do (
-  if not defined BUILD set "BUILD=%%F"
+for /f "delims=" %%F in ('dir /b /o-d "..\Tool\W11-SecurityHardening-v3-*.ps1" 2^>nul') do (
+  if not defined BUILD set "BUILD=..\Tool\%%F"
 )
 
 if not defined BUILD (
   echo.
-  echo   ERROR: no W11-SecurityHardening-v3-*.ps1 found in this folder.
+  echo   ERROR: no W11-SecurityHardening-v3-*.ps1 found in ..\Tool\.
   echo.
   echo   Press Enter to close this window.
   set /p "GGCLOSE="

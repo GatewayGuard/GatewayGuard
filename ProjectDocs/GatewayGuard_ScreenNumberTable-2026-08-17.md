@@ -10,7 +10,7 @@
   table it produced. The design is approved and closed; see
   `GatewayGuard_ScreenNumberDesign-2026-08-15-1430.md`.
 - **Where the table now lives:** `$script:GGScreenLabels` in the build. The
-  tables below are **generated from `Tool\build_ascii41_ft172.py`**, so this
+  tables below are **generated from `Tool2\build_ascii41_ft172.py`**, so this
   document cannot drift from the code. Regenerate rather than hand-edit.
 - **Build walked:** `W11-SecurityHardening-v3-ascii40-2026-08-15-0828.ps1`
   (the walk); shipped in `W11-SecurityHardening-v3-ascii41-2026-08-17-2246.ps1`
@@ -109,7 +109,7 @@ the property that mattered all along -- I had simply stated it backwards.
 ## THE CANONICAL JOURNEY -- 34 integers, AS BUILT
 
 **These are the values in the shipped table**, generated from
-`Tool\build_ascii41_ft172.py` so this document cannot drift from the code.
+`Tool2\build_ascii41_ft172.py` so this document cannot drift from the code.
 Walked from the entry point and confirmed against the 2026-08-17 SANDY logs.
 
 **An earlier draft of this section said 30 integers.** It was written before
