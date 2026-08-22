@@ -28,6 +28,148 @@ This is the shared memory between all Claude instances.
 ---
 ---
 
+## Session: 2026-08-21 16:40 to 2026-08-22 12:31 [Claude Code -- CGDELL] -- ascii43 STARTED AND HALF BUILT, CLOUD'S FIVE ITEMS ACTIONED
+
+**Build: ascii42 -> ascii43 (IN PROGRESS).**
+`Tool\W11-SecurityHardening-v3-ascii43-2026-08-21-1752.ps1`, **9,002 non-blank /
+9,382 total**. **NOT FINISHED AND NEVER FIELD RUN.** 20 commits, all pushed,
+unpushed 0 at session end.
+
+### ascii43 -- what is built, one family per commit
+
+Every edit went through `Tool\gg_edit.py`. After each: parse 0 errors, braces
+balanced, gate 12/12b PASS. On the finished-so-far file: **gate 24 PASS, 0
+non-ASCII, 0 duplicate functions (84 functions).**
+
+| Commit | Family | Closes |
+|---|---|---|
+| `8812956` | base | build-ID bumped in all five locations |
+| `517b5b4` | **F1** keyboard | FT-204, 206, 207, 223, 232 |
+| `ce058a2` | **F2** width | FT-217, FT-199 |
+| `5a71aa8` | **F3** log | FT-231 |
+| `71bfc22` | **F5** flow | FT-219 |
+| `f66f626` | **F5** flow | FT-224 |
+| `0844f82` | **F6** | FT-221 |
+| `eb972b7` | correction | FT-226 restored -- see below |
+
+- **FT-204** is the one that mattered most: `N` wiped 19 selections five seconds
+  after they were made. Deselect-all moved to **`C` = Clear all** behind a Y/N
+  confirm; `N` is now inert on the checklist.
+- **FT-217** verified in isolation before committing: the field's 378-char box
+  paints **84 columns in an 86-column window**, the embedded newline splits into
+  two lines, the longest line clamps to 82. `Write-GGBox` now does what the
+  checklist renderer already did eleven hundred lines away (D-18).
+- **FT-188 was NOT re-fixed -- it was already done in ascii41**, lines 3117-3129.
+  The build plan listed it open; the source disproved that. Verified, not assumed.
+
+### THREE DESIGN FORKS -- stopped and asked rather than guessing
+
+All three were in the build plan as if they were mechanical. None was.
+
+1. **"B is Back, always, only" (FT-225).** Taken literally it collides with a
+   deliberate Y/N/S consent pattern where `N = go back` is the natural "no",
+   live in ~6 prompts including the close-confirm and both encryption declines.
+   **Bill: fix only the genuinely inconsistent screen(s).** Not yet built --
+   needs the shown-number -> SCREEN-ID map to pinpoint which.
+2. **F4 second drive.** **Bill chose route 3 -- cover the other drives**, not
+   route 2's warn-once. Recorded in the build plan and the field checklist.
+3. **FT-219 consent.** Bill: *"making the selection is an approval to apply the
+   change, except where a manual intervention by the approver is needed."*
+   Built exactly that: an automatable selected item applies with no second
+   Y/N; the manual-action path (`-not CanAuto`) is the stated exception.
+
+### F4 IS BLOCKED ON A MEASUREMENT, AND THE CMDLET SURFACE IS NOW MEASURED
+
+**measured on CGDELL 2026-08-22:** `Start-MpWDOScan` -- the offline scan the
+build runs today -- **has no scope, path or drive parameter.** It cannot be
+aimed at a volume. `Start-MpScan` **does**: `-ScanType {FullScan | QuickScan |
+CustomScan}` and `-ScanPath`.
+
+So `D:` coverage comes from a **full ONLINE scan, not the pre-boot offline
+scan** -- which is the right tool anyway, because `D:` is a data drive and not
+bootable, so the offline scan's rootkit job never applied to it. **The screen
+must say "full scan of all your drives", never "offline scan."**
+
+**Gate 24 prerequisite, hard:** that a full scan completes and actually covers
+`D:` is **not measured** and must be, **on SANDY** (CGDELL has no large second
+drive), before any screen text claims coverage.
+
+### FT-226 -- I FILED IT WRONG AND CLOUD CAUGHT IT
+
+I "fixed" setting 17's guide reference. **Both halves of the finding were
+wrong**, and Cloud's correction is right:
+
+- Setting 17 **already had** a GuideRef -- `"Keep vs. Disable Table"` -- in
+  ascii40, 41, 42 and 43. It was never missing.
+- The real defect is a **class**: settings **10, 11, 12, 17, 18 and 19** all
+  point at that same table name, which is not a page. **Fixing 17 alone left
+  five live.**
+
+My fix also set 17 to `"Phase 1, Step 4"` -- which the **new guide draft
+contradicts**, because it moves setting 17 to **Phase 4**. So it broke
+consistency and pointed somewhere wrong. **Reverted to the class value**
+(`eb972b7`).
+
+**The class fix is deferred until the guide structure is LOCKED.** It is still
+moving -- 17 jumped between sections in one draft revision, and setting 10 has
+no dedicated section at all. Setting six references against an unapproved,
+gap-ridden draft would only have to be redone.
+
+### CLOUD'S FIVE ITEMS, ALL ACTIONED
+
+1. **New guide draft committed** -- `GuideRewrite-Draft-2026-08-22-1000.md`,
+   absorbing the FT-220 sections with VERIFY markers intact.
+2. **G1-G6 gap-fill handed back** --
+   `GatewayGuard_GuideGapFill-fromV9-2026-08-22.md`, 524 lines. **A
+   byte-faithful extraction, not a rewrite**: each of the eight blocks is the
+   raw v9 text with its source line range, for Cloud to plain-language.
+   **Flagged rather than silently decided:** two v9 sections (Quick decision
+   tree, When to call for help) sit inside G4's range and were not requested.
+3. **FT-226 corrected** -- above.
+4. **CURRENT.md fixed** -- Build plan, Guide FT-220 sections and **all four
+   Cloud requests** added (new `Multi` mode lists distinct handoffs instead of
+   only the newest). The stale **Field test plan** row removed: it only ever
+   resolved to the ascii40 plan and was superseded by the Field checklist row.
+   27 documents resolved.
+5. **Marketing + pricing** -- new master `MarketingPlan-2026-08-22-1000.md`
+   with Cloud's 08-22 blocks applied (decision 4 rewritten, 6 closed, 7 added,
+   the not-peers note, the press yearly-update answer, the no-subscription
+   family retired). `PricingCopy-Draft` committed but **NOT applied to the
+   site** -- it is held on the multi-year decision.
+
+### ALSO DONE EARLIER IN THE SESSION
+
+- **W-07 collision closed.** `diagnostic-data.html` (12) and `widgets.html` (14)
+  moved to the guide's position; **`advertising-id.html` (11) aligned on Bill's
+  call**, creating a known temporary guide-vs-site divergence that is recorded
+  in the page header and briefed to Cloud
+  (`CloudRequest-GuideSetting11-2026-08-21.md`).
+- **ascii43 field checklist written** --
+  `GatewayGuard_FieldChecklist-ascii43-2026-08-21.md`: Part A what to SKIP,
+  Part B what to LOOK FOR by family, Part C the encryption path, Part D the
+  already-working set.
+- **The $12.99 price-decision record committed**, resolving the dead pointer
+  the marketing plan cited.
+
+### STILL OPEN
+
+**Build:** F4 (code + the SANDY measurement), the F5 remnants (FT-195a,
+FT-175b, FT-225), the F6 wording block (~20 items + FT-222). Then refresh the
+line counts, re-run the gates, and field-run ascii43 on SANDY.
+
+**Bill:** the multi-year pre-pay terms and how "10% per year" applies (blocks
+the pricing copy going live), and **the refund policy** -- Cloud calls it the
+only genuine store-opening blocker, made sharper by the annual charge.
+
+**Cloud:** the guide's setting 11 reframe, and the G1-G6 fill.
+
+**Note on model attribution:** this session ran on **Opus 4.8**, so its 20
+commits carry `Co-Authored-By: Claude Opus 4.8`. The other 178 model-stamped
+commits in the repository say Opus 5. Bill switched the default back to Opus 5
+at the end of the session.
+
+---
+
 ## Session: 2026-08-21 [Claude Code -- CGDELL] -- ascii42 FIELD RUN TRIAGED, OFFLINE-SCAN RESEARCH, CLOUD REVIEW ACTIONED
 
 **Build: ascii42, unchanged. No build work -- this was a triage, research and
