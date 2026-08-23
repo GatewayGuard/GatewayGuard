@@ -2,7 +2,7 @@
 # GatewayGuard — Marketing Plan
 
 - **Document Name:** GatewayGuard_MarketingPlan
-- **Last Modified:** 2026-08-22 10:00 ET
+- **Last Modified:** 2026-08-23 13:05 ET
 - **Last Editor:** Claude Code (CGDELL), applying Claude Cloud's amendment
 - **Machine:** CGDELL
 - **Status:** Cumulative Master Document — supersedes the marketing sections of `ProjectNotes-2026-08-09-1435.md` and the marketing entries FP-10 to FP-16 in `FutureProjects-2026-07-19.md`
@@ -11,6 +11,7 @@
   - 2026-08-19 17:53: **Five-editions pitch added to section 3**, and any page count banned from marketing copy. The ink-saver line has been open since 2026-07-16 waiting on a measurement; the measurement arrived and does not support the line.
   - 2026-08-19 17:53: **Trust ladder written into section 3**, correcting this plan's central error — it said the pre-purchase trust path was gone. It is not gone; it moved, and it is already built. Correction raised by Claude Code, 2026-08-18.
   - 2026-08-21 16:45: **Applied Claude Cloud's amendment** (`GatewayGuard_MarketingPlanAmendment-2026-08-21-1445.md`) for the 2026-08-21 pricing decision. Section 2: three rows added to BANNED (**No subscription**; **No renewal / no ongoing fees**; **No upsell**), the footer recommendation replaced, one row added to APPROVED. Section 3: a price line added beneath the trust ladder. Section 4: the locked one-time and annual prices tabled. **The banned "No subscription" line supersedes this plan's own 2026-08-19 footer recommendation** — renewal plans are now sold on the site, so "no subscription" is no longer defensible.
+  - 2026-08-23 13:05: **Applied Cloud's 08-23 amendment** (`GatewayGuard_MarketingPlanAmendment-2026-08-23-0142.md`), closing M-1, M-2, M-3 and M-4's residual. **M-1:** the "over 49 pages" count cut from the trust ladder — section 2 line 68 and section 3 both ban page counts, so the document was breaching its own rule two sections apart. **M-2:** "SEVENTEEN DAYS" replaced with the target date in the section 4 heading and in decision 1 — it was written 2026-08-22 and was already ten days wrong when filed, and nine by the time it was applied. **M-3:** decision 3 reworded so it names the open thing (the licence terms) instead of reading as a pricing question decision 4 had answered. **M-4:** the short "One-time purchase. Updates are optional." row deleted from APPROVED, leaving the long form that names the annual charge. **Decisions 2 and 7 closed** against `Decisions-RefundAndTerms-2026-08-22-1510.md`; the refund wording is quoted from that document rather than from the amendment, at Cloud's own instruction. A footnote added beneath the BANNED table: **a claim about a number is a claim.** *(Not in Cloud's blocks, and applied by Claude Code as a consequence: the callout beneath the decisions table still said decision 2 was the only store-opening blocker and that the refund promise "has no policy behind it" — false the moment 2f landed. Rewritten, and it now names `FP-21` as the blocker that replaces it.)*
   - 2026-08-22 10:00: **Applied Cloud's 08-22 amendment** (`GatewayGuard_MarketingPlanAmendment-2026-08-22-1000.md`), which the 16:45 reissue's Section 7 had not caught up with. Section 7: decision 4 rewritten (price settled, delivery still open), decision 6 closed (footer corrected), decision 7 added (multi-year pre-pay terms), and a note that decisions 1 and 2 are not peers — decision 2 (refund policy) is the only store-opening blocker. Section 5 Channel 4: the press yearly-update answer added. Section 8: the "no subscription / no renewal / no ongoing fees / no upsell" claims retired.
 
 ---
@@ -51,7 +52,6 @@
 | **Nothing is hidden from you. Nothing is sold to anyone else.** | Consumer-facing |
 | **Checkup asks your permission before every change** | Anywhere |
 | **No data collection, no advertising, no account required** | Anywhere |
-| **One-time purchase. Updates are optional.** | Anywhere |
 | **Buy it once. Keep it for good. Yearly updates are optional and your copy never expires** | Anywhere. This is the reassurance that makes the paid update read as optional rather than as a fee |
 
 ### Banned, and why
@@ -69,6 +69,12 @@
 | **No subscription** | Renewal plans are sold on the website as of 2026-08-21. Optional is true; "no subscription" invites the comparison and loses it |
 | **No renewal**, **no ongoing fees** | Flatly false under the 2026-08-21 model |
 | **No upsell** | The annual update is an upsell. An honest one, and still one |
+
+**A claim about a number is a claim.** Page counts, day counts and price
+counts all go stale on their own schedule and nothing in the repository
+reports it. Where a figure has to appear, state the source it came from
+and the date it was measured, or state the date the count runs to. A bare
+number in marketing copy is a claim with no owner.
 
 ### One line to settle across every surface
 
@@ -107,7 +113,7 @@ it was a poor one for the person actually buying.
 | Rung | What it costs them | What it proves |
 |---|---|---|
 | **The 19 free setting pages** | Nothing | The explanations are real, specific, and correct. Anyone can check the advice against Microsoft's own documentation |
-| **The $8.99 Guide** | Small | The company delivers a finished product for money, and the writing holds up over 49 pages |
+| **The $8.99 Guide** | Small | The company delivers a finished product for money, and the writing holds up |
 | **The $19.99 tool** | Full | — |
 
 > **The ladder is also the answer on price.** A buyer who has already paid $8.99 and got a finished product does not read $12.99 a year as a trap. The Guide earns the right to sell the update as much as it earns the right to sell the tool.
@@ -166,7 +172,7 @@ the size range.
 
 ---
 
-## 4. LAUNCH — SEVENTEEN DAYS
+## 4. LAUNCH — TARGET 2026-09-01
 
 **The Guide has no dependency on the code-signing certificate.** It is a PDF. The tool does. **That splits the launch into two independent halves and makes September 1 achievable regardless of DigiCert.**
 
@@ -268,22 +274,29 @@ the size range.
 
 | # | Decision | Why it matters now |
 |---|---|---|
-| 1 | **Launch shape** — Guide first, both together, or tool unsigned | Everything in section 4 depends on it. Seventeen days |
-| 2 | **Refund policy** | Cannot open a store without one, and the readable-source download makes it non-obvious |
-| 3 | **Multi-PC licence terms** | Must appear in the listing |
+| 1 | **Launch shape** — Guide first, both together, or tool unsigned | Everything in section 4 depends on it. Target is 2026-09-01 |
+| 2 | ~~Refund policy~~ | **CLOSED 2026-08-22. 30 days, no questions asked.** Published wording: *"If Checkup is not what you expected, write to us within 30 days of buying and we will refund you in full. You do not have to give a reason."* A restrictive policy was never available — Gumroad refunds at its own discretion within 90 days and card networks allow chargebacks regardless. **Bill still has to set the Gumroad account setting to 30.** Authority: `GatewayGuard_Decisions-RefundAndTerms-2026-08-22-1510.md` |
+| 3 | **Multi-PC licence terms.** The prices are settled — $19.99 / $34.99 / $49.99 / $79.99 to buy, and $12.99 / $22.99 / $32.99 / $51.99 a year to keep current. **What one purchase actually covers is not.** How many machines, whose machines, household or per-person, and what happens when a buyer replaces a PC | The packs run to $79.99, which is enough money that the terms will be read. The yearly update is now sold per pack too, so the listing has to say how many machines a $22.99 renewal covers |
 | 4 | **Annual updates — delivery mechanism.** Price is settled: $12.99/yr for 1 PC, locked 2026-08-21, with 3, 5 and 10-PC rates derived. **How a buyer actually receives and pays for the update is not.** `FP-21`, still open | The website now sells it. A price with no delivery mechanism behind it is a promise the store cannot keep |
 | 5 | **Retire the flyer drafts, or rewrite them** | Recommendation is retire. They are false in their premise, not their wording |
 | 6 | ~~Footer wording~~ | **CLOSED 2026-08-21.** Both lines corrected. Live line: *"One-time purchase, yours to keep. Annual updates are optional."* |
-| 7 | **Multi-year pre-pay — which terms exist, what each costs, and how "10% per year" applies** (flat, or deepening with the term) | The pricing copy is written and held. It cannot go live without one reading of the discount rule, and the plans block on the index is incomplete until it does |
+| 7 | ~~Multi-year pre-pay terms and the "10% per year" rule~~ | **CLOSED 2026-08-22.** Bill: annual updates only, no multi-year pre-pay. The question is removed rather than answered — there are no multi-year terms, so there is no discount rule to settle. Authority: `GatewayGuard_Decisions-RefundAndTerms-2026-08-22-1510.md` |
 
-> **Decisions 1 and 2 are not peers of the rest.** Decision 1 shapes everything
-> in section 4. **Decision 2 is the only one that stops a store opening** — and
-> it has become more pressing, not less. The plan's promise to the skeptical
-> buyer is that they can read every line after purchase and return it if they
-> do not like what they find. **That promise has no policy behind it**, and the
-> site now asks the same buyer for money a second time each year. Gumroad may
-> override a seller's own policy within its refund window, so the policy has to
-> be written knowing that.
+> **Decision 1 is not a peer of the rest.** It is the launch shape, and
+> everything in section 4 depends on it. It is Bill's, and it is still open.
+>
+> **Decision 2 was the only one that could stop a store opening, and it is
+> now closed** — 30 days, no questions asked, settled 2026-08-22. The plan's
+> promise to the skeptical buyer is that they can read every line after
+> purchase and return it if they do not like what they find. **That promise now
+> has a policy behind it**, and the published wording answers the obvious
+> question a readable-source download raises. **What remains is not a decision
+> but an action: Bill sets the Gumroad account setting to 30.**
+>
+> **The blocker that replaces it is decision 4** — `FP-21`, how a buyer
+> actually receives and pays for a yearly update. The site sells the renewal
+> already. A price with no delivery mechanism behind it is a promise the store
+> cannot keep.
 
 ---
 

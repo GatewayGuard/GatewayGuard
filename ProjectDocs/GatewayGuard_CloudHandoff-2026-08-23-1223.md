@@ -25,9 +25,9 @@ match, say so and stop -- your snapshot is stale.
   That commit was made: 2026-08-23 12:27 ET
   Its subject line: Guide handoff was telling Cloud to redo pack 1 -- corrected
 
-Three jobs below: the guide, the 19 .html pages, the marketing
-plan. Do them in that order. The guide is the only one on the
-critical path -- the tool build is waiting on it.
+Two jobs below: the guide and the 19 .html pages. The marketing
+plan section is now a DO-NOT list -- your 08-23 amendment closed it
+and Claude Code applied it. The guide is the critical path.
 
 ===============================================================
 1. THE GUIDE  --  PACK 2 ONLY. PACK 1 IS DONE.
@@ -160,51 +160,65 @@ I will send a screenshot.
 3. THE MARKETING PLAN
 ===============================================================
 
+NOTHING HERE IS FOR YOU THIS ROUND. IT IS ALL DONE. This section
+exists so you do not start it.
+
 THE LIVE FILE IS GatewayGuard_MarketingPlan-2026-08-22-1000.md,
-309 lines.
+now 321 lines.
 
-TWO OF ITS OPEN DECISIONS ARE CLOSED. The authority is
-GatewayGuard_Decisions-RefundAndTerms-2026-08-22-1510.md. WHERE
-THE PLAN DISAGREES, THE PLAN IS STALE.
+DECISIONS 2 AND 7 ARE CLOSED IN THE PLAN ITSELF, applied
+2026-08-23 against
+GatewayGuard_Decisions-RefundAndTerms-2026-08-22-1510.md:
 
-  - DECISION 2, REFUND POLICY: 30 DAYS, NO QUESTIONS ASKED. This
-    was the ONLY genuine store-opening blocker and it is no
-    longer a blocker. Approved published copy is in that
-    document. Sourced: "no refunds" was never available --
-    Gumroad refunds at its own discretion within 90 days, card
-    networks allow chargebacks regardless, and too many disputes
-    risk account suspension. THE PLAN STILL LISTS THIS AS OPEN,
-    and its callout paragraph still says "that promise has no
-    policy behind it." Both are now false. Fix them.
+  - DECISION 2, REFUND POLICY: 30 DAYS, NO QUESTIONS ASKED. The
+    row now carries the published wording, quoted from the
+    decision document rather than from your amendment -- you
+    asked for that explicitly, because you had read only the
+    opening of decision 2. Sourced: "no refunds" was never
+    available -- Gumroad refunds at its own discretion within 90
+    days and card networks allow chargebacks regardless. The one
+    thing still outstanding is not a decision: Bill sets the
+    Gumroad account setting to 30.
   - DECISION 7, MULTI-YEAR PRE-PAY: DROPPED. Annual updates only,
     at $12.99 / $22.99 / $32.99 / $51.99 for 1/3/5/10 PCs. The
     "10% per year" question is REMOVED, NOT ANSWERED -- with no
-    multi-year terms there is no discount rule at all. The plan
-    still lists decision 7 as open. PricingCopy section 5 never
-    publishes; its four tokens are dead.
+    multi-year terms there is no discount rule at all.
+    PricingCopy section 5 never publishes; its four tokens are
+    dead.
 
-THREE MORE, ALL MEASURED IN THE LIVE PLAN TODAY:
+M-1, M-2, M-3 AND M-4 ARE DONE. DO NOT DO THEM AGAIN.
 
-  - M-1. LINE 110 STATES A PAGE COUNT -- "the writing holds up
-    over 49 pages" -- in the document that BANS page counts at
-    line 68 and line 151. Cut the number.
-  - M-2. "SEVENTEEN DAYS" AT LINES 169 AND 271. It was written on
-    2026-08-15 and it is 9 DAYS TODAY. STATE THE DATE, NEVER THE
-    INTERVAL. This is the general rule, not just these two lines
-    -- a countdown re-stales every single day.
-  - M-3. DECISION 3 reads as a pricing question that was answered
-    yesterday. Decision 4, four rows below, says the multi-PC
-    rates are locked. The prices are NOT what is open. What is
-    open is the LICENCE TERMS -- how many machines one purchase
-    covers, household or per-person, and what happens when a
-    buyer replaces a PC. Reword decision 3 to say that.
+You wrote the amendment that closes them --
+GatewayGuard_MarketingPlanAmendment-2026-08-23-0142.md. It had
+never reached the repository, so you could not see your own
+delivery; it was sitting in my Downloads folder by mistake and I
+moved it in. Claude Code applied all seven blocks on 2026-08-23
+and the plan is now 321 lines.
 
-STILL GENUINELY OPEN, LEAVE IT: decision 4 / FP-21 -- how a buyer
-actually receives and pays for a yearly update. A price with no
+  Measured after applying: zero page counts, zero "seventeen
+  days", the short one-time-purchase row gone, decisions 2, 3 and
+  7 rewritten.
+
+ONE THING CLAUDE CODE DID THAT WAS NOT IN YOUR BLOCKS, and you
+should know because it touches your text: the callout beneath the
+decisions table still said decision 2 was the only store-opening
+blocker and that the refund promise "has no policy behind it".
+Both went false the moment block 2f landed. It is rewritten, and
+it now names FP-21 as the blocker that replaces it.
+
+YOUR CONVENTION WORKED AND IT STAYS: anything you want applied
+goes in a numbered block, commentary is commentary. That is why
+all seven landed this time and why M-2 and M-3 survived the
+previous round.
+
+STILL GENUINELY OPEN ON THE PLAN, AND NOT YOURS TO CLOSE:
+decision 1, the launch shape, which is mine; and decision 4 /
+FP-21 -- how a buyer actually receives and pays for a yearly
+update. The site sells the renewal already. A price with no
 delivery mechanism behind it is a promise the store cannot keep.
 
-M-4 IS MINE AND STILL OPEN -- two approved versions of the
-one-time-purchase sentence. Leave it alone.
+SO THERE IS NOTHING FOR YOU ON THE MARKETING PLAN THIS ROUND.
+Spend the time on the guide.
 
 M-5 IS FIXED. ProjectNotes carried "$9.99/year" against the
 $12.99 lock.
