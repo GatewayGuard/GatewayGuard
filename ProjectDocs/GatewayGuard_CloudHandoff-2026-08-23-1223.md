@@ -30,62 +30,57 @@ plan. Do them in that order. The guide is the only one on the
 critical path -- the tool build is waiting on it.
 
 ===============================================================
-1. THE GUIDE  --  START HERE, IT BLOCKS THE TOOL BUILD
+1. THE GUIDE  --  PACK 2 ONLY. PACK 1 IS DONE.
 ===============================================================
 
-WORK FROM THIS FILE AND NO OTHER:
+READ THIS PARAGRAPH BEFORE YOU DO ANYTHING ON THE GUIDE.
 
-  ProjectDocs/GatewayGuard_GuideRewrite-Draft-2026-08-22-1000.md
-  1,074 lines. You wrote it. It SUPERSEDES the 08-19-1753 draft
-  and the 08-15-1838 draft. Do not open either one.
+YOU ALREADY DELIVERED PACK 1, at 01:42 this morning --
+GatewayGuard_GuideSectionReplacements-2026-08-23-0142.md, 439
+lines. It CLOSES G1 and G2, WRITES the missing setting 10
+section, APPLIES G-1, G-2 and G-4, FOLDS the four Getting help
+pieces in, and LISTS the seven British spellings.
 
-DO NOT REWRITE IT. It already absorbs the FT-220 sections, all
-four settings, VERIFY markers preserved, and Setting 17 already
-has its own body step at line 885. That work is done.
+DO NOT DO ANY OF THAT AGAIN. Claude Code applies pack 1 to the
+draft and commits it. That is not your job and it is already
+scheduled.
 
-YOUR JOB IS TO CLOSE THE SIX RETRIEVAL GAPS. The source for all
-six is:
+WHAT IS ACTUALLY LEFT FOR YOU IS PACK 2: G3, G4, G5 AND G6.
 
-  ProjectDocs/GatewayGuard_GuideGapFill-fromV9-2026-08-22-1224.md
-  526 lines, byte-faithful v9. Everything you need is in it.
+YOU STOPPED FOR THE RIGHT REASON, AND YOU SAID SO IN SECTION 8:
+the gap-fill is 524 lines, search returns it in fragments, and
+writing the missing parts from partial retrieval is exactly the
+fabrication the markers exist to prevent. That judgment was
+correct. Do not relax it now.
 
-The gap markers are at draft lines 364 (G1), 385 (G2), 550 and
-651 (G3), 969 and 991 (G4), 1024 (G5), 1033 and 1045 (G6).
+  >>> BILL: ATTACH THIS FILE TO THE MESSAGE. <<<
+  >>> ProjectDocs\GatewayGuard_GuideGapFill-fromV9-2026-08-22-1224.md
+  >>> Upload it into the chat as a file. Do not rely on the
+  >>> connector for this one. That single act closes all four
+  >>> remaining gaps and finishes the guide.
 
-G-3 IS ANSWERED, and half of it was never a question:
+Cloud: once you have all 524 lines in front of you, write pack 2
+as drop-in replacements in the same shape as pack 1 -- block,
+location, exact text -- so Claude Code applies it without
+interpreting anything.
 
-  - THE QUICK DECISION TREE WAS ALREADY REQUESTED. The draft asks
-    for it twice in its own words -- section 0.2's G4 row and the
-    in-place G4 marker. Carry it.
-  - "WHEN TO CALL FOR HELP" IS NOT A DUPLICATE, but do not carry
-    it as a section. Fold its four missing pieces into the
-    existing Getting help back matter, IN SECOND PERSON: active
-    compromise indicators, the "50+ items" escalation threshold,
-    employer accounts to their IT, and the harassment / stalking /
-    domestic abuse resources. The v9 text says "the user" four
-    times in 34 lines -- it was written for a technician working
-    on somebody else's PC. This guide is written TO the reader.
+What is missing, in your own words from section 8:
 
-FIVE MORE, ALL MEASURED AGAINST THE 08-22-1000 DRAFT TODAY:
+  - G3 -- Parts E and F, and the middle of Part D.
+  - G4 -- the rest of the hardening list, performance hygiene,
+    and THE QUICK DECISION TREE, which the draft asks for twice
+    in its own words.
+  - G5 -- the entire Firefox addendum, F1 to F12.
+  - G6 -- the entire glossary and index.
 
-  - G-1 IS CLOSED. YOU WERE RIGHT. There is no W-07 collision on
-    diagnostic data -- the website says "Select Required
-    diagnostic data", the guide says "Choose Required", and they
-    agree. Remove the RECONCILIATION paragraph and item 3 of WHAT
-    MUST HAPPEN. Both ask Bill for a decision that no longer
-    exists. The same stale claim is in PricingCopy section 6.
-  - G-2 STANDS. Setting 10, Remote Desktop, appears ONLY in the
-    quick-reference table at line 209 and has no body section
-    anywhere. FT-226's class fix has nowhere to point.
-  - G-4 STANDS. The Word TOC placeholder is still in the BODY at
-    line 134 -- "In Word: right-click this line and choose Update
-    Field." It WILL PRINT. Section 0.1 claims this was fixed. It
-    was not.
-  - SEVEN BRITISH SPELLINGS, exact lines: 181, 486, 509, 548,
-    595, 687, 699. "recognise" and "recognisable" to American.
-    Maine, writing for American seniors.
-  - SETTING 11 IS ALREADY CORRECTED IN THE DRAFT by Claude Code.
-    Both the label and the path were wrong. DO NOT REVERT IT.
+TWO THINGS ABOUT THE DRAFT THAT DO NOT CHANGE:
+
+  - It is GuideRewrite-Draft-2026-08-22-1000.md, 1,074 lines. It
+    SUPERSEDES the 08-19-1753 and 08-15-1838 drafts. Do not open
+    either one. It already absorbs the FT-220 sections and
+    setting 17 already has its own body step at line 885.
+  - SETTING 11 IS ALREADY CORRECTED by Claude Code -- both the
+    label and the path were wrong. DO NOT REVERT IT.
 
 DO NOT TOUCH THE ELEVEN VERIFY CLAIMS. Section 0.4 lists them and
 none has been measured on live Windows 11. Leave every VERIFY
@@ -271,9 +266,24 @@ DO NOT
   WHAT IS WAITING ON YOU, BILL
 ===============================================================
 
+  ATTACH THE GAP-FILL FILE TO THE MESSAGE. This is the one that
+  matters most:
+    ProjectDocs\GatewayGuard_GuideGapFill-fromV9-2026-08-22-1224.md
+  Upload it into the chat as a file, not through the connector.
+  Cloud stopped last night because search returns that 524-line
+  file in fragments and it refused to write the guide from
+  partial retrieval. It was right to refuse. Uploading it closes
+  G3, G4, G5 and G6 and finishes the guide.
+
   BEFORE SENDING: the item 2 line says USE OPTION 2. That is
   Claude Code's recommendation, not your decision. Change it to
   1 or 3 if you disagree, or send it as it stands.
+
+  CLAUDE CODE OWES YOU ONE THING FIRST: pack 1 is delivered but
+  NOT YET APPLIED to the draft. Measured this morning -- the TOC
+  placeholder is still at line 134, setting 10 still has no body
+  section, and all seven British spellings are still there. Say
+  go and it is applied and committed.
 
   THE ONE BLOCKING A HALF-FINISHED FIX:
   Item 7, the Windows 11 Pro route for Edge Startup Boost. Open

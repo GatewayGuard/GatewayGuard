@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-23 01:54 ET -->
-<!-- Commit: a2c897f -->
+<!-- Generated: 2026-08-23 12:26 ET -->
+<!-- Commit: 959ff4c -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-23 01:54 ET
-- **Commit at generation:** `a2c897f`
-- **That commit was made:** 2026-08-23 01:53 ET
-- **Its subject line:** Refunds: no questions asked, superseding EULA Section 9
+- **Generated:** 2026-08-23 12:26 ET
+- **Commit at generation:** `959ff4c`
+- **That commit was made:** 2026-08-23 12:25 ET
+- **Its subject line:** Cloud handoff: guide first, then the .html copy pass, then the plan
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -74,7 +74,7 @@ All paths are relative to `ProjectDocs/`.
 | Marketing plan amendment | `GatewayGuard_MarketingPlanAmendment-2026-08-22-1000.md` | 1 |
 | Defect pass response | `GatewayGuard_DefectPassResponse-2026-08-22-1525.md` | 0 |
 | Website review (Bill, 19 pages) | `GatewayGuard_HtmlWebsiteReview-2026-08-22-2220.md` | 0 |
-| Cloud handoff (what Cloud was told) | `GatewayGuard_CloudHandoff-2026-08-22-2300.md` | 0 |
+| Cloud handoff (what Cloud was told) | `GatewayGuard_CloudHandoff-2026-08-23-1223.md` | 1 |
 | Offline scan research | `GatewayGuard_OfflineScanResearch-2026-08-21.md` | 0 |
 | AV scan coverage test | `GatewayGuard_AVScanCoverageTest-2026-08-21.md` | 0 |
 | Scheduled task defects (FT-203) | `GatewayGuard_ScheduledTaskDefects-2026-08-20.md` | 0 |
