@@ -20,10 +20,10 @@ I have just synced. Open ProjectDocs/CURRENT.md and confirm you
 see this stamp before you act on anything below. If it does not
 match, say so and stop -- your snapshot is stale.
 
-  Generated: __GEN__
-  Commit at generation: __HASH__
-  That commit was made: __CDATE__
-  Its subject line: __SUBJ__
+  Generated: 2026-08-23 12:27 ET
+  Commit at generation: 297fe9c
+  That commit was made: 2026-08-23 12:27 ET
+  Its subject line: Guide handoff was telling Cloud to redo pack 1 -- corrected
 
 Three jobs below: the guide, the 19 .html pages, the marketing
 plan. Do them in that order. The guide is the only one on the

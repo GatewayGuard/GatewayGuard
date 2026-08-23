@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-23 12:26 ET -->
-<!-- Commit: 959ff4c -->
+<!-- Generated: 2026-08-23 12:27 ET -->
+<!-- Commit: 297fe9c -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-23 12:26 ET
-- **Commit at generation:** `959ff4c`
-- **That commit was made:** 2026-08-23 12:25 ET
-- **Its subject line:** Cloud handoff: guide first, then the .html copy pass, then the plan
+- **Generated:** 2026-08-23 12:27 ET
+- **Commit at generation:** `297fe9c`
+- **That commit was made:** 2026-08-23 12:27 ET
+- **Its subject line:** Guide handoff was telling Cloud to redo pack 1 -- corrected
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
