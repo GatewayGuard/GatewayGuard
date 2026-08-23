@@ -22,6 +22,127 @@
 
 ---
 
+## WAITING FOR BILL -- READ THIS FIRST WHEN YOU GET BACK
+
+**Eleven A items are done and pushed.** What is below is everything I could not
+settle without you. Nothing here is blocking the copy pass except Q1.
+
+### THE ONE THAT CHANGES A DECISION YOU ALREADY MADE
+
+**Q1. I overruled your item 18 wording, deliberately. Confirm or reverse.**
+You asked for *"If Tamper Protection was off, Checkup flagged it and with your
+approval will offer to turn it on."* **Checkup cannot turn it on** --
+`CanAuto=$false`, and the tool itself prints *"MANUAL ACTION REQUIRED"*. The
+page's own **Found** line already said so, so the page was contradicting itself
+two lines apart. I applied your wording, measured the build, and took it back
+out. Full reasoning in the item 17 section below. **Say the word and I put your
+version back.**
+
+**Q2. Item 18's other half is built on a false premise.** You wrote *"the
+offline scan which we can tell them Checkup does automatically."* **It does
+not, and that is deliberate** -- `Start-MpWDOScan` reboots the machine on the
+spot and cannot be queued, so a 2AM scheduled scan would restart a sleeping
+user's PC four times a year. The quarterly task is a **reminder**. The true
+sentence is *"Checkup offers to run it during a check-up, and reminds you every
+three months."* **Do you want that added?**
+
+### THE ONE THING THAT STOPPED ME MID-FIX
+
+**Q3. Item 7, the Windows 11 Pro route for Startup Boost.** Your note reads
+*"scroll down ... then select manage account and then select hardware
+acceleration and then I could see the two settings."* **I cannot reconcile
+"manage account" with Edge's System and performance page**, and guessing at a
+click path is what put four wrong paths on the site in the first place. **The
+Home half is applied.** For Pro: open Edge, and tell me the exact sequence of
+things you click. A screenshot is easier than typing it.
+
+### PRODUCT DECISIONS -- NEITHER CLAUDE CAN MAKE THESE
+
+- **Q4, item 5.** Cloud protection and automatic sample submission: **add them
+  to Checkup's 19 settings, or explain them on the site and leave them alone?**
+  You said discuss. Adding them makes it 21 settings and touches the build, the
+  guide and the site.
+- **Q5, item 15.** Reputation-based protection has a fourth item. **What is our
+  position on it?** The page covers three.
+- **Q6, item 10.** Advanced firewall settings, especially inbound rules --
+  **in scope, or out?** My instinct is out: inbound rules are where a
+  non-technical user can lock themselves out of their own network, and the
+  three profiles being On is the 95% win. But it is your call.
+- **Q7, item 22.** Windows Hello on a local account says *"currently not
+  available."* **Do we tell people upfront to create or sign in to a Microsoft
+  account?** That is a real product position, not a wording choice -- it is
+  also the same question the guide's setting 9 rewrite ran into.
+- **Q8, item 23.** Windows Update Advanced options has three items. **Does
+  Checkup check them, and should it?** Related to Q4 -- same shape.
+- **Q9, item 20.** Wake on LAN. You found a **disabled Realtek adapter on SANDY
+  that could not be checked** and may be a hole if it is ever enabled. You asked
+  to review this together. **Held.**
+
+### AND ONE FROM EARLIER TODAY, STILL OPEN
+
+- **Q10, M-4.** Two approved versions of the same sentence live in the
+  marketing plan: *"One-time purchase. Updates are optional."* and *"One-time
+  purchase, yours to keep. Annual updates are optional."* **My recommendation
+  is the long one everywhere.** One word from you closes it.
+
+---
+
+## ITEM 2 -- THE PHRASING OPTIONS YOU ASKED FOR
+
+**I inventoried the "Action taken" line on all 19 pages first**, because you
+cannot pick one phrasing without seeing what is actually there. **There are
+four different shapes**, and the split is not random:
+
+| Shape | Pages | Example |
+|---|---|---|
+| **Past, asserted** | 7 | *"Checkup turned off the Advertising ID with your approval."* |
+| **Past, conditional** | 6 | *"If any profile was off, Checkup flagged it and offered to turn it on."* |
+| **Present, review-only** | 2 | *"Checkup reviews your Windows Hello setup and flags it..."* |
+| **Mixed** | 4 | *"If it was off and your PC can support it, Checkup asked for your approval and turned it on."* |
+
+**The real problem is not that there are four. It is that the past tense is
+wrong on every page.** These pages are read **before** purchase as well as
+after -- they are the trust ladder. Telling a reader *"Checkup turned off your
+Advertising ID"* when they have never run it is simply false for most visitors.
+
+**Your own item 6 wording already fixes this**, and it is why I think you
+landed on it instinctively: *"With your approval, Checkup will set Diagnostic
+data to Required diagnostic data."* **Permission first, future tense, no claim
+about what already happened.**
+
+### THE THREE OPTIONS
+
+**Option 1 -- your item 6 pattern, applied to all 19.**
+> *"With your approval, Checkup will [do the thing]."*
+
+Shortest, and it is already your voice. Works for every page. **The one gap:**
+it does not distinguish the settings Checkup **cannot** change, so those two
+pages need the second sentence anyway.
+
+**Option 2 -- the same, with a stated fallback. My recommendation.**
+> *"With your approval, Checkup will [do the thing]."*
+> and, where Windows forbids it:
+> *"Windows does not allow any program to change this one, so Checkup shows you
+> the exact steps to do it yourself."*
+
+**Two sentences, one rule, and it cannot produce the Tamper Protection defect**
+-- because the second form exists precisely for the settings the first one
+cannot honestly claim. That second sentence is already the house wording in
+CLAUDE.md, and it is already on two pages.
+
+**Option 3 -- name the state as well as the action.**
+> *"If [the setting] was off, Checkup will flag it and, with your approval,
+> turn it on."*
+
+Most precise, closest to what the conditional pages already say. **But it is
+longer on every page, and the "if it was off" clause is noise on the pages
+where the answer is nearly always the same.**
+
+**Pick one and I will sweep all 19 in a single pass**, with the two `CanAuto`
+exceptions handled by the second sentence.
+
+---
+
 ## WHO LOOKS FIRST -- CLAUDE CODE, AND IT IS NOT CLOSE
 
 **Bill asked me to decide. Two facts force it.**

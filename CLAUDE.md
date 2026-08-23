@@ -36,8 +36,8 @@
     screen, and all six instances are now gone.
   - Full design and the call-flow walk that proves no user meets a
     first-encounter decrease: `ProjectDocs\GatewayGuard_ScreenNumberDesign-*.md`
-    and `ProjectDocs\GatewayGuard_ScreenNumberTable-*.md`. Run `Tool2\Check-ScreenCoverage-2026-07-30.ps1` before every build (launcher: `Run-ScreenCoverageCheck.bat`); it is the mechanical gate-12 check and reports the next free ID (88 as of ascii41 — 83 went to the FT-171d exit confirmation, 84 to the FT-189 "about this run" screen, and 85/86/87 to the three intro screens that FT-172 finally gave IDs to).
-- **Review every screen:** `Tool2\Show-AllScreens.bat` walks all 66 screens without running checks or changing anything. It reads the .ps1's own source via the AST, so it cannot drift from the real screens.
+    and `ProjectDocs\GatewayGuard_ScreenNumberTable-*.md`. Run `Tool2\Check-ScreenCoverage-2026-07-30.ps1` before every build (launcher: `Run-ScreenCoverageCheck.bat`); it is the mechanical gate-12 check and reports the next free ID (**90 as of ascii43, measured 2026-08-22** -- this line said 88 and was two stale, on the paragraph that warns about stale pointers. 88 as of ascii41 — 83 went to the FT-171d exit confirmation, 84 to the FT-189 "about this run" screen, and 85/86/87 to the three intro screens that FT-172 finally gave IDs to).
+- **Review every screen:** `Tool2\Show-AllScreens.bat` walks all **72** screens without running checks or changing anything. It reads the .ps1's own source via the AST, so it cannot drift from the real screens.
 - **26 lines per screen maximum, and every screen ends with a blank line.**
   Bill's rule, 2026-07-30 (field note 11), superseding the ascii37 25-line
   rule. The trailing blank line is produced centrally in `Write-GGBox`, so a

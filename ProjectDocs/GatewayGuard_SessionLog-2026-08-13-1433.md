@@ -32,6 +32,109 @@ This is the shared memory between all Claude instances.
 ---
 ---
 
+## Session: 2026-08-22 13:16 to 22:45 [Claude Code -- CGDELL] -- CLOUD'S DEFECT PASS WORKED, TWO DECISIONS SETTLED, BILL'S 19-PAGE REVIEW TRIAGED AND ITS A ITEMS BUILT
+
+**No build change. ascii43 untouched. Fourteen commits, all pushed.**
+
+### WHAT BILL SETTLED
+
+- **Refunds: 30 days, no questions asked.** The only genuine store-opening
+  blocker, closed. *Sourced:* "no refunds" was never available -- Gumroad
+  refunds at its own discretion within 90 days, card networks allow chargebacks
+  regardless, and too many disputes risk account suspension. A restrictive
+  policy converts refunds into chargebacks: same money, worse outcome.
+- **Annual updates only.** Multi-year pre-pay dropped, so the "10% per year"
+  question is **removed rather than answered**.
+- Both in `GatewayGuard_Decisions-RefundAndTerms-2026-08-22.md`, filed
+  separately because Cloud is rewriting the two documents they belong to.
+
+### THE PATTERN THAT RAN THROUGH THE WHOLE DAY
+
+**Five separate times, a document said something the machine disagreed with,
+and the machine was right.**
+
+1. `CURRENT.md` pointed Cloud at **superseded pricing** -- the Name-sort took
+   `PricingCopy-Draft-2026-08-21` over `PricingCopy-2026-08-22` because `D`
+   sorts after `2`. **The hazard was written into this log at 13:16 and bit at
+   14:00.** Resolver now sorts on the date extracted from the name.
+2. The **Advertising ID label** was wrong in three places at once -- website,
+   guide, and Checkup itself -- and no two agreed. FT-237.
+3. The **guide claimed a W-07 collision was open**; measuring both files showed
+   they already agree.
+4. The **tamper-protection page contradicted itself two lines apart**, and the
+   build settled it: `CanAuto=$false`.
+5. **CLAUDE.md's own next-free-screen-ID was two stale**, on the paragraph that
+   warns about stale pointers. 88 -> 90, measured.
+
+**The lesson is not "check more".** It is that **every one of these was
+cheap to check and expensive to leave** -- and four of the five were found only
+because something else forced a look at the file.
+
+### D-18 HAS A LIMIT, AND IT IS NOW WRITTEN DOWN
+
+D-18 says the tool is the dictionary. Applied literally to the Advertising ID
+label, **all three documents would have adopted Checkup's wording, which was
+also wrong.** The tool is the dictionary for **phrasing Checkup owns**. For a
+string **Windows** owns, the screen is the dictionary and the tool is just
+another copy that can be wrong.
+
+### BILL'S 19-PAGE WEBSITE REVIEW -- 24 ITEMS
+
+Filed as `GatewayGuard_HtmlWebsiteReview-2026-08-22.md` with a readable twin,
+because the originals reach nobody: they sit in `Test_Results\`, which is **not
+in the connector scope**, and the `.txt` is cp1252 and will not decode as UTF-8.
+Five screenshots extracted and mapped to their items from the document XML.
+
+**Claude Code goes first, decided on evidence:** Cloud cannot see
+`WebSite\html\` or `Test_Results\` at all, so it cannot verify one navigation
+path or open one screenshot -- and **eleven of the 24 items are factual
+corrections Bill measured at the keyboard.**
+
+**Eleven A items built.** The two worst:
+
+- **Item 16 was not a wrong path.** The screenshot shows **Remote Desktop
+  Connection** -- a different program, the client for connecting *out*. It has
+  no toggle to turn anything off, which is exactly what Bill hit. The page now
+  warns how to tell you have the wrong one.
+- **Item 11:** the page said *"Look at the Memory integrity setting, then
+  restart your PC"* -- **it never told the reader to turn it on.** It also had
+  an unclosed `<strong>`.
+
+### ITEM 17 WAS THE RIGHT QUESTION AND IT FOUND A LIE
+
+*"Are we making all these changes we are recommending on the website in
+Checkup?"* **17 of 19 yes, 2 no, and one of the two was lying.** Measured by
+matching all nineteen `ID=` rows to the nineteen pages -- the mapping is exact.
+`CanAuto=$false` on Tamper Protection and Windows Hello; Hello was honest,
+Tamper was not.
+
+**I overruled Bill's item 18 wording and said so in writing.** He asked for
+*"with your approval will offer to turn it on"*, written without knowing
+`CanAuto=$false`. Shipping a promise the tool cannot keep is the worse error,
+and CLAUDE.md already legislates the case. **His to reverse.**
+
+**Item 18's other half rests on a false premise:** Checkup does **not** run the
+offline scan automatically, deliberately -- `Start-MpWDOScan` reboots on the
+spot and cannot be queued, so a 2AM task would restart a sleeping user's PC four
+times a year. Nothing added; it changes Bill's claim, so it waits for him.
+
+### TEN QUESTIONS ARE WAITING
+
+At the top of the review document, under **WAITING FOR BILL**. The one that
+stopped a fix mid-flight is **item 7's Windows 11 Pro route** -- Bill's note
+says "manage account" then "hardware acceleration", which does not match Edge's
+System and performance page, and **guessing at a click path is what put the
+wrong paths on the site in the first place.**
+
+**Item 2's phrasing options are written and ready to pick from.** The
+inventory found four different shapes across 19 pages -- and the real defect is
+that **the past tense is wrong on every one of them**, because these pages are
+read before purchase as well as after.
+
+---
+
+---
+
 ## Session: 2026-08-22 13:16 [Claude Code -- CGDELL] -- CLOUD'S HANDOFF WAS FOUR-FIFTHS ALREADY DONE; NINE DOCUMENTS MADE NAMEABLE
 
 **No build change. ascii43 untouched.**

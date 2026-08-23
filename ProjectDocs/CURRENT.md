@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-22 22:35 ET -->
-<!-- Commit: 200b6ec -->
+<!-- Generated: 2026-08-22 22:38 ET -->
+<!-- Commit: 09e572a -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-22 22:35 ET
-- **Commit at generation:** `200b6ec`
-- **That commit was made:** 2026-08-22 22:32 ET
-- **Its subject line:** Bill's review: the A items -- nine pages of measured corrections
+- **Generated:** 2026-08-22 22:38 ET
+- **Commit at generation:** `09e572a`
+- **That commit was made:** 2026-08-22 22:35 ET
+- **Its subject line:** Item 17 answered against the build: the tool and the website disagreed
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -61,7 +61,7 @@ All paths are relative to `ProjectDocs/`.
 | Cloud request | `GatewayGuard_CloudRequest-Review-2026-08-21.md` | -- |
 | Marketing plan (current) | `GatewayGuard_MarketingPlan-2026-08-22-1000.md` | 3 |
 | Guide rewrite draft (current) | `GatewayGuard_GuideRewrite-Draft-2026-08-22-1000.md` | 2 |
-| Website source pack (19 guide pages) | `GatewayGuard_WebsiteSourcePack-2026-08-22-2235.md` | 3 |
+| Website source pack (19 guide pages) | `GatewayGuard_WebsiteSourcePack-2026-08-22-2235.md` | 2 |
 | Guide v9 source pack | `GatewayGuard_GuideV9-SourcePack-2026-08-15-1436.md` | 0 |
 | Marketing source pack | `GatewayGuard_MarketingSourcePack-2026-08-13-1427.md` | 0 |
 | Pricing copy (website) | `GatewayGuard_PricingCopy-2026-08-22-1000.md` | 1 |
@@ -86,7 +86,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-08-22 13:16 [Claude Code -- CGDELL] -- CLOUD'S HANDOFF WAS FOUR-FIFTHS ALREADY DONE; NINE DOCUMENTS MADE NAMEABLE
+## Session: 2026-08-22 13:16 to 22:45 [Claude Code -- CGDELL] -- CLOUD'S DEFECT PASS WORKED, TWO DECISIONS SETTLED, BILL'S 19-PAGE REVIEW TRIAGED AND ITS A ITEMS BUILT
 ```
 
 **If it is not in your copy of the session log, you are reading an old
