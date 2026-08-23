@@ -91,6 +91,92 @@ for edits:
 
 ---
 
+## ITEM 17 ANSWERED, 2026-08-22 22:40 -- MEASURED AGAINST THE BUILD
+
+> *"Are we making all these changes we are recommending on the website in
+> Checkup?"*
+
+**Answer: 17 of 19 yes. 2 of 19 no. One of those two was lying about it.**
+
+Measured by extracting the settings table from
+`Tool\W11-SecurityHardening-v3-ascii43-2026-08-21-1752.ps1` and matching all
+nineteen `ID=` rows against the nineteen pages. **The mapping is exact --
+one page per setting, no page without a setting, no setting without a page.**
+
+**`CanAuto=$false` on exactly two settings:**
+
+| ID | Setting | Page | What the page claimed |
+|---|---|---|---|
+| **3** | Tamper Protection | `tamper-protection.html` | **WRONG -- said Checkup would offer to turn it on** |
+| **9** | Windows Hello | `windows-hello.html` | Correct -- says Checkup cannot, and why |
+
+### THE TAMPER PROTECTION PAGE CONTRADICTED ITSELF, IN TWO ADJACENT LINES
+
+Its **Found** line already carried the correct house wording:
+
+> *"Windows does not allow any program to change this one, so Checkup shows you
+> the exact steps to turn it on yourself."*
+
+Its **Action taken** line, directly beneath, said Checkup *"flagged it and
+offered to turn it on."* **Both were on the page at once, and the second one is
+false.** `CanAuto=$false` at line 5620, whose own description reads *"Manual
+toggle required in Windows Security"*, and line 6351 prints **"MANUAL ACTION
+REQUIRED"** to the user.
+
+**This is why item 17 was the right question to ask first.** It is not a
+wording problem. It is the tool and the website disagreeing about what the
+product does.
+
+### I DEPARTED FROM BILL'S ITEM 18 WORDING, DELIBERATELY
+
+Item 18 asked for: *"If Tamper Protection was off, Checkup flagged it and with
+your approval will offer to turn it on."* **I applied that, then measured the
+build and took it back out** -- it keeps the false promise, in different words.
+Bill wrote it without knowing `CanAuto=$false`.
+
+**Now reads:** *"If Tamper Protection was off, Checkup flagged it and showed you
+the exact steps to turn it on yourself. Windows does not allow any program to
+change this one, so this is the one setting on this page you have to do by hand
+-- the steps are below."*
+
+**Bill's call to overrule.** Shipping a promise the tool cannot keep seemed the
+worse of the two errors, and it is the exact case CLAUDE.md already legislates:
+*"Where Windows forbids programmatic change, say that instead."*
+
+### ITEM 18'S SECOND HALF RESTS ON A FALSE PREMISE
+
+> *"No mention of the offline scan which we can tell them Checkup does
+> automatically."*
+
+**Checkup does not do the offline scan automatically, and that is deliberate.**
+
+- **In an interactive run** it offers the scan and runs `Start-MpWDOScan` with
+  the user's permission (line 4375). That reboots the machine immediately.
+- **The quarterly scheduled task is a REMINDER, not a scan** (line 7115). The
+  comment block gives the reason, sourced to Microsoft: `Start-MpWDOScan`
+  *"causes the computer to start in Windows Defender offline and begin the
+  scan"* -- it cannot be queued for a later restart. As a SYSTEM task at 2AM it
+  would **restart a sleeping user's PC without warning, four times a year.**
+- This is the FT-175 / FT-162 history: the task used to run
+  `MpCmdRun.exe -Scan -ScanType 4`, **a switch that does not exist**, returning
+  `0x80070667` in 0.0 seconds while the log printed `[GOOD]`.
+
+**So the sentence to add is not "Checkup does this automatically."** The true
+one is *"Checkup offers to run it during a check-up, and reminds you every
+three months."* **Not added -- it needs Bill's word, because it is his claim
+that changes.**
+
+### THE OTHER SEVENTEEN
+
+All `CanAuto=$true`. **Setting 10, Remote Desktop, additionally carries
+`SkipOnHome=$true`** -- correct, and the page already says Windows 11 Home has
+no such setting.
+
+**This answer governs items 5, 10, 18, 21 and 23**, and it is the input the
+copy pass needs before any of them is reworded.
+
+---
+
 ## BILL'S REVIEW, VERBATIM
 
 ### Item 1  --  `A`
