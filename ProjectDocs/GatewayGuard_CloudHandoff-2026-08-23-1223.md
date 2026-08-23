@@ -1,5 +1,5 @@
 ===============================================================
-  FOR CLOUD -- 2026-08-23, 12:23 ET
+  FOR CLOUD -- 2026-08-23, 14:05 ET
   (replaces every earlier version of this file)
 ===============================================================
 
@@ -14,16 +14,17 @@
 
 ---------------- COPY FROM HERE ----------------
 
-Machine: CGDELL. Date and time: 2026-08-23 12:23 ET.
+Machine: CGDELL. Date and time: 2026-08-23 14:05 ET.
 
 I have just synced. Open ProjectDocs/CURRENT.md and confirm you
 see this stamp before you act on anything below. If it does not
 match, say so and stop -- your snapshot is stale.
 
-  Generated: 2026-08-23 12:27 ET
-  Commit at generation: 297fe9c
-  That commit was made: 2026-08-23 12:27 ET
-  Its subject line: Guide handoff was telling Cloud to redo pack 1 -- corrected
+  Generated: 2026-08-23 14:02 ET
+  Commit at generation: 0e4fb69
+  That commit was made: 2026-08-23 14:02 ET
+  Its subject line: Apply Cloud's 08-23 marketing amendment: M-1 to
+  M-4, decisions 2 and 7
 
 Two jobs below: the guide and the 19 .html pages. The marketing
 plan section is now a DO-NOT list -- your 08-23 amendment closed it
