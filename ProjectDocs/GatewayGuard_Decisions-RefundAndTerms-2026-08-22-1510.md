@@ -3,7 +3,7 @@
 # Decisions -- refund policy, and annual updates only
 
 - **Document Name:** GatewayGuard_Decisions-RefundAndTerms
-- **Last Modified:** 2026-08-22 15:10 ET
+- **Last Modified:** 2026-08-23 01:50 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **Decided by:** Bill, 2026-08-22
 - **Status:** **SETTLED.** Both decisions are closed. This document is the
@@ -11,6 +11,8 @@
   the other is stale.
 
 **Change History Log:**
+- 2026-08-23 01:50: **Decision 3 added -- "no questions asked" supersedes EULA
+  Section 9.** The two policies conflicted and nothing had compared them.
 - 2026-08-22 15:10: Created. Bill settled both in one message.
 
 ---
@@ -184,6 +186,93 @@ legal work.
 
 ---
 
+## DECISION 3 -- "NO QUESTIONS ASKED" SUPERSEDES EULA SECTION 9
+
+**Bill, 2026-08-23: "go with no questions asked."**
+
+**This is a correction to a conflict I created and did not spot.** When decision
+2 was written on 2026-08-22 I recommended an unconditional 30-day refund
+**without reading the licence agreement, which already contained a refund
+policy** -- Section 9 of `GatewayGuard_License-2026-08-07-0726`, written on the
+attorney's advice after the 2026-08-04 consultation. I worked from the marketing
+plan, which listed the refund policy as an open decision. **The EULA had
+answered it two weeks earlier. Both documents were in `ProjectDocs\`.**
+
+### WHAT DISAGREED
+
+| | EULA Section 9 | Decision 2, now ratified |
+|---|---|---|
+| Basis | **"Sales are final"**, three named exceptions | **"No questions asked"** |
+| Conditions | Double charge / download never arrived / will not run on a listed-compatible PC | **None** |
+| Evidence | Log file required for the third exception | None |
+| Window | 30 days | 30 days |
+
+**The window was the only part that agreed.** Everything else was opposite.
+
+### THE REPLACEMENT TEXT FOR SECTION 9
+
+**Drop this into the `.docx` master, `Masters\GatewayGuard_License-*.docx`.**
+Not applied by Claude Code: the `-TEXT.md` in `ProjectDocs\` is a **generated
+twin** and the next regeneration would overwrite any edit made to it. The
+`.docx` is the master and it is a legal document.
+
+```
+9. Refunds
+
+If you are not happy with what you bought, tell us within 30 days of
+your purchase and we will refund you in full. You do not have to give
+a reason.
+
+Email support@gatewayguard.co with your order number.
+
+Checkup and the Guide are downloadable files, so you will already have
+them. That is deliberate -- you are meant to be able to read every line
+of what you bought before you decide to trust it. If we refund you,
+your licence ends, and we ask you to delete every copy you have,
+including any backup copy.
+
+If you bought through Gumroad, Gumroad processes the payment and may
+also issue refunds under its own policy.
+```
+
+### WHAT THIS SETTLES, AND WHAT IT DOES NOT
+
+**Section 9 carried a `DECISION NEEDED -- refund terms` block with three
+parts. Two are now closed and one is gone:**
+
+- **(a) The 30-day window** -- *"14 and 30 days are both common."* **CLOSED: 30.**
+- **(b) The three exceptions** -- **GONE.** An unconditional policy has no
+  exceptions to tune.
+- **(c) The log-file location** -- **no longer a refund question.** It was only
+  needed to evidence the third exception. It remains an open question for the
+  Guide, which has to tell a reader where their log is for other reasons.
+
+**AND IT QUIETLY SOLVES A PROBLEM SECTION 9 FLAGGED AND I HAD MISSED.** The
+EULA's own note warns that **buyers in the EU and UK often hold a 14-day
+withdrawal right** unless it is waived at checkout for instant downloads. **A
+no-questions-asked 30-day policy is strictly more generous than a 14-day
+statutory right, so it satisfies it without any special handling.** The
+conditional version did not, and would have needed a carve-out.
+
+### STILL FOR THE ATTORNEY, AND THIS IS THE ONE THING NOT TO SKIP
+
+**Section 9 as it stands was written on the attorney's advice.** Replacing it
+with a broader promise is Bill's commercial call and a reasonable one -- but
+**the attorney recommended the narrow version and has not seen the broad one.**
+Two points to put in front of them:
+
+1. **The broad policy gives away more than the narrow one and that is
+   deliberate**, because the product's central promise is that a buyer can read
+   the source after purchase and return it if they do not like what they find.
+   The narrow version did not back that promise.
+2. **It is also more enforceable in practice.** *Sourced 2026-08-22:* Gumroad
+   refunds at its own discretion within 90 days and card networks allow
+   chargebacks regardless, so a narrow policy does not prevent refunds -- it
+   converts them into chargebacks, which cost more and threaten the seller
+   account.
+
+---
+
 ## ACTIONS, AND WHOSE THEY ARE
 
 **Bill:**
@@ -199,10 +288,11 @@ legal work.
      were retired 2025-03-31, another describes a per-product toggle on the
      product edit page. **Set the account-wide one either way** -- that is the
      policy decided here.
-2. **Show the refund clause to the attorney** alongside the EULA
-   (`LegalZoom\Attorney_Consult-GGLicense-EULA-2026-08-04-1200.docx`). The
-   licence-ends-on-refund sentence is a licensing term, and it should not be the
-   one thing in the agreement nobody legal has read.
+2. **REPLACE EULA SECTION 9 in the `.docx` master** with the text in decision
+   3 below, and **take it to the attorney** -- they wrote the narrow version and
+   have not seen the broad one. *(This item said "show the refund clause to the
+   attorney" when it was written, which understated the job: at that point I did
+   not know Section 9 existed.)*
 
 **Claude Cloud, at the next delivery:**
 3. `MarketingPlan` -- close decisions 2 and 7 in section 7, citing this

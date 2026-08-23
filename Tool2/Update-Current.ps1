@@ -142,6 +142,12 @@ $wanted = @(
     # instead -- a decision written only into a file about to be re-delivered is
     # a decision that can vanish.
     @{ Label = 'Refund policy and terms';     Pattern = 'GatewayGuard_Decisions-RefundAndTerms-*.md' },
+    # Added 2026-08-23. THE LICENCE AGREEMENT HAD NO ROW, and that is how a
+    # conflict survived: its Section 9 already carried a refund policy, written
+    # on the attorney'"'"'s advice, while the marketing plan listed the refund policy
+    # as an open decision. Both were in ProjectDocs. Nothing compared them,
+    # because one of the two could not be opened by name.
+    @{ Label = 'Licence agreement (EULA)';    Pattern = 'GatewayGuard_License-*-TEXT.md' },
     @{ Label = 'Pricing reconciliation (one-time packs)'; Pattern = 'PricingReconciliation-*.md' },
     # The v9 extraction that CLOSES retrieval gaps G1-G6 in the guide rewrite
     # draft. Built and committed 2026-08-22 12:24 -- and unnamed here, so Cloud

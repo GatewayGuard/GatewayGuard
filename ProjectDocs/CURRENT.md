@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-23 01:36 ET -->
-<!-- Commit: e4a4654 -->
+<!-- Generated: 2026-08-23 01:53 ET -->
+<!-- Commit: 0ee56af -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-23 01:36 ET
-- **Commit at generation:** `e4a4654`
-- **That commit was made:** 2026-08-23 01:33 ET
-- **Its subject line:** Cloud handoffs move into ProjectDocs, where Cloud can actually read them
+- **Generated:** 2026-08-23 01:53 ET
+- **Commit at generation:** `0ee56af`
+- **That commit was made:** 2026-08-23 01:36 ET
+- **Its subject line:** Session close 2026-08-22 13:16 to 2026-08-23 01:35
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -67,6 +67,7 @@ All paths are relative to `ProjectDocs/`.
 | Pricing copy (website) | `GatewayGuard_PricingCopy-2026-08-22-1000.md` | 1 |
 | Annual price decision | `GatewayGuard_PriceDecision-Annual-2026-08-21-1445.md` | 0 |
 | Refund policy and terms | `GatewayGuard_Decisions-RefundAndTerms-2026-08-22-1510.md` | 0 |
+| Licence agreement (EULA) | `GatewayGuard_License-2026-08-07-0726-TEXT.md` | 2 |
 | Pricing reconciliation (one-time packs) | `PricingReconciliation-2026-07-16.md` | 0 |
 | Guide gap-fill (G1-G6, v9 source) | `GatewayGuard_GuideGapFill-fromV9-2026-08-22-1224.md` | 0 |
 | Marketing plan amendment | `GatewayGuard_MarketingPlanAmendment-2026-08-22-1000.md` | 1 |
