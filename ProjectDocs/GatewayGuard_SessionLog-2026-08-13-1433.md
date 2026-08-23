@@ -111,7 +111,13 @@ Tamper was not.
 **I overruled Bill's item 18 wording and said so in writing.** He asked for
 *"with your approval will offer to turn it on"*, written without knowing
 `CanAuto=$false`. Shipping a promise the tool cannot keep is the worse error,
-and CLAUDE.md already legislates the case. **His to reverse.**
+and CLAUDE.md already legislates the case.
+
+**RATIFIED SAME DAY. Bill: *"keep your override on tamper protection."*** So
+the general rule now has a precedent behind it: **where a written instruction
+and a measurement of the build disagree, the build wins and the instruction
+gets re-asked** -- not applied on the way to shipping a claim the product
+cannot honour.
 
 **Item 18's other half rests on a false premise:** Checkup does **not** run the
 offline scan automatically, deliberately -- `Start-MpWDOScan` reboots on the

@@ -25,18 +25,31 @@
 ## WAITING FOR BILL -- READ THIS FIRST WHEN YOU GET BACK
 
 **Eleven A items are done and pushed.** What is below is everything I could not
-settle without you. Nothing here is blocking the copy pass except Q1.
+settle without you. Q1 is CLOSED -- Bill kept the override. Nothing below blocks the copy pass.
 
 ### THE ONE THAT CHANGES A DECISION YOU ALREADY MADE
 
-**Q1. I overruled your item 18 wording, deliberately. Confirm or reverse.**
-You asked for *"If Tamper Protection was off, Checkup flagged it and with your
-approval will offer to turn it on."* **Checkup cannot turn it on** --
-`CanAuto=$false`, and the tool itself prints *"MANUAL ACTION REQUIRED"*. The
-page's own **Found** line already said so, so the page was contradicting itself
-two lines apart. I applied your wording, measured the build, and took it back
-out. Full reasoning in the item 17 section below. **Say the word and I put your
-version back.**
+**Q1. CLOSED 2026-08-22. Bill: "keep your override on tamper protection."**
+~~I overruled your item 18 wording, deliberately. Confirm or reverse.~~ The
+override **stands and is now the decision**, not one Claude's judgment call.
+
+For the record of what was overruled and why: item 18 asked for *"If Tamper
+Protection was off, Checkup flagged it and with your approval will offer to
+turn it on."* **Checkup cannot turn it on** -- `CanAuto=$false`, and the tool
+itself prints *"MANUAL ACTION REQUIRED"*. The page's own **Found** line already
+said so, so the page contradicted itself two lines apart. Bill wrote the item
+without that measurement in front of him.
+
+**The live wording:** *"If Tamper Protection was off, Checkup flagged it and
+showed you the exact steps to turn it on yourself. Windows does not allow any
+program to change this one, so this is the one setting on this page you have to
+do by hand -- the steps are below."*
+
+**This also settles the general case, and it is worth stating as a rule:**
+where a written instruction and a measurement of the build disagree, **the
+build wins and the instruction gets re-asked** -- rather than being applied and
+quietly shipping a claim the product cannot honour. Bill ratified that here on
+the first occasion it came up.
 
 **Q2. Item 18's other half is built on a false premise.** You wrote *"the
 offline scan which we can tell them Checkup does automatically."* **It does
@@ -260,9 +273,10 @@ the exact steps to turn it on yourself. Windows does not allow any program to
 change this one, so this is the one setting on this page you have to do by hand
 -- the steps are below."*
 
-**Bill's call to overrule.** Shipping a promise the tool cannot keep seemed the
-worse of the two errors, and it is the exact case CLAUDE.md already legislates:
-*"Where Windows forbids programmatic change, say that instead."*
+**RATIFIED BY BILL, 2026-08-22:** *"keep your override on tamper protection."*
+Shipping a promise the tool cannot keep was the worse of the two errors, and it
+is the exact case CLAUDE.md already legislates: *"Where Windows forbids
+programmatic change, say that instead."* **The override is now the decision.**
 
 ### ITEM 18'S SECOND HALF RESTS ON A FALSE PREMISE
 

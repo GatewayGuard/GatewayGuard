@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-22 22:38 ET -->
-<!-- Commit: 09e572a -->
+<!-- Generated: 2026-08-22 22:54 ET -->
+<!-- Commit: 7432438 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-22 22:38 ET
-- **Commit at generation:** `09e572a`
-- **That commit was made:** 2026-08-22 22:35 ET
-- **Its subject line:** Item 17 answered against the build: the tool and the website disagreed
+- **Generated:** 2026-08-22 22:54 ET
+- **Commit at generation:** `7432438`
+- **That commit was made:** 2026-08-22 22:38 ET
+- **Its subject line:** Session close: questions for Bill, item 2 options, two stale CLAUDE.md numbers
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
