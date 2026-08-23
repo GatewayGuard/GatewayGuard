@@ -153,6 +153,11 @@ $wanted = @(
     # what is left for whom. Cloud must be able to open the answer to its own
     # pass by name.
     @{ Label = 'Defect pass response';        Pattern = 'GatewayGuard_DefectPassResponse-*.md' },
+    # Added 2026-08-22. Bill's field review of all 19 website pages, 24 items.
+    # The .docx and .txt live in Test_Results, which is NOT in connector scope,
+    # and the .txt is cp1252 besides -- so without this readable twin in
+    # ProjectDocs, Cloud cannot see one word of it.
+    @{ Label = 'Website review (Bill, 19 pages)'; Pattern = 'GatewayGuard_HtmlWebsiteReview-*.md' },
     # The two measurements that unblock F4, the second drive: Start-MpWDOScan
     # has no scope parameter, so D: coverage needs a full ONLINE scan and the
     # screen wording must say so. Gate 24 blocks the text until this is read.

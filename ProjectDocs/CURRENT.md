@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-22 22:07 ET -->
-<!-- Commit: bbd9d4a -->
+<!-- Generated: 2026-08-22 22:16 ET -->
+<!-- Commit: dcae657 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-22 22:07 ET
-- **Commit at generation:** `bbd9d4a`
-- **That commit was made:** 2026-08-22 16:08 ET
-- **Its subject line:** Decision doc: stop stating the per-product sunset as settled fact
+- **Generated:** 2026-08-22 22:16 ET
+- **Commit at generation:** `dcae657`
+- **That commit was made:** 2026-08-22 22:07 ET
+- **Its subject line:** Defender page: Bill's wording, and regenerate the website source pack
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -71,6 +71,7 @@ All paths are relative to `ProjectDocs/`.
 | Guide gap-fill (G1-G6, v9 source) | `GatewayGuard_GuideGapFill-fromV9-2026-08-22.md` | 0 |
 | Marketing plan amendment | `GatewayGuard_MarketingPlanAmendment-2026-08-22-1000.md` | 1 |
 | Defect pass response | `GatewayGuard_DefectPassResponse-2026-08-22.md` | 0 |
+| Website review (Bill, 19 pages) | `GatewayGuard_HtmlWebsiteReview-2026-08-22.md` | 0 |
 | Offline scan research | `GatewayGuard_OfflineScanResearch-2026-08-21.md` | 0 |
 | AV scan coverage test | `GatewayGuard_AVScanCoverageTest-2026-08-21.md` | 0 |
 | Scheduled task defects (FT-203) | `GatewayGuard_ScheduledTaskDefects-2026-08-20.md` | 0 |
