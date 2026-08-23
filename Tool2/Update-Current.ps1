@@ -158,6 +158,12 @@ $wanted = @(
     # and the .txt is cp1252 besides -- so without this readable twin in
     # ProjectDocs, Cloud cannot see one word of it.
     @{ Label = 'Website review (Bill, 19 pages)'; Pattern = 'GatewayGuard_HtmlWebsiteReview-*.md' },
+    # Added 2026-08-23. The Cloud handoff -- what Cloud was told, and when.
+    # It used to be For-Cloud-*.txt AT THE REPOSITORY ROOT, which is OUTSIDE the
+    # connector scope: Cloud searched three ways for it on 2026-08-23 and
+    # correctly reported that no sync could ever make it readable. A handoff
+    # Cloud cannot open is not a handoff.
+    @{ Label = 'Cloud handoff (what Cloud was told)'; Pattern = 'GatewayGuard_CloudHandoff-*.md' },
     # The two measurements that unblock F4, the second drive: Start-MpWDOScan
     # has no scope parameter, so D: coverage needs a full ONLINE scan and the
     # screen wording must say so. Gate 24 blocks the text until this is read.

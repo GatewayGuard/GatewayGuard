@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-23 01:02 ET -->
-<!-- Commit: a5d1fcb -->
+<!-- Generated: 2026-08-23 01:33 ET -->
+<!-- Commit: 6e143fe -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-23 01:02 ET
-- **Commit at generation:** `a5d1fcb`
-- **That commit was made:** 2026-08-23 01:00 ET
-- **Its subject line:** Times in filenames, and the rule that says so
+- **Generated:** 2026-08-23 01:33 ET
+- **Commit at generation:** `6e143fe`
+- **That commit was made:** 2026-08-23 01:03 ET
+- **Its subject line:** Make the filename-time rule checkable, and fix a hole it exposed
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -72,6 +72,7 @@ All paths are relative to `ProjectDocs/`.
 | Marketing plan amendment | `GatewayGuard_MarketingPlanAmendment-2026-08-22-1000.md` | 1 |
 | Defect pass response | `GatewayGuard_DefectPassResponse-2026-08-22-1525.md` | 0 |
 | Website review (Bill, 19 pages) | `GatewayGuard_HtmlWebsiteReview-2026-08-22-2220.md` | 0 |
+| Cloud handoff (what Cloud was told) | `GatewayGuard_CloudHandoff-2026-08-22-2300.md` | 0 |
 | Offline scan research | `GatewayGuard_OfflineScanResearch-2026-08-21.md` | 0 |
 | AV scan coverage test | `GatewayGuard_AVScanCoverageTest-2026-08-21.md` | 0 |
 | Scheduled task defects (FT-203) | `GatewayGuard_ScheduledTaskDefects-2026-08-20.md` | 0 |

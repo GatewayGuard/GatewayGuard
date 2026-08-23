@@ -454,7 +454,25 @@ refused an instruction to enumerate files.
 Bill and committed by Claude Code. **If a decision exists only in a chat, say
 so:** *"this is in chat only, not yet filed in [filename]."*
 
-**Marketing is handed over via `Marketing-For-Cloud.txt`** at the repository
+**RETIRED 2026-08-23. Marketing is NOT handed over via a paste block any
+more -- it is handed over the way everything else is: as documents in
+`ProjectDocs\` that Cloud opens itself, named in `CURRENT.md`.**
+
+**Why it went.** `Marketing-For-Cloud.txt` sat untouched from 2026-08-13 while
+the marketing plan, its amendment, the pricing copy and the source pack all
+landed in `ProjectDocs\` and were named in `CURRENT.md`. **A paste block that
+restates documents Cloud can already open is a second copy that can go stale --
+and ten days on, it had.** Moved to `Archive\Root-Retired-2026-08-23\`.
+
+**The rule this leaves.** Anything Cloud must READ goes in `ProjectDocs\` and
+gets a `CURRENT.md` row. **The repository root is OUTSIDE the connector scope,
+so a file there is invisible to Cloud and no sync will ever fix that** -- Cloud
+proved it on 2026-08-23 by searching three ways for a root file and correctly
+reporting that it could not be opened. **`Start-Claude-Cloud.txt` is the one
+file that belongs at the root**, because it is what Bill pastes to BEGIN a
+chat, before Cloud can read anything at all.
+
+*(Superseded text: marketing was handed over via `Marketing-For-Cloud.txt` at the repository
 root -- a paste block with copy markers, opening with SYNC NOW and a freshness
 check. Its source material is
 `ProjectDocs\GatewayGuard_MarketingSourcePack-*.md`, **generated** by

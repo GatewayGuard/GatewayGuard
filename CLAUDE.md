@@ -750,7 +750,7 @@ and reports — not working artifacts. (Confirmed 2026-07-26.)
     nothing said so. Three files created that day were renamed to carry times
     the following morning for exactly this reason.
   - **The exception: fixed-name pointers carry no date at all.** `CURRENT.md`,
-    `CLAUDE.md`, `Marketing-For-Cloud.txt`, `Start-Claude-Cloud.txt`. Their
+    `CLAUDE.md`, `Start-Claude-Cloud.txt`. Their
     whole value is that the name never changes, so it can be written into an
     instruction without going stale. **Never add a date to one of these.**
 - Internal header must show date **and time** in US Eastern Time: `# Dated: YYYY-MM-DD HH:MM ET`
