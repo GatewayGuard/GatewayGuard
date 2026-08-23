@@ -153,6 +153,11 @@ $wanted = @(
     # draft. Built and committed 2026-08-22 12:24 -- and unnamed here, so Cloud
     # could not open the one file that answers its own open item.
     @{ Label = 'Guide gap-fill (G1-G6, v9 source)'; Pattern = 'GatewayGuard_GuideGapFill-*.md' },
+    # Added 2026-08-23. Cloud'"'"'s drop-in replacements for the guide -- the blocks
+    # Claude Code applies at stated locations. Cloud reissued pack 1 within the
+    # hour because the -HHMM renames broke every pointer in its first issue,
+    # which is the rename rule working rather than failing.
+    @{ Label = 'Guide section replacements (Cloud)'; Pattern = 'GatewayGuard_GuideSectionReplacements-*.md' },
     @{ Label = 'Marketing plan amendment';    Pattern = 'GatewayGuard_MarketingPlanAmendment-*.md' },
     # Added 2026-08-22. Claude Code's response to Cloud's defect pass -- the
     # verdict on each of its ten findings, with the measurement behind each, and

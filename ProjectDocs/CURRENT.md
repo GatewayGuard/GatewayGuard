@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-23 01:53 ET -->
-<!-- Commit: 0ee56af -->
+<!-- Generated: 2026-08-23 01:54 ET -->
+<!-- Commit: a2c897f -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-23 01:53 ET
-- **Commit at generation:** `0ee56af`
-- **That commit was made:** 2026-08-23 01:36 ET
-- **Its subject line:** Session close 2026-08-22 13:16 to 2026-08-23 01:35
+- **Generated:** 2026-08-23 01:54 ET
+- **Commit at generation:** `a2c897f`
+- **That commit was made:** 2026-08-23 01:53 ET
+- **Its subject line:** Refunds: no questions asked, superseding EULA Section 9
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -70,6 +70,7 @@ All paths are relative to `ProjectDocs/`.
 | Licence agreement (EULA) | `GatewayGuard_License-2026-08-07-0726-TEXT.md` | 2 |
 | Pricing reconciliation (one-time packs) | `PricingReconciliation-2026-07-16.md` | 0 |
 | Guide gap-fill (G1-G6, v9 source) | `GatewayGuard_GuideGapFill-fromV9-2026-08-22-1224.md` | 0 |
+| Guide section replacements (Cloud) | `GatewayGuard_GuideSectionReplacements-2026-08-23-0142.md` | 0 |
 | Marketing plan amendment | `GatewayGuard_MarketingPlanAmendment-2026-08-22-1000.md` | 1 |
 | Defect pass response | `GatewayGuard_DefectPassResponse-2026-08-22-1525.md` | 0 |
 | Website review (Bill, 19 pages) | `GatewayGuard_HtmlWebsiteReview-2026-08-22-2220.md` | 0 |
