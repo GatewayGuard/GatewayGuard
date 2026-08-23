@@ -42,9 +42,10 @@ lines. It CLOSES G1 and G2, WRITES the missing setting 10
 section, APPLIES G-1, G-2 and G-4, FOLDS the four Getting help
 pieces in, and LISTS the seven British spellings.
 
-DO NOT DO ANY OF THAT AGAIN. Claude Code applies pack 1 to the
-draft and commits it. That is not your job and it is already
-scheduled.
+DO NOT DO ANY OF THAT AGAIN. PACK 1 IS APPLIED, committed and
+pushed as of 2026-08-23 -- the draft is now 1,293 lines and the G1
+and G2 markers are gone. Setting 10 has its body section and Phase
+4 runs 10 through 19 in order.
 
 WHAT IS ACTUALLY LEFT FOR YOU IS PACK 2: G3, G4, G5 AND G6.
 
@@ -76,18 +77,18 @@ What is missing, in your own words from section 8:
 
 TWO THINGS ABOUT THE DRAFT THAT DO NOT CHANGE:
 
-  - It is GuideRewrite-Draft-2026-08-22-1000.md, 1,074 lines. It
-    SUPERSEDES the 08-19-1753 and 08-15-1838 drafts. Do not open
-    either one. It already absorbs the FT-220 sections and
-    setting 17 already has its own body step at line 885.
+  - It is GuideRewrite-Draft-2026-08-22-1000.md, 1,293 lines
+    after pack 1. It SUPERSEDES the 08-19-1753 and 08-15-1838
+    drafts. Do not open either one. It already absorbs the FT-220
+    sections and setting 17 has its own body step.
   - SETTING 11 IS ALREADY CORRECTED by Claude Code -- both the
     label and the path were wrong. DO NOT REVERT IT.
 
 DO NOT TOUCH THE ELEVEN VERIFY CLAIMS. Section 0.4 lists them and
 none has been measured on live Windows 11. Leave every VERIFY
 marker exactly where it is. Two of them can cost a reader their
-files -- the BitLocker recovery key at line 917 and the
-sleep-versus-hibernate claim at line 910. I am decrypting CGDELL
+files -- the BitLocker recovery key at line 1094 and the
+sleep-versus-hibernate claim at line 1087 (renumbered by pack 1). I am decrypting CGDELL
 and walking the whole BitLocker process, which settles the first
 one. Resolving any VERIFY from memory would be fabrication, and
 you were right to mark them rather than write them.
