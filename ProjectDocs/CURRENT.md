@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-23 00:59 ET -->
-<!-- Commit: d4f2ffc -->
+<!-- Generated: 2026-08-23 01:02 ET -->
+<!-- Commit: a5d1fcb -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-23 00:59 ET
-- **Commit at generation:** `d4f2ffc`
-- **That commit was made:** 2026-08-23 00:58 ET
-- **Its subject line:** Commit the Cloud handoff file -- it should never have been untracked
+- **Generated:** 2026-08-23 01:02 ET
+- **Commit at generation:** `a5d1fcb`
+- **That commit was made:** 2026-08-23 01:00 ET
+- **Its subject line:** Times in filenames, and the rule that says so
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -68,7 +68,7 @@ All paths are relative to `ProjectDocs/`.
 | Annual price decision | `GatewayGuard_PriceDecision-Annual-2026-08-21-1445.md` | 0 |
 | Refund policy and terms | `GatewayGuard_Decisions-RefundAndTerms-2026-08-22-1510.md` | 0 |
 | Pricing reconciliation (one-time packs) | `PricingReconciliation-2026-07-16.md` | 0 |
-| Guide gap-fill (G1-G6, v9 source) | `GatewayGuard_GuideGapFill-fromV9-2026-08-22.md` | 0 |
+| Guide gap-fill (G1-G6, v9 source) | `GatewayGuard_GuideGapFill-fromV9-2026-08-22-1224.md` | 0 |
 | Marketing plan amendment | `GatewayGuard_MarketingPlanAmendment-2026-08-22-1000.md` | 1 |
 | Defect pass response | `GatewayGuard_DefectPassResponse-2026-08-22-1525.md` | 0 |
 | Website review (Bill, 19 pages) | `GatewayGuard_HtmlWebsiteReview-2026-08-22-2220.md` | 0 |

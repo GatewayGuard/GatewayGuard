@@ -37,7 +37,7 @@ and it was a wrong price in drafted customer copy. **Fixed, committed.**
 |---|---|---|
 | G-1 | **Stands. Diagnostic-data half proven closed; setting 11 half RESOLVED and FIXED** | Measured both files, then Bill read the live toggle |
 | G-2 | **Stands** | `GuideRewrite-Draft` line 209 only |
-| G-3 | **Answered** -- see `GatewayGuard_GuideGapFill-fromV9-2026-08-22.md`, G4 note | The draft's own G4 scope |
+| G-3 | **Answered** -- see `GatewayGuard_GuideGapFill-fromV9-2026-08-22-1224.md`, G4 note | The draft's own G4 scope |
 | G-4 | **Stands** | `GuideRewrite-Draft` line 134 against line 48 |
 | G-5 | **Stands** | Sequencing, no measurement needed |
 | M-1 | **Stands** | `MarketingPlan` line 110 against lines 68 and 151 |

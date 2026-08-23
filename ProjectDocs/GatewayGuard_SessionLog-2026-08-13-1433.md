@@ -156,7 +156,7 @@ reading a snapshot taken before it. Checked, not assumed:
 | Commit the three 08-22 files | 2 of 3 committed (`97b3383`, `b1b057c`); working tree clean against HEAD for `ProjectDocs\`. **The third does not exist** -- see below |
 | Add `CloudRequest-*`, `ascii43BuildPlan-*`, `GuideFT220-Sections-*` patterns | **Already present**, added 2026-08-22 with their own comment block |
 | Fix the Field test plan row | **Already fixed** -- the row was REMOVED, not repointed, with a comment saying the pattern only ever resolved to the ascii40 plan |
-| Close guide gaps G1-G6 | **Already closed** -- `GatewayGuard_GuideGapFill-fromV9-2026-08-22.md`, 524 lines, committed 12:24 |
+| Close guide gaps G1-G6 | **Already closed** -- `GatewayGuard_GuideGapFill-fromV9-2026-08-22-1224.md`, 524 lines, committed 12:24 |
 | Carry the FT-226 correction | **Already filed**, in this log, with the six-setting class |
 | Add `PricingCopy-*` pattern | **Genuinely outstanding.** Done today |
 
@@ -331,7 +331,7 @@ gap-ridden draft would only have to be redone.
 1. **New guide draft committed** -- `GuideRewrite-Draft-2026-08-22-1000.md`,
    absorbing the FT-220 sections with VERIFY markers intact.
 2. **G1-G6 gap-fill handed back** --
-   `GatewayGuard_GuideGapFill-fromV9-2026-08-22.md`, 524 lines. **A
+   `GatewayGuard_GuideGapFill-fromV9-2026-08-22-1224.md`, 524 lines. **A
    byte-faithful extraction, not a rewrite**: each of the eight blocks is the
    raw v9 text with its source line range, for Cloud to plain-language.
    **Flagged rather than silently decided:** two v9 sections (Quick decision

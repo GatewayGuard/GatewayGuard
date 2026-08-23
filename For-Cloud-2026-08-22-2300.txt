@@ -32,7 +32,7 @@ CURRENT.md:
   GatewayGuard_HtmlWebsiteReview-2026-08-22.md
   GatewayGuard_DefectPassResponse-2026-08-22.md
   GatewayGuard_Decisions-RefundAndTerms-2026-08-22.md
-  GatewayGuard_GuideGapFill-fromV9-2026-08-22.md
+  GatewayGuard_GuideGapFill-fromV9-2026-08-22-1224.md
 
 ===============================================================
 1. THE 19 .HTML PAGES
@@ -79,7 +79,7 @@ because both change the words.
 2. THE GUIDE
 ===============================================================
 
-G1-G6 CAN CLOSE NOW. GatewayGuard_GuideGapFill-fromV9-2026-08-22.md
+G1-G6 CAN CLOSE NOW. GatewayGuard_GuideGapFill-fromV9-2026-08-22-1224.md
 has the v9 source for all six, byte-faithful, 524 lines.
 
 G-3 IS ANSWERED, and half of it was never a question:
