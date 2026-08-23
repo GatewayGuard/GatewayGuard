@@ -2,8 +2,10 @@
 # GatewayGuard Security Guide — REWRITE DRAFT
 
 - **Document Name:** GatewayGuard_GuideRewrite-Draft
-- **Last Modified:** 2026-08-22 10:00 ET
-- **Last Editor:** Claude.ai (Cloud)
+- **Last Modified:** 2026-08-23 12:40 ET
+- **Last Editor:** Claude Code (CGDELL) — applying Cloud's pack 1
+- **Applied packs:** `GatewayGuard_GuideSectionReplacements-2026-08-23-0142.md`
+  (pack 1). **Pack 2 — G3, G4, G5, G6 — not yet written.**
 - **Machine:** CGDELL
 - **Status:** DRAFT FOR REVIEW — not a replacement for `windows_security_walkthrough_guide_v9.docx` until Bill approves
 - **Supersedes:** `GatewayGuard_GuideRewrite-Draft-2026-08-19-1753.md`
@@ -13,6 +15,19 @@
 
 **Change History Log:**
 
+- 2026-08-23 12:40: **Pack 1 applied by Claude Code.** G1 (device encryption,
+  with the recovery-key section) and G2 (accounts and sign-in) written in;
+  **setting 10, Remote Desktop, given the body section it never had**, which is
+  what blocked FT-226's class fix; the Word TOC placeholder removed from line
+  134 and restored to `*[FORMATTING: ...]*` so it cannot read as body copy; the
+  closed W-07 diagnostic-data collision deleted from RECONCILIATION and from
+  WHAT MUST HAPPEN, with that list renumbered; four items folded into *Getting
+  help* in second person; seven British spellings swept to American after
+  checking each in context — none was inside a quoted Windows label.
+  **Two corrections to the pack as written:** its setting 10 heading was `###`
+  where every other Phase 4 setting is `##`, and its G1 VERIFY block used
+  "whether" twice and "switched on" once, all three banned. Fixed on the way in.
+  **G3, G4, G5 and G6 remain open** — see 0.2.
 - 2026-08-22 10:00: **Full rewrite per Bill.** The 08-19 draft and the 08-21
   FT-220 drop-in sections are merged into one document, so there is one guide
   and not three. **Setting 17 given a step of its own** — it was in the
@@ -45,27 +60,34 @@
 | **"whether" removed** | Banned, PL-1. One occurrence in v9 |
 | **"open-source" kept once** | The Chromium glossary entry. Legitimate — do not sweep it |
 | **Cover, author and copyright added** | v9 had none. "GatewayGuard" appeared 0 times and "Checkup" 0 times in a $19.99 product |
-| **TOC placeholder defect fixed** | v9 shipped with *"Right-click here and choose Update Field"* on page 1, twice |
+| **TOC placeholder defect fixed** | v9 shipped with *"Right-click here and choose Update Field"* twice. One survived into the 08-22 draft at line 134 and was removed 2026-08-23. Producer instructions now go back inside `*[FORMATTING: ...]*`, which is greppable and cannot be mistaken for reader text |
 
-### 0.2 RETRIEVAL GAPS — six sections not written
+### 0.2 RETRIEVAL GAPS — two closed, four still open
 
-I could not retrieve these from the source pack in full. **They are marked in
-place rather than written, because writing them from memory would be
-fabrication.** Every one exists in v9 and must be carried across.
+**G1 and G2 are CLOSED**, written by Cloud in
+`GatewayGuard_GuideSectionReplacements-2026-08-23-0142.md` (pack 1) and applied
+2026-08-23. **Four remain**, marked in place rather than written, because
+writing them from memory would be fabrication.
 
-| # | Section | Where it sits in v9 |
-|---|---|---|
-| G1 | **Phase 1 Step 3 — Device Encryption / BitLocker**, full body | Phase 1 |
-| G2 | **Phase 1 Step 4 — User accounts & sign-in**, full body | Phase 1 |
-| G3 | **Step 6 Parts B–H**, full body | Phase 2 |
-| G4 | **Phase 5 — hardening, habits, performance hygiene, decision tree** | Phase 5 |
-| G5 | **Firefox addendum F1–F12** | Addendum |
-| G6 | **Glossary and Index** | Back matter |
+| # | Section | Where it sits in v9 | State |
+|---|---|---|---|
+| G1 | **Phase 1 Step 3 — Device Encryption / BitLocker**, full body | Phase 1 | **CLOSED** 2026-08-23 |
+| G2 | **Phase 1 Step 4 — User accounts & sign-in**, full body | Phase 1 | **CLOSED** 2026-08-23 |
+| G3 | **Step 6 Parts B–H**, full body | Phase 2 | Open — Parts E and F, and the middle of D |
+| G4 | **Phase 5 — hardening, habits, performance hygiene, decision tree** | Phase 5 | Open — all but the opening |
+| G5 | **Firefox addendum F1–F12** | Addendum | Open — nothing retrieved |
+| G6 | **Glossary and Index** | Back matter | Open — nothing retrieved |
 
-**How to close them:** Claude Code should extract each named section from
-`GuideV9-SourcePack` and hand it back, or Bill uploads the source pack into
-the chat. Both are one action. **Do not let this document ship with the
-markers still in it.**
+**How to close the remaining four, and it is one act by Bill:** upload
+`GatewayGuard_GuideGapFill-fromV9-2026-08-22-1224.md` into the Cloud chat as a
+file. **A CURRENT.md row is not the fix.** That file is already nameable and
+already in `ProjectDocs\` — the problem is that connector search returns a
+524-line document in whichever fragments rank highest, and no number of queries
+guarantees the whole file. Being able to *name* a file and being able to *read
+all of it* are two different capabilities. Cloud stopped at exactly this point
+and refused to write from partial retrieval, which was correct.
+
+**Do not let this document ship with the markers still in it.**
 
 ### 0.3 FT-226 is wrong as filed, in both halves
 
@@ -131,7 +153,7 @@ for you. Free explanations of every setting in this guide are at
 
 ## Table of Contents
 
-*In Word: right-click this line and choose Update Field.*
+*[FORMATTING: insert the Word table-of-contents field here at export.]*
 *The outline below is always visible and does not need updating.*
 
 **Front matter**
@@ -152,7 +174,7 @@ for you. Free explanations of every setting in this guide are at
 - Steps 1 to 8, behind a stop-and-decide page
 
 **Phase 4 — Privacy and housekeeping**
-- Settings 11, 12, 13, 14, 15, 17, 18, 19
+- Settings 10, 11, 12, 13, 14, 15, 17, 18, 19
 
 **Back matter**
 - Advanced — optional
@@ -178,7 +200,7 @@ awkward to undo, the guide says so first and tells you how to reverse it.
 - Paper and a pen.
 
 **One rule, and it is the important one.** If you find something you do not
-recognise, **write the name down. Do not remove it yet.** The wrong removal
+recognize, **write the name down. Do not remove it yet.** The wrong removal
 can stop your computer from working properly, and undoing that is much harder
 than writing down a name.
 
@@ -316,8 +338,8 @@ Click **Virus & threat protection**, then **Manage settings**. Turn these
 - **Tamper Protection** — stops other software switching Defender off.
 
 **Tamper Protection deserves a moment.** Malware tries to turn Defender off.
-Tamper Protection is what stops it. **If you find this switched off and you did
-not switch it off, treat that as a finding** — write it down and carry on to
+Tamper Protection is what stops it. **If you find this turned off and you did
+not turn it off, treat that as a finding** — write it down and carry on to
 Phase 2.
 
 **Controlled folder access** is optional. It blocks unknown programs from
@@ -361,35 +383,154 @@ is not something to force. Write the message down and move on.
 
 ## Step 3 — Device encryption
 
-> ### ⧗ RETRIEVAL GAP G1
+**What this does.** Encryption scrambles everything on the drive so it can only
+be read by someone who can sign in. Without it, a person who has the computer in
+their hands can take the drive out, connect it to another machine, and read
+every file on it. Your password does not stop that. Encryption does.
+
+**This matters most for a laptop**, which can be left behind or taken.
+
+### Is it already on?
+
+**Go to Settings › Privacy & security › Device encryption.**
+
+- **If you see a switch and it says On** — this is done. Skip to *Save your
+  recovery key* below, because you still need the key.
+- **If the switch says Off** — turn it on. Encryption runs quietly in the
+  background and you can keep using the computer while it works.
+- **If there is no Device encryption page at all**, your computer uses the other
+  version of this feature. Click Start, type `Manage BitLocker`, and press
+  Enter. Turn BitLocker on for drive C: at least. If you have a second drive
+  with your own files on it, turn it on for that one too.
+
+### Save your recovery key — do this before you go any further
+
+**The recovery key is a 48-digit number, printed as eight blocks of six
+digits.** Windows asks for it when something changes on the computer and it
+wants proof you are the owner — after certain repairs, hardware changes, or
+firmware updates.
+
+**Without the key, and with no other way to sign in, the files are gone.** Not
+locked. Gone. Nobody can recover them, including us and including Microsoft.
+
+**Where your key is depends on how you sign in to this computer.** Check which
+one you have at **Settings › Accounts › Your info** — if an email address is
+shown under your name, that is a Microsoft account.
+
+**If you sign in with a Microsoft account:** on your phone or another computer,
+go to `account.microsoft.com/devices/recoverykey` and sign in with that same
+account. Your key should be listed there under this computer's name. *VERIFY.*
+
+**If you sign in with a local account** — no email address under your name —
+**there is no online copy and nobody is holding one for you.** Click Start, type
+`Manage BitLocker`, press Enter, and choose **Back up your recovery key**. Then
+save it two ways, using the next section.
+
+**If the online page is empty and you expected a key to be there**, do the same:
+Start › `Manage BitLocker` › **Back up your recovery key** › **Save to your
+Microsoft account**. Then check the page again to confirm it arrived. *VERIFY.*
+
+### Two copies, and one rule about where they go
+
+Save the key in **two** places:
+
+1. **On paper.** Print it, or write it out by hand, and keep it with your
+   important documents. A password manager entry works too.
+2. **On a USB stick** that you keep somewhere other than the computer bag.
+
+**The rule: never save the only copy on the computer the key unlocks.** If the
+drive will not open, the key sitting on that drive cannot be reached. That is
+the whole problem the key exists to solve.
+
+> **⚠ VERIFY — this section, before the guide ships.**
+> Three claims here have not been measured on a live machine, and this is one of
+> the two places in the guide where being wrong costs a reader their files:
 >
-> **The body of this step has not been written.** It exists in v9 as
-> *"Step 3 — Device Encryption / BitLocker"* and must be carried across in
-> full rather than written from memory.
+> 1. That `account.microsoft.com/devices/recoverykey` lists a key for a
+>    Microsoft-account PC with Device Encryption on.
+> 2. That **Back up your recovery key** appears under `Manage BitLocker` on
+>    **Windows 11 Home**, and what options it offers on a **local account**.
+> 3. If Device Encryption can be turned on at all on a Home machine using a
+>    local account, or if Windows requires a Microsoft account first.
 >
-> **What it must contain, and what must be verified first:**
+> **Claim 3 decides the shape of this section.** If Home requires a Microsoft
+> account, the local-account path above is wrong and the reader needs to be told
+> to create one first. **Sandy3 covers the Microsoft-account case (encryption is
+> already on). SANDY covers the local-account case.**
 >
-> - Where device encryption lives on Windows 11 Home versus Pro.
-> - How to find out if it is already on.
-> - **How to save the recovery key, and where it actually goes.** *VERIFY —
->   this is one of the two claims that can cause real harm if wrong. A reader
->   told they can retrieve a key they cannot retrieve loses the contents of
->   the computer.*
-> - What happens if the key is lost.
-> - Why the key must be kept somewhere other than on this computer.
+> **Order matters — run the ascii43 field test on SANDY first.** SANDY's
+> unencrypted state can only be spent once, and encrypting it for this
+> measurement destroys the field test's starting condition. One trip settles
+> both if the field run goes first.
 
 ---
 
 ## Step 4 — Your account and how you sign in
 
-> ### ⧗ RETRIEVAL GAP G2
->
-> **The surrounding body of this step has not been written.** It exists in v9
-> as *"Step 4 — User accounts & sign-in"* and must be carried across: how to
-> see which accounts exist, how to spot an account nobody created, standard
-> versus administrator accounts, and what to do about an unfamiliar one.
->
-> **The Windows Hello section below is finished and replaces whatever v9 had.**
+**Two things are worth knowing about your account: who can sign in to this
+computer, and how you get back in if you are locked out.**
+
+### Who can sign in
+
+**Go to Settings › Accounts › Other users.**
+
+**What you should see: only people who actually use this computer.** On a
+computer one person uses, the cleanest result is nobody listed here at all.
+
+**If you see a name or an email address you do not recognize, do not delete it
+yet.** Deleting an account can take that account's files with it, and some
+entries are put there by Windows itself or by the shop that set the computer up.
+Write down exactly what it says, then remove it only once you are sure it is not
+someone in your household and not something you set up and forgot. **If you are
+not sure, that is a good reason to call someone** — see *Getting help* at the
+back of this guide.
+
+### Your own account type
+
+**Go to Settings › Accounts › Your info.**
+
+**Administrator** is normal on a home computer and there is nothing to fix.
+
+**If you want an extra layer**, you can make a second account of the type
+**Standard** and use that one day to day, signing in to the administrator
+account only when you install something. Software that arrives by accident can
+do less damage from a standard account. **This is optional.** If it makes the
+computer annoying to use, skip it — an unused precaution protects nothing.
+
+### If you forget how to get in
+
+**This is the part people wish they had read first.**
+
+At **Settings › Accounts › Your info**, look under your name:
+
+- **An email address is shown.** You sign in with a Microsoft account. If you
+  forget your PIN or password, you can prove who you are from your phone and set
+  a new one.
+- **No email address.** You sign in with a local account. **There is no reset
+  link and no support line.** *VERIFY.* If you forget the password, the usual
+  answer is reinstalling Windows, which means losing anything on the computer
+  that is not saved somewhere else.
+
+**If you use a Microsoft account, turn on two-step verification.** It means
+somebody who learns your password still cannot get in without your phone. Do
+this part on your phone, not on the computer:
+
+1. Go to `account.microsoft.com/security` and sign in.
+2. Find **Two-step verification** and turn it **On**.
+3. Set up **two** ways to be reached. The Microsoft Authenticator app is the
+   best one; a text message to your phone is a good second.
+4. On the same page, open **Advanced security options**, find **Recovery code**,
+   and choose **Generate**.
+
+**Save that recovery code with your BitLocker key**, in the same two places —
+on paper, and on the USB stick. **Without it, losing your phone can lock you out
+of the account permanently**, and that account may be holding the only copy of
+your encryption key.
+
+> **⚠ VERIFY.** The local-account claim above — no reset path, reinstall as the
+> usual answer — is one of the eleven. It also appears in the Windows Hello
+> section below, so **both must say the same thing after the measurement**, and
+> the same trip that settles Step 3 settles this.
 
 ### Windows Hello — setting 9
 
@@ -483,7 +624,7 @@ Anything that arrived recently and unannounced shows up at the top.
 
 **What you are looking for:**
 
-- Anything you do not recognise.
+- Anything you do not recognize.
 - **Generic names with no brand** — "PDF Editor", "Video Converter", "Music
   Player", "PC Cleaner".
 - Several toolbars, or anything calling itself a "search helper".
@@ -506,7 +647,7 @@ shows the publisher in a column and is the more reliable of the two.
 | OneLaunch | Same family |
 | Wave Browser, or Wave | Same family |
 | Shift browser | Same family |
-| A generic "PDF Editor" with no recognisable maker | Often this family |
+| A generic "PDF Editor" with no recognizable maker | Often this family |
 
 These are advertised through search results for things like "free PDF editor".
 Microsoft Defender, Malwarebytes, G DATA and Truesec each classify them as
@@ -545,7 +686,7 @@ Type one of these into the address bar and press Enter:
 
 **Remove on sight:** anything called *Coupon*, *Shopping helper*, *Deal
 finder*, or *Search helper*; anything called *Wave* or *Shift*; anything you do
-not recognise; anything from a maker you have never heard of.
+not recognize; anything from a maker you have never heard of.
 
 > ### ⧗ RETRIEVAL GAP G3 — Parts B to H
 >
@@ -592,7 +733,7 @@ accounts to change them. Phase 3 Step 8 is where they get cleared.
 
 **Chrome:** Settings › You and Google › Sync and Google services.
 
-Confirm the account shown is yours. If it is an account you do not recognise,
+Confirm the account shown is yours. If it is an account you do not recognize,
 that is a finding — write it down.
 
 ---
@@ -684,7 +825,7 @@ devices › sign out of every one.
 
 **Microsoft:** `account.microsoft.com` › Security › **Sign me out
 everywhere**. Then check `account.live.com/Activity` for sign-ins you do not
-recognise.
+recognize.
 
 Do the same for any other account that offers it.
 
@@ -696,7 +837,7 @@ somebody stay in your account without knowing your password.
 **For each email account you have:**
 
 - **Recent sign-in activity** — anything from a place or device you do not
-  recognise?
+  recognize?
 - **Sent folder** — anything you did not send?
 - **Deleted items** — password-reset emails you did not ask for?
 - **Filters and forwarding rules** — any you did not create?
@@ -763,6 +904,42 @@ Once your important passwords have been moved, go back to Step 6 Part I and
 **Nothing in this phase makes your computer easier to break into.** These
 settings control how much is shared, and what runs when you are not looking.
 Reasonable people choose differently on some of them.
+
+---
+
+## Remote Desktop — setting 10
+
+**Where it lives:** **Settings › System › Remote Desktop**.
+
+**What it is.** Remote Desktop lets somebody sitting at another computer take
+over this one — see your screen, move your mouse, open your files — across a
+network or the internet.
+
+**Why it should be off.** It is a legitimate tool that businesses use. On a home
+computer, it is a door that almost nobody needs, and a door nobody uses is a door
+worth closing.
+
+**What you should see: Remote Desktop set to Off.** If it is On and you do not
+knowingly use it, turn it off.
+
+**If the setting is not there at all, that is the answer, not a problem.**
+Windows 11 Home cannot accept incoming Remote Desktop connections — the feature
+is not built in. There is nothing to turn off and nothing more to do here. *This
+is why Checkup skips this item on Home machines.*
+
+> **⚠ VERIFY — original copy, no v9 source.** The gap-fill has no v9 text for
+> this setting, so unlike the rest of this pack it is written rather than
+> carried across. Two things to confirm on a live machine:
+>
+> 1. **The exact on-screen path and label on Windows 11 Pro.** RULE W-07 needs
+>    the literal words the reader will see, and CGDELL is the Pro machine.
+> 2. **What Home actually shows** — if the Remote Desktop page is absent, or
+>    present and greyed out. The wording above says absent, and the two need
+>    different sentences.
+>
+> The Home behavior is sourced from Checkup's own `SkipOnHome=$true` for this
+> setting, which is the build's position rather than a measurement of the
+> screen.
 
 ---
 
@@ -875,16 +1052,16 @@ first thing a bad program looks for.
 **One thing worth knowing about Edge.** Turning off *"Save and fill payment
 info"* **prevents you deleting cards you already saved**. If you want the saved
 cards gone: turn the setting back **on**, delete the cards, then turn it off
-again. Doing it in the other order leaves the cards sitting there. Switching it
+again. Doing it in the other order leaves the cards sitting there. Turning it
 off also leaves *"Allow sites to check if you have payment methods saved"*
-switched on — that is a separate toggle on the same screen and it needs turning
+turned on — that is a separate toggle on the same screen and it needs turning
 off too.
 
 ---
 
 ## Password required on wake — setting 17
 
-**What it is:** whether the computer asks for your PIN or password when it
+**What it is:** if the computer asks for your PIN or password when it
 comes back from sleep.
 
 **Where it lives:** **Settings › Accounts › Sign-in options**, under **"If
@@ -910,14 +1087,14 @@ battery › Screen and sleep** to see which.
 **Hibernate is the safer of the two.** *VERIFY.* When a computer sleeps, it
 keeps the contents of memory alive — and on an encrypted computer, the key that
 unlocks the drive is in that memory. **When it hibernates, memory is written to
-disk and the machine genuinely switches off**, so there is nothing live to
+disk and the machine genuinely turns off**, so there is nothing live to
 reach. *VERIFY.*
 
 **On Windows 11 Home with Device Encryption, hibernating does not cause the
 computer to ask for a recovery key on the way back.** *VERIFY — this claim can
 cause real harm if wrong. A reader who hibernates and is then asked for a key
 they cannot find has lost access to the computer. It must be measured on a
-machine with Device Encryption switched on before this ships.*
+machine with Device Encryption turned on before this ships.*
 
 **Where hibernate lives:** **Control Panel › Power Options › Choose what the
 power buttons do**. You may need to click *"Change settings that are currently
@@ -1005,6 +1182,46 @@ somebody who pays.
 **If you found something in Phase 2 and would rather not do Phase 3 alone**,
 that is a reasonable choice. Nothing gets worse for waiting a day.
 
+### Signs that something is already wrong
+
+Some things mean the problem has already happened, and they are worth acting on
+the same day:
+
+- You are told about a sign-in you did not make, from a place you have never
+  been.
+- There is mail in your Sent folder that you did not send.
+- Your email is forwarding copies somewhere you did not set up. In Outlook.com
+  this is under **Settings › Mail › Forwarding**.
+- Money has moved that you cannot account for.
+
+**Any one of these is a reason to change your password from a different
+device** — a phone, or another computer — rather than from the one you are
+worried about.
+
+### When to stop and get someone
+
+There is a point where doing this alone stops making sense. **If a scan finds
+more than about fifty items**, or the computer behaves strangely in ways that
+keep changing, stop and get someone to look at it. That is not a failure. It is
+the same call you would make about a noise in the car.
+
+**If any account on this computer belongs to an employer** — a work email, a
+company file store — tell their IT people. They may be required to act, and they
+will need to know sooner rather than later.
+
+**If you think a particular person is watching your computer, your phone, or
+your accounts, the advice in this guide is not the right advice.** Changing
+settings can warn the person watching before it stops them. That situation needs
+people trained for it — a domestic violence advocate, or a service that handles
+technology-facilitated abuse — and they are reachable before you change
+anything.
+
+> **⚠ BILL'S CALL — naming organizations and phone numbers.** The paragraph
+> above deliberately names no organization. Naming one makes it useful; naming a
+> wrong or dead number in a printed guide is worse than naming none. **RESEARCH
+> BEFORE STATING applies** — anything named must be confirmed current at the
+> time the guide is exported, not now.
+
 **Who to call:**
 
 - Someone in your family who is comfortable with computers.
@@ -1051,24 +1268,26 @@ Real security warnings never ask you to phone anybody. Neither does this guide.
 ## RECONCILIATION — guide against website, RULE W-07
 
 The twelve corrections applied on 2026-08-15 stand and are carried into this
-document. **One collision is still open and is not resolved here:**
+document. **No collision remains open.**
 
-**W-07 collision — diagnostic data.** The website's diagnostic-data page and
-this guide's setting 12 do not say the same thing. **Both cannot ship.** This
-needs Bill's decision on which position is correct, and then one of the two
-gets rewritten to match.
+**The diagnostic-data collision is closed, 2026-08-23.** It was never a
+disagreement: the website says *"Select Required diagnostic data"* and this
+guide says *"Choose Required"*, which are the same instruction. Cloud caught
+that the reconciliation paragraph was asking Bill for a decision that did not
+exist.
 
 ---
 
 ## WHAT MUST HAPPEN BEFORE THIS SHIPS
 
-1. **Close the six retrieval gaps** — G1 to G6. Nothing ships with a marker in it.
+1. **Close the remaining retrieval gaps** — **G3, G4, G5 and G6.** Nothing ships
+   with a marker in it. **G1 and G2 are closed** (pack 1, applied 2026-08-23).
 2. **Measure the eleven VERIFY claims** on live Windows 11, both the
    local-account and Microsoft-account cases. **BitLocker recovery key and
    sleep-versus-hibernate first** — those two can cost a reader their files.
-3. **Resolve the W-07 diagnostic-data collision** with the website.
-4. **Fill in every page number** in the quick-reference table, and give the six
+   **Setting 10 adds a twelfth**, written without a v9 source.
+3. **Fill in every page number** in the quick-reference table, and give the six
    `"Keep vs. Disable Table"` settings a real destination — or change the tool
    to point somewhere that exists.
-5. **Bill approves**, and only then does this replace
+4. **Bill approves**, and only then does this replace
    `windows_security_walkthrough_guide_v9.docx`.

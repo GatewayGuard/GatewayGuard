@@ -185,7 +185,7 @@ rewritten with *"if"*.
 - **The footer.** Already corrected. Section 2 of the request says do not touch it, and I have not.
 - **The nineteen guide pages, the guide index, and the footer everywhere else.** Already corrected on 2026-08-15.
 - **Anything mentioning multi-year plans.** Held in section 5.
-- **`WebSite/html/diagnostic-data.html`.** Out of scope here, and it has a live W-07 collision with the guide's setting 12. That is a separate decision.
+- **`WebSite/html/diagnostic-data.html`.** Out of scope here. *(The W-07 collision this line used to claim was closed 2026-08-23 — the website says "Select Required diagnostic data" and the guide says "Choose Required", which agree.)*
 
 ---
 
