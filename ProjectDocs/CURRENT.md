@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-23 12:27 ET -->
-<!-- Commit: 297fe9c -->
+<!-- Generated: 2026-08-23 12:47 ET -->
+<!-- Commit: dd916d0 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-23 12:27 ET
-- **Commit at generation:** `297fe9c`
-- **That commit was made:** 2026-08-23 12:27 ET
-- **Its subject line:** Guide handoff was telling Cloud to redo pack 1 -- corrected
+- **Generated:** 2026-08-23 12:47 ET
+- **Commit at generation:** `dd916d0`
+- **That commit was made:** 2026-08-23 12:47 ET
+- **Its subject line:** Apply Cloud's pack 1: G1, G2, setting 10, and the small blocks
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
