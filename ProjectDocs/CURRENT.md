@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-22 22:16 ET -->
-<!-- Commit: dcae657 -->
+<!-- Generated: 2026-08-22 22:31 ET -->
+<!-- Commit: 4ba840f -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-22 22:16 ET
-- **Commit at generation:** `dcae657`
-- **That commit was made:** 2026-08-22 22:07 ET
-- **Its subject line:** Defender page: Bill's wording, and regenerate the website source pack
+- **Generated:** 2026-08-22 22:31 ET
+- **Commit at generation:** `4ba840f`
+- **That commit was made:** 2026-08-22 22:17 ET
+- **Its subject line:** Bill's website review: 24 items across all 19 pages, triaged
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -61,7 +61,7 @@ All paths are relative to `ProjectDocs/`.
 | Cloud request | `GatewayGuard_CloudRequest-Review-2026-08-21.md` | -- |
 | Marketing plan (current) | `GatewayGuard_MarketingPlan-2026-08-22-1000.md` | 3 |
 | Guide rewrite draft (current) | `GatewayGuard_GuideRewrite-Draft-2026-08-22-1000.md` | 2 |
-| Website source pack (19 guide pages) | `GatewayGuard_WebsiteSourcePack-2026-08-22-2207.md` | 1 |
+| Website source pack (19 guide pages) | `GatewayGuard_WebsiteSourcePack-2026-08-22-2231.md` | 2 |
 | Guide v9 source pack | `GatewayGuard_GuideV9-SourcePack-2026-08-15-1436.md` | 0 |
 | Marketing source pack | `GatewayGuard_MarketingSourcePack-2026-08-13-1427.md` | 0 |
 | Pricing copy (website) | `GatewayGuard_PricingCopy-2026-08-22-1000.md` | 1 |

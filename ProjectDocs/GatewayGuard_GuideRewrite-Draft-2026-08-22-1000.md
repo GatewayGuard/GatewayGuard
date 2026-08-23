@@ -771,7 +771,7 @@ Reasonable people choose differently on some of them.
 **What it is:** a number that lets apps show you advertising based on what you
 do on this computer.
 
-**Where it lives:** **Settings › Privacy & security › General**.
+**Where it lives:** **Settings › Privacy & security › Recommendations and offers**.
 
 Turn off **Let apps show me personalized ads by using my advertising ID**.
 

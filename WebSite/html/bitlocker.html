@@ -127,8 +127,14 @@ footer { background: var(--white); border: 4px solid var(--black); max-width: va
   <div class="why-box"><p><strong>If your laptop is ever stolen, encryption is what protects your files.</strong> Without it, anyone with physical access to your drive can read everything on it &#8212; your documents, photos, passwords saved in your browser, everything &#8212; in minutes, using free tools.</p><p>With encryption on, the data on the drive is scrambled. Without your password (or your recovery key), it&#8217;s unreadable. The laptop can be wiped and resold. Your data stays private.</p></div>
 </section>
 <section class="content-section">
-  <h2>How to check it yourself</h2>
-  <ol class="steps-list"><li><div class="step-text">On <strong>Windows 11 Home</strong>: Open <strong>Settings &gt; Privacy &amp; security &gt; Device encryption</strong>. If the toggle says <strong>On</strong>, your drive is encrypted.</div></li><li><div class="step-text">On <strong>Windows 11 Pro</strong>: Open <strong>Settings &gt; Privacy &amp; security &gt; Device security &gt; BitLocker drive encryption</strong>. It should say <strong>BitLocker on</strong> next to your C: drive.</div></li><li><div class="step-text">To check from the Start menu on either edition: press the <strong>Windows key</strong> and search for <strong>BitLocker</strong>. Open <strong>Manage BitLocker</strong>. The C: drive should show <strong>BitLocker on</strong> or <strong>On</strong>.</div></li></ol>
+  <h2>How to check it &#8212; and turn it on if it is off</h2>
+  <p style="font-size:15px;color:var(--gray-dark);margin-top:6px;line-height:1.6;"><strong>The two editions of Windows 11 do this differently.</strong> Follow the one that matches your PC. If you do not know which you have, press the <strong>Windows key</strong>, type <strong>winver</strong> and press <strong>Enter</strong> &#8212; the box that opens names your edition.</p>
+
+  <h3 style="font-size:17px;margin-top:22px;">Windows 11 Home</h3>
+  <ol class="steps-list"><li><div class="step-text">Press the <strong>Windows key</strong> and type <strong>encryption</strong>.</div></li><li><div class="step-text">Open <strong>Device encryption settings</strong>.</div></li><li><div class="step-text">Look at the <strong>Device encryption</strong> switch. <strong>It should say On. If it says Off, click it to turn it On.</strong></div></li><li><div class="step-text">If there is no Device encryption page at all, your PC does not support it. That is a hardware limitation and not something you did wrong &#8212; see <em>What to expect</em> below.</div></li></ol>
+
+  <h3 style="font-size:17px;margin-top:22px;">Windows 11 Pro</h3>
+  <ol class="steps-list"><li><div class="step-text">Press the <strong>Windows key</strong>, type <strong>windows security</strong>, and open <strong>Windows Security</strong>.</div></li><li><div class="step-text">In the left-hand panel, select <strong>Device security</strong>.</div></li><li><div class="step-text">Scroll down &#8212; or use the down arrow key or the Page Down key &#8212; and select <strong>Manage BitLocker drive encryption</strong>.</div></li><li><div class="step-text">Look at your <strong>C:</strong> drive. <strong>If it says BitLocker on, there is nothing to do.</strong> If it says <strong>BitLocker off</strong>, click <strong>Turn on BitLocker</strong> and follow the prompts.</div></li><li><div class="step-text"><strong>Do not walk away during the next step.</strong> Windows will offer to save your recovery key. Save it before you go any further &#8212; the section below tells you where.</div></li></ol>
 </section>
 
 
@@ -145,6 +151,34 @@ footer { background: var(--white); border: 4px solid var(--black); max-width: va
     <li><div class="step-text"><strong>A password manager</strong> &#8212; if you use one, paste the key as a secure note.</div></li>
   </ol>
   <div class="note-box" style="margin-top:16px;"><strong>GatewayGuard showed you this key during setup.</strong> If you saved it then, you&#8217;re done. If you cannot remember saving it, check your Microsoft account at the link above before doing anything else.</div>
+</section>
+<section class="content-section">
+  <h2>Your backup plan &#8212; what to do the day the key is asked for</h2>
+
+  <p style="font-size:15px;color:var(--gray-dark);line-height:1.6;"><strong>Saving the key and being able to use it are two different things.</strong> The section above is about saving it. This one is about the morning your PC starts up and asks for it, which is the only morning it matters. <strong>Read it now, while nothing is wrong.</strong></p>
+
+  <div class="warn-box" style="margin-top:16px;">
+    <strong>Print this page, or write the steps on paper and keep them with your key.</strong> If the PC is asking for the recovery key, you cannot read this page on that PC. That is the whole problem, and paper is the whole answer.
+  </div>
+
+  <h3 style="font-size:17px;margin-top:22px;">Before anything goes wrong &#8212; both editions</h3>
+  <ol class="steps-list">
+    <li><div class="step-text"><strong>Save the key in two places, and make one of them off the computer.</strong> Printed on paper, or on a USB drive kept somewhere else. A copy that lives only on the encrypted drive is no copy at all &#8212; you cannot reach it when the drive will not open.</div></li>
+    <li><div class="step-text"><strong>Write down which PC each key belongs to.</strong> A 48-digit number with no name on it is not much use if you own two computers.</div></li>
+    <li><div class="step-text"><strong>Tell one other person where the key is.</strong> Not the number &#8212; where it is kept. If something happens to you, somebody else may need to open that machine.</div></li>
+    <li><div class="step-text"><strong>Check once a year that you can still find it.</strong> Put it with something you already do yearly, like your tax paperwork.</div></li>
+  </ol>
+
+  <h3 style="font-size:17px;margin-top:22px;">On the day the key is asked for</h3>
+  <ol class="steps-list">
+    <li><div class="step-text"><strong>Do not restart repeatedly hoping it clears.</strong> It will not, and each restart is more time lost.</div></li>
+    <li><div class="step-text"><strong>Read the Key ID shown on the screen.</strong> Windows shows the first part of the key identifier. Match it to the copy you saved, which is how you tell which key it wants if you have more than one.</div></li>
+    <li><div class="step-text"><strong>Fetch your paper or USB copy</strong> and type the 48 digits in. There is no dash to type &#8212; Windows moves you along on its own.</div></li>
+    <li><div class="step-text"><strong>If you cannot find your copy</strong>, go to another device &#8212; a phone is fine &#8212; and try <a href="https://account.microsoft.com/devices/recoverykey" target="_blank" rel="noopener">account.microsoft.com/devices/recoverykey</a>. This works only if the PC was signed in with a Microsoft account and the key was saved there. <strong>Sign in with the same Microsoft account that PC uses</strong>, not a different one.</div></li>
+    <li><div class="step-text"><strong>If that page is empty and you have no other copy, stop and get a person involved.</strong> Do not reinstall Windows and do not let anyone talk you into wiping the drive &#8212; that ends any chance of getting the files. See the note below.</div></li>
+  </ol>
+
+  <div class="note-box" style="margin-top:16px;"><strong>The honest part.</strong> If the key is genuinely gone and the password is genuinely forgotten, the files cannot be recovered &#8212; not by Microsoft, not by GatewayGuard, not by a repair shop, not by anyone. That is not a policy, it is what encryption is. It is also exactly why the four steps above are worth twenty minutes today.</div>
 </section>
 <section class="content-section">
   <h2>What to expect</h2>
