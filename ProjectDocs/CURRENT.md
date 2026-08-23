@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-23 01:33 ET -->
-<!-- Commit: 6e143fe -->
+<!-- Generated: 2026-08-23 01:36 ET -->
+<!-- Commit: e4a4654 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-23 01:33 ET
-- **Commit at generation:** `6e143fe`
-- **That commit was made:** 2026-08-23 01:03 ET
-- **Its subject line:** Make the filename-time rule checkable, and fix a hole it exposed
+- **Generated:** 2026-08-23 01:36 ET
+- **Commit at generation:** `e4a4654`
+- **That commit was made:** 2026-08-23 01:33 ET
+- **Its subject line:** Cloud handoffs move into ProjectDocs, where Cloud can actually read them
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -87,7 +87,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-08-22 13:16 to 22:45 [Claude Code -- CGDELL] -- CLOUD'S DEFECT PASS WORKED, TWO DECISIONS SETTLED, BILL'S 19-PAGE REVIEW TRIAGED AND ITS A ITEMS BUILT
+## Session: 2026-08-22 13:16 to 2026-08-23 01:35 [Claude Code -- CGDELL] -- CLOUD'S DEFECT PASS WORKED, TWO DECISIONS SETTLED, BILL'S 19-PAGE REVIEW TRIAGED AND ITS A ITEMS BUILT, CLOUD HANDOFFS MOVED WHERE CLOUD CAN READ THEM
 ```
 
 **If it is not in your copy of the session log, you are reading an old

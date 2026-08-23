@@ -32,7 +32,7 @@ This is the shared memory between all Claude instances.
 ---
 ---
 
-## Session: 2026-08-22 13:16 to 22:45 [Claude Code -- CGDELL] -- CLOUD'S DEFECT PASS WORKED, TWO DECISIONS SETTLED, BILL'S 19-PAGE REVIEW TRIAGED AND ITS A ITEMS BUILT
+## Session: 2026-08-22 13:16 to 2026-08-23 01:35 [Claude Code -- CGDELL] -- CLOUD'S DEFECT PASS WORKED, TWO DECISIONS SETTLED, BILL'S 19-PAGE REVIEW TRIAGED AND ITS A ITEMS BUILT, CLOUD HANDOFFS MOVED WHERE CLOUD CAN READ THEM
 
 **No build change. ascii43 untouched. Fourteen commits, all pushed.**
 
@@ -234,6 +234,83 @@ Cloud listed these and none moved today:
 - **The W-07 diagnostic-data collision.**
 - **Multi-year terms**, and the flat-versus-deepening reading of "10% per year".
 - **Refund policy -- still the only store blocker.**
+
+---
+
+---
+
+### AFTER 22:45 -- THREE CORRECTIONS FROM BILL, AND WHAT EACH ONE EXPOSED
+
+**1. "Keep your override on tamper protection."** Ratified, and recorded as a
+decision rather than one Claude's judgment call. **The general rule it settles
+is the valuable part:** where a written instruction and a measurement of the
+build disagree, **the build wins and the instruction gets re-asked** -- not
+applied on the way to shipping a claim the product cannot honour.
+
+**2. "Put times in the filename."** Four files renamed from their own headers,
+and the convention in `CLAUDE.md` corrected to `-YYYY-MM-DD-HHMM`.
+
+**Bill: "we have been using that for weeks how could you not know."** He is
+right, and the answer is uncomfortable: **I followed the written rule and never
+compared it to the folder.** 53 of 85 dated files in `ProjectDocs\` already
+carried a time. I listed that folder a dozen times and never asked the
+question. **Same shape as the v3.0/v3.1 case already in `CLAUDE.md`** -- the
+rule was wrong, the practice was right, and nothing compared them.
+
+**The part that stings: I built the date-sorting fix in `Update-Current.ps1`
+that same afternoon** -- the mechanism that makes a missing time dangerous --
+and then created three timeless files hours later. Symptom fixed, cause
+manufactured, same day.
+
+**So the fix is not "try harder". CHECK 6 added to the document gate:** every
+dated filename in the governing set must carry `-HHMM`. Ratchet baseline 13.
+
+**AND THE NEW CHECK IMMEDIATELY FOUND A HOLE IN THE GATE ITSELF.** It counted 9
+where the folder held 13. `$rowPat` required a digit in `CURRENT.md`'s third
+column, but Multi rows print `--` -- so **the four Cloud request documents were
+invisible to ALL FIVE existing checks**, not merely to the new one. Fixed;
+those four are now covered for the first time since the gate was built.
+
+**3. "Why were files for Claude Cloud put in GatewayGuard root?"** And then
+Cloud's own report: *"The file -- I cannot open it, and no sync will fix that."*
+
+**Cloud was exactly right, on both counts, for two independent reasons:** the
+repository root is **outside the connector scope**, and the name it had been
+given was stale after the rename. **A good check working, not a Cloud failure.**
+
+**Bill: "I thought that was how we were working."** He is right again.
+`ProjectDocs\` is the pattern; I deviated by copying the placement of two older
+root files instead of following it -- **and one of those two was itself ten days
+stale, so I was following a bad example rather than the rule.**
+
+- `For-Cloud-2026-08-22-2300.txt` -> **`ProjectDocs\GatewayGuard_CloudHandoff-2026-08-22-2300.md`**, named in `CURRENT.md`, which now resolves **40 documents**.
+- **`Marketing-For-Cloud.txt` RETIRED** to `Archive\Root-Retired-2026-08-23\`. Untouched since 2026-08-13 while everything it restated moved into `ProjectDocs\`. **A paste block that restates documents Cloud can already open is a second copy that can go stale -- and it had.**
+- **`Start-Claude-Cloud.txt` stays at the root**, and it is the only file that should be there: it is what Bill pastes to **begin** a chat, before Cloud can read anything at all.
+
+**THE RULE, now in briefing section 7:** anything Cloud must READ goes in
+`ProjectDocs\` and gets a `CURRENT.md` row. **The root is invisible to Cloud
+and no sync will ever change that.**
+
+### THE THREAD RUNNING THROUGH THE WHOLE SESSION
+
+**Every significant find today came from comparing a document against the thing
+it describes, and in every case the document was the one that was wrong.** The
+sort order against the folder. The label against the screen. The website
+against the build. The rule against the practice. The gate against its own
+input format.
+
+**Twice the correction came from outside:** Cloud caught the stale pricing
+pointer and the unreadable handoff; Bill caught the filename convention and the
+root placement. **Both were right, and neither could have been settled by
+reasoning harder from inside the documents.**
+
+### SESSION-END STATE
+
+- **Build: ascii43, unchanged.** No `.ps1` build edit this session.
+- **`CURRENT.md`: 40 documents, 0 missing**, regenerated after the last commit.
+- **Repo health: ALL CLEAR.** Document gate run; check 6 at baseline.
+- **Everything committed and pushed.** The uncommitted entries in `git status`
+  are Bill's own folder reorganisation from earlier weeks, unchanged today.
 
 ---
 
