@@ -108,7 +108,7 @@ screen), and the **F6 wording block** (~20 items + FT-222).
 **Next free FT number: 238.** *(FT-237 assigned 2026-08-22: Checkup's
 Advertising ID revert path names `Let apps use advertising ID`, which is a
 stem, not the on-screen label. Belongs to the unbuilt F6 wording block --
-see `GatewayGuard_DefectPassResponse-2026-08-22.md`.)* *(FT-236 assigned 2026-08-22: the ascii43 field
+see `GatewayGuard_DefectPassResponse-2026-08-22-1525.md`.)* *(FT-236 assigned 2026-08-22: the ascii43 field
 checklist demanded "B is the ONLY Back key, N must never take you back",
 contradicting Bill's own ruling that `N = go back` stays in real Y/N
 questions. Cloud's point, and it is right: a checklist that contradicts a
@@ -669,7 +669,7 @@ the real documents survive under hyphenated names.
     (decided 2026-08-09).**
 
     **TWO OF THESE CLOSED 2026-08-22** --
-    `GatewayGuard_Decisions-RefundAndTerms-2026-08-22.md`:
+    `GatewayGuard_Decisions-RefundAndTerms-2026-08-22-1510.md`:
     - **Refunds: 30 days, no questions asked.** This was the ONLY genuine
       store-opening blocker. *Sourced:* "no refunds" was never available --
       Gumroad refunds at its own discretion within 90 days and card networks

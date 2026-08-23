@@ -45,7 +45,7 @@ This is the shared memory between all Claude instances.
   policy converts refunds into chargebacks: same money, worse outcome.
 - **Annual updates only.** Multi-year pre-pay dropped, so the "10% per year"
   question is **removed rather than answered**.
-- Both in `GatewayGuard_Decisions-RefundAndTerms-2026-08-22.md`, filed
+- Both in `GatewayGuard_Decisions-RefundAndTerms-2026-08-22-1510.md`, filed
   separately because Cloud is rewriting the two documents they belong to.
 
 ### THE PATTERN THAT RAN THROUGH THE WHOLE DAY
@@ -80,7 +80,7 @@ another copy that can be wrong.
 
 ### BILL'S 19-PAGE WEBSITE REVIEW -- 24 ITEMS
 
-Filed as `GatewayGuard_HtmlWebsiteReview-2026-08-22.md` with a readable twin,
+Filed as `GatewayGuard_HtmlWebsiteReview-2026-08-22-2220.md` with a readable twin,
 because the originals reach nobody: they sit in `Test_Results\`, which is **not
 in the connector scope**, and the `.txt` is cp1252 and will not decode as UTF-8.
 Five screenshots extracted and mapped to their items from the document XML.

@@ -737,7 +737,22 @@ and reports — not working artifacts. (Confirmed 2026-07-26.)
 
 ## File Naming Convention
 
-- Every file uses the format: `filename-YYYY-MM-DD.ext` with today's actual date
+- Every file uses the format: **`filename-YYYY-MM-DD-HHMM.ext`** with today's
+  actual date **and time in US Eastern**. **Bill, 2026-08-23: "put times in the
+  filename."** This rule said `-YYYY-MM-DD` with no time until then, while most
+  of `ProjectDocs\` had been carrying the time anyway -- so the rule was the
+  thing that was wrong, not the practice.
+  - **Why the time is not decoration.** `Update-Current.ps1` resolves "newest"
+    by the date pulled out of the filename. **Two files created on the same day
+    with no time are a tie, and a tie resolves silently and arbitrarily.** That
+    is not hypothetical: on 2026-08-22 the pricing row resolved to a superseded
+    draft because the sort could not tell two same-family files apart, and
+    nothing said so. Three files created that day were renamed to carry times
+    the following morning for exactly this reason.
+  - **The exception: fixed-name pointers carry no date at all.** `CURRENT.md`,
+    `CLAUDE.md`, `Marketing-For-Cloud.txt`, `Start-Claude-Cloud.txt`. Their
+    whole value is that the name never changes, so it can be written into an
+    instruction without going stale. **Never add a date to one of these.**
 - Internal header must show date **and time** in US Eastern Time: `# Dated: YYYY-MM-DD HH:MM ET`
 - Filename date and internal header date+time must always match — update both in the same edit, never one without the other
 - When one file references another by exact filename (e.g., launcher referencing a build script), update that reference in the same response whenever the referenced filename changes
