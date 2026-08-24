@@ -1,0 +1,247 @@
+<!--
+  Dated: 2026-08-23 18:16 ET
+  Document Name: GatewayGuard_PricingSectionHtml
+  Last Editor: Claude.ai (Cloud)
+  Machine: CGDELL
+
+  COMPLETE REPLACEMENT. An earlier file of this name was delivered this
+  session and is superseded -- delete it. Changed: "buy it once" and every
+  forever-family phrase removed per Bill 2026-08-23; the Checkup and annual
+  update sections reworded; the chooser rows completed.
+
+  For: the index pricing section. Replaces the pricing paragraph (~800) and
+       the plans block below it, in one piece.
+
+  Prices: PricingReconciliation-2026-07-16 (one-time packs, final 2026-06-26);
+          PriceDecision-Annual-2026-08-21-1445 (annual, locked 2026-08-21);
+          PriceDecision-GuideAndBundle-2026-08-23-1816 (Guide, bundle, Bill
+          2026-08-23). No figure is from memory.
+
+  Rules applied:
+    UNIT RULE -- every price carries "once" or "a year". No bare figures.
+    BANNED -- buy it once, one-time purchase, forever, for good, yours to
+      keep, never expires, no subscription, open-source.
+    Microsoft's release is "the yearly Windows update". Ours is "the annual
+      update". The two phrases never swap.
+    Full product name on first mention, then "Checkup".
+    No dead ends -- every link down has a link back.
+
+  NOT CLAIMED, deliberately: that Checkup remembers previous choices, or
+    reports what changed since last time. Neither is built. Measured against
+    ascii43, 2026-08-23. The log IS built and is what the copy describes.
+
+  TWO THINGS CLAUDE CODE MUST SETTLE:
+    1. Which index file is live. Three candidates exist and Cloud cannot tell
+       them apart. CloudRequest-PricingCopy names
+       Index-Builds/GatewayGuard_index-2026-08-02-2050.html, with the same
+       content in GatewayGuard_index-2026-07-21-1625.html.
+    2. scroll-margin-top below assumes a sticky nav about 90px tall. If the
+       nav is not sticky, set it to 0 or the headings sit too low.
+  This block is self-contained -- its own styles, no dependency on any class
+  Cloud could not verify. If the live pricing section has its own wrapper,
+  drop the outer <section> and <style> and fold the inner markup in.
+-->
+
+<style>
+  /* Scoped to this section so it cannot disturb the rest of the page. */
+  .gg-pricing { background: var(--white, #fff); }
+  .gg-pricing .gg-wrap { max-width: var(--max-w, 960px); margin: 0 auto; padding: 56px 24px; }
+
+  .gg-pricing h2 { font-size: 30px; font-weight: 700; margin-bottom: 10px; line-height: 1.25; }
+  .gg-pricing h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+  .gg-pricing p  { font-size: 17px; line-height: 1.65; color: var(--gray-dark, #333); margin-bottom: 14px; }
+  .gg-pricing .gg-lead { font-size: 17px; color: var(--gray-dark, #333); margin-bottom: 28px; }
+
+  /* THE CHOOSER */
+  .gg-chooser { width: 100%; border-collapse: collapse; border: 3px solid var(--black, #000); margin-bottom: 12px; }
+  .gg-chooser th { text-align: left; font-size: 13px; font-family: var(--font-mono, monospace);
+                   letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-mid, #666);
+                   padding: 14px 18px; border-bottom: 2px solid var(--black, #000); }
+  .gg-chooser td { padding: 18px; border-bottom: 1px solid var(--gray-rule, #ddd); font-size: 17px; vertical-align: top; }
+  .gg-chooser tr:last-child td { border-bottom: none; }
+  .gg-chooser .gg-what { font-weight: 700; }
+  .gg-chooser .gg-what span { display: block; font-weight: 400; font-size: 15px; color: var(--gray-dark, #333); margin-top: 4px; }
+  .gg-chooser .gg-price { white-space: nowrap; font-weight: 700; }
+  .gg-chooser .gg-goto a { font-weight: 700; text-decoration: underline; color: var(--black, #000); }
+  .gg-chooser .gg-goto a:hover { background: var(--gray-light, #f4f4f4); }
+
+  .gg-note { font-size: 15px; color: var(--gray-mid, #666); margin-bottom: 48px; }
+
+  /* SUB-SECTIONS */
+  .gg-buy { border-top: 3px solid var(--black, #000); padding-top: 24px; margin-bottom: 44px; scroll-margin-top: 90px; }
+  .gg-bigprice { font-size: 26px; font-weight: 700; margin: 18px 0 14px; }
+  .gg-back { font-size: 15px; }
+  .gg-back a { text-decoration: underline; color: var(--gray-dark, #333); }
+
+  .gg-packs { width: 100%; border-collapse: collapse; border: 2px solid var(--black, #000); margin: 18px 0 14px; }
+  .gg-packs th { text-align: left; font-size: 13px; font-family: var(--font-mono, monospace);
+                 letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-mid, #666);
+                 padding: 12px 16px; border-bottom: 2px solid var(--black, #000); }
+  .gg-packs td { padding: 14px 16px; border-bottom: 1px solid var(--gray-rule, #ddd); font-size: 17px; }
+  .gg-packs tr:last-child td { border-bottom: none; }
+
+  @media (max-width: 700px) {
+    .gg-pricing .gg-wrap { padding: 40px 18px; }
+    .gg-chooser td, .gg-chooser th { padding: 14px 12px; font-size: 16px; }
+    .gg-chooser .gg-price { font-size: 16px; }
+  }
+</style>
+
+<section class="gg-pricing" id="costs" aria-labelledby="costs-heading">
+  <div class="gg-wrap">
+
+    <h2 id="costs-heading">What it costs</h2>
+    <p class="gg-lead">Two products, sold separately or together. Pick what you
+      want to read about and the page will move down to it.</p>
+
+    <table class="gg-chooser">
+      <thead>
+        <tr>
+          <th scope="col">I want</th>
+          <th scope="col">Price</th>
+          <th scope="col">Take me there</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="gg-what">The Security Guide
+            <span>The written walkthrough, as a PDF in five sizes</span></td>
+          <td class="gg-price">$12.99 once</td>
+          <td class="gg-goto"><a href="#buy-guide">About the Guide &darr;</a></td>
+        </tr>
+        <tr>
+          <td class="gg-what">GatewayGuard Checkup
+            <span>Run it as many times as you want</span></td>
+          <td class="gg-price">$19.99 once</td>
+          <td class="gg-goto"><a href="#buy-checkup">About Checkup &darr;</a></td>
+        </tr>
+        <tr>
+          <td class="gg-what">An annual update
+            <span>The best time to run Checkup is right after Microsoft&rsquo;s
+              yearly Windows update</span></td>
+          <td class="gg-price">$12.99 a year</td>
+          <td class="gg-goto"><a href="#buy-update">About updates &darr;</a></td>
+        </tr>
+        <tr>
+          <td class="gg-what">Both together
+            <span>The bundle</span></td>
+          <td class="gg-price">$29.99 once</td>
+          <td class="gg-goto"><a href="#buy-more">About buying more &darr;</a></td>
+        </tr>
+        <tr>
+          <td class="gg-what">3 or more PCs
+            <span>The multi-PC packs</span></td>
+          <td class="gg-price">from $34.99 once</td>
+          <td class="gg-goto"><a href="#buy-more">About buying more &darr;</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="gg-note">Each link moves you further down this page. Every section
+      has a link back to this table.</p>
+
+    <!-- ============ THE GUIDE ============ -->
+    <div class="gg-buy" id="buy-guide">
+      <h3>The Security Guide</h3>
+      <p>The GatewayGuard Windows Security Walkthrough Guide is a PDF you
+        download and work through at your own pace. It covers the settings that
+        matter on a Windows 11 PC &mdash; what each one does, and how to check
+        and change it yourself.</p>
+      <p>It comes in five sizes, from compact to extra-large print. Pick the one
+        that is easiest on your eyes. The words are identical.</p>
+      <p class="gg-bigprice">$12.99 once</p>
+      <p class="gg-back"><a href="#costs">&uarr; Back to what it costs</a></p>
+    </div>
+
+    <!-- ============ CHECKUP ============ -->
+    <div class="gg-buy" id="buy-checkup">
+      <h3>GatewayGuard Checkup</h3>
+      <p>Checkup is a program that walks through your Windows 11 security
+        settings one at a time. It explains each one in plain English and asks
+        your permission before it changes anything. Nothing happens without you
+        saying yes.</p>
+      <p><strong>Run it as many times as you want.</strong> It is worth running
+        again whenever something changes on your PC &mdash; and every run writes
+        a plain-English record of what it found and what you approved, which you
+        can open at any time.</p>
+      <p>The full source is included and readable, so you can check exactly what
+        it does. It asks for no account, collects nothing, and sends nothing
+        anywhere.</p>
+      <p class="gg-bigprice">$19.99 once, for one PC</p>
+      <p class="gg-back"><a href="#costs">&uarr; Back to what it costs</a></p>
+    </div>
+
+    <!-- ============ ANNUAL UPDATES ============ -->
+    <div class="gg-buy" id="buy-update">
+      <h3>Annual updates</h3>
+      <p><strong>Once a year Microsoft makes a major update to Windows 11.</strong>
+        Settings move, new ones appear, and old ones are retired.
+        <strong>That is the best moment to run Checkup again</strong> &mdash; and
+        it is the moment your copy knows the least about, because it was built
+        before the update existed.</p>
+      <p>So each year, after Microsoft&rsquo;s update lands, we publish a
+        refreshed Checkup that knows where everything is in the new version of
+        Windows. It walks your settings again, offers to correct anything the
+        update changed with your approval, and scans your drives again while it
+        is there.</p>
+      <p class="gg-bigprice">$12.99 a year, for one PC</p>
+      <p>Taking an update is your choice each year. If you skip one, nothing
+        stops working &mdash; the copy you have keeps running exactly as it
+        did.</p>
+      <p class="gg-back"><a href="#costs">&uarr; Back to what it costs</a></p>
+    </div>
+
+    <!-- ============ BUNDLE AND PACKS ============ -->
+    <div class="gg-buy" id="buy-more">
+      <h3>Buying both, and buying 3 or more PCs</h3>
+
+      <p><strong>Checkup and the Guide together &mdash; $29.99 once.</strong>
+        Both products, one PC.</p>
+
+      <p><strong>3 or more PCs.</strong> Covering several PCs costs less per
+        PC, and the same saving carries over to the update.</p>
+
+      <table class="gg-packs">
+        <thead>
+          <tr>
+            <th scope="col">PCs</th>
+            <th scope="col">Checkup</th>
+            <th scope="col">Annual update</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>$19.99 once</td><td>$12.99 a year</td></tr>
+          <tr><td>3</td><td>$34.99 once</td><td>$22.99 a year</td></tr>
+          <tr><td>5</td><td>$49.99 once</td><td>$32.99 a year</td></tr>
+          <tr><td>10</td><td>$79.99 once</td><td>$51.99 a year</td></tr>
+        </tbody>
+      </table>
+
+      <p class="gg-back"><a href="#costs">&uarr; Back to what it costs</a></p>
+    </div>
+
+  </div>
+</section>
+
+<!--
+  ============================================================
+  STILL TO SWEEP -- not in this file, and it will ship wrong if
+  nobody does it. Every one carries a phrase banned 2026-08-23.
+
+    Hero subhead and hero note, both index files
+    Both meta descriptions
+    The download page: meta (~15) and the plans block
+    PricingCopy-2026-08-22-1000.md blocks 2c, 2e and 2f --
+      "yours to keep", "never expires", "goes on working for as
+      long as you want to use it". NOT LIVE yet, so this is a
+      rewrite before shipping rather than a correction after
+    PricingCopy-2026-08-22-1000.md section 5 -- the dead
+      multi-year block, retired 2026-08-22, still present
+    MarketingPlan section 2 APPROVED -- "Buy it once. Keep it
+      for good... never expires". See amendment block 4b
+
+  Grep WebSite\ and ProjectDocs\ for: "buy it once", "one-time
+  purchase", "forever", "for good", "yours to keep", "never
+  expires", "no subscription", "8.99", "59.99".
+  ============================================================
+-->
