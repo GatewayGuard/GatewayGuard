@@ -2,8 +2,8 @@
 # GatewayGuard Security Guide — REWRITE DRAFT
 
 - **Document Name:** GatewayGuard_GuideRewrite-Draft
-- **Last Modified:** 2026-08-23 12:40 ET
-- **Last Editor:** Claude Code (CGDELL) — applying Cloud's pack 1
+- **Last Modified:** 2026-08-23 19:05 ET
+- **Last Editor:** Claude Code (CGDELL) — pack 1 plus Cloud's four defects
 - **Applied packs:** `GatewayGuard_GuideSectionReplacements-2026-08-23-0142.md`
   (pack 1). **Pack 2 — G3, G4, G5, G6 — not yet written.**
 - **Machine:** CGDELL
@@ -28,6 +28,18 @@
   where every other Phase 4 setting is `##`, and its G1 VERIFY block used
   "whether" twice and "switched on" once, all three banned. Fixed on the way in.
   **G3, G4, G5 and G6 remain open** — see 0.2.
+- 2026-08-23 19:05: **Cloud's four post-pack-1 defects fixed, all four measured
+  against this file before touching it.** **0.4's count is gone** — it said
+  ELEVEN against eighteen VERIFY tokens in the body, so the number is replaced
+  by a grep and a description of where they cluster; the same stale count in
+  WHAT MUST HAPPEN item 2 went with it. **Three PL-4 superlatives** at the old
+  lines 308, 608 and 609 reworded rather than sourced — citing FBI IC3 or FTC
+  without reading the actual statistic would be the same defect wearing a
+  citation. **WHAT MUST HAPPEN item 3 widened** to sweep both placeholder
+  shapes everywhere — `page 00` in running text and bare `| 00 |` table cells
+  — not only the quick-reference table; the Phase 3 STOP AND DECIDE gate sat
+  outside the table, which is how the narrow version missed it.
+  **Line 338 "switching Defender off" → "turning".**
 - 2026-08-22 10:00: **Full rewrite per Bill.** The 08-19 draft and the 08-21
   FT-220 drop-in sections are merged into one document, so there is one guide
   and not three. **Setting 17 given a step of its own** — it was in the
@@ -109,15 +121,34 @@ leaves five live.**
 Setting 9 is different again — it points at `"Phase 1, Step 4"`, which is a
 real destination.
 
-### 0.4 ELEVEN CLAIMS MARKED *VERIFY* — carried forward from 2026-08-21
+### 0.4 CLAIMS MARKED *VERIFY* — none measured
+
+**Do not write a count here.** This section said **ELEVEN** from 2026-08-21
+until 2026-08-23, while the body carried **eighteen**. The number was correct
+when written, pack 1 added more, nothing recounted it, and **a count nobody
+maintains reads authoritative and is wrong the next day.** Pack 2 will add
+more again.
+
+**Count them mechanically instead, and do it at export:**
+
+```
+grep -c "VERIFY" GatewayGuard_GuideRewrite-Draft-*.md
+```
 
 Every one is marked *VERIFY* at the point it appears. **None has been measured
-on a live Windows 11 machine.** Two of them can cause real harm if wrong:
+on a live Windows 11 machine.** They cluster in four places: the device
+encryption and recovery-key section, the accounts and sign-in section, Windows
+Hello (setting 9), and settings 12, 13, 17 and 18.
+
+**Two can cause real harm if wrong:**
 
 1. **The BitLocker recovery-key claim** — if the guide tells a reader they can
    retrieve a key they cannot, they lose the contents of the computer.
 2. **The sleep-versus-hibernate claim** — a security recommendation resting on
    what stays in memory.
+
+**Setting 10 carries a third kind:** it is original copy with no v9 source at
+all, so it is unverified in a way the others are not.
 
 **These must be measured before the guide ships.** SANDY and Sandy3 between
 them cover both the local-account and the Microsoft-account cases.
@@ -305,7 +336,8 @@ your computer is asking to restart, let it.
 ## Step 2 — Windows Security
 
 **Why it matters.** Windows has good security built in. It is called Microsoft
-Defender, and for most home computers it is enough on its own.
+Defender, and for a home computer that is not doing anything unusual it is
+enough on its own.
 
 **Where it lives:** press the **Windows key**, type **Windows Security**, and
 press **Enter**.
@@ -335,7 +367,7 @@ Click **Virus & threat protection**, then **Manage settings**. Turn these
 - **Cloud-delivered protection** — lets Windows ask Microsoft about
   suspicious files.
 - **Automatic sample submission** — sends unknown files for a closer look.
-- **Tamper Protection** — stops other software switching Defender off.
+- **Tamper Protection** — stops other software turning Defender off.
 
 **Tamper Protection deserves a moment.** Malware tries to turn Defender off.
 Tamper Protection is what stops it. **If you find this turned off and you did
@@ -605,8 +637,8 @@ will be asked for your password.
 
 ## Step 5 — Apps you did not put there
 
-**Why it matters.** Most trouble arrives as a program somebody was persuaded
-to install. Finding it is mostly a matter of looking.
+**Why it matters.** Trouble commonly arrives as a program somebody was
+persuaded to install. Finding it is largely a matter of looking.
 
 ### First, tighten where apps are allowed to come from
 
@@ -1282,12 +1314,17 @@ exist.
 
 1. **Close the remaining retrieval gaps** — **G3, G4, G5 and G6.** Nothing ships
    with a marker in it. **G1 and G2 are closed** (pack 1, applied 2026-08-23).
-2. **Measure the eleven VERIFY claims** on live Windows 11, both the
+2. **Measure every VERIFY claim** on live Windows 11, both the
    local-account and Microsoft-account cases. **BitLocker recovery key and
    sleep-versus-hibernate first** — those two can cost a reader their files.
    **Setting 10 adds a twelfth**, written without a v9 source.
-3. **Fill in every page number** in the quick-reference table, and give the six
-   `"Keep vs. Disable Table"` settings a real destination — or change the tool
-   to point somewhere that exists.
+3. **Fill in every page number, everywhere** — not only the quick-reference
+   table. **The Phase 3 STOP AND DECIDE gate reads "page 00" and sits outside
+   the table**, which is how the narrower version of this item missed it.
+   **Two shapes to sweep at export, and they need different searches:**
+   `page 00` in running text, and bare `| 00 |` cells in the
+   quick-reference table. Also give the six `"Keep vs. Disable Table"`
+   settings a real destination — or change the tool to point somewhere that
+   exists.
 4. **Bill approves**, and only then does this replace
    `windows_security_walkthrough_guide_v9.docx`.
