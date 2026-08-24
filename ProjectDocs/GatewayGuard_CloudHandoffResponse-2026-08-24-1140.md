@@ -167,9 +167,14 @@ touches a box border.
 
 **Bill pressed Windows key + W on CGDELL. The board opened.**
 
-**Evidence:** `Test_Results\Widgets-M1-evidence\M1-WinW-opens-board-CGDELL-2026-08-24.png`,
-copied into the repository from Bill's personal OneDrive so it does not live
-only outside the project.
+**Evidence:** Bill's screenshot, held in his personal OneDrive at
+`Pictures\Screenshots\Screenshot (63).png`. **Deliberately NOT copied into
+this repository.** It was, briefly, and that was a mistake on two counts:
+`Test_Results\` is outside the connector scope so Cloud still could not see it,
+and Cloud cannot read images in any case -- so the copy bought nothing and put
+personal content (location, a stock alert, terminal contents) into permanent
+git history. Removed the same day. **The measured facts below are the record;
+the image is corroboration Bill holds.**
 
 **Machine state at the moment of the screenshot,** *measured:* `TaskbarDa = 0`
 -- the Widgets taskbar button is **off** -- on Windows 11 Pro 26200.8875 (25H2).
