@@ -3,17 +3,43 @@
 # Cloud request -- the seven-topic research block
 
 - **Document Name:** GatewayGuard_CloudRequest-ResearchBlock
-- **Last Modified:** 2026-08-24 02:22 ET
+- **Last Modified:** 2026-08-24 02:55 ET
 - **For:** Claude Cloud, GatewayGuard project
 - **Raised by:** Bill, 2026-08-24 -- *"research with experts and forums and MS
   support and then give me your recommendation"*
 
 ---
 
-## WHY THIS IS A CLOUD JOB AND NOT A CLAUDE CODE JOB
+## SCOPE -- CLOUD TAKES TWO OF THE SEVEN. REVISED 2026-08-24 02:55.
 
-**Every one of these seven questions is answered on the public internet and
-none of them needs the repository, the build, or a machine.** That is the exact
+**This document originally handed Cloud all seven topics. That was wrong, and
+Bill caught it by asking the right question: could Claude Code do the research
+instead?**
+
+**Yes, for five of them -- because five are not research questions. They are
+measurements wearing research clothes.** Cloud would answer them from
+documentation and forum posts; Claude Code can answer them from Bill's actual
+machines and then check the documentation agrees. That is strictly better.
+
+| Topic | Owner | Why |
+|---|---|---|
+| 1. Q7 -- BitLocker and the Microsoft account | **Claude Code** | Half sourced, half measurable. SANDY is the local-account machine -- the exact case in question |
+| **2. Item 21 -- Windows Widgets** | **CLOUD** | *What people use it for* needs the open web, not a registry key |
+| 3. Item 15 -- the fourth Reputation-based item | **Claude Code** | It is on the screen of a machine here. Read it |
+| 4. Item 20 -- Wake on LAN, disabled adapter | **Claude Code** | Needs `Get-NetAdapter` and the power tabs on SANDY |
+| 5. Item 14 -- periodic scanning | **Claude Code** | Depends on what Defender shows when it is primary. Measurable |
+| 6. Q8 -- Windows Update Advanced options | **Claude Code** | Readable off the machine, and Bill deferred the deliverable |
+| **7. Item 24 -- Word Accessibility Assistant** | **CLOUD** | Needs the open web and Word. No machine state involved |
+
+**CLOUD: do topics 2 and 7 only.** They are marked **CLOUD** in the headings
+below. The other five are listed so you have the context and do not duplicate
+work -- do not answer them.
+
+---
+
+## WHY THESE TWO ARE A CLOUD JOB
+
+**Neither needs the repository, the build, or a machine.** That is the exact
 shape of work Cloud does without hitting any of its limits:
 
 - It does **not** need `WebSite\html\` -- outside the connector scope.
@@ -73,7 +99,7 @@ Apply the same test Claude Code is held to: imagine both answers. If the work
 would be the same either way, it was never a question -- decide it and note the
 decision.
 
-**Finish all seven topics before writing the question list.** Research
+**Finish both topics before writing the question list.** Research
 everything, analyse it, reach a recommendation on each, and only then collect
 what you could not settle. A partial answer with questions attached is worth
 less than seven complete answers with seven caveats.
@@ -82,7 +108,7 @@ less than seven complete answers with seven caveats.
 
 ## THE SEVEN TOPICS, IN THE ORDER THEY UNBLOCK THINGS
 
-### 1. Q7 -- DOES BITLOCKER NEED A MICROSOFT ACCOUNT? *(highest value -- it grew)*
+### 1. Q7 -- DOES BITLOCKER NEED A MICROSOFT ACCOUNT? *(highest value -- it grew)*  **<- CLAUDE CODE. Context only, do not answer.**
 
 Bill's words: *"Don't we need MS Account for bitlocker to be able to store
 bitlocker key or manually add bitlocker key. research with experts and forums
@@ -111,7 +137,7 @@ Answer these, separately for **Windows 11 Home (Device Encryption)** and
 that is unmeasured, and item 4 asks for a written recovery-key backup plan for
 Home and for Pro. Both wait on this.
 
-### 2. Item 21 -- WINDOWS WIDGETS
+### 2. Item 21 -- WINDOWS WIDGETS  **<- CLOUD, DO THIS ONE**
 
 Bill's words, repeated in full: *"We need to research with experts, forums and
 MS support, what people use it for and what capabilities are going to be lost
@@ -130,7 +156,7 @@ settle on."*
   Pro?
 - **Recommendation:** should GatewayGuard keep recommending it be turned off?
 
-### 3. Item 15 -- THE FOURTH REPUTATION-BASED PROTECTION ITEM
+### 3. Item 15 -- THE FOURTH REPUTATION-BASED PROTECTION ITEM  **<- CLAUDE CODE. Context only, do not answer.**
 
 Windows Security -> App & browser control -> Reputation-based protection has
 **four** items. The guide covers three.
@@ -146,7 +172,7 @@ Windows Security -> App & browser control -> Reputation-based protection has
 them" for cloud protection and automatic sample submission. A consistent answer
 here would be worth noting.)*
 
-### 4. Item 20 -- WAKE ON LAN, AND THE DISABLED ADAPTER
+### 4. Item 20 -- WAKE ON LAN, AND THE DISABLED ADAPTER  **<- CLAUDE CODE. Context only, do not answer.**
 
 Bill's field finding: SANDY has a Realtek controller, a **Realtek adapter that
 is disabled and therefore could not be checked**, and a wifi USB adapter. Both
@@ -164,7 +190,7 @@ machines also show a number of WAN miniports with no power management section.
 - **Recommendation:** what should the guide tell someone with more than one
   adapter, including disabled ones?
 
-### 5. Item 14 -- PERIODIC SCANNING
+### 5. Item 14 -- PERIODIC SCANNING  **<- CLAUDE CODE. Context only, do not answer.**
 
 Bill: *"defender is running on sandy and cgdell and sandy3. Confirm these
 instructions with experts and forums and Microsoft support."*
@@ -178,7 +204,7 @@ instructions with experts and forums and Microsoft support."*
 - **Recommendation:** is the guide's current framing right, and what should a
   reader with Defender-only be told?
 
-### 6. Q8 / Item 23 -- WINDOWS UPDATE ADVANCED OPTIONS
+### 6. Q8 / Item 23 -- WINDOWS UPDATE ADVANCED OPTIONS  **<- CLAUDE CODE. Context only, do not answer.**
 
 **Bill has deferred the deliverable** -- no page, no guide section, filed for
 future work. **The research still stands**, so that the decision is made on
@@ -193,7 +219,7 @@ facts when it is taken up.
   reader be told if they arrive at a paused machine? Is pausing ever the right
   choice for this audience?
 
-### 7. Item 24 -- THE WORD ACCESSIBILITY ASSISTANT
+### 7. Item 24 -- THE WORD ACCESSIBILITY ASSISTANT  **<- CLOUD, DO THIS ONE**
 
 Bill: *"are you aware of the MS word accessibility assistant to help readers.
 If not research it and make sure all of our public documents adhere to it, if
