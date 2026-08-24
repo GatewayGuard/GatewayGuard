@@ -143,6 +143,25 @@ sending a senior to hunt for one is the dead-end shape the rules forbid. The
 block needs rewriting around **"Lock screen status"** and **"Weather and
 more"**, with a note that the list of apps differs by machine.
 
+**BOTH MACHINES ARE ALREADY SET TO "WEATHER AND MORE."** *measured from the
+selection marker in both screenshots:* that row carries the **vertical accent
+bar on its left edge**, which is Windows 11's selected-item marker in a flyout.
+A hover gives a background wash with no bar. **Neither machine was set that way
+deliberately -- it is the effective default.**
+
+**This is the finding that makes the lock screen step matter more than the
+taskbar one.** The news-and-advert dashboard is live, before sign-in, on the
+one screen a household PC shows to anyone who walks past it. **Checkup turns
+off the taskbar button and does nothing about this.** A reader who runs Checkup
+reasonably concludes the news panel is dealt with, and it is still there every
+time the PC wakes.
+
+**A third setting on the same page, and it differs between the machines.**
+*measured:* SANDY's **"Get fun facts, tips, tricks, and more on your lock
+screen"** is **unchecked**. CGDELL's section is collapsed in its screenshot so
+the box is not visible, but `RotatingLockScreenOverlayEnabled = 1` there --
+*inferred:* likely on. Separate setting, separate step.
+
 **Also worth noting:** the option list is driven by installed apps, so it is
 different on every PC. **The guide cannot promise what a reader will see** --
 only the section name and the one entry that matters.
