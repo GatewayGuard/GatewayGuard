@@ -105,6 +105,20 @@ if ($Undo) {
 }
 
 # --- write the undo file BEFORE changing anything --------------------
+#
+# THE GUARD BELOW IS THE WHOLE POINT, AND IT WAS MISSING.
+# 2026-08-24: this script was run a second time, and because it wrote the
+# undo file unconditionally it recorded the ALREADY-CHANGED values as the
+# originals. Undoing from that file would have restored nothing and said it
+# succeeded. The real values survived only because the first run's file had
+# been committed to git.
+#
+# An undo file that a second run can overwrite is not a safety net. It is a
+# safety net with a hole in it that opens the moment somebody double-clicks
+# the launcher twice -- which is the single most likely thing to happen.
+#
+# So: the first run owns the undo file. Later runs never touch it.
+
 $undoLines = New-Object System.Collections.Generic.List[string]
 $undoLines.Add("# GatewayGuard power-settings undo -- $Machine")
 $undoLines.Add("# Written $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') by Set-StayAwake-2026-08-24.ps1")
@@ -119,9 +133,24 @@ foreach ($t in $targets) {
     Say ("  {0,-22} AC={1,-12} DC={2}" -f $t.Label, $v.AC, $v.DC)
     $undoLines.Add("$($t.Sub)|$($t.Set)|$($v.AC)|$($v.DC)")
 }
-$undoLines -join "`r`n" | Out-File -FilePath $UndoFile -Encoding UTF8 -Force
 Say ""
-Say "  Undo file written: $UndoFile"
+
+if (Test-Path $UndoFile) {
+    $existingStamp = (Get-Content $UndoFile | Where-Object { $_ -like "# Written*" } | Select-Object -First 1)
+    Say "  UNDO FILE ALREADY EXISTS -- LEAVING IT ALONE."
+    Say "    $UndoFile"
+    if ($existingStamp) { Say "    $($existingStamp.TrimStart('#').Trim())" }
+    Say ""
+    Say "  It holds the settings from BEFORE the first run, which is what an"
+    Say "  undo needs. Overwriting it now would record the current -- already"
+    Say "  changed -- values and quietly destroy the only way back."
+    Say ""
+    Say "  To capture a fresh baseline deliberately: run the undo first"
+    Say "  (Run-StayAwake.bat undo), then run this again."
+} else {
+    $undoLines -join "`r`n" | Out-File -FilePath $UndoFile -Encoding UTF8
+    Say "  Undo file written: $UndoFile"
+}
 Say ""
 
 # --- apply -----------------------------------------------------------
