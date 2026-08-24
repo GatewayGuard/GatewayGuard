@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-23 21:11 ET -->
-<!-- Commit: bf959a8 -->
+<!-- Generated: 2026-08-23 22:13 ET -->
+<!-- Commit: 6b4b030 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-23 21:11 ET
-- **Commit at generation:** `bf959a8`
-- **That commit was made:** 2026-08-23 21:11 ET
-- **Its subject line:** Cloud's four post-pack-1 guide defects, all confirmed and fixed
+- **Generated:** 2026-08-23 22:13 ET
+- **Commit at generation:** `6b4b030`
+- **That commit was made:** 2026-08-23 22:13 ET
+- **Its subject line:** Pack 2 applied: every retrieval gap in the guide is closed
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -71,7 +71,7 @@ All paths are relative to `ProjectDocs/`.
 | Pricing reconciliation (one-time packs) | `PricingReconciliation-2026-07-16.md` | 0 |
 | Guide gap-fill (G1-G6, v9 source) | `GatewayGuard_GuideGapFill-fromV9-2026-08-22-1224.md` | 0 |
 | Guide section replacements (Cloud) | `GatewayGuard_GuideSectionReplacements-2026-08-23-0142.md` | 0 |
-| Marketing plan amendment | `GatewayGuard_MarketingPlanAmendment-2026-08-23-1816 (1).md` | 3 |
+| Marketing plan amendment | `GatewayGuard_MarketingPlanAmendment-2026-08-23-1816.md` | 3 |
 | Defect pass response | `GatewayGuard_DefectPassResponse-2026-08-22-1525.md` | 0 |
 | Website review (Bill, 19 pages) | `GatewayGuard_HtmlWebsiteReview-2026-08-22-2220.md` | 0 |
 | Cloud handoff (what Cloud was told) | `GatewayGuard_CloudHandoff-2026-08-23-1223.md` | 1 |
