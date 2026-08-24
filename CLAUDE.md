@@ -729,7 +729,12 @@ and reports — not working artifacts. (Confirmed 2026-07-26.)
 
 ## Domain / Business
 
-- Domain: gatewayguard.com
+- Domain: **gatewayguard.co** -- `.co`, NOT `.com`. This line said
+  `gatewayguard.com` until 2026-08-24, contradicting line 16 of this same file,
+  the briefing in four places, and all 57 occurrences across the 19 website
+  pages. The wrong value sat in the section a reader would consult to look it
+  up. Bill wrote "gatewayguard.co (NOT .com)" unprompted the same day, so the
+  confusion was live.
 - LLC: GatewayGuard LLC (Maine)
 - Code-signing certificate required before launch (Sectigo or DigiCert, ~$200–400/yr)
 
