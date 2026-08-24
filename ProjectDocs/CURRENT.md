@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-24 11:06 ET -->
-<!-- Commit: 433d164 -->
+<!-- Generated: 2026-08-24 16:04 ET -->
+<!-- Commit: bc78423 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-24 11:06 ET
-- **Commit at generation:** `433d164`
-- **That commit was made:** 2026-08-24 10:48 ET
-- **Its subject line:** Review of Cloud's research, kept separate from my own
+- **Generated:** 2026-08-24 16:04 ET
+- **Commit at generation:** `bc78423`
+- **That commit was made:** 2026-08-24 11:32 ET
+- **Its subject line:** Remove the screenshot I should not have committed
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -52,7 +52,7 @@ All paths are relative to `ProjectDocs/`.
 | Screen numbering design | `GatewayGuard_ScreenNumberDesign-2026-08-15-1430.md` | 0 |
 | Screen numbering table | `GatewayGuard_ScreenNumberTable-2026-08-17.md` | 1 |
 | Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii42run1-2026-08-21.md` | 2 |
-| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii43-2026-08-22.md` | 1 |
+| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii43-2026-08-22.md` | 2 |
 | Build plan (current) | `GatewayGuard_ascii43BuildPlan-2026-08-21.md` | 0 |
 | Guide FT-220 sections | `GatewayGuard_GuideFT220-Sections-2026-08-21-1445.md` | 0 |
 | Cloud request | `GatewayGuard_CloudRequest-GuideRewrite-2026-08-21.md` | -- |
@@ -70,7 +70,7 @@ All paths are relative to `ProjectDocs/`.
 | Pricing copy (website) | `GatewayGuard_PricingCopy-2026-08-22-1000.md` | 1 |
 | Annual price decision | `GatewayGuard_PriceDecision-Annual-2026-08-21-1445.md` | 0 |
 | Refund policy and terms | `GatewayGuard_Decisions-RefundAndTerms-2026-08-22-1510.md` | 0 |
-| Licence agreement (EULA) | `GatewayGuard_License-2026-08-07-0726-TEXT.md` | 2 |
+| Licence agreement (EULA) | `GatewayGuard_License-2026-08-24-1210-TEXT.md` | 3 |
 | Pricing reconciliation (one-time packs) | `PricingReconciliation-2026-07-16.md` | 0 |
 | Guide gap-fill (G1-G6, v9 source) | `GatewayGuard_GuideGapFill-fromV9-2026-08-22-1224.md` | 0 |
 | Guide section replacements (Cloud) | `GatewayGuard_GuideSectionReplacements-2026-08-23-0142.md` | 0 |
