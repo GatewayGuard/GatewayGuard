@@ -292,7 +292,7 @@ if (-not $headHash) { $headHash = 'unknown'; $headDate = 'unknown'; $headSubj = 
 
 $L = New-Object System.Collections.Generic.List[string]
 $L.Add('<!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->')
-$L.Add('<!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->')
+$L.Add('<!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->')
 $L.Add(('<!-- Generated: ' + $stamp + ' ET -->'))
 $L.Add(('<!-- Commit: ' + $headHash + ' -->'))
 $L.Add('')

@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
-<!-- Written by Tool\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-23 22:56 ET -->
-<!-- Commit: dcb95ad -->
+<!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
+<!-- Generated: 2026-08-23 23:04 ET -->
+<!-- Commit: e3c2a67 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-23 22:56 ET
-- **Commit at generation:** `dcb95ad`
+- **Generated:** 2026-08-23 23:04 ET
+- **Commit at generation:** `e3c2a67`
 - **That commit was made:** 2026-08-23 22:56 ET
-- **Its subject line:** Cut Part H -- the research answered in minutes what I proposed to test for days
+- **Its subject line:** Regenerate CURRENT.md
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -89,7 +89,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-08-22 13:16 to 2026-08-23 01:35 [Claude Code -- CGDELL] -- CLOUD'S DEFECT PASS WORKED, TWO DECISIONS SETTLED, BILL'S 19-PAGE REVIEW TRIAGED AND ITS A ITEMS BUILT, CLOUD HANDOFFS MOVED WHERE CLOUD CAN READ THEM
+## Session: 2026-08-23 09:25 to 22:50 [Claude Code -- CGDELL] -- THE GUIDE IS FINISHED. PACKS 1 AND 2 APPLIED, EVERY RETRIEVAL GAP CLOSED, PART H CUT ON RESEARCH
 ```
 
 **If it is not in your copy of the session log, you are reading an old

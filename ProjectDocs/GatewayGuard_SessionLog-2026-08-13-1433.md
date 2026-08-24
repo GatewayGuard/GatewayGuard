@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-08-22 14:10 ET
+- **Last Modified:** 2026-08-23 22:50 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -28,6 +28,153 @@ OneDrive\GatewayGuard at session end.
 **Bill:** Download this file at the end of every session.
 Upload it to the Claude project immediately after downloading.
 This is the shared memory between all Claude instances.
+
+---
+---
+
+## Session: 2026-08-23 09:25 to 22:50 [Claude Code -- CGDELL] -- THE GUIDE IS FINISHED. PACKS 1 AND 2 APPLIED, EVERY RETRIEVAL GAP CLOSED, PART H CUT ON RESEARCH
+
+**No build change. ascii43 untouched. Guide 1,074 -> 1,976 lines, zero gaps.
+Twenty-six commits, all pushed.**
+
+### THE HEADLINE
+
+**The guide has no retrieval gaps left.** It opened the day with six sections
+marked and unwritten and closed with none. Every heading has a body.
+
+**The single act that did it was Bill attaching one file to a chat message.**
+Cloud had stopped overnight and refused to write G3 to G6 from partial
+retrieval, correctly: connector search returns a 524-line document in whichever
+fragments rank highest, and no number of queries guarantees the whole file.
+**Being able to name a file and being able to read all of it are two different
+capabilities.** The upload closed four gaps that more searching would not have.
+
+### WHAT WAS APPLIED
+
+- **Pack 1** (`GuideSectionReplacements-2026-08-23-0142.md`, 439 lines) --
+  G1 device encryption with the recovery-key section, G2 accounts and sign-in,
+  **setting 10 given the body section it never had** (the gap that left
+  FT-226 class fix with nowhere to point), the Word TOC placeholder out of
+  the body, the closed W-07 collision removed, four items folded into *Getting
+  help* in second person, seven British spellings swept.
+- **Cloud four post-pack-1 defects**, all confirmed against the file first.
+- **Pack 2** (`GuideSectionReplacementsPack2-2026-08-23-1816.md`, 996 lines) --
+  G3, G4, G5, G6. Seven blocks, 58 marker lines replaced with 695 lines.
+- **Cloud 08-23 marketing amendment** -- M-1 to M-4, decisions 2 and 7.
+- **Item 7 closed** from Bill two Edge screenshots.
+
+### FIVE TIMES CLOUD WAS ASKED TO REDO WORK IT HAD ALREADY DONE
+
+**This was the session recurring defect and it is worth naming plainly.**
+Twice a Cloud delivery sat in Bill Downloads instead of `ProjectDocs\`, so
+Cloud could not see its own output and the handoff asked for it again. Once the
+handoff went stale between writing and sending. **The 12:23 handoff told Cloud
+to close G1, G2 and the small blocks -- all delivered at 01:42 that morning --
+two screens above its own "do not rewrite what is already written" bullet.**
+
+**The fix that worked:** read every row of `CURRENT.md` before writing a
+handoff, and open anything dated since the last one. Written to memory.
+
+### THREE CORRECTIONS MADE TO CLOUD PACKS ON THE WAY IN
+
+1. **Pack 1 setting 10 heading was `###`** where every other Phase 4 setting
+   is `##`. Applied as written it would have nested Remote Desktop under the
+   phase intro.
+2. **Pack 1 G1 VERIFY block used "whether" twice and "switched on" once** --
+   three banned terms, in the pack that carries the house rules.
+3. **Pack 2 two G6 blocks share a first anchor.** The draft carried two
+   `RETRIEVAL GAP G6` markers, Glossary and Index. A naive first-anchor match
+   would have **replaced the Glossary twice and left the Index untouched.**
+   Spans resolved from the unique closing anchor backwards.
+
+**Pack 2 was applied by anchor, not line number** -- it was written against the
+1,293-line draft and the morning defect fixes had already moved every line.
+Cloud made the anchor text authoritative for exactly that reason and it held.
+
+### PART H CUT, AND THE LESSON UNDERNEATH IT
+
+Part H told the reader to disable Edge MicrosoftEdgeUpdate scheduled tasks.
+**I proposed leaving a machine for days with the tasks disabled, watching the
+version number.** Bill: *"did it occur to you to just research this with
+experts and forums and MS support."*
+
+**Two searches settled it.** *Sourced, Microsoft own architecture
+description:* the scheduled tasks trigger Edge automatic update checks; the
+`edgeupdate` service is only the COM server they call. Disabling them stops a
+senior browser patching itself, silently.
+
+**And the test I proposed would have passed it wrongly.** Opening
+`edge://settings/help` drives the updater directly; what breaks is the
+unattended check, which a manual check cannot see. **A test that cannot fail is
+worse than no test, because it ships with a stamp of approval.**
+
+Two further findings, both against the step: the tasks are recreated by Edge or
+its installer, and the guide named three tasks where CGDELL has two.
+
+**The trap: this project rightly drills measure-don't-assume, and I
+over-applied it.** Measuring is the expensive option when the answer is already
+written down. Written to memory.
+
+### PRICING SETTLED, AND ONE ARITHMETIC CATCH
+
+Bill first instruction was a $29.99 bundle. **Measured: $19.99 + $8.99 =
+$28.98, so the bundle cost $1.01 MORE than its parts.** Raised before logging.
+Bill resolved it by **raising the Guide to $12.99** rather than cutting the
+bundle -- $32.98 separately, so $29.99 now saves $2.99. Recorded in
+`PriceDecision-GuideAndBundle-2026-08-23-1816.md`.
+
+### DEFECTS FOUND AND FIXED IN LIVE COPY
+
+- **`edge-startup.html` told the reader to click a control that does not
+  exist** -- *"Click Startup boost first. The two settings only appear once you
+  have opened it."* The screenshot shows both toggles rendered on arrival.
+- **Same page had the label wrong by one word, twice** -- "when Microsoft Edge
+  is closed" against the on-screen "when Edge is closed".
+- **Five banned-verb breaches in the guide FT-220 sections**, all live reader
+  copy: setting 17 opened *"What it is: whether..."*, and switch-as-verb in
+  settings 15, 17 and 18.
+- **Section 0.4 said ELEVEN VERIFY claims against eighteen in the body.** The
+  count is gone rather than corrected -- it was right when written and wrong the
+  next day. Replaced with a grep.
+- **Item 3 page-number sweep was wider than Cloud found**: one `page 00` in
+  text and **19 bare `| 00 |` cells** in the table, needing different searches.
+
+### ONE DEFECT LEFT STANDING, DELIBERATELY
+
+**The new pricing section claims the annual update "scans your drives
+again".** Measured against ascii43: **zero** occurrences of second-drive
+handling, and the scan call is `Start-MpWDOScan`, which has no scope parameter.
+Checkup reads `C:` only -- FT-167. **F4 is the unbuilt block that would make it
+true, and its wording is gate-24-blocked until a full scan is measured covering
+`D:` on SANDY.** Left as received because the honest fix depends on a
+measurement nobody has taken. **This is a purchase page promising what the
+product cannot do -- the Tamper Protection shape, one level more serious.**
+
+### OPEN, IN ORDER OF CHEAPNESS
+
+1. **Item 2 phrasing** -- one word from Bill unblocks Cloud copy pass on all
+   19 pages. Recommendation on the table: option 2.
+2. **`MarketingPlanAmendment-2026-08-23-1816.md`** -- committed, not applied.
+   It supersedes the `-0142` applied at 14:02, so it needs diffing first.
+3. **Which index file is live** -- two candidates differ by **64 lines**, and
+   Cloud note that they match is wrong. **Both meta descriptions carry
+   now-banned phrases.** Also: the Index-Builds file internal header says
+   `-2026-07-30-2310` against a filename saying `-2026-08-02-2050`.
+4. **The guide remaining VERIFY claims** -- 29 markers, none measured. Two can
+   cost a reader their files. **Order matters: the ascii43 field run on SANDY
+   must come first**, because encrypting SANDY for the measurement destroys the
+   field test starting condition and SANDY unencrypted state spends once.
+5. **Finish ascii43** -- F4 (blocked on SANDY), F5 remnants, F6 wording block.
+   **F6 is the one to do**: biggest, unblocked, pure wording.
+
+### HOUSEKEEPING
+
+- **`Tool\` has no `.bat` and that is correct** -- all 30 launchers and 29
+  scripts moved to `Tool2\` on 2026-08-22, commit `d635b4e`, **100 renames and
+  nothing deleted**. `Tool2\Run-GatewayGuard.bat` reaches back for the build.
+- **The session-start instruction and `CURRENT.md` generated header both
+  still say `Tool\Run-UpdateCurrent.bat`.** It is `Tool2\`. Still unfixed.
+- Two Edge screenshots filed as `item07-*` beside the other five review images.
 
 ---
 ---

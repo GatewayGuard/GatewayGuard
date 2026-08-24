@@ -1,6 +1,6 @@
 ===============================================================
  START-CLAUDE-CLOUD -- WHAT TO PASTE INTO A NEW CLOUD CHAT
- Dated: 2026-08-12 17:05 ET
+ Dated: 2026-08-23 22:50 ET
  Was: START-HERE.txt (2026-08-10), then Check-Claude-Cloud.txt
  (renamed to Start-Claude-Cloud.txt 2026-08-12, to pair with Start-CC.txt)
 ===============================================================
@@ -94,7 +94,7 @@ THE FIX: ProjectDocs/CURRENT.md. One filename that never changes,
 listing the filenames that do. Cloud reads one name it was told
 and gets valid pointers.
 
-CURRENT.md IS GENERATED, NEVER TYPED -- by Tool\Update-Current.ps1,
+CURRENT.md IS GENERATED, NEVER TYPED -- by Tool2\Update-Current.ps1,
 run at session end. A pointer kept by hand is the exact failure it
 exists to prevent: 15 of 49 filename references in this project had
 already gone dead. It refuses to write at all if any document is
@@ -156,6 +156,6 @@ are told.
 
 If you only remember one line, this is enough:
 
-    Read ProjectDocs/CURRENT.md and CLAUDE.md, quote the panther
-    line to prove you are current, then tell me the build, the top
-    3 open items, and what is stale.
+    Read ProjectDocs/CURRENT.md and CLAUDE.md, read back the four
+    freshness values to prove you are current, then tell me the
+    build, the top 3 open items, and what is stale.

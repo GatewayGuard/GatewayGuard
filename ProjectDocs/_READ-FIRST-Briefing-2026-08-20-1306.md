@@ -1,7 +1,7 @@
 <!-- Dated: 2026-08-20 13:06 ET -->
 # READ FIRST -- Session Briefing
 **Document Name:** _READ-FIRST-Briefing
-**Last Modified:** 2026-08-22 14:10 ET
+**Last Modified:** 2026-08-23 22:50 ET
 **Last Editor:** Claude Code (CGDELL)
 **Purpose:** Read this before anything else at the start of every session.
 **Supersedes:** `_READ-FIRST-Briefing-2026-08-14-0041.md`, which by this
@@ -10,6 +10,13 @@ The tree was on **ascii42**. Three builds stale, on the first two lines any new
 session reads.
 
 **Change History Log:**
+- 2026-08-23 22:50: **THE GUIDE IS FINISHED -- status block rewritten.** It
+  said ascii43 half built and nothing about the guide, which was the day's
+  entire work. Packs 1 and 2 applied, every retrieval gap closed, Part H cut on
+  research. **Git figures re-measured and they were badly stale** -- the table
+  said 176 commits and 551 tracked files against 270 and 642, so it was 94
+  commits and 91 files out, on the section that says "stated HERE ONLY".
+  Open item 1 rewritten: the guide is no longer the blocker, ascii43 F6 is.
 - 2026-08-22 14:10: **`Last Modified` restamped -- it said 2026-08-20 13:06
   while section 1's status block was dated 2026-08-22 13:05.** Cloud caught
   it. The `Dated:` line and the filename stay at 2026-08-20 13:06 on purpose:
@@ -88,7 +95,33 @@ This is the only known pair where the filename date lies about which is newer.
 
 ---
 
-## 1. CURRENT STATUS -- 2026-08-22 13:05 ET
+## 1. CURRENT STATUS -- 2026-08-23 22:50 ET
+
+**THE GUIDE IS WRITTEN. ZERO RETRIEVAL GAPS.**
+`ProjectDocs\GatewayGuard_GuideRewrite-Draft-2026-08-22-1000.md`, **1,976
+lines.** Every heading has a body. Packs 1 and 2 applied 2026-08-23; the draft
+is the live one and supersedes the 08-19 and 08-15 drafts, which must not be
+opened.
+
+**What still stands between it and shipping, in its own WHAT MUST HAPPEN list:**
+**29 VERIFY markers, none measured on a live machine** -- two can cost a reader
+their files; **page numbers** (one `page 00` in text, 19 bare `| 00 |` cells);
+and **Bill's approval.**
+
+**ORDER MATTERS AND IT IS EASY TO GET WRONG. The ascii43 field run on SANDY
+must come BEFORE the encryption measurements.** SANDY is the only unencrypted
+machine, its state spends permanently the first time encryption completes, and
+encrypting it to settle the BitLocker VERIFY destroys the field test's starting
+condition. One trip settles both only in that order.
+
+**Part H was cut 2026-08-23, and the reasoning is worth keeping.** It told the
+reader to disable Edge's MicrosoftEdgeUpdate scheduled tasks. *Sourced,
+Microsoft's architecture:* those tasks are what trigger Edge's automatic update
+checks; the `edgeupdate` service is only the COM server they call. The step
+stopped a senior's browser patching itself. **The test the guide proposed would
+have passed it wrongly** -- `edge://settings/help` drives the updater directly,
+so it cannot see the unattended check stop. **A test that cannot fail is worse
+than no test.**
 
 **Active build: ascii43, HALF BUILT AND NEVER FIELD RUN** --
 `Tool\W11-SecurityHardening-v3-ascii43-2026-08-21-1752.ps1`, **9,002 non-blank
@@ -146,18 +179,21 @@ and git was blind to it. **Look on disk.**
 
 **Target launch:** September 1, 2026 at gatewayguard.co
 
-### Git -- measured 2026-08-20 11:47, and stated HERE ONLY
+### Git -- measured 2026-08-23 22:50, and stated HERE ONLY
 
 | | |
 |---|---|
-| Commits | **176** |
-| Tracked files | **551** |
+| Commits | **270** |
+| Tracked files | **642** |
 | Unpushed | **0** |
-| Untracked | 21 |
-| Modified | 3 |
+| Untracked | 28 |
+| Modified | 4 |
 | Deleted on disk, still tracked | 10 -- Bill's folder reorganisation, moves not losses |
-| `.git` | **48 MB** |
-| Whole working tree | 462 MB |
+| `.git` | **45 MB** |
+
+*(Measured 2026-08-23 22:50. The previous figures were taken 2026-08-20 and
+were 94 commits and 91 files stale by the time they were replaced -- on the
+table that says "stated HERE ONLY". Re-measure it, do not carry it forward.)*
 
 **The tracked-file count was taken three ways and all three agree** --
 `ls-files`, `ls-files -z`, and `ls-tree -r HEAD` each return 551. That is the
@@ -602,7 +638,27 @@ the real documents survive under hyphenated names.
 
 ## 10. OPEN ITEMS, IN ORDER
 
-1. **FINISH ascii43, then field-run it on SANDY.** *(Updated 2026-08-22.
+0. **THE CHEAPEST UNBLOCK ON THE BOARD IS ONE WORD FROM BILL.** The `.html`
+   copy pass -- items 2, 3, 6, 8, 13, 18, 19 and 21, across all 19 pages --
+   is held until Bill picks one of three phrasings for item 2. They are in
+   `GatewayGuard_HtmlWebsiteReview-2026-08-22-2220.md`; **the recommendation is
+   option 2**, because it carries a second sentence for the two settings
+   Checkup cannot change and so cannot reproduce the Tamper Protection defect.
+   **Eleven of 19 pages have their factual (A) items built. The copy pass has
+   been done on ZERO.**
+
+0a. **A PURCHASE PAGE PROMISES WHAT THE PRODUCT CANNOT DO.** The new pricing
+   section, `WebSite\html\GatewayGuard_PricingSectionHtml-2026-08-23-1816.html`,
+   says the annual update *"scans your drives again"*. **Measured against
+   ascii43: zero second-drive handling, and `Start-MpWDOScan` has no scope
+   parameter. Checkup reads `C:` only** -- FT-167. This is the Tamper
+   Protection shape on the page that takes the money. It is left as received
+   because the honest fix waits on F4's measurement.
+
+1. **FINISH ascii43, then field-run it on SANDY.** *(Updated 2026-08-23. The
+   guide is no longer the blocker -- it is written, see section 1. **F6 is the
+   block to do**: the biggest, entirely unblocked, and pure wording.)*
+ *(Updated 2026-08-22.
    ascii42 WAS field run on 2026-08-21 -- 32 findings, FT-204 to FT-235, all
    triaged. ascii43 is half built; see the status block in section 1 for what
    is in and what is not.)* What remains:
