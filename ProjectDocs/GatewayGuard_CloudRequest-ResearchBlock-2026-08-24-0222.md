@@ -53,6 +53,33 @@ into `ProjectDocs\`. Bill will tell Claude Code it is there.
 
 ---
 
+## DO NOT STOP TO ASK. HOLD EVERY QUESTION TO THE END.
+
+**Bill will be away from the keyboard. A question asked in the middle costs the
+whole session, because nothing answers it until he comes back.**
+
+**So: never stop and wait.** When you hit something you would normally ask
+about:
+
+1. **Choose the most reasonable reading**, and say in one line which reading
+   you chose and why.
+2. **Carry on with the research** under that assumption.
+3. **Put the question in a numbered list at the very end**, under the heading
+   **QUESTIONS FOR BILL**, each one saying what you assumed and what would
+   change if the other answer is right.
+
+**A question that changes nothing about the research is not worth asking.**
+Apply the same test Claude Code is held to: imagine both answers. If the work
+would be the same either way, it was never a question -- decide it and note the
+decision.
+
+**Finish all seven topics before writing the question list.** Research
+everything, analyse it, reach a recommendation on each, and only then collect
+what you could not settle. A partial answer with questions attached is worth
+less than seven complete answers with seven caveats.
+
+---
+
 ## THE SEVEN TOPICS, IN THE ORDER THEY UNBLOCK THINGS
 
 ### 1. Q7 -- DOES BITLOCKER NEED A MICROSOFT ACCOUNT? *(highest value -- it grew)*
