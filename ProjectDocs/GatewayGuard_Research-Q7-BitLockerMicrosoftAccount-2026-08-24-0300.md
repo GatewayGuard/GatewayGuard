@@ -238,7 +238,24 @@ and says so:
 none of them.** The drive is in the state the script itself calls *"the job is
 not finished"* -- three times over.
 
-**I have not touched them, and will not without Bill saying so.** Removing a
+**CLOSED 2026-08-24. Bill: "don't ever remove any they are all saved and safe
+in print and two digital storage devices."**
+
+**So four protectors is not an unfinished job -- it is redundancy, and it is
+deliberate.** Every one of the four is held in print and on two separate
+digital storage devices. **Do not delete a recovery key protector on any
+machine, do not propose it, and do not raise this again.** The risk of removing
+a key Bill is relying on is unrecoverable; the cost of leaving four is nothing.
+
+**One consequence for `Tool2\Rotate-BitLockerKey-2026-08-07.ps1`:** its whole
+purpose is to add a new key and then delete the old ones. **Under this
+instruction its delete phase must never run**, so the script should not be used
+for its stated purpose unless Bill asks for it in those words. Its two-phase
+design -- which only deletes after the operator types SAVED -- is why nothing
+was ever deleted, and that turns out to have been the right outcome by
+accident.
+
+*(Original note, kept for the record:)* **I have not touched them, and will not without Bill saying so.** Removing a
 recovery key is not reversible, and if the key Bill has written down is one of
 the three stale ones, deleting them turns his written record into a worthless
 piece of paper. **That decision needs him to first confirm which key he
