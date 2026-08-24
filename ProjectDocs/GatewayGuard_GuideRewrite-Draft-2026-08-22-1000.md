@@ -29,6 +29,30 @@
   where every other Phase 4 setting is `##`, and its G1 VERIFY block used
   "whether" twice and "switched on" once, all three banned. Fixed on the way in.
   **G3, G4, G5 and G6 remain open** — see 0.2.
+- 2026-08-23 22:40: **PART H REMOVED. Researched rather than measured, and the
+  research settled it against the step.** Part H told the reader to open Task
+  Scheduler and disable the MicrosoftEdgeUpdate tasks, to stop Edge undoing
+  Parts D, F and G. **Sourced, Microsoft's own architecture description: the
+  scheduled tasks are what trigger Edge's automatic update checks**, and the
+  `edgeupdate` service is the COM server they call to do the work. Disabling
+  them does exactly what the VERIFY note feared — it stops a senior's
+  browser patching itself in the background, and nothing on screen would say
+  so.
+  **Two further findings, both against the step.** The tasks are recreated by
+  Edge or by its next installer, so the instruction does not reliably hold
+  anyway. And the guide named three tasks; CGDELL has two — measured,
+  `MicrosoftEdgeUpdateTaskMachineCore` and `...MachineUA` — so a reader
+  would hunt for a third that is not there.
+  **The verification method the note proposed would have passed it wrongly.**
+  Opening `edge://settings/help` asks Edge to check now, which invokes the
+  updater directly; automatic background checks are the thing that stops, and
+  a manual check would not reveal it. A test that cannot fail is worse than no
+  test, because it ships with a stamp of approval.
+  **What was traded:** Part H bought protection against an annoyance. It
+  risked an unpatched browser on the machine of someone who would never
+  notice. Parts D, F and G do the real work and are untouched. The *Check that
+  it worked* fallback and both index entries were updated in the same edit so
+  nothing points at a step that no longer exists.
 - 2026-08-23 21:40: **PACK 2 APPLIED. Every retrieval gap is now closed.**
   G3-A (Step 6 Parts B to H), G3-B (Phase 3 residue), G4-A (Phase 5 in full,
   decision tree included), G4-B (Advanced), G5 (Firefox F1-F12), G6-A
@@ -45,10 +69,8 @@
   `RETRIEVAL GAP G6` markers, Glossary and Index -- so the spans were resolved
   from the unique closing anchor backwards.
   **Pack 2 adds three VERIFY claims and touches none of the twelve existing
-  ones.** The one that matters is number 14: if disabling the
-  MicrosoftEdgeUpdate scheduled tasks stops Edge patching itself, Part H is
-  trading a background annoyance for an unpatched browser. Five minutes at a
-  keyboard settles it.
+  ones.** Number 14 was resolved the same night and Part H is gone — see
+  the 22:40 entry above.
 - 2026-08-23 19:05: **Cloud's four post-pack-1 defects fixed, all four measured
   against this file before touching it.** **0.4's count is gone** — it said
   ELEVEN against eighteen VERIFY tokens in the body, so the number is replaced
@@ -860,36 +882,6 @@ from anything inside the browser.
 **Leave everything else alone.** Other things in this list belong to programs
 you use.
 
-### Part H — Edge's scheduled tasks
-
-Edge also books itself into the Windows task scheduler, which is how it can
-come back after you have done Parts D, F and G.
-
-1. Press the **Windows key**, type `Task Scheduler`, and press Enter.
-2. On the left, click **Task Scheduler Library**.
-3. Look down the list for entries with **MicrosoftEdge** in the name. They are
-   usually called something like *MicrosoftEdgeUpdateBrowserReplacement*,
-   *MicrosoftEdgeUpdateTaskMachineCore*, and
-   *MicrosoftEdgeUpdateTaskMachineUA*.
-4. Right-click each one and choose **Disable**.
-
-**Choose Disable, not Delete.** Disabling can be undone from the same screen by
-choosing **Enable**. Deleting cannot.
-
-> **⚠ VERIFY — Part H, before the guide ships.**
-> **Does disabling those tasks stop Edge receiving its own security updates?**
-> The tasks carry *Update* in their names. If they are what fetches Edge's
-> patches, then this step trades a background annoyance for an unpatched
-> browser, and it must either say so plainly or come out.
->
-> **Measure it on a live machine:** disable the tasks, then open Edge and go to
-> `edge://settings/help` and confirm it still checks for and installs an
-> update.
->
-> **Parts B and C also carry VERIFY**, on the two Edge routes. Chrome's routes
-> are exact addresses and need no check; Edge's are click paths that nobody has
-> walked. **Do not guess them — read them off the screen.**
-
 ### Check that it worked
 
 1. **Restart the computer.**
@@ -897,8 +889,8 @@ choosing **Enable**. Deleting cannot.
 3. On the **Processes** tab, sort by name and look for **Microsoft Edge** and
    **Google Chrome**.
 
-**There should be none.** If Edge is still there, one of Part F, Part G or
-Part H was missed.
+**There should be none.** If Edge is still there, one of Part F or Part G was
+missed.
 
 ### Part I — The browser's own password store
 
@@ -1919,7 +1911,6 @@ section names with page numbers. Add nothing that does not have a destination.]*
 - **Diagnostic data** — setting 12, Phase 4
 - **Edge — Startup boost** — Quick-reference table; Step 6, Part D; setting 13,
   Phase 4
-- **Edge — scheduled tasks** — Step 6, Part H
 - **Edge — saved passwords and cards** — Step 6, Part I; setting 15, Phase 4
 - **Email forwarding rules** — Phase 3 Step 6; Phase 5, *If something looks
   wrong*; Getting help
@@ -1943,7 +1934,7 @@ section names with page numbers. Add nothing that does not have a destination.]*
 - **Tamper Protection** — Step 2; Quick-reference table; Glossary
 - **TamperedChef** — Step 5, *Names to treat as serious*; Phase 3; Glossary
 - **Task Manager** — Step 6, Part G; Phase 5; Glossary
-- **Task Scheduler** — Step 6, Part H; Glossary
+- **Task Scheduler** — Glossary
 - **TPM** — Step 4; Glossary
 - **Wake on LAN** — setting 19, Phase 4
 - **Widgets** — Step 6, Part F; setting 14, Phase 4; Glossary
