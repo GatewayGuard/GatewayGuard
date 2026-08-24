@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-23 23:05 ET -->
-<!-- Commit: 746879b -->
+<!-- Generated: 2026-08-24 11:06 ET -->
+<!-- Commit: 433d164 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-23 23:05 ET
-- **Commit at generation:** `746879b`
-- **That commit was made:** 2026-08-23 23:05 ET
-- **Its subject line:** Session close 2026-08-23: the guide is finished, and both start files told lies
+- **Generated:** 2026-08-24 11:06 ET
+- **Commit at generation:** `433d164`
+- **That commit was made:** 2026-08-24 10:48 ET
+- **Its subject line:** Review of Cloud's research, kept separate from my own
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -59,6 +59,9 @@ All paths are relative to `ProjectDocs/`.
 | Cloud request | `GatewayGuard_CloudRequest-GuideSetting11-2026-08-21.md` | -- |
 | Cloud request | `GatewayGuard_CloudRequest-PricingCopy-2026-08-21.md` | -- |
 | Cloud request | `GatewayGuard_CloudRequest-Review-2026-08-21.md` | -- |
+| Cloud request | `GatewayGuard_CloudRequest-ResearchBlock-2026-08-24-0222.md` | -- |
+| Cloud research (delivered) | `GatewayGuard_CloudResearch-WidgetsAndAccessibility-2026-08-24-1015.md` | -- |
+| Review of Cloud research | `GatewayGuard_ReviewOfCloudResearch-2026-08-24-1105.md` | -- |
 | Marketing plan (current) | `GatewayGuard_MarketingPlan-2026-08-22-1000.md` | 3 |
 | Guide rewrite draft (current) | `GatewayGuard_GuideRewrite-Draft-2026-08-22-1000.md` | 2 |
 | Website source pack (19 guide pages) | `GatewayGuard_WebsiteSourcePack-2026-08-22-2235.md` | 2 |

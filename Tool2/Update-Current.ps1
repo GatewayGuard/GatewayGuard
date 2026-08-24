@@ -98,6 +98,14 @@ $wanted = @(
     # Cloud requests are distinct handoffs, not versions of one file, so ALL are
     # listed (Multi = newest-sorted), never just the newest one.
     @{ Label = 'Cloud request';               Pattern = 'GatewayGuard_CloudRequest-*.md'; Multi = $true },
+    # Cloud's ANSWERS, added 2026-08-24 at Cloud's own request, and the reason
+    # is worth keeping: two Cloud sessions six hours apart answered the same
+    # request independently, because a delivered file that has no CURRENT.md row
+    # cannot be named by the next session. The request had a row; the answer had
+    # nowhere to appear. Multi for the same reason as the requests above --
+    # each is a distinct handoff, not a version of one file.
+    @{ Label = 'Cloud research (delivered)';  Pattern = 'GatewayGuard_CloudResearch-*.md'; Multi = $true },
+    @{ Label = 'Review of Cloud research';    Pattern = 'GatewayGuard_ReviewOfCloudResearch-*.md'; Multi = $true },
     # --- THE THREE SOURCE PACKS, added 2026-08-15 -------------------------
     # Each is a readable extraction of material Cloud cannot otherwise reach,
     # and each was invisible to Cloud for the same reason the Launch Plan was:
