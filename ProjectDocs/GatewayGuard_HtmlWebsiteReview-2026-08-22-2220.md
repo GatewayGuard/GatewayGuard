@@ -3,7 +3,7 @@
 # Bill's HTML website review -- all 19 pages, 24 items
 
 - **Document Name:** GatewayGuard_HtmlWebsiteReview
-- **Last Modified:** 2026-08-22 22:20 ET
+- **Last Modified:** 2026-08-24 00:30 ET
 - **Reviewed by:** Bill, at the keyboard, 2026-08-22 16:30
 - **Source:** `Test_Results\Html_Website_Review__by_Bill.docx` and its `.txt`.
   **This file is the readable twin.** The `.docx` is unreadable to Cloud, the
@@ -19,6 +19,154 @@
   decoded from cp1252 and normalised to ASCII (curly quotes and non-breaking
   spaces only). Nothing reworded, nothing corrected. The triage lines are
   Claude Code's and are marked as such.
+
+---
+
+## BILL ANSWERED, 2026-08-24 -- EVERY OPEN QUESTION ON THIS PAGE
+
+**Source: `ProjectDocs\Q2 - Checkup offers to run windows.txt`, Bill's own
+file.** His copy of this review,
+`Review-of-HtmlWebsiteReview-2026-08-22-2220md.md`, is byte-identical to this
+document -- diffed 2026-08-24, no inline edits -- so the `.txt` is the whole of
+his reply and nothing is hiding in the other file.
+
+**THE ONE THAT MATTERS: item 2 is decided, and it unblocked eight items.**
+
+> *"Item 2 - option 1 and where a manual intervention is necessary, this
+> wording: `With your approval, Checkup will show you the exact steps to do it
+> yourself.`"*
+
+**Applied 2026-08-24, all 19 pages, commit `49e9929`.** Items 2, 3, 9, 17 and
+18 went with it. Script: `Tool2\apply_item2_copypass_2026-08-24.py`.
+
+### WHAT EACH ANSWER SETTLED
+
+| Q / item | Bill's answer | State |
+|---|---|---|
+| **Item 2** | Option 1 + his manual sentence | **BUILT** 2026-08-24 |
+| **Item 3** | Rename the heading | **BUILT** -- all 19 now read *"What Checkup found and we recommend you do"* |
+| **Item 9** | *"remove '(recommended)'"* | **BUILT** |
+| **Item 17** | *"see item 2"* | **BUILT**, and it found more -- see below |
+| **Item 18** | *"see Item 2"* | **BUILT** for the wording. The offline-scan half is HELD -- see Q2 |
+| **Q2** | Gave the sentence | **HALF HELD.** The full-scan claim is not true of ascii43 |
+| **Q4 / item 5** | *"Add them"* | **DECIDED, NOT BUILT.** Cloud protection and automatic sample submission join the list. 19 settings becomes 21 -- build, guide and site |
+| **Q6 / item 10** | *"Forget about it"* | **CLOSED.** Advanced firewall and inbound rules are out of scope |
+| **Q10 / M-4** | *"Been resolved this type of wording both are out"* | **CLOSED.** Neither "one-time purchase" sentence survives -- consistent with annual updates replacing the one-time model |
+| **Item 16** | *"what have we done to correct this"* | **ANSWERED** -- see below |
+| **Item 19** | *"add 'in the future'"* | Ready, goes with the next copy pass |
+| **Item 23** | *"put aside in our notes for future efforts"* | **DEFERRED by Bill** |
+| **Q7, Q8, Q9, items 15, 20, 21, 22** | *"research with experts and forums and MS support and then give me your recommendation"* | **RESEARCH BLOCK -- 7 topics, open** |
+
+### ITEM 16 ANSWERED -- WE FIXED IT BY STEERING PAST IT
+
+Bill asked what was done. Commit `200b6ec` fixed it, but **not the way his
+screenshots suggest.** Both images are of **Remote Desktop Connection** -- the
+*outbound* client, the one where you must click **Options** to expand the
+window. That is a different program and **it has no setting to turn anything
+off.** Documenting its Options click would have sent seniors further into the
+wrong program.
+
+`remote-desktop.html` now says, as step 2: *"Windows also offers Remote Desktop
+Connection, and that is a different program -- it connects your PC out to
+another computer, and it has no setting to turn anything off. If a window opens
+asking you for a computer name, you have the wrong one. Close it and start
+again."*
+
+### Q2 -- HALF OF BILL'S SENTENCE IS NOT TRUE OF ascii43
+
+His wording: *"Checkup offers to run windows Defender offline scan **and a full
+scan** with every Checkup run, and will also remind you to run it every three
+months."*
+
+**measured 2026-08-24, `grep -o "Start-Mp[A-Za-z]*"` on
+`Tool\W11-SecurityHardening-v3-ascii43-2026-08-21-1752.ps1`: returns
+`Start-MpWDOScan` and nothing else.** Four code sites, no `Start-MpScan`, no
+`FullScan`.
+
+- **The offline half is true.** Line 4375, offered behind a Y/N prompt, reboots
+  on Y.
+- **The full-scan half does not exist in the tool.**
+
+**This is the same hole as open item 0a**, where the pricing page already
+promises *"scans your drives again"*, and it is what **F4** exists to build.
+Both sentences become true together, once a full scan covering `D:` is measured
+on SANDY. Publishing either one first puts a second false promise on the site
+in the same week the first one was found.
+
+### ITEM 17 WENT FURTHER THAN THE ACTION LINE
+
+Item 17 asked *"are we making all these changes we are recommending on the
+website in Checkup?"* That was answered on 2026-08-22 for the **Action taken**
+line. **Nobody checked the tag line under the page title**, and it carried the
+same class of error on three pages. Measured against ascii43 lines 5618-5636,
+where **only ID 3 and ID 9 are `CanAuto=$false`**:
+
+| Page | Build | Tag said | Now |
+|---|---|---|---|
+| `tamper-protection` | ID 3, cannot | *"Checkup can do this for you"* | *"You set this up"* |
+| `password-on-wake` | ID 17, can | *"You set this up"* | *"Checkup can do this for you"* |
+| `remote-desktop` | ID 10, can | *"You set this up"* | *"Checkup can do this for you"* |
+
+`password-on-wake` **also contradicted its own Found line one row above**,
+which already read *"It can turn that on with your permission."*
+
+**The lesson, and it is the same one item 17 taught the first time:** the audit
+was run against one element and the answer was treated as covering the page.
+Three elements make the same claim on these pages -- the tag, the Found line
+and the Action line -- and they must be checked together.
+
+### THE RESEARCH BLOCK -- SEVEN TOPICS, BILL'S OWN INSTRUCTION
+
+> *"research with experts and forums and MS support and then give me your
+> recommendation"*
+
+1. **Q7 / item 22 -- the Microsoft account question.** Bill reframed it:
+   *"Don't we need MS Account for bitlocker to be able to store bitlocker key
+   or manually add bitlocker key."* This is now a BitLocker key-escrow question,
+   not only a Windows Hello one, and it governs both.
+2. **Q8 / item 23 -- Windows Update Advanced options.** Bill has separately
+   deferred the deliverable; the research still stands.
+3. **Q9 / item 20 -- Wake on LAN**, and the disabled Realtek adapter on SANDY
+   that could not be checked.
+4. **Item 15 -- the fourth Reputation-based protection item.**
+5. **Item 21 -- Widgets.** Bill repeated the original ask: what people use it
+   for, what capability is lost, explain that, then rewrite the Action item.
+6. **Item 14 -- periodic scanning**, already a `D` item.
+7. **Item 24 -- the Word Accessibility Assistant**, already a `D` item, and
+   Bill wants it made a rule if it applies.
+
+**Bill's field observations on item 22, kept verbatim because they are
+measurements nobody else has:**
+
+> *"Sandy - I think when I changed to Hibernate and already had a pin setup on
+> Sandy after a reboot, but changed from MS Account to local Admin account - MS
+> Hello was made currently unavailable. but my pin was maintained for after
+> reboot and startup. Also windows hello said all biometrics and pin were
+> currently unavailable. On CgDell I was able to disengage needing to sign on at
+> startup or reboot, but as yours or clouds instructions I was able to
+> re-establish the need for a pin after sleep or hibernate. I re-established my
+> startup/restart sign on through a MS windows selection in accounts/sign-in
+> opions. It seems that there will always be MS options to re-establish your
+> initial sign-in and then your pin."*
+
+**Item 23, Bill's reasoning for deferring, kept because it is a plan and not a
+dismissal:**
+
+> *"My thought here is we have not generated an .html or mentioned it in the
+> guide for the windows update advanced functions (or have we) we can put this
+> aside in our notes for future efforts. These can be used when the MS yearly
+> update does not make any or very few changes to the settings we recommend as
+> add recommended settings to enhance users to but the update."*
+
+### ONE THING FLAGGED, NOT RE-ASKED
+
+**Item 9's "(recommended)" is the literal Windows label.** The checkbox on the
+reader's screen says **Turn on fast startup (recommended)**, and CLAUDE.md's
+literal-on-screen-labels rule normally protects exactly that parenthetical.
+**Applied as Bill asked anyway**, because the countervailing reason is stronger:
+a senior told to uncheck something Microsoft labels *recommended* hesitates, and
+hesitation costs more than the word gains. Recorded here so the trade is visible
+rather than silently made.
 
 ---
 

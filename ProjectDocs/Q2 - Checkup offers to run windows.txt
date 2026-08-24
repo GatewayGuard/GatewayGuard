@@ -1,0 +1,19 @@
+Q2 - Checkup offers to run windows Defender offline scan and a full scan with every Checkup run, and will also remind you to run it every three months.
+Q2 - Was resolved
+Q4 - Add them
+Q6 - Forget about it
+Q7 - Don't we need MS Account for bitlocker to be able to store bitlocker key or manually add bitlocker key.  research with experts and forums and ms support and then give me your recommendation,  
+Q8 - research same as Q7
+Q9 - Reserach same as Q7
+Q10 - Been resolved this type of wording both are out
+Item 2 - option 1 and where a manual intervention is necessary, this wording: " With your approval, Checkup will show you the exact steps to do it yourself."*
+Item 9 - remove '(recommended)'
+Item 15 - Research same as Q7
+Item 16 - what have we done to correct this
+Item 17 - see item 2
+Item 18 - see Item 2
+Item 19 - add "in the future" to write porting about additional settings
+Item 20 - Same as Q7
+Item 21 - Same as Q7 with these additions  Widgets -- We need to research with experts, forums and MS support, what people use it for and what capabilities are going to be lost and explain that. Discuss with me. Rewrite Action item with whatever phrase we settle on.
+Item 22 - Same as Q7 but under stand the conditions. Sandy - I think when I changed to Hibernate and already had a pin setup on Sandy after a reboot, but changed from MS Account to local Admin account - MS Hello was made currently unavailable. but my pin was maintained for after reboot and startup. Also windows hello said all biometrics and pin were currently unavailable. On CgDell I was able to disengage needing to sign on at startup or reboot, but as yours or clouds instructions I was able to re-establish the need for a pin after sleep or hibernate. I re-established my startup/restart sign on through a MS windows selection in accounts/sign-in opions.  It seems that there will always be MS options to re-establish your initial sign-in and then your pin.
+Item 23 - My thought here is we have not generated an .html or mentioned it in the guide for the windows update advanced functions (or have we) we can put this aside in our notes for future efforts. These can be used when the MS yearly update does not make any or very few changes to the settings we recommend as add recommended settings to enhance users to but the update.
