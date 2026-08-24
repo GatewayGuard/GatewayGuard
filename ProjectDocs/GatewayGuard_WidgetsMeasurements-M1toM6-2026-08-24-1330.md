@@ -101,7 +101,27 @@ Search's 125.6 MB, the answer changes no advice either way.
 
 ---
 
-## M-3 -- LOCK SCREEN WIDGETS: **THERE IS NO "WIDGETS" SECTION ON EITHER MACHINE**
+## M-3 -- LOCK SCREEN WIDGETS: **THE LOCK SCREEN PAGE HAS NO "WIDGETS" ENTRY**
+
+> **READ THIS FIRST -- THREE DIFFERENT SETTINGS, AND AN EARLIER DRAFT OF THIS
+> SECTION RAN TWO OF THEM TOGETHER.** Bill caught it. Nothing below says the
+> Widgets toggle does not exist.
+>
+> | What | Where | Exists? |
+> |---|---|---|
+> | **Widgets on/off** -- the taskbar button | **TWO routes, both work.** (1) Settings > Personalization > **Taskbar** > Widgets. (2) **Left-click the weather button on the taskbar** to open the board, then its **settings** -- *Bill, measured: it shows the on/off there as well* | **YES.** This is the one Checkup and the guide use. It is the value `TaskbarDa` |
+> | **Discover / Watch / Play** -- the feed | the board's own **gear icon**, reached by clicking the weather button or Windows key + W | **YES** -- CGDELL on, SANDY off (M-4) |
+> | **Lock-screen widgets** -- what shows *before you sign in* | Settings > Personalization > **Lock screen** | **NO entry called "Widgets."** See below |
+>
+> **Only the third is what this section is about.**
+>
+> **A trap in route 2, worth a line in the guide.** If the reader turns Widgets
+> **off** from inside the board's own settings, the weather button disappears
+> -- and that button was how they got there. To turn it back on they need
+> **Settings > Personalization > Taskbar**, or **Windows key + W**, neither of
+> which is obvious at that moment. *inferred from the two measured facts, not
+> yet watched happening:* the button is what opens the board (M-5, hover is
+> gone), and turning Widgets off removes the button.
 
 *measured, both screenshots:*
 
@@ -116,8 +136,9 @@ Search's 125.6 MB, the answer changes no advice either way.
 'Lock screen status' and offer 'Weather and more' instead."* **That is exactly
 what both machines show.**
 
-**Consequence: Cloud's draft block 5 cannot ship as written.** It says *"Look
-for Widgets. It should be Off."* **There is no Widgets entry to look for**, and
+**Consequence: Cloud's draft block 5 cannot ship as written.** It sends the
+reader to the **Lock screen** page and says *"Look for Widgets. It should be
+Off."* **There is no Widgets entry on that page**, and
 sending a senior to hunt for one is the dead-end shape the rules forbid. The
 block needs rewriting around **"Lock screen status"** and **"Weather and
 more"**, with a note that the list of apps differs by machine.
