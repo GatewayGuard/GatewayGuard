@@ -242,9 +242,35 @@ machine-wide policy, **not** the per-user taskbar value.
 page's own "turn it back on" steps were a dead end. **Fixed on the page; the
 build's Revert string at line 6830 is still wrong and belongs in F6.**
 
-**Bill's note against M-6 reads `Question for Claude90-]` and is cut off.**
-*Not an assumption I am willing to make:* if there was a question there, it did
-not arrive. **Bill -- what was it?**
+**Bill's note against M-6 read `Question for Claude` and was labelling the row
+-- M-6 is Claude Code's to answer, not a question he was asking.** Confirmed
+2026-08-24. **Answered above. M-6 is closed and all six measurements are
+settled.**
+
+### WHAT M-6 COST, AND IT IS THE MOST EXPENSIVE THING ON THIS PAGE
+
+The policy write is not just a wrong revert instruction. **It means Checkup's
+change to setting 14 is machine-wide, not per-user**, on a family PC where
+other people have their own sign-ins. *inferred, and worth measuring:* one
+person running Checkup removes Widgets for **everyone on that PC**, and the
+others get no explanation and cannot put it back from Settings.
+
+**The per-user value `TaskbarDa` -- the one the Settings toggle writes and the
+one the guide's manual steps use -- would affect only the person who ran it.**
+
+**So there are two defects here, not one:**
+
+| | |
+|---|---|
+| **The revert instruction is wrong** | The page said use the Settings toggle; the policy greys it out. **Fixed on the page today.** Build line 6830 still wrong -- F6 |
+| **The mechanism may be wrong** | Policy is machine-wide. The manual steps, the page and the revert path all describe the per-user setting. **Checkup and its own instructions are changing different things** |
+
+**The second is a product decision, not a bug fix:** should setting 14 write
+`TaskbarDa` for the current user instead of the `Dsh` policy for the machine?
+**My recommendation is yes** -- it matches what every other route in the guide
+does, it is what the revert steps assume, and it does not reach into other
+people's accounts. **But it changes behaviour on a shipped setting, so it is
+Bill's call.**
 
 ---
 
