@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-23 23:04 ET -->
-<!-- Commit: e3c2a67 -->
+<!-- Generated: 2026-08-23 23:05 ET -->
+<!-- Commit: 746879b -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-23 23:04 ET
-- **Commit at generation:** `e3c2a67`
-- **That commit was made:** 2026-08-23 22:56 ET
-- **Its subject line:** Regenerate CURRENT.md
+- **Generated:** 2026-08-23 23:05 ET
+- **Commit at generation:** `746879b`
+- **That commit was made:** 2026-08-23 23:05 ET
+- **Its subject line:** Session close 2026-08-23: the guide is finished, and both start files told lies
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
