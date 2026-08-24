@@ -3,7 +3,7 @@
 # Response to Cloud's handoff -- all seven items
 
 - **Document Name:** GatewayGuard_CloudHandoffResponse
-- **Last Modified:** 2026-08-24 11:40 ET
+- **Last Modified:** 2026-08-24 11:26 ET (M-1 result appended)
 - **Answers:** Cloud's seven-item handoff of 2026-08-24 on
   `GatewayGuard_CloudResearch-WidgetsAndAccessibility-2026-08-24-1015.md`
 - **Status:** Six done. **One deliberately NOT done, and Cloud's own status
@@ -160,6 +160,70 @@ asked whether Checkup writes only the per-user value. It writes a policy key.
 draft copy is not applied**, so the gate belongs with that work, not with
 today's two corrections. Both corrections were length-checked by eye and neither
 touches a box border.
+
+---
+
+## UPDATE 2026-08-24 11:26 -- M-1 IS NOW MEASURED, NOT SOURCED
+
+**Bill pressed Windows key + W on CGDELL. The board opened.**
+
+**Evidence:** `Test_Results\Widgets-M1-evidence\M1-WinW-opens-board-CGDELL-2026-08-24.png`,
+copied into the repository from Bill's personal OneDrive so it does not live
+only outside the project.
+
+**Machine state at the moment of the screenshot,** *measured:* `TaskbarDa = 0`
+-- the Widgets taskbar button is **off** -- on Windows 11 Pro 26200.8875 (25H2).
+
+### WHAT THE ONE KEYSTROKE SETTLED
+
+**M-1 -- CLOSED, and the page's central claim is now measured.** With the
+taskbar button off, **Windows key + W opens the full board.** Microsoft's
+documentation said so; this is the machine agreeing. Cloud's finding was right,
+and the correction already applied to `widgets.html` is confirmed as accurate
+rather than merely defensible.
+
+**M-4 -- MOSTLY ANSWERED as a bonus.** The board's tab strip is visible in the
+screenshot and reads **Discover | Watch | Play**, with a settings gear and an
+expand control. **So the Discover surface is present on this build**, which is
+what block 4 of Cloud's draft copy depends on. *Still open:* whether the gear
+leads to a control that turns Discover **off**. The tabs being present is not
+the same as the off switch being present.
+
+### AND THE SCREENSHOT MAKES CLOUD'S SECURITY ARGUMENT FOR IT
+
+Cloud argued the strongest case for turning Widgets off is **the ad and
+clickbait surface**, not the background process. The board Bill opened is
+leading with:
+
+> *"Man sees what's actually transporting him to Chicago: 'American Airlines
+> has clowned us'"*
+
+**That is the exact article shape Cloud described** -- a bizarre-story
+thumbnail in the MSN/Microsoft Start feed, one keystroke from the desktop. It
+sits directly above the weather widget the reader actually wanted. **Cloud
+reasoned to that conclusion from documentation and a Malwarebytes report,
+without being able to see a single screen. The first screenshot taken since
+confirms the picture.**
+
+### ONE THING THE SCREENSHOT CHANGES ABOUT THE ADVICE
+
+The board carries a **"New look"** toggle, switched on. *inferred:* this is the
+redesigned Widgets experience Cloud flagged in 2.6 as Microsoft changing the
+feature underneath us. **It is already on this machine**, which moves that from
+"coming" to "here" -- and strengthens Cloud's recommendation to keep
+Microsoft's roadmap out of the customer copy and on a review list instead.
+Anything written about the board's layout today has a short life.
+
+### WHAT IS STILL OPEN ON WIDGETS
+
+| | Status |
+|---|---|
+| **M-1** Win+W opens the board with the button off | **MEASURED -- yes** |
+| **M-2** processes running after a restart taken *after* the toggle | **Open in strict form.** Processes confirmed running with the button off; the restart ordering is not established |
+| **M-3** lock screen widgets section and its exact label | Open -- in `Run-SandyChecks` |
+| **M-4** Discover control present | **Tabs confirmed present.** The off switch is not yet confirmed |
+| **M-5** hover-to-open still default | Open -- in `Run-SandyChecks` |
+| **M-6** does Checkup write a policy key | **ANSWERED -- yes, and it is the dead end at the top of this document** |
 
 ---
 
