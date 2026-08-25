@@ -125,7 +125,117 @@ Concretely, at the `Show-PostScanGuidance` branch:
 guide's second-drive claim becomes true, F4's route 3 gets its wording, and
 nobody's laptop is hijacked for a day without being asked.
 
-### THE DECISION THAT IS BILL'S
+### DECIDED 2026-08-24 -- RUN THE FULL SCAN, WITH APPROVAL
+
+**Bill: *"q2 run the full scan with approval."*** Settled. Checkup offers the
+full scan, the user approves it, Checkup runs it. **Not silent, not automatic
+-- asked for and granted, like every other change Checkup makes.**
+
+### WHAT THIS UNBLOCKS IMMEDIATELY
+
+**F4, route 3, and FT-167.** *sourced, Microsoft:* a full scan *"starts with a
+quick scan, and then continues with a sequential file scan of all the fixed and
+removable network drives that are mounted."* **So the second drive is covered
+with no scope parameter, because there is none to set.** The screen text that
+was gate-24-blocked on this measurement is unblocked.
+
+**And two sentences already published become true**: the pricing page's *"scans
+your drives again"*, and Bill's own Q2 wording. Both were held pending this.
+
+### WHERE IT GOES IN THE FLOW -- AND IT IS NOT ONLY THE RESUME PATH
+
+`Show-PreScanGate` line 4231 catches the resume after the offline-scan reboot,
+and that is the obvious home. **But a user who declines the offline scan never
+reaches it.** *measured:* the offline scan sits behind a Y/N at line 4365, and
+N skips straight past.
+
+**So the offer belongs in the scan section for everyone**, with the resume path
+simply arriving at it already knowing the offline scan is done.
+
+### RUN IT AS A BACKGROUND JOB. THIS IS NOT OPTIONAL.
+
+*measured 2026-08-24 on CGDELL:* `Start-MpScan` supports **`-AsJob`**.
+
+*sourced:* a full scan *"can last from several hours to several days."*
+**Checkup cannot stand still for that.** `-AsJob` returns immediately, the scan
+continues in the background, and Checkup carries on with the remaining
+settings.
+
+```powershell
+# VERIFIED 2026-08-24 measured on CGDELL: Get-Command Start-MpScan returns
+#   ConfigDefender v1.0; ScanType ValidateSet = FullScan, QuickScan, CustomScan;
+#   -AsJob present. There is NO scope/drive parameter, and none is needed --
+# VERIFIED 2026-08-24 sourced, Microsoft Defender full scan best practices:
+#   "A full scan starts with a quick scan, and then continues with a sequential
+#   file scan of all the fixed and removable network drives that are mounted."
+#   This is the answer to FT-167 and to F4 route 3.
+Start-MpScan -ScanType FullScan -AsJob
+```
+
+**Gate 24 satisfied by that comment block** -- basis is *measured* and
+*sourced*, not inferred.
+
+### THE SCREEN -- DRAFTED TO THE HOUSE RULES
+
+Modelled on the existing offline-scan screen at line 4344 so it reads as part
+of the same product. **The honesty about time is the whole point of it.**
+
+```
+  ONE MORE SCAN -- AND THIS ONE CHECKS EVERY DRIVE
+
+  The scans so far checked the places malware usually hides.
+  A full scan checks every file on every drive you have.
+
+  It is the only scan that looks at your second drive, if you
+  have one.
+
+  WHAT WILL HAPPEN:
+  * The scan starts now and runs in the background
+  * Checkup carries on -- you do not have to wait for it
+  * You can keep using your computer while it runs
+  * It can take a few hours. That is normal, not a fault
+  * Windows Security shows you how it is getting on
+
+  Microsoft suggests doing this once, after turning Defender's
+  protections on. That is exactly where you are now.
+
+  Start the full scan? (Y/N)
+
+  Y = Yes, start it in the background
+  N = No thanks -- nothing else changes
+  B = Back
+```
+
+**Why "once, after turning Defender's protections on" is in there:** it is
+*sourced* from Microsoft, it is true of this moment in the run, and it answers
+the unspoken question of why a tool is suddenly asking for hours of the
+machine. **It also stops the screen reading as a scare.**
+
+**Why N says "nothing else changes":** a senior declining a security offer
+needs to know they have not broken anything. `N` is an ordinary answer here,
+not a warning.
+
+### WHAT MUST NOT BE CLAIMED
+
+- **Not "offline scan".** That is the other one, it reboots, and conflating
+  them is how FT-162 happened.
+- **Nothing about how long it will take on their machine.** *measured:*
+  CGDELL has **never run a full scan** -- `FullScanAge` returns 4294967295 --
+  so there is no local figure and I will not invent one. *"A few hours"* is
+  Microsoft's own range, hedged.
+- **No claim it finds more than the quick scan on a clean PC.** It checks more
+  files. Whether it finds more is not something we can promise.
+
+### F6 ITEM
+
+Not built. ascii43 is mid-family and has never been field run. **The screen
+text, the cmdlet call and the gate-24 comment block above are ready to drop
+in**, and the F4 wording that was blocked on this measurement can be written at
+the same time.
+
+---
+
+### THE DECISION THAT WAS BILL'S -- ANSWERED ABOVE
 
 **Two real paths, and they lead to different products:**
 
