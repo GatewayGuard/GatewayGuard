@@ -172,6 +172,15 @@ $wanted = @(
     # mechanics first -- because measured on ascii43, nobody is ever shown this
     # agreement and nobody ever accepts it.
     @{ Label = 'Cloud research brief (licence)'; Pattern = 'GatewayGuard_CloudResearchBrief-*.md' },
+    # Added 2026-08-25. Session-close note to Cloud -- read BEFORE the research
+    # brief. Deliberately NOT named CloudHandoffResponse: that would be caught
+    # by the 'GatewayGuard_CloudHandoff-*' glob below and hijack the row that
+    # names what Cloud was TOLD, pointing it at Claude Code's reply instead.
+    @{ Label = 'Note to Cloud (session close)'; Pattern = 'GatewayGuard_NoteToCloud-*.md' },
+    # Added 2026-08-25. The single list of everything waiting on Bill. It had no
+    # row, so the 24 August edition could only be found by remembering its name
+    # -- which is the failure this whole file exists to prevent.
+    @{ Label = 'Everything waiting on Bill'; Pattern = 'GatewayGuard_DecisionsForBill-*.md' },
     @{ Label = 'Pricing reconciliation (one-time packs)'; Pattern = 'PricingReconciliation-*.md' },
     # The v9 extraction that CLOSES retrieval gaps G1-G6 in the guide rewrite
     # draft. Built and committed 2026-08-22 12:24 -- and unnamed here, so Cloud

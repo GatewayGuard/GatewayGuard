@@ -433,6 +433,19 @@ instruction is false** -- between those two acts, Claude Code has to commit and
 push, and nothing was triggering it. A file can sit in `ProjectDocs\`
 indefinitely while everyone believes it is done. Bill caught this.
 
+**This section is about GETTING a file to Cloud. What Cloud must do BEFORE it
+writes anything is a separate document:
+`ProjectDocs\GatewayGuard_CloudWorkingRules-*.md`** -- nine rules and a
+paste-in block Bill drops into any Cloud session. **The one line worth carrying
+here: name your base from `CURRENT.md`, say how you read it, and never carry a
+factual sentence forward without naming what you checked it against.**
+
+**Written 2026-08-25, after licence v2.2 was reconstructed from a readable twin
+because the `.docx` master could not be opened, and carried forward a sentence
+from a superseded draft attributing to the attorney something he never said.
+Neither was carelessness. Both were the predictable result of working from what
+was reachable instead of from what was current.**
+
 ### BILL
 
 1. **Put the file in `ProjectDocs\`.** That folder is always in Cloud's scope.

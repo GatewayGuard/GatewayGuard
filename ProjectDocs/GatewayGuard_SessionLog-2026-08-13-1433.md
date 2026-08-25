@@ -32,7 +32,7 @@ This is the shared memory between all Claude instances.
 ---
 ---
 
-## Session: 2026-08-24 01:41 to 2026-08-25 14:00 [Claude Code -- CGDELL] -- THE WEBSITE REVIEW CLOSED OUT, NINETEEN SETTINGS FROZEN, AND THE LICENCE FOUND TO BE A CONTRACT NOBODY IS EVER SHOWN
+## Session: 2026-08-24 01:41 to 2026-08-25 16:20 [Claude Code -- CGDELL] -- THE WEBSITE REVIEW CLOSED OUT, NINETEEN SETTINGS FROZEN, AND THE LICENCE FOUND TO BE A CONTRACT NOBODY IS EVER SHOWN
 
 **No build change. ascii43 untouched and still unfinished -- F4, the F5
 remnants and the F6 wording block are not built. Thirty-nine commits, all
@@ -270,6 +270,45 @@ every run, so the second run destroyed the real values. Recovered from git
 not to his.**
 
 ---
+
+### 10. THE SYNC WAS VERIFIED THREE WAYS, AND CLOUD'S FIRST CHECK NAMED A MECHANISM THAT DOES NOT EXIST
+
+**Bill synced at about 14:01 and Cloud reported back.** The new working rules
+were followed on their first outing -- Cloud read out the four freshness values
+before doing anything else, which is Rule 2.
+
+**Sync confirmed three independent ways:**
+
+| Check | Result |
+|---|---|
+| Cloud's four stamp values against `CURRENT.md` on disk | **Match, character for character** |
+| Is the reported commit `HEAD^`? | ***measured:*** `git rev-parse --short HEAD^` = `cd1199f`. **Yes** |
+| Cloud found the newest session-log heading in its snapshot | **Matches what was written at 14:00 and pushed in `70058ee`, word for word** |
+
+**Cloud called the third one a "sentinel check" and said the heading is one
+`CURRENT.md` names. It is not.**
+
+***measured:*** `CURRENT.md` carries a Session log row naming the **filename**
+only, line 41. ***measured:*** `grep -i "sentinel"` across `CURRENT.md`, the
+briefing, both `ProjectInstructions` and `CLAUDE.md` returns **exactly one hit**
+-- `CURRENT.md` line 24, saying the stamp *"replaces a sentinel phrase that
+could only say stale or not stale."* **The mechanism was retired. There is
+nothing to pass.**
+
+**But the check Cloud actually ran is real, and it is better evidence than the
+stamp.** The stamp proves which commit generated `CURRENT.md`. **A heading match
+proves the payload arrived.** Those are different claims and the second is
+harder.
+
+**Why this is worth a session-log entry rather than a shrug.** It is Rule 4's
+exact shape, on the day Rule 4 was written: *"the heading `CURRENT.md` names"*
+reads as sourced, nothing checked it, **and it reached the right answer anyway.**
+That is the version that survives into the next session as a fact. **A wrong
+label on a sound check is still a wrong claim** -- and the failure mode is not
+that the check breaks, it is that someone later goes looking for a sentinel row
+that was deleted weeks ago.
+
+**Renamed, in the note to Cloud: a heading match against the session log.**
 
 ### WHAT IS STILL OPEN
 
