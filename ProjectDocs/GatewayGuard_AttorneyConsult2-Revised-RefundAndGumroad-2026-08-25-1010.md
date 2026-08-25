@@ -23,7 +23,7 @@ agreement text these questions touch. **Do not send the full licence** — it
 carries eight open `DECISION NEEDED` callouts on unrelated matters, and they
 will pull the call off topic.
 
-**Nine questions. Two are the expensive ones and they are first in each part.**
+**Ten questions. Two are the expensive ones and they are first in each part.**
 
 ---
 
@@ -32,7 +32,7 @@ will pull the call off topic.
 | Cloud's # | Question | Why it is not here |
 |---|---|---|
 | 11 | Arbitration | A dispute-resolution question. It surfaces when a refund is refused, but the answer is about the forum, not the refund |
-| 12 | Mechanism for changing the terms | Contract completeness. Refunds are one term among many |
+| ~~12~~ | ~~Mechanism for changing the terms~~ | **RESTORED 2026-08-25 as B6. I was wrong to cut it and Cloud was right to include it** -- see below |
 | 13 | Liability cap revisited | The cap is "amount paid"; that a refund equals the same figure is a coincidence, not a connection |
 
 **All three stay live** and belong in a *Contract completeness* consult. **They
@@ -166,6 +166,32 @@ Annual updates are **$12.99 a year**, delivered immediately.
   Presumably yes, since the old version still runs — **which means the update
   can be tried and returned every year.** Confirm that is intended and
   acceptable.
+
+### B6. If we change the refund policy, which buyers does the change bind?
+
+**RESTORED 2026-08-25.** I removed this as "contract completeness" and **that
+was wrong.** Cloud's original reason was better than my reason for cutting it:
+**refunds are the term most likely to change**, and a policy with no mechanism
+for changing it is a policy frozen at whatever it said on the day each customer
+bought.
+
+***measured:* the agreement contains no terms-change mechanism at all.** No
+*"we may update this agreement"*, no *"the current version is posted at"*. And
+*measured, the 1210 appendix:* it was on the 4 August list as part of Question
+11 and the note reads **"Confirm they were declined rather than simply not
+reached."** **Nobody confirmed. It was not reached.**
+
+- **If we move from 30 days to 14, or add a condition, who is bound?** Only
+  buyers after the change, or everyone?
+- **How is a change communicated** so it binds at all, for a product bought once
+  and used for years with no account and no login?
+- **The case that will actually arise, twelve months out, for every customer at
+  once:** a buyer accepts this agreement in 2026 and buys the 2027 annual
+  update. **Which agreement governs that purchase?** With a per-version licence
+  and no change mechanism, we do not know.
+
+**This is a refund question in the only way that matters.** It decides whether
+the refund policy we just settled can ever be settled again.
 
 ---
 

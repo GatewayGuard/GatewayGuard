@@ -18,7 +18,7 @@
 
 | Standard practice | Ours | Verdict |
 |---|---|---|
-| **1. Product identification and definitions** | Products named and defined; **no version number, no components** | **PARTIAL -- two real gaps** |
+| **1. Product identification and definitions** | Products named and defined. **No version named -- which is CORRECT, see gap 1. Components unnamed -- which is not** | **PARTIAL -- one real gap** |
 | **2. Scope of the licence** | Sections 3, 4 and 5 are unusually explicit | **STRONGER THAN TYPICAL** |
 | **3. Third-party and bundled components** | **Nothing. Not one mention** | **THE REAL GAP** |
 | **4. Keeps technical detail out** | Mostly. Two places lean in | **GOOD, with a caveat that is not in the standard list at all** |
@@ -26,6 +26,11 @@
 **We are stronger than a typical consumer EULA on scope and weaker on
 identification. And the biggest problem with the document is one this standard
 description does not mention.**
+
+**Added 2026-08-25 after Bill's second question -- does the agreement avoid
+needing reissue for updates and version increments?** **Mostly yes, and testing
+it withdrew one of my own recommendations.** See gap 1, which is now a
+compliment, and gap 1a, which is the one clause we are missing.
 
 ---
 
@@ -38,26 +43,62 @@ which sections apply to which** -- Checkup in Sections 2 to 4, the Guide in
 Section 5. It also provides for future products. **That is exactly the
 ambiguity-prevention the standard describes, and v2.2 added it.**
 
-### GAP 1 -- NO VERSION NUMBER ANYWHERE
+### GAP 1 -- WITHDRAWN 2026-08-25. NAMING THE VERSION WOULD BE THE DEFECT.
 
-***measured:* zero occurrences of `v3.1`, `version 3`, or any version number in
-the entire agreement.**
+**Bill asked whether we adhere to the principle that a EULA is structured so it
+does not need amending for updates, patches or version increments. Testing that
+killed my own recommendation from an hour earlier.**
 
-Section 2 says only *"This license covers the version you bought."* **A floating
-reference with nothing to point at.** The standard specifically calls for
-version numbers, and **our own house rule requires v3.1 in all user-facing
-text** -- the licence is the one user-facing document that omits it.
+**We adhere, and the absence I called a gap is the mechanism.**
 
-**Why it matters here more than usual.** We sell **annual updates as a separate
-purchase**. Section 2 says the licence covers *"the version you bought"* and
-that an updated version *"is a separate purchase"*. **With no version named,
-there is nothing on paper distinguishing what a buyer got in year one from what
-they must pay for in year two.** That is the exact dispute the clause exists to
-prevent.
+*measured:* the agreement names no version. Section 2 says *"This license covers
+the version you bought."* **That is a floating reference. It is correct at v3.1,
+correct at v3.2, and correct at v4.0, and it never needs reissuing.**
 
-**Fix:** name the version on purchase. *"This licence covers GatewayGuard
-Checkup version 3.1"* -- or, better for a document that outlives a build, *"the
-version identified in your receipt and shown on Checkup's first screen."*
+**Naming v3.1 would have forced a new agreement at v3.2** -- the exact outcome
+the standard structure exists to avoid. **My recommendation was wrong and is
+withdrawn.**
+
+**Two more places we get this right**, and both are deliberate:
+
+- ***v2.2 removed the prices from Section 2*** (Cloud's change 6) and points to
+  `gatewayguard.co` instead. *measured:* the 1210 draft still carried
+  *"$12.99 per update"* in the operative text. **Prices in a contract go stale
+  on their own; that removal was the right call.**
+- **Section 2 already externalises the volatile half:** *"Updated terms and
+  current prices are listed at gatewayguard.co."*
+- **Section 1 forward-covers future products** -- *"If we release further
+  products, this agreement covers those too."* **So shipping a third product
+  does not require a new agreement either.**
+
+**One deliberate divergence, and it is defensible.** The standard formulation is
+*"the Software, including any updates and new versions"* -- one agreement,
+everything. **Ours deliberately does not do that**, because annual updates are
+a separate purchase. *That is a business-model choice, not an oversight*, and
+the floating "version you bought" wording is the right way to express it.
+
+### GAP 1a -- BUT THE ONE CLAUSE THAT EXISTS FOR THIS PURPOSE IS MISSING
+
+***measured:* the agreement contains no mechanism for changing its own terms.**
+No *"we may update this agreement"*, no *"the current version is posted at"*,
+nothing.
+
+**And it was on the list.** *measured, the 1210 appendix:* Question 11 of the
+4 August cover note listed **"a mechanism for changing terms in future
+versions"** among five clauses, and the note reads: *"The other five are not in
+this draft. **Confirm they were declined rather than simply not reached.**"*
+
+**Nobody confirmed. It was not reached.**
+
+**So the answer to Bill's question is split:** we adhere in the mechanics --
+no version, no prices, forward-looking product clause -- **and we omit the one
+clause specifically designed to spare us a reissue.**
+
+**The sharpest form of the problem, and it is a real question:** a buyer accepts
+this agreement in 2026 and buys the 2027 update. **Which agreement governs the
+2027 purchase?** With no terms-change mechanism and a per-version licence,
+that is genuinely unclear -- and it is the case that will actually arise,
+twelve months out, for every customer at once.
 
 ### GAP 2 -- THE PRODUCT IS MORE THAN ONE FILE, AND THE LICENCE NAMES ONE
 
@@ -181,8 +222,10 @@ rather than the whole agreement.
 1. **Settle the PC-binding question** *(Section 2 currently describes something
    Checkup does not do -- see the v2.2 review)*. Nothing else in Section 2
    should be touched until that lands.
-2. **Name the version**, and tie it to the receipt rather than to a number that
-   ages.
+2. ~~**Name the version.**~~ **WITHDRAWN** -- naming it is what forces a reissue.
+   The floating reference is correct as written. **Instead: add a terms-change
+   mechanism**, which is the clause that actually prevents reissues and is
+   currently absent.
 3. **Add the components sentence** -- launcher, log files, five Guide sizes.
 4. **Add the third-party sentence**, once the no-borrowed-code claim is checked.
 5. **Resolve and delete all eight callouts.** *Q5 is already answered* -- Bill's
