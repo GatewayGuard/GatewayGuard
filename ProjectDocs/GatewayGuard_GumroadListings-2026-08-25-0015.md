@@ -278,10 +278,25 @@ one line a reader may retype.
 
 ## AFTER YOU FILL THESE IN
 
+**Three things, in this order.** *(This section was first written in the sort
+of language this project bans -- "chain", "end to end", "no rehearsal". Bill
+caught it. Rewritten plainly, because a rule you only apply to customer copy is
+not a rule.)*
+
 **Three things, in this order:**
 
 1. **Connect the payout method.** Nothing publishes without it.
 2. **Set both refund toggles.** Two products, two toggles.
-3. **Buy your own product with a real card**, then refund yourself. **The
-   checkout has never been tested end to end** -- it is the only chain in the
-   whole launch with no rehearsal, and it is the one that takes the money.
+3. **Buy your own product yourself, with your own credit card, exactly the way
+   a customer would. Then give yourself the refund.**
+
+   **Nobody has ever bought anything from our store.** Not once. So we do not
+   know that the payment goes through. We do not know that the download arrives
+   in the buyer's email. We do not know that the refund button does what it
+   says.
+
+   **Buying it yourself is the only way to find out.** Use a real card, not a
+   test one -- a test card does not prove a real one works.
+
+   **If something is broken, we want to be the ones who find it.** Not the
+   first person who trusts us with $19.99.
