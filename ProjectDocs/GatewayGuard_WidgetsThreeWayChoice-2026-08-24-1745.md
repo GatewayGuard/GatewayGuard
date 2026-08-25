@@ -169,9 +169,70 @@ to keep it**, so a later run does not re-ask as though nothing was decided.
 
 ---
 
+## DECIDED 2026-08-24 -- KEEP THE MACHINE-WIDE POLICY
+
+**Bill:** *"the person on the computer has admin permissions and therefore has
+decided to implement this policy for all users on this pc."*
+
+**Settled, and it closes both of my recommendations -- this morning's and this
+evening's, which contradicted each other.** The reasoning is sound and it is
+supported by the build: ***measured, setting 14 already carries
+`RequiresAdmin=$true`.*** Checkup does not offer this setting at all to someone
+without administrator rights, so the only person who can trigger it is the
+person entitled to decide for the machine. **The policy is not a side effect --
+it is the correct tool for an administrator making a machine-wide choice on
+their own PC.**
+
+*(It is also now the only option. `TaskbarDa` cannot be written --
+`GatewayGuard_Research-WidgetsScriptability-2026-08-24-1850.md`.)*
+
+### THREE THINGS FOLLOW, AND THEY ARE NOT RE-ARGUING THE DECISION
+
+**1. Say it at the point of choice.** If the reasoning is that an administrator
+is deciding for everyone, then the screen should tell them that is what they
+are doing. **An informed machine-wide decision is the decision Bill described;
+a surprise one is not.** One line in option 1:
+
+> *This turns the weather and news panel off for everyone who signs in to this
+> PC, not just you. You are an administrator, so Windows lets you make that
+> choice.*
+
+**2. The Revert string is wrong and must change.** *measured, build line 6830:*
+
+```
+Revert = "Settings -> Personalization -> Taskbar -> Widgets -> On"
+```
+
+**That route cannot work after a policy write** -- the policy greys the toggle
+out. **And the honest replacement is not a registry edit**, which is no
+instruction to give a senior. It is Checkup itself:
+
+```
+Revert = "Run Checkup again and choose to keep Windows Widgets.
+          Windows Settings cannot undo this one, because the change
+          applies to every account on this PC."
+```
+
+**3. Option 3 has to actually remove the policy.** In the three-way question,
+*"Leave everything as it is"* is not enough on a machine where a previous run
+already wrote it. **On a re-run, choosing to keep Widgets must delete
+`AllowNewsAndInterests`** -- otherwise the tool offers a choice it cannot
+honour, which is the Tamper Protection shape again. *(A restart or an Explorer
+restart is needed for it to take effect; the screen should say so.)*
+
+**F6 ITEM, not built today.** The Revert string is a one-line replacement and
+the policy-removal path is a small addition, but ascii43 is mid-family and has
+never been field run. **Both are recorded here with the exact text ready.**
+
+---
+
 ## THE BUILD CHANGES THIS NEEDS
 
-### 1. STOP WRITING A MACHINE-WIDE RULE. THIS IS THE ONE THAT MATTERS.
+### 1. ~~STOP WRITING A MACHINE-WIDE RULE~~ -- WITHDRAWN 2026-08-24
+
+**Bill decided to keep the policy, and the per-user value turned out to be
+unwritable anyway. The section below is kept only so the reasoning is on the
+record; do not act on it.**
 
 *measured, build lines 6470-6472:* setting 14 writes
 `HKLM:\SOFTWARE\Policies\Microsoft\Dsh\AllowNewsAndInterests = 0`.
