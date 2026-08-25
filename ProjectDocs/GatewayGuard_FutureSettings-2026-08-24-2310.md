@@ -84,6 +84,17 @@ and answered twice.
   Win+L, look.**
 - **For launch:** the steps go in the guide and on the page, inside setting 14.
   **Automating it is the future candidate.**
+- **WINDOWS CHANGED THE DEFAULT, 2026-08-25.** *sourced,* KB5101684
+  (2026-07-28 preview, and **included in the mandatory KB5121003**,
+  2026-08-11): *"This update also simplifies the Lock screen Widgets
+  experience. For new users, Weather is now the only widget shown on the Lock
+  screen by default."* **This does not close C-3 and it does not change either
+  test machine** -- "for new users" leaves existing profiles alone, and both
+  machines measured at "Weather and more". What it changes is **the copy that
+  is not written yet**: the setting-14 steps must now hold for two starting
+  states, an older PC on "Weather and more" and a newer one on Weather only.
+  **Run the Win+L test AFTER updating**, so the answer is measured on the
+  build customers will actually have.
 
 ### C-4. Windows Update -- "Notify me when a restart is required"
 
