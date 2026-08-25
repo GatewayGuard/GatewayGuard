@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-24 16:04 ET -->
-<!-- Commit: bc78423 -->
+<!-- Generated: 2026-08-24 22:53 ET -->
+<!-- Commit: 6fb2a32 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-24 16:04 ET
-- **Commit at generation:** `bc78423`
-- **That commit was made:** 2026-08-24 11:32 ET
-- **Its subject line:** Remove the screenshot I should not have committed
+- **Generated:** 2026-08-24 22:53 ET
+- **Commit at generation:** `6fb2a32`
+- **That commit was made:** 2026-08-24 22:52 ET
+- **Its subject line:** No new settings before launch -- nineteen is the number
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -54,6 +54,7 @@ All paths are relative to `ProjectDocs/`.
 | Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii42run1-2026-08-21.md` | 2 |
 | Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii43-2026-08-22.md` | 2 |
 | Build plan (current) | `GatewayGuard_ascii43BuildPlan-2026-08-21.md` | 0 |
+| Future settings (candidate list) | `GatewayGuard_FutureSettings-2026-08-24-2310.md` | 0 |
 | Guide FT-220 sections | `GatewayGuard_GuideFT220-Sections-2026-08-21-1445.md` | 0 |
 | Cloud request | `GatewayGuard_CloudRequest-GuideRewrite-2026-08-21.md` | -- |
 | Cloud request | `GatewayGuard_CloudRequest-GuideSetting11-2026-08-21.md` | -- |

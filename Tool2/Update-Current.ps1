@@ -94,6 +94,11 @@ $wanted = @(
     # handoffs. All were tracked and synced but unnamed here, so Cloud could not
     # open them -- the exact failure this file exists to prevent.
     @{ Label = 'Build plan (current)';        Pattern = 'GatewayGuard_ascii*BuildPlan-*.md' },
+    # THE standing list of settings NOT in the product, added 2026-08-24 when
+    # Bill froze the count at nineteen for launch. It needs a row because a
+    # list nobody can find gets started again from scratch -- and a second
+    # list is how a rejected candidate comes back as a new idea.
+    @{ Label = 'Future settings (candidate list)'; Pattern = 'GatewayGuard_FutureSettings-*.md' },
     @{ Label = 'Guide FT-220 sections';       Pattern = 'GatewayGuard_GuideFT220-Sections-*.md' },
     # Cloud requests are distinct handoffs, not versions of one file, so ALL are
     # listed (Multi = newest-sorted), never just the newest one.
