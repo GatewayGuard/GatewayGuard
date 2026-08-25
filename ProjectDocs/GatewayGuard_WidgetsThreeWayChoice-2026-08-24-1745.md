@@ -188,14 +188,58 @@ their own PC.**
 
 ### THREE THINGS FOLLOW, AND THEY ARE NOT RE-ARGUING THE DECISION
 
-**1. Say it at the point of choice.** If the reasoning is that an administrator
-is deciding for everyone, then the screen should tell them that is what they
-are doing. **An informed machine-wide decision is the decision Bill described;
-a surprise one is not.** One line in option 1:
+**1. TELL THEM, AND GET THEIR APPROVAL. Bill, 2026-08-24:** *"We do need to
+tell him that is what he is doing and get his approval."*
 
-> *This turns the weather and news panel off for everyone who signs in to this
-> PC, not just you. You are an administrator, so Windows lets you make that
-> choice.*
+**Not a line of explanation -- a second, separate approval.** Telling someone
+what they are about to do and asking them to approve it are different things,
+and only the second makes it their decision. **This is the product's own
+promise applied to the one setting that reaches beyond the person using it.**
+
+**So option 1 leads to a confirmation screen of its own:**
+
+```
+  BEFORE CHECKUP TURNS WIDGETS OFF
+
+  This one is different from the others, so please read it.
+
+  Turning Widgets off here turns it off for EVERYONE who signs
+  in to this PC -- not only for you. Anyone else with an account
+  on this computer will lose the weather button too.
+
+  Windows lets you do that because you are an administrator.
+  It will not let them undo it from their own Settings.
+
+  If you change your mind later, run Checkup again and choose
+  to keep Widgets. That is the way back -- Windows Settings
+  cannot undo this one.
+
+  Is that what you want?
+
+  Y = Yes, turn Widgets off for everyone on this PC
+  N = No, take me back to the choices
+  B = Back
+```
+
+**Why the wording is shaped this way:**
+
+- **"This one is different from the others, so please read it."** A senior who
+  has approved eleven settings is not reading the twelfth. The screen has to
+  earn the pause.
+- **"EVERYONE who signs in to this PC -- not only for you."** The fact, in the
+  first sentence, in their words rather than ours.
+- **"It will not let them undo it from their own Settings."** The consequence
+  that is easiest to overlook and hardest to reverse. Saying it here is what
+  makes the approval informed.
+- **The way back is given before it is needed**, which is the no-dead-ends
+  rule.
+- **N returns to the three-way question**, not out of the setting. Someone who
+  balks at the machine-wide effect very likely wants option 2, and should land
+  where they can pick it.
+
+**This also settles what the log records:** not *"Widgets disabled"* but that
+the administrator approved a machine-wide change, with the date. **If anyone
+else on that PC ever asks why their weather went, the answer is in the log.**
 
 **2. The Revert string is wrong and must change.** *measured, build line 6830:*
 
