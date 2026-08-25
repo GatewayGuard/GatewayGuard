@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-24 22:53 ET -->
-<!-- Commit: 6fb2a32 -->
+<!-- Generated: 2026-08-25 14:01 ET -->
+<!-- Commit: cd1199f -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-24 22:53 ET
-- **Commit at generation:** `6fb2a32`
-- **That commit was made:** 2026-08-24 22:52 ET
-- **Its subject line:** No new settings before launch -- nineteen is the number
+- **Generated:** 2026-08-25 14:01 ET
+- **Commit at generation:** `cd1199f`
+- **That commit was made:** 2026-08-25 11:10 ET
+- **Its subject line:** Three no-reissue mechanisms tested -- and nobody ever accepts this agreement
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -71,14 +71,16 @@ All paths are relative to `ProjectDocs/`.
 | Pricing copy (website) | `GatewayGuard_PricingCopy-2026-08-22-1000.md` | 1 |
 | Annual price decision | `GatewayGuard_PriceDecision-Annual-2026-08-21-1445.md` | 0 |
 | Refund policy and terms | `GatewayGuard_Decisions-RefundAndTerms-2026-08-22-1510.md` | 0 |
-| Licence agreement (EULA) | `GatewayGuard_License-2026-08-24-1210-TEXT.md` | 3 |
+| Licence agreement (EULA) | `GatewayGuard_License-2026-08-25-1400-TEXT.md` | 4 |
+| Cloud working rules | `GatewayGuard_CloudWorkingRules-2026-08-25-1400.md` | 0 |
+| Cloud research brief (licence) | `GatewayGuard_CloudResearchBrief-Licence-2026-08-25-1400.md` | 0 |
 | Pricing reconciliation (one-time packs) | `PricingReconciliation-2026-07-16.md` | 0 |
 | Guide gap-fill (G1-G6, v9 source) | `GatewayGuard_GuideGapFill-fromV9-2026-08-22-1224.md` | 0 |
 | Guide section replacements (Cloud) | `GatewayGuard_GuideSectionReplacements-2026-08-23-0142.md` | 0 |
 | Marketing plan amendment | `GatewayGuard_MarketingPlanAmendment-2026-08-23-1816.md` | 3 |
 | Defect pass response | `GatewayGuard_DefectPassResponse-2026-08-22-1525.md` | 0 |
 | Website review (Bill, 19 pages) | `GatewayGuard_HtmlWebsiteReview-2026-08-22-2220.md` | 0 |
-| Cloud handoff (what Cloud was told) | `GatewayGuard_CloudHandoff-2026-08-23-1223.md` | 1 |
+| Cloud handoff (what Cloud was told) | `GatewayGuard_CloudHandoff-2026-08-25-0921.md` | 2 |
 | Offline scan research | `GatewayGuard_OfflineScanResearch-2026-08-21.md` | 0 |
 | AV scan coverage test | `GatewayGuard_AVScanCoverageTest-2026-08-21.md` | 0 |
 | Scheduled task defects (FT-203) | `GatewayGuard_ScheduledTaskDefects-2026-08-20.md` | 0 |
@@ -93,7 +95,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-08-23 09:25 to 22:50 [Claude Code -- CGDELL] -- THE GUIDE IS FINISHED. PACKS 1 AND 2 APPLIED, EVERY RETRIEVAL GAP CLOSED, PART H CUT ON RESEARCH
+## Session: 2026-08-24 01:41 to 2026-08-25 14:00 [Claude Code -- CGDELL] -- THE WEBSITE REVIEW CLOSED OUT, NINETEEN SETTINGS FROZEN, AND THE LICENCE FOUND TO BE A CONTRACT NOBODY IS EVER SHOWN
 ```
 
 **If it is not in your copy of the session log, you are reading an old

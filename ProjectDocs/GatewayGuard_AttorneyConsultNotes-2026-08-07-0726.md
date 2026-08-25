@@ -44,12 +44,25 @@ court.
 email first; follow with U.S. mail if there is no response.
 **PENDING -- attorney to supply specific language. Not yet received.**
 
-**(c) PC binding.** Attorney and Bill agree: binding a license to a
-specific PC is a bad idea and will generate a steady stream of support
-requests. Replace it with a **no-refund policy carrying defined
-exceptions** -- customer must submit their log plus meet stated
-conditions. **PENDING -- conditions to be determined by research into
-how comparable vendors handle this.**
+**(c) PC binding. CORRECTED 2026-08-25 -- this entry attributed to the
+attorney something only Bill said.** The line formerly read *"Attorney and
+Bill agree: binding a license to a specific PC is a bad idea."*
+
+**Bill's actual words, verbatim** (`GatewayGuard_AttorneyConsultNotes-Bill-VERBATIM-2026-08-04-1200-TEXT.md`,
+item 2c): *"PC Binding - I am uncomfortable with this as it may lead to many
+requests. Not a good idea. Re-write after Deep research on how others handle
+this with saying no refunds except under these certain conditions..."*
+
+**The attorney's only recorded comment on binding** is under the FTC Act entry
+below: test the clause against Section 5, 15 U.S.C. section 45, and he noted
+the statute says nothing about physical hardware. **That is not advice to
+remove it.**
+
+**RESOLVED 2026-08-25. Bill: "binding stays."** Binding is restored in licence
+v2.4, rewritten customer-first, and a licence move now carries a small fee.
+The no-refund-with-exceptions policy this entry proposed is **withdrawn** --
+superseded by the 30-day no-questions-asked refund of 2026-08-24. The FTC
+section 5 test is live again and is in the v2.4 appendix.
 
 **(d) Next-to-last sentence rewrite.** Bill's dictated edit is a splice,
 not a full replacement. Ellipses mark original wording that stays:

@@ -32,6 +32,269 @@ This is the shared memory between all Claude instances.
 ---
 ---
 
+## Session: 2026-08-24 01:41 to 2026-08-25 14:00 [Claude Code -- CGDELL] -- THE WEBSITE REVIEW CLOSED OUT, NINETEEN SETTINGS FROZEN, AND THE LICENCE FOUND TO BE A CONTRACT NOBODY IS EVER SHOWN
+
+**No build change. ascii43 untouched and still unfinished -- F4, the F5
+remnants and the F6 wording block are not built. Thirty-nine commits, all
+pushed. Licence advanced from v2.0 to v2.4.**
+
+---
+
+### THE FINDING THAT MATTERS MOST, AND IT WAS FOUND BY ACCIDENT
+
+Testing whether our EULA had a changes-to-terms clause meant asking what a
+change would be hung on -- a click-Accept. **So the assumption got measured.**
+
+***measured on ascii43, 2026-08-25:*** the strings **"license agreement"**,
+**"EULA"**, **"terms of use"**, **"accept the terms"** and **"I agree"** appear
+**nowhere in the build**. ***measured:*** **no page in `WebSite/` mentions a
+licence agreement at all.**
+
+**Nobody is ever shown this agreement, and nobody ever accepts it.** Every
+question in the refund consult presumes a contract the buyer entered into.
+
+**It has been on the critical path as five words since 24 July** -- task T-LP,
+*"Launch prep: pricing locked, Gumroad live, EULA posted"*, marked CRITICAL.
+**Posted is not accepted.** It is now the first question of the attorney call
+and an appendix entry in the licence itself.
+
+**How it was missed for a month:** the task named the artifact, not the
+mechanism. A one-word difference between "posted" and "accepted" is invisible
+in a plan row and decisive in a contract.
+
+---
+
+### 1. THE WEBSITE REVIEW -- BILL'S 19 PAGES, CLOSED
+
+Item 2 (Action taken wording), item 3 (heading rename), item 9 ("(recommended)"
+removal) and item 17 (three tag lines) applied to all 19 HTML pages through
+`Tool2/apply_item2_copypass_2026-08-24.py`, assert-guarded, every anchor
+verified before writing.
+
+**Item 17's audit was incomplete and the gap was real.** The tag and Action
+lines were checked; the **Found** line was not. `periodic-scanning.html`'s
+Found line was false. Fixed.
+
+`widgets.html` lost two false claims and gained a closed revert path.
+
+**Q2 answered and it unblocks F4:** Checkup can run the full scan after the
+offline scan, **with approval**. `Start-MpScan -ScanType FullScan -AsJob`.
+
+**Q7 answered:** Device Encryption does **not** require a Microsoft account,
+and CGDELL is the proof. That was one of my wrong assertions, killed by the
+machine on the desk.
+
+**Q8 and items 8, 13, 14, 15, 19, 20 answered.** Item 15 found a bigger problem
+than the one it asked about. Item 14 found the build was right and the page was
+lying.
+
+---
+
+### 2. THE NINETEEN SETTINGS ARE FROZEN
+
+**Bill, 2026-08-24: "Made a decision tonight, we are not going to add any new
+settings."** Nineteen is the number for launch.
+
+Candidates and rejections are recorded in
+`ProjectDocs/GatewayGuard_FutureSettings-2026-08-24-2310.md`, a standing
+document with a `CURRENT.md` row -- six candidates, four rejections.
+
+**Two decisions inside that:**
+
+- **The machine-wide policy stays.** Bill: *"the person on the computer has
+  admin permissions and therefore has decided to implement this policy for all
+  users on this pc."*
+- **And it needs its own approval.** Bill: *"We do need to tell him that is
+  what he is doing and get his approval."* A warning line is not consent.
+
+**A recommendation of mine died here.** I proposed switching setting 14 to
+`TaskbarDa` without testing it. Bill: *"research the two probably nots."* The
+test threw *"Attempted to perform an unauthorized operation"* while elevated.
+**Withdrawn.** The registry value is protected and cannot be written.
+
+---
+
+### 3. THE WIDGETS WORK, AND A CORRECTION BILL HAD TO MAKE TWICE
+
+All six SANDY measurements answered, plus Cloud's four. **Two of three
+arguments did not survive contact with the evidence.**
+
+**I compressed three separate Widgets settings into one sentence and Bill read
+it as "the toggle is gone."** It is not -- left-click the taskbar, Settings,
+and it is there. A disambiguation table now separates the three.
+
+**And I copied his personal screenshot into `Test_Results\` claiming it made it
+project-visible.** Wrong twice: `Test_Results\` is outside the connector scope,
+which I had stated correctly twenty minutes earlier, **and Cloud cannot read
+images at all.** Removed.
+
+**Standing instruction, recorded permanently:** *"don't ever remove any they
+are all saved and safe in print and two digital storage devices."* **Never
+delete a BitLocker recovery key protector on any machine. Do not propose it, do
+not ask about it.** Also written to auto-memory.
+
+---
+
+### 4. THE 30-DAY REFUND, AND EVERYTHING IT TOUCHED
+
+Section 9 rewritten to **30 days, no questions asked** --
+`Tool2/rewrite_license_section9_2026-08-24.py`, which also caught the change-log
+paragraph and its own over-broad read-back check. The website says so too.
+
+**Gumroad:** the refund toggle is **per-product**, not account-wide -- settled
+from Bill's own screenshots, which resolves a contradiction the 22 August
+decision document could not. **Two products, two toggles.** Full field-by-field
+listing copy written for both.
+
+**And the payout method is not connected**, which blocks publishing. It was not
+on any list. It is now.
+
+---
+
+### 5. THE LICENCE -- v2.0 TO v2.4, AND FOUR ANALYSES
+
+**Cloud's v2.2 reviewed.** Cloud caught a real defect in my file: the phrase
+*"withdrawn on the attorney's advice and Bill's judgment"* was **an invented
+attribution**. The attorney's only recorded comment on binding was to test it
+against FTC Act section 5. **I rewrote Section 9 and change-log entry 2 and read
+straight past entry 1.** Same shape as the hover-to-open error the day before:
+**the rule is not "verify what you write", it is "verify what you carry."**
+
+**Our licence measured against standard EULA practice** -- stronger than typical
+on scope, weaker on identification, and the biggest problem (eight internal
+DECISION NEEDED callouts inside a customer contract) is one the standard does
+not mention because no shipped EULA has it.
+
+**Gemini's three no-reissue mechanisms tested.** Two fail, one passes.
+**Mechanism 2 is the one I had wrongly said we were failing -- withdrawn.**
+Bill's own question killed my recommendation to name the version: naming v3.1
+is exactly what forces a reissue at v3.2.
+
+**And I had written a false promise into the Gumroad listing** -- *"Free updates
+within the same version"*, which the licence did not grant. Corrected, and v2.4
+now grants it so the store and the contract agree.
+
+---
+
+### 6. LICENCE v2.4 BUILT -- `Tool2/build_license_v24_2026-08-25.py`
+
+**Option A confirmed:** Cloud's changes 1-9 applied to the 1210 master, so the
+authoring lineage is unbroken. Cloud's `.docx` is reference only and is not
+committed. **Cloud's provenance caveat is resolved -- the twin did match the
+master.**
+
+**42 assert-guarded changes. Master:
+`Masters/GatewayGuard_License-2026-08-25-1400.docx`, 122 paragraphs, zero
+replacement characters. Twin regenerated.**
+
+| What | Why |
+|---|---|
+| **Binding stays** | Bill, 2026-08-25. Cloud's customer-first rewrite kept in full |
+| Licence moves carry **a small fee** | Bill's own note typed into the v2.2 file |
+| **New Section 12, Changes to This Agreement** | On the 4 August list, never reached. Old 12/13/14 became 13/14/15 |
+| Section 2: **Fixes to your version** | Corrections free, new annual version a separate purchase |
+| Section 1: **components and log ownership** | Launcher, five Guide print sizes, and the log file belongs to the buyer |
+| Section 8: **two third-party paragraphs** | Checkup opens Malwarebytes and changes Microsoft's settings; nothing disclaimed either |
+| `can change` -> `may change`, both places | Bill's note |
+| Section 14 vs Section 9 contradiction | **Flagged, not patched.** A carve-out is the hedge the 22 August decision warns against |
+
+**THE ONE PLACE CLOUD'S WORDING WAS NOT USED, AND WHY.** Cloud's Section 2 said
+*"and from then on it runs on that computer."* ***measured on ascii43:***
+`Get-MachineIdentity` (line 3140) computes a hash, displays it, writes it to the
+log, **and never compares it to anything.** The build's own comment at line 3139
+reads *"Same fingerprint concept planned for licensing."* **Checkup runs on any
+PC, every time.**
+
+Binding stays as instructed. The clause now reads *"your license belongs to that
+computer"* -- **a statement about the licence, which is true**, rather than
+about the software, which is not. **The gap is recorded in a DECISION NEEDED in
+the same section rather than hidden.**
+
+**Two of my own defects were caught by the script's read-back, not by me:** the
+new Section 12's body landed after the wrong heading, and change-log entry 4
+still pointed at the old severability number. **The read-back now checks
+paragraph order, not just presence.**
+
+---
+
+### 7. WHAT WAS FOUND IN A FILE NOBODY MENTIONED
+
+`ProjectDocs/GatewayGuard_License-2026-08-25-0921.docx` **would not open --
+permission denied. It is open in Word.** A scratchpad copy read fine, and it
+carries **four instructions Bill typed into it**, plus a version bump to 2.3:
+
+| Typed note | Status |
+|---|---|
+| *"We will reissue for a small fee."* | **Applied** in v2.4 |
+| *"Say MS may change"* | **Applied**, both places |
+| *"No bundles initially - remove mention of them just make sure it covers all sold copies."* | **Not applied -- ambiguous.** Attached to the refund entry; "bundles" may mean the Checkup+Guide bundle or the multi-PC packs, and the two read differently |
+| *"Remove"* (after the programs-review entry) | **Not applied -- ambiguous.** Could mean remove Section 7 or remove that change-log entry. Removing a whole section on one word is not a call to make from a margin note |
+
+**The lesson is not about the notes. It is that they were found by opening a
+file nobody had pointed at.** Session-start step 7 -- check the four Cloud
+folders -- exists for exactly this, and it is why it is a step and not a
+suggestion.
+
+---
+
+### 8. TWO NEW STANDING DOCUMENTS FOR CLOUD
+
+**`GatewayGuard_CloudWorkingRules-2026-08-25-1400.md`** -- nine rules and a
+paste-in block, written because v2.2 was reconstructed from a twin Cloud could
+read instead of a master it could not. **Neither failure was carelessness. Both
+were the predictable result of working from what was reachable rather than what
+was current.** The one-line version: **name your base from `CURRENT.md`, say how
+you read it, and never carry a factual sentence forward without naming what you
+checked it against.**
+
+**`GatewayGuard_CloudResearchBrief-Licence-2026-08-25-1400.md`** -- fourteen
+research questions in five parts, with acceptance mechanics first because
+everything else assumes it.
+
+---
+
+### 9. TOOLS BUILT THIS SESSION
+
+| Script | What it does |
+|---|---|
+| `Tool2/apply_item2_copypass_2026-08-24.py` | The four-item copy pass across 19 HTML pages |
+| `Tool2/Set-StayAwake-2026-08-24.ps1` + `.bat` | Power settings with undo |
+| `Tool2/Turn-DisplayOff-2026-08-24.ps1` + `.bat` | Screen blackout on demand, 5-second countdown |
+| `Tool2/Check-SandyQuestions-2026-08-24.ps1` + `.bat` | Ten read-only measurements in one run |
+| `Tool2/rewrite_license_section9_2026-08-24.py` | The 30-day refund rewrite |
+| `Tool2/build_license_v24_2026-08-25.py` | Licence v2.4, 42 assert-guarded changes |
+
+**A defect of mine in the stay-awake script:** the undo file was overwritten on
+every run, so the second run destroyed the real values. Recovered from git
+`e59f3cb`; a first-run-owns-the-file guard added. **Bill lost time to my bug,
+not to his.**
+
+---
+
+### WHAT IS STILL OPEN
+
+**Bill's jobs, off the keyboard:**
+1. **Connect the Gumroad payout method.** Blocks publishing. Critical path.
+2. Set both refund toggles to 30 days -- **two products, two toggles**.
+3. Buy your own product with a real card, then refund it. **Nobody has ever
+   bought anything from the store.**
+4. Un-pause Windows Update on both machines.
+5. The Win+L test for `LockScreenWidgetsEnabled`.
+
+**Decisions only Bill can make:**
+6. The two ambiguous typed notes in section 7 above.
+7. The amount of the licence-move fee.
+
+**Build, tomorrow, to ascii44:** F6 wording block, F4 full scan, F5 remnants,
+setting 1 pause detection, setting 14 three-way plus the Revert string,
+setting 6 rename, then gates 12 / 12b / 24 / 25 and the increment.
+
+**Attorney:** the revised refund-and-Gumroad consult, with **how a buyer accepts
+this agreement** promoted to question one.
+
+---
+---
+
 ## Session: 2026-08-23 09:25 to 22:50 [Claude Code -- CGDELL] -- THE GUIDE IS FINISHED. PACKS 1 AND 2 APPLIED, EVERY RETRIEVAL GAP CLOSED, PART H CUT ON RESEARCH
 
 **No build change. ascii43 untouched. Guide 1,074 -> 1,976 lines, zero gaps.

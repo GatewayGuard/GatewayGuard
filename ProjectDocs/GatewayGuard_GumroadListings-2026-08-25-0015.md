@@ -110,7 +110,8 @@ sign-up, nothing to install.
 WHAT YOU GET
 
 Checkup v3.1, for one PC. A log of every choice you made, saved on
-your own computer. Free updates within the same version.
+your own computer. If we issue a fix for the version you bought, it
+is free.
 
 Using more than one PC? There are packs for 3, 5 and 10 at
 gatewayguard.co -- that is .co, not .com.
@@ -264,6 +265,14 @@ bans page counts*, and the Guide's own count has moved twice this month.
 **"Plain text you can read", never "open source".** That term requires a public
 repository and an OSI licence, and this repository is private. **Banned claim,
 and Gumroad's Discover page is exactly where someone would check.**
+
+**"If we issue a fix ... it is free" replaced "Free updates within the same
+version" on 2026-08-25.** The original line promised a right the licence did not
+grant -- the same store-promises-more-than-the-contract defect as the website's
+Tamper Protection claim, and I wrote it. Licence v2.4 now grants free
+corrections to the version you bought, in Section 2 under **Fixes to your
+version**, so the store line is true as written and matches the contract word
+for word.
 
 **No mention of the annual update in either description.** It is a separate
 product at $12.99 a year, and putting it in the sales copy for a one-time

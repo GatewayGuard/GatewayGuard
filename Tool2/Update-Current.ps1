@@ -161,6 +161,17 @@ $wanted = @(
     # as an open decision. Both were in ProjectDocs. Nothing compared them,
     # because one of the two could not be opened by name.
     @{ Label = 'Licence agreement (EULA)';    Pattern = 'GatewayGuard_License-*-TEXT.md' },
+    # Added 2026-08-25. The rules Cloud reads BEFORE writing anything -- name
+    # your base from CURRENT.md, say how you read it, never carry a factual
+    # sentence forward without naming what you checked it against. Written after
+    # licence v2.2 was reconstructed from a twin because the .docx master could
+    # not be opened, and carried a sentence from a superseded draft that
+    # attributed to the attorney something he never said.
+    @{ Label = 'Cloud working rules';         Pattern = 'GatewayGuard_CloudWorkingRules-*.md' },
+    # Added 2026-08-25. The fourteen licence research questions, acceptance
+    # mechanics first -- because measured on ascii43, nobody is ever shown this
+    # agreement and nobody ever accepts it.
+    @{ Label = 'Cloud research brief (licence)'; Pattern = 'GatewayGuard_CloudResearchBrief-*.md' },
     @{ Label = 'Pricing reconciliation (one-time packs)'; Pattern = 'PricingReconciliation-*.md' },
     # The v9 extraction that CLOSES retrieval gaps G1-G6 in the guide rewrite
     # draft. Built and committed 2026-08-22 12:24 -- and unnamed here, so Cloud
