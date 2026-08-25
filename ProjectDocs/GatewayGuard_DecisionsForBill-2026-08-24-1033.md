@@ -182,7 +182,16 @@ tab on a disabled device. **That makes it the strongest "what Checkup does for
 you" example in the guide** -- not a convenience, but something the reader
 genuinely cannot do by hand.
 
-## 8. Q4 -- WHICH BUILD GETS THE TWO NEW SETTINGS?
+## 8. ~~Q4 -- WHICH BUILD GETS THE TWO NEW SETTINGS?~~ **CLOSED 2026-08-24 -- NEITHER**
+
+> **Bill, 2026-08-24 evening:** *"we are not going to add any new settings."*
+> **Nineteen is the number for launch.** Cloud protection and automatic sample
+> submission are **out**, and on the future list. This reverses the *"Add
+> them"* answer given earlier the same day -- a timing decision, not a merit
+> one. Authority: `GatewayGuard_Decision-NoNewSettings-2026-08-24-2255.md`.
+> **The question below is superseded and kept only for its reasoning.**
+
+### Superseded -- Q4, which build gets the two new settings?
 
 You answered *"Add them"* for cloud protection and automatic sample submission.
 That takes Checkup from **19 settings to 21** and touches the build, the guide
