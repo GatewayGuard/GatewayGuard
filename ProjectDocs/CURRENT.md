@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-25 16:18 ET -->
-<!-- Commit: 70058ee -->
+<!-- Generated: 2026-08-26 03:07 ET -->
+<!-- Commit: dd65fa5 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-25 16:18 ET
-- **Commit at generation:** `70058ee`
-- **That commit was made:** 2026-08-25 14:02 ET
-- **Its subject line:** Licence v2.4 -- binding stays, and the contract nobody is ever shown
+- **Generated:** 2026-08-26 03:07 ET
+- **Commit at generation:** `dd65fa5`
+- **That commit was made:** 2026-08-26 03:07 ET
+- **Its subject line:** Session close -- Cloud's research was never committed, and a Windows update that changes nothing
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -62,6 +62,7 @@ All paths are relative to `ProjectDocs/`.
 | Cloud request | `GatewayGuard_CloudRequest-Review-2026-08-21.md` | -- |
 | Cloud request | `GatewayGuard_CloudRequest-ResearchBlock-2026-08-24-0222.md` | -- |
 | Cloud research (delivered) | `GatewayGuard_CloudResearch-WidgetsAndAccessibility-2026-08-24-1015.md` | -- |
+| Cloud research (delivered) | `GatewayGuard_CloudResearch-Licence-2026-08-25-1435.md` | -- |
 | Review of Cloud research | `GatewayGuard_ReviewOfCloudResearch-2026-08-24-1105.md` | -- |
 | Marketing plan (current) | `GatewayGuard_MarketingPlan-2026-08-22-1000.md` | 3 |
 | Guide rewrite draft (current) | `GatewayGuard_GuideRewrite-Draft-2026-08-22-1000.md` | 2 |
@@ -74,8 +75,8 @@ All paths are relative to `ProjectDocs/`.
 | Licence agreement (EULA) | `GatewayGuard_License-2026-08-25-1400-TEXT.md` | 4 |
 | Cloud working rules | `GatewayGuard_CloudWorkingRules-2026-08-25-1400.md` | 0 |
 | Cloud research brief (licence) | `GatewayGuard_CloudResearchBrief-Licence-2026-08-25-1400.md` | 0 |
-| Note to Cloud (session close) | `GatewayGuard_NoteToCloud-2026-08-25-1620.md` | 0 |
-| Everything waiting on Bill | `GatewayGuard_DecisionsForBill-2026-08-25-1620.md` | 1 |
+| Note to Cloud (session close) | `GatewayGuard_NoteToCloud-2026-08-26-0302.md` | 1 |
+| Everything waiting on Bill | `GatewayGuard_DecisionsForBill-2026-08-26-0302.md` | 2 |
 | Pricing reconciliation (one-time packs) | `PricingReconciliation-2026-07-16.md` | 0 |
 | Guide gap-fill (G1-G6, v9 source) | `GatewayGuard_GuideGapFill-fromV9-2026-08-22-1224.md` | 0 |
 | Guide section replacements (Cloud) | `GatewayGuard_GuideSectionReplacements-2026-08-23-0142.md` | 0 |
@@ -97,7 +98,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-08-24 01:41 to 2026-08-25 16:20 [Claude Code -- CGDELL] -- THE WEBSITE REVIEW CLOSED OUT, NINETEEN SETTINGS FROZEN, AND THE LICENCE FOUND TO BE A CONTRACT NOBODY IS EVER SHOWN
+## Session: 2026-08-25 16:41 to 2026-08-26 03:02 [Claude Code -- CGDELL] -- A WINDOWS UPDATE MEASURED AGAINST THE BUILD, AND CLOUD'S RESEARCH FOUND SITTING OUTSIDE THE REPOSITORY
 ```
 
 **If it is not in your copy of the session log, you are reading an old
