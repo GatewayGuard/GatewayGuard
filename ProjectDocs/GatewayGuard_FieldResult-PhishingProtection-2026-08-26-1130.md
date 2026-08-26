@@ -91,9 +91,34 @@ fourth alone. This is **D-18** -- reuse the words on the user's own screen --
 and `NotifyUnsafeApp` already carries an FT-142 comment (line 5975) warning that
 the registry name and the screen label differ.
 
-**Not measured: the exact wording of the fourth box beyond its opening,
-"Automatically collect".** Get the full label before writing the replacement
-line, so the instruction can name it exactly.
+### The fourth box, in full -- measured 2026-08-26
+
+Bill, reading it off the screen:
+
+> **"Automatically collect website or app content when additional analysis is
+> needed to help identify security threats"**
+
+**Read that against settings 11 and 12.** It is not a telemetry counter or a
+crash report. It sends **website and app content** to Microsoft. Whatever was on
+the screen.
+
+**So the gap between setting 6's instruction and the product's own position is
+wider than "a privacy setting."** Setting 12 exists to hold Microsoft to
+*"basic device information, error reports, and update-related data"*
+(`diagnostic-data.html`). Box four opts back in to content. **A user who follows
+line 6406 literally can undo the point of setting 12 three settings earlier in
+the same run.**
+
+**Replacement wording for line 6406, using the literal on-screen labels:**
+
+> `3. Under Phishing protection, turn ON the three "Warn me about" boxes.`
+> `4. Leave the fourth box OFF -- "Automatically collect website or app`
+> `   content..." sends your screen contents to Microsoft. Checkup does not`
+> `   turn it on and does not need it.`
+
+**Length is not free** -- `Write-Host` lines here are inside the manual-steps
+block, not a `Write-GGBox`, so the box-width rule (FT-117 / FT-122) does not
+apply. The 26-line screen limit does. **Count the screen before committing.**
 
 ---
 
