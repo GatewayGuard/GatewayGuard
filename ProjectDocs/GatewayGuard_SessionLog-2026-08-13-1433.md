@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-08-23 22:50 ET
+- **Last Modified:** 2026-08-26 03:02 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -28,6 +28,196 @@ OneDrive\GatewayGuard at session end.
 **Bill:** Download this file at the end of every session.
 Upload it to the Claude project immediately after downloading.
 This is the shared memory between all Claude instances.
+
+---
+---
+
+## Session: 2026-08-25 16:41 to 2026-08-26 03:02 [Claude Code -- CGDELL] -- A WINDOWS UPDATE MEASURED AGAINST THE BUILD, AND CLOUD'S RESEARCH FOUND SITTING OUTSIDE THE REPOSITORY
+
+**No build change. ascii43 untouched -- still half built, still never field
+run. Two commits. One research task, one document edit, and one repair of a
+process failure from the session before.**
+
+---
+
+### 1. THE THING THAT SHOULD NOT HAVE NEEDED FINDING
+
+***measured at session start, `git status`, 16:41:***
+`ProjectDocs/GatewayGuard_CloudResearch-Licence-2026-08-25-1435.md` --
+**1,261 lines, Cloud's answers to all fourteen licence questions -- was
+UNTRACKED.** On disk since 14:35, in no commit, therefore in no push,
+therefore in no sync.
+
+**The previous session closed at 16:20, an hour and forty-five minutes after
+Cloud delivered it, without committing it.**
+
+**Step 4 of GETTING A FILE TO CLAUDE CLOUD is Claude Code's:** commit it, push
+it, verify the push landed. **The rule was rewritten on 2026-08-25 -- that
+same day -- specifically because the old version left the handoffs out**, and
+it says in as many words: *"A file can sit in `ProjectDocs\` indefinitely
+while everyone believes it is done."*
+
+**It then happened, that day, to the largest file of the day.** Writing a rule
+is not running it. **Committed and pushed this session.**
+
+---
+
+### 2. WHAT WAS IN IT, AND IT CLOSED THE ITEM WITH THE DEADLINE
+
+Reading it changed Bill's list rather than just adding to it.
+
+**Item 5 -- "how does a buyer accept the licence" -- is no longer a decision
+and no longer gates the build.** *Sourced, Cloud, from Gumroad's help
+documentation:* Gumroad checkout supports a **Terms** custom field taking the
+URL of the seller's terms, **which customers must accept before purchasing.**
+**A form field, not a build change.** The build freeze was never waiting on it.
+
+**And the position is worse than "not done yet".** *Sourced,
+`gumroad.com/terms` 6.7 and 6.9(c):* the supplier **shall provide** the end
+user licence terms, authorises Gumroad to present them **in a manner that
+creates a binding contract**, and **warrants they are correct and current.**
+**We have supplied none while giving the warranty.** Cloud's framing --
+*"the position today is not neutral, it is negative"* -- is carried into Bill's
+list unsoftened.
+
+**A dated item nobody had flagged, and outside what the brief asked:** Gumroad's
+terms were last updated **2026-08-17** and existing accounts become bound
+**2026-09-16**. **Launch is 2026-09-01.** Bill sells his first copies under
+terms his account is not bound by for another fifteen days.
+
+**One thing Cloud handed back and it is not done:** establish what a licence
+move *operationally consists of* before a price is attached. ***measured on
+ascii43, unchanged:*** `Get-MachineIdentity` (line 3140) computes a hash,
+displays it, logs it, **and never compares it to anything.**
+
+---
+
+### 3. THE WINDOWS UPDATE -- AND THE PAGE BILL SENT WAS NOT THE UPDATE HE WOULD GET
+
+Bill asked what the pending update changes for Checkup, linking the **2026-07-28
+preview KB5101684**. The link carried a stray character and 404'd; the real page
+answered.
+
+***measured on CGDELL:*** `26200.8875`, 25H2 Pro = **KB5101650, 2026-07-14.**
+*Sourced,* Windows 11 release information:
+
+| KB | Build | Date | Type |
+|---|---|---|---|
+| KB5101650 | 26200.8875 | 2026-07-14 | where CGDELL sat |
+| KB5101684 | 26200.8973 | 2026-07-28 | **optional preview -- the page sent** |
+| **KB5121003** | **26200.9168** | **2026-08-11** | **mandatory -- what he gets** |
+
+*Sourced, KB5121003:* it **"includes KB5101684, KB5121767, KB5101650."** So the
+preview's contents land regardless; it was never a choice between them. **And
+CGDELL was a full month behind on a security update**, which is what "Windows
+Update is paused" had been costing.
+
+**The answer: no build change needed.** Three changed areas, each checked
+against source rather than reasoned about:
+
+- **Lock screen Widgets** -- *"For new users, Weather is now the only widget
+  shown on the Lock screen by default."* ***measured on ascii43:*** setting 14
+  writes `Policies\Microsoft\Dsh` (line 5631), the **taskbar** board, and its
+  Revert string names `Settings -> Personalization -> Taskbar -> Widgets`
+  (line 6830). ***measured:*** **zero occurrences of "lock screen" in the build,
+  the guide draft, or `widgets.html`.** Nothing shipped is made wrong.
+- **Secure Boot certificates** -- changes certificates, not the on/off state,
+  which is all Checkup reads (lines 4098-4124, FT-143, reported never changed).
+  CGDELL read OFF and will read OFF.
+- **Drop Tray removed, with its setting under Settings > System >
+  Multitasking** -- ***measured:*** zero occurrences of "multitasking", "Drop
+  Tray" or "Drag Tray" in the build, in all 20 website pages, or in the guide
+  draft.
+
+**Also checked clear:** Defender, BitLocker, Device Encryption, TPM, Memory
+integrity, advertising ID, Edge, scheduled tasks, PowerShell and console host
+(FT-63), Settings page names.
+
+**WHAT IT DOES TOUCH IS COPY THAT DOES NOT EXIST YET.** `FutureSettings` C-3
+says the lock-screen steps go in the guide and on the page at launch, inside
+setting 14. **Those steps must now hold for two starting states** -- an older PC
+on *"Weather and more"*, a newer one on Weather only. **Neither test machine
+changes**, because "new users" leaves existing profiles alone, so **the Win+L
+test of `LockScreenWidgetsEnabled` is still needed** -- and should be run
+**after** the update, so it describes the Windows customers will have. **C-3
+records this, assert-guarded, commit `0a2bdb5`.**
+
+**A low-priority gap, flagged as a gap and not a defect:** July adds *"Windows
+Hello now supports peripheral fingerprint sensors via Enhanced Sign-in
+Security."* `windows-hello.html` line 142 says *"If they are grayed out, your
+PC hardware does not support them."* A USB reader is now a supported route the
+page does not mention. Incomplete, not false. Worth a sentence next time that
+page is open.
+
+**A known issue worth knowing but not ours:** KB5121003 breaks some games on
+PCs with `inpoutx64` RGB lighting drivers. ***measured:*** no reference to it
+anywhere in this project.
+
+---
+
+### 4. WHAT WENT RIGHT, AND IT IS THE SAME MECHANISM TWICE
+
+**The first explanation that fit was not taken as the answer, in both halves of
+the session.**
+
+On the update: the obvious move was to read the linked page and answer from it.
+**Checking what CGDELL actually ran first is what revealed the linked preview
+was superseded** -- one `Get-CimInstance` and one release-information table.
+
+On the lock screen: "Windows changed the widget default, Checkup has a widgets
+setting, therefore Checkup is affected" is the conclusion that fits. **Grepping
+for which registry key setting 14 actually writes is what showed the two are
+different features.** Ten seconds, and it inverted the answer.
+
+**Neither needed judgment. Both needed one measurement before the sentence.**
+
+---
+
+### 5. WHAT WAS PRODUCED
+
+| File | What |
+|---|---|
+| `GatewayGuard_FutureSettings-2026-08-24-2310.md` | C-3 records the Windows default change; assert-guarded insert, read back |
+| `GatewayGuard_NoteToCloud-2026-08-26-0302.md` | Cloud's research acknowledged and acted on; the untracked-file failure explained as mine |
+| `GatewayGuard_DecisionsForBill-2026-08-26-0302.md` | Nine items became nine; item 5 moved from decision to job, two new rows from Cloud |
+
+---
+
+### WHAT IS STILL OPEN
+
+**Bill's jobs, off the keyboard:**
+1. **Connect the Gumroad payout method.** Still blocks publishing.
+2. **Add the licence as a Terms field at checkout, on both products** -- and
+   confirm the field exists in his account, which Cloud could not.
+3. Set both refund toggles to 30 days -- **two products, two toggles**.
+4. Buy his own product with a real card, then refund it.
+5. **After the reboot: `winver` on both machines** -- SANDY's has never been
+   measured -- **and the Win+L lock-screen test.**
+
+**AND ONE FOUND BY THE HEALTH CHECK, NOT BY BEING TOLD.** Section 3 of
+`Check-RepoHealth` listed a modified file nobody had touched this session:
+***measured, `git diff`:*** `ProjectDocs/Q2 - Checkup offers to run windows.txt`
+gained **Item 24** -- *"Deep Research and them implement their
+suggestions/functionality for our documents, the website and maybe Checkup if
+available in PS mode."* **Committed as typed, not acted on.** Two readings --
+run a new deep-research pass, or implement the research Cloud already delivered
+-- and *"if available in PS mode"* is not clear at all. **Same shape as the
+licence margin notes, same decision: flag, do not guess.** It is item 10 on
+Bill's list.
+
+**Decisions only Bill can make:**
+6. The two ambiguous typed notes in the licence file.
+7. The licence-move fee amount, and where the buyer learns it.
+8. **New:** Gumroad's terms change binding his account 2026-09-16, fifteen days
+   after launch. One question for the attorney, and worth reading the diff.
+
+**Mine, before the wording ships:** establish what a licence move operationally
+consists of.
+
+**Build, next session, to ascii44:** F6 wording block (now also carrying the
+non-blocking licence notice line), F4 full scan, F5 remnants, setting 1 pause
+detection, setting 14 three-way plus the Revert string, setting 6 rename, then
+gates 12 / 12b / 24 / 25 and the increment.
 
 ---
 ---
