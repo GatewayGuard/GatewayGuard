@@ -130,6 +130,17 @@ the same "absent = default" assumption recorded in `CLAUDE.md` as having broken
 on Edge settings on the second machine. **Any check that reads this family of
 values must treat absent as unknown, never as disabled.**
 
+**A likely cause surfaced later the same day, and it does not weaken the rule.**
+***measured 17:03:*** CGDELL installed **KB5121003 on 2026-08-26**, and the
+Lock Screen key's last write is **2026-08-26 04:16:03**. **An update plausibly
+removed the value.** *Inferred, not measured* -- the key's write time covers any
+value in it, so it cannot name which one changed.
+
+**Either way the conclusion is the same, and it is the more important half:
+a value can go from present to absent without the user touching anything, while
+the feature it names stays on.** Whether Windows Update did it or something
+else, a check that reads absent as "off" reports a state that was never true.
+
 ---
 
 ## 5. BOTH REMAINING GAPS CLOSED ON SANDY, 90 MINUTES LATER
@@ -180,11 +191,16 @@ Local account (`Panther`). `TaskbarDa = 1`, `WidgetService` running, the
 **Recorded here because the runs were taken for the widgets question and these
 came free. Each one changes something already on a list.**
 
-- **SANDY's Windows Update is NOT paused.** ***measured:*** all four values --
-  `PauseUpdatesStartTime`, `PauseUpdatesExpiryTime`, `PauseFeatureUpdatesEndTime`,
-  `PauseQualityUpdatesEndTime` -- are **absent**. The standing job says "un-pause
-  Windows Update on **both** machines." **It is one machine: CGDELL**, paused
-  2026-08-01 to 2026-09-06, which spans the 2026-09-01 launch.
+- **~~SANDY's Windows Update is NOT paused, CGDELL still is.~~ CLOSED THE SAME
+  DAY -- NEITHER MACHINE IS PAUSED.**
+  ***measured on SANDY 11:14:*** all four `Pause*` values **absent**. This
+  document then said the standing "un-pause **both** machines" job was really
+  one machine, CGDELL, paused to 2026-09-06 -- **five days after launch.**
+  ***measured on CGDELL 17:03 the same afternoon:*** all six `Pause*` values
+  **absent**, and **KB5121003 installed 2026-08-26** -- the mandatory update
+  CGDELL had been a month behind on at 26200.8875.
+  **Both machines: 25H2, build 26200.9168.** CGDELL Pro, SANDY Home. The job is
+  closed and the launch-spanning pause is gone.
 
 - **Setting 6 cannot apply on either machine.** ***measured on SANDY:***
   `WTDS\Components` returns **"CANNOT READ -- Requested registry access is not

@@ -349,9 +349,18 @@ intended.**
 
 **Two things about SANDY that are NOT problems, so you do not go looking:**
 
-- **Windows Update is not paused on SANDY.** ***measured:*** all four `Pause*`
-  values absent. **CGDELL is the paused one** (2026-08-01 to 2026-09-06, which
-  spans launch). The standing job says "both machines" -- it is one.
+- **Windows Update is not paused on either machine, and both are current.**
+  ***measured on SANDY 11:14 and CGDELL 17:03, 2026-08-26:*** every `Pause*`
+  value **absent** on both, and both sit on **25H2, build 26200.9168** (CGDELL
+  Pro, SANDY Home). CGDELL took **KB5121003** on 2026-08-26 -- the mandatory
+  update it had been a month behind on at 26200.8875.
+  - *(**This bullet said at 12:40 that CGDELL was still paused to 2026-09-06,
+    five days after launch.** Bill cleared it the same afternoon. Corrected
+    rather than left, because a stale warning sends someone to fix what is
+    already fixed.)*
+  - **So the two machines now differ only by edition.** A defect that appears on
+    one and not the other is an edition difference or a real bug -- it is no
+    longer explainable by patch level.
 - **SANDY's unencrypted state is intact.** ***measured:*** TPM True/True/True,
   `PreventDeviceEncryption = 0`, **C: and D: both `FullyDecrypted`, key
   protectors NONE.** PART C's point stands: walking the encryption screens on
