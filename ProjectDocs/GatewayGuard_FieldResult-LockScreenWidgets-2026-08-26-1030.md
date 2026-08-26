@@ -132,12 +132,90 @@ values must treat absent as unknown, never as disabled.**
 
 ---
 
-## 5. WHAT IS STILL NOT MEASURED
+## 5. BOTH REMAINING GAPS CLOSED ON SANDY, 90 MINUTES LATER
 
-- **Whether the Settings toggle is what writes `LockScreenWidgetsEnabled`.** The
-  two agree in both states observed, which is strong, but the direction was not
-  isolated. *inferred, not measured.* It does not block anything -- Checkup
-  writes the value directly and the effect is proven either way.
-- **SANDY.** Every measurement here is CGDELL. Bill reports the Settings page
-  reads identically on SANDY, but no registry read has been taken there. Worth
-  one line from `Tool2\Run-SandyChecks.bat` during the ascii43 field run.
+**This section previously read "what is still not measured" and listed two
+things. Both were measured on SANDY the same morning, before this document was
+a day old.**
+
+### The Settings toggle writes the value, and writes nothing else
+
+**This was labelled *inferred* above. It is now *measured*, and isolated.**
+
+Bill ran `Tool2\Run-SandyChecks.bat` on SANDY four times: three with lock screen
+widgets **on**, one after turning them **off** in Settings.
+
+***measured, full-file diff of `Test_Results\SandyChecks-SANDY-2026-08-26_11-07.txt`
+against `SandyChecks-SANDY-2026-08-26_11-14.txt`:***
+
+```
+5c5
+<   run at    : 2026-08-26 11:07:17
+>   run at    : 2026-08-26 11:14:05
+118c118
+<       LockScreenWidgetsEnabled             1
+>       LockScreenWidgetsEnabled             0
+```
+
+**Two lines differ in a 6,953-byte report: the run timestamp, and the value.**
+`LockScreenWidgetsEnabled` read **1** at 11:00, 11:06 and 11:07, and **0** at
+11:14. Nothing else in the system moved.
+
+**So the direction is settled: the Settings toggle is what writes this value.**
+Not a coincidence of two readings agreeing -- a before/after pair with a single
+isolated change, on a **second machine** and a **different Windows edition**
+(SANDY is Home, CGDELL is Pro).
+
+### SANDY is measured
+
+***measured, `SandyChecks-SANDY-2026-08-26_11-14.txt`:*** Windows 11 **Home**,
+build **26200.9168**, display version **25H2** -- identical build to CGDELL.
+Local account (`Panther`). `TaskbarDa = 1`, `WidgetService` running, the
+`Widgets` process **not** running.
+
+---
+
+## 6. WHAT ELSE THOSE FOUR RUNS SETTLED, UNRELATED TO WIDGETS
+
+**Recorded here because the runs were taken for the widgets question and these
+came free. Each one changes something already on a list.**
+
+- **SANDY's Windows Update is NOT paused.** ***measured:*** all four values --
+  `PauseUpdatesStartTime`, `PauseUpdatesExpiryTime`, `PauseFeatureUpdatesEndTime`,
+  `PauseQualityUpdatesEndTime` -- are **absent**. The standing job says "un-pause
+  Windows Update on **both** machines." **It is one machine: CGDELL**, paused
+  2026-08-01 to 2026-09-06, which spans the 2026-09-01 launch.
+
+- **Setting 6 cannot apply on either machine.** ***measured on SANDY:***
+  `WTDS\Components` returns **"CANNOT READ -- Requested registry access is not
+  allowed"** *while elevated*. The check's own note predicted the consequence:
+  *"On CGDELL this refuses even when elevated. If it also refuses here, Checkup's
+  setting 6 cannot apply on either machine."* **It also refuses here.** The
+  setting 6 rename is on the ascii44 list; this says the rename may be the
+  smaller half of the problem.
+
+- **The Wake-on-LAN miss is explained, and it is not the Realtek driver.**
+  ***measured:*** SANDY's active adapter is a **TP-Link Wireless Nano USB
+  Adapter**, reporting `MagicPacket=Unsupported`, `Pattern=Unsupported`, and
+  **no wake-related advanced properties at all**. The Realtek Ethernet is
+  `Disconnected`. The earlier theory was "the Realtek driver uses different
+  property names." The adapter that matters simply has no wake support.
+
+- **SANDY's unencrypted starting state is intact.** ***measured:*** TPM
+  present / ready / enabled **True / True / True**; `PreventDeviceEncryption = 0`;
+  **C: and D: both `FullyDecrypted`, protection Off, key protectors NONE.**
+  **D: exists** -- the F4 target drive. This is the one-shot resource the ascii43
+  field run needs, and nothing has spent it.
+
+- **Both Defender and Malwarebytes are registered on SANDY.** ***measured:***
+  Malwarebytes `state 0x060000`, Windows Defender `state 0x061100`;
+  `AMRunningMode Normal`, `RealTimeProtectionEnabled True`, `PassiveMode 0`,
+  `IsTamperProtected True`. Defender is primary and not passive.
+
+### Still needing Bill's eyes on SANDY, and they are cheap on the same trip
+
+The report leaves five questions with dotted lines to write on: the Device
+encryption entry under Privacy & security; the Phishing protection section and
+its checkbox count; and M-3 (the Lock screen Widgets section's exact on-screen
+label), M-4 (a Dashboards or Discover control in the board's settings), M-5
+(does the board open on hover without clicking).
