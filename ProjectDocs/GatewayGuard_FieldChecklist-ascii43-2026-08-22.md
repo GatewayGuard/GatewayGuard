@@ -6,6 +6,10 @@
      said setting 17's guide page number ships in ascii43. It does not; the fix
      was reverted and the finding was misfiled. Left as a testable item it
      would have produced a false field finding. See PART A item 2 and PART C. -->
+<!-- Update 2026-08-26 12:40: READ-FIRST point 1 corrected (it still said "not
+     built yet"); PART A items 8 and 9 added (setting 6 Unknown is correct
+     behaviour, setting 14 widgets not testable); PART E added -- put SANDY
+     back before the run. -->
 <!-- Update 2026-08-22 14:05: PART B MARKED UP against the half-built ascii43.
      Every bullet tagged TESTABLE / PARTIAL / NOT BUILT / WRONG AS WRITTEN by
      reading the code path -- 11 testable, 1 partial, 8 not built, 1 wrong,
@@ -26,9 +30,21 @@
 
 ## READ THIS FIRST -- two facts that frame everything below
 
-1. **ascii43 IS NOT BUILT YET.** This is the checklist to use once it is. It is
-   also the scope confirmation: if anything in "what to look for" is not what
-   you expect ascii43 to do, say so before I build, not after.
+1. **CORRECTED 2026-08-26. This said "ascii43 IS NOT BUILT YET."** That was
+   written on 2026-08-21 and was overtaken the next day by the PART B markup,
+   which is the authority. **ascii43 is HALF BUILT and is worth running now.**
+
+   - **In the build:** F1 (keyboard contract), F2 (console width), F3 (the log),
+     F5 (flow and sequencing), and **part** of F6.
+   - **Not in the build:** **F4 entirely**, the F5 remnants, the F6 wording
+     block, setting 1 pause detection, setting 14 three-way plus its Revert
+     string, and the setting 6 rename.
+   - ***measured 2026-08-26:*** the file parses with **0 errors**, at
+     **9,382 total / 9,002 non-blank** lines -- unchanged since 2026-08-22, so
+     every PART B tag below still describes the file you will run. **Gates 12,
+     12b and 24 all PASS.**
+   - **Run it as a defect hunt, not an acceptance test.** It is not the
+     shipping build; ascii44 is.
 
 2. **The one decision that was open is now made.** The **second drive (F4)** is
    **route 3 -- Checkup covers the other drives** (Bill, 2026-08-21). See F4
@@ -81,6 +97,28 @@ Stated so each is a decision, not a gap.
 
 7. **FT-184** (a flash before screen 1) -- **time-boxed.** It has been unlocated
    for three builds. If you see it, one line is plenty; it is not worth a hunt.
+
+8. **ADDED 2026-08-26. Setting 6, Edge Phishing Protection, will report
+   "Unknown -- Tamper Protection blocks this check; verify by hand."**
+   **That is CORRECT behaviour. Do not report it.**
+   - ***measured on SANDY, elevated,*** `SandyChecks-SANDY-2026-08-26_11-14.txt`:
+     `WTDS\Components` returns **"CANNOT READ -- Requested registry access is
+     not allowed."** CGDELL refuses identically.
+   - The build's own line 5931 explains why it can never come right: Checkup
+     recommends Tamper Protection, and every machine that follows that advice
+     makes this read fail permanently. Reporting **Unknown** instead of
+     inventing a verdict is the FT-141 fix working.
+   - **Two real defects were found here on 2026-08-26 and are already recorded**
+     -- `CanAuto=$true` is untrue, and line 6406 says "turn ON all 3 options"
+     beside four visible boxes. **Both are ascii44 work. Neither is a field
+     finding.** See `GatewayGuard_FieldResult-PhishingProtection-2026-08-26-1130.md`.
+
+9. **ADDED 2026-08-26. Setting 14's lock-screen third is not built.** Today's
+   field test proved the lock screen widget toggle is automatable
+   (`GatewayGuard_FieldResult-LockScreenWidgets-2026-08-26-1030.md`), but
+   **that finding lands in ascii44.** ascii43 still writes only
+   `Policies\Microsoft\Dsh`, the taskbar board. **Nothing about widgets is
+   testable on this run.**
 
 ---
 
@@ -290,3 +328,32 @@ exercised on the build closest to launch.
 
 **Findings numbering for this run:** next free FT is **236**. New findings start
 there.
+
+---
+
+## PART E -- BEFORE YOU START, PUT SANDY BACK  *(added 2026-08-26)*
+
+**One thing changed on SANDY this morning while answering the widgets and
+phishing questions. Undo it, or the field log records a starting state nobody
+intended.**
+
+- **Phishing protection box four is ON.** You turned on all four while counting
+  them. The fourth reads **"Automatically collect website or app content when
+  additional analysis is needed to help identify security threats"** -- it sends
+  screen contents to Microsoft. **Settings 11 and 12 run during this test and
+  exist to reduce exactly that.** Turn box four back **off**; leave the three
+  **"Warn me about"** boxes on.
+- **Lock screen widgets are already back off** -- ***measured,***
+  `SandyChecks-SANDY-2026-08-26_11-14.txt`: `LockScreenWidgetsEnabled = 0`.
+  Nothing to do.
+
+**Two things about SANDY that are NOT problems, so you do not go looking:**
+
+- **Windows Update is not paused on SANDY.** ***measured:*** all four `Pause*`
+  values absent. **CGDELL is the paused one** (2026-08-01 to 2026-09-06, which
+  spans launch). The standing job says "both machines" -- it is one.
+- **SANDY's unencrypted state is intact.** ***measured:*** TPM True/True/True,
+  `PreventDeviceEncryption = 0`, **C: and D: both `FullyDecrypted`, key
+  protectors NONE.** PART C's point stands: walking the encryption screens on
+  Home costs nothing, because Checkup changes nothing there. **The state is
+  spent only if you follow the manual steps to completion yourself.**
