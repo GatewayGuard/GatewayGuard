@@ -104,6 +104,37 @@ try {
 W ""
 
 # ---------------------------------------------------------------------
+# 3b. EXCLUSIONS. An excluded path makes every scan result below a lie,
+#     so this runs BEFORE the coverage section, not after.
+# ---------------------------------------------------------------------
+W ("-" * 70)
+W "  3b. DEFENDER EXCLUSIONS  (an exclusion makes a clean result meaningless)"
+W ("-" * 70)
+try {
+    $pref = Get-MpPreference -EA Stop
+    foreach ($pair in @(
+        @{ n = 'ExclusionPath';      v = $pref.ExclusionPath },
+        @{ n = 'ExclusionExtension'; v = $pref.ExclusionExtension },
+        @{ n = 'ExclusionProcess';   v = $pref.ExclusionProcess })) {
+        $vals = @($pair.v) | Where-Object { $_ }
+        if ($vals.Count -eq 0) { W ("    {0,-20} : <none>" -f $pair.n) }
+        else {
+            W ("    {0,-20} : {1} entr(y/ies)" -f $pair.n, $vals.Count)
+            foreach ($v in $vals) { W ("        " + $v) }
+        }
+    }
+    $avt = @($pref.ExclusionPath) | Where-Object { $_ -match 'AVTestKit' }
+    W ""
+    if ($avt) {
+        W "    ** AVTestKit IS EXCLUDED. Any EICAR test result is meaningless."
+        W "       Remove the exclusion before scanning, or the kit proves nothing."
+    } else {
+        W "    AVTestKit is NOT excluded -- an EICAR result would be meaningful."
+    }
+} catch { W ("    Get-MpPreference failed: " + $_.Exception.Message) }
+W ""
+
+# ---------------------------------------------------------------------
 # 4. THE ANSWER. MPLog records the paths actually touched.
 # ---------------------------------------------------------------------
 W ("-" * 70)
@@ -131,6 +162,19 @@ if (-not (Test-Path $sup)) {
                 if ($n -gt 0) {
                     $hits | Select-Object -First 3 | ForEach-Object {
                         $line = ($_.Line -replace '\s+', ' ').Trim()
+                        # MPLog stamps UTC. The rest of this report is local.
+                        # Convert in place, or a reader compares a UTC log time
+                        # against a local scan window and reads it backwards --
+                        # which is exactly what nearly happened on 2026-08-27.
+                        if ($line -match '^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})') {
+                            try {
+                                $utc = [datetime]::ParseExact($Matches[1], 'yyyy-MM-ddTHH:mm:ss', $null)
+                                $loc = [System.TimeZoneInfo]::ConvertTimeFromUtc(
+                                           [datetime]::SpecifyKind($utc, 'Utc'),
+                                           [System.TimeZoneInfo]::Local)
+                                $line = $line -replace '^\S+', ($loc.ToString('yyyy-MM-dd HH:mm:ss') + ' LOCAL')
+                            } catch { }
+                        }
                         if ($line.Length -gt 150) { $line = $line.Substring(0,150) + '...' }
                         W ("           e.g. " + $line)
                     }
