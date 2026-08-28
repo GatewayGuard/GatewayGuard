@@ -129,8 +129,8 @@ actually been tested yet.
 | 9 | **25 / 26** | **FT-232** | **`21`** | **Refused out loud.** Out-of-range used to log as accepted and do nothing |
 | 10 | **25 / 26 → 25c** | **FT-224** | **`R`** twice | The skipping-encryption heads-up shows **once**. It rendered 3 times in the field |
 | 11 | **27** | FT-219 | -- | *"choices can be reviewed in your log"* appears **once, only here** |
-| 12 | **27a** | **FT-219** | select, continue | **No second "Apply? Y/N"** for something you already chose |
-| 13 | **27a** | **FT-221** | -- | Same rule inside `Apply-Setting`: no re-asking permission |
+| 12 | **27a** | **FT-219** | select, continue | **No second "Apply? Y/N"** for something you already chose. Screen says *"You selected this item, so Checkup is applying it now."* |
+| 13 | **22 → 25/26 → 27a** | **FT-221** | say **NO password manager** at 22, then **manually select item 15** | **Setting 15 must NOT be disabled.** Expect *"LEFT ON -- set up a password manager first, or your saved passwords would have nowhere to live."* **This is the safety guard, not a permission question** |
 | 14 | **28** | -- | -- | Encryption asked **once**; RAM, drive size, type and time all shown |
 | 15 | **30b** | **FT-229** | one key at a time | **NOT BUILT -- LIVE DEFECT.** This screen can be skipped |
 | 16 | **31** | **FT-229** | one key at a time | **The one that must not be skipped** -- it tells the user how to confirm encryption is running |
