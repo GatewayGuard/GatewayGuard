@@ -120,27 +120,95 @@ actually been tested yet.
 
 **Numbered from a START OVER. On a RESUME, begin at screen 21.**
 
+**CORRECTED 2026-08-28 12:20. THREE ROWS OF THIS TABLE WERE WRONG AND TWO FT
+NUMBERS WERE INVENTED.** See "How three rows came to be wrong" below -- the
+pattern is worth more than the corrections. **Every row below has now been read
+from its own comment in the source.**
+
 | Order | Screen | FT | Press this | Should happen |
 |---|---|---|---|---|
-| 1 | **12** | **FT-178** | -- | Encryption status shown. **`D:` will be missing -- F4, not a finding.** *Resume skips this* |
-| 2 | **14a, 15** | **FT-175b** | -- | A resume run offers the offline scan. *Resume skips this* |
-| 3 | **21** | FT-217 | -- | Mode selector: **no giant box, nothing ending in `..`** |
+| 1 | **12** | **FT-178** | -- | **BOTH disks listed.** SANDY has two. This screen used to take `Win32_DiskDrive \| Select-Object -First 1` and throw the rest away. **Seeing one disk IS a finding** |
+| 2 | **14a, 15** | **FT-175b** | -- | On a **repeat or resume** run, the offline scan is **offered**, not merely described. Before ascii41 a returning user could not start one from Checkup at all |
+| 3 | **21** | FT-217 | -- | Mode selector: nothing ending in `..` |
 | 4 | **22** | F6 | -- | Your password answer here must drive **setting 15** later |
 | 5 | **25 / 26** | **FT-206** | **`I`** | The "about this run" screen opens. This was the one prompt where `I` used to fail |
 | 6 | **25 / 26** | **FT-204** | **`N`** | **Nothing is deselected.** Clear-all moved to `C` |
-| 7 | **25 / 26** | **FT-204b** | **`C`** then **`N`** | Asks before wiping. N leaves your selections alone |
-| 8 | **25 / 26** | **FT-224b** | **`12`** | Commits on the **second** key, not the first |
+| 7 | **25 / 26** | **FT-204**, part 2 | **`C`** then **`N`** | Asks before wiping. N leaves your selections alone |
+| 8 | **25 / 26** | *(no FT -- legend, line 8272)* | **`12`** | Commits on the **second** key. A single digit needs **Enter** |
 | 9 | **25 / 26** | **FT-232** | **`21`** | **Refused out loud.** Out-of-range used to log as accepted and do nothing |
 | 10 | **25 / 26 → 25c** | **FT-224** | **`R`** twice | The skipping-encryption heads-up shows **once**. It rendered 3 times in the field |
 | 11 | **27** | FT-219 | -- | *"choices can be reviewed in your log"* appears **once, only here** |
 | 12 | **27a** | **FT-219** | select, continue | **No second "Apply? Y/N"** for something you already chose. Screen says *"You selected this item, so Checkup is applying it now."* |
-| 13 | **22 → 25/26 → 27a** | **FT-221** | say **NO password manager** at 22, then **manually select item 15** | **Setting 15 must NOT be disabled.** Expect *"LEFT ON -- set up a password manager first, or your saved passwords would have nowhere to live."* **This is the safety guard, not a permission question** |
+| 13 | **22 → 25/26 → 27a** | **FT-221** | say **NO password manager** at 22, then **manually select item 15** | **Setting 15 must NOT be disabled.** Expect *"LEFT ON -- set up a password manager first, or your saved passwords would have nowhere to live."* **A safety guard, not a permission question** |
 | 14 | **28** | -- | -- | Encryption asked **once**; RAM, drive size, type and time all shown |
 | 15 | **30b** | **FT-229** | one key at a time | **NOT BUILT -- LIVE DEFECT.** This screen can be skipped |
 | 16 | **31** | **FT-229** | one key at a time | **The one that must not be skipped** -- it tells the user how to confirm encryption is running |
-| 17 | **33a** | FT-217 | -- | Convenience review: no giant box |
+| 17 | **33a** | FT-217 | -- | Convenience review: nothing ending in `..` |
 | -- | **ALL boxed screens** | **FT-217** | -- | **No line may end in `..`.** Lives in `Write-GGBox`, so a failure shows everywhere at once. **This FAILED on 08-27 at 60 columns -- see FT-236** |
-| -- | **the `I` screen** | **FT-188** | **`I`** from anywhere | Build ID and Machine ID both correct |
+| -- | **the LOG, not a screen** | **FT-188** | open `Open-My-Log.bat` | **No `[ERROR]` lines on a clean run.** Absent policy keys (`Edge`, `Dsh`) are SUPPOSED to be absent on a home PC and must read INFO. **This is the log we tell customers to email support** |
+
+---
+
+## HOW THREE ROWS CAME TO BE WRONG
+
+**Bill, 2026-08-28: "how could we have prevented the error... Is there something
+I can say to you?"** Written down because the pattern is exact and cheap to
+catch.
+
+### What was wrong
+
+| Row | I wrote | It actually is |
+|---|---|---|
+| **FT-221** | "same rule as FT-219: no re-asking permission" | The **password-manager guard** -- never disable Edge password saving when the user has no manager |
+| **FT-188** | "the `I` screen shows the right build and Machine ID" | **A clean run must not log `[ERROR]`** for absent policy keys |
+| **FT-178** | "`D:` will be missing -- F4, not a finding" | **Both disks must be listed.** Seeing one **IS** a finding |
+| **FT-204b, FT-224b** | cited as FT numbers | **They do not exist. I invented them.** |
+
+**FT-178 is the one that would have cost the most.** It told Bill to *ignore*
+the exact symptom the fix was made to remove.
+
+### The mechanism, and it is measurable
+
+The screen numbers were derived **mechanically** -- FT located in source,
+enclosing function identified, function matched to the screens it draws. **That
+part was right in all twelve rows.**
+
+Then the "Should happen" column was written. **For the seven FTs whose comment
+I had actually opened, it was right. For the three I had not opened -- I only
+had the function NAME from the mapping -- I wrote what the function name and the
+neighbouring row suggested.**
+
+**Every error is in a row I did not open. No error is in a row I did.**
+
+The mapping answered **WHERE**. I let it stand in for **WHAT**. That is
+CLAUDE.md's own third question -- *am I counting the thing, or a proxy for it?*
+-- and a function name is a poor proxy for a finding's content: FT-219 and
+FT-221 share a function and do entirely unrelated jobs.
+
+**The format hid it.** Eleven sourced rows and three guessed ones looked
+identical, because a table has no column for basis.
+
+### What Bill can say, and it is four words
+
+> ### **"Which rows did you open?"**
+
+The answer is a list. **Anything not on the list is unverified**, and the
+question cannot be answered plausibly without having done it. It is the
+list-shaped version of *"What did you read?"* already in CLAUDE.md, and it works
+where that one is too coarse -- a document can be well-sourced overall and still
+carry three fabricated rows.
+
+**It already worked once, by accident.** *"What's the two mean after 27a"* was
+a request to explain one row, and answering it required opening the source.
+**The error died in one question.** Asking about the row that reads oddest is
+disproportionately effective -- a guessed row is generated from pattern rather
+than fact, and pattern reads slightly off.
+
+### What changes on my side
+
+**A table of N items is N claims.** Before publishing one, open all N. If a row
+cannot be sourced, it says so in the row rather than being filled in from
+context.
 
 ---
 
@@ -176,7 +244,10 @@ most of the run on.
 **Why it matters:** `N` used to be clear-all, with no confirmation. In the field
 on 2026-08-21 it **wiped 19 selections five seconds after they were made.**
 
-### 3. FT-204b -- `C` asks before wiping   *(screens 25 / 26)*
+### 3. FT-204, part 2 -- `C` asks before wiping   *(screens 25 / 26)*
+
+*(Earlier drafts called this "FT-204b". **That FT number does not exist.** It is
+the second half of FT-204. Cite FT-204.)*
 
 1. With items still selected, press **`C`**.
 2. A Y/N confirmation should appear, naming how many will be cleared.
@@ -185,7 +256,11 @@ on 2026-08-21 it **wiped 19 selections five seconds after they were made.**
 **Pass:** it asks first, and answering N leaves everything selected.
 **Fail:** it clears without asking, or clears anyway after N.
 
-### 4. FT-224b -- two-digit entry commits on the second digit   *(screens 25 / 26)*
+### 4. Two-digit entry commits on the second digit   *(screens 25 / 26)*
+
+*(No FT number. This is the screen's own documented behaviour, ***measured***
+at build line 8272. It was labelled "FT-224b" in an earlier draft of this
+document -- **that FT does not exist and was invented here.** Do not cite it.)*
 
 1. Type **`1`**. Nothing should happen yet.
 2. Type **`2`**.
@@ -257,13 +332,28 @@ and not only on the checklist.
 you can. ***This failed on 2026-08-27*** -- 192 truncations at 60 columns, which
 is FT-236. It lives in `Write-GGBox`, so if it fails it fails everywhere at once.
 
-### 10. FT-188 -- the `I` screen is correct   *(any screen)*
+### 10. FT-188 -- a clean run must not log ERRORs   *(the LOG, not a screen)*
 
-1. Press **`I`** anywhere.
+**CORRECTED. This was described as an `I`-screen check. It is not.**
+***measured, build lines 3117-3123:*** on a clean SANDY run, three of the four
+lines this produced were **absent policy keys** -- `HKLM\...\Edge` and
+`HKLM\...\Dsh` -- **which are SUPPOSED to be absent on a home PC**, and which
+the caller already handles by reporting Unknown. Nothing was wrong, the user saw
+nothing wrong, **and the log said ERROR four times.**
 
-**Pass:** build reads **ascii43**, and the Machine ID reads **`F7F13A97D58D`**
-on SANDY.
-**Fail:** either is wrong or blank.
+1. Finish a run.
+2. Open the log with **`Open-My-Log.bat`**.
+3. Search it for **`[ERROR]`**.
+
+**Pass:** none, or only genuine faults.
+**Fail:** any `[ERROR]` for a registry key that is simply absent.
+**Why it matters, in the build's own words:** *"That log is the file we tell the
+customer to email support, so a clean run must not read like"* a broken one.
+
+**Already known to fail once, and it is a DIFFERENT case:** FT-237, found
+2026-08-27, is `[ERROR] SILENT ERROR` from the setting 6 WTDS read. FT-188
+covered **absent** keys; that one is **blocked**. **Do not re-report FT-237** --
+but any OTHER `[ERROR]` line is new.
 
 ### 11. FT-229 -- the two encryption screens are NOT skipped   *(30b, 31)*
 
