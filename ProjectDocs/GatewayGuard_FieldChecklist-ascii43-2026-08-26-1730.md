@@ -5,6 +5,11 @@
      derived mechanically: FT located in source, enclosing FUNCTION identified,
      function matched to the screens it draws, number read from
      $script:GGScreenLabels line 1824. 12 testable, 22 not in the build. -->
+<!-- Update 2026-08-28 11:35: table REORDERED into journey order, after Bill
+     asked whether it was. It was not -- it was grouped by testability. Also
+     added where a RESUME actually lands: last checkpoint AppsAudit, and the
+     code after it is mode selection, so resume starts at screen 21 and
+     FT-178 and FT-175b are unreachable without START OVER. -->
 <!-- SUPERSEDES GatewayGuard_FieldChecklist-ascii43-2026-08-22.md.
      Rewritten on Bill's instruction: screen numbers on every FT, and a
      screen-number index at the end -- what to skip, what to look for, one
@@ -83,22 +88,55 @@ draws, and the number read from `$script:GGScreenLabels` at line 1824.
 
 **Read this table. Everything below it is detail.**
 
-### TESTABLE NOW -- 12 checks, and 5 of them are on screens 25/26
+### WHERE YOUR NEXT RUN STARTS -- READ THIS BEFORE THE TABLE
 
-| FT | Screen | Press this | Should happen |
-|---|---|---|---|
-| **FT-206** | **25 / 26** | **`I`** | The "about this run" screen opens. This was the one prompt where `I` used to fail |
-| **FT-204** | **25 / 26** | **`N`** | **Nothing is deselected.** Clear-all moved to **`C`** and is now gated behind a Y/N |
-| **FT-204b** | **25 / 26** | **`C`**, then **N** | Asks before wiping. Answering N leaves your selections alone |
-| **FT-224** | **25 / 26 → 25c** | **`R`** twice | The "skipping encryption" heads-up shows **once**, not on every press. It rendered 3 times in the field |
-| **FT-232** | **25 / 26** | **`21`** | **Refused out loud.** An out-of-range number used to log as accepted and do nothing |
-| **FT-224b** | **25 / 26** | **`12`** | Commits on the **second** key, not the first |
-| **FT-219** | **25 / 26 → 27a** | select, then continue | **No second "Apply? Y/N"** for something you already chose. Selecting IS approval |
-| **FT-221** | **27a** | -- | Same rule inside `Apply-Setting`: no re-asking permission |
-| **FT-217** | **ALL boxed screens** | -- | **No truncation.** Lines must not end in `..`. Lives in `Write-GGBox`, so a failure shows everywhere at once. **See FT-236 -- this failed on 08-27 at 60 columns** |
-| **FT-188** | **the `I` screen** | **`I`** from anywhere | Build ID and Machine ID both correct |
-| **FT-178** | **12** | -- | Encryption status shown. **`D:` will be missing -- that is F4, not a finding** |
-| **FT-175b** | **14a, 15** | -- | A **resume** run offers the offline scan |
+***measured, `GatewayGuard-Log-2026-08-27_10-45.txt`:*** the last checkpoint
+saved was **`AppsAudit`**, at 12:52:13. ***measured, build line 9319:*** the
+code immediately after that checkpoint is **mode selection -- screen 21**.
+
+**So RESUME drops you at screen 21. Screens 1 to 20 are skipped.**
+
+**Two testable items are therefore BEHIND you and unreachable on a resume:**
+
+| FT | Screen | Only reachable by |
+|---|---|---|
+| **FT-178** | 12 | START OVER |
+| **FT-175b** | 14a, 15 | START OVER |
+
+**Bill's choice, and both are defensible.** **RESUME** gets you to the ten
+remaining checks immediately, including all five on screens 25/26 -- the
+highest-value screens in the build. **START OVER** costs the walk back down
+through the scan prompts but picks up those two and re-tests the intro screens
+at a sensible console width, which the 08-27 run could not do at 60 columns.
+**Recommended: START OVER, once, at a proper width** -- FT-236 means every
+screen you have seen so far was truncated, so nothing before screen 21 has
+actually been tested yet.
+
+### THE TABLE, IN THE ORDER YOU WILL MEET THEM
+
+**Numbered from a START OVER. On a RESUME, begin at screen 21.**
+
+| Order | Screen | FT | Press this | Should happen |
+|---|---|---|---|---|
+| 1 | **12** | **FT-178** | -- | Encryption status shown. **`D:` will be missing -- F4, not a finding.** *Resume skips this* |
+| 2 | **14a, 15** | **FT-175b** | -- | A resume run offers the offline scan. *Resume skips this* |
+| 3 | **21** | FT-217 | -- | Mode selector: **no giant box, nothing ending in `..`** |
+| 4 | **22** | F6 | -- | Your password answer here must drive **setting 15** later |
+| 5 | **25 / 26** | **FT-206** | **`I`** | The "about this run" screen opens. This was the one prompt where `I` used to fail |
+| 6 | **25 / 26** | **FT-204** | **`N`** | **Nothing is deselected.** Clear-all moved to `C` |
+| 7 | **25 / 26** | **FT-204b** | **`C`** then **`N`** | Asks before wiping. N leaves your selections alone |
+| 8 | **25 / 26** | **FT-224b** | **`12`** | Commits on the **second** key, not the first |
+| 9 | **25 / 26** | **FT-232** | **`21`** | **Refused out loud.** Out-of-range used to log as accepted and do nothing |
+| 10 | **25 / 26 → 25c** | **FT-224** | **`R`** twice | The skipping-encryption heads-up shows **once**. It rendered 3 times in the field |
+| 11 | **27** | FT-219 | -- | *"choices can be reviewed in your log"* appears **once, only here** |
+| 12 | **27a** | **FT-219** | select, continue | **No second "Apply? Y/N"** for something you already chose |
+| 13 | **27a** | **FT-221** | -- | Same rule inside `Apply-Setting`: no re-asking permission |
+| 14 | **28** | -- | -- | Encryption asked **once**; RAM, drive size, type and time all shown |
+| 15 | **30b** | **FT-229** | one key at a time | **NOT BUILT -- LIVE DEFECT.** This screen can be skipped |
+| 16 | **31** | **FT-229** | one key at a time | **The one that must not be skipped** -- it tells the user how to confirm encryption is running |
+| 17 | **33a** | FT-217 | -- | Convenience review: no giant box |
+| -- | **ALL boxed screens** | **FT-217** | -- | **No line may end in `..`.** Lives in `Write-GGBox`, so a failure shows everywhere at once. **This FAILED on 08-27 at 60 columns -- see FT-236** |
+| -- | **the `I` screen** | **FT-188** | **`I`** from anywhere | Build ID and Machine ID both correct |
 
 ### NOT IN THE BUILD -- 22 FTs. DO NOT TEST, DO NOT REPORT
 
