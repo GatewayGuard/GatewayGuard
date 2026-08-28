@@ -1,5 +1,10 @@
 <!-- Dated: 2026-08-26 17:30 ET -->
 <!-- Editor: Claude Code (CGDELL) -->
+<!-- Update 2026-08-28 11:10: FT TABLE added at the top, on Bill's instruction
+     -- every FT with its screen number and the key to press. Screen numbers
+     derived mechanically: FT located in source, enclosing FUNCTION identified,
+     function matched to the screens it draws, number read from
+     $script:GGScreenLabels line 1824. 12 testable, 22 not in the build. -->
 <!-- SUPERSEDES GatewayGuard_FieldChecklist-ascii43-2026-08-22.md.
      Rewritten on Bill's instruction: screen numbers on every FT, and a
      screen-number index at the end -- what to skip, what to look for, one
@@ -66,6 +71,58 @@ boxes on.
 has Windows Update paused and both are on **25H2, 26200.9168**; and SANDY's
 **C: and D: are both `FullyDecrypted`, key protectors NONE**, so the one-shot
 unencrypted state is intact.
+
+---
+
+## THE FT TABLE -- EVERY FT, ITS SCREEN, AND WHAT TO PRESS
+
+**Added 2026-08-28 on Bill's instruction: "otherwise I don't know what to
+check."** Screen numbers derived mechanically -- each FT located in the source,
+its **enclosing function** identified, the function matched to the screens it
+draws, and the number read from `$script:GGScreenLabels` at line 1824.
+
+**Read this table. Everything below it is detail.**
+
+### TESTABLE NOW -- 12 checks, and 5 of them are on screens 25/26
+
+| FT | Screen | Press this | Should happen |
+|---|---|---|---|
+| **FT-206** | **25 / 26** | **`I`** | The "about this run" screen opens. This was the one prompt where `I` used to fail |
+| **FT-204** | **25 / 26** | **`N`** | **Nothing is deselected.** Clear-all moved to **`C`** and is now gated behind a Y/N |
+| **FT-204b** | **25 / 26** | **`C`**, then **N** | Asks before wiping. Answering N leaves your selections alone |
+| **FT-224** | **25 / 26 → 25c** | **`R`** twice | The "skipping encryption" heads-up shows **once**, not on every press. It rendered 3 times in the field |
+| **FT-232** | **25 / 26** | **`21`** | **Refused out loud.** An out-of-range number used to log as accepted and do nothing |
+| **FT-224b** | **25 / 26** | **`12`** | Commits on the **second** key, not the first |
+| **FT-219** | **25 / 26 → 27a** | select, then continue | **No second "Apply? Y/N"** for something you already chose. Selecting IS approval |
+| **FT-221** | **27a** | -- | Same rule inside `Apply-Setting`: no re-asking permission |
+| **FT-217** | **ALL boxed screens** | -- | **No truncation.** Lines must not end in `..`. Lives in `Write-GGBox`, so a failure shows everywhere at once. **See FT-236 -- this failed on 08-27 at 60 columns** |
+| **FT-188** | **the `I` screen** | **`I`** from anywhere | Build ID and Machine ID both correct |
+| **FT-178** | **12** | -- | Encryption status shown. **`D:` will be missing -- that is F4, not a finding** |
+| **FT-175b** | **14a, 15** | -- | A **resume** run offers the offline scan |
+
+### NOT IN THE BUILD -- 22 FTs. DO NOT TEST, DO NOT REPORT
+
+***measured on the ascii43 source 2026-08-28: each of these appears NOWHERE in
+the file.*** They will all fail. None of the failures is a finding.
+
+| FT | Where it would have been | Why not built |
+|---|---|---|
+| FT-213, FT-214, FT-215 | Gallery only | Developer tool, fixed after launch |
+| FT-220 | Settings 9, 12, 13, 17 | Waits on the guide (RULE W-07) |
+| FT-226 | Setting 17 | Misfiled -- the reference always existed |
+| FT-198 | All screens, input layer | Needs a separate SANDY measurement |
+| FT-228 | Setting 15 / 16 apply | Environmental, SANDY local account |
+| FT-205 | 25 / 26 | Recommended against. **`Q`** is the no-change exit |
+| FT-233 | 30, 31 | Settled by field evidence. No code change |
+| FT-230, FT-234, FT-167 | 12, 16, 28-31 | **The whole of F4.** `D:` is invisible everywhere |
+| FT-195a, FT-207, FT-222, FT-223, FT-225, FT-227, FT-231, FT-235 | various | F5 remnants and the F6 wording block |
+| FT-229 | **30b, 31** | **Not built -- so this defect is LIVE.** Two screens can be skipped when two keys land in the same second. **Go slowly there; screen 31 is the one that tells the user how to confirm encryption is running** |
+| FT-184 | Before screen 1 | Time-boxed, unlocated for three builds |
+
+**Two that are not build facts at all:** **FT-236** is a defect in the *old*
+checklist document (a bullet contradicting a decision Bill had already made),
+and **FT-141** is the *working* fix that makes setting 6 report
+"Unknown" -- correct behaviour, not a test.
 
 ---
 
