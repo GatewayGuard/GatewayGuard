@@ -10,6 +10,10 @@
      added where a RESUME actually lands: last checkpoint AppsAudit, and the
      code after it is mode selection, so resume starts at screen 21 and
      FT-178 and FT-175b are unreachable without START OVER. -->
+<!-- Update 2026-08-28 11:55: HOW TO RUN EACH CHECK added -- numbered steps,
+     pass condition and fail condition for all 12, on Bill's instruction to
+     put the step-by-step instructions in the checklist too. Key rules taken
+     from the screen legend at build line 8272. -->
 <!-- SUPERSEDES GatewayGuard_FieldChecklist-ascii43-2026-08-22.md.
      Rewritten on Bill's instruction: screen numbers on every FT, and a
      screen-number index at the end -- what to skip, what to look for, one
@@ -137,6 +141,153 @@ actually been tested yet.
 | 17 | **33a** | FT-217 | -- | Convenience review: no giant box |
 | -- | **ALL boxed screens** | **FT-217** | -- | **No line may end in `..`.** Lives in `Write-GGBox`, so a failure shows everywhere at once. **This FAILED on 08-27 at 60 columns -- see FT-236** |
 | -- | **the `I` screen** | **FT-188** | **`I`** from anywhere | Build ID and Machine ID both correct |
+
+---
+
+## HOW TO RUN EACH CHECK -- STEP BY STEP
+
+**Added 2026-08-28 on Bill's instruction.** The table above says *what* to
+press. This says *how*, and what counts as a failure.
+
+**The checklist key rules, from the screen's own legend** (***measured***,
+build line 8272): **"Item numbers: 1-9 then Enter; 10-19 apply on the second
+digit."** So a single digit needs Enter; a two-digit number commits the moment
+the second digit lands. That is the behaviour checks 4 and 5 below are testing.
+
+### 1. FT-206 -- `I` works on the checklist   *(screens 25 / 26)*
+
+1. Get to the checklist.
+2. Press **`I`**.
+
+**Pass:** the "about this run" screen opens, showing build ID and Machine ID.
+**Fail:** nothing happens, or the key is treated as unknown.
+**Why it matters:** FT-189 promised `I` works "at any time." This hand-rolled
+reader was the one prompt where it did not, and it is the screen the user spends
+most of the run on.
+
+### 2. FT-204 -- `N` is not destructive   *(screens 25 / 26)*
+
+1. Select several items -- press **`A`** to select all if that is easier.
+2. Note how many are selected.
+3. Press **`N`**.
+
+**Pass:** your selections are **untouched**.
+**Fail:** anything gets deselected.
+**Why it matters:** `N` used to be clear-all, with no confirmation. In the field
+on 2026-08-21 it **wiped 19 selections five seconds after they were made.**
+
+### 3. FT-204b -- `C` asks before wiping   *(screens 25 / 26)*
+
+1. With items still selected, press **`C`**.
+2. A Y/N confirmation should appear, naming how many will be cleared.
+3. Answer **N**.
+
+**Pass:** it asks first, and answering N leaves everything selected.
+**Fail:** it clears without asking, or clears anyway after N.
+
+### 4. FT-224b -- two-digit entry commits on the second digit   *(screens 25 / 26)*
+
+1. Type **`1`**. Nothing should happen yet.
+2. Type **`2`**.
+
+**Pass:** item **12** toggles the instant the `2` lands -- no Enter needed.
+**Also check:** type a single digit like **`5`** and press **Enter** -- item 5
+toggles.
+**Fail:** item 1 toggles when you press `1`, or item 12 needs an Enter.
+
+### 5. FT-232 -- an out-of-range number is refused out loud   *(screens 25 / 26)*
+
+1. Type **`2`**, then **`1`**.
+
+**Pass:** you are told, on screen, that 21 is not a valid item number.
+**Fail:** silence, or the log records it as accepted. **There are 19 settings,
+so 21 does not exist.**
+**Why it matters:** it used to be logged as accepted and do nothing -- worse
+than an unknown key, because it looked like it had worked.
+
+### 6. FT-224 -- the skipping-encryption heads-up shows ONCE   *(25 / 26 → 25c)*
+
+1. Make sure **item 8, device encryption, is NOT selected.**
+2. Press **`R`** to continue. The "heads up -- skipping encryption" screen
+   (25c) appears.
+3. Choose to continue without encryption.
+4. Get back to the checklist and press **`R`** again.
+
+**Pass:** the heads-up does **not** appear the second time.
+**Fail:** it appears again.
+**Why it matters:** the run log caught **SCREEN-58 rendered three times**, each
+after the decline had already been noted.
+**Note:** a **Back** does not count as deciding -- if you go Back rather than
+continuing, the heads-up is *supposed* to appear again.
+
+### 7. FT-219 -- no second "Apply? Y/N"   *(27a)*
+
+1. Select an item Checkup can apply on its own.
+2. Continue through the review gate.
+
+**Pass:** the screen says **"You selected this item, so Checkup is applying it
+now."** and applies it. **No second permission question.**
+**Fail:** it asks "Apply? Y/N" for something you already selected.
+**The one legitimate exception:** a setting Checkup cannot change itself
+(`CanAuto` false) shows you manual steps instead. That is not a failure.
+
+### 8. FT-221 -- the password-manager guard   *(22 → 25 / 26 → 27a)*
+
+**Three screens, and it depends on an answer given four screens earlier.**
+
+1. On **screen 22**, answer that you have **NO password manager**.
+2. On the checklist, **item 15 (Edge password saving) should deselect itself.**
+3. **Manually select item 15 anyway.**
+4. Continue and let it apply.
+
+**Pass:** setting 15 is **NOT disabled**, and you get
+**"LEFT ON -- set up a password manager first, or your saved passwords would
+have nowhere to live."**
+**Fail:** it disables Edge password saving. **That would leave a user with no
+password store at all** -- which is why the guard sits at the point of change
+and not only on the checklist.
+
+### 9. FT-217 -- nothing is truncated   *(every boxed screen)*
+
+**Not a keypress. Look at every screen you pass.**
+
+**Pass:** no line ends in `..`.
+**Fail:** any line ends in `..`.
+**Before you start:** widen the console to **at least 84 columns**, maximize if
+you can. ***This failed on 2026-08-27*** -- 192 truncations at 60 columns, which
+is FT-236. It lives in `Write-GGBox`, so if it fails it fails everywhere at once.
+
+### 10. FT-188 -- the `I` screen is correct   *(any screen)*
+
+1. Press **`I`** anywhere.
+
+**Pass:** build reads **ascii43**, and the Machine ID reads **`F7F13A97D58D`**
+on SANDY.
+**Fail:** either is wrong or blank.
+
+### 11. FT-229 -- the two encryption screens are NOT skipped   *(30b, 31)*
+
+**This one is NOT built, so the defect is live. You are confirming it still
+happens, and how easily.**
+
+1. Walk into the encryption path.
+2. **Press one key at a time. Wait for each screen to finish drawing.**
+
+**Watch for:** **screen 30b** (how to sign in with a Microsoft account) and
+**screen 31** (how to tell if encryption is running).
+**The defect:** either can be skipped when two keypresses land inside the same
+second.
+**Screen 31 is the one that matters** -- it is what tells the user how to
+confirm encryption is actually running. If it is missed, they are left with no
+way to check.
+
+### 12. FT-178 and FT-175b -- only on a START OVER
+
+**FT-178, screen 12:** encryption status is shown. **`D:` will be missing.**
+That is F4 and is **not** a finding.
+**FT-175b, screens 14a / 15:** a resume run offers the offline scan.
+
+---
 
 ### NOT IN THE BUILD -- 22 FTs. DO NOT TEST, DO NOT REPORT
 
