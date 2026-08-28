@@ -1,0 +1,109 @@
+﻿============================================================
+  GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+  Build: ascii43
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-08-26 18:07:34
+  Computer: SANDY
+  Machine:  HP HP Laptop 17-by1xxx
+  Machine ID: F7F13A97D58D (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[2026-08-26 18:07:34] [OK] Console control handler registered -- Ctrl+C in Mark mode can no longer end the session (FT-150), and closing the window still writes the log footer (FT-160)
+[2026-08-26 18:07:34] [START] Tool launched v3.1 build ascii43
+[2026-08-26 18:07:34] [INFO] Log location: C:\Users\willi\OneDrive\GatewayGuard\Logs  (OneDrive -- already set up on this PC)
+[2026-08-26 18:07:34] [INFO] Machine: HP HP Laptop 17-by1xxx | MachineID: F7F13A97D58D
+[2026-08-26 18:07:34] [OK] Sleep/shutdown prevention activated
+[2026-08-26 18:07:35] [WARN] Write-GGBox: a line was truncated to fit the window (60 cols) -- FT-217
+[2026-08-26 18:07:35] [WARN] Write-GGBox: a line was truncated to fit the window (60 cols) -- FT-217
+[2026-08-26 18:07:35] [WARN] Write-GGBox: a line was truncated to fit the window (60 cols) -- FT-217
+[2026-08-26 18:07:35] [WARN] Write-GGBox: a line was truncated to fit the window (60 cols) -- FT-217
+[2026-08-26 18:07:35] [WARN] Write-GGBox: a line was truncated to fit the window (60 cols) -- FT-217
+[2026-08-26 18:07:35] [WARN] Write-GGBox: a line was truncated to fit the window (60 cols) -- FT-217
+[2026-08-26 18:07:35] [WARN] Write-GGBox: a line was truncated to fit the window (60 cols) -- FT-217
+[2026-08-26 18:07:35] [OK] QuickEdit AND mouse input reporting disabled for this session (FT-01, FT-171a) -- re-asserted silently from here on
+[2026-08-26 18:07:35] [SCREEN] [SCREEN-25] (shown as screen 1a) Rendered: WELCOME BACK
+[2026-08-26 18:07:49] [KEY] Key 'S' accepted at: Show-ResumePrompt
+[2026-08-26 18:07:49] [STATE] User chose to START OVER -- checkpoint cleared
+[2026-08-26 18:08:22] [KEY] Continue accepted at: Show-FontInstructions
+[2026-08-26 18:08:27] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-08-26 18:08:27] [SCREEN] [SCREEN-28] (shown as screen 4) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[2026-08-26 18:08:50] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-08-26 18:08:50] [SCREEN] [SCREEN-29] (shown as screen 5) Rendered: BEFORE YOU START -- YOUR WINDOW
+[2026-08-26 18:09:05] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-08-26 18:09:05] [SCREEN] [SCREEN-78] (shown as screen 6) Rendered: BEFORE YOU START -- YOUR KEYBOARD
+[2026-08-26 18:10:26] [KEY] Nav 'BACK' at: Show-FontInstructions
+[2026-08-26 18:10:27] [SCREEN] [SCREEN-29] (shown as screen 5) Rendered: BEFORE YOU START -- YOUR WINDOW
+[2026-08-26 18:10:27] [KEY] Nav 'BACK' at: Show-FontInstructions
+[2026-08-26 18:10:27] [SCREEN] [SCREEN-28] (shown as screen 4) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[2026-08-26 18:10:27] [KEY] Nav 'BACK' at: Show-FontInstructions
+[2026-08-26 18:10:28] [KEY] Nav 'BACK' at: Show-FontInstructions
+[2026-08-26 18:10:36] [KEY] Continue accepted at: Show-FontInstructions
+[2026-08-26 18:10:37] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-08-26 18:10:38] [SCREEN] [SCREEN-28] (shown as screen 4) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[2026-08-26 18:10:38] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-08-26 18:10:38] [SCREEN] [SCREEN-29] (shown as screen 5) Rendered: BEFORE YOU START -- YOUR WINDOW
+[2026-08-26 18:10:39] [KEY] Nav 'BACK' at: Show-FontInstructions
+[2026-08-26 18:10:39] [SCREEN] [SCREEN-28] (shown as screen 4) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[2026-08-26 18:10:39] [KEY] Nav 'BACK' at: Show-FontInstructions
+[2026-08-26 18:10:39] [KEY] Nav 'BACK' at: Show-FontInstructions
+[2026-08-26 18:10:40] [KEY] Look-back opened at: Show-FontInstructions
+[2026-08-26 18:10:50] [KEY] Continue accepted at: Show-FontInstructions
+[2026-08-26 18:10:51] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-08-26 18:10:51] [SCREEN] [SCREEN-28] (shown as screen 4) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[2026-08-26 18:10:51] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-08-26 18:10:51] [SCREEN] [SCREEN-29] (shown as screen 5) Rendered: BEFORE YOU START -- YOUR WINDOW
+[2026-08-26 18:10:52] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-08-26 18:10:53] [SCREEN] [SCREEN-78] (shown as screen 6) Rendered: BEFORE YOU START -- YOUR KEYBOARD
+[2026-08-26 18:10:57] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-08-26 18:10:57] [SCREEN] [SCREEN-30] (shown as screen 7) Rendered: WHAT HAPPENS NEXT -- PLEASE READ
+[2026-08-26 18:11:03] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-08-26 18:11:04] [SCREEN] [SCREEN-02] (shown as screen 8) Rendered: HOW TO SCROLL BACK (AND COPY) IN THIS WINDOW
+[2026-08-26 18:11:11] [KEY] Continue accepted at: Show-ScrollCopyTip
+[2026-08-26 18:11:11] [SCREEN] [SCREEN-05] (shown as screen 9) Rendered: !  IMPORTANT -- READ BEFORE CONTINUING
+[2026-08-26 18:11:16] [KEY] Key 'Y' accepted at: Test-PersonalComputer
+[2026-08-26 18:11:16] [CONFIRM] Personal computer confirmed by user
+[2026-08-26 18:11:17] [OK] Domain check passed -- not domain joined
+[2026-08-26 18:11:17] [OK] Administrator access confirmed
+[2026-08-26 18:11:22] [KEY] Continue accepted at: Test-AdminAccess
+[2026-08-26 18:11:22] [INFO] Windows Edition: Core -- Windows 11 Home
+[2026-08-26 18:11:22] [SCREEN] [SCREEN-34] (shown as screen 10) Rendered: WINDOWS EDITION DETECTED
+[2026-08-26 18:11:22] [INFO] Home edition -- Remote Desktop and Group Policy unavailable
+[2026-08-26 18:11:28] [KEY] Continue accepted at: Get-WinEdition
+[2026-08-26 18:11:28] [SCREEN] [SCREEN-35] (shown as screen 11) Rendered: YOUR PC -- RAM: 8 GB
+[2026-08-26 18:11:29] [WARN] RAM: 8 GB (minimal)
+[2026-08-26 18:11:31] [KEY] Continue accepted at: Get-RAMStatus
+[2026-08-26 18:21:15] [KEY] Key 'Y' accepted at: Test-TimeDateSync
+[2026-08-26 18:21:15] [OK] Time/date confirmed correct by user: Wednesday, August 26, 2026 -- 6:11 PM (UTC-05:00) Eastern Time (US & Canada)
+[2026-08-26 18:21:20] [INFO] Secure Boot state read on all editions (FT-143): True
+[2026-08-26 18:21:20] [SCREEN] [SCREEN-09] (shown as screen 12) Rendered: YOUR SYSTEM AT A GLANCE
+[2026-08-26 18:21:20] [INFO] System Baseline Summary displayed
+[2026-08-26 18:21:38] [KEY] Continue accepted at: Show-SystemBaselineSummary
+[2026-08-26 18:21:38] [STATE] Checkpoint saved: Baseline
+[2026-08-26 18:21:38] [SCREEN] [SCREEN-26] (shown as screen 13) Rendered: YOUR PC'S SECURITY TOOLS -- A QUICK INTRODUCTION
+[2026-08-26 18:22:07] [KEY] Look-back opened at: Show-SecurityToolsBriefing
+[2026-08-26 18:22:25] [KEY] Continue accepted at: Show-SecurityToolsBriefing
+[2026-08-26 18:22:26] [SCREEN] [SCREEN-27] (shown as screen 14) Rendered: THE SCANS WE RECOMMEND -- AND WHY
+[2026-08-26 18:22:31] [KEY] Look-back opened at: Show-ScanPlanBriefing
+[2026-08-26 18:22:42] [KEY] Look-back opened at: Show-ScanPlanBriefing
+[2026-08-26 18:23:30] [KEY] Look-back opened at: Show-ScanPlanBriefing
+[2026-08-26 18:23:38] [KEY] Look-back opened at: Show-ScanPlanBriefing
+[2026-08-26 18:23:59] [KEY] Continue accepted at: Show-ScanPlanBriefing
+[2026-08-26 18:23:59] [STATE] Checkpoint saved: Briefing
+[2026-08-26 18:23:59] [SCREEN] [SCREEN-39] (shown as screen 14a) Rendered: REMINDER: PRE-SCAN RECOMMENDED
+[2026-08-26 18:34:19] [KEY] Key 'Y' accepted at: Show-PreScanGate
+[2026-08-26 18:34:19] [CONFIRM] Repeat run -- user confirmed to continue
+[2026-08-26 18:34:20] [SCREEN] [SCREEN-38] (shown as screen 16) Rendered: DEFENDER OFFLINE SCAN
+[2026-08-26 18:34:40] [KEY] Key 'Y' accepted at: Invoke-OfflineScanOffer
+[2026-08-26 18:34:40] [STATE] Checkpoint saved: OfflineScanPending
+[2026-08-26 18:34:40] [INFO] Starting Defender Offline Scan -- reboot expected
+[2026-08-26 18:34:45] [OK] Sleep prevention deactivated -- normal power management restored (called from: Invoke-OfflineScanOffer)
+
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================
