@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-26 03:07 ET -->
-<!-- Commit: dd65fa5 -->
+<!-- Generated: 2026-08-28 10:30 ET -->
+<!-- Commit: edf3f14 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-26 03:07 ET
-- **Commit at generation:** `dd65fa5`
-- **That commit was made:** 2026-08-26 03:07 ET
-- **Its subject line:** Session close -- Cloud's research was never committed, and a Windows update that changes nothing
+- **Generated:** 2026-08-28 10:30 ET
+- **Commit at generation:** `edf3f14`
+- **That commit was made:** 2026-08-28 10:24 ET
+- **Its subject line:** The real Malwarebytes scan time: 72 minutes, and SANDY is the easy case
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -51,8 +51,8 @@ All paths are relative to `ProjectDocs/`.
 | CPM schedule | `GatewayGuard_CPM_Schedule-2026-08-02-1201.md` | 1 |
 | Screen numbering design | `GatewayGuard_ScreenNumberDesign-2026-08-15-1430.md` | 0 |
 | Screen numbering table | `GatewayGuard_ScreenNumberTable-2026-08-17.md` | 1 |
-| Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii42run1-2026-08-21.md` | 2 |
-| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii43-2026-08-22.md` | 2 |
+| Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii43run1-2026-08-28-0930.md` | 3 |
+| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii43-2026-08-26-1730.md` | 3 |
 | Build plan (current) | `GatewayGuard_ascii43BuildPlan-2026-08-21.md` | 0 |
 | Future settings (candidate list) | `GatewayGuard_FutureSettings-2026-08-24-2310.md` | 0 |
 | Guide FT-220 sections | `GatewayGuard_GuideFT220-Sections-2026-08-21-1445.md` | 0 |
@@ -75,7 +75,7 @@ All paths are relative to `ProjectDocs/`.
 | Licence agreement (EULA) | `GatewayGuard_License-2026-08-25-1400-TEXT.md` | 4 |
 | Cloud working rules | `GatewayGuard_CloudWorkingRules-2026-08-25-1400.md` | 0 |
 | Cloud research brief (licence) | `GatewayGuard_CloudResearchBrief-Licence-2026-08-25-1400.md` | 0 |
-| Note to Cloud (session close) | `GatewayGuard_NoteToCloud-2026-08-26-0302.md` | 1 |
+| Note to Cloud (session close) | `GatewayGuard_NoteToCloud-2026-08-28-1300.md` | 2 |
 | Everything waiting on Bill | `GatewayGuard_DecisionsForBill-2026-08-26-0302.md` | 2 |
 | Pricing reconciliation (one-time packs) | `PricingReconciliation-2026-07-16.md` | 0 |
 | Guide gap-fill (G1-G6, v9 source) | `GatewayGuard_GuideGapFill-fromV9-2026-08-22-1224.md` | 0 |
@@ -98,7 +98,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-08-25 16:41 to 2026-08-26 03:02 [Claude Code -- CGDELL] -- A WINDOWS UPDATE MEASURED AGAINST THE BUILD, AND CLOUD'S RESEARCH FOUND SITTING OUTSIDE THE REPOSITORY
+## Session: 2026-08-26 07:30 to 2026-08-28 13:00 [Claude Code -- CGDELL] -- THE SECOND DRIVE IS PROVEN, AND THREE ROWS OF MY OWN CHECKLIST WERE WRONG
 ```
 
 **If it is not in your copy of the session log, you are reading an old

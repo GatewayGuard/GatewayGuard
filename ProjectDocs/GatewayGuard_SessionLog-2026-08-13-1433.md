@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-08-26 03:02 ET
+- **Last Modified:** 2026-08-28 13:00 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -12,6 +12,203 @@
   Code) so any Claude instance can resume with full context.
   Updated after every file produced or decision made.
   Downloaded by Bill at session end and uploaded to project immediately.
+
+---
+---
+
+## Session: 2026-08-26 07:30 to 2026-08-28 13:00 [Claude Code -- CGDELL] -- THE SECOND DRIVE IS PROVEN, AND THREE ROWS OF MY OWN CHECKLIST WERE WRONG
+
+**No build change. ascii43 untouched, still half built. 26 commits, all pushed.
+F4's gate-24 blocker is CLEARED. Six new findings, FT-236 to FT-241. Three new
+guard scripts. Bill ran ascii43 on SANDY for the first time.**
+
+---
+
+### THE HEADLINE: F4 IS UNBLOCKED, AND IT TOOK THREE ATTEMPTS TO PROVE IT
+
+The block, standing since 2026-08-22: *"that a full scan completes and actually
+covers `D:` is not measured and must be, on SANDY, before any screen text
+claims coverage."*
+
+***measured, SANDY 2026-08-28:*** full scan **06:25:40 to 07:47:17**, and every
+detection logged at **07:47:16** -- one second before it ended. **12 of 12
+specimens, six on each drive**, including inside a ZIP archive, where the report
+names the file *within* the archive.
+
+**The ZIP is the proof.** Real-time protection never caught it -- it does not
+practically open archives on write. Only a scan does. So no reading of that
+result survives except "the full scan found it."
+
+**Two earlier attempts were voided by the security model, and the shape of the
+timestamps is what told them apart:**
+
+- **2026-08-27 13:17** -- eleven detections in **six seconds, in the kit's own
+  write order**, C: then D:. Real-time protection catching files as they were
+  written, not a scan. Briefly read as scan evidence and withdrawn.
+- **2026-08-28, second attempt** -- Bill turned real-time protection off so the
+  specimens would survive. **Windows turned it back on when the scan started**
+  (`IsTamperProtected True`). Checkup RECOMMENDS Tamper Protection, so the
+  tool's own advice makes this measurement impossible -- the FT-141 shape.
+
+**The near-miss worth recording.** The `D:` MPLog lines read 15:29, 15:30, 15:32
+against a scan that ended 12:15 -- read straight, every one lands *after* the
+scan and F4 stays blocked. **MPLog stamps UTC; the rest of the report is local.**
+Settled by measurement, not assumption: on CGDELL the last MPLog entry read
+18:49:02 while local was 14:49:05 and UTC 18:49:05. Converted, those lines are
+11:29, 11:30 and 11:32 -- inside the window. The reader now converts and labels,
+because a report needing a timezone correction to read correctly will eventually
+be read incorrectly.
+
+**Malwarebytes agrees.** ***measured:*** custom scan, both drives ticked,
+rootkits on -- **12 of 12, 1 hour 12 minutes, 719,478 files.**
+
+---
+
+### WHAT I GOT WRONG, AND THE GATE THAT NOW CATCHES IT
+
+**Bill: "how could we have prevented the error... Is there something I can say
+to you?"** Then: **"can you stop assuming and always check before answering or
+research if necessary."** And separately: **"You need to provide me with layman
+non-technical explanations without the FTs and Gates you quote."**
+
+**Three rows of the twelve-row FT table I built were wrong, and two FT numbers
+were invented.**
+
+| Row | I wrote | It is |
+|---|---|---|
+| FT-221 | "same rule as FT-219, no re-asking permission" | The **password-manager guard** |
+| FT-188 | "the `I` screen shows the right build and Machine ID" | **A clean run must not log `[ERROR]`** for absent policy keys |
+| FT-178 | "`D:` will be missing -- not a finding" | **Both disks must be listed. Seeing one IS a finding** |
+| FT-204b, FT-224b | cited as FT numbers | **Do not exist. Invented.** |
+
+**The mechanism is exact and measurable.** The screen mapping was mechanical --
+FT to enclosing function to screens drawn -- and **right in all twelve rows**.
+The description column was **right in all seven rows whose comment I had opened
+and wrong in all three I had not**, where I had only the function NAME and wrote
+what the name and the neighbouring row suggested. **The mapping answered WHERE
+and I let it stand in for WHAT.** FT-219 and FT-221 share a function and do
+unrelated jobs.
+
+**Worse than not reading the source: the 2026-08-22 checklist already had all
+four right, with line numbers.** I replaced verified sentences with guesses while
+rebuilding.
+
+**FT-178 was the costly one** -- it told Bill to *ignore* the exact symptom the
+fix had been made to remove.
+
+**Built in response: `Tool2\Run-ChecklistClaimsCheck.bat`.** Verifies every FT
+cited exists in the build **or** in another project document -- corroboration,
+because absence from the build is legitimate for a never-built finding. That
+turns 25 vague hits into 2 hard failures. Lists FTs sharing a function. Prints
+each FT's real source comment beside the citation, because no machine can judge
+whether prose matches intent. **It found two bugs in itself before it passed.**
+
+**The four words Bill can use: "which rows did you open?"** A list answer exposes
+what a table conceals. *"What did you read?"* is too coarse -- I had read the
+build and still had three fabricated rows.
+
+---
+
+### SIX NEW FINDINGS FROM THE FIRST ascii43 FIELD RUN
+
+Logs are in **personal OneDrive**, `C:\Users\willi\OneDrive\GatewayGuard\Logs`,
+**not `Test_Results`** -- a session looked in the wrong place and concluded the
+field run had not happened. Copies now in `Test_Results\FieldRun-ascii43\`.
+
+- **FT-236 (high).** **192 of 328 log lines** are one warning: `Write-GGBox`
+  truncated a line to fit a **60-column** window. FT-217 is not the defect, it is
+  the thing that noticed -- it truncated instead of corrupting and logged every
+  instance. **The defect is that nothing told the user.** Screen 1's maximize
+  wording is advice; nothing verifies it. Bill must widen to **84+ columns**
+  before continuing, or the rest of the run measures truncation.
+- **FT-237 (medium).** Setting 6's WTDS read logs `[ERROR] SILENT ERROR` on a
+  healthy machine. The status is correctly "Unknown"; a global trap logs it
+  anyway. **That log is the file we tell customers to email support.**
+- **FT-238.** The offline-scan-found-nothing scare, resolved by timeline. Not a
+  blind spot.
+- **FT-239.** Windows restores real-time protection by itself. ***measured:***
+  **zero** mentions of this in `defender-realtime.html`. A senior who turns it
+  off and finds it back on has a reason to distrust the machine.
+- **FT-240 (medium).** *"About 25 minutes to an hour"* for the Malwarebytes scan,
+  on a screen that four lines earlier says tick **every** drive.
+  ***measured: 1 hour 12 minutes.*** And **SANDY's D: is 92% empty** -- a full
+  1 TB drive is several times over, not 20%. Three lines below the estimate the
+  screen warns that closing the results without QUARANTINE means scanning again.
+  **A wrong number makes them cancel, right above a warning never to cancel.**
+- **FT-241 (low).** *"Takes about 5-10 minutes"* never says what takes 5-10
+  minutes. It is the install; the nearest noun is "companion scanner".
+
+---
+
+### SETTING 6, AND SETTING 14's LOCK SCREEN
+
+**Setting 14, lock screen third: PROVEN AUTOMATABLE.** Bill toggled it, the
+widget appeared and vanished. ***measured on SANDY, four runs:*** the full-file
+diff of 11-07 against 11-14 is **two lines** -- the timestamp and
+`LockScreenWidgetsEnabled` 1 -> 0. The Settings toggle writes that value and
+nothing else. Research row 3 moves **MAYBE -> YES**.
+
+**And the widget is an active surface:** city and temperature on a locked
+machine, the whole panel is a button, and pressing it opens a browser at msn.com
+after the PIN. **A better argument for the setting than tidiness.**
+
+**Setting 6.** ***measured on both machines, elevated:*** `WTDS\Components`
+cannot be read. `CanAuto=$true` is untrue -- recommend `$false`, as setting 3
+already does. **The "all 3" copy is CORRECT** -- I suspected it and was wrong;
+box four is *"Automatically collect website or app content..."*, a data
+collection box, not a protection one. **But line 6406 says "turn ON all 3
+options" beside four visible boxes, and Bill turned on all four during the
+measurement.** Settings 11 and 12 exist to reduce exactly that.
+
+**Phishing protection EXISTS on Windows 11 Home** -- Microsoft's edition table
+does not list it. `SkipOnHome=$false` was right.
+
+---
+
+### ALSO DONE
+
+- **`LICENSE` at the repository root**, from Cloud's text. Viewing is not a
+  licence.
+- **26H2 watchlist.** Arrives by enablement package on the 25H2 branch,
+  KB5054156. ***measured: Checkup never compares Windows versions*** -- zero
+  reads of DisplayVersion, CurrentBuild, OSVersion. It branches on **edition**
+  only. **The version flip cannot break it.**
+- **Both machines unpaused and current** -- 25H2, 26200.9168. CGDELL took
+  KB5121003. The pause that ran past launch is gone.
+- **Gumroad:** Bill created the LLC account 2026-08-25, so it is bound by the new
+  terms already and the 2026-09-16 gap does not apply.
+- **EULA compared** against Malwarebytes' and a third-party agreement. Ours
+  covers 13 of Malwarebytes' 16 sections. **Two genuine gaps: Feedback, and
+  privacy -- the word "privacy" appears zero times and no policy exists.** Four
+  more are already in our own Appendix as "confirm they were declined".
+- **`gatewayguard.co/compatible` does not exist**, and Section 6's warranty is
+  defined by reference to it.
+- **Cleanup script** now removes its Temp copies too.
+- **Three new guards:** `Run-FullScanCoverageCheck`, `Run-ProtectionHistoryCheck`,
+  `Run-ChecklistClaimsCheck`.
+
+---
+
+### WHAT IS STILL OPEN
+
+**Bill, at the keyboard:** finish the ascii43 run -- **widen to 84+ columns
+first**; check the scan report says `Rootkits: Enabled`; run
+`Run-AVTestKitCleanup.bat` on SANDY; restart both machines.
+
+**Decisions only Bill can make:** the second margin note in the licence; the
+multi-PC pack scope; whether the Guide's one-printed-copy rule survives (the five
+sizes are a vision accommodation, and a household may need two); whether Feedback
+and privacy clauses are added.
+
+**Build, next session, to ascii44:** F4 -- **now unblocked** -- plus the F6
+wording block, F5 remnants, setting 1 pause detection, setting 14 three-way
+including the newly-proven lock screen third, setting 6 rename **and
+`CanAuto=$false`**, FT-236 width warning, FT-237 error suppression, FT-240 and
+FT-241 wording. Then the gates and the increment.
+
+---
+---
+
 
 ---
 
