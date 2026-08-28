@@ -80,6 +80,21 @@ try {
     W ("    FullScanAge (days)  : " + $st.FullScanAge)
     W ("    QuickScanEndTime    : " + $st.QuickScanEndTime)
     W ("    AMRunningMode       : " + $st.AMRunningMode)
+    W ""
+    # Added 2026-08-28. On 2026-08-27 the EICAR kit's ZIP and ADS specimens
+    # were EATEN on write, on both drives. On 2026-08-28 the identical kit
+    # KEPT all twelve. Real-time protection's behaviour changed overnight and
+    # nothing in this report said so, because nothing here read it.
+    W "    REAL-TIME PROTECTION -- read this before trusting any EICAR result:"
+    foreach ($f in 'RealTimeProtectionEnabled','IsTamperProtected','AntivirusEnabled',
+                   'OnAccessProtectionEnabled','BehaviorMonitorEnabled','IoavProtectionEnabled') {
+        W ("      {0,-28} : {1}" -f $f, $st.$f)
+    }
+    if (-not $st.RealTimeProtectionEnabled) {
+        W ""
+        W "      ** REAL-TIME PROTECTION IS OFF. This PC is not being watched,"
+        W "         and an EICAR specimen surviving on disk proves nothing."
+    }
 } catch { W ("    Get-MpComputerStatus failed: " + $_.Exception.Message) }
 W ""
 
