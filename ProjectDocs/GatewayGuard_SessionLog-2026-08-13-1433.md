@@ -177,12 +177,38 @@ does not list it. `SkipOnHome=$false` was right.
   KB5121003. The pause that ran past launch is gone.
 - **Gumroad:** Bill created the LLC account 2026-08-25, so it is bound by the new
   terms already and the 2026-09-16 gap does not apply.
-- **EULA compared** against Malwarebytes' and a third-party agreement. Ours
-  covers 13 of Malwarebytes' 16 sections. **Two genuine gaps: Feedback, and
-  privacy -- the word "privacy" appears zero times and no policy exists.** Four
-  more are already in our own Appendix as "confirm they were declined".
+- **THE LICENCE, COMPARED AGAINST TWO REAL ONES.** Full write-up:
+  `ProjectDocs\GatewayGuard_LicenceComparison-2026-08-28-1330.md`. **No edits
+  made** -- everything found is an addition, and additions to a contract under
+  attorney review are Bill's call.
+  - **Read in full:** Malwarebytes (36pp, 16 sections -- the real comparator,
+    US consumer security, named on our own screens) and a third-party agreement
+    that turned out to be **Xiamen Yinlemei / "Master Zhuan Zhuan"**, a Chinese
+    video-editing publisher.
+  - **We cover 13 of Malwarebytes' 16.** Their Audit Rights is Teams-only and
+    does not apply -- ***measured***, `Get-MachineIdentity` compares its hash to
+    nothing, so there is no enforcement to audit against.
+  - **Two genuine gaps, neither previously recorded: a Feedback clause** (a solo
+    developer whose buyers email suggestions needs it) **and privacy** --
+    ***measured: the word appears zero times and no policy exists***, against a
+    plan for an email list scaling to 100,000 addresses.
+  - **REJECTED, and the reason is commercial:** the three examples Bill was sent
+    (Articulate, VMware, Microsoft) all bundle documentation WITH a product. **We
+    sell the Guide separately.** A unified term would give it away with every
+    Checkup purchase.
+  - **The Zhuan Zhuan agreement is not a model.** Its §2 forbids *"allowing
+    others to view the contents of this Software"* -- the exact opposite of our
+    Section 2, which invites the customer to read the source. Plus publicity
+    rights and indemnification, both wrong for a household product.
+  - **The five print sizes are a vision accommodation, and Section 5 allows one
+    printed copy.** A couple needing two different sizes cannot legally have
+    them. Bill's decision.
 - **`gatewayguard.co/compatible` does not exist**, and Section 6's warranty is
-  defined by reference to it.
+  **defined by reference to it** -- so the promise itself is undefined.
+  **`gatewayguard.co/license` does not exist either**, and the Gumroad checkout
+  needs it. **Both block selling.**
+- **`Eula-other files .zip` is misnamed** -- ***measured***, it holds nine of our
+  own files from July, not other companies' agreements. Rename it.
 - **Cleanup script** now removes its Temp copies too.
 - **Three new guards:** `Run-FullScanCoverageCheck`, `Run-ProtectionHistoryCheck`,
   `Run-ChecklistClaimsCheck`.
