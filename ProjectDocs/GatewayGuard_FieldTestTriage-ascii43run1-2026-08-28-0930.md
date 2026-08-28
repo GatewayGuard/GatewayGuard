@@ -312,12 +312,43 @@ Three lines further down, the same screen says:
 hung and cancels.** Cancelling is precisely the outcome the next paragraph
 warns about. **Our own time estimate is what would make them do it.**
 
-### The fix
+### THE REAL NUMBER, MEASURED
 
-Record the real finish time on SANDY -- a two-drive machine, rootkits enabled --
-and quote a range that covers it. Better still, say what actually drives the
-number: **"how long depends on how many drives you ticked and how full they
-are. Leave it running; it is not stuck."**
+***measured on SANDY, 2026-08-28, Bill at the keyboard:***
+
+| | |
+|---|---|
+| **Duration** | **1 hour 12 minutes** |
+| **Files scanned** | **719,478** |
+| Drives | C: and D:, both ticked |
+| Rootkit checking | on |
+| Findings | **12 of 12** -- six on each drive |
+
+**72 minutes against a quoted "about 25 minutes to an hour." The estimate is
+exceeded by twenty per cent on the very machine it was written for.**
+
+### AND SANDY IS THE EASY CASE
+
+***measured:*** C: holds about **76 GB** used of 237, D: about **79 GB** used of
+931. **That second drive is 92% empty.**
+
+**A customer with a full 1 TB second drive is not 20% over the estimate. They
+are several times over it.** The number scales with data, and the screen offers
+no hint of that.
+
+### The fix -- stop quoting a fixed range
+
+A single range cannot be right for a tool the same screen tells you to point at
+every drive you own. Replace it with what the time actually depends on:
+
+> `5. Start the scan. How long it takes depends on how many drives`
+> `   you ticked and how full they are -- on a PC with two drives`
+> `   it took us about an hour and a quarter. Leave it running.`
+> `   It is not stuck.`
+
+**"It is not stuck" is the load-bearing half.** The measured failure is not that
+the number is wrong -- it is that a wrong number makes a customer cancel a scan
+three lines above a warning never to cancel it.
 
 ---
 
