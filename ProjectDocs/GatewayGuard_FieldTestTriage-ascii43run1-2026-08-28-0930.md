@@ -192,3 +192,91 @@ and run `Tool2\Run-AVTestKitCleanup.bat`. **SANDY is unprotected until then.**
 Screens **27** (review), **27a** (applying), **28-31** (encryption, slowly, for
 FT-229), **33** (scan schedule). And the five `Run-SandyChecks` questions that
 need Bill's eyes: the Device encryption entry, and M-3 / M-4 / M-5.
+
+---
+
+## FT-239 -- WINDOWS TURNED REAL-TIME PROTECTION BACK ON BY ITSELF
+
+**Bill, 2026-08-28:** *"MS turned on real-time protection when I started the
+full scan."*
+
+**This voids the second full-scan test, and it is also a product finding in its
+own right.**
+
+***measured, `SandyChecks-SANDY-2026-08-26_11-14.txt`:*** SANDY has
+`IsTamperProtected True`. Tamper Protection exists precisely to stop real-time
+protection staying off, and it did its job.
+
+### Why this test cannot be run the way it was set up
+
+**Real-time protection always reaches a file before an on-demand scan does.**
+That is the whole point of it. So:
+
+- **With real-time protection ON**, the specimens are caught at write time and
+  the scan never sees them. ***measured 2026-08-27 13:17:*** exactly this --
+  eleven detections in six seconds, in the kit's own write order.
+- **With it OFF**, Windows turns it back on. ***measured 2026-08-28:*** exactly
+  this, at the moment the scan started.
+- **An exclusion** would hide the folders from real-time protection **and from
+  the scan**, so it answers nothing.
+
+**There is no clean way to run this test on a machine with Tamper Protection
+on -- and Checkup RECOMMENDS Tamper Protection on.** Same shape as FT-141: the
+tool's own advice makes a measurement impossible. That is not a defect, it is
+the security model working.
+
+### STOP. THE QUESTION F4 NEEDED ANSWERED IS ALREADY ANSWERED
+
+**Gate 24 requires evidence for a SCREEN CLAIM. The claim is "full scan of all
+your drives" -- a statement about SCOPE, not about detection capability.**
+
+***Scope is measured.*** `FullScanCoverage-SANDY-2026-08-27_13-13.txt`: the
+full scan ran 10:52:29 to 12:15:02, and MPLog carries 59 `D:` lines of the form
+`ExpensiveFile:Scan time for \?\D:\...`, which the engine emits when it scans
+a file and measures it. Converted from UTC, they fall inside the scan window.
+**The full scan read files on D:. That is the claim, and it is evidenced.**
+
+### The remaining question does not need answering, and here is the reasoning
+
+*Inferred, from two measured facts, with the mechanism named:*
+
+1. ***measured:*** the full scan reads files on D:.
+2. ***measured:*** Defender detects `Virus:DOS/EICAR_Test_File` on D: -- eleven
+   detections including five D: placements, and separately an offline scan that
+   found and quarantined EICAR.
+
+**Defender uses one engine and one signature set for real-time protection,
+on-demand scans and the offline scan.** There is no mechanism by which it would
+read a file on D: during a full scan and fail to match a signature it matches
+on that same drive seconds earlier. **A test that cannot fail is not worth
+82 minutes**, and this one has now cost two attempts and been voided twice by
+the security model.
+
+**Labelled honestly: scope is *measured*, detection-on-D-by-full-scan is
+*inferred*. The screen wording claims scope. Ship it.**
+
+### THE PRODUCT FINDING, WHICH IS THE PART WORTH KEEPING
+
+***measured on the ascii43 source:*** two occurrences of re-enable wording in
+the build, and ***measured:*** **zero** in `WebSite\html\defender-realtime.html`.
+
+**Nothing tells the user that Windows turns real-time protection back on by
+itself.** A senior who turns it off -- to install something, on someone's advice
+-- and later finds it on again has been given a reason to think something else
+changed their settings. **Ours is a product whose central promise is that
+nothing changes without their permission.**
+
+**For the guide's real-time protection page:** say that Windows turns this back
+on by itself, that this is Tamper Protection doing its job, and that it is a
+good thing. One short paragraph. It costs nothing and it pre-empts a support
+call from a frightened customer.
+
+### WHAT BILL SHOULD DO NOW
+
+1. **Leave real-time protection ON.** Windows has already restored it; nothing
+   to undo.
+2. **Run `Tool2\Run-AVTestKitCleanup.bat`.** Whatever survives is being eaten
+   as we speak; clean up the folders.
+3. **Do not run a third full scan for this.** It will be voided the same way.
+4. **Carry on with the ascii43 field run** -- widen the console to at least
+   84 columns first (FT-236).
