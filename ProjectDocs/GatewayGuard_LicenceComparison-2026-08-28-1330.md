@@ -17,7 +17,12 @@
 
 **No edits were made to our agreement.** Everything below is an *addition*, and
 additions to a contract with an attorney review pending are Bill's call and the
-attorney's, not something to slip in. **Drafts are ready on request.**
+attorney's, not something to slip in.
+
+**DRAFTS NOW EXIST:** `ProjectDocs\GatewayGuard_LicenceDraftClauses-2026-08-28-1400.md`
+-- a Feedback section, a Privacy section, and three options for the printed-copy
+rule, written in the agreement's own plain register for the attorney to react
+to. **v2.4 itself is still untouched.**
 
 ---
 
