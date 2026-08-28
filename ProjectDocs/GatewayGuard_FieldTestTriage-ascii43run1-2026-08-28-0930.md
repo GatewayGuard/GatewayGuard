@@ -280,3 +280,65 @@ call from a frightened customer.
 3. **Do not run a third full scan for this.** It will be voided the same way.
 4. **Carry on with the ascii43 field run** -- widen the console to at least
    84 columns first (FT-236).
+
+---
+
+## FT-240 -- THE MALWAREBYTES SCAN TIME IS QUOTED FOR ONE DRIVE, ON A SCREEN THAT TELLS YOU TO TICK ALL OF THEM
+
+**Severity: medium. It is a wording defect that causes a DESTRUCTIVE user
+action.**
+
+***measured on the ascii43 source:*** the tool says **"about 25 minutes to an
+hour"** in **three** places. The same screen says, four lines earlier:
+
+> `4. CHECK ALL your drives (C:, D:, and any others)`
+
+**Those two instructions pull against each other.** The estimate holds for one
+drive. The instruction says scan every drive.
+
+***Field measurement, SANDY, 2026-08-28:*** at **44 minutes** the scan had
+found the six C: specimens and **had not started D: yet**. SANDY has 237 GB and
+931 GB. On a two-drive machine this runs well past an hour.
+
+### Why this is not merely inaccurate
+
+Three lines further down, the same screen says:
+
+> *"If anything was found, click QUARANTINE right then, on that results screen.
+> If you close it first, Malwarebytes only keeps a record -- you would have to
+> scan all over again to remove anything. Finding is not fixing."*
+
+**A customer told "an hour", still running at ninety minutes, concludes it has
+hung and cancels.** Cancelling is precisely the outcome the next paragraph
+warns about. **Our own time estimate is what would make them do it.**
+
+### The fix
+
+Record the real finish time on SANDY -- a two-drive machine, rootkits enabled --
+and quote a range that covers it. Better still, say what actually drives the
+number: **"how long depends on how many drives you ticked and how full they
+are. Leave it running; it is not stuck."**
+
+---
+
+## FT-241 -- "TAKES ABOUT 5-10 MINUTES" NEVER SAYS WHAT TAKES 5-10 MINUTES
+
+**Severity: low. One sentence.**
+
+***measured, screen shown when Malwarebytes is NOT installed:***
+
+> `Malwarebytes Free is a companion scanner that catches`
+> `PUPs and adware Defender sometimes misses. It's optional`
+> `but recommended -- takes about 5-10 minutes.`
+
+**It is the download and install** -- confirmed by Bill, 2026-08-28, and by the
+next prompt being *"Open the Malwarebytes download page now?"*
+
+**But the sentence does not say so.** The nearest noun is "companion scanner",
+so it reads as the scan. And the customer meets **"25 minutes to an hour"** for
+that same scan later in the same run, leaving two numbers with nothing to attach
+them to.
+
+**Fix:** name the thing. *"Downloading and installing it takes about 5-10
+minutes."* This is the plain-language rule -- every instruction states what the
+action is and what happens.
