@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-28 10:30 ET -->
-<!-- Commit: edf3f14 -->
+<!-- Generated: 2026-08-30 17:51 ET -->
+<!-- Commit: 7f9e3f0 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-28 10:30 ET
-- **Commit at generation:** `edf3f14`
-- **That commit was made:** 2026-08-28 10:24 ET
-- **Its subject line:** The real Malwarebytes scan time: 72 minutes, and SANDY is the easy case
+- **Generated:** 2026-08-30 17:51 ET
+- **Commit at generation:** `7f9e3f0`
+- **That commit was made:** 2026-08-30 17:50 ET
+- **Its subject line:** N means no, B means back -- and the measurement says the work is 7 prompts, not 47
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -51,7 +51,7 @@ All paths are relative to `ProjectDocs/`.
 | CPM schedule | `GatewayGuard_CPM_Schedule-2026-08-02-1201.md` | 1 |
 | Screen numbering design | `GatewayGuard_ScreenNumberDesign-2026-08-15-1430.md` | 0 |
 | Screen numbering table | `GatewayGuard_ScreenNumberTable-2026-08-17.md` | 1 |
-| Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii43run1-2026-08-28-0930.md` | 3 |
+| Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii43run2-2026-08-30-1723.md` | 4 |
 | Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii43-2026-08-26-1730.md` | 3 |
 | Build plan (current) | `GatewayGuard_ascii43BuildPlan-2026-08-21.md` | 0 |
 | Future settings (candidate list) | `GatewayGuard_FutureSettings-2026-08-24-2310.md` | 0 |
@@ -98,7 +98,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-08-26 07:30 to 2026-08-28 13:00 [Claude Code -- CGDELL] -- THE SECOND DRIVE IS PROVEN, AND THREE ROWS OF MY OWN CHECKLIST WERE WRONG
+## Session: 2026-08-30 17:10 to 17:45 [Claude Code -- CGDELL] -- THE RUN HAD FINISHED AND NOBODY HAD LOOKED, AND EIGHT REGISTRY WRITES CANNOT REPORT FAILURE
 ```
 
 **If it is not in your copy of the session log, you are reading an old
