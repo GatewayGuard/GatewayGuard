@@ -578,12 +578,8 @@ encryption run on SANDY, and Part 2F, which needs the plan approved first.
 
 # PART 4 -- WHAT NEEDS BILL, AND NOTHING CAN PROCEED WITHOUT IT
 
-1. **`N` cannot be both "Back" and "No".** Screen 27 asks a real Y/N question,
-   where FT-236 records Bill's ruling that **N = go back stays**. But screen
-   27's note says *"Don't use N to go back use B, change everywhere it is
-   needed,"* and screens 14a and 18 ask for **X = Exit** instead of N.
-   **Two rulings, opposite directions, same key.** One decision settles
-   roughly eight items across Part 2C.
+1. ~~**`N` cannot be both "Back" and "No".**~~ **ANSWERED BY BILL,
+   2026-08-30 -- see below. This item is closed.**
 2. **Is Malwarebytes still in the product?** Part 2F item 4. It touches
    pricing copy, the licence, the guide and four screens. **Research can
    inform it; only Bill can decide it.**
@@ -593,6 +589,82 @@ encryption run on SANDY, and Part 2F, which needs the plan approved first.
    `OneDrive\Personal\Pictures\Screenshots`) **have never been looked at.**
    They are the only record of whatever happened at screen 16. Put them in
    `Test_Results\` and they can be triaged.
+
+---
+
+# PART 5 -- BILL'S RULING ON THE KEYS, AND THE MEASURED SCOPE
+
+**Bill, 2026-08-30:** *"N always means no and B should always be used to say
+back."*
+
+**This closes Part 4 item 1 and reverses the earlier ruling.** FT-236 recorded
+that *"`N = go back` stays as the natural answer in real Y/N questions"* and
+treated the ascii43 field checklist's demand -- *"B is the ONLY Back key, N
+must never take you back"* -- as a defect in the checklist. **The checklist
+was right.** FT-236 is withdrawn on its premise; the build moves, not the
+checklist. Recorded in `CLAUDE.md` under Product Rules.
+
+## Where Back already works, and where it does not
+
+**Checked all four key readers, because checking only one is how this was got
+wrong on 2026-08-17.**
+
+| Reader | Call sites | Handles Back? |
+|---|---|---|
+| `Pause-ForUser` | 76 | **Yes** -- offers Back via `$ggCanBack`, gated by FT-146 so it only appears where it can actually deliver |
+| `Read-NavKey` | 6 | **Yes** -- `if ($ch -eq "B") { $result = "BACK" }` |
+| `Confirm-Exit` | 10 | n/a -- exit confirmation, correctly has no Back |
+| **`Read-ValidKey`** | **47** | **1 of 47** |
+
+**So Back works on PAGES and not at QUESTIONS**, which is exactly the shape
+the 2026-08-17 correction in `CLAUDE.md` describes. The work is confined to
+`Read-ValidKey`.
+
+**The model already in the build, line 8548 -- the only site of 47 that has
+it:**
+
+```powershell
+$goodResp = Read-ValidKey -ValidKeys @("Y","N","B") -Prompt "Choice (Y = Re-apply / N = Skip / B = Back): "
+```
+
+## The 7 sites where N means "go back" -- these change
+
+***measured, ascii43 source, 2026-08-30:***
+
+| Line | Current prompt |
+|---|---|
+| 3825 | `Close Checkup? (Y = close / N = go back)` |
+| 6239 | `Your choice (Y = Continue / N = Go back / S = Show me each item)` |
+| 6642 | `Still correct? (Y = yes, continue / N = no, ask me again)` |
+| 7432 | `Continue WITHOUT encryption? (Y = Yes, continue / N = Go back and select it)` |
+| 7461 | `Your choice (Y = Continue / N = Go back / S = Show me)` |
+| 7983 | `Have you set Sleep and Display to Never manually? (Y = Yes, continue / N = No, go back)` |
+| **8522** | **`Ready to proceed? (Y = Start / N = Go back / Q = Quit)`** -- **screen 27, the one Bill hit** |
+
+**Note 6642 and 7983 are not simple swaps.** Both ask a real question whose
+honest answer is "no", and *then* go back as a consequence. They need `B`
+added **and** the `N` branch rewritten to mean no -- not `N` relabelled.
+
+## The 11 sites where N means "exit" -- these WAIT
+
+***measured:*** lines 3419, 3466, 3513, 3803, 4271, 4315, 4489, 4538, 4621,
+4687, 4928.
+
+**Bill asked for `X` = Exit at screens 14a and 18, with `Q` or `E` as
+fallbacks. That is not decided.** Until it is, these keep `N`.
+
+**Do not fold the two changes into one pass.** `N` currently means three
+things across 30 of the 47 sites -- No at 12, Back at 7, Exit at 11 -- and
+changing two of the three at once is how the confusion comes back wearing a
+different letter. **B first, alone, and field-run it.**
+
+## What this costs
+
+**7 prompts rewritten, 7 `ValidKeys` arrays extended, and the `N` branch
+rewritten at 2 of them.** Every change is inside `Read-ValidKey` call sites,
+every one goes through `gg_edit.py` assert-guarded, and the pattern to copy is
+already in the file. **This is a contained change and it should go in
+ascii44 with FT-242.**
 
 ---
 

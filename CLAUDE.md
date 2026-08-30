@@ -114,6 +114,41 @@
 - **GOOD items** auto-skip during run, offered for change at the end
 - Font instructions shown as the **very first screen** before any code runs
 
+### THE KEYS MEAN ONE THING EACH (Bill, 2026-08-30)
+
+**Bill's words: "N always means no and B should always be used to say back."**
+
+- **`N` = No.** Never "go back", never "exit", never "skip to the next
+  thing". Just no.
+- **`B` = Back.** It is the only Back key.
+
+**This REVERSES the earlier ruling recorded against FT-236**, which said
+*"`N = go back` stays as the natural answer in real Y/N questions"* and
+treated the ascii43 field checklist's demand -- *"B is the ONLY Back key, N
+must never take you back"* -- as a defect in the checklist. **The checklist
+was right. FT-236 is withdrawn on its premise**, and the build is what has to
+move.
+
+**Why the earlier ruling failed in the field.** ***measured, ascii43 source,
+2026-08-30:*** `N` currently carries **three different meanings across 30 call
+sites** -- No at 12, "go back" at 7, and "exit/leave" at 11. A user cannot
+predict what `N` does before pressing it, which is a head-on breach of the
+User-Facing Clarity Rule below. Bill hit this at screen 27 and wrote
+*"Don't use N to go back use B, Change everywhere it is needed."*
+
+**The model to copy already exists in the build** -- line 8548:
+`@("Y","N","B")` / `"Choice (Y = Re-apply / N = Skip / B = Back): "`. It is
+the **only** one of 30 sites that offers `B`.
+
+**Exit is a separate open question.** Bill asked for **`X` = Exit** at screens
+14a and 18 (`Q` or `E` as fallbacks). That is not yet decided, and the 11
+`N = Exit` sites wait on it. **Do not fold it into the B change** -- one key
+at a time, or the same confusion returns wearing a different letter.
+
+Full measurement and the site-by-site list:
+`ProjectDocs\GatewayGuard_FieldTestTriage-ascii43run2-2026-08-30-1723.md`,
+Part 4 item 1.
+
 ---
 
 ## Website Copy Must Match the Written Guide

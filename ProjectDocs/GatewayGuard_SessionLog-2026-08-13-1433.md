@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-08-28 13:00 ET
+- **Last Modified:** 2026-08-30 17:40 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -14,6 +14,186 @@
   Downloaded by Bill at session end and uploaded to project immediately.
 
 ---
+---
+
+## Session: 2026-08-30 17:10 to 17:45 [Claude Code -- CGDELL] -- THE RUN HAD FINISHED AND NOBODY HAD LOOKED, AND EIGHT REGISTRY WRITES CANNOT REPORT FAILURE
+
+**No build change. ascii43 untouched. Two commits. Six new findings, FT-242 to
+FT-247. One ruling from Bill that reverses an earlier one.**
+
+---
+
+### THE THING THAT SHOULD NOT HAVE NEEDED FINDING, AGAIN
+
+**The run-1 triage, written 2026-08-28 09:30, closed with "STILL AHEAD IN THIS
+RUN: screens 27, 27a, 28-31, 33."** ***measured at session start:*** the run
+continued for two more sessions and **finished 2026-08-30 at 16:40, on screen
+34, the last screen in the program.**
+
+**Five ascii43 logs exist in `C:\Users\willi\OneDrive\GatewayGuard\Logs`. Three
+had been copied to `Test_Results\FieldRun-ascii43\`. Two had not** --
+`2026-08-28_17-29` (125 lines) and `2026-08-30_11-04` (253 lines, the one that
+reaches the end). **Neither had been read by anyone.**
+
+**And Bill's own notes had never been read at all.** ***measured:*** both
+`Ascii43-Test-Results` `.docx` files were **untracked** -- in no commit, so no
+push, so no sync -- and ***measured:*** **zero references to either filename
+anywhere in `ProjectDocs\`**, plus zero hits in the run-1 triage or this log
+for thirteen distinctive phrases they contain. **They were written that same
+day, 12:36 and 16:52.** The `-2` file carries **34 screen-by-screen entries and
+a 20-point research list.**
+
+**This is the same failure as 2026-08-25**, when Cloud's 1,261-line licence
+research sat untracked through a session close. The rule that covers it --
+step 4 of GETTING A FILE TO CLAUDE CLOUD -- was already written both times.
+**Writing a rule is not running it.** All five logs, both `.docx`, and a
+readable `.md` twin are now committed.
+
+**The one piece of good news:** ***measured, `2026-08-30_11-04`:*** **zero
+truncation warnings in 253 lines**, at 175 columns. Bill widened the console
+as FT-236 asked. It is the first ascii43 log that measures content rather than
+truncation.
+
+---
+
+### FT-242 -- EIGHT REGISTRY WRITES CANNOT FAIL, SO A FAILED CHANGE READS AS GOOD
+
+**The highest-value fix on the board, and it is mechanical.**
+
+***measured, 16:34:21, three consecutive log lines:***
+
+```
+[APPLIED] Windows Widgets -- Disable | Before: Unknown -- could not check | Result: Windows Widgets disabled -- GOOD
+[OK] User approved convenience change: Windows Widgets -- ... -- GOOD
+[ERROR] SILENT ERROR at Show-ConvenienceReview: Attempted to perform an unauthorized operation. | At ...ps1:6472 char:17
+```
+
+***measured, source line 6472:*** `Set-ItemProperty ... -Force` with **no
+`-EA Stop`**. A `Set-ItemProperty` failure is **non-terminating**, so it does
+not throw, so the enclosing `catch` never runs, and execution falls through to
+`$result = "Windows Widgets disabled -- GOOD"`. **The catch is decorative.**
+
+***measured, `Apply-Setting` lines 6200-6600: 6 of 14 writes carry `-EA Stop`,
+8 do not*** -- 6447, 6455, 6463, 6464, 6472, 6489, 6503, 6517. **Item 6, twelve
+lines away, has it on all four writes and correctly reported `MANUAL REQUIRED
+-- registry is protected on this PC` in the same run at 15:14:37.** The
+difference between the honest report and the false one is four characters.
+
+**Bill saw the symptom and wrote it down without knowing the cause** -- screen
+34: *"I checked edge startup boost no change, still off."* Lines 6463 and 6464
+are two of the eight.
+
+**Why it outranks the rest:** the licence and the log footer both tell the
+customer to email this file to support. **It says GOOD when the write was
+refused.** Same family as FT-162's `ScanType 4`, and same family as FT-203,
+which still prints `[GOOD] Scheduled task created` for two tasks that never run
+on battery.
+
+---
+
+### FIVE MORE, ALL MEASURED
+
+- **FT-243.** The required notice *"your choices can be reviewed in your log"*
+  is ***measured: one occurrence, line 7428***, inside
+  `Show-BitLockerFinalDecline` -- **screen 25e, reached only by DECLINING
+  encryption.** `CLAUDE.md` says it belongs on the review screen. **Anyone who
+  accepts encryption never sees it.** Bill: *"Did not see this on the
+  Screen."* He was right.
+- **FT-244.** Screen 32 is drawn and **never paused** -- ***measured, source
+  8735-8741:*** `Draw-Box` then straight into `Setup-ScheduledTasks`.
+  ***measured:*** screens 32 and 33 both render at 16:09:43, the same second.
+  Bill asked *"Is there a screen 32."* There is; he never got to read it.
+  Screen 34 has the same overlap, and on 08-28 **five intro screens rendered
+  inside two seconds**.
+- **FT-245.** ***measured: three silent-error sites, not one.*** FT-237 found
+  line 5946; there are also 6394 (benign, guarded, caught) and **6472** (the
+  FT-242 one, where the error line is the only evidence of failure).
+- **FT-246.** Password-on-wake re-read: ***measured, same machine, same
+  build*** -- failed 08-27 12:46, failed 08-29 07:50, **succeeded 08-30
+  15:31**. Intermittent. **Not measured: why.** Instrument it before fixing
+  it.
+- **FT-247.** ***measured, 14:27:59 -> 14:36:31:*** the user sits on **screen
+  26**, presses `R`, and lands on **screen 25c** -- a **first-encounter
+  decrease**, the exact failure FT-172's scheme exists to prevent. `R` is
+  offered on both checklist pages. Also **there is no screen 30a**, though 30
+  and 30b both exist.
+
+**And a negative result worth keeping:** ***measured, Bill, screen 1:*** *"No
+flash appeared."* **FT-184 did not reproduce.**
+
+---
+
+### BILL'S RULING: N MEANS NO, B MEANS BACK
+
+**Bill: "N always means no and B should always be used to say back."**
+
+*(His device turned "N" into "End" and "wns"; he corrected it himself. The
+reading was confirmed with him, not assumed.)*
+
+**This REVERSES the ruling recorded against FT-236**, which said *"`N = go
+back` stays as the natural answer in real Y/N questions"* and treated the
+ascii43 field checklist's *"B is the ONLY Back key"* as a defect in the
+checklist. **The checklist was right. FT-236 is withdrawn on its premise.**
+Written into `CLAUDE.md` under Product Rules.
+
+**Scope measured across ALL FOUR key readers, because checking only one is how
+this was got wrong on 2026-08-17:**
+
+| Reader | Call sites | Back? |
+|---|---|---|
+| `Pause-ForUser` | 76 | **yes**, via `$ggCanBack` (FT-146) |
+| `Read-NavKey` | 6 | **yes** |
+| `Confirm-Exit` | 10 | n/a, correctly none |
+| **`Read-ValidKey`** | **47** | **1 of 47** |
+
+**So Back already works on PAGES and fails at QUESTIONS** -- which is exactly
+the 2026-08-17 correction in `CLAUDE.md`, and the measurement agrees with it
+rather than contradicting it. **The work is confined to `Read-ValidKey`.**
+
+***measured:*** `N` means **three different things across 30 of the 47 sites**
+-- No at 12, **Back at 7**, **Exit at 11**. The 7 Back sites change (3825,
+6239, 6642, 7432, 7461, 7983, **8522** -- the screen 27 one Bill hit). **Two
+of them, 6642 and 7983, need the `N` branch rewritten, not relabelled.**
+
+**The 11 `N = Exit` sites WAIT.** Bill asked for `X` = Exit at screens 14a and
+18; that is **not decided**. **Do not fold the two changes into one pass** --
+changing two of `N`'s three meanings at once brings the confusion back wearing
+a different letter. **B first, alone, and field-run it.**
+
+---
+
+### WHAT IS STILL OPEN
+
+**Decisions only Bill can make:** `X` for Exit (the 11 sites above); **whether
+Malwarebytes stays in the product at all** -- his research list asks it, and it
+touches pricing, the licence, the guide and four screens; the screen 12 drive
+order (reverse so the SSD is Drive 1).
+
+**Never looked at:** **screenshots 21 and 22** from screen 16, in
+`C:\Users\willi\OneDrive\Personal\Pictures\Screenshots`. They are the only
+record of what happened there and they are not in the repository.
+
+**Not started:** the **research plan Bill asked for as a `.md`** before
+anything from his 20-point list is built.
+
+**Build, ascii44:** FT-242 first (the eight writes), then FT-203, FT-244,
+FT-243, the B-for-Back pass, F4 the second drive with Bill's screen-12 list as
+its specification, and the F6 wording block -- for which **Bill has now written
+most of the replacement copy himself**, including the one sentence that
+resolves five screens: *"These must be set manually, Checkup will show you
+how."*
+
+**Left uncommitted deliberately:** `WebSite\`, `MB\`, `Presentation\`,
+`Run_Comments\` and `Recovery Keys\` show as **69 deleted tracked files**
+because Bill moved them (`WebSite\` -> `Masters\WebSite\`, byte-identical,
+verified). **`WebSite\Rules\` is one of the four folders Cloud reads**, and
+`.claude\rules\` -- the path-triggered copy rule -- is now gone from disk.
+**That is Bill's reorganisation to confirm, not mine to commit.**
+
+---
+---
+
+
 ---
 
 ## Session: 2026-08-26 07:30 to 2026-08-28 13:00 [Claude Code -- CGDELL] -- THE SECOND DRIVE IS PROVEN, AND THREE ROWS OF MY OWN CHECKLIST WERE WRONG
