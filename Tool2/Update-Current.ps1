@@ -1,4 +1,4 @@
-# Update-Current.ps1
+﻿# Update-Current.ps1
 # Dated: 2026-08-12 17:05 ET
 #
 # WHAT IT DOES: writes ProjectDocs\CURRENT.md, naming the newest version of
@@ -86,6 +86,7 @@ $wanted = @(
     # in source. This is the document a session should read before touching
     # ascii41 -- it is the reason every fix in that build exists.
     @{ Label = 'Field test triage (latest)';  Pattern = 'GatewayGuard_FieldTestTriage-*.md' },
+    @{ Label = "Response to Bill's field notes"; Pattern = 'GatewayGuard_ResponseToBillsNotes-*.md' },
     # Added 2026-08-18. The at-the-keyboard checklist for the current build --
     # what to check, what good looks like, and what not to re-report.
     @{ Label = 'Field checklist (current build)'; Pattern = 'GatewayGuard_FieldChecklist-*.md' },

@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-30 17:51 ET -->
-<!-- Commit: 7f9e3f0 -->
+<!-- Generated: 2026-08-30 18:37 ET -->
+<!-- Commit: 9712d06 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-30 17:51 ET
-- **Commit at generation:** `7f9e3f0`
-- **That commit was made:** 2026-08-30 17:50 ET
-- **Its subject line:** N means no, B means back -- and the measurement says the work is 7 prompts, not 47
+- **Generated:** 2026-08-30 18:37 ET
+- **Commit at generation:** `9712d06`
+- **That commit was made:** 2026-08-30 18:37 ET
+- **Its subject line:** Launch moves to 15 September, and my thoughts on all 41 of Bill's test items
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -52,6 +52,7 @@ All paths are relative to `ProjectDocs/`.
 | Screen numbering design | `GatewayGuard_ScreenNumberDesign-2026-08-15-1430.md` | 0 |
 | Screen numbering table | `GatewayGuard_ScreenNumberTable-2026-08-17.md` | 1 |
 | Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii43run2-2026-08-30-1723.md` | 4 |
+| Response to Bill's field notes | `GatewayGuard_ResponseToBillsNotes-ascii43-2026-08-30-1815.md` | 0 |
 | Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii43-2026-08-26-1730.md` | 3 |
 | Build plan (current) | `GatewayGuard_ascii43BuildPlan-2026-08-21.md` | 0 |
 | Future settings (candidate list) | `GatewayGuard_FutureSettings-2026-08-24-2310.md` | 0 |
