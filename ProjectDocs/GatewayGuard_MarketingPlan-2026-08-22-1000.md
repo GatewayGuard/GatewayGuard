@@ -172,7 +172,13 @@ the size range.
 
 ---
 
-## 4. LAUNCH — TARGET 2026-09-01
+## 4. LAUNCH -- TARGET **2026-09-15**
+
+> **Moved by Bill 2026-08-30 from 2026-09-01.** Two weeks later, same weekday
+> (Tuesday). **The launch-week table below still reads "September 1" and the
+> pre-launch run-up is still counted from it.** Both need reworking against
+> the new date -- flagged here rather than shifted by hand, so nobody mistakes
+> a typed date for a planned one.
 
 **The Guide has no dependency on the code-signing certificate.** It is a PDF. The tool does. **That splits the launch into two independent halves and makes September 1 achievable regardless of DigiCert.**
 

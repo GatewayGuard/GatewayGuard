@@ -7,7 +7,9 @@
 - **Replaces:** `GatewayGuard_DecisionsForBill-2026-08-25-1620.md`. **Two of its
   nine items are closed and one has changed shape completely.** Everything else
   is carried below with its old number noted, so nothing was quietly dropped.
-- **Launch target:** 2026-09-01. **Six days.**
+- **Launch target:** **2026-09-15** (moved 2026-08-30 from 2026-09-01).
+  *(This line said "2026-09-01. Six days." -- a countdown that was wrong the
+  next morning. Dates do not go stale; countdowns do. No countdown here.)*
 
 ---
 

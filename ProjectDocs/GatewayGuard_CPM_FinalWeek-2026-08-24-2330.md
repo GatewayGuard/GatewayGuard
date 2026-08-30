@@ -18,7 +18,7 @@
 | | |
 |---|---|
 | Today | **Monday 24 August 2026** |
-| Launch | **Tuesday 1 September 2026** |
+| Launch | **Tuesday 15 September 2026** *(moved 2026-08-30 from 1 September)* |
 | Calendar days remaining | **8** |
 | Weekdays remaining | **6** -- Tue 25, Wed 26, Thu 27, Fri 28, Mon 31, Tue 1 |
 

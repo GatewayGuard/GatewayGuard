@@ -5,7 +5,10 @@
 
 - **Product:** GatewayGuard — Windows 11 security hardening tool for non-technical home users
 - **Developer:** Solo (William F. Burns III / GatewayGuard LLC)
-- **Target launch:** September 1, 2026
+- **Target launch:** **September 15, 2026** (Tuesday). **Bill moved it from
+  September 1 on 2026-08-30.** Exactly two weeks later, same weekday.
+  **Never write a countdown here** -- "six days" was wrong the next morning
+  and stayed wrong. Write the date; let the reader subtract.
 - **Current build:** ascii43 (9,002 non-blank lines / 9,382 total) — **IN PROGRESS, not finished and never field run.** F1, F2, F3, F5 and part of F6 are committed; F4 (second drive), the F5 remnants and the F6 wording block are not built. Always confirm current build number before any edit session
   - **Line-count convention:** the quoted figure is the `Measure-Object -Line`
     **non-blank** number, per Playbook Appendix A. The old "ascii36 (6,134

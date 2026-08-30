@@ -4,7 +4,16 @@
 
 **Revision 7 — 02-Aug-2026 (12:01 PM EDT)**
 
-**Baseline date:** 02-Aug-2026  |  **Target launch:** 01-Sep-2026  |  **Calendar days remaining:** 30  |  **Working days remaining:** 22
+> **TARGET MOVED, 2026-08-30. LAUNCH IS NOW 15-Sep-2026 (Tuesday), not
+> 01-Sep.** Two weeks later, same weekday. **Everything below is computed
+> against the old date and the float figures are therefore wrong** -- the
+> critical path, the slack, and "buffer to September 1" all need recomputing
+> from a fresh baseline. **They are left as they were on purpose.** Hand-editing
+> a computed float turns a schedule into a guess wearing a table, and the next
+> reader cannot tell which numbers were calculated and which were typed.
+> **Rebaseline this document before relying on any number in it.**
+
+**Baseline date:** 02-Aug-2026  |  **Target launch:** ~~01-Sep-2026~~ **15-Sep-2026**  |  **Calendar days remaining:** *(stale -- was 30 from 02-Aug)*  |  **Working days remaining:** *(stale -- was 22)*
 
 **Current build:** **ascii39** (built 2026-07-30 22:08, **NOT YET FIELD-TESTED**)
 **Last field-tested build:** ascii38 (SANDY, 2026-07-30)

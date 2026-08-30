@@ -1,6 +1,12 @@
 <!-- Dated: 2026-08-14 01:07 ET -->
 <!-- Editor: Claude Code (CGDELL) -->
-# GatewayGuard Launch Plan -- 18 days to 1 September
+# GatewayGuard Launch Plan -- target **15 September 2026**
+
+> **Moved by Bill 2026-08-30 from 1 September.** This heading used to read
+> *"18 days to 1 September"* -- a countdown written on 2026-08-14, wrong by
+> the 15th and wrong every day since. **Dates do not go stale; countdowns
+> do.** Any day-count inside this plan is measured from 14-Aug against the
+> OLD target and should not be trusted.
 
 - **Document Name:** GatewayGuard_LaunchPlan
 - **Last Modified:** 2026-08-14 16:30 ET

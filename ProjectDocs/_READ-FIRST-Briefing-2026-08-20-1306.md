@@ -177,7 +177,12 @@ still reads in sequence.)*
 log exists" while the log sat on disk untracked, because the check asked `git`
 and git was blind to it. **Look on disk.**
 
-**Target launch:** September 1, 2026 at gatewayguard.co
+**Target launch:** **September 15, 2026** (Tuesday) at gatewayguard.co.
+**Moved by Bill on 2026-08-30 from September 1** -- two weeks, same weekday.
+**Every schedule built against 01-Sep is now wrong**, including the CPM
+schedule's computed float and the marketing plan's launch-week table. They are
+flagged in place rather than silently shifted, because shifting a critical path
+by hand is how a plan starts lying.
 
 ### Git -- measured 2026-08-23 22:50, and stated HERE ONLY
 
