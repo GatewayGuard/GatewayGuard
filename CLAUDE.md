@@ -811,6 +811,14 @@ and reports — not working artifacts. (Confirmed 2026-07-26.)
     instruction without going stale. **Never add a date to one of these.**
 - Internal header must show date **and time** in US Eastern Time: `# Dated: YYYY-MM-DD HH:MM ET`
 - Filename date and internal header date+time must always match — update both in the same edit, never one without the other
+- **READ THE CLOCK. Do not type a tidy-looking time.** Run `date` immediately
+  before stamping a file and use what it returns. **Cloud caught the third
+  instance in two days on 2026-08-31:** `GatewayGuard_CloudRequest-CPM-2026-08-30-2200.md`
+  is stamped **22:00** in both its filename and its header, and the commit
+  carrying it was made at **21:52:45** — *the document is dated eight minutes
+  after the commit that contains it.* Cosmetic on its own; as a habit it is the
+  same failure as an unmeasured claim, because a rounded number reads exactly
+  like a measured one. **A stamp is a measurement.**
 - When one file references another by exact filename (e.g., launcher referencing a build script), update that reference in the same response whenever the referenced filename changes
 - See also, in `ProjectDocs\`. **Dates are deliberately omitted here — glob the
   name and take the newest.** Two of these three pointers had gone stale by

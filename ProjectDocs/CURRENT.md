@@ -1,37 +1,27 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-31 08:34 ET -->
-<!-- Commit: 2212d31 -->
+<!-- Generated: 2026-08-31 08:57 ET -->
+<!-- Commit: a603783 -->
 
 # CURRENT -- which file is the live one
 
-## FRESHNESS STAMP -- read this out before anything else
+- **Generated:** 2026-08-31 08:57 ET  |  **Commit:** `a603783`  |  **Made:** 2026-08-31 08:35 ET
+- **Commit subject:** CURRENT.md regenerated so the CPM request is listed for Cloud
 
-- **Generated:** 2026-08-31 08:34 ET
-- **Commit at generation:** `2212d31`
-- **That commit was made:** 2026-08-30 21:52 ET
-- **Its subject line:** Put the CPM thinking to Cloud before Bill sees it, as he asked
-
-**If you are reading a synced copy rather than the live repository --
-Claude Cloud always is -- state these four values in your first reply.**
-Bill compares them against what Claude Code last pushed. A mismatch is
-one line instead of five searches.
-
-**Why this is here.** Anthropic support confirmed 2026-08-12 that the
-GitHub connector syncs into project knowledge, exposes no live repository
-tool, and offers no way to see which commit a snapshot reflects. So the
-stamp travels inside the payload: reading this file IS reading the sync
-date. It replaces a sentinel phrase that could only say stale or not
-stale -- this says stale **by how much**.
-
-*The hash is HEAD at generation time, so it is the commit before the one
-carrying this file. That is deliberate and it is the value to compare.*
+*Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
 ---
 
-This filename never changes, so it can be named in an instruction without
-going stale. The filenames BELOW change constantly -- always take them from
-here rather than from memory or from any other document.
+## THE ROWS -- THE CURRENT, LIVE, LATEST FILENAME FOR EVERY DOCUMENT
+
+**This table is the entire purpose of this file.** Each row names one
+document family and the single filename that is live right now. Take every
+filename from this table -- never from memory, never from another document,
+never by guessing which date looks newest.
+
+**53 rows follow.** If you cannot see all 53 of them, your
+retrieval truncated the table -- **say so and ask for the rest, rather
+than answering from the handful you received.**
 
 All paths are relative to `ProjectDocs/`.
 
@@ -92,6 +82,28 @@ All paths are relative to `ProjectDocs/`.
 | ascii41 findings -- fixed or not | `GatewayGuard_ascii41Findings-FixedOrNot-2026-08-19.md` | 0 |
 
 Also read `CLAUDE.md`, at the repository root. That name never changes.
+
+## THE STAMP -- how to tell how old this copy is
+
+The four values at the top are the freshness stamp.
+
+**If you are reading a synced copy rather than the live repository --
+Claude Cloud always is -- state those values in your first reply.**
+Bill compares them against what Claude Code last pushed. A mismatch is
+one line instead of five searches.
+
+**Why this is here.** Anthropic support confirmed 2026-08-12 that the
+GitHub connector syncs into project knowledge, exposes no live repository
+tool, and offers no way to see which commit a snapshot reflects. So the
+stamp travels inside the payload: reading this file IS reading the sync
+date. It replaces a sentinel phrase that could only say stale or not
+stale -- this says stale **by how much**.
+
+*The hash is HEAD at generation time, so it is the commit before the one
+carrying this file. That is deliberate and it is the value to compare.*
+
+**This filename never changes**, so it can be named in an instruction
+without going stale. The filenames in the table change constantly.
 
 ## If you are Claude Cloud, do this check first
 
