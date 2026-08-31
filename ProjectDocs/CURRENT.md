@@ -1,16 +1,16 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-30 18:37 ET -->
-<!-- Commit: 9712d06 -->
+<!-- Generated: 2026-08-31 08:34 ET -->
+<!-- Commit: 2212d31 -->
 
 # CURRENT -- which file is the live one
 
 ## FRESHNESS STAMP -- read this out before anything else
 
-- **Generated:** 2026-08-30 18:37 ET
-- **Commit at generation:** `9712d06`
-- **That commit was made:** 2026-08-30 18:37 ET
-- **Its subject line:** Launch moves to 15 September, and my thoughts on all 41 of Bill's test items
+- **Generated:** 2026-08-31 08:34 ET
+- **Commit at generation:** `2212d31`
+- **That commit was made:** 2026-08-30 21:52 ET
+- **Its subject line:** Put the CPM thinking to Cloud before Bill sees it, as he asked
 
 **If you are reading a synced copy rather than the live repository --
 Claude Cloud always is -- state these four values in your first reply.**
@@ -62,6 +62,7 @@ All paths are relative to `ProjectDocs/`.
 | Cloud request | `GatewayGuard_CloudRequest-PricingCopy-2026-08-21.md` | -- |
 | Cloud request | `GatewayGuard_CloudRequest-Review-2026-08-21.md` | -- |
 | Cloud request | `GatewayGuard_CloudRequest-ResearchBlock-2026-08-24-0222.md` | -- |
+| Cloud request | `GatewayGuard_CloudRequest-CPM-2026-08-30-2200.md` | -- |
 | Cloud research (delivered) | `GatewayGuard_CloudResearch-WidgetsAndAccessibility-2026-08-24-1015.md` | -- |
 | Cloud research (delivered) | `GatewayGuard_CloudResearch-Licence-2026-08-25-1435.md` | -- |
 | Review of Cloud research | `GatewayGuard_ReviewOfCloudResearch-2026-08-24-1105.md` | -- |
