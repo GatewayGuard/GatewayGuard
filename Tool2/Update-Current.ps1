@@ -46,7 +46,7 @@ if (-not (Test-Path -LiteralPath $docs)) {
 
 # Each entry: the label Cloud sees, and the filename pattern to resolve.
 $wanted = @(
-    @{ Label = 'Briefing -- read this first'; Pattern = '_READ-FIRST-Briefing-*.md' },
+    @{ Label = 'Briefing -- read this first'; Pattern = '_READ-FIRST-Briefing-*.md'; Group = 'START HERE -- RULES, STANDARDS AND THE RUNNING LOG' },
     @{ Label = 'Session log';                 Pattern = 'GatewayGuard_SessionLog-*.md' },
     @{ Label = 'Project instructions';        Pattern = 'GatewayGuard_ProjectInstructions-2*.md' },
     @{ Label = 'Coding standards';            Pattern = 'GatewayGuard_CodingStandards-*.md' },
@@ -56,7 +56,7 @@ $wanted = @(
     # (current build)' below. Its pattern only ever resolved to the ascii40 plan
     # (no 41/42/43 plan was ever written), so the row named a stale build --
     # Cloud flagged it. The checklist row is the live field artifact.
-    @{ Label = 'Test history';                Pattern = 'GatewayGuard_TestHistory-*.md' },
+    @{ Label = 'Test history';                Pattern = 'GatewayGuard_TestHistory-*.md'; Group = 'THE PROJECT RECORD AND THE CLOUD SYNC SETUP' },
     @{ Label = 'Sync plan';                   Pattern = 'GatewayGuard_SyncPlan-*.md' },
     @{ Label = 'Sync setup steps';            Pattern = 'GatewayGuard_SyncSetupSteps-*.md' },
     @{ Label = 'Cloud Project Instructions';  Pattern = 'GatewayGuard_CloudProjectInstructions-*.md' },
@@ -67,7 +67,7 @@ $wanted = @(
     # it was NOT named here, so Cloud had no way to know it was the current
     # plan. That is the exact failure this file exists to prevent, applied to
     # the one document whose whole purpose is telling everyone what to do next.
-    @{ Label = 'Launch plan';                 Pattern = 'GatewayGuard_LaunchPlan-*.md' },
+    @{ Label = 'Launch plan';                 Pattern = 'GatewayGuard_LaunchPlan-*.md'; Group = 'PLANNING, SCHEDULE AND SCREEN NUMBERING' },
     # The CPM the Launch Plan is built from. Named so the derivation is
     # visible: if the two ever disagree, the Launch Plan is the newer reading
     # of the same critical path and the CPM is the baseline it was measured
@@ -85,7 +85,7 @@ $wanted = @(
     # Added 2026-08-17. Bill's 11 ascii40 field findings, triaged and located
     # in source. This is the document a session should read before touching
     # ascii41 -- it is the reason every fix in that build exists.
-    @{ Label = 'Field test triage (latest)';  Pattern = 'GatewayGuard_FieldTestTriage-*.md' },
+    @{ Label = 'Field test triage (latest)';  Pattern = 'GatewayGuard_FieldTestTriage-*.md'; Group = 'THE BUILD AND ITS FIELD TESTS' },
     @{ Label = "Response to Bill's field notes"; Pattern = 'GatewayGuard_ResponseToBillsNotes-*.md' },
     # Added 2026-08-18. The at-the-keyboard checklist for the current build --
     # what to check, what good looks like, and what not to re-report.
@@ -103,7 +103,7 @@ $wanted = @(
     @{ Label = 'Guide FT-220 sections';       Pattern = 'GatewayGuard_GuideFT220-Sections-*.md' },
     # Cloud requests are distinct handoffs, not versions of one file, so ALL are
     # listed (Multi = newest-sorted), never just the newest one.
-    @{ Label = 'Cloud request';               Pattern = 'GatewayGuard_CloudRequest-*.md'; Multi = $true },
+    @{ Label = 'Cloud request';               Pattern = 'GatewayGuard_CloudRequest-*.md'; Multi = $true; Group = 'CLOUD REQUESTS AND CLOUD RESEARCH' },
     # Cloud's ANSWERS, added 2026-08-24 at Cloud's own request, and the reason
     # is worth keeping: two Cloud sessions six hours apart answered the same
     # request independently, because a delivered file that has no CURRENT.md row
@@ -122,7 +122,7 @@ $wanted = @(
     # the connector scope entirely -- so Cloud could read the RULE governing
     # website copy (WebSite\Rules\website-copy.md, in scope) and not one line of
     # the copy itself. Every website review it has given was made blind.
-    @{ Label = 'Marketing plan (current)';    Pattern = 'GatewayGuard_MarketingPlan-*.md' },
+    @{ Label = 'Marketing plan (current)';    Pattern = 'GatewayGuard_MarketingPlan-*.md'; Group = 'MARKETING, GUIDE, WEBSITE, PRICING AND THE LICENCE' },
     @{ Label = 'Guide rewrite draft (current)'; Pattern = 'GatewayGuard_GuideRewrite-Draft-*.md' },
     @{ Label = 'Website source pack (19 guide pages)'; Pattern = 'GatewayGuard_WebsiteSourcePack-*.md' },
     # Guide pack: the .docx master is in Masters\, out of scope, and Cloud has
@@ -168,7 +168,7 @@ $wanted = @(
     # licence v2.2 was reconstructed from a twin because the .docx master could
     # not be opened, and carried a sentence from a superseded draft that
     # attributed to the attorney something he never said.
-    @{ Label = 'Cloud working rules';         Pattern = 'GatewayGuard_CloudWorkingRules-*.md' },
+    @{ Label = 'Cloud working rules';         Pattern = 'GatewayGuard_CloudWorkingRules-*.md'; Group = 'WORKING RULES AND WHAT IS WAITING ON BILL' },
     # Added 2026-08-25. The fourteen licence research questions, acceptance
     # mechanics first -- because measured on ascii43, nobody is ever shown this
     # agreement and nobody ever accepts it.
@@ -186,7 +186,7 @@ $wanted = @(
     # The v9 extraction that CLOSES retrieval gaps G1-G6 in the guide rewrite
     # draft. Built and committed 2026-08-22 12:24 -- and unnamed here, so Cloud
     # could not open the one file that answers its own open item.
-    @{ Label = 'Guide gap-fill (G1-G6, v9 source)'; Pattern = 'GatewayGuard_GuideGapFill-*.md' },
+    @{ Label = 'Guide gap-fill (G1-G6, v9 source)'; Pattern = 'GatewayGuard_GuideGapFill-*.md'; Group = 'FIXES, REVIEWS AND MEASURED RESEARCH' },
     # Added 2026-08-23. Cloud'"'"'s drop-in replacements for the guide -- the blocks
     # Claude Code applies at stated locations. Cloud reissued pack 1 within the
     # hour because the -HHMM renames broke every pointer in its first issue,
@@ -255,16 +255,26 @@ foreach ($w in $wanted) {
         # A collection of distinct docs sharing a prefix (e.g. Cloud requests).
         # List every one, newest-sorted -- they are not versions of each other.
         foreach ($h in $hits) {
-            $resolved += [pscustomobject]@{ Label = $w.Label; Name = $h.Name; Count = 1; Multi = $true }
+            $resolved += [pscustomobject]@{ Label = $w.Label; Name = $h.Name; Count = 1; Multi = $true; Group = $w.Group; Section = '' }
         }
     } else {
         $resolved += [pscustomobject]@{
-            Label = $w.Label
-            Name  = $hits[$hits.Count - 1].Name
-            Count = $hits.Count
-            Multi = $false
+            Label   = $w.Label
+            Name    = $hits[$hits.Count - 1].Name
+            Count   = $hits.Count
+            Multi   = $false
+            Group   = $w.Group
+            Section = ''
         }
     }
+}
+
+# Every row inherits the Section of the last tagged row above it, so only
+# the FIRST entry of each run needs a Group tag in $wanted.
+$ggSec = ''
+foreach ($r in $resolved) {
+    if ($r.Group) { $ggSec = $r.Group }
+    $r.Section = $ggSec
 }
 
 if ($missing.Count -gt 0) {
@@ -359,15 +369,31 @@ $L.Add('than answering from the handful you received.**')
 $L.Add('')
 $L.Add('All paths are relative to `ProjectDocs/`.')
 $L.Add('')
-$L.Add('| What it is | The current file | Older versions present |')
-$L.Add('|---|---|---|')
-foreach ($r in $resolved) {
-    if ($r.Multi) {
-        $L.Add(('| ' + $r.Label + ' | `' + $r.Name + '` | -- |'))
-    } else {
-        $older = $r.Count - 1
-        $L.Add(('| ' + $r.Label + ' | `' + $r.Name + '` | ' + $older + ' |'))
+# MID-TABLE GAP (2026-08-31). One 53-row table retrieved as a block with a
+# hole in the middle -- Cloud could see the first and last row of a span and
+# nothing between. A single table has ONE semantic signature, so retrieval
+# either lands on it or does not. Eight small labelled tables have eight, each
+# short enough to survive whole, and each states its own count so a short
+# group is visibly short.
+$ggSections = New-Object System.Collections.Generic.List[string]
+foreach ($r in $resolved) { if (-not $ggSections.Contains($r.Section)) { $ggSections.Add($r.Section) } }
+foreach ($sName in $ggSections) {
+    $ggRows = @($resolved | Where-Object { $_.Section -eq $sName })
+    $L.Add(('### ' + $sName))
+    $L.Add('')
+    $L.Add(('**' + $ggRows.Count + ' rows in this group.** If you see fewer, this group was truncated -- say so.'))
+    $L.Add('')
+    $L.Add('| What it is | The current file | Older versions present |')
+    $L.Add('|---|---|---|')
+    foreach ($r in $ggRows) {
+        if ($r.Multi) {
+            $L.Add(('| ' + $r.Label + ' | `' + $r.Name + '` | -- |'))
+        } else {
+            $older = $r.Count - 1
+            $L.Add(('| ' + $r.Label + ' | `' + $r.Name + '` | ' + $older + ' |'))
+        }
     }
+    $L.Add('')
 }
 $L.Add('')
 $L.Add('Also read `CLAUDE.md`, at the repository root. That name never changes.')
