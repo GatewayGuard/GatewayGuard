@@ -3,7 +3,7 @@
 # Gumroad listings -- copy to fill in, both products
 
 - **Document Name:** GatewayGuard_GumroadListings
-- **Last Modified:** 2026-09-01 14:29 ET
+- **Last Modified:** 2026-09-01 14:35 ET
 - **For:** Bill, filling in the Gumroad product pages
 - **Fields taken from:** Bill's screenshots of `gumroad.com/products/baeofh/edit`,
   2026-08-25 -- Name, Description, URL, Summary, Additional details, Call to
@@ -64,29 +64,51 @@ it arrives.** Two minutes, and it closes the question permanently.
 to confirm an account-email change. If that confirmation was never opened, the
 change may not have taken effect.
 
-### THE USERNAME IS STILL `wfbii`, AND NOW IS THE ONLY FREE MOMENT TO CHANGE IT
+### DONE 2026-09-01 -- USERNAME AND BOTH SLUGS CHANGED
 
-***measured:*** the account username is **`wfbii`** -- it is what produces
-`wfbii.gumroad.com/l/checkup` in the URL section below.
+**Bill changed the username to `gatewayguard` and the slugs to `checkup` and
+`guide`, before anything was published.** That was the free window, and it is
+now closed behind him -- from here, changing either breaks live links.
 
-**Changing the account email did not change the username.** They are separate
-settings. So a buyer's receipt and download link would still read `wfbii`,
-which looks like a personal account rather than GatewayGuard LLC -- the same
-objection the URL section below already makes about the `baeofh` slug.
+***measured 2026-09-01 14:35 ET, from outside:***
 
-**The timing is the whole point.** ***Sourced, Gumroad's own custom-domain
-article:*** existing `username.gumroad.com` links stay live and are used in
-receipts, embeds, and *"QR codes on physical packaging or flyers."* **Once a
-link has been shared, printed or embedded, changing the username breaks it.**
+| URL | Result |
+|---|---|
+| `gatewayguard.gumroad.com` | **HTTP 200** |
+| `store.gatewayguard.co` | **HTTP 200** -- the custom domain serves |
+| `store.gatewayguard.co/l/checkup` | **HTTP 200** -- "GatewayGuard Checkup" |
+| `store.gatewayguard.co/l/guide` | **HTTP 200** |
+| HTTPS certificate | **issued** -- Let's Encrypt, `CN=store.gatewayguard.co`, to 2026-11-30 |
 
-***Nothing is published yet, so today it costs nothing and after launch it
-costs everything.*** Change it in the same sitting as the product slug.
+**The account email is `admin@gatewayguard.co` and the mailbox is confirmed
+working** -- Gumroad's confirmation message arrived in it on 2026-09-01. The
+open question in the previous version of this section is closed.
 
-**Not measured: whether `gatewayguard` is available as a username.** Both
-`gatewayguard.gumroad.com` and `wfbii.gumroad.com` return 404, but `wfbii` is
-his own account -- so a 404 means "profile not published", not "name free".
-**Gumroad will say when you type it.** If it is taken, `gatewayguardllc` or
-`getcheckup` are the obvious fallbacks.
+### OPEN -- THE GUIDE'S PRODUCT NAME DOES NOT MATCH THE LICENCE
+
+***measured 2026-09-01, from the live product page:*** the Guide is listed as
+**`GatewayGuard Windows 11 Security Companion`**.
+
+***measured across `ProjectDocs\`:*** the word "Companion" appears **nowhere**
+as a name for this product. The record calls it the **GatewayGuard Windows
+Security Walkthrough Guide** -- including in **the licence, where it is a
+defined contractual term**:
+
+> *The Guide: the GatewayGuard Windows Security Walkthrough Guide, a PDF
+> document. Covered in Section 5.*
+
+Present in three licence versions and in
+`AttorneyConsult2-Revised-RefundAndGumroad-2026-08-25-1010.md`.
+
+**So a buyer would accept a licence defining the product by a name that is not
+on the page they bought it from.** Not fatal, but it is the kind of gap that
+matters most in exactly the situation a licence exists for.
+
+**Two fixes, Bill's choice:** rename the product to match the licence, or
+change the licence's defined term to match the product. **The second is
+cheaper today**, because the licence is already going to the attorney and this
+can ride along instead of becoming a later amendment. **Decide before the
+first sale.**
 
 ---
 
@@ -103,10 +125,9 @@ heard of us. The page and the receipts say "Checkup" after that.*
 ```
 checkup
 ```
-*Currently `baeofh`, which is the random slug Gumroad assigned. **Change it.**
-The buyer sees this in the receipt and the download link, and
-`wfbii.gumroad.com/l/checkup` reads like a product where `baeofh` reads like a
-mistake.*
+***DONE 2026-09-01.*** It was `baeofh`, the random slug Gumroad assigned. The
+buyer sees this in the receipt and the download link, and the live URL is now
+**`store.gatewayguard.co/l/checkup`**, where `baeofh` read like a mistake.
 
 ### Summary
 ```
