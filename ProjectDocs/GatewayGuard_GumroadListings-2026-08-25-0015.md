@@ -3,7 +3,7 @@
 # Gumroad listings -- copy to fill in, both products
 
 - **Document Name:** GatewayGuard_GumroadListings
-- **Last Modified:** 2026-08-25 00:15 ET
+- **Last Modified:** 2026-09-01 14:29 ET
 - **For:** Bill, filling in the Gumroad product pages
 - **Fields taken from:** Bill's screenshots of `gumroad.com/products/baeofh/edit`,
   2026-08-25 -- Name, Description, URL, Summary, Additional details, Call to
@@ -30,6 +30,63 @@ on a product that cannot publish.
 screenshot. **So it is per-product, not account-wide**, which settles the
 contradiction the 22 August decision document recorded and could not resolve.
 **You will set it twice -- once per product.**
+
+---
+
+## ACCOUNT EMAIL, AND THE USERNAME THAT DID NOT CHANGE WITH IT
+
+**Added 2026-09-01. Bill: the Gumroad account email is now
+`admin@gatewayguard.co`.**
+
+**That fits the split the project already uses.** ***measured across
+`ProjectDocs\`, `WebSite\` and `CLAUDE.md`:*** `support@gatewayguard.co`
+appears **46 times** and is the customer-facing address named in the licence
+and the log footer; `admin@gatewayguard.co` appears **14 times** and is the
+business address already given to LegalZoom, the bank, and the attorney. A
+payment account is business, not support, so `admin@` is the right one.
+
+### CONFIRM THE MAILBOX ACTUALLY DELIVERS -- IT IS NOW THE RECOVERY PATH FOR THE MONEY
+
+***measured 2026-08-31:*** the domain's mail records are healthy --
+`mx1` / `mx2.privateemail.com`, with a matching SPF record. **That proves the
+domain can receive mail. It does not prove the `admin@` mailbox exists**, and
+that cannot be checked from outside.
+
+**Why it matters more than it looks.** That address now receives Gumroad's
+account verification, **password resets, payout notifications and tax
+documents**. If it does not deliver, the account that takes the money has no
+recovery path -- and it would be discovered at the worst possible moment.
+
+**Send a message to `admin@gatewayguard.co` from an outside address and confirm
+it arrives.** Two minutes, and it closes the question permanently.
+
+**Also check the change completed.** Gumroad normally emails the *new* address
+to confirm an account-email change. If that confirmation was never opened, the
+change may not have taken effect.
+
+### THE USERNAME IS STILL `wfbii`, AND NOW IS THE ONLY FREE MOMENT TO CHANGE IT
+
+***measured:*** the account username is **`wfbii`** -- it is what produces
+`wfbii.gumroad.com/l/checkup` in the URL section below.
+
+**Changing the account email did not change the username.** They are separate
+settings. So a buyer's receipt and download link would still read `wfbii`,
+which looks like a personal account rather than GatewayGuard LLC -- the same
+objection the URL section below already makes about the `baeofh` slug.
+
+**The timing is the whole point.** ***Sourced, Gumroad's own custom-domain
+article:*** existing `username.gumroad.com` links stay live and are used in
+receipts, embeds, and *"QR codes on physical packaging or flyers."* **Once a
+link has been shared, printed or embedded, changing the username breaks it.**
+
+***Nothing is published yet, so today it costs nothing and after launch it
+costs everything.*** Change it in the same sitting as the product slug.
+
+**Not measured: whether `gatewayguard` is available as a username.** Both
+`gatewayguard.gumroad.com` and `wfbii.gumroad.com` return 404, but `wfbii` is
+his own account -- so a 404 means "profile not published", not "name free".
+**Gumroad will say when you type it.** If it is taken, `gatewayguardllc` or
+`getcheckup` are the obvious fallbacks.
 
 ---
 
