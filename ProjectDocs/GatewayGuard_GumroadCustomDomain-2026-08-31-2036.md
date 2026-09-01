@@ -3,7 +3,7 @@
 # Gumroad custom domain -- what to add, and what NOT to touch
 
 - **Document Name:** GatewayGuard_GumroadCustomDomain
-- **Last Modified:** 2026-08-31 20:36 ET
+- **Last Modified:** 2026-09-01 14:30 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **For:** Bill, setting up the Gumroad store
 - **Covers:** CPM task **T-GR1** (Bill's item 2b) and part of **T-PAY3** (2d)
@@ -113,10 +113,13 @@ store.gatewayguard.co
 ```
 
 3. Click **Verify** on the right
-4. If it says it failed, **wait and try again** -- it is almost always
-   propagation, not a mistake. Re-run the checker in step 2 first: if the
-   checker says the record is live and Gumroad still fails, then something is
-   genuinely wrong and it is worth asking Gumroad support
+4. **If it says it failed, READ THE DOMAIN IN THE ERROR MESSAGE FIRST.**
+   Gumroad quotes back exactly what it was given, so a typo is visible in its
+   own complaint. **This is what went wrong on 2026-09-01 -- see the section
+   below.** Check for `.com` where it should say `.co`, a stray `www.`, an
+   `https://` prefix, or a trailing slash. **Only after the spelling is
+   confirmed correct** is it worth re-running the checker in step 2 and, if
+   that says the record is live, asking Gumroad support
 5. Click **Update settings** to save
 
 **Use the PROFILE custom domain, not the product one.** You have two products
@@ -131,9 +134,15 @@ record verifies. There is nothing to buy and nothing to install.
 
 ## WHY BOTHER AT ALL -- AND IT IS NOT VANITY
 
-**A custom domain is optional. Gumroad works perfectly on
-`gatewayguard.gumroad.com`.** ***measured: that address already resolves.*** So
-this is not a launch blocker and nothing waits on it.
+**A custom domain is optional. Gumroad works perfectly on the account's own
+address.** So this is not a launch blocker and nothing waits on it.
+
+***Corrected 2026-09-01.*** This paragraph originally named
+`gatewayguard.gumroad.com` and claimed it resolved. **It does not** -- the
+username is **`wfbii`**, per `GumroadListings-2026-08-25-0015.md`
+(`wfbii.gumroad.com/l/checkup`). The name was assumed from the company rather
+than read from the record, which is the mistake `CLAUDE.md` calls reasoning
+from something adjacent instead of reading what is on disk.
 
 **But it is worth doing for this product specifically.** Your customer is a
 non-technical senior who has been told, correctly and repeatedly, to be
@@ -145,6 +154,75 @@ keeps the name they already trust in front of them through the checkout.
 **Do it now rather than in launch week**, because of the propagation window. It
 is a fifteen-minute job whose result may take two days to appear, and that is
 the worst kind of task to leave until the end.
+
+---
+
+## WHAT ACTUALLY WENT WRONG, 2026-09-01 -- AND IT WAS ONE CHARACTER
+
+**The Namecheap record was right the whole time. The failure was in the
+Gumroad box, and the error message named it.**
+
+Gumroad returned:
+
+> *Domain verification failed. Please make sure you have correctly configured
+> the DNS record for store.gatewayguard.**com***
+
+***measured 2026-09-01:***
+
+| Name | Result |
+|---|---|
+| `store.gatewayguard.com` -- what was typed into Gumroad | **NXDOMAIN, does not exist** |
+| `store.gatewayguard.co` -- what was actually built | CNAME -> `domains.gumroad.com` |
+| Nameservers, `gatewayguard.com` | `ns09` / `ns10.domaincontrol.com` -- **GoDaddy, not ours** |
+| Nameservers, `gatewayguard.co` | `pdns1` / `pdns2.registrar-servers.com` -- Namecheap, ours |
+
+**`.com` was typed instead of `.co`.** Gumroad was checking DNS on a domain
+belonging to somebody else, so it could never verify. `gatewayguard.com` is the
+domain we do not own -- GoDaddy, expires January 2027, on the watch list.
+
+**Corrected to `store.gatewayguard.co` and it verified immediately.**
+
+### THE LESSON, AND IT IS THE THIRD TIME
+
+***`.co` is the domain. `.com` is what fingers type.*** `CLAUDE.md` already
+carries this warning because the project's own domain section said `.com` until
+2026-08-24, contradicting four other places in the same file.
+
+**Anywhere the domain must be entered by hand is a place this recurs** --
+Gumroad, Microsoft 365, LegalZoom paperwork, certificate paperwork.
+**Copy and paste it. Never type it.**
+
+### DIAGNOSTIC ORDER THAT FOUND IT, WORTH REUSING
+
+1. **Resolve the name from the authoritative nameservers**, not just locally --
+   proves what the registrar is actually publishing.
+2. **Resolve it from two public resolvers** (8.8.8.8 and 1.1.1.1) -- separates
+   a real fault from propagation.
+3. **Fetch the host over HTTP and read the response headers.** The 404 carried
+   Gumroad's own content-security-policy, which proved requests were arriving
+   and the fault was inside Gumroad, not in DNS.
+4. **Read the error message's own wording.** It quoted the domain back, and the
+   answer was in the last character.
+
+---
+
+## STATE AS OF 2026-09-01 14:30 ET
+
+| Item | State |
+|---|---|
+| Namecheap CNAME | **done** -- correct on authoritative and both public resolvers |
+| Website, MX, SPF, Microsoft records | **undisturbed** -- all six verified |
+| Gumroad verification | **done** |
+| HTTPS certificate | **pending** -- Gumroad allows up to 24 hours. Not a fault |
+| The page itself | **HTTP 404** -- see below |
+
+**The 404 is not a domain problem.** A custom domain points at the Gumroad
+profile, and the profile cannot publish until a payout method is connected --
+Gumroad's own product page says so. The address is wired correctly and pointing
+at an empty profile.
+
+**Order from here:** connect the payout method, publish the two products, and
+the domain begins serving. The certificate arrives in parallel on its own.
 
 ---
 
