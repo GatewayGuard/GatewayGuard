@@ -3,7 +3,7 @@
 # Test files for both products -- what they are, and how to put them on Gumroad
 
 - **Document Name:** GatewayGuard_StoreTestFiles
-- **Last Modified:** 2026-09-02 11:34 ET
+- **Last Modified:** 2026-09-02 12:33 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **For:** Bill, before the first test purchase
 - **Covers:** CPM tasks **T-UPG**, **T-UPC**, **T-TP**
@@ -35,11 +35,14 @@ deliberately **outside** the Claude Cloud connector scope.
 
 | File | Size | Pages |
 |---|---|---|
-| `TESTFILE-GatewayGuard-Guide-12pt.pdf` | 65,925 bytes | 1 |
-| `TESTFILE-GatewayGuard-Guide-14pt.pdf` | 68,709 bytes | 2 |
-| `TESTFILE-GatewayGuard-Guide-16pt.pdf` | 68,330 bytes | 2 |
-| `TESTFILE-GatewayGuard-Guide-18pt.pdf` | 66,837 bytes | 2 |
-| `TESTFILE-GatewayGuard-Guide-20pt.pdf` | 69,251 bytes | 3 |
+| `TESTFILE - GatewayGuard Guide - 12 point print (smallest).pdf` | 65,925 bytes | 1 |
+| `TESTFILE - GatewayGuard Guide - 14 point print.pdf` | 68,709 bytes | 2 |
+| `TESTFILE - GatewayGuard Guide - 16 point print.pdf` | 68,330 bytes | 2 |
+| `TESTFILE - GatewayGuard Guide - 18 point print.pdf` | 66,837 bytes | 2 |
+| `TESTFILE - GatewayGuard Guide - 20 point print (largest).pdf` | 69,251 bytes | 3 |
+
+***Renamed 2026-09-02*** from `TESTFILE-GatewayGuard-Guide-12pt.pdf` and so on
+-- see the font section below for why.
 
 **Five sizes, because that is what the real Guide is.** ***sourced,
 `MarketingSourcePack-2026-08-13-1427.md`:*** *"includes five print sizes (12,
@@ -58,7 +61,7 @@ appears.
 
 ### Checkup -- one zip
 
-`TESTFILE-GatewayGuard-Checkup-v3.1.zip` -- **3,059 bytes**, containing:
+`TESTFILE - GatewayGuard Checkup v3.1.zip` -- **3,059 bytes**, containing:
 
 | Inside the zip | What it stands in for |
 |---|---|
@@ -97,7 +100,7 @@ You can upload files from your hard drive or from Dropbox."*
 1. Sign in at **gumroad.com** and open **Products**
 2. Click **GatewayGuard Windows Security Walkthrough Guide**
 3. Click **Next: Customize**, then the **Content** tab
-4. Upload **all five** `TESTFILE-GatewayGuard-Guide-*.pdf` files from
+4. Upload **all five** `TESTFILE - GatewayGuard Guide - *.pdf` files from
    `Store_TestFiles\`. They can be dragged in together
 5. Check they are listed **12, 14, 16, 18, 20** in that order. If Gumroad sorts
    them some other way, drag them into order -- **a reader looking for large
@@ -108,7 +111,7 @@ You can upload files from your hard drive or from Dropbox."*
 
 1. Open **GatewayGuard Checkup**
 2. Click **Next: Customize**, then **Content**
-3. Upload the single file `TESTFILE-GatewayGuard-Checkup-v3.1.zip`
+3. Upload the single file `TESTFILE - GatewayGuard Checkup v3.1.zip`
 4. **Save**
 
 **If the labels on your screen do not match the above, stop and tell me what
@@ -127,6 +130,74 @@ steps than have you guess at them.
 **Our largest file is 69 KB.** Nothing here comes close to any limit, and the
 real files will not either -- the Guide is five PDFs and Checkup is a small
 script.
+
+---
+
+## THE FILENAMES CANNOT CARRY THE GUIDE'S FONT -- BUT THEY CAN CARRY ITS WORDS
+
+**Bill asked, 2026-09-02: *"can the store test files filenames display in the
+font of the security guide?"***
+
+### The font: no, and Gumroad says so directly
+
+***sourced, Gumroad Help Center:*** you *"can choose from different font styles,
+accents, and background colors from your profile settings"*, and those
+*"will apply to your profile, product, posts, and emails; **but not to your
+product's content**."*
+
+**The file list a buyer downloads from is product content.** So it renders in
+Gumroad's own typeface and there is no setting that changes it. ***Also not
+measured: whether Garamond is even among the fonts Gumroad offers*** -- their
+list is a short set of web fonts, and a book face like Garamond is unlikely to
+be on it.
+
+**What the font setting DOES reach is worth knowing:** the profile, the product
+page, the posts and the emails. **So the page the buyer reads before buying,
+and the receipt they get afterwards, can carry a chosen face** even though the
+download list cannot.
+
+### What you fully control is the filename itself -- and that matters more
+
+**A filename is the only text on that page you write.** The buyer sees it in the
+download list, in the receipt, and again in their Downloads folder six months
+later when they have forgotten what they bought.
+
+***`TESTFILE-GatewayGuard-Guide-12pt.pdf` is not written for a
+seventy-eight-year-old.*** It is written for a developer: no spaces, an
+abbreviation, and no clue which of the five to open.
+
+**Renamed 2026-09-02, and the real files should follow the same shape:**
+
+| Real product filename |
+|---|
+| `GatewayGuard Guide - 12 point print (smallest).pdf` |
+| `GatewayGuard Guide - 14 point print.pdf` |
+| `GatewayGuard Guide - 16 point print.pdf` |
+| `GatewayGuard Guide - 18 point print.pdf` |
+| `GatewayGuard Guide - 20 point print (largest).pdf` |
+
+**Why each part is there:** real spaces because this is prose a person reads;
+*"point print"* rather than `pt` because the abbreviation is jargon; and
+**(smallest) / (largest) at the two ends** because a reader who needs large
+print should not have to work out that 20 beats 12. **They still sort in order**,
+since the numbers are two digits throughout.
+
+**The test files now carry the same shape**, so the test purchase actually tests
+what the buyer will see rather than something that will be replaced.
+
+### And there is a place to put the Guide's own words
+
+***sourced:*** the Content tab takes **rich text blocks** -- *"you can provide
+additional context before a section or type a page with Rich text blocks, and
+the formatting bar allows you to add lists, code blocks, quotes, links, buttons,
+and more."*
+
+**So a short block can sit above the five files**, in the Guide's voice, saying
+which one to pick. Something like: *"Five copies of the same guide, in five
+sizes. If you wear reading glasses, start with 18 or 20 point."*
+
+**That is the answer to what Bill was reaching for.** The font cannot follow the
+Guide onto that page. **The Guide's plain-English voice can.**
 
 ---
 

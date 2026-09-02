@@ -3,7 +3,7 @@
 # Gumroad payout settings -- review
 
 - **Document Name:** GatewayGuard_GumroadPayoutReview
-- **Last Modified:** 2026-09-02 12:18 ET
+- **Last Modified:** 2026-09-02 12:33 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **For:** Bill
 - **Covers:** CPM task **T-PAY2**
@@ -25,12 +25,14 @@ publishing.** The product page said so in Bill's own screenshot on 2026-08-25:
 > *"You haven't connected a payout method yet, so you won't be able to publish
 > this product for sale."*
 
-**Bank account details are now entered.** ***Not yet confirmed: that Gumroad has
-accepted and verified them.***
+**DONE 2026-09-02. Bill: *"No Payout message on either product anymore."***
 
-**The test that settles it, and it takes ten seconds:** open either product and
-see if that warning is gone. **If it is, both products can publish** and the
-whole chain behind T-PAY2 is free to move.
+**So the payout method took, and both products can publish.** That warning was
+the last thing standing between the store and a live product. **T-PAY2 is
+closed**, and everything queued behind it -- publishing, the file uploads, the
+test purchase -- is free to move.
+
+**Payout schedule set to weekly** the same day.
 
 ---
 
@@ -117,18 +119,64 @@ first payout landing is itself the proof that the bank details work.
 
 ---
 
-## 3. SCHEDULE IS MONTHLY
+## 3. DONE 2026-09-02 -- SCHEDULE SET TO WEEKLY
 
-**Compounding item 2.** Even once the threshold is met, payment waits for the
-monthly run.
+**Bill selected weekly.** With the threshold at $100, money now arrives within
+days of the sales that earned it rather than waiting for a monthly run.
 
-***Not measured: which options that dropdown offers.*** The page only shows what
-is selected, plus a note that **daily** needs *"more than 4 previous payouts"*
--- so daily is not available yet regardless.
+**Daily remains unavailable** -- the page requires *"more than 4 previous
+payouts"* -- and does not matter once weekly is running.
 
-**If weekly is offered, take it.** With the threshold at $100 it would mean
-money arriving within days of the sales that earned it, which matters for a
-first launch far more than it will later.
+---
+
+## 3a. WHO PAYS WHAT -- BILL ASKED, 2026-09-02
+
+**Short answer: you pay the selling fees. The customer pays the tax.** They are
+two different things and they behave in opposite directions.
+
+### The fees come out of your side
+
+***sourced, Gumroad Help Center:*** *"Gumroad charges a 10% flat fee on sales
+made on Gumroad's website"*, and **the fees are paid by the creator, not the
+buyer.**
+
+**The customer is charged exactly the price on the page.** Nothing is added for
+the card or for Gumroad -- the deduction happens on the way to you.
+
+***calculated from the fee line printed on the settings page*** --
+`10% + 50c Gumroad + 2.9% + 30c card`:
+
+| | Customer pays | Fees | **You receive** |
+|---|---|---|---|
+| Checkup | **$19.99** | $3.38 | **$16.61** |
+| Guide | **$12.99** | $2.48 | **$10.51** |
+| Bundle | **$29.99** | $4.67 | **$25.32** |
+
+**PayPal is the same arrangement.** Turning it on at checkout is a payment
+*method* for the buyer; it does not move who pays the fee. ***Not measured:
+whether PayPal's rate differs from the card rate.***
+
+**Discover is the exception, and it is not an extra charge to the customer
+either** -- it replaces the fee schedule with **30% flat**, still out of your
+side. On a $19.99 sale that is **$6.00** rather than $3.38.
+
+### The tax goes on top, and you never touch it
+
+***sourced:*** for EU and UK sales Gumroad is **merchant of record** and
+*"automatically charges EU and UK VAT to EU- and UK-based customers and remits
+it automatically, and sellers don't have to remit VAT, report it, or think
+about it."* In the US, **Gumroad is registered as a marketplace facilitator and
+collects and remits sales tax on eligible sales to buyers in certain states.**
+GST likewise for Australia and Singapore.
+
+**So a buyer in a taxing state pays $19.99 plus their tax; you still receive
+$16.61.** The tax is never your money and never your filing.
+
+**This closes an item that has been open since 14 August** --
+`LaunchPlan-2026-08-14-0107.md` item **C3, "Sales tax handling on Gumroad",
+assigned to Bill.** ***The answer is that Gumroad handles it as marketplace
+facilitator and there is nothing to set up.*** Still worth putting to the
+attorney as a confirmation rather than a question.
 
 ---
 
@@ -188,19 +236,16 @@ them off is fine; turning them on costs nothing either.
 
 ## WHAT IS LEFT
 
-**Ranked. The first one is the only one that gates anything.**
+**Everything on this page is now done.** Payout method connected and confirmed,
+payee name set to GatewayGuard LLC, threshold $100, schedule weekly.
 
-1. **Open either product and confirm the "you haven't connected a payout method"
-   warning is gone.** Ten seconds. It is the only real test that the payout
-   method took, and **both products stay unpublishable until it passes**
-2. **Match the payee name to the bank's exact account title** -- item 1 above
-3. **Weekly schedule** if the dropdown offers it. Daily needs four previous
-   payouts, so it is unavailable regardless
-4. Then the upload and test purchase, per
+1. **Match the payee name to the bank's exact account title** -- the only open
+   item, and it is a thirty-second look at a statement
+2. Then the upload and test purchase, per
    `GatewayGuard_StoreTestFiles-2026-09-02-1119.md`
 
-**No deadline, decide when convenient:** the "same as business" box (leave it),
-PayPal at checkout, Discover at 30%, and the two local-currency toggles.
+**No deadline:** the "same as business" box (leave it), PayPal at checkout,
+Discover at 30%, and the two local-currency toggles.
 
 ---
 

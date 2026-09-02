@@ -205,7 +205,7 @@ settled whatever the answer was.
 |---|---|---|
 | C1 | Gumroad account, product page, $19.99 | Bill |
 | C2 | Refund policy wording -- LegalZoom Call 2 | Bill |
-| C3 | Sales tax handling on Gumroad | Bill |
+| C3 | ~~Sales tax handling on Gumroad~~ **ANSWERED 2026-09-02: nothing to set up. Gumroad is the marketplace facilitator / merchant of record and collects and remits it. See `GatewayGuard_GumroadPayoutReview-2026-09-02-1145.md` 3a** | Bill |
 | C4 | Test purchase end to end -- **Gumroad's test card, NOT a real one** (`GatewayGuard_GumroadTestPurchase-2026-09-02-1040.md`) | Bill |
 
 **C4 is the one people skip.** A checkout that fails on launch day costs more
