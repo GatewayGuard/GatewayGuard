@@ -296,7 +296,8 @@ float.** The gap was real but it was not on the binding chain.
 | T-CQA | Final integration QA -- Checkup against the website, all three machines | C+B | 0.5 | T-SC, T-SS | 8.55 | 9.05 | -- | -- | |
 | T-PKG | **Assemble the Checkup download package** -- signed .ps1, launcher, start-here sheet, licence, published hash. ***Contents never defined anywhere; see the open question below*** | C | 0.2 | T-SN | 6.8 | 7.0 | -- | -- | |
 | T-UPC | **Upload the Checkup package to the Gumroad product** | B | 0.1 | T-PKG, T-GR1 | 7.0 | 7.1 | -- | -- | |
-| T-GO2 | **CHECKUP LAUNCH -- a stated date after 15-Sep** | B | 0 | T-CQA, T-UPC | 9.05 | 9.05 | -- | -- | |
+| T-PACK | **Build the multi-PC packs as Gumroad "versions"** -- 1 / 3 / 5 / 10 PCs. ***Added 2026-09-02: advertised in the written listing copy, termed in licence Section 2, and had no task.*** Gates the "packs for 3, 5 and 10" sentence going live | B | 0.2 | T-UPC, T-LZ3 | 7.1 | 7.3 | -- | -- | |
+| T-GO2 | **CHECKUP LAUNCH -- a stated date after 15-Sep** | B | 0 | T-CQA, T-UPC, T-PACK | 9.05 | 9.05 | -- | -- | |
 | **RUNNING** | | | | | | | | | |
 | T-SUP | **Launch-week support inbox** -- 30 min/day for 10 days = **5 Bill-hours, previously unbudgeted** | B | 0.6 | T-GO1 | 11 | -- | -- | -- | *from launch* |
 

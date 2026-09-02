@@ -3,7 +3,7 @@
 # Test files for both products -- what they are, and how to put them on Gumroad
 
 - **Document Name:** GatewayGuard_StoreTestFiles
-- **Last Modified:** 2026-09-02 11:19 ET
+- **Last Modified:** 2026-09-02 11:34 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **For:** Bill, before the first test purchase
 - **Covers:** CPM tasks **T-UPG**, **T-UPC**, **T-TP**
@@ -127,6 +127,79 @@ steps than have you guess at them.
 **Our largest file is 69 KB.** Nothing here comes close to any limit, and the
 real files will not either -- the Guide is five PDFs and Checkup is a small
 script.
+
+---
+
+## DO NOT USE GUMROAD "VERSIONS" FOR THE FIVE PRINT SIZES
+
+**Added 2026-09-02, after Bill put Gemini's description of the Versions feature
+to me. Gemini describes the feature accurately. Applying it here would
+contradict the licence.**
+
+### The feature is real, and Gemini has it mostly right
+
+***sourced, Gumroad Help Center:*** *"You can add multiple versions by clicking
+the 'Add version' button. Give your version a name, description, an additional
+amount over the base product price, and a quantity if you wish to limit the
+sales of the version."* Content is attached per version -- *"switch to the
+'Content' tab and select the version you'd like to add content for."*
+
+| Gemini's claim | Verdict |
+|---|---|
+| Gumroad has a native Versions feature | **Correct** |
+| Separate files can be attached to each version | **Correct**, sourced above |
+| Pricing can differ per version | **Correct**, though the mechanism is *"an additional amount over the base product price"*, not a free-standing price |
+| The buyer picks from a dropdown and receives only that version | **Correct -- and that is precisely the problem** |
+| *"you can enable versions and add **up to 5** distinct options"* | ***Not documented.*** Gumroad's own article describes "Add version" with **no stated maximum**. **The number 5 is the number in the question that was asked** -- so it most likely came from the prompt rather than from Gumroad. Treat it as unverified |
+
+Gemini also guessed at the product -- *"your different Windows security
+hardening guides or target tiers"*. There is one Guide, in five print sizes.
+
+### Why it is the wrong feature here, and it is not a preference
+
+***sourced, the current licence, Section 1:***
+
+> *"Your Guide license covers **all five print sizes** -- they are one product,
+> not five, and the one printed copy Section 5 allows is one copy of the size
+> you choose."*
+
+**Versions would deliver one. The licence promises five.** That is a
+contractual mismatch, not a layout choice, and it would be discovered by
+whichever buyer read the agreement.
+
+**The question was already asked and settled.**
+`LicenceVsEulaNorms-2026-08-25-1045.md` raised it directly -- *"Does a buyer
+get one of the five, or all five?"* -- and answered it *"measured, the pricing
+page: they receive all five."* The licence was then written to say so.
+
+**And it is the wrong shape for this buyer anyway.** The five sizes are a
+**vision accommodation**. A senior choosing from a dropdown is choosing before
+they have seen any of them -- and a reader who picks 14 pt, finds it too small,
+and has to return to the store has been failed by the product. **Give them all
+five and let them open the one that suits.** That is what "not a dead end"
+means here.
+
+**Five files on one product, as written above. No versions.**
+
+### WHERE VERSIONS *IS* THE RIGHT ANSWER -- AND IT HAS NO TASK
+
+**The multi-PC packs.** Checkup for 1, 3, 5 and 10 PCs: genuinely different
+scope, genuinely different price, and the licence already carries terms for
+them -- *"A 3-PC, 5-PC, or 10-PC pack covers that..."*, Section 2, plus an open
+attorney question on whether a pack refund is all-or-nothing.
+
+**That is exactly what Versions is for**, and Gemini's description would apply
+cleanly to it.
+
+***measured against CPM Rev 8, 2026-09-02: the multi-PC packs have no task at
+all.*** They appear in three attorney documents and in the Checkup listing copy
+that is already written -- *"Using more than one PC? There are packs for 3, 5
+and 10 at gatewayguard.co"* -- **so the store copy advertises products that do
+not exist.**
+
+**Not urgent: Checkup ships after 15-Sep, so this is off the Guide's path.**
+But the sentence promising the packs must not go live before the packs do.
+Added to the schedule as **T-PACK**.
 
 ---
 
