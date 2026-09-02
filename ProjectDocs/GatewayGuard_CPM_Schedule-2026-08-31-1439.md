@@ -237,6 +237,19 @@ Working days from day 0 (Mon 31-Aug). **B** = Bill at the keyboard.
 
 | **ID** | **Task** | **Who** | **Dur** | **Pred.** | **ES** | **EF** | **LS** | **LF** | **Float** |
 |---|---|---|---|---|---|---|---|---|---|
+<!-- AMENDMENT 2026-09-02 -->
+***AMENDMENT, 2026-09-02 -- THE PRODUCT FILES HAD NO TASK.*** **Bill: "we don't
+have product files setup yet that would be downloaded at gumroad."** ***measured
+against this document:*** "file delivery" appeared twice, in **T-PAY1**
+(research it) and **T-PAY3** (wire the checkout) -- **never as making the file
+or putting it on the product.** Three tasks added -- **T-UPG**, **T-PKG**,
+**T-UPC** -- and **T-TP** now depends on T-UPG, because a test purchase cannot
+prove a download that has nothing to download.
+
+**The critical path does not move.** T-UPG runs off T-GX, which finishes at day
+3.5, while T-TP was already waiting on T-PAY3 at day 4.25. **6.15 days of
+float.** The gap was real but it was not on the binding chain.
+
 | **LEGAL AND STORE -- Bill's 2b, 2c, 2d** | | | | | | | | | |
 | T-LZ1 | **Bill reviews the 10 consult questions** -- `AttorneyConsult2-Revised-RefundAndGumroad-2026-08-25-1010.md` | B | 0.25 | -- | 0 | 0.25 | 0 | 0.25 | **0 (CRITICAL)** |
 | T-LZ2 | **LegalZoom consult -- book and hold** | B | **3-10** | T-LZ1 | 0.25 | 3.25-10.25 | 0.25 | 3.25-10.25 | **0 (CRITICAL) LONGEST POLE** |
@@ -246,7 +259,7 @@ Working days from day 0 (Mon 31-Aug). **B** = Bill at the keyboard.
 | T-GR1 | **Gumroad: set up both products** -- name, URL slug, description, pricing, **refund toggle twice** (***measured: it is per-product, not account-wide***). Copy already written in `GumroadListings-2026-08-25-0015.md` | B | 0.25 | T-PAY2 | 0.65 | 0.9 | 2.15 | 2.4 | 1.5 |
 | T-GR2 | **Decide and build the early-buyer bundle credit** -- a $17.00 code for Guide buyers | B+C | 0.15 | T-GR1 | 0.9 | 1.05 | 2.4 | 2.55 | 1.5 |
 | T-PAY3 | **Wire checkout into the website** -- buy links, file delivery, receipt text, EULA link | C+B | 0.5 | T-GR2, T-LZ3 | 3.75 | 4.25 | 9.25 | 9.75 | 5.5 |
-| T-TP | **Test purchase -- Gumroad's test card, BOTH products. NOT a real card** (see `GatewayGuard_GumroadTestPurchase-2026-09-02-1040.md`) | B | 0.1 | T-PAY3 | 4.25 | 4.4 | 9.75 | 9.9 | 5.5 |
+| T-TP | **Test purchase -- Gumroad's test card, BOTH products. NOT a real card** (see `GatewayGuard_GumroadTestPurchase-2026-09-02-1040.md`) | B | 0.1 | **T-PAY3, T-UPG** | 4.25 | 4.4 | 9.75 | 9.9 | 5.5 |
 | **THE GUIDE -- the 15-Sep product** | | | | | | | | | |
 | T-VF1 | **Triage the 29 VERIFY markers** -- split into Claude-measurable and Bill-only | C | 0.25 | -- | 0 | 0.25 | 0.5 | 0.75 | 0.5 |
 | T-VF2 | Measure the Claude-measurable subset on CGDELL | C | 1.0 | T-VF1 | 0.25 | 1.25 | 0.75 | 1.75 | 0.5 |
@@ -261,6 +274,7 @@ Working days from day 0 (Mon 31-Aug). **B** = Bill at the keyboard.
 | T-WPR | **Fix the pricing page's false claim** -- it says the annual update *"scans your drives again"*; ***measured against ascii43: Checkup reads `C:` only*** | C | 0.25 | -- | 0 | 0.25 | 5.75 | 6.0 | 5.75 |
 | T-WR3 | **Bill reviews `WebSite\html\` -- all 20 files** | B | 0.25 | T-WR2, T-WPR | 1.6 | 1.85 | 6.0 | 6.25 | 4.4 |
 | T-WQA | Site QA -- links, nav, buy buttons, download, hash placeholder, mobile | C+B | 0.5 | T-WR3, T-PAY3 | 4.25 | 4.75 | 6.25 | 6.75 | 2.0 |
+| T-UPG | **Upload the Guide PDFs to the Gumroad product** -- ***the file the buyer downloads. Added 2026-09-02: no task existed for this*** | B | 0.1 | T-GX, T-GR1 | 3.5 | 3.6 | 9.65 | 9.75 | 6.15 |
 | **LAUNCH -- the Guide** | | | | | | | | | |
 | T-GO1 | **GUIDE LAUNCH -- Tue 15-Sep** | B | 0 | T-GX, T-TP, T-WQA | 4.75 | 4.75 | 11 | 11 | **6.25** |
 | **BUILD -- ascii44, off the 15-Sep path -- Bill's 2e, 2f** | | | | | | | | | |
@@ -280,7 +294,9 @@ Working days from day 0 (Mon 31-Aug). **B** = Bill at the keyboard.
 | T-SC | SmartScreen smoke test | B | 0.1 | T-SN | 6.8 | 6.9 | -- | -- | |
 | T-SS | **19 screenshots from the signed build** -- ***10-14 h, at least two full passes*** | B | **1.75** | T-SN | 6.8 | 8.55 | -- | -- | |
 | T-CQA | Final integration QA -- Checkup against the website, all three machines | C+B | 0.5 | T-SC, T-SS | 8.55 | 9.05 | -- | -- | |
-| T-GO2 | **CHECKUP LAUNCH -- a stated date after 15-Sep** | B | 0 | T-CQA | 9.05 | 9.05 | -- | -- | |
+| T-PKG | **Assemble the Checkup download package** -- signed .ps1, launcher, start-here sheet, licence, published hash. ***Contents never defined anywhere; see the open question below*** | C | 0.2 | T-SN | 6.8 | 7.0 | -- | -- | |
+| T-UPC | **Upload the Checkup package to the Gumroad product** | B | 0.1 | T-PKG, T-GR1 | 7.0 | 7.1 | -- | -- | |
+| T-GO2 | **CHECKUP LAUNCH -- a stated date after 15-Sep** | B | 0 | T-CQA, T-UPC | 9.05 | 9.05 | -- | -- | |
 | **RUNNING** | | | | | | | | | |
 | T-SUP | **Launch-week support inbox** -- 30 min/day for 10 days = **5 Bill-hours, previously unbudgeted** | B | 0.6 | T-GO1 | 11 | -- | -- | -- | *from launch* |
 

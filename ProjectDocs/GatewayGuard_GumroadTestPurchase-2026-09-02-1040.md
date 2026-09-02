@@ -82,14 +82,24 @@ as the two refund toggles.
 - **The checkout works and completes.**
 - **Both emails send** -- *"you will receive emails notifying you of both your
   sale and your purchase."*
-- **File delivery works.** *"You can also use the test purchase feature to
-  download your own files and give peace of mind that things are working
-  correctly."* **This is the unknown that mattered most** -- the record said we
-  did not know the download reaches the buyer's email, and this settles it.
 - **What the customer actually sees**, end to end, which is the other reason to
   do it.
+- **File delivery -- BUT ONLY ONCE A FILE IS ATTACHED.** ***sourced:*** *"You
+  can also use the test purchase feature to download your own files and give
+  peace of mind that things are working correctly."*
 
-**That is three of the four unknowns closed, at zero risk.**
+  ***Bill, 2026-09-02: "we don't have product files setup yet that would be
+  downloaded at gumroad."*** **So today a test purchase cannot prove this
+  half.** It is still worth running now for the checkout and the emails, and
+  **run again after each file is uploaded.** Test purchases are free and
+  unlimited, so two costs nothing.
+
+  ***not measured: whether Gumroad will even complete a purchase of a product
+  with no file attached.*** The test purchase itself settles that, which is
+  another reason to run it before launch week rather than during it.
+
+**So: two of the four unknowns close today, at zero risk. The third closes when
+the files are uploaded.**
 
 ---
 
