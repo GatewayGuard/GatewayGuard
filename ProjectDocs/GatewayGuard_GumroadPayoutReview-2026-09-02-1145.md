@@ -3,7 +3,7 @@
 # Gumroad payout settings -- review
 
 - **Document Name:** GatewayGuard_GumroadPayoutReview
-- **Last Modified:** 2026-09-02 12:04 ET
+- **Last Modified:** 2026-09-02 12:18 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **For:** Bill
 - **Covers:** CPM task **T-PAY2**
@@ -34,39 +34,67 @@ whole chain behind T-PAY2 is free to move.
 
 ---
 
-## 1. CHANGED 2026-09-02 -- PAYEE NAME, BUT THE VALUE IS NOT RECORDED
+## 1. DONE 2026-09-02 -- PAYEE NAME SET TO GatewayGuard LLC
 
-**Bill: *"fixed the payout name."*** **What it now says has not been recorded,
-and it is not being guessed at here**, because the two possible fixes have
-different consequences and only one of them is right.
+**Bill set "Pay to the order of" to `GatewayGuard LLC`.**
 
-### The two readings
+**That agrees with everything else on the page** -- Account type Business, Legal
+business name GatewayGuard LLC, Type LLC, a business Tax ID -- **and with the
+record**: ***sourced, `BankLetterRequest-2026-08-02-1820-TEXT.md`***, the bank
+letter concerns the *"GatewayGuard LLC Business Account"*, type *"business
+checking"*.
 
-| If it now reads | Correct when |
+### One thing still worth thirty seconds -- the exact spelling
+
+Gumroad's note is *"Must exactly match the name on your bank account."* **Banks
+are literal about this.** `GatewayGuard LLC`, `GatewayGuard, LLC` and
+`GATEWAYGUARD LLC` are three different strings, and the bank chose one when the
+account was opened.
+
+**Open a statement or online banking, read the account title, and make the
+Gumroad field match it character for character.** ***Not measured: how Maine
+Community Bank titles it.***
+
+**Why it is worth the look even now that the name is right in principle:** a
+payee mismatch is accepted by Gumroad and returned by the receiving bank, weeks
+later, after the first real sales.
+
+---
+
+## 1a. "SAME AS BUSINESS" -- TICK IT ONLY IF THE BUSINESS ADDRESS IS WHERE BILL LIVES
+
+**Bill asked, 2026-09-02.**
+
+**What that section is for.** The block beneath it -- name, address, date of
+birth, last four of the SSN -- is **identity verification on the individual
+behind the company**, not company information. A payment processor is required
+to confirm a real person, against government records. **So those fields must be
+the person's own true details**, whatever the company's are.
+
+***Not measured: exactly which fields Gumroad's checkbox copies.*** From the
+page layout it sits directly above the address fields and most likely copies
+the business address into the representative's. It has not been seen in
+operation here.
+
+### The answer
+
+**The two addresses in the pasted page are already identical**, so ticking it
+changes nothing today. What it changes is the future: **edit the business
+address later and the personal one follows silently.**
+
+| Situation | Do |
 |---|---|
-| `William F Burns III` -- the lowercase `i` corrected | The linked account is a **personal** account in Bill's own name |
-| `GatewayGuard LLC` | The linked account is the **business checking** account |
+| The Brunswick address **is** Bill's home | **Ticking it is accurate and harmless.** Convenience only |
+| The business address is ever moved to a registered-agent service, a PO box, or an office, while Bill still lives elsewhere | **Leave it unticked.** A coupled personal address would quietly become wrong, and identity verification is exactly what breaks |
 
-***sourced, `BankLetterRequest-2026-08-02-1820-TEXT.md`:*** the letter Bill
-requested is headed *"Request for Bank Manager Letter -- **GatewayGuard LLC
-Business Account**"* and asks the bank to confirm *"the account type (**business
-checking**)"*. **The rest of the Gumroad page agrees with the company reading**
--- Account type Business, Legal business name GatewayGuard LLC, Type LLC, a
-business Tax ID.
+***inferred, not confirmed:*** the record describes a *"Noncommercial Registered
+Agent at Brunswick ME address"* -- in Maine that is normally the owner at their
+own address, which fits a home-based single-member LLC. **Bill knows; the record
+does not.**
 
-**So the record points at the LLC. It does not prove which account was linked**,
-and Gumroad's own note is unambiguous: the name *"Must exactly match the name on
-your bank account."*
-
-### Why this is worth one more look rather than being closed
-
-**A payee-name mismatch does not fail where it would be seen.** Gumroad accepts
-it; the receiving bank returns it -- **weeks later, after the first real
-sales**, when the money is expected and does not arrive.
-
-**The check: open a bank statement or online banking, read how the account is
-titled, and confirm the Gumroad field says exactly that.** Thirty seconds, and
-it is the last thing standing between a sale and the money.
+**Recommendation: leave it unticked.** The fields are already correct and
+identical, so the box buys nothing today, and unticked keeps the personal
+identity details from following a business address that may one day move.
 
 ---
 
@@ -160,16 +188,19 @@ them off is fine; turning them on costs nothing either.
 
 ## WHAT IS LEFT
 
-1. **Confirm the publish warning is gone** on both products -- ten seconds, and
-   it is the test that the payout method actually took
-2. **Confirm the payee name matches the bank account title exactly** -- see
-   item 1 above
-3. **Weekly schedule** if the dropdown offers it
+**Ranked. The first one is the only one that gates anything.**
+
+1. **Open either product and confirm the "you haven't connected a payout method"
+   warning is gone.** Ten seconds. It is the only real test that the payout
+   method took, and **both products stay unpublishable until it passes**
+2. **Match the payee name to the bank's exact account title** -- item 1 above
+3. **Weekly schedule** if the dropdown offers it. Daily needs four previous
+   payouts, so it is unavailable regardless
 4. Then the upload and test purchase, per
    `GatewayGuard_StoreTestFiles-2026-09-02-1119.md`
 
-**Decisions with no deadline:** PayPal at checkout, and whether to list on
-Discover at 30%.
+**No deadline, decide when convenient:** the "same as business" box (leave it),
+PayPal at checkout, Discover at 30%, and the two local-currency toggles.
 
 ---
 
