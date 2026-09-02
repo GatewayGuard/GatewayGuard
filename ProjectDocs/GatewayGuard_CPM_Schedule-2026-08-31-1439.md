@@ -260,6 +260,8 @@ float.** The gap was real but it was not on the binding chain.
 | T-GR2 | **Decide and build the early-buyer bundle credit** -- a $17.00 code for Guide buyers | B+C | 0.15 | T-GR1 | 0.9 | 1.05 | 2.4 | 2.55 | 1.5 |
 | T-PAY3 | **Wire checkout into the website** -- buy links, file delivery, receipt text, EULA link | C+B | 0.5 | T-GR2, T-LZ3 | 3.75 | 4.25 | 9.25 | 9.75 | 5.5 |
 | T-TP | **Test purchase -- Gumroad's test card, BOTH products. NOT a real card** (see `GatewayGuard_GumroadTestPurchase-2026-09-02-1040.md`) | B | 0.1 | **T-PAY3, T-UPG** | 4.25 | 4.4 | 9.75 | 9.9 | 5.5 |
+| T-EULA | **Publish the licence as a public web page** -- ***added 2026-09-02. Gumroad's terms-acceptance field takes a URL, and measured the same day: there is no licence page anywhere on gatewayguard.co.*** Gates the checkout acceptance field, and so gates the first sale | C+B | 0.25 | T-LZ3 | 3.75 | 4.0 | 9.5 | 9.75 | 5.75 |
+| T-RCPT | **Billing-problem routing into the receipt and support page** -- double charge, missing download. ***Deliberately removed from the licence (Bill: "the last thing the buyer will think to do is go back and read the EULA"), so it must land somewhere the customer will look*** | B | 0.1 | T-GR1 | 0.9 | 1.0 | -- | -- | |
 | **THE GUIDE -- the 15-Sep product** | | | | | | | | | |
 | T-VF1 | **Triage the 29 VERIFY markers** -- split into Claude-measurable and Bill-only | C | 0.25 | -- | 0 | 0.25 | 0.5 | 0.75 | 0.5 |
 | T-VF2 | Measure the Claude-measurable subset on CGDELL | C | 1.0 | T-VF1 | 0.25 | 1.25 | 0.75 | 1.75 | 0.5 |
