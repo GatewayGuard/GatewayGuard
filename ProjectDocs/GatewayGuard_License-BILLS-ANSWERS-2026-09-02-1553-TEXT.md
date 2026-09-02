@@ -65,45 +65,44 @@ Buying one product does not give you a license to the other. A bundle purchase c
 
 What comes with each product. Your Checkup license covers the script, the starter file that launches it, and any correction we issue for that same version.
 
-> **DECISION NEEDED — does a Guide buyer receive all five print sizes, or one?**
+> **DECISION NEEDED — does a Guide buyer receive all five print sizes, or one?** NO, ONLY ONE HE CHOOSES
 >
 > **This is the single sentence blocking v3.0.** Version 2.4 said: *"Your Guide license covers all five print sizes — they are one product, not five, and the one printed copy Section 5 allows is one copy of the size you choose."* Bill wrote on 2026-09-02: *"Buyers are entitled to only one version of the security guide."* Those may be the same statement or opposite ones, and the answer changes Section 1, Section 5, the Gumroad product setup, and the listing copy.
 >
-> **Option A — all five, print one.** *(what v2.4 says; no other change needed)*
+> **Option A — all five, print one.** *(what v2.4 says; no other change needed)* REMOVE THIS LINE
 >
-> > Your Guide license covers all five print sizes — they are one product, not five, and the one printed copy Section 5 allows is one copy of the size you choose.
+> > Your Guide license covers all five print sizes — they are one product, not five, and the one printed copy Section 5 allows is one copy of the size you choose. 
 >
-> **Option B — one size, chosen at purchase.**
+> **Option B — one size, chosen at purchase.**CREATE ADDITION ON WEBSITE THAT WILL SHOW THE SAME PARAGRAPH IN ALL FONTS AND ASK THE BUYER TO DETERMING WHICH ONE THEY PREFER BEFORE GOING TO GUMROAD *HOW DO THEY DO THIS / HOW DO WE SET THIS UP ON OUR WEBSITE?
 >
 > > Your Guide license covers one print size, which you choose when you buy. The five sizes carry identical wording and differ only in the size of the type. If the size you chose does not suit you, write to us at support@gatewayguard.co and we will send you a different one at no charge.
 >
 > **If Option B is chosen, three other things change:** Section 5's printing clause, the Gumroad product must be built as five *versions* rather than five files, and the listing copy that currently promises *"The Guide in five print sizes. Yours to keep, and yours to print"* must be rewritten. **The free-swap sentence in Option B is not decoration** — without it a reader who picks 14 point and cannot read it has bought the wrong thing and has no route back, which is the dead end the house rules forbid.
 
-Your log file is yours. Checkup writes a record of what it found and what you approved to a file on your own computer. That file belongs to you. It is never sent to us, and we cannot read it unless you choose to send it to us.
+Your log file is yours. Checkup writes a record of what it found and what you approved to a file on your own computer. That file belongs to you. It is never sent to us, UNLESS YOU CONTACT US FOR HELP, THEN WE MAY REQUEST YOU TO SEND IT TO US, IF WE DECIDE IT WILL HELP TO SOLVE YOUR REASON FOR CONTACTING US.  and we cannot read it unless you choose to send it to us.
 
 ### 2. Your Checkup License
 
-You are buying a license to use Checkup — not Checkup itself. GatewayGuard LLC owns Checkup, including all code, text, and design.
+You are buying a license to use Checkup — not Checkup itself. GatewayGuard LLC owns Checkup, AND IT IS COPYRIGHTED including all code, text, and design.
 
-The PC you install it on. Your license covers one (1) personal computer that you own or control. The first time you run Checkup, it makes a note of the computer it is running on, and your license belongs to that computer. Nothing about you goes into that note — not your name, not your email, not an account. It only identifies the machine.
+The PC you install it on. Your license covers one (1) personal computer that you own or control. The first time you run Checkup, it makes a note of the computer it is running on, and your license belongs to that computer. THE CHECKUP PROGRAM WILL ONLY RUN ON THAT COMPUTER FROM THAT POINT ON. OR SOMESUCH GENTLE WORDING. MARKETING -  Nothing about you goes into that note — not your name, not your email, not an account. It only identifies the machine THE CHECKUP PROGRAM WILL RUN ON.
+tHE FOLLOWING IS GOOD INFORMATION FOR THE WEBSITE, BUT IS IT NECESSARY IN THE LICENSE. i THINK WE SHOULD REMOVE IT AND ADD IT TO WEBSITE - LETS DISCUSS IT
 
-We do this for one reason: it is what lets us sell Checkup once, at a price a household can afford, instead of charging a monthly fee to cover copies being passed around.
+MARKETING - We do this for one reason: it is what lets us sell Checkup once, at a price a household can afford, instead of charging a monthly fee to cover copies being passed around.
 
-When you get a new computer. Computers fail and people replace them. When that happens, email us at support@gatewayguard.co and we will move your license to the new PC. There is a small fee for the move, listed at gatewayguard.co. We are not going to make you prove anything — if you tell us your old PC is gone, that is good enough for us.
+MARKETING-When you get a new computer. Computers fail and people replace them. When that happens, email us at support@gatewayguard.co and we will move your license to the new PC. There is a NO fee for the move, listed at gatewayguard.co. We are not going to make you prove anything — if you tell us your old PC is gone, that is good enough for us.
+MARKETING- If you BUY a multi-PC pack. A 3-PC, 5-PC, or 10-PC pack, IT covers that many computers. Each one is noted separately, the same way, and the same move applies to each.
 
-If you bought a multi-PC pack. A 3-PC, 5-PC, or 10-PC pack covers that many computers. Each one is noted separately, the same way, and the same move applies to each.
+MARKETING-> **DECISION NEEDED — multi-PC terms.** *(carried forward from v2.4, unchanged)* Whose machines a pack covers is still open: one household, one person, or any PC the buyer owns. The packs run to $79.99, which is enough money that a buyer will read this Gsentence carefully. APPLIES TO ANY WINDOWS PC THE BUYER RUNS IT ON, AND IT WILL ONLY RUN ON THAT ONE COMPUTER 
+> **DECISION NEEDED — the license move (IS FREE AND WE WILL RECOMMEND YOU PURCHASE AN UPGRADE IF THERE HAVE BEEN ONE OR MORE YEARLY WINDOWS UPDATES. OR SOME SUCH FRIENDLY WORDING** *(carried forward from v2.d a way to actually perform the move. Measured on build ascii43: Checkup computes a machine identifier and displays it, but never compares it to anything, so there is at present nothing to reissue. Section 2 states the one-PC rule as a term of this agreement and makes no claim about what the software enforces.
 
-> **DECISION NEEDED — multi-PC terms.** *(carried forward from v2.4, unchanged)* Whose machines a pack covers is still open: one household, one person, or any PC the buyer owns. The packs run to $79.99, which is enough money that a buyer will read this sentence carefully.
+MARKETING-You may read the source code. Checkup is delivered as a PowerShell script (a .ps1 file). The source code is fully readable in any text editor. We want you to be able to see exactly what Checkup does — that is part of how you know you can trust it. Open it, read it, and inspect it as much as you like.
 
-> **DECISION NEEDED — the license move needs a price and a way to do it.** *(carried forward from v2.4, unchanged)* Bill’s instruction of 2026-08-25 is that a license move carries a small fee rather than being free and unlimited. The amount is not set, and it is not written here because prices do not belong in a contract. Two things are outstanding: the amount, published at gatewayguard.co, and a way to actually perform the move. Measured on build ascii43: Checkup computes a machine identifier and displays it, but never compares it to anything, so there is at present nothing to reissue. Section 2 states the one-PC rule as a term of this agreement and makes no claim about what the software enforces.
+BAD MARKETING-Updates. This license covers the version you bought. You can run that version as many times as you want, and we will never make your existing copy stop working. BETTER TO EXPLAIN ABOUT THE YEARLY MS UPDATES AND CHECKUP ANNUAL UPDATES 
 
-You may read the source code. Checkup is delivered as a PowerShell script (a .ps1 file). The source code is fully readable in any text editor. We want you to be able to see exactly what Checkup does — that is part of how you know you can trust it. Open it, read it, and inspect it as much as you like.
+HOW ARE WE GOING TO TO DO THIS AND CONTROL THE VERSIONS - Fixes to your version. If we issue a correction to the version you bought — a fix for a defect, not a new annual version — you are licensed to run it, at no charge. A new annual version for a new Windows release is a separate product and a separate purchase.
 
-Updates. This license covers the version you bought. You can run that version as many times as you want, and we will never make your existing copy stop working.
-
-Fixes to your version. If we issue a correction to the version you bought — a fix for a defect, not a new annual version — you are licensed to run it, at no charge. A new annual version for a new Windows release is a separate product and a separate purchase.
-
-Microsoft releases a major Windows 11 update most years. When that happens we offer an updated version of Checkup that keeps pace with the changes. The updated version is a separate purchase and is entirely optional — skipping it does not affect the copy you already own. Current prices and terms are listed at gatewayguard.co.
+MARKETING-Microsoft releases a major Windows 11 update most years. When that happens we offer an updated version of Checkup that keeps pace with the changes. The updated version is a separate purchase and is entirely optional — skipping it does not affect the copy you already own. Current prices and terms are listed at gatewayguard.co.
 
 ### 3. What You May Do
 
@@ -111,16 +110,15 @@ With a valid Checkup license you may:
 
 - Install and run Checkup on your licensed PC as many times as you like.
 - Open and read the source code in any text editor.
-- Keep one backup copy of the download file for your own safekeeping, so you can install it again later.
+- How are we going to control this, because the backup copy can be run on second pc - Keep one backup copy of the download file for your own safekeeping, so you can install it again later.
 - Quote short portions of the source code in a review, or when asking for technical help online, as long as you include the credit “GatewayGuard LLC — gatewayguard.co.”
 
-> **DECISION NEEDED — Q5, the backup copy.** *(carried forward from v2.4, unchanged)* Your notes read “Allow them to make a 2nd copy for security for future.” The draft already permitted one backup copy, which is that second copy. Confirm this is what was meant. If you intended two backup copies, or a copy on separate media such as a USB drive, say so and the wording will change.
+> **DECISION NEEDED — Q5, the backup copy.** *(carried forward from v2.4, unchanged)* Your notes read “Allow them to make a 2nd copy for security for future.” The draft already permitted one backup copy, which is that second copy. Confirm this is what was meant. If you intended two backup copies, or a copy on separate media such as a USB drive, say so and the wording will change. MEANT A SECOND COPY ONLY
 
-### 4. What You May Not Do
-
+### 4. What You May Not     
 You may not:
 
-- Share, sell, rent, lend, give away, or transfer Checkup or any copy of it to anyone else. Moving your own license to your own replacement PC, as described in Section 2, is not a transfer and is always allowed.
+LICENSE WRITEUP- Share, sell, rent, lend, give away, or transfer Checkup or any copy of it to anyone else. Moving your own license to your own replacement PC, as described in Section 2, is not a transfer and is always allowed.
 - Post Checkup or its source code on any website, file-sharing service, code repository, or forum.
 - Create modified versions of Checkup, or put our code into another product, for personal or commercial use.
 - Remove, alter, or hide our name, our copyright notices, or the code-signing signature on Checkup.
@@ -131,19 +129,19 @@ You may not:
 
 The Guide is a separate product from Checkup. Buying the Guide gives you a personal, non-transferable license to:
 
-- Read and use the Guide on any personal computer in your home that you own or control.
-- Print one copy for your own use.
+- Read and use the Guide on any ONE personal computer in your home that you own or control.
+- WE CAN'T PROHIBIT THIS, SO WHY SAY IT. Print one copy for your own use.
 
 You may not:
 
 - Share, distribute, sell, or give the Guide to anyone outside your household.
 - Post the Guide, or any part of it, online.
-- Use the Guide for any commercial purpose, including teaching, consulting, training, or providing services to other people.
+- Use the Guide for any commercial purpose, including teaching, consulting, training, or providing services to other people. WITHOUT A SEPARATE AGREEMENT WITH GATEWAYGUARD LLC
 - Create your own version based on the Guide — including rewritten, adapted, translated, or reformatted versions — for personal or commercial use.
 
 The Guide is protected by copyright. GatewayGuard LLC keeps all rights not granted to you here.
 
-> **DECISION NEEDED — the printing clause depends on Section 1.** Under Option A the printed copy is *"one copy of the size you choose"*, since the buyer holds all five. Under Option B it is one copy of the size they bought, and the sentence needs no qualifier. **Do not settle this separately from Section 1** — they are one decision written in two places.
+> DEALT WITH ABOVE **DECISION NEEDED — the printing clause depends on Section 1.** Under Option A the printed copy is *"one copy of the size you choose"*, since the buyer holds all five. Under Option B it is one copy of the size they bought, and the sentence needs no qualifier. **Do not settle this separately from Section 1** — they are one decision written in two places.
 
 ### 6. What GatewayGuard Promises
 
@@ -157,27 +155,27 @@ GatewayGuard LLC warrants that:
 
 These promises do not cover: problems caused by Windows updates that change how your system behaves after you buy; PCs with hardware not listed on our compatible PC list; or damage caused by running Checkup on an unsupported version of Windows.
 
-> **DECISION NEEDED — Q9, the softened warranties.** *(carried forward from v2.4, unchanged)* Two absolute claims were removed from this section. “Every change is reversible” now appears in Section 8 as a description of how Checkup is built. “Checkup makes no network connections from your PC” became “built to run without contacting us.” Both changes reduce exposure but weaken the marketing claim. Confirm, or restore the original absolute wording and accept the risk knowingly.
+> **DECISION NEEDED — Q9, the softened warranties.** *(carried forward from v2.4, unchanged)* Two absolute claims were removed from this section. “Every change is reversible” now appears in Section 8 as a description of how Checkup is built. “Checkup makes no network connections from your PC” became “built to run without contacting us.” Both changes reduce exposure but weaken the marketing claim. Confirm, or restore the original absolute wording and accept the risk knowingly. CONFIRMED
 
 ### 7. Reviewing the Programs on Your PC
 
-Checkup reviews the programs installed on your PC and points out any we consider risky, with a plain-English explanation of why we think so.
+MARKETING-Checkup reviews the programs installed on your PC and points out any we consider risky, with a plain-English explanation of why we think so.
 
-Checkup never removes a program on its own. If you want a program removed, you approve that removal on screen, and Checkup records your approval with the date and time in your log file.
+MARKETING-Checkup never removes a program on its own. If you want a program removed, you approve that removal on screen, and Checkup records your approval with the date and time in your log file.
 
-Our flags are our opinion, based on our research. A flag does not mean a program is harmful, and you may have good reasons to keep something we flagged. The decision is always yours.
+cHANGE FLAGS TO RECOMMENDATIONS Our flags are our opinion, based on our research. A flag does not mean a program is harmful, and you may have good reasons to keep something we flagged. The decision is always yours.
 
-> **DECISION NEEDED — Q10, does the programs review ship at launch?** *(carried forward from v2.4; the date is updated)* The attorney approved this design and asked separately if the feature should ship at launch or wait. That launch-timing decision is not recorded in the consult notes. If the programs review does not ship on **September 15**, this section comes out of the launch version of the agreement.
+> WHAT ARE YOU TALKING ABOUT HERE**DECISION NEEDED — Q10, does the programs review ship at launch?** *(carried forward from v2.4; the date is updated)* The attorney approved this design and asked separately if the feature should ship at launch or wait. That launch-timing decision is not recorded in the consult notes. If the programs review does not ship on **September 15**, this section comes out of the launch version of the agreement.
 
 ### 8. What GatewayGuard Does Not Promise
 
 Except for the promises in Section 6, Checkup and the Guide are provided “as is.”
 
-We do not promise that Checkup will make your computer immune to every security threat, catch every piece of malware, or prevent every attack. No security tool can promise that.
+MARKETING-We do not promise that Checkup will make your computer immune to every security threat, catch every piece of malware, or prevent every attack. No security tool can promise that.
 
-We do not promise that Checkup will work correctly on every possible combination of hardware and software.
+MARKETING-We do not promise that Checkup will work correctly on every possible combination of hardware and software.
 
-We do not promise that the settings you approved will stay in place after Windows updates. Microsoft releases a major Windows 11 update every year, and those updates may change or reset security settings. We recommend running Checkup again after each annual Windows update so you can see what changed and approve any settings you want turned back on.
+MARKETING-We do not promise that the settings you approved will stay in place after Windows updates. Microsoft releases a major Windows 11 update every year, and those updates may change or reset security settings. We recommend running Checkup again after each annual Windows update so you can see what changed and approve any settings you want turned back on.
 
 Checkup is built so that the changes you approve can be undone. The Guide explains how to undo each one.
 
@@ -189,13 +187,13 @@ No other company’s code is inside Checkup. Checkup is our own work. It contain
 
 **Our refund terms are different for each product.** Please read the part that applies to what you bought.
 
-**Checkup — 14 days, no reason needed.** If Checkup is not what you expected, write to us within 14 days of buying and we will refund you in full. You do not have to give a reason. You do not need to prove anything, send us a file from your computer, or let us try to fix the problem first. If you would like to tell us what went wrong we are glad to hear it, because it is how the product improves — but it is not a condition of your refund.
+**Checkup — 14 days, no reason needed.** If Checkup is not what you expected, PROCESS A REFUND WITH GUMROAD within 14 days of buying and THEY will refund you in full. You do not have to give a reason. You do not need to prove anything, send us THE LOG file from your computer TO let us try to fix the problem first. If you I REMOVED WORDS HERE tell us what went wrong we are glad to hear it, because it is how the product improves — but it is not a condition of your refund.
 
-**The Guide — sold without a refund.** Every security setting the Guide covers is explained free on our website, in full, before you buy anything. You can read the whole of what the Guide covers and decide if the offline copy is worth it to you. Because you can see exactly what you are getting beforehand, the Guide is sold without a refund from us.
+*MARKETING-*The Guide — sold without a refund.** Every security setting the Guide covers is explained free on our website, in full, before you buy anything. You can read the whole of what the Guide covers and decide if the offline copy is worth it to you. Because you can see exactly what you are getting beforehand, the Guide is sold without a refund from us.
 
 > **DECISION NEEDED — the bundle.** **This is the second sentence blocking v3.0.** Checkup and the Guide bought together cost less than bought apart, and the two products above carry opposite refund terms. The agreement must say which one governs the bundle.
 >
-> **Option A — the bundle is refundable in full for 14 days.** *(simplest for the buyer)*
+> **Option A — ALL BUNDLES ARE refundable in full for 14 days.** *(simplest for the buyer)*
 >
 > > **Checkup and the Guide bought together.** If the bundle is not what you expected, write to us within 14 days of buying and we will refund the whole purchase. You do not have to give a reason.
 >
@@ -251,7 +249,7 @@ If a court decides that any part of this agreement is invalid, illegal, or canno
 
 If you break these terms, your license ends immediately and you must delete every copy of the GatewayGuard products you have. You may end this license yourself at any time by deleting every copy. Ending the license does not entitle you to a refund except as described in Section 9.
 
-> **DECISION NEEDED — Section 15 and Section 9 still do not agree, and the change to 14 days did not fix it.** *(carried forward from v2.4, restated for the new Section 9)* “Ending the license does not entitle you to a refund except as described in Section 9” was written when Section 9 was a sales-are-final rule with three named exceptions to point at. Section 9 is now an unconditional 14-day window for Checkup, so a customer whose license ended for breach on day 3 still appears to be pointed at a full refund right. A carve-out here is exactly the hedge the August 22 decision warns against — “no questions asked earns its keep only if there are none.” **This is for the attorney, not for us.**
+> **DECISION NEEDED — Section 15 and Section 9 still do not agree, and the change to 14 days did not fix it.** *(carried forward from v2.4, restated for the new Section 9)* “Ending the license does not entitle you to a refund except as described in Section 9” was written when Section 9 was a sales-are-final rule with three named exceptions to point at. Section 9 is now an unconditional 14-day window for Checkup, so a customer whose license ended for breach on day 3 still appears to be pointed at a full refund right. A carve-out here is exactly the hedge the August 22 decision warns against — “no questions asked earns its keep only if there are none.” **This is for the attorney, not for us.** WE WILL PROBABLY NOT KNOW OF A BREACH WITHIN 14 DAYS SO THIS IS A MUTE POINT.  ALSO WE HAVE POINTED THEM OR WILL POINT THEM TO GUMROAD TO HANDLE REFUNDS. 
 
 ### 16. Contact
 
@@ -263,19 +261,20 @@ GatewayGuard LLC  |  Brunswick, Maine  |  support@gatewayguard.co  |  gatewaygua
 
 These are not drafted into the text above.
 
-**How the buyer accepts this agreement — ANSWERED, and it creates a task.** Version 2.4 recorded that nothing showed this agreement to the buyer and nobody accepted it, and called that the first question for the attorney. **The mechanism now exists.** ***sourced, Gumroad Help Center:*** custom checkout fields support terms acceptance — the seller enters *"the URL for your terms that customers must accept before purchasing"*, and that field *"is always set to Required."* Bill's A6 answer says the same. **The requirement that comes with it: the field takes a URL, so this agreement must be a public web page before the store opens.** ***measured 2026-09-02: there is no licence, EULA or terms page anywhere on gatewayguard.co.*** That is a new task, and it sits between "EULA final" and "first sale."
+**How the buyer accepts this agreement — ANSWERED, and it creates a task.** Version 2.4 recorded that nothing showed this agreement to the buyer and nobody accepted it, and called that the first question for the attorney. **The mechanism now exists.** ***sourced, Gumroad Help Center:*** custom checkout fields support terms acceptance — the seller enters *"the URL for your terms that customers must accept before purchasing"*, and that field *"is always set to Required."* Bill's A6 answer says the same. **The requirement that comes with it: the field takes a URL, so this agreement must be a public web page before the store opens.** ***measured 2026-09-02: there is no licence, EULA or terms page anywhere on gatewayguard.co.*** That is a new task, and it sits between "EULA final" and "first sale." IT'S JUST A CLICK ON OUR WEBSITE TO OPEN A PDF ONLINE IN THEIR BROWSER 
 
 **Where a billing problem gets routed.** The double-charge and missing-download cases are deliberately not in this agreement — see change note 3. They still need an answer somewhere the customer will actually look: the Gumroad receipt text, and a support page on the website. **Recorded here so the removal does not become an omission.**
 
-**Cease-and-desist template.** *(carried forward)* The attorney agreed a template letter should be prepared — email first, U.S. mail if there is no response — but the specific language has not been supplied. Not part of this agreement; a separate document.
+**Cease-and-desist template.** *(carried forward)* The attorney agreed a template letter should be prepared — email first, U.S. mail if there is no response — but the specific language has not been supplied. Not part of this agreement; a separate document. ADD TO PROJECT NOTES AS TO DO.
 
-**PC binding versus the FTC Act.** *(carried forward)* The attorney noted the Federal Trade Commission Act, 15 U.S.C. §§ 41—58, says nothing about physical hardware, and asked that the binding clause be tested against Section 5 (15 U.S.C. § 45), which prohibits unfair or deceptive acts or practices in or affecting commerce. Binding is in this version, so the test is live. The Maine consumer-protection question on hardware-bound software comes with it.
+**PC binding versus the FTC Act.** *(carried forward)* The attorney noted the Federal Trade Commission Act, 15 U.S.C. §§ 41—58, says nothing about physical hardware, and asked that the binding clause be tested against Section 5 (15 U.S.C. § 45), which prohibits unfair or deceptive acts or practices in or affecting commerce. Binding is in this version, so the test is live. The Maine consumer-protection question on hardware-bound software comes with it. ADD TO ONE OF NEW CONSULTS WHEN YOU WRITE THEM
 
-**Whether the Guide's no-refund term needs its own FTC look.** **New with v3.0.** The audience is elderly Americans and the product is sold as a security aid. A non-refundable consumer digital product is ordinary and lawful; a non-refundable one sold to seniors, by a company they have not heard of, alongside a refundable sibling product, is worth one sentence of attorney attention. It belongs with the Section 5 question above rather than as a separate call.
+**Whether the Guide's no-refund term needs its own FTC look.** **New with v3.0.** The audience is elderly Americans and the product is sold as a security aid. A non-refundable consumer digital product is ordinary and lawful; a non-refundable one sold to seniors, by a company they have not heard of, alongside a refundable sibling product, is worth one sentence of attorney attention. It belongs with the Section 5 question above rather than as a separate call. ADD TO ONE OF NEW CONSULTS WHEN YOU WRITE THEM
 
-**Clauses considered and not added.** *(carried forward)* Question 11 of the August 4 cover note listed arbitration, entire-agreement, assignment, age and export restrictions, and a mechanism for changing terms in future versions. The consult notes record only severability as the answer. The terms-change mechanism is now Section 13 and needs review. The other four are still not in this draft. Confirm they were declined rather than simply not reached.
 
-**The customer email list.** *(carried forward)* An email whose only content is warranty, safety, or security information about a product the recipient bought, or notice of a change in terms or features, is treated as transactional or relationship content and is exempt from most CAN-SPAM requirements. The FTC reads those categories narrowly. Adding a sales pitch to the same message makes it commercial, which brings the opt-out, advertisement-identification, and physical-address requirements with it.
+**Clauses considered and not added.** *(carried forward)* Question 11 of the August 4 cover note listed arbitration, entire-agreement, assignment, age and export restrictions, and a mechanism for changing terms in future versions. The consult notes record only severability as the answer. The terms-change mechanism is now Section 13 and needs review. The other four are still not in this draft. Confirm they were declined rather than simply not reached. IT'S ENOUGHH FOR $20 PRODUCT
+
+**The customer email list.** *(carried forward)* An email whose only content is warranty, safety, or security information about a product the recipient bought, or notice of a change in terms or features, is treated as transactional or relationship content and is exempt from most CAN-SPAM requirements. The FTC reads those categories narrowly. Adding a sales pitch to the same message makes it commercial, which brings the opt-out, advertisement-identification, and physical-address requirements with it. NO ISSUES THEN? 
 
 **Gaps in the consult notes.** *(carried forward)* Question 6 was answered “no minimum, we can establish” without recording a minimum of what — quantity, license term, or price. Question 8 ends mid-sentence at “Qualify in terms of …” and was referred to LegalZoom.
 

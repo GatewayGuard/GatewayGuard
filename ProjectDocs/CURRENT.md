@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-08-31 09:31 ET -->
-<!-- Commit: 8747a50 -->
+<!-- Generated: 2026-09-02 18:14 ET -->
+<!-- Commit: 7540350 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-08-31 09:31 ET  |  **Commit:** `8747a50`  |  **Made:** 2026-08-31 08:58 ET
-- **Commit subject:** CURRENT.md put its rows first, because Cloud could never retrieve them
+- **Generated:** 2026-09-02 18:14 ET  |  **Commit:** `7540350`  |  **Made:** 2026-09-02 15:55 ET
+- **Commit subject:** Licence v3.0: Bill's Consult A answers applied, two decisions left marked
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -56,7 +56,7 @@ All paths are relative to `ProjectDocs/`.
 | What it is | The current file | Older versions present |
 |---|---|---|
 | Launch plan | `GatewayGuard_LaunchPlan-2026-08-14-0107.md` | 0 |
-| CPM schedule | `GatewayGuard_CPM_Schedule-2026-08-02-1201.md` | 1 |
+| CPM schedule | `GatewayGuard_CPM_Schedule-2026-08-31-1439.md` | 2 |
 | Screen numbering design | `GatewayGuard_ScreenNumberDesign-2026-08-15-1430.md` | 0 |
 | Screen numbering table | `GatewayGuard_ScreenNumberTable-2026-08-17.md` | 1 |
 
@@ -103,7 +103,7 @@ All paths are relative to `ProjectDocs/`.
 | Pricing copy (website) | `GatewayGuard_PricingCopy-2026-08-22-1000.md` | 1 |
 | Annual price decision | `GatewayGuard_PriceDecision-Annual-2026-08-21-1445.md` | 0 |
 | Refund policy and terms | `GatewayGuard_Decisions-RefundAndTerms-2026-08-22-1510.md` | 0 |
-| Licence agreement (EULA) | `GatewayGuard_License-2026-08-25-1400-TEXT.md` | 4 |
+| Licence agreement (EULA) | `GatewayGuard_License-BILLS-ANSWERS-2026-09-02-1553-TEXT.md` | 5 |
 
 ### WORKING RULES AND WHAT IS WAITING ON BILL
 
@@ -166,7 +166,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-08-30 17:10 to 2026-08-31 09:30 [Claude Code -- CGDELL] -- THE RUN HAD FINISHED AND NOBODY HAD LOOKED, EIGHT REGISTRY WRITES CANNOT REPORT FAILURE, AND CURRENT.md COULD NOT DELIVER ITS OWN ROWS
+## Session: 2026-09-02 10:37 to 18:13 [Claude Code -- CGDELL] -- THE STORE OPENED, AND THREE THINGS NOBODY HAD A TASK FOR
 ```
 
 **If it is not in your copy of the session log, you are reading an old

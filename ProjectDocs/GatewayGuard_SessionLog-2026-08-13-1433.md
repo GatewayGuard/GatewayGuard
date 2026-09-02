@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-08-31 09:30 ET
+- **Last Modified:** 2026-09-02 18:13 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -14,6 +14,115 @@
   Downloaded by Bill at session end and uploaded to project immediately.
 
 ---
+---
+
+## Session: 2026-09-02 10:37 to 18:13 [Claude Code -- CGDELL] -- THE STORE OPENED, AND THREE THINGS NOBODY HAD A TASK FOR
+
+**The store is live and can take money.** Payout method connected and confirmed
+-- the "you haven't connected a payout method" warning is gone from both
+products, which was the last thing blocking either from publishing. Threshold
+$500 -> **$100** (the US minimum; the Guide now needs **10** sales to a first
+payout instead of **48**). Schedule **weekly**. Payee name set to
+**GatewayGuard LLC**, matching the business account type. Both product names now
+agree with the licence -- Bill renamed the Guide from "GatewayGuard Windows 11
+Security Companion", a name appearing nowhere else in the record.
+
+### THE MISTAKE THAT MATTERED, AND BILL CAUGHT IT
+
+**The record told Bill to buy his own product with a real credit card, in six
+documents since 2026-08-25, and I repeated it on 2026-09-01.** ***sourced,
+Gumroad Help Center:*** charging your own card for your own product *"appears
+exactly the same as money laundering to our security systems, and your account
+may be automatically suspended as a result."*
+
+**So the test I recommended, run in launch week, could have suspended the
+account that takes the money.** Corrected in five documents, each pointing at
+`GatewayGuard_GumroadTestPurchase-2026-09-02-1040.md`. **The session log and the
+Cloud request keep the wrong wording deliberately** -- they record what was said
+at the time, and rewriting that hides that it happened.
+
+**The rule this broke already existed** (`CLAUDE.md`: a procedure belonging to an
+external program is a factual claim about that program, and does not get written
+until it has been read in that program's own documentation). **It was written six
+times instead. A gate with no check is a wish.**
+
+### THREE GAPS OF THE SAME SHAPE, ALL FOUND BY BILL ASKING A QUESTION
+
+1. **The product files had no task.** ***measured against CPM Rev 8:*** "file
+   delivery" appeared twice, both times as something to *research* or *wire up*,
+   never as making the file or putting it on the product. No packaging document
+   existed at all. Added **T-UPG**, **T-PKG**, **T-UPC**.
+2. **The multi-PC packs had no task**, while the written Checkup listing copy
+   already advertises them -- *"packs for 3, 5 and 10 at gatewayguard.co."*
+   **The store copy advertises products that do not exist.** Added **T-PACK**.
+3. **The licence had nowhere to be accepted.** v2.4's appendix said so plainly
+   -- *"Nothing shows this agreement to the buyer, and nobody accepts it."*
+   **Now answered:** Gumroad's checkout terms field takes a URL and is always
+   required. ***measured 2026-09-02: there is no licence page anywhere on
+   gatewayguard.co.*** Added **T-EULA**.
+
+**The pattern: the schedule tracked the work and missed the things the customer
+actually receives.** None was on the binding path -- the 15-Sep date did not
+move -- but none would have surfaced on its own either.
+
+### TEST FILES BUILT, SO THE CHAIN CAN BE TESTED BEFORE THE REAL FILES EXIST
+
+`Store_TestFiles\` -- five Guide PDFs at 12/14/16/18/20 point (US Letter, real
+selectable text, verified with pypdf) and one Checkup zip holding a starter
+`.bat`, a `.ps1`, a read-me and a licence placeholder -- **the exact set the
+licence says a Checkup purchase covers.** Zip verified, `.ps1` parses with 0
+errors, `.bat` is CRLF and does not self-elevate.
+
+**Renamed mid-session** from `TESTFILE-GatewayGuard-Guide-12pt.pdf` to
+`TESTFILE - GatewayGuard Guide - 12 point print (smallest).pdf`, after Bill
+asked if the filenames could carry the Guide's font. ***sourced:*** they cannot
+-- Gumroad's font setting reaches the profile, product page, posts and emails
+but *"not to your product's content."* **What is controllable is the filename
+text, and that matters more:** the buyer reads it in the download list, in the
+receipt, and in their Downloads folder six months later.
+
+### GUMROAD FACTS SETTLED BY RESEARCH, NOT BY GUESSING
+
+- **Fees are the seller's; tax is the buyer's.** The customer pays exactly the
+  listed price -- $19.99 nets **$16.61**. Tax goes on top and never reaches us:
+  Gumroad is marketplace facilitator and merchant of record. **This closes
+  LaunchPlan item C3, open since 14 August.**
+- **Gumroad refunds at its own discretion for 90 days**, over the seller's head.
+  So "all sales final" is publishable but not enforceable.
+- **Gumroad Versions is the right feature pointed at the wrong product.** Gemini
+  described it accurately; applying it to the Guide's five print sizes would
+  deliver one where the licence promises five. **It fits the multi-PC packs.**
+
+### LICENCE v3.0 DRAFTED
+
+`GatewayGuard_License-2026-09-02-1553-TEXT.md`, applying Bill's Consult A
+answers. Checkup **14 days**, the Guide **sold without a refund**, the log-file
+requirement removed, the two billing exceptions removed **entirely** rather than
+reworded -- Bill: *"the last thing the buyer will think to do is go back and read
+the EULA."* **A licence is not a support document**; that routing became
+**T-RCPT** instead. New **Section 10** states Gumroad's role in their own
+two-part framing.
+
+**Two DECISION NEEDED markers block finalisation**, both drafted in full both
+ways: **the Guide's print sizes** (one or five) and **the bundle refund**.
+
+### WRITTEN IN MARKDOWN ON PURPOSE
+
+v2.4 said *"This file is generated. Edit the .docx master, then regenerate."*
+**v3.0 reverses that**, because the `.docx` master could not be opened on
+2026-08-25 and the licence had to be rebuilt from its readable twin. The `.md`
+is the source until the two decisions land.
+
+### ALSO THIS SESSION
+
+- **487 files OneDrive asked to delete were git's own packed objects.** fsck
+  clean, 0 loose objects, HEAD matching origin. Correct answer was "Delete all
+  items"; **the "don't ask again" box should stay unticked**, because it is the
+  only warning if something real ever deletes hundreds of files.
+- **Word held two files locked for over an hour**, which is why the listings doc
+  was the last one still carrying the real-card instruction.
+- **13 commits, all pushed and verified at 0 unpushed.**
+
 ---
 
 ## Session: 2026-08-30 17:10 to 2026-08-31 09:30 [Claude Code -- CGDELL] -- THE RUN HAD FINISHED AND NOBODY HAD LOOKED, EIGHT REGISTRY WRITES CANNOT REPORT FAILURE, AND CURRENT.md COULD NOT DELIVER ITS OWN ROWS
