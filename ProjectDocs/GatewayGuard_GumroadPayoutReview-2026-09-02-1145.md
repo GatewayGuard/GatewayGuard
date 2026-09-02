@@ -3,7 +3,7 @@
 # Gumroad payout settings -- review
 
 - **Document Name:** GatewayGuard_GumroadPayoutReview
-- **Last Modified:** 2026-09-02 11:45 ET
+- **Last Modified:** 2026-09-02 12:04 ET
 - **Last Editor:** Claude Code (CGDELL)
 - **For:** Bill
 - **Covers:** CPM task **T-PAY2**
@@ -34,68 +34,58 @@ whole chain behind T-PAY2 is free to move.
 
 ---
 
-## 1. "PAY TO THE ORDER OF" -- CHECK THIS BEFORE ANYTHING ELSE
+## 1. CHANGED 2026-09-02 -- PAYEE NAME, BUT THE VALUE IS NOT RECORDED
 
-**The field reads `William F Burns IIi`. Gumroad's own note under it says the
-name *"Must exactly match the name on your bank account."***
+**Bill: *"fixed the payout name."*** **What it now says has not been recorded,
+and it is not being guessed at here**, because the two possible fixes have
+different consequences and only one of them is right.
 
-**Two separate problems, and either one can bounce a payout.**
+### The two readings
 
-### a. It ends in a lowercase i
-
-`IIi` where the beneficial-owner section on the same page reads `William F
-Burns III`. It may be an artifact of copying the page rather than what is
-actually stored. **Look at the field on screen and confirm.**
-
-### b. It names a person, and the record says the account belongs to the company
+| If it now reads | Correct when |
+|---|---|
+| `William F Burns III` -- the lowercase `i` corrected | The linked account is a **personal** account in Bill's own name |
+| `GatewayGuard LLC` | The linked account is the **business checking** account |
 
 ***sourced, `BankLetterRequest-2026-08-02-1820-TEXT.md`:*** the letter Bill
 requested is headed *"Request for Bank Manager Letter -- **GatewayGuard LLC
 Business Account**"* and asks the bank to confirm *"the account type (**business
-checking**)"*.
+checking**)"*. **The rest of the Gumroad page agrees with the company reading**
+-- Account type Business, Legal business name GatewayGuard LLC, Type LLC, a
+business Tax ID.
 
-**So the record describes a business checking account titled to GatewayGuard
-LLC, while Gumroad is set to pay an individual.** The rest of the page agrees
-with the company reading -- Account type **Business**, Legal business name
-**GatewayGuard LLC**, Type **LLC**, a business Tax ID.
+**So the record points at the LLC. It does not prove which account was linked**,
+and Gumroad's own note is unambiguous: the name *"Must exactly match the name on
+your bank account."*
 
-***Not measured: which account was actually linked.*** It may be a personal
-account, in which case the individual name is right and there is nothing to fix.
+### Why this is worth one more look rather than being closed
 
-**What to do:** look at how the bank has the account titled -- on a statement,
-or in online banking -- and make this field say exactly that. **If the account
-is titled GatewayGuard LLC, this field should say GatewayGuard LLC.**
+**A payee-name mismatch does not fail where it would be seen.** Gumroad accepts
+it; the receiving bank returns it -- **weeks later, after the first real
+sales**, when the money is expected and does not arrive.
 
-**Why it matters more than it looks.** A deposit whose payee name does not match
-the account title can be returned by the receiving bank. It would not fail at
-Gumroad, where it would be visible -- **it would fail weeks later, at the bank,
-after the first real sales.**
+**The check: open a bank statement or online banking, read how the account is
+titled, and confirm the Gumroad field says exactly that.** Thirty seconds, and
+it is the last thing standing between a sale and the money.
 
 ---
 
-## 2. THE PAYOUT THRESHOLD IS SET FIVE TIMES HIGHER THAN IT NEEDS TO BE
+## 2. DONE 2026-09-02 -- THRESHOLD LOWERED TO $100
 
-**Set to `$500`. The page says: *"The minimum payout threshold for United States
-is $100."***
+**Bill changed it from $500 to $100**, the US minimum.
 
-**Nothing pays out until the balance reaches the threshold.** ***calculated
-from the fees printed on that same page*** -- direct sales cost
-`10% + 50c + 2.9% + 30c`:
+***calculated from the fees printed on the settings page*** -- direct sales
+cost `10% + 50c + 2.9% + 30c`:
 
-| Product | Price | Fees | You keep | Sales to reach $500 | Sales to reach $100 |
-|---|---|---|---|---|---|
-| Checkup | $19.99 | $3.38 | **$16.61** | **31** | **7** |
-| Guide | $12.99 | $2.48 | **$10.51** | **48** | **10** |
+| Product | Price | Fees | You keep | Sales to first payout |
+|---|---|---|---|---|
+| Checkup | $19.99 | $3.38 | **$16.61** | **7** |
+| Guide | $12.99 | $2.48 | **$10.51** | **10** |
 
-**So at $500 the Guide has to sell forty-eight copies before a single dollar
-moves. At $100 it is ten.**
-
-**For a product with no customers yet, that is the difference between seeing
-money in the first month and seeing it in the first quarter.** There is no
-benefit to the higher number -- the money is not earning anything sitting at
-Gumroad, and a first payout landing is itself a test that the bank details work.
-
-**Recommendation: change it to $100.** One field, no downside.
+**At $500 the Guide would have needed forty-eight sales before a dollar moved.
+It now needs ten.** For a product with no customers yet, that is the difference
+between money arriving in the first month and in the first quarter -- and the
+first payout landing is itself the proof that the bank details work.
 
 ---
 
@@ -168,15 +158,18 @@ them off is fine; turning them on costs nothing either.
 
 ---
 
-## THE ORDER TO DO THESE IN
+## WHAT IS LEFT
 
 1. **Confirm the publish warning is gone** on both products -- ten seconds, and
-   it tells you the payout method actually took
-2. **Fix "Pay to the order of"** to match the bank exactly
-3. **Threshold $500 -> $100**
-4. **Weekly schedule** if it is offered
-5. Then the upload and test purchase, per
+   it is the test that the payout method actually took
+2. **Confirm the payee name matches the bank account title exactly** -- see
+   item 1 above
+3. **Weekly schedule** if the dropdown offers it
+4. Then the upload and test purchase, per
    `GatewayGuard_StoreTestFiles-2026-09-02-1119.md`
+
+**Decisions with no deadline:** PayPal at checkout, and whether to list on
+Discover at 30%.
 
 ---
 
