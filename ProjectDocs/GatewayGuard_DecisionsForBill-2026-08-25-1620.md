@@ -50,9 +50,16 @@ Wording for both is written and ready to paste:
 So we do not know the payment goes through. We do not know the download reaches
 the buyer's email. We do not know the refund button does what it says.
 
-**Use a real card, not a test one.** A test card does not prove a real one
-works. **If something is broken, we want to be the ones who find it — not the
-first person who trusts us with $19.99.**
+***CORRECTED 2026-09-02 -- DO NOT DO THIS.*** This item said to use a real
+card. ***sourced, Gumroad Help Center:*** charging your own card for your own
+product *"appears exactly the same as money laundering to our security systems,
+and your account may be automatically suspended as a result."* **Use Gumroad's
+test purchase instead** -- stay logged in and the checkout substitutes a test
+card. Procedure: `GatewayGuard_GumroadTestPurchase-2026-09-02-1040.md`
+
+**The reason the test still matters is unchanged. If something is broken, we
+want to be the ones who find it -- not the first person who trusts us with
+$19.99.**
 
 ## 4. UN-PAUSE WINDOWS UPDATE ON BOTH MACHINES *(was item 1, 24 Aug)*
 

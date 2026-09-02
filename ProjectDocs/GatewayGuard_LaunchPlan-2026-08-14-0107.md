@@ -206,7 +206,7 @@ settled whatever the answer was.
 | C1 | Gumroad account, product page, $19.99 | Bill |
 | C2 | Refund policy wording -- LegalZoom Call 2 | Bill |
 | C3 | Sales tax handling on Gumroad | Bill |
-| C4 | Test purchase end to end, with a real card | Bill |
+| C4 | Test purchase end to end -- **Gumroad's test card, NOT a real one** (`GatewayGuard_GumroadTestPurchase-2026-09-02-1040.md`) | Bill |
 
 **C4 is the one people skip.** A checkout that fails on launch day costs more
 than any defect in the build.

@@ -82,16 +82,26 @@ account-wide*** -- settled from your own screenshots.
 **Two products, two toggles. Doing one is the failure mode here.** Wording is
 written and ready to paste: `GatewayGuard_GumroadListings-2026-08-25-0015.md`.
 
-## 4. BUY YOUR OWN PRODUCT, WITH A REAL CARD, THEN REFUND IT *(was item 3)*
+## 4. TEST THE CHECKOUT -- WITH GUMROAD'S TEST CARD, NOT YOUR OWN *(was item 3)*
 
-**Nobody has ever bought anything from our store. Not once.**
+***CORRECTED 2026-09-02. This item said "use a real card" and that was
+wrong.*** ***sourced, Gumroad Help Center:*** charging your own card for your
+own product *"appears exactly the same as money laundering to our security
+systems, and your account may be automatically suspended as a result."*
 
-We do not know the payment goes through, that the download reaches the buyer's
-email, or that the refund button does what it says. **Use a real card.** A test
-card does not prove a real one works.
+**Nobody has ever bought anything from our store. Not once.** Stay logged in,
+open your own product page, and buy it -- the checkout substitutes a **test
+card** and charges nothing. **Do it for both products.**
 
-**Now it also proves item 2** -- the acceptance has to show up in the CSV, and
-this is the purchase that shows it.
+**It proves the checkout, both emails, and the file download.** It does not
+prove a real card or the payout -- for those, ***sourced:*** *"just ask"*
+Gumroad support to confirm the payout works. One email, no risk.
+
+**It may NOT prove item 2.** ***sourced:*** a test sale *"will not be displayed
+in your Audience Dashboard alongside your other sales"* -- so the licence
+acceptance may not reach the CSV either. Check the export straight after.
+
+**Full procedure:** `GatewayGuard_GumroadTestPurchase-2026-09-02-1040.md`
 
 ## 5. WHEN YOU ARE BACK FROM THE REBOOT -- TWO MEASUREMENTS *(was item 4, part closed)*
 

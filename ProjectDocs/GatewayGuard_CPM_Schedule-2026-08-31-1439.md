@@ -246,7 +246,7 @@ Working days from day 0 (Mon 31-Aug). **B** = Bill at the keyboard.
 | T-GR1 | **Gumroad: set up both products** -- name, URL slug, description, pricing, **refund toggle twice** (***measured: it is per-product, not account-wide***). Copy already written in `GumroadListings-2026-08-25-0015.md` | B | 0.25 | T-PAY2 | 0.65 | 0.9 | 2.15 | 2.4 | 1.5 |
 | T-GR2 | **Decide and build the early-buyer bundle credit** -- a $17.00 code for Guide buyers | B+C | 0.15 | T-GR1 | 0.9 | 1.05 | 2.4 | 2.55 | 1.5 |
 | T-PAY3 | **Wire checkout into the website** -- buy links, file delivery, receipt text, EULA link | C+B | 0.5 | T-GR2, T-LZ3 | 3.75 | 4.25 | 9.25 | 9.75 | 5.5 |
-| T-TP | **Test purchase with a real card, then refund it** | B | 0.15 | T-PAY3 | 4.25 | 4.4 | 9.75 | 9.9 | 5.5 |
+| T-TP | **Test purchase -- Gumroad's test card, BOTH products. NOT a real card** (see `GatewayGuard_GumroadTestPurchase-2026-09-02-1040.md`) | B | 0.1 | T-PAY3 | 4.25 | 4.4 | 9.75 | 9.9 | 5.5 |
 | **THE GUIDE -- the 15-Sep product** | | | | | | | | | |
 | T-VF1 | **Triage the 29 VERIFY markers** -- split into Claude-measurable and Bill-only | C | 0.25 | -- | 0 | 0.25 | 0.5 | 0.75 | 0.5 |
 | T-VF2 | Measure the Claude-measurable subset on CGDELL | C | 1.0 | T-VF1 | 0.25 | 1.25 | 0.75 | 1.75 | 0.5 |
@@ -301,7 +301,7 @@ Working days from day 0 (Mon 31-Aug). **B** = Bill at the keyboard.
   T-PAY3  Wire checkout into the website          0.5 d
     |
     v
-  T-TP    Test purchase, then refund it           0.15 d
+  T-TP    Test purchase, both products            0.1 d
     |
     v
   T-GO1   GUIDE LAUNCH -- Tue 15-Sep
@@ -366,7 +366,7 @@ hours as fungible. Both are fixed here.
 | 1 | Review the 10 consult questions | 2 | high |
 | 2 | The LegalZoom consult itself | 1 | high |
 | 3 | Connect payout; set up 2 products; 2 refund toggles; bundle credit | 1.5 | high |
-| 4 | Test purchase and refund | 1 | high |
+| 4 | Test purchase, both products, **no card** + one email to Gumroad support | 0.5 | high |
 | 5 | Measure the Bill-only VERIFY claims | 2.5 | medium |
 | 6 | **Read and approve the guide -- one contiguous block** | **4-6** | low |
 | 7 | Pick the website phrasing; review all 20 `html` files | 2.5 | medium |

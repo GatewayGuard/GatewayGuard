@@ -119,7 +119,7 @@ tomorrow's build.**
 | **Thu 27** | Review fixes. **FEATURE FREEZE by end of day** | Finish fixes. Apply website copy items 8, 13, 19. Guide: close the two VERIFY markers that can cost a reader their files |
 | **Fri 28** | **SIGN THE BUILD.** SmartScreen smoke test. Gumroad product page live | `download.html`, `index.html` banner removed, publish the 19 pages |
 | **Sat 29 / Sun 30** | **SCREENSHOTS -- all 19 settings, from the signed build** | Site QA, hash published, guide page numbers |
-| **Mon 31** | **Test purchase end to end with a real card.** Final read of the EULA | Final integration QA across all three machines |
+| **Mon 31** | **Test purchase end to end -- Gumroad's TEST card, never a real one (`GatewayGuard_GumroadTestPurchase-2026-09-02-1040.md`).** Final read of the EULA | Final integration QA across all three machines |
 | **Tue 1 Sep** | **LAUNCH** | Standby |
 
 ---
@@ -129,8 +129,9 @@ tomorrow's build.**
 **ZERO FLOAT -- slipping any of these moves the launch date:**
 
 - Finish ascii43/44 → field run → fix → freeze → sign → screenshots → QA
-- **Gumroad live and a real test purchase.** *There is no launch without a
-  working checkout*, and it has never been tested end to end
+- **Gumroad live and a test purchase.** *There is no launch without a
+  working checkout*, and it has never been tested end to end. ***Corrected
+  2026-09-02: with Gumroad's test card, not a real one -- see `GatewayGuard_GumroadTestPurchase-2026-09-02-1040.md`.***
 
 **HAS FLOAT -- can land after 1 September:**
 
@@ -161,7 +162,7 @@ Friday** and they are on the critical path. **If the freeze slips to Monday,
 the screenshots have nowhere to go.**
 
 **3. The checkout has never been tested.** Gumroad is not live, the refund
-window is not set, and no purchase has been made with a real card. **This is
+window is not set, and no test purchase has been made. **This is
 the only chain that has had no rehearsal at all**, and it is the one that takes
 the money.
 
