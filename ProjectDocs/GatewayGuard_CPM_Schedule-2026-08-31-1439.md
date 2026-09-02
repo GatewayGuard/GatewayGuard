@@ -255,7 +255,7 @@ float.** The gap was real but it was not on the binding chain.
 | T-LZ2 | **LegalZoom consult -- book and hold** | B | **3-10** | T-LZ1 | 0.25 | 3.25-10.25 | 0.25 | 3.25-10.25 | **0 (CRITICAL) LONGEST POLE** |
 | T-LZ3 | Final EULA edits from the consult answers | C+B | 0.5 | T-LZ2 | 3.25 | 3.75 | 8.75 | 9.25 | 5.5 |
 | T-PAY1 | **Research Gumroad payment processing** -- payout, fees, tax handling, file delivery, receipts, refund mechanics | C | 0.5 | -- | 0 | 0.5 | 1.5 | 2.0 | 1.5 |
-| T-PAY2 | **Bill connects the payout method** -- ***nothing publishes until this is done*** | B | 0.15 | T-PAY1 | 0.5 | 0.65 | 2.0 | 2.15 | 1.5 |
+| T-PAY2 | **Bill connects the payout method** -- ***nothing publishes until this is done.*** **2026-09-02: bank details entered; four settings to fix and the publish warning still to be confirmed gone -- `GatewayGuard_GumroadPayoutReview-2026-09-02-1145.md`** | B | 0.15 | T-PAY1 | 0.5 | 0.65 | 2.0 | 2.15 | 1.5 |
 | T-GR1 | **Gumroad: set up both products** -- name, URL slug, description, pricing, **refund toggle twice** (***measured: it is per-product, not account-wide***). Copy already written in `GumroadListings-2026-08-25-0015.md` | B | 0.25 | T-PAY2 | 0.65 | 0.9 | 2.15 | 2.4 | 1.5 |
 | T-GR2 | **Decide and build the early-buyer bundle credit** -- a $17.00 code for Guide buyers | B+C | 0.15 | T-GR1 | 0.9 | 1.05 | 2.4 | 2.55 | 1.5 |
 | T-PAY3 | **Wire checkout into the website** -- buy links, file delivery, receipt text, EULA link | C+B | 0.5 | T-GR2, T-LZ3 | 3.75 | 4.25 | 9.25 | 9.75 | 5.5 |
