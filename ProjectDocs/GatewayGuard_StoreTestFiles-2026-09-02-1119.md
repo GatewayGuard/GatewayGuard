@@ -203,6 +203,18 @@ Guide onto that page. **The Guide's plain-English voice can.**
 
 ## DO NOT USE GUMROAD "VERSIONS" FOR THE FIVE PRINT SIZES
 
+> **SUPERSEDED 2026-09-02 18:41 by Bill's licence answer. DO NOT FOLLOW
+> THIS SECTION.** It was measured against licence **v2.4** -- *"your Guide
+> license covers all five print sizes"* -- and that is what made Versions
+> the wrong feature. Bill then answered the open decision **Option B**,
+> *"NO, ONLY ONE HE CHOOSES"*, and Option B says in terms that the Gumroad
+> product **must** be built as five versions. **Versions is now correct.**
+> Names, descriptions and filenames:
+> `GatewayGuard_GuideVersions-Gumroad-2026-09-02-1841.md`.
+>
+> **Kept in place rather than deleted**, because the reasoning is sound and
+> the only thing that changed is the contract it was measured against.
+
 **Added 2026-09-02, after Bill put Gemini's description of the Versions feature
 to me. Gemini describes the feature accurately. Applying it here would
 contradict the licence.**
