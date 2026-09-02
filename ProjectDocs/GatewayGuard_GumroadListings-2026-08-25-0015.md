@@ -3,7 +3,7 @@
 # Gumroad listings -- copy to fill in, both products
 
 - **Document Name:** GatewayGuard_GumroadListings
-- **Last Modified:** 2026-09-02 10:40 ET
+- **Last Modified:** 2026-09-02 14:59 ET
 - **For:** Bill, filling in the Gumroad product pages
 - **Fields taken from:** Bill's screenshots of `gumroad.com/products/baeofh/edit`,
   2026-08-25 -- Name, Description, URL, Summary, Additional details, Call to
@@ -208,14 +208,19 @@ gatewayguard.co -- that is .co, not .com.
 
 ### Refund policy -- turn the toggle ON, then:
 
+***CHANGED 2026-09-02. Bill: "Checkup is going to be a 14 day refund policy."***
+**This was 30 days.** The licence still says 30 and covers both products in one
+clause -- see `GatewayGuard_RefundWindowChange-2026-09-02-1459.md` before
+setting the Guide's.
+
 **Policy**
 ```
-30-day money back guarantee
+14-day money back guarantee
 ```
 
 **Fine print**
 ```
-If Checkup is not what you expected, write to us within 30 days of
+If Checkup is not what you expected, write to us within 14 days of
 buying and we will refund you in full. You do not have to give a
 reason.
 
