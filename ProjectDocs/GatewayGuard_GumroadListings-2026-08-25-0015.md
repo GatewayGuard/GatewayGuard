@@ -3,7 +3,7 @@
 # Gumroad listings -- copy to fill in, both products
 
 - **Document Name:** GatewayGuard_GumroadListings
-- **Last Modified:** 2026-09-01 14:35 ET
+- **Last Modified:** 2026-09-02 10:40 ET
 - **For:** Bill, filling in the Gumroad product pages
 - **Fields taken from:** Bill's screenshots of `gumroad.com/products/baeofh/edit`,
   2026-08-25 -- Name, Description, URL, Summary, Additional details, Call to
@@ -84,31 +84,26 @@ now closed behind him -- from here, changing either breaks live links.
 working** -- Gumroad's confirmation message arrived in it on 2026-09-01. The
 open question in the previous version of this section is closed.
 
-### OPEN -- THE GUIDE'S PRODUCT NAME DOES NOT MATCH THE LICENCE
+### DONE 2026-09-02 -- THE GUIDE'S NAME NOW MATCHES THE LICENCE
 
-***measured 2026-09-01, from the live product page:*** the Guide is listed as
-**`GatewayGuard Windows 11 Security Companion`**.
+**Bill renamed the product to agree with the licence.**
 
-***measured across `ProjectDocs\`:*** the word "Companion" appears **nowhere**
-as a name for this product. The record calls it the **GatewayGuard Windows
-Security Walkthrough Guide** -- including in **the licence, where it is a
-defined contractual term**:
+***measured 2026-09-02 10:37 ET, from the live product page:***
+
+| Product | Name on the page |
+|---|---|
+| `store.gatewayguard.co/l/guide` | **GatewayGuard Windows Security Walkthrough Guide** |
+| `store.gatewayguard.co/l/checkup` | **GatewayGuard Checkup** |
+
+Both now match the licence's defined terms exactly:
 
 > *The Guide: the GatewayGuard Windows Security Walkthrough Guide, a PDF
 > document. Covered in Section 5.*
 
-Present in three licence versions and in
-`AttorneyConsult2-Revised-RefundAndGumroad-2026-08-25-1010.md`.
-
-**So a buyer would accept a licence defining the product by a name that is not
-on the page they bought it from.** Not fatal, but it is the kind of gap that
-matters most in exactly the situation a licence exists for.
-
-**Two fixes, Bill's choice:** rename the product to match the licence, or
-change the licence's defined term to match the product. **The second is
-cheaper today**, because the licence is already going to the attorney and this
-can ride along instead of becoming a later amendment. **Decide before the
-first sale.**
+**It had been listed as "GatewayGuard Windows 11 Security Companion"** -- a name
+appearing nowhere else in the record. A buyer would have accepted a licence
+defining the product by a name that was not on the page they bought it from.
+**Closed, and nothing has to ride along to the attorney.**
 
 ---
 
@@ -374,16 +369,25 @@ not a rule.)*
 
 1. **Connect the payout method.** Nothing publishes without it.
 2. **Set both refund toggles.** Two products, two toggles.
-3. **Buy your own product yourself, with your own credit card, exactly the way
-   a customer would. Then give yourself the refund.**
+3. **Run a Gumroad test purchase on BOTH products. Never with your own credit
+   card.**
 
-   **Nobody has ever bought anything from our store.** Not once. So we do not
-   know that the payment goes through. We do not know that the download arrives
-   in the buyer's email. We do not know that the refund button does what it
-   says.
+   ***CORRECTED 2026-09-02.*** This step said to use a real card and then
+   refund it. ***sourced, Gumroad Help Center:*** charging your own card for
+   your own product *"appears exactly the same as money laundering to our
+   security systems, and your account may be automatically suspended as a
+   result."*
 
-   **Buying it yourself is the only way to find out.** Use a real card, not a
-   test one -- a test card does not prove a real one works.
+   **Stay logged in to Gumroad, open your own product page, and buy it.** The
+   checkout substitutes a **test card** and charges nothing. It proves the
+   checkout, both emails, and that the file download reaches the buyer --
+   which is three of the four things we did not know.
+
+   **For the fourth -- that a real card charges and the money reaches the
+   bank -- ***sourced:*** *"just ask"* Gumroad support to confirm the payout
+   works. One email, no risk to the account.
+
+   Full procedure, and what it cannot prove: `GatewayGuard_GumroadTestPurchase-2026-09-02-1040.md`
 
    **If something is broken, we want to be the ones who find it.** Not the
    first person who trusts us with $19.99.
