@@ -1,0 +1,42 @@
+﻿============================================================
+  GatewayGuard Windows 11 Security Hardening Tool v3.1
+  Build: ascii36
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-07-27 19:08:15
+  Computer: CGDELL
+  Machine:  Dell Inc. Latitude 5430
+  Machine ID: 565F4EC4F822 (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[19:08:15] [START] Tool launched v3.1 build ascii36
+[19:08:15] [INFO] Machine: Dell Inc. Latitude 5430 | MachineID: 565F4EC4F822
+[19:08:15] [OK] Sleep/shutdown prevention activated
+[19:08:15] [SCREEN] [SCREEN-25] Rendered: Welcome Back (Resume Prompt)
+[19:08:15] [SCREEN] Rendered: WELCOME BACK
+[19:08:18] [KEY] Key 'R' accepted at: Show-ResumePrompt
+[19:08:18] [STATE] User chose to RESUME from checkpoint: AppsAudit
+[19:08:18] [KEY] Continue accepted at: Show-ResumePrompt
+[19:08:18] [SCREEN] Rendered: QUICK RE-CHECK BEFORE RESUMING
+[19:08:21] [KEY] Key 'Y' accepted at: Show-ResumeReverify
+[19:08:21] [CONFIRM] Resume re-check: personal computer reconfirmed
+[19:08:21] [OK] Domain check passed -- not domain joined
+[19:08:21] [OK] Resume re-check: administrator access confirmed
+[19:08:21] [OK] Sleep/shutdown prevention activated
+[19:08:21] [OK] Resume re-check: AC power confirmed (100%). Sleep prevention active.
+[19:08:23] [KEY] Continue accepted at: Show-ResumeReverify
+[19:08:24] [INFO] Windows Edition: Professional -- Windows 11 Pro
+[19:08:24] [INFO] RAM: 32 GB (ample)
+[19:08:24] [SCREEN] Rendered: GatewayGuard Windows 11 Security Hardening Tool v3.1
+[19:08:26] [KEY] Key '1' accepted at: Select-Mode
+[19:08:26] [INFO] Mode selected: Console
+[19:08:30] [SCREEN] Rendered: QUICK QUESTION -- YOUR PASSWORDS
+[19:08:35] [KEY] Key 'Y' accepted at: Show-ScopeDisclaimer
+[19:08:35] [INFO] User has a password manager -- Edge Password Saving change stays available
+[19:08:36] [KEY] Continue accepted at: Show-ScopeDisclaimer
+[19:08:36] [SCREEN] Rendered: WHAT THIS TOOL DOES AND DOES NOT DO
+[19:14:07] [KEY] Nav 'NEXT' at: Show-ScopeDisclaimer

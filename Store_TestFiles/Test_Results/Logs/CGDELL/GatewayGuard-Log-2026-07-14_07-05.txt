@@ -1,0 +1,82 @@
+﻿============================================================
+  GatewayGuard Windows 11 Security Hardening Tool v3.1
+  Build: ascii29
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-07-14 07:05:09
+  Computer: CGDELL
+  Machine:  Dell Inc. Latitude 5430
+  Machine ID: 565F4EC4F822 (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[07:05:09] [START] Tool launched v3.1 build ascii29
+[07:05:09] [INFO] Machine: Dell Inc. Latitude 5430 | MachineID: 565F4EC4F822
+[07:05:09] [OK] QuickEdit mode disabled for this session (FT-01 mitigation)
+[07:05:09] [OK] Sleep/shutdown prevention activated
+[07:05:09] [SCREEN] Rendered: WELCOME BACK
+[07:05:11] [KEY] Key 'R' accepted at: Show-ResumePrompt
+[07:05:11] [STATE] User chose to RESUME from checkpoint: AppsAudit
+[07:05:12] [KEY] Continue accepted at: Show-ResumePrompt
+[07:05:12] [SCREEN] Rendered: QUICK RE-CHECK BEFORE RESUMING
+[07:05:16] [KEY] Key 'Y' accepted at: Show-ResumeReverify
+[07:05:16] [CONFIRM] Resume re-check: personal computer reconfirmed
+[07:05:16] [OK] Domain check passed -- not domain joined
+[07:05:16] [OK] Resume re-check: administrator access confirmed
+[07:05:16] [OK] Sleep/shutdown prevention activated
+[07:05:16] [OK] Resume re-check: AC power confirmed (100%). Sleep prevention active.
+[07:05:20] [KEY] Continue accepted at: Show-ResumeReverify
+[07:05:20] [INFO] Windows Edition: Professional -- Windows 11 Pro
+[07:05:21] [INFO] RAM: 32 GB (ample)
+[07:05:21] [SCREEN] Rendered: GatewayGuard Windows 11 Security Hardening Tool v3.1
+[07:05:25] [KEY] Key '1' accepted at: Select-Mode
+[07:05:25] [INFO] Mode selected: Console
+[07:06:30] [SCREEN] Rendered: QUICK QUESTION -- YOUR PASSWORDS
+[07:06:35] [KEY] Key 'Y' accepted at: Show-ScopeDisclaimer
+[07:06:35] [INFO] User has a password manager -- Edge Password Saving change stays available
+[07:06:37] [KEY] Continue accepted at: Show-ScopeDisclaimer
+[07:06:37] [SCREEN] Rendered: WHAT THIS TOOL DOES AND DOES NOT DO
+[07:07:56] [KEY] Nav 'BACK' at: Show-ScopeDisclaimer
+[07:08:00] [KEY] Key 'Y' accepted at: Show-ScopeDisclaimer
+[07:08:00] [INFO] Password-manager answer revised via Back: True
+[07:08:00] [SCREEN] Rendered: WHAT THIS TOOL DOES AND DOES NOT DO
+[07:08:08] [KEY] Nav 'NEXT' at: Show-ScopeDisclaimer
+[07:10:10] [KEY] Continue accepted at: Run-ConsoleMode
+[07:10:11] [SCREEN] Rendered: REVIEW YOUR SELECTIONS -- NO CHANGES MADE YET
+[07:10:11] [INFO] Review listing rendered -- awaiting Ready-to-proceed
+[07:10:11] [KEY] Key 'Y' accepted at: Run-ConsoleMode
+[07:10:11] [START] === Console Mode Hardening Run Started ===
+[07:10:11] [KEY] Key 'Y' accepted at: Run-ConsoleMode
+[07:10:11] [KEY] Key 'N' accepted at: Run-ConsoleMode
+[07:10:11] [GOOD] Windows Update -- already correct, user cancelled change
+[07:10:11] [KEY] Key 'N' accepted at: Run-ConsoleMode
+[07:10:11] [SKIP] Defender Real-Time VP (Virus Protection) -- Skipped by user
+[07:10:11] [BLOCKED] Defender Real-Time VP (Virus Protection) | Before: Malwarebytes Premium Trial active -- Defender real-time inactive (by design while trial runs) | Result: NOTE: Malwarebytes Premium Trial is currently handling real-time protection. Defender cannot run simultaneously. TO FIX: Open Malwarebytes -> Settings (gear icon) -> Account -> Deactivate Premium Trial. Defender will automatically become primary AV. Then rerun this tool to confirm. See Guide: Phase 3, Step 4
+[07:10:11] [KEY] Continue accepted at: Run-ConsoleMode
+[07:10:11] [MANUAL] Tamper Protection (Defender) | Manual action required
+[07:10:11] [KEY] Continue accepted at: Run-ConsoleMode
+[07:10:11] [KEY] Key 'N' accepted at: Run-ConsoleMode
+[07:10:11] [GOOD] SmartScreen -- already correct, skipped
+[07:10:11] [KEY] Key 'N' accepted at: Run-ConsoleMode
+[07:10:11] [SKIP] Defender Periodic Scanning -- Skipped by user
+[07:10:11] [INFO] Defender Periodic Scanning | Before: MB Trial is primary -- turn ON by hand (steps on this item's screen) | Result: Malwarebytes Premium Trial is active as your real-time AV. RECOMMENDED: Enable Defender periodic scanning as a second layer: Windows Security -> Virus & threat protection -> Microsoft Defender Antivirus options -> Periodic scanning -> On. Note: When trial expires (14 days), Malwarebytes reverts to Free -- Defender will resume as primary AV automatically. See Guide: Phase 1, Step 2
+[07:10:11] [KEY] Continue accepted at: Run-ConsoleMode
+[07:10:11] [KEY] Key 'Y' accepted at: Run-ConsoleMode
+[07:10:11] [KEY] Continue accepted at: Apply-Setting
+[07:10:11] [INFO] Phishing Protection (all 3) | Before: Not configured -- all 3 need to be enabled | Result: MANUAL REQUIRED -- registry is protected on this PC (Tamper Protection)
+[07:10:11] [KEY] Continue accepted at: Run-ConsoleMode
+[07:10:11] [KEY] Key 'B' accepted at: Run-ConsoleMode
+[07:10:15] [KEY] Continue accepted at: Run-ConsoleMode
+[07:10:16] [KEY] Continue accepted at: Run-ConsoleMode
+[07:10:16] [KEY] Continue accepted at: Run-ConsoleMode
+[07:10:39] [KEY] Key 'Y' accepted at: Confirm-Exit
+[07:10:39] [EXIT] User confirmed exit
+[07:10:39] [OK] Sleep prevention deactivated -- normal power management restored (called from: Confirm-Exit)
+
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================

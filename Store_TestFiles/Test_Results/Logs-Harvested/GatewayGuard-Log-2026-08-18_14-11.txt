@@ -1,0 +1,80 @@
+﻿============================================================
+  GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+  Build: ascii41
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-08-18 14:11:07
+  Computer: SANDY
+  Machine:  HP HP Laptop 17-by1xxx
+  Machine ID: F7F13A97D58D (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[14:11:07] [OK] Console control handler registered -- Ctrl+C in Mark mode can no longer end the session (FT-150), and closing the window still writes the log footer (FT-160)
+[14:11:07] [START] Tool launched v3.1 build ascii41
+[14:11:07] [INFO] Log location: C:\Users\willi\OneDrive\GatewayGuard\Logs  (OneDrive -- already set up on this PC)
+[14:11:07] [INFO] Machine: HP HP Laptop 17-by1xxx | MachineID: F7F13A97D58D
+[14:11:07] [OK] Sleep/shutdown prevention activated
+[14:11:07] [OK] QuickEdit AND mouse input reporting disabled for this session (FT-01, FT-171a) -- re-asserted silently from here on
+[14:11:07] [SCREEN] [SCREEN-25] (shown as screen 1a) Rendered: WELCOME BACK
+[14:11:21] [KEY] Key 'R' accepted at: Show-ResumePrompt
+[14:11:21] [STATE] User chose to RESUME from checkpoint: OfflineScanPending
+[14:21:32] [KEY] Continue accepted at: Show-ResumePrompt
+[14:21:32] [SCREEN] [SCREEN-31] (shown as screen 1b) Rendered: QUICK RE-CHECK BEFORE RESUMING
+[14:21:38] [KEY] Key 'Y' accepted at: Show-ResumeReverify
+[14:21:38] [CONFIRM] Resume re-check: personal computer reconfirmed
+[14:21:38] [OK] Domain check passed -- not domain joined
+[14:21:38] [OK] Resume re-check: administrator access confirmed
+[14:21:38] [OK] Sleep/shutdown prevention activated
+[14:21:38] [OK] Resume re-check: AC power confirmed (100%). Sleep prevention active.
+[14:21:44] [KEY] Continue accepted at: Show-ResumeReverify
+[14:21:44] [INFO] Windows Edition: Core -- Windows 11 Home
+[14:21:44] [SCREEN] [SCREEN-34] (shown as screen 10) Rendered: WINDOWS EDITION DETECTED
+[14:21:44] [INFO] Home edition -- Remote Desktop and Group Policy unavailable
+[14:21:49] [KEY] Continue accepted at: Get-WinEdition
+[14:21:49] [SCREEN] [SCREEN-35] (shown as screen 11) Rendered: YOUR PC -- RAM: 8 GB
+[14:21:49] [WARN] RAM: 8 GB (minimal)
+[14:23:43] [KEY] Continue accepted at: Get-RAMStatus
+[14:23:43] [SCREEN] [SCREEN-40] (shown as screen 14b) Rendered: WELCOME BACK -- OFFLINE SCAN COMPLETE
+[14:23:56] [KEY] Look-back opened at: Show-PostScanGuidance
+[14:35:25] [KEY] Continue accepted at: Show-PostScanGuidance
+[14:35:51] [KEY] Key 'N' accepted at: Show-PostScanGuidance
+[14:35:51] [OK] Post-scan: Protection History clean or already handled
+[14:35:57] [KEY] Continue accepted at: Show-PostScanGuidance
+[14:35:58] [SCREEN] [SCREEN-43] (shown as screen 17) Rendered: OK  ANTIVIRUS STATUS -- HEALTHY SETUP
+[14:35:58] [OK] Defender active as primary AV. MB Free installed as companion.
+[14:42:31] [KEY] Continue accepted at: Test-DefenderPrimary
+[14:42:31] [STATE] Checkpoint saved: DefenderAV
+[14:42:31] [SCREEN] [SCREEN-73] (shown as screen 18) Rendered: MALWAREBYTES DETECTED ON THIS PC
+[14:43:35] [KEY] Key 'Y' accepted at: Show-MalwarebytesFollowUp
+[14:43:35] [INFO] Launched Malwarebytes at C:\Program Files\Malwarebytes\Anti-Malware\mbam.exe (elevated, inherited from tool)
+[14:43:35] [SCREEN] [SCREEN-48] (shown as screen 18c) Rendered: AFTER THE CUSTOM SCAN -- RUN THE DEEP SCAN OVERNIGHT
+[14:43:35] [INFO] Overnight Deep Scan guidance shown (D-15: verified no settings changes needed)
+[15:36:57] [KEY] Continue accepted at: Show-MalwarebytesFollowUp
+[15:36:57] [STATE] Checkpoint saved: Malwarebytes
+[15:37:06] [KEY] Continue accepted at: Run-PowerSettingsCheck
+[15:37:06] [SCREEN] [SCREEN-50] (shown as screen 19) Rendered: POWER SETTINGS -- SECURITY REVIEW
+[15:37:06] [INFO] Power settings: PW=NOT required -- change recommended FastStart=DISABLED -- GOOD WOL=DISABLED -- GOOD Screen=Found: NEVER (your existing setting) -- recommend 5 min: Settings -> System -> Power & sleep CritBatt=HIBERNATE -- GOOD
+[15:42:34] [KEY] Key 'N' accepted at: Run-PowerSettingsCheck
+[15:43:44] [KEY] Continue accepted at: Run-PowerSettingsCheck
+[15:43:44] [STATE] Checkpoint saved: PowerSettings
+[15:43:44] [START] === Apps Audit Started ===
+[15:43:45] [SCREEN] [SCREEN-51] (shown as screen 20) Rendered: APPS AUDIT RESULTS
+[15:43:45] [DONE] === Apps Audit Complete ===
+[15:43:53] [KEY] Continue accepted at: Run-AppsAudit
+[15:43:53] [STATE] Checkpoint saved: AppsAudit
+[15:43:53] [SCREEN] [SCREEN-52] (shown as screen 21) Rendered: GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+[15:44:06] [KEY] Key '2' accepted at: Select-Mode
+[15:44:06] [INFO] Mode selected: GUI
+[15:44:07] [INFO] Item 6 (Edge phishing protection): registry read BLOCKED by Tamper Protection -- reporting Unknown rather than a fault (FT-141)
+[15:44:11] [DONE] Get-AllStatuses complete -- all 19 settings probed
+[15:44:12] [INFO] DIAG: yPos initialized as type System.Int32, value=28, count=1
+
+[16:17:09] [EXIT] SESSION ENDED EARLY -- the window's X (close button) was clicked. Nothing was left half-applied: Checkup applies one setting at a time.
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================

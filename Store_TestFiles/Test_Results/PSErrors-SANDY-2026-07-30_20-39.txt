@@ -1,0 +1,59 @@
+﻿
+================================================================
+ FT-159 -- SWALLOWED POWERSHELL ERRORS (read-only)
+================================================================
+  Computer : SANDY
+  Run date : 2026-07-30 20:39:12
+
+---- Event ID 4100 (pipeline errors), newest 10, FULL TEXT ----
+
+  Found 1 event(s).
+
+  ---- 2026-07-30 13:42:57  Id 4100 ----
+    Error Message = System error.
+    
+    
+    Context:
+            Severity = Warning
+            Host Name = ConsoleHost
+            Host Version = 5.1.26100.8894
+            Host ID = 1d970d90-e661-47ff-87e9-9d06f4488eb2
+            Host Application = powershell.exe -NoProfile -ExecutionPolicy Bypass -File W11-SecurityHardening-v3-ascii38-2026-07-29-1830.ps1
+            Engine Version = 5.1.26100.8894
+            Runspace ID = c882ec57-3a28-4954-be15-034ce8322007
+            Pipeline ID = 1
+            Command Name = 
+            Command Type = 
+            Script Name = 
+            Command Path = 
+            Sequence Number = 57
+            User = SANDY\willi
+            Connected User = 
+            Shell ID = Microsoft.PowerShell
+    
+    
+    User Data:
+    
+    
+
+---- Engine start/stop events, newest 20 ----
+  (a start with no matching stop = the process was KILLED, not exited)
+
+  2026-07-30 13:41:57  40961  PowerShell console is starting up
+  2026-07-30 13:41:57  53504  Windows PowerShell has started an IPC listening thread on process: 15940 in AppDomain: DefaultAppDomain.
+  2026-07-30 13:41:57  40962  PowerShell console is ready for user input
+  2026-07-30 16:38:54  40961  PowerShell console is starting up
+  2026-07-30 16:38:54  53504  Windows PowerShell has started an IPC listening thread on process: 1116 in AppDomain: DefaultAppDomain.
+  2026-07-30 16:38:55  40962  PowerShell console is ready for user input
+  2026-07-30 18:59:24  40961  PowerShell console is starting up
+  2026-07-30 18:59:24  53504  Windows PowerShell has started an IPC listening thread on process: 13400 in AppDomain: DefaultAppDomain.
+  2026-07-30 18:59:24  40962  PowerShell console is ready for user input
+  2026-07-30 19:07:34  40961  PowerShell console is starting up
+  2026-07-30 19:07:34  53504  Windows PowerShell has started an IPC listening thread on process: 4848 in AppDomain: DefaultAppDomain.
+  2026-07-30 19:07:35  40962  PowerShell console is ready for user input
+  2026-07-30 20:19:41  53504  Windows PowerShell has started an IPC listening thread on process: 6792 in AppDomain: DefaultAppDomain.
+
+---- Console host ----
+  classic conhost (WT_SESSION not set)
+  PowerShell host name : ConsoleHost
+  PowerShell version   : 5.1.26100.8894

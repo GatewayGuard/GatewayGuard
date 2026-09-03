@@ -1,0 +1,47 @@
+ascii42 field test results -- SANDY -- 2026-08-21
+Extracted from Ascii42-test-results-2026-08-21-.odt (Cloud cannot read .odt)
+============================================================
+
+ALL SCREENS .BAT - Cntl A did not work. A scrolled to the bottom mouse wheel scroll forward and back, only went forward, same problem with B. tried j and it seemed to work. Could no longer scroll with mouse wheel. After that B worked. Left and right arrows worked. Q quit worked will run ascii42 next
+Restared allscreens.bar m- B and mouse wheel did nothing. Arrows and page up and down work. Tried j it worked and B key started working. Mouse wheel still nothing.Running ascii42 from start
+Scr 11- repeated - shown twice - responded N- showed time went back - responded N again - did not show time again and it moved on to 
+hit space bar few times emded up on 14a - won't go back. Pre-scan recommended. Onlu press Y or N to exit. Pressing Y
+Scr 16 foffline scan - selecting N
+Scr 18MB run selected N - 
+Checking powerr-related - no scr #
+Your settings - step 6 - no Scr # no back allowed - partial screen display: 
+[2] Fast Startup -- DISABLED -- GOOD, no change needed.
+[3] Wake on LAN -- DISABLED -- GOOD, no change needed.
+[4] Screen timeout: Found: NEVER (your existing setting) -- recommend 5 min: Settings -> System -> Power & sleep
+Advisory only -- set manually in:
+Settings -> System -> Power & sleep -> Screen timeout
+[5] Critical battery: HIBERNATE -- GOOD, no change needed.
+OK Password on wake
+Was: NOT required -- change recommended
+Now: could not re-read -- check manually
+-- Fast Startup -- skipped, nothing changed
+-- Wake on LAN -- skipped
+-- Critical battery -- skipped
+
+Power settings complete. Press Enter or Space to continue...
+Or press B to look back at the previous screen (nothing is undone).
+Scr 22 - no dvt 21 = p.w mgt - no going .back. Selected Y and hit B and it went back 
+Scr 24 - says sleep active
+Scr 25 - no keys active except listed. - No flicker, repainting, or the list scrolling away. I does nothing on scr 25-26. it fotces me to run something 
+Running 6,9,12,13,14,15 and 17
+Setting #6 - asks if I wamt to apply this change, but above already said verify by hand and before that the user selected #6 to run,so next screen should have been the screen explaining how do it without another ? Do you want to apply this change. Checked Edge and it won't let me do anything to Edge Settings unless I signin to MS account. Had to depress spacebar multiple time to move on.
+Setting #9 - on Sandy the pin number for restart sign=on is active and also active for sleep or hibernate continuation, Does not explan here or in the guide why they should do this, whythey need to use the MS account and why not using the MS account is bad. Fis this.
+Aside - when we sell guide to someone we need to put there name on every page licensed to John Doe'd For Personal Use only or somesuch wording/ Add to notes.
+Setting #12 - Doesn't explain why this is not good. Fix this
+Same issue as #6 - No Need to make them say Y to apply. Says you will approve or skip this one next. That is not next.
+Setting 13 - Good explaoination. Doesn't explain why this is not good. Fix this. Same issue as #6 - No Need to make them say Y to apply. Says you will approve or skip this one next. That is not next/ Startup boost was on - turned it off.
+setting 14 - tried I and it worked, but to go back spacebar and enter did nothing. B went back to screen 26 where I did not work again. Widgets was on turned it off. 
+Setting 15 - But it does't tie into the P/W manager selection. We don;t what them turning it off until they have a password maaager setup and the edge and other browsers passwords inputting to it.
+selecting 12 and 13 it instantly removed the X when you type the second digit. On previous screen you still had to hit spacebar or enter. Which it does't tell you. 
+When we apply a setting the X should also be removed so if you go back only the setting you haven't nandled already still have an X in there box. Fix this, 
+Removed all applied X's and typed R went next to 25c and reasked about drive encyption, this is niot necessary as the user had already gome through this once. Same thing with scr 25e. Fis these. Also can't go back on this screen.
+Scr 27 shows the applying screen with what is left to be applied we should skip these 3 screens or not go back to settings display , go back one screen at a time. On this screen N is go back. Inconsistant. Use B
+Setting 15 you say it turns off pasaword storage. Change wording Requires manual change by you. And then wording 1 if they said they had a p/w manager before or woding 2 if they said they did not (must tie into their previous answer to p/w mgr questiion - fix this. Same issue as #6
+Setting 17 - No guide page number - No explanation Y did nothing hit spacebar - Fix this
+Wrapping up - hit spacebar and thie appeared: troed mark and highlighted but did not copy tried mark again highliged and hit cntl-c ang pgm endedL however this was copied: 
++==[ Screen 33b ]========================================================================================================================================================================================================================================================================================================================================================================+ | YOUR CHOICE [1 of 1]: Edge Password Saving | +========================================================================================================================================================================================================================================================================================================================================================================================+ | WHAT THIS CHANGE WILL DO (nothing done yet): | | Stop Edge from offering to save your passwords (your password manager does this job better). | +========================================================================================================================================================================================================================================================================================================================================================================================+

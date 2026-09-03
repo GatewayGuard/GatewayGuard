@@ -1,0 +1,48 @@
+1, First run pgm disappeared, not sure if my fault
+2. Second run went to notepads for a few minutes and pgm was gone I was at the time check screen. which may be to long and the screen above time check should be split into two screens.  I thought I was at the bottom of the screen, but there were still 3 lines I couldn't see about the time check. I think the pgm didn't scroll after pressing space bar and the time check was active but I couldn't see it. 
+3. 3rd run - did resume, this screen was answered Y, but I don't believe I did it.  Check logs 
+|  QUICK RE-CHECK BEFORE RESUMING                             |
++=============================================================+
+|  Because you're resuming, we re-verify the basics on this   |
+|  ONE screen instead of replaying each earlier screen:       |
+|  your personal-PC answer, Administrator access, and         |
+|  power/battery state.                                       
++=============================================================+
+  Still YOUR personal computer? (Y = Yes / N = Exit): Y
+  Confirmed -- re-checking this PC...
+  OK  Administrator access confirmed.
+  OK  AC power confirmed (battery: 100%). Sleep prevention active.
+
+
+  All re-checked. Press Enter or Space to continue where you left off...
+
+4. Reminder Pre-Scan Recommended, should have a skip here. I thought I was telling it I did't want to do it by typing N , but it ended the pgm. Didn't read carefully enough.
+
+5. Malware Byes not protected. We need to tell them to run MB and do a deep scan which will take much longer then 6-10 minutes stated. Also defender offline scan should be first
+
+7. Said Y and it tried to open MB but had an error, saying your connections isn't private. url = Not secure (white lettering inside red box )https://gatewayguard.co/malwarebytes We don't want our users seeing messages like this: "Your connection isn't private
+Attackers might be trying to steal your information from gatewayguard.co (for example, passwords, messages, or credit cards).
+net::ERR_CERT_COMMON_NAME_INVALID”. PGM did not end
+
+8. Next screen checking antivirus status and saying ok ms defender is active.  - Goes before MB check. Fix - Overall the order is skewed and their are a number of MB and defend screens not being shown or not in the right order. Check against ascii30 and its test notes and correct.
+
+9. Put a note to other options. i.e. Test 5 min settings on sleep by setting it to 5 min before run
+
+10. Tester(s) definitely need I test plan that puts the pgm through all possible paths through the pgm.  Prepare one. Maybe only first 3 Beta testers need to do that and maybe not if we have assurance That all possibilities have been tested and found working.
+
+11. Users need to be told here how to use hibernate (cntl-alt-delete) at the same time.  Also need a printable file they can refer to for this and many other things after hardening their device.
+
+12. I want this screen rewritten so that each individual writeup is explained separately and then they are asked to approve or disapprove. it before seeing the next one. 
+
+13. Also the users are not getting their approval rights we guaranteed them. Some people will still need wake on Lan, They need to be able to choose. Do a check of all selections and change them all to a approval/disapproval scheme.
+
+14. Quick Question P/W mgr - Previous screen flashed by. We need better programming instrucions, as these things can’t keep happening or we will not meet our deadline.
+15. Aside - we need to tell users not to tap the up and down arrows to quickly, as that seems to cause the screen to jump to far and then it is difficult to  go back.
+
+16. Console page. N & P working, however all of the keys on both pages cause the screen to twitch and the cursor to jump up.
+Why is 3 not showing the setting, incidentally there is a tamper on switch in MB as well and it is offmal
+
+17. Aside: MB will still allow user to run a deep scan manually and will also remind them every month to do a manual quick scan.  They can do the deep scan instead
+
+18. Widgets was on, and I think i had turned it off on ascii30.  Put a not into check if it gets turned back on by reboot or software windows update. Can’t we turn off widgets automatically with explanation and approval/disapproval?
+19. I left the PS and when i next clicked on it, it when into a tizzy like i had continuously hit all its keys for a minute.

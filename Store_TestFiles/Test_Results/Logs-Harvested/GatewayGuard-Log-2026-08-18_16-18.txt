@@ -1,0 +1,530 @@
+﻿============================================================
+  GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+  Build: ascii41
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-08-18 16:18:56
+  Computer: SANDY
+  Machine:  HP HP Laptop 17-by1xxx
+  Machine ID: F7F13A97D58D (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[16:18:56] [OK] Console control handler registered -- Ctrl+C in Mark mode can no longer end the session (FT-150), and closing the window still writes the log footer (FT-160)
+[16:18:56] [START] Tool launched v3.1 build ascii41
+[16:18:56] [INFO] Log location: C:\Users\willi\OneDrive\GatewayGuard\Logs  (OneDrive -- already set up on this PC)
+[16:18:56] [INFO] Machine: HP HP Laptop 17-by1xxx | MachineID: F7F13A97D58D
+[16:18:56] [OK] Sleep/shutdown prevention activated
+[16:18:57] [OK] QuickEdit AND mouse input reporting disabled for this session (FT-01, FT-171a) -- re-asserted silently from here on
+[16:18:57] [SCREEN] [SCREEN-25] (shown as screen 1a) Rendered: WELCOME BACK
+[16:19:00] [KEY] Key 'R' accepted at: Show-ResumePrompt
+[16:19:00] [STATE] User chose to RESUME from checkpoint: AppsAudit
+[16:19:02] [KEY] Continue accepted at: Show-ResumePrompt
+[16:19:02] [SCREEN] [SCREEN-31] (shown as screen 1b) Rendered: QUICK RE-CHECK BEFORE RESUMING
+[16:23:55] [KEY] Key 'Y' accepted at: Show-ResumeReverify
+[16:23:55] [CONFIRM] Resume re-check: personal computer reconfirmed
+[16:23:55] [OK] Domain check passed -- not domain joined
+[16:23:55] [OK] Resume re-check: administrator access confirmed
+[16:23:55] [OK] Sleep/shutdown prevention activated
+[16:23:55] [OK] Resume re-check: AC power confirmed (100%). Sleep prevention active.
+[16:24:01] [KEY] Continue accepted at: Show-ResumeReverify
+[16:24:01] [INFO] Windows Edition: Core -- Windows 11 Home
+[16:24:01] [SCREEN] [SCREEN-34] (shown as screen 10) Rendered: WINDOWS EDITION DETECTED
+[16:24:01] [INFO] Home edition -- Remote Desktop and Group Policy unavailable
+[16:24:15] [KEY] Continue accepted at: Get-WinEdition
+[16:24:15] [SCREEN] [SCREEN-35] (shown as screen 11) Rendered: YOUR PC -- RAM: 8 GB
+[16:24:15] [WARN] RAM: 8 GB (minimal)
+[16:24:19] [KEY] Continue accepted at: Get-RAMStatus
+[16:24:19] [SCREEN] [SCREEN-52] (shown as screen 21) Rendered: GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+[16:29:41] [KEY] Key '1' accepted at: Select-Mode
+[16:29:41] [INFO] Mode selected: Console
+[16:29:42] [INFO] Item 6 (Edge phishing protection): registry read BLOCKED by Tamper Protection -- reporting Unknown rather than a fault (FT-141)
+[16:29:45] [DONE] Get-AllStatuses complete -- all 19 settings probed
+[16:29:45] [SCREEN] [SCREEN-53] (shown as screen 22) Rendered: QUICK QUESTION -- YOUR PASSWORDS
+[16:29:45] [ERROR] SILENT ERROR at Show-ScopeDisclaimer: Requested registry access is not allowed. | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii41-2026-08-17-2246.ps1:5823 char:31
+[16:29:45] [INFO] NOT SET (expected) at Show-ScopeDisclaimer: Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Edge' because it does not exist. | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii41-2026-08-17-2246.ps1:5924 char:27
+[16:29:45] [INFO] NOT SET (expected) at Show-ScopeDisclaimer: Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Dsh' because it does not exist. | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii41-2026-08-17-2246.ps1:5940 char:27
+[16:29:45] [INFO] NOT SET (expected) at Show-ScopeDisclaimer: Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Edge' because it does not exist. | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii41-2026-08-17-2246.ps1:5954 char:28
+[16:30:56] [KEY] Key 'Y' accepted at: Show-ScopeDisclaimer
+[16:30:56] [INFO] User has a password manager -- Edge Password Saving change stays available
+[16:34:14] [KEY] Continue accepted at: Show-ScopeDisclaimer
+[16:34:14] [SCREEN] [SCREEN-54] (shown as screen 23) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 1 of 2)
+[16:45:36] [KEY] Nav 'NEXT' at: Show-ScopeDisclaimer
+[16:45:36] [SCREEN] [SCREEN-75] (shown as screen 24) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 2 of 2)
+[16:55:45] [KEY] Nav 'BACK' at: Show-ScopeDisclaimer
+[16:55:45] [SCREEN] [SCREEN-54] (shown as screen 23) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 1 of 2)
+[16:55:48] [KEY] Nav 'BACK' at: Show-ScopeDisclaimer
+[16:55:55] [KEY] Key 'Y' accepted at: Show-ScopeDisclaimer
+[16:55:55] [INFO] Password-manager answer revised via Back: True
+[16:55:55] [SCREEN] [SCREEN-54] (shown as screen 23) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 1 of 2)
+[16:56:43] [KEY] Nav 'BACK' at: Show-ScopeDisclaimer
+[17:00:04] [KEY] Key 'Y' accepted at: Show-ScopeDisclaimer
+[17:00:04] [INFO] Password-manager answer revised via Back: True
+[17:00:04] [SCREEN] [SCREEN-54] (shown as screen 23) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 1 of 2)
+[17:00:18] [KEY] Nav 'NEXT' at: Show-ScopeDisclaimer
+[17:00:18] [SCREEN] [SCREEN-75] (shown as screen 24) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 2 of 2)
+[17:01:01] [KEY] Nav 'NEXT' at: Show-ScopeDisclaimer
+[17:01:01] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 86, 7 item(s) selected
+[17:01:01] [INFO] Checklist columns: window 86, name 24 (content needed 51), status 51 (content needed 94)
+[17:01:18] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:01:18] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:03:12] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[17:03:12] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:03:12] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:03:18] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[17:03:18] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:03:18] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:03:20] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[17:03:20] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:03:20] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:03:20] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[17:03:20] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:03:20] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:03:21] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[17:03:21] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:03:21] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:03:22] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[17:03:22] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:03:22] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:03:22] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[17:03:22] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:03:22] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:03:56] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[17:03:56] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:03:56] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:06:52] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:06:52] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:06:52] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:06:52] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:08:56] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:08:56] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:08:57] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:08:57] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:08:58] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:08:58] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:08:58] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:08:58] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:08:58] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:08:58] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:08:59] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:08:59] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:08:59] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:08:59] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:08:59] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:08:59] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:08:59] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:08:59] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:08:59] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:08:59] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:09:00] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:09:00] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:09:00] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:09:00] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:09:00] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:09:00] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:09:00] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:09:00] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:09:50] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:09:50] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:09:51] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:09:51] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:09:51] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:09:51] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:09:52] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:09:52] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:09:52] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:09:52] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:10:51] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[17:10:52] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:10:52] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:10:53] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:10:53] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:10:54] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:10:54] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:10:55] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:10:55] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:10:55] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:10:55] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:10:58] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:10:58] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:10:58] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:10:58] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:10:59] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:10:59] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:10:59] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:10:59] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:10:59] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:10:59] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:11:00] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:11:00] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:11:00] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:11:00] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:11:00] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:11:00] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:11:01] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:11:01] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:11:01] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:11:01] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:11:01] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:11:01] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:11:02] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:11:02] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:11:02] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:11:02] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:25:01] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:25:01] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:25:01] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:25:01] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:25:01] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:25:01] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:28:09] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 175, 7 item(s) selected
+[17:28:09] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[17:28:12] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[17:28:12] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:28:12] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:31:26] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:31:26] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:52] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:52] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:53] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:53] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:53] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:53] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:53] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:53] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:53] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:53] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:53] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:53] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:53] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:53] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:53] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:53] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:53] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:53] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:54] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:54] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:54] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:54] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:54] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:54] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:54] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:54] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:54] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:54] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:54] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:54] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:54] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:54] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:54] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:54] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:54] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:54] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:55] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:55] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:55] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:55] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:55] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:55] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:55] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:55] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:55] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:55] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:55] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:55] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:55] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:55] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:55] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:55] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:55] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:55] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:56] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:56] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:56] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:56] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:56] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:56] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:56] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:56] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:56] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:56] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:56] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:56] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:56] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:56] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:56] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:56] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:34:56] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:34:56] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:00] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:00] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:01] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:01] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:01] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:01] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:01] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:01] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:01] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:01] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:01] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:01] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:01] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:01] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:01] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:01] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:01] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:01] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:01] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:01] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:02] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:02] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:04] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:04] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:05] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:05] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:06] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:06] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:06] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:06] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:08] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:08] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:10] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:10] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:11] [KEY] Checklist command '3' accepted at: Run-ConsoleMode
+[17:35:11] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 8 item(s) selected
+[17:35:11] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:12] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 8 item(s) selected
+[17:35:12] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:12] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 8 item(s) selected
+[17:35:12] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:12] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 8 item(s) selected
+[17:35:12] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:12] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 8 item(s) selected
+[17:35:12] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:12] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 8 item(s) selected
+[17:35:12] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:12] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 8 item(s) selected
+[17:35:12] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:13] [KEY] Checklist command '3' accepted at: Run-ConsoleMode
+[17:35:13] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:13] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:14] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:14] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:14] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:14] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:14] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:14] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:14] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:14] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:14] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:14] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:14] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:14] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:15] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:15] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:15] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:15] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:15] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:15] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:15] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:15] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:15] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:15] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:15] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:15] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:15] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:15] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:15] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:15] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:15] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:15] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:16] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:16] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:16] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:16] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:16] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:16] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:16] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:16] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:16] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:16] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:16] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:16] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:16] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:16] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:16] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:16] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:17] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:17] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:17] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:17] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:17] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:17] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:17] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:17] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:17] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:17] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:17] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:17] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:17] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:17] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:17] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:17] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:17] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:17] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:18] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:18] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:18] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:18] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:18] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:18] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:18] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:18] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:18] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:18] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:18] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:18] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:18] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:18] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:18] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:18] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:18] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:18] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:19] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:19] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:19] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:19] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:19] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:19] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:19] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:19] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:19] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:19] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:19] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:19] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:19] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:19] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:19] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:19] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:19] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:19] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:20] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:20] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:20] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:20] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:20] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:20] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:20] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:20] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:20] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:20] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:20] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:20] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:20] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:20] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:20] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:20] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:21] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:21] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:21] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:21] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:21] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:21] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:21] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:21] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:21] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:21] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:21] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:21] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:21] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:21] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:21] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:21] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:21] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:21] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:22] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:22] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:22] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:22] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:22] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:22] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:22] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:22] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:22] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:22] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:22] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:22] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:22] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:22] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:22] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:22] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:22] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:22] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:23] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:23] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:23] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:23] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:23] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:23] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:23] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:23] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:23] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:23] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:23] [KEY] Checklist command '3' accepted at: Run-ConsoleMode
+[17:35:23] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 8 item(s) selected
+[17:35:23] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[17:35:23] [KEY] Checklist command '3' accepted at: Run-ConsoleMode
+[17:35:23] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 7 item(s) selected
+[17:35:23] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[18:00:36] [KEY] Checklist command '8' accepted at: Run-ConsoleMode
+[18:00:36] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 175, 8 item(s) selected
+[18:00:36] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[18:00:46] [KEY] Checklist command 'R' accepted at: Run-ConsoleMode
+[18:00:46] [SCREEN] [SCREEN-55] (shown as screen 27) Rendered: REVIEW YOUR SELECTIONS -- NO CHANGES MADE YET
+[18:00:46] [INFO] Review listing rendered -- awaiting Ready-to-proceed
+[18:02:30] [KEY] Key 'Y' accepted at: Run-ConsoleMode
+[18:02:30] [START] === Console Mode Hardening Run Started ===
+[18:02:49] [KEY] Key 'Y' accepted at: Run-ConsoleMode
+[18:02:49] [ERROR] SILENT ERROR at Apply-Setting: Requested registry access is not allowed. | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii41-2026-08-17-2246.ps1:6271 char:17
+[18:16:14] [KEY] Continue accepted at: Apply-Setting
+[18:16:14] [INFO] Edge Phishing Protection (all 3) | Before: Unknown -- Tamper Protection blocks this check; verify by hand | Result: MANUAL REQUIRED -- registry is protected on this PC (Tamper Protection)
+[18:19:36] [KEY] Look-back opened at: Run-ConsoleMode
+[18:19:48] [KEY] Continue accepted at: Run-ConsoleMode
+[18:19:48] [MANUAL] Windows Hello (check only) | Manual action required
+[18:23:23] [KEY] Continue accepted at: Run-ConsoleMode
+[18:25:46] [KEY] Key 'Y' accepted at: Run-ConsoleMode
+[18:25:46] [INFO] Diagnostic Data -- Required Only | Deferred to individual convenience review (FT-94)
+[22:21:41] [KEY] Continue accepted at: Run-ConsoleMode
+[22:24:57] [KEY] Key 'Y' accepted at: Run-ConsoleMode
+[22:24:57] [INFO] Edge Startup Boost and Background | Deferred to individual convenience review (FT-94)
+[22:29:06] [KEY] Continue accepted at: Run-ConsoleMode
+[22:29:27] [KEY] Key 'Y' accepted at: Run-ConsoleMode
+[22:29:27] [INFO] Windows Widgets -- Disable | Deferred to individual convenience review (FT-94)
+[22:29:43] [KEY] Continue accepted at: Run-ConsoleMode
+[22:30:24] [KEY] Key 'Y' accepted at: Run-ConsoleMode
+[22:30:24] [INFO] Edge Password Saving -- Disable | Deferred to individual convenience review (FT-94)
+[22:30:29] [KEY] Continue accepted at: Run-ConsoleMode
+[22:30:59] [KEY] Key 'Y' accepted at: Run-ConsoleMode
+[22:30:59] [APPLIED] Password Required on Wake | Before: Not required -- needs attention | Result: Password required on wake -- enabled for both AC and battery -- GOOD
+[22:31:14] [KEY] Continue accepted at: Run-ConsoleMode
+[22:31:15] [INFO] Device Encryption state: Not encrypted (0%), account type: Local -- raw: FullyDecrypted
+[22:31:15] [SCREEN] [SCREEN-61] (shown as screen 28) Rendered: FINAL ITEM: DEVICE ENCRYPTION (Windows 11 Home)
+[22:31:29] [KEY] Continue accepted at: Show-BitLockerHomeScreen
+[22:31:29] [GOOD] Device Encryption prereq check -- TPM: True, SecureBoot: True, WinRE: True
+[22:31:29] [SCREEN] [SCREEN-62] (shown as screen 29) Rendered: YOUR PC MEETS THE REQUIREMENTS
+[22:31:41] [KEY] Continue accepted at: Show-BitLockerHomeScreen
+[22:31:41] [SCREEN] [SCREEN-79] (shown as screen 30) Rendered: BEFORE YOU TURN IT ON -- YOUR RECOVERY KEY
+[22:49:23] [KEY] Continue accepted at: Show-BitLockerHomeScreen
+[22:49:23] [SCREEN] [SCREEN-80] (shown as screen 30b) Rendered: HOW TO SIGN IN WITH A MICROSOFT ACCOUNT
+[22:49:23] [KEY] Continue accepted at: Show-BitLockerHomeScreen
+[22:49:23] [SCREEN] [SCREEN-81] (shown as screen 31) Rendered: HOW TO TELL IF ENCRYPTION IS ACTUALLY RUNNING
+[22:49:23] [SKIP] BitLocker/Device Encryption: Home edition -- manual path shown across 4 screens, no changes made by Checkup
+
+[23:05:32] [EXIT] SESSION ENDED EARLY -- the window's X (close button) was clicked. Nothing was left half-applied: Checkup applies one setting at a time.
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================

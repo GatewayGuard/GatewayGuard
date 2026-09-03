@@ -1,0 +1,34 @@
+﻿============================================================
+  GatewayGuard Windows 11 Security Hardening Tool v3.1
+  Build: ascii27
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-07-12 15:24:18
+  Computer: CGDELL
+  Machine:  Dell Inc. Latitude 5430
+  Machine ID: 565F4EC4F822 (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[15:24:18] [START] Tool launched v3.1 build ascii27
+[15:24:18] [INFO] Machine: Dell Inc. Latitude 5430 | MachineID: 565F4EC4F822
+[15:24:18] [OK] QuickEdit mode disabled for this session (FT-01 mitigation)
+[15:24:18] [OK] Sleep/shutdown prevention activated
+[15:24:20] [KEY] Key 'R' accepted at: Show-ResumePrompt
+[15:24:20] [STATE] User chose to RESUME from checkpoint: DefenderAV
+[15:24:23] [KEY] Continue accepted at: Show-ResumePrompt
+[15:24:25] [KEY] Key 'Y' accepted at: Test-PersonalComputer
+[15:24:25] [CONFIRM] Personal computer confirmed by user
+[15:24:25] [OK] Domain check passed -- not domain joined
+[15:24:25] [OK] Administrator access confirmed
+[15:24:26] [KEY] Continue accepted at: Test-AdminAccess
+[15:24:26] [INFO] Windows Edition: Professional -- Windows 11 Pro
+[15:24:27] [INFO] RAM: 32 GB (ample)
+[15:24:27] [OK] Sleep/shutdown prevention activated
+[15:24:27] [OK] AC power confirmed. Battery present: True (100%). Sleep prevention active.
+[15:24:33] [KEY] Continue accepted at: Test-PowerStatus
+[15:25:22] [KEY] Continue accepted at: Run-PowerSettingsCheck
+[15:25:22] [INFO] Power settings: PW=NOT required -- change recommended FastStart=DISABLED -- GOOD WOL=DISABLED -- GOOD Screen=Could not read -- check manually in Settings -> System -> Power & sleep CritBatt=Could not read -- check manually in Power settings

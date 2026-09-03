@@ -1,0 +1,206 @@
+﻿==========================================================================
+  CHECKLIST CLAIMS CHECK -- do the FTs cited actually exist?
+==========================================================================
+  document : GatewayGuard_FieldChecklist-ascii43-2026-08-26-1730.md
+  build    : W11-SecurityHardening-v3-ascii43-2026-08-21-1752.ps1
+  run at   : 2026-08-28 07:37:25
+
+--------------------------------------------------------------------------
+  1. INVENTED FTs -- cited in the document, present NOWHERE in the build
+--------------------------------------------------------------------------
+    25 found. Each is either invented, or a real finding never built.
+    A finding NOT BUILT is legitimate -- it just must be labelled that way.
+
+    FT-167   cited at document line(s): 396, 423
+    FT-195a   cited at document line(s): 51, 397
+    FT-198   cited at document line(s): 392, 417
+    FT-204b   cited at document line(s): 165, 249
+    FT-205   cited at document line(s): 394, 419
+    FT-207   cited at document line(s): 51, 397
+    FT-213   cited at document line(s): 389, 414
+    FT-214   cited at document line(s): 389, 414
+    FT-215   cited at document line(s): 389, 414
+    FT-220   cited at document line(s): 390, 415
+    FT-222   cited at document line(s): 51, 397
+    FT-223   cited at document line(s): 51, 397
+    FT-224b   cited at document line(s): 165, 262
+    FT-225   cited at document line(s): 51, 397
+    FT-226   cited at document line(s): 391, 416
+    FT-227   cited at document line(s): 51, 397
+    FT-228   cited at document line(s): 393, 418
+    FT-229   cited at document line(s): 51, 144, 145, 358, 398, 507
+    FT-230   cited at document line(s): 396, 423
+    FT-231   cited at document line(s): 52, 397
+    FT-233   cited at document line(s): 395, 420
+    FT-234   cited at document line(s): 396, 423
+    FT-235   cited at document line(s): 52, 397
+    FT-236   cited at document line(s): 115, 147, 333, 401, 433, 442
+    FT-237   cited at document line(s): 353, 355
+
+--------------------------------------------------------------------------
+  2. SHARED FUNCTIONS -- two FTs in one function is where descriptions swap
+--------------------------------------------------------------------------
+    Run-ConsoleMode  ->  FT-189, FT-204, FT-206, FT-219, FT-224, FT-232
+    Run-GUIMode  ->  FT-184, FT-189
+
+    These share a function and may do UNRELATED jobs. FT-219 and FT-221
+    are the case that earned this section: one is a permission rule, the
+    other a password-manager safety guard. Read both comments in full.
+
+--------------------------------------------------------------------------
+  3. SCREEN NUMBERS CITED -- do they exist in the label table?
+--------------------------------------------------------------------------
+    screen labels defined in the build : 72
+    every bolded screen-like number in the document resolves. 
+
+--------------------------------------------------------------------------
+  4. THE SOURCE COMMENT FOR EVERY CITED FT -- compare against the document
+--------------------------------------------------------------------------
+    This is the part no machine can judge. Read each one against what the
+    document says it does. Three rows were wrong on 2026-08-28 and every
+    one of them would have died here.
+
+    FT-141   line 216   in <top-level>
+          FT-141: ITEM 6 REPORTED A DEFINITE BAD FROM A CHECK THAT WAS BLOCKED. The
+                  WTDS\Components key is read with -EA SilentlyContinue; on a machine
+                  with Tamper Protection ON the read is refused, $null falls through,
+                  and the user is told "Not configured -- all 3 need to be enabled".
+                  Reproduced on BOTH machines. Since Checkup RECOMMENDS turning
+
+    FT-167 -- NOT IN BUILD (see section 1)
+
+    FT-175b   line 4319   in Show-PreScanGate
+        FT-175b (ascii41): THE OFFER WAS NEVER HERE. This branch runs on
+        every repeat run and every resume. It DESCRIBED the offline scan
+        without ever offering to start one, so a returning user could not
+        run it from Checkup at all. ascii39 finding 38 asked for exactly
+        this and guessed the cause correctly -- "check if running resume
+
+    FT-178   line 4041   in Show-SystemBaselineSummary
+        FT-178 (ascii41): this read Win32_DiskDrive | Select-Object -First 1
+        and threw every other disk away. SANDY has two and this screen has
+        always shown one. Reported twice from the field -- ascii39 finding
+        13 and ascii40 run 1 finding 3 -- because it was never a detection
+        failure. The second disk was discarded by construction.
+
+    FT-184   line 9139   in Run-GUIMode
+        FT-184 (ascii41): the four-line identity banner that stood here was
+        painted and then wiped by Show-ResumePrompt's Clear-Host about a
+        second later -- Bill's ascii39 finding 1 and ascii40 finding 1a,
+        "something flashes by before you get to screen 1".
+        On the proposal to give it a pause instead, Bill 2026-08-17: "no
+
+    FT-188   line 3117   in Write-PendingErrors
+        FT-188 (ascii41): three of the four lines this produced on a
+        clean SANDY run were absent policy keys -- HKLM\...\Edge and
+        HKLM\...\Dsh -- which are SUPPOSED to be absent on a home PC
+        and which the caller already handles by reporting Unknown.
+        Nothing was wrong and the user saw nothing wrong, but the log
+
+    FT-189   line 1671   in Initialize-LogFile
+        FT-189 (ascii41): write the log opener beside the logs, every launch.
+        Bill, 2026-08-17: "or a file the user can open in Notepad." The file
+        half of that request was already 90% built and 0% delivered -- the log
+        header has carried the build, computer, Machine ID and run date since
+        ascii28, at a path no senior is going to navigate to. This puts a
+
+    FT-195a -- NOT IN BUILD (see section 1)
+
+    FT-198 -- NOT IN BUILD (see section 1)
+
+    FT-204b -- NOT IN BUILD (see section 1)
+
+    FT-204   line 8415   in Run-ConsoleMode
+        FT-204 (ascii43): clearing every selection is the only
+        destructive command on this screen and used to be N -- the
+        safe key everywhere else -- with no confirmation. It wiped
+        19 selections five seconds after they were made (field,
+        2026-08-21). Moved to C and gated behind a Y/N.
+
+    FT-205 -- NOT IN BUILD (see section 1)
+
+    FT-206   line 8364   in Run-ConsoleMode
+        FT-206 (ascii43): I works on the checklist too. FT-189 promised
+        "at any time" and this hand-rolled reader was the one prompt
+        where it failed -- the screen the user spends most of the run on.
+                    Write-Host ""
+                    Show-CheckupInfo
+
+    FT-207 -- NOT IN BUILD (see section 1)
+
+    FT-213 -- NOT IN BUILD (see section 1)
+
+    FT-214 -- NOT IN BUILD (see section 1)
+
+    FT-215 -- NOT IN BUILD (see section 1)
+
+    FT-217   line 2119   in Write-GGBox
+        FT-217 (ascii43): a $Lines entry can contain an embedded newline -- the
+        convenience items wrap their prose with `n. .Length and PadRight treat
+        such a string as ONE long line, so a 328-char string with a newline in
+        the middle painted a 378-column box into an 86-column window. Split every
+        entry on its newlines FIRST, so each becomes its own box line.
+
+    FT-219   line 8676   in Run-ConsoleMode
+        FT-219 (ascii43): selecting an item on the checklist IS your
+        approval to apply it (Bill, 2026-08-21), and the whole run was
+        confirmed at the review gate. A setting Checkup can apply is
+        applied now, with no second "Apply? Y/N". The ONLY exception is
+        a setting that needs you to act by hand -- handled above
+
+    FT-220 -- NOT IN BUILD (see section 1)
+
+    FT-221   line 6478   in Apply-Setting
+        FT-221 (ascii43): never disable Edge password saving while the
+        user has no password manager -- that would leave them with no
+        password store at all. The checklist deselects item 15 when the
+        user says they have no manager, but a manual re-select could
+        still reach here, so the guard lives at the point of change.
+
+    FT-222 -- NOT IN BUILD (see section 1)
+
+    FT-223 -- NOT IN BUILD (see section 1)
+
+    FT-224b -- NOT IN BUILD (see section 1)
+
+    FT-224   line 8459   in Run-ConsoleMode
+        FT-224 (ascii43): this decline heads-up was shown on EVERY R
+        press -- the run log caught SCREEN-58 rendered three times, each
+        after the decline was already noted. Once the user chooses to
+        continue without encryption, remember it for the session and do
+        not re-ask. A GoBack does not set the flag: they have not
+
+    FT-225 -- NOT IN BUILD (see section 1)
+
+    FT-226 -- NOT IN BUILD (see section 1)
+
+    FT-227 -- NOT IN BUILD (see section 1)
+
+    FT-228 -- NOT IN BUILD (see section 1)
+
+    FT-229 -- NOT IN BUILD (see section 1)
+
+    FT-230 -- NOT IN BUILD (see section 1)
+
+    FT-231 -- NOT IN BUILD (see section 1)
+
+    FT-232   line 8763   in Run-ConsoleMode
+        FT-232 (ascii43): an out-of-range number was logged as
+        accepted and did nothing -- worse than an unknown key,
+        because it looked like it worked. Reject it out loud.
+                                $maxId = ($Settings | Measure-Object -Property ID -Maximum).Maximum
+                                Write-Host ""
+
+    FT-233 -- NOT IN BUILD (see section 1)
+
+    FT-234 -- NOT IN BUILD (see section 1)
+
+    FT-235 -- NOT IN BUILD (see section 1)
+
+    FT-236 -- NOT IN BUILD (see section 1)
+
+    FT-237 -- NOT IN BUILD (see section 1)
+
+==========================================================================
+  DONE -- read-only, nothing was changed.
+==========================================================================

@@ -1,0 +1,77 @@
+﻿======================================================================
+  WHAT DELETED Show-AllScreens.bat
+======================================================================
+  machine        : CGDELL
+  user           : willi
+  elevated       : True   (not required -- this only reads)
+  run at         : 2026-08-19 23:43:45
+
+-- 1. IS THE FILE THERE NOW ------------------------------------------
+  PRESENT   893 bytes   last written 08/19/2026 23:39:09
+
+-- 2. MICROSOFT DEFENDER ---------------------------------------------
+  no detections recorded
+  no threats recorded
+  quarantine list:
+      No quarantined items.
+  Defender event log (detected / action taken), newest 15:
+      no matching events
+
+-- 3. MALWAREBYTES ---------------------------------------------------
+  service        : Running / Automatic
+  quarantine     : 0 item(s) shown, newest first
+  newest log files:
+      08/17/2026 08:23:46   mbamservice.log
+      08/17/2026 08:22:34   mbupdatr.log
+      08/17/2026 08:21:50   MBAMUI.LOG
+      07/22/2026 01:13:10   mbae-default.log
+      07/16/2026 09:11:58   mbae-protector.xpe
+
+-- 4. RECYCLE BIN, WITH THE ORIGINAL PATHS DECODED -------------------
+  Every deleted file leaves a small index file whose name starts with
+  dollar-I. It records where the file came from. This reads those, so a
+  scrambled name in the bin is not a hiding place.
+  C:\$Recycle.Bin\S-1-5-21-1362361787-1151407031-1347995027-1003 -- 25 entries, newest first:
+      08/17/2026 18:10:21   C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Test_Results\New folder
+      08/12/2026 08:50:39   C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Heath
+      08/10/2026 16:46:27   C:\Users\willi\OneDrive\Videos\GatewayGuard-Log-2026-07-20_10-08.txt
+      08/10/2026 16:41:26   C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Videos\Test_Results
+      08/10/2026 16:40:01   C:\Users\willi\OneDrive\Videos\Captures
+      08/10/2026 16:39:21   C:\Users\willi\OneDrive\Videos\Downloads - Shortcut.lnk
+      08/10/2026 16:39:13   C:\Users\willi\OneDrive\Videos\Test_Results
+      08/10/2026 13:48:23   C:\Users\willi\OneDrive - GatewayGuard LLC\Documents
+      08/10/2026 12:14:55   C:\Users\willi\OneDrive\Documents
+      08/10/2026 11:40:26   C:\Users\willi\Downloads\GG-NewCloudSession\_READ-FIRST-Briefing-2026-08-09-2239 - Copy.md
+      08/10/2026 11:39:20   C:\Users\willi\Downloads\GG-NewCloudSession\Run-Code-Review - Copy.txt
+      08/10/2026 11:37:56   C:\Users\willi\Downloads\GG-NewCloudSession\Project_Instructions-Copied-2026-8-10-0921.md
+      08/10/2026 09:23:50   C:\Users\willi\Downloads\GG-NewCloudSession\GatewayGuard_ProjectInstructions-2026-08-06-1727.md
+      08/07/2026 16:23:46   C:\Users\willi\OneDrive\Pictures\desktop.ini
+      08/07/2026 13:34:30   C:\Users\willi\OneDrive\New Text Document.txt
+      08/07/2026 13:30:14   C:\Users\willi\OneDrive\Document.docx
+      08/07/2026 10:48:31   C:\Users\willi\OneDrive\MS IDEAPAD RECOVERY KEY.docx
+      08/06/2026 23:33:08   C:\Users\willi\OneDrive\Attachments
+      08/06/2026 22:40:53   C:\Users\willi\OneDrive\Documents\Samsung\SmartSwitch\backup\SM-S916U\SM-S916U_15702348282\SM-S916U_20231210074236
+      08/06/2026 19:20:17   C:\Users\willi\OneDrive\Desktop\Profile 1 - Edge.lnk
+      08/06/2026 18:46:34   C:\Users\willi\OneDrive\GatewayGuide\Larry
+      08/06/2026 17:56:33   C:\Users\willi\Backups
+      08/06/2026 16:38:07   C:\Users\willi\OneDrive\Personal Vault.lnk
+      08/05/2026 08:54:01   C:\Users\willi\Downloads\ChromeSetup.exe
+      08/05/2026 08:53:59   C:\Users\willi\Downloads\DokanSetup.exe
+
+-- 5. ONEDRIVE -------------------------------------------------------
+  running        : 2 process(es)
+      started 08/16/2026 06:33:05
+      started 08/16/2026 06:33:05
+  business root  : C:\Users\willi\OneDrive - GatewayGuard LLC
+  personal root  : C:\Users\willi\OneDrive
+
+======================================================================
+  WHAT THIS TELLS YOU
+======================================================================
+  Section 2 or 3 names the file  -- security software removed it, and the
+                                    fix is an exclusion for the Tool folder.
+  Section 4 shows it             -- an ordinary delete happened on this PC.
+  All four empty on BOTH PCs     -- the record is only in the OneDrive
+                                    recycle bin on the web, which names who
+                                    deleted it and when.
+

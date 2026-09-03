@@ -1,0 +1,14 @@
+﻿======================================================================
+  MOUSE DRAG THRESHOLD -- how far the mouse must move before Windows
+  treats a click as a drag.
+======================================================================
+  machine : CGDELL
+  user    : willi
+  run at  : 2026-08-31 09:44:23
+
+-- BEFORE -------------------------------------------------------------
+  DragHeight : 4   (pixels up/down)
+  DragWidth  : 4   (pixels left/right)
+
+  REPORT ONLY -- nothing was changed.
+

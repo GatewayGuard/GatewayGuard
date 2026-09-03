@@ -1,0 +1,179 @@
+﻿============================================================
+  GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+  Build: ascii39
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-08-11 19:51:25
+  Computer: SANDY
+  Machine:  HP HP Laptop 17-by1xxx
+  Machine ID: F7F13A97D58D (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[19:51:25] [OK] Console control handler registered -- Ctrl+C in Mark mode can no longer end the session (FT-150), and closing the window still writes the log footer (FT-160)
+[19:51:25] [START] Tool launched v3.1 build ascii39
+[19:51:25] [INFO] Machine: HP HP Laptop 17-by1xxx | MachineID: F7F13A97D58D
+[19:51:25] [OK] Sleep/shutdown prevention activated
+[19:51:25] [SCREEN] [SCREEN-25] (shown as screen 1) Rendered: WELCOME BACK
+[19:51:30] [KEY] Key 'S' accepted at: Show-ResumePrompt
+[19:51:30] [STATE] User chose to START OVER -- checkpoint cleared
+[19:51:34] [KEY] Continue accepted at: Show-FontInstructions
+[19:51:35] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[19:51:35] [SCREEN] [SCREEN-28] (shown as screen 2) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[19:51:35] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[19:51:35] [SCREEN] [SCREEN-29] (shown as screen 3) Rendered: BEFORE YOU START -- YOUR WINDOW  (Screen 4 of 6)
+[19:51:36] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[19:51:36] [SCREEN] [SCREEN-78] (shown as screen 4) Rendered: BEFORE YOU START -- YOUR KEYBOARD  (Screen 5 of 6)
+[19:51:36] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[19:51:36] [SCREEN] [SCREEN-30] (shown as screen 5) Rendered: WHAT HAPPENS NEXT -- PLEASE READ  (Screen 6 of 6)
+[19:51:36] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[19:51:36] [SCREEN] [SCREEN-02] (shown as screen 6) Rendered: HOW TO SCROLL BACK (AND COPY) IN THIS WINDOW
+[19:51:36] [KEY] Continue accepted at: Show-ScrollCopyTip
+[19:51:36] [SCREEN] [SCREEN-05] (shown as screen 7) Rendered: !  IMPORTANT -- READ BEFORE CONTINUING
+[19:51:41] [KEY] Key 'Y' accepted at: Test-PersonalComputer
+[19:51:41] [CONFIRM] Personal computer confirmed by user
+[19:51:41] [OK] Domain check passed -- not domain joined
+[19:51:41] [OK] Administrator access confirmed
+[19:51:42] [KEY] Continue accepted at: Test-AdminAccess
+[19:51:42] [INFO] Windows Edition: Core -- Windows 11 Home
+[19:51:43] [SCREEN] [SCREEN-34] (shown as screen 8) Rendered: WINDOWS EDITION DETECTED
+[19:51:43] [INFO] Home edition -- Remote Desktop and Group Policy unavailable
+[19:51:44] [KEY] Continue accepted at: Get-WinEdition
+[19:51:44] [SCREEN] [SCREEN-35] (shown as screen 9) Rendered: YOUR PC -- RAM: 8 GB
+[19:51:44] [WARN] RAM: 8 GB (minimal)
+[19:51:44] [KEY] Continue accepted at: Get-RAMStatus
+[19:51:57] [KEY] Key 'Y' accepted at: Test-TimeDateSync
+[19:51:57] [OK] Time/date confirmed correct by user: Tuesday, August 11, 2026 -- 7:51 PM (UTC-05:00) Eastern Time (US & Canada)
+[19:51:59] [INFO] Secure Boot state read on all editions (FT-143): True
+[19:51:59] [SCREEN] [SCREEN-09] (shown as screen 10) Rendered: YOUR SYSTEM AT A GLANCE
+[19:51:59] [INFO] System Baseline Summary displayed
+[19:52:05] [KEY] Continue accepted at: Show-SystemBaselineSummary
+[19:52:05] [STATE] Checkpoint saved: Baseline
+[19:52:05] [SCREEN] [SCREEN-26] (shown as screen 11) Rendered: YOUR PC'S SECURITY TOOLS -- A QUICK INTRODUCTION
+[19:57:50] [KEY] Look-back opened at: Show-SecurityToolsBriefing
+[19:58:01] [KEY] Continue accepted at: Show-SecurityToolsBriefing
+[19:58:02] [SCREEN] [SCREEN-27] (shown as screen 12) Rendered: THE SCANS WE RECOMMEND -- AND WHY
+[19:58:03] [KEY] Look-back opened at: Show-ScanPlanBriefing
+[19:58:11] [KEY] Continue accepted at: Show-ScanPlanBriefing
+[19:58:11] [STATE] Checkpoint saved: Briefing
+[19:58:11] [SCREEN] [SCREEN-39] (shown as screen 13) Rendered: REMINDER: PRE-SCAN RECOMMENDED
+[19:58:38] [KEY] Key 'Y' accepted at: Show-PreScanGate
+[19:58:38] [CONFIRM] Repeat run -- user confirmed to continue
+[19:58:39] [SCREEN] [SCREEN-43] (shown as screen 14) Rendered: OK  ANTIVIRUS STATUS -- HEALTHY SETUP
+[19:58:39] [OK] Defender active as primary AV. MB Free installed as companion.
+[19:58:58] [KEY] Continue accepted at: Test-DefenderPrimary
+[19:58:58] [STATE] Checkpoint saved: DefenderAV
+[19:58:58] [SCREEN] [SCREEN-73] (shown as screen 15) Rendered: MALWAREBYTES DETECTED ON THIS PC
+[19:59:28] [KEY] Key 'Y' accepted at: Show-MalwarebytesFollowUp
+[19:59:28] [INFO] Launched Malwarebytes at C:\Program Files\Malwarebytes\Anti-Malware\mbam.exe (elevated, inherited from tool)
+[19:59:28] [SCREEN] [SCREEN-48] (shown as screen 16) Rendered: AFTER THE CUSTOM SCAN -- RUN THE DEEP SCAN OVERNIGHT
+[19:59:28] [INFO] Overnight Deep Scan guidance shown (D-15: verified no settings changes needed)
+[22:12:30] [KEY] Continue accepted at: Show-MalwarebytesFollowUp
+[22:12:31] [KEY] Discarded 256 keypress(es) that were already queued before this screen appeared (FT-149)
+[22:12:31] [STATE] Checkpoint saved: Malwarebytes
+[22:12:31] [OK] Sleep/shutdown prevention activated
+[22:12:31] [OK] AC power confirmed. Battery present: True (100%). Sleep prevention active.
+[22:12:31] [KEY] Continue accepted at: Test-PowerStatus
+[22:12:31] [KEY] Discarded 256 keypress(es) that were already queued before this screen appeared (FT-149)
+[22:12:34] [KEY] Continue accepted at: Run-PowerSettingsCheck
+[22:12:34] [KEY] Discarded 256 keypress(es) that were already queued before this screen appeared (FT-149)
+[22:12:34] [SCREEN] [SCREEN-50] (shown as screen 17) Rendered: POWER SETTINGS -- SECURITY REVIEW
+[22:12:34] [INFO] Power settings: PW=NOT required -- change recommended FastStart=DISABLED -- GOOD WOL=ENABLED -- change recommended Screen=Found: NEVER (your existing setting) -- recommend 5 min: Settings -> System -> Power & sleep CritBatt=HIBERNATE -- GOOD
+[22:12:34] [KEY] Key 'N' accepted at: Run-PowerSettingsCheck
+[22:12:34] [KEY] Discarded 256 keypress(es) that were already queued before this screen appeared (FT-149)
+[22:12:34] [KEY] Key 'Y' accepted at: Run-PowerSettingsCheck
+[22:12:47] [KEY] Discarded 106 keypress(es) that were already queued before this screen appeared (FT-149)
+[22:12:48] [APPLIED] Wake on LAN: was 'ENABLED -- change recommended' -> disabled (2 settings)
+[22:12:48] [ERROR] SILENT ERROR at Run-PowerSettingsCheck: No matching MSFT_NetAdapterAdvancedPropertySettingData objects found by CIM query for instances of the ROOT/StandardCimv2/MSFT_NetAdapterAdvancedPropertySettingData class on the  CIM server: SELECT * FROM MSFT_NetAdapterAdvancedPropertySettingData  WHERE ((Name LIKE 'Wi-Fi 2')) AND ((DisplayName LIK... | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii39-2026-07-30-2208.ps1:4592 char:29
+[22:12:48] [ERROR] SILENT ERROR at Run-PowerSettingsCheck: No matching MSFT_NetAdapterAdvancedPropertySettingData objects found by CIM query for instances of the ROOT/StandardCimv2/MSFT_NetAdapterAdvancedPropertySettingData class on the  CIM server: SELECT * FROM MSFT_NetAdapterAdvancedPropertySettingData  WHERE ((Name LIKE 'Wi-Fi 2')) AND ((DisplayName LIK... | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii39-2026-07-30-2208.ps1:4592 char:29
+[22:12:48] [ERROR] SILENT ERROR at Run-PowerSettingsCheck: No matching MSFT_NetAdapterAdvancedPropertySettingData objects found by CIM query for instances of the ROOT/StandardCimv2/MSFT_NetAdapterAdvancedPropertySettingData class on the  CIM server: SELECT * FROM MSFT_NetAdapterAdvancedPropertySettingData  WHERE ((Name LIKE 'Wi-Fi 2')) AND ((DisplayName LIK... | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii39-2026-07-30-2208.ps1:4592 char:29
+[22:12:48] [ERROR] SILENT ERROR at Run-PowerSettingsCheck: No matching MSFT_NetAdapterAdvancedPropertySettingData objects found by CIM query for instances of the ROOT/StandardCimv2/MSFT_NetAdapterAdvancedPropertySettingData class on the  CIM server: SELECT * FROM MSFT_NetAdapterAdvancedPropertySettingData  WHERE ((Name LIKE 'Ethernet')) AND ((DisplayName LI... | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii39-2026-07-30-2208.ps1:4592 char:29
+[22:12:50] [KEY] Look-back opened at: Run-PowerSettingsCheck
+[09:08:52] [KEY] Continue accepted at: Run-PowerSettingsCheck
+[09:08:52] [STATE] Checkpoint saved: PowerSettings
+[09:08:52] [START] === Apps Audit Started ===
+[09:08:54] [SCREEN] [SCREEN-51] (shown as screen 18) Rendered: APPS AUDIT RESULTS
+[09:08:55] [DONE] === Apps Audit Complete ===
+[09:08:55] [KEY] Continue accepted at: Run-AppsAudit
+[09:08:55] [KEY] Discarded 22 keypress(es) that were already queued before this screen appeared (FT-149)
+[09:08:55] [STATE] Checkpoint saved: AppsAudit
+[09:08:55] [SCREEN] [SCREEN-52] (shown as screen 19) Rendered: GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+[09:16:34] [KEY] Key '1' accepted at: Select-Mode
+[09:16:34] [INFO] Mode selected: Console
+[09:16:34] [OK] QuickEdit mode disabled for this session (FT-01 mitigation) -- re-asserted silently from here on
+[09:16:35] [INFO] Item 6 (Edge phishing protection): registry read BLOCKED by Tamper Protection -- reporting Unknown rather than a fault (FT-141)
+[09:16:38] [DONE] Get-AllStatuses complete -- all 19 settings probed
+[09:16:38] [SCREEN] [SCREEN-53] (shown as screen 20) Rendered: QUICK QUESTION -- YOUR PASSWORDS
+[09:16:38] [ERROR] SILENT ERROR at Show-ScopeDisclaimer: Requested registry access is not allowed. | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii39-2026-07-30-2208.ps1:5270 char:31
+[09:16:38] [ERROR] SILENT ERROR at Show-ScopeDisclaimer: Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Edge' because it does not exist. | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii39-2026-07-30-2208.ps1:5371 char:27
+[09:16:38] [ERROR] SILENT ERROR at Show-ScopeDisclaimer: Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Dsh' because it does not exist. | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii39-2026-07-30-2208.ps1:5387 char:27
+[09:16:38] [ERROR] SILENT ERROR at Show-ScopeDisclaimer: Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Edge' because it does not exist. | At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii39-2026-07-30-2208.ps1:5401 char:28
+[09:17:59] [KEY] Key 'Y' accepted at: Show-ScopeDisclaimer
+[09:17:59] [INFO] User has a password manager -- Edge Password Saving change stays available
+[09:18:00] [KEY] Continue accepted at: Show-ScopeDisclaimer
+[09:18:00] [SCREEN] [SCREEN-54] (shown as screen 21) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 1 of 2)
+[09:22:13] [KEY] Nav 'NEXT' at: Show-ScopeDisclaimer
+[09:22:13] [SCREEN] [SCREEN-75] (shown as screen 22) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 2 of 2)
+[09:22:22] [KEY] Nav 'BACK' at: Show-ScopeDisclaimer
+[09:22:22] [SCREEN] [SCREEN-54] (shown as screen 21) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 1 of 2)
+[09:22:34] [KEY] Nav 'BACK' at: Show-ScopeDisclaimer
+[09:22:57] [KEY] Key 'Y' accepted at: Show-ScopeDisclaimer
+[09:22:57] [INFO] Password-manager answer revised via Back: True
+[09:22:57] [SCREEN] [SCREEN-54] (shown as screen 21) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 1 of 2)
+[09:30:31] [KEY] Nav 'NEXT' at: Show-ScopeDisclaimer
+[09:30:31] [SCREEN] [SCREEN-75] (shown as screen 22) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 2 of 2)
+[09:30:48] [KEY] Nav 'BACK' at: Show-ScopeDisclaimer
+[09:30:48] [SCREEN] [SCREEN-54] (shown as screen 21) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 1 of 2)
+[09:31:08] [KEY] Nav 'NEXT' at: Show-ScopeDisclaimer
+[09:31:09] [SCREEN] [SCREEN-75] (shown as screen 22) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 2 of 2)
+[09:34:21] [KEY] Nav 'NEXT' at: Show-ScopeDisclaimer
+[09:34:21] [SCREEN] [SCREEN-76] Checklist render: page 1, window width 175, 8 item(s) selected
+[09:34:21] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[09:35:39] [SCREEN] [SCREEN-76] Checklist render: page 1, window width 175, 8 item(s) selected
+[09:35:39] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[09:35:49] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[09:35:49] [SCREEN] [SCREEN-77] Checklist render: page 2, window width 175, 8 item(s) selected
+[09:35:49] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[09:36:22] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[09:36:22] [SCREEN] [SCREEN-76] Checklist render: page 1, window width 175, 8 item(s) selected
+[09:36:22] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[09:37:38] [KEY] Checklist command '22' accepted at: Run-ConsoleMode
+[09:37:38] [SCREEN] [SCREEN-76] Checklist render: page 1, window width 121, 8 item(s) selected
+[09:37:38] [INFO] Checklist columns: window 121, name 24 (content needed 51), status 86 (content needed 94)
+[09:38:43] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[09:38:43] [SCREEN] [SCREEN-77] Checklist render: page 2, window width 121, 8 item(s) selected
+[09:38:43] [INFO] Checklist columns: window 121, name 72 (content needed 41), status 38 (content needed 38)
+[11:15:27] [SCREEN] [SCREEN-77] Checklist render: page 2, window width 175, 8 item(s) selected
+[11:15:27] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[11:15:28] [SCREEN] [SCREEN-77] Checklist render: page 2, window width 175, 8 item(s) selected
+[11:15:28] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[11:15:32] [KEY] Checklist command 'N' accepted at: Run-ConsoleMode
+[11:15:32] [SCREEN] [SCREEN-77] Checklist render: page 2, window width 175, 0 item(s) selected
+[11:15:32] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[11:15:37] [KEY] Checklist command '8' accepted at: Run-ConsoleMode
+[11:15:37] [SCREEN] [SCREEN-77] Checklist render: page 2, window width 175, 1 item(s) selected
+[11:15:37] [INFO] Checklist columns: window 175, name 126 (content needed 41), status 38 (content needed 38)
+[11:15:41] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[11:15:41] [SCREEN] [SCREEN-76] Checklist render: page 1, window width 175, 1 item(s) selected
+[11:15:41] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[11:23:46] [SCREEN] [SCREEN-76] Checklist render: page 1, window width 175, 1 item(s) selected
+[11:23:46] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[11:23:47] [SCREEN] [SCREEN-76] Checklist render: page 1, window width 175, 1 item(s) selected
+[11:23:47] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[11:23:48] [SCREEN] [SCREEN-76] Checklist render: page 1, window width 175, 1 item(s) selected
+[11:23:48] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[11:23:49] [SCREEN] [SCREEN-76] Checklist render: page 1, window width 175, 1 item(s) selected
+[11:23:49] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[11:23:50] [SCREEN] [SCREEN-76] Checklist render: page 1, window width 175, 1 item(s) selected
+[11:23:50] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+[11:24:19] [SCREEN] [SCREEN-76] Checklist render: page 1, window width 175, 1 item(s) selected
+[11:24:19] [INFO] Checklist columns: window 175, name 70 (content needed 51), status 94 (content needed 94)
+
+[11:28:22] [EXIT] SESSION ENDED EARLY -- the window's X (close button) was clicked. Nothing was left half-applied: Checkup applies one setting at a time.
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================

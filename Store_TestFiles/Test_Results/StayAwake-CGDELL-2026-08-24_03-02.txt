@@ -1,0 +1,43 @@
+﻿======================================================================
+  STAY AWAKE -- display off, machine running
+======================================================================
+  machine  : CGDELL
+  run at   : 2026-08-24 03:02:23
+  elevated : True
+
+  BEFORE -- current values, seconds (0 = never)
+
+  sleep after            AC=0            DC=0
+  display off after      AC=600          DC=600
+  hibernate after        AC=0            DC=0
+
+  Undo file written: C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool2\PowerSettings-UNDO-CGDELL.txt
+
+  APPLYING
+
+  display off after      10 minutes (AC and battery)
+  sleep                  never (AC and battery)
+  hibernate              never (AC and battery)
+
+  AFTER -- read back from the machine
+
+  sleep after            AC=0            DC=0
+  display off after      AC=600          DC=600
+  hibernate after        AC=0            DC=0
+
+======================================================================
+  DONE. The display will go dark; the machine keeps running.
+======================================================================
+
+  STILL DO THESE TWO THINGS BY HAND:
+
+  1. PLUG IN THE POWER ADAPTER. This is a notebook. Nothing above
+     protects a battery that runs flat.
+
+  2. LEAVE THE LID OPEN. Closing the lid puts this machine into
+     Modern Standby whatever the timeouts say, and the lid setting
+     is hidden from powercfg on this model, so the script cannot
+     set it for you. Screen dark with the lid open is what you want.
+
+  To put everything back:  Run-StayAwake.bat undo
+

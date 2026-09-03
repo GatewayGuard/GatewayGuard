@@ -1,0 +1,59 @@
+    1. A first screen of something flashed by and Screem 1 Wecome came u[. b
+    2. Scr 2 – OK.
+    3. Scr  1 of 2,, not scr 3 – Set your console font. fix this and previous screen to this 1 and 2 of2 should explain that these are coming next whemever theu do Screens not numbered
+    4. No 2 0f 2
+    5.  Asid- add to project notes:
+
+a) we need to emphasise in all places, especially website that the use of a wireless mouse is best method when using Checkup tool. The nouse wheel works in all instances of terninal admin up and down and provide esceptional control.
+
+ b) We need to develop best windows mouse settings for mouse with wheel, mouse without wheel and flat laptop touchpad and other devices with them. 
+
+c) we need an upfront approval from the use  for auto setting the terminal Admin window fonts, etc. for them. Then we can remove uncessary screens and time . I suggest 20 .pt with options to change to 14-18 .pt,  Mouse size to 3 if they have a wheel mouse and size 1 if they don/t. 
+
+ d) Test what other mouse settings we should implement.  
+
+e)  We should test character settings of 22 and 24 in case users want to use then and warn against 
+    6. Scr 3 – 4 of 6. fix this – about maximizing there window- make this automatic and part of upfront explanation and approval from user. Keep explanation about scrolling 2 and 3. change 1 to explain what they can of screen did not automatically adjust after appoval.
+    7. Scr 4 – 5 of 6. fix this. #6 add ‘which you can open in notepad.’ 
+    8. Scr 8. Add to  #7  ‘and you can select resume or start from the beginning.’ 
+    9. Scr 5 = 5 of 6. fix this.  Check that this order 1-11 is still valid.
+    10. I needed to go back and could not. Fix this 
+    11. . “That earlier screen cannot be shown again -- this window was resized after it was displayed. It is in your log file: C:\GatewayGuard\Logs\GatewayGuard-Log-2026-08-11_16-01.txt LOOKING BACK -- nothing on your PC has been changed or undone.  This is the earliest screen Checkup still has.[Enter or Space] Return to the screen you were on.”
+    12. Scr 9 = All screens may need to be renumbered.  Use Bitlocker may (add to rules use can for ability or permission and use may for formal permission or uncertain possibility.  Is there a free app, maybe grammarly or word that can check all of these kind of things before we publish? At bottom, checking your time and date  = By the time I got there the time was 5:24 and it was saying 5:18.  We need to this first on this screen or on the next screen and the explanation should include being off by a minute or so is ok due to time lapse.  We need to check what happens with other entries like N on this screen we need a test plan for many things like this to be sure things are working right on all  the alternate paths for each screen. Best approach is to say we will check your date and time next. Check your date and time either at bottom right with your pointer or top right if you are using an app to show the toolbar on top. When ready type Y. or we could use space 
+    13. Scr 10 – only list one hard drive for Sandy when it has two,  Lists 3 items win update, encryption, and secure Boot.
+    14. 14. Scr 11 I presume – hadn’t looked yet was trying to expand screen from two screens I was looking at to just the Checkup screen and it would not let me. And then I right clicked and the program crashed.00 Check logs and figure out what happened and then check if this could happen on other screens and put in a permanent fix so it can’t
+    15.  Will restart with resume – After R, msg about copying. Why here. Nothing really to copy and earlier we told them there is no need to copy because everything is in the log. Right clicked twice and pgm crashed agaain. Proves my point ing 14.
+    16. Will resume again – Scr 1 – welcome
+    17. Scr 2 Quick Recheck on Personal PC – don’t remember this check happening on first Resume, but I may be wront. 
+    18. Said I could look back and then it didn’t let me. Earlier screen cannot be shown again ...etc. Fix this. N 
+    19. Now earlier screen could not be redrawn – Fix this. 
+    20. Scr 3 – repeat of earlier screen saying window detected...etc – Why do we need this
+    21. Scr 4 – repeat  of Bitlocker exception = why needed20 however may be useful where time has passed since last run
+    22. Scr 5 -  Says this is a repeat run of Checkup.  But really it isn’t we may never have got to the section on running defender and malware the first time we ran for myriad of reasons. Only two options continue or exit. We need to capture state of previous run and derterming what the user should do next base on [revious run. 
+    23.  Scr 7 – wante to go back could not.  Fix this for all sc
+    24. page in securityguide. May be to much to write down. Put the securithy guide listing first and let them decide to make notes or go to the guide. Give them a link directly into the appropriate page in the  guide if we can. We need to determine if they purchsed the guide or not somehow. If not we need to refer them to free online version with a link they can just click. Have we written any language  in any of our documents where doing this here violates what we have said.  Check the documents and change them so we can say this here.  The user gets  to choose if they want to use the 26link or not. I will run Malwarebytes to see what will happen2
+    25. MB opened but went right into running simple threat scan, when I selected advanced scans. Could not cancel it, but could and did pause it. Will resume.
+    26. about malwarebytes again. I went forward  to console mode screen and selected 3 to exit
+    27. Had to go to screen 9 on this resume to get to Q to quit.  Went right to console mode because of 24. will resume with S. We have built in cntls that frustrate and prolong testing. Poor design .
+    28. Back on screen 11 which is too long. Split into 2 screens
+    29. Got back to malwarebytes, was very careful, but soon as I tried to select the 3 dots MB simple threat scan took off again. I paused and cancel but somehow this time scan finished and then I could run the custom scan which I did. – MB found the same 18, I presume, it found the first time and it die allow a quarrantine of all 18 and it will allow a delete of all 18, which I did not do yet. Will provide report and logs after ascii39 test run.S
+    30. Aside – something caused the libre office writer to add 20-30 pages either bland or a few 4 or 5 numbers on a page and about 20 openings of Checkup sitting on the welcome page. Don’t know what happened. Deleted them all. 
+    31. A lot of changes to MB, the auto run of threat scan, the removal of the settings in Firewall of settings that turned off traffic that when I set to lowest setting allowed defender to do its thing. Many things I hadn’t seen before. 
+    32. Scr 17 – to long and needs rewrite to listing the item and then the Y or N . right underneath. At bottom of page an approval . of the ones selected With whatever number of them that will fit on a page. 
+    33. Could not go back Ascii40 mu st allow going back on all screens 
+    34. Scr 21 – Can’t we change screen timeout for them given them choices and letting them select how long they want?
+    35. WE need to make and save a table of all screen numbers, so that the screens them selves pull out there screen number from the table before being displayed to user. The table is always in number order gets renumberered in order everytime we make a change of addition or deletion to a screen.  Goal is to always have only one screen with a given screen number in Checkup, so never any confusion with user when they reference a screen. Discuss how you will  approach this with me. Must go into Ascii40. No more screens with same screen number as another screen
+    36. Scr 22= Says Sleep Active – Is it really? Will it be a problem when encrypting. Research this. But even if not a problem don’t we want it inactive at this point?
+    37. Scr 1-10 of items to change if needed – No screen number – Fix this, setting  6 still says 3 phishing. No longer exists in Edge, Edge using windows smartscreen to do this. Research it and fix this. Can we check Edge settings?
+    38. Defender offline scan run was missing. Did  not come before MB scan or at all.  Fix this and check if running resume had antthing to do with it not running. Should always get option to run offline scan Y or N. or whatever works.  
+    39. Checkup is gone. Don’t know if I did it or it crashed. My last actions were N then 8 to run encryption. Then typed notes and it was gone, Will resume again.
+    40. Changed windows security memory integrity to on/ Requires a restart.  Will user get step by step instructions. 1st one should be select  search window on taskbar and select windows Security screen that displays, if not there, type win and it should show up. If not, type windows security. 
+    41. Scr 15 – add wording that they will get step-by-step instructions on next screen for MS account – Use as few words as necessary you write it.
+    42. FT 146/147 – Unclear what you are saying and what you want done 
+    43. Scr 19 = qrtly scans – We should provide the popup with instructions after running the Defender offline scan or if they choose not to run offline scan, then show MB popup and instructions.  If in beginning, they choose not to run qrtly offline scans we should still setup reminder every three months to ask them to approve it. Also no results for task scheduler. Why? Since we are telling how to check it here.
+    44. It looked like scr 19 repeated
+    45. Also looks like I lost the encryption path
+    46. Scr 20 – skip the real time trial = What does that mean why is it here this should be explained up front where they are prompted to run defender offline and MB scans before running the settings checks. We need to rethink and reprogram all of this as it is misplaced and redundant. Let’s discuss. Screen way too long. Whar is V&T protection spell it out. Do all of these have precise step by step instructions. Make sure they do in ascii40. What do we tell them if they do not have the Guide. Tell them to to website for free instructions or to purchase professional pdf copy.  What about deleting the quaranteen? We should tell them that to, not sure MB will allow that if you don’ t do it now. Shouldn’t a lot of these things  be done before running checkup?
+    47. Pgm ended. MB and logs in test results
+    48. 
+    49. 

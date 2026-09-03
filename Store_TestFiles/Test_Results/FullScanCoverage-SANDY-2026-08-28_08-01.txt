@@ -1,0 +1,81 @@
+﻿======================================================================
+  DEFENDER FULL SCAN -- DID IT COVER D: ?
+======================================================================
+  machine   : SANDY
+  run at    : 2026-08-28 08:01:57
+  elevated  : True
+
+----------------------------------------------------------------------
+  1. WHAT DRIVES ARE ON THIS MACHINE
+----------------------------------------------------------------------
+    C:  Windows         237.3 GB total     160.3 GB free  [Fixed]
+    D:                  931.5 GB total     852.6 GB free  [Fixed]
+
+----------------------------------------------------------------------
+  2. DEFENDER'S RECORD OF THE LAST FULL SCAN
+----------------------------------------------------------------------
+    FullScanStartTime   : 08/28/2026 06:25:40
+    FullScanEndTime     : 08/28/2026 07:47:17
+    DURATION            : 01:21:37
+    FullScanAge (days)  : 0
+    QuickScanEndTime    : 08/28/2026 07:54:06
+    AMRunningMode       : Normal
+
+    REAL-TIME PROTECTION -- read this before trusting any EICAR result:
+      RealTimeProtectionEnabled    : True
+      IsTamperProtected            : True
+      AntivirusEnabled             : True
+      OnAccessProtectionEnabled    : True
+      BehaviorMonitorEnabled       : True
+      IoavProtectionEnabled        : True
+
+----------------------------------------------------------------------
+  3. SCAN EVENTS (1000 = started, 1001 = finished), newest 12
+----------------------------------------------------------------------
+    8/28/2026 7:54:06 AM  id 1001  Antimalware Quick Scan
+    8/28/2026 7:53:34 AM  id 1000  Antimalware Quick Scan
+    8/28/2026 7:47:18 AM  id 1001  Antimalware Full Scan
+    8/28/2026 6:25:40 AM  id 1000  Antimalware Full Scan
+    8/27/2026 12:15:03 PM  id 1001  Antimalware Full Scan
+    8/27/2026 10:52:29 AM  id 1000  Antimalware Full Scan
+    8/26/2026 8:15:42 AM  id 1001  Antimalware Quick Scan
+    8/26/2026 8:14:01 AM  id 1000  Antimalware Quick Scan
+    8/25/2026 5:35:21 PM  id 1001  Antimalware Quick Scan
+    8/25/2026 5:32:42 PM  id 1000  Antimalware Quick Scan
+    8/24/2026 1:51:49 PM  id 1001  Antimalware Quick Scan
+    8/24/2026 1:50:06 PM  id 1000  Antimalware Quick Scan
+
+----------------------------------------------------------------------
+  3b. DEFENDER EXCLUSIONS  (an exclusion makes a clean result meaningless)
+----------------------------------------------------------------------
+    ExclusionPath        : <none>
+    ExclusionExtension   : <none>
+    ExclusionProcess     : <none>
+
+    AVTestKit is NOT excluded -- an EICAR result would be meaningful.
+
+----------------------------------------------------------------------
+  4. DID IT TOUCH D: ?  (from MPLog -- the paths actually scanned)
+----------------------------------------------------------------------
+    reading : MPLog-20260624-114417.log  (23 MB, last written 08/28/2026 07:54:36)
+
+    C:  YES  -- 400 matching line(s) (capped at 400 -- there are more)
+           e.g. 2026-06-24 07:44:17 LOCAL [PlatUpd] Service launched successfully from: C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.26050.15-0
+           e.g. 2026-06-24 07:44:17 LOCAL [PlatUpd] Validating and fixing WMI MOF schema - Running command: "C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.2...
+           e.g. 2026-06-24 07:44:19 LOCAL Cache C:\ProgramData\Microsoft\Windows Defender\Scans\History\CacheManager\D07A18F4-EE9B-44A7-A6AC-9608EA6DA395-1.bin loaded...
+    D:  YES  -- 293 matching line(s)
+           e.g. 2026-08-27 11:29:37 LOCAL ExpensiveFile:Scan time for `\\?\D:\Documents and Settings\Documents\LOANS\Downloads\KindleForPC-installer-1.19.46095.exe` i...
+           e.g. 2026-08-27 11:30:24 LOCAL ExpensiveFile:Scan time for `\\?\D:\Documents and Settings\Documents - Copy\bookmarks.html` is 8046 units
+           e.g. 2026-08-27 11:32:42 LOCAL ExpensiveContainer:Scan time for `\\?\D:\Documents and Settings\Documents\Samsung - Copy\recovery\WindowsRE\WinRE.wim` is 15...
+    E:  YES  -- 1 matching line(s)
+           e.g. Taint Info:Friendly: N; Reason: ; Modules: C:\Users\willi\AppData\Local\Temp\{E300B22B-C06B-461E-A2D0-167FA2807105}\_Setup.dll:25,C:\Users\willi\AppDa...
+
+    NOTE ON READING THIS. A D: path in MPLog proves Defender
+    TOUCHED that drive at some point in this log's lifetime. It
+    does NOT by itself prove the FULL SCAN did it -- real-time
+    protection writes here too. Compare the timestamps in
+    section 2 against the log's own entries before concluding.
+
+======================================================================
+  DONE -- nothing on this machine was changed.
+======================================================================

@@ -13,6 +13,17 @@
 
 ## THE ANSWER
 
+> **CLOSED 2026-09-03 15:29. Bill published it, and the Guide sold.**
+> ***measured 15:27: `is_published: true`***, and order
+> `oRdas6pjue4Bh-DGiv6aoA==` went through at $12.99 for the
+> **20 point - largest print** version. The diagnosis below was right and
+> the one click was the whole fix.
+>
+> **The six defects listed further down are NOT closed.** Re-measured at
+> 15:27, all six are still live, and the receipt added one more. Current
+> list, with the receipt evidence:
+> `GatewayGuard_StoreTestPurchases-2026-09-03-1529.md`.
+
 ***measured 2026-09-03 14:24, from the two product pages' own data
 (`store.gatewayguard.co/l/guide` and `/l/checkup`, the `data-page` payload each
 page ships to the browser):***

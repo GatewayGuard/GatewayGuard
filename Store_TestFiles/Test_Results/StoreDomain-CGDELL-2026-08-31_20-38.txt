@@ -1,0 +1,48 @@
+﻿
+==============================================================
+  STORE DOMAIN CHECK
+  Run: 2026-08-31 20:38 on CGDELL
+==============================================================
+
+  This check is READ-ONLY. It changes nothing.
+
+--------------------------------------------------------------
+  1. THE NEW STORE RECORD
+--------------------------------------------------------------
+
+  NOT THERE YET.
+
+    store.gatewayguard.co does not resolve.
+
+  What this means: either the record has not been added at
+  Namecheap yet, or it has been added and has not spread
+  across the internet yet. Both are normal.
+
+  What to do: if you added it in the last 48 hours, wait and
+  run this again. If it has been longer than that, sign in at
+  https://ap.www.namecheap.com and check the Advanced DNS tab
+  for a row reading:
+
+      CNAME Record | store | domains.gumroad.com | Automatic
+
+--------------------------------------------------------------
+  2. NOTHING ELSE WAS DISTURBED
+--------------------------------------------------------------
+
+  These were correct before the store record was added. They
+  should be unchanged. If any line says MISSING, something was
+  edited that should not have been.
+
+  WEBSITE (apex)      OK        4 of 4 GitHub Pages addresses present
+  WEBSITE (www)       OK        www -> gatewayguard.github.io
+  EMAIL (MX)          OK        2 mail server(s) listed
+                                  mx1.privateemail.com
+                                  mx2.privateemail.com
+  EMAIL (SPF)         OK        anti-spam record present
+  MICROSOFT 365       OK        domain verification record present
+
+--------------------------------------------------------------
+  Full results saved to:
+    C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Test_Results\StoreDomain-CGDELL-2026-08-31_20-38.txt
+--------------------------------------------------------------
+

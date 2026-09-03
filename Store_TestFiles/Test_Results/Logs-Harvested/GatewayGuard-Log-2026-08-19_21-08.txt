@@ -1,0 +1,26 @@
+﻿============================================================
+  GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+  Build: ascii42
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-08-19 21:09:00
+  Computer: SANDY
+  Machine:  HP HP Laptop 17-by1xxx
+  Machine ID: F7F13A97D58D (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[21:09:00] [OK] Console control handler registered -- Ctrl+C in Mark mode can no longer end the session (FT-150), and closing the window still writes the log footer (FT-160)
+[21:09:00] [WARN] FT-63: startup was delayed 1 minute(s) between launch and initialization -- console was likely frozen in text-selection (Mark) mode; Esc releases it
+[21:09:00] [START] SCREEN GALLERY opened (review mode -- no checks run, nothing changed)
+[21:09:01] [OK] QuickEdit AND mouse input reporting disabled for this session (FT-01, FT-171a) -- re-asserted silently from here on
+[21:41:41] [EXIT] SCREEN GALLERY closed
+
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================
+[21:41:41] [OK] Sleep prevention deactivated -- normal power management restored (called from: PowerShell.Exiting engine event (last-resort cleanup))

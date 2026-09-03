@@ -1,0 +1,46 @@
+window.linkCopy = function(url) {
+    return {
+        success: false,
+        error: false,
+        copyText: url,
+        onCopy: function (e) {
+            try {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    // Internet Explorer-specific code path to prevent textarea being shown while dialog is visible.
+                    return clipboardData.setData("Text", this.$refs.link.textContent);
+
+                }
+                else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = this.$refs.link.textContent;
+                    textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in Microsoft Edge.
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+                    }
+                    catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    }
+                    finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+                this.success = true;
+                setTimeout(() => {
+                    this.success = false;
+                }, 2000);
+            } catch(e) {
+                console.log(e);
+                this.error = true;
+                setTimeout(() => {
+                    this.error = false;
+                }, 2000);
+            }
+        },
+        onError: function (e) {
+            alert('Failed to copy texts')
+        }
+    }
+}
