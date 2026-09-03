@@ -1,0 +1,12 @@
+﻿[18:35:34] [START] Tool launched v3.1 build ascii23
+[18:35:34] [WARN] Could not activate sleep prevention: Cannot convert value "-2147483648" to type "System.UInt32". Error: "Value was either too large or too small for a UInt32."
+[18:35:39] [STATE] User chose to RESUME from checkpoint: AppsAudit
+[18:35:58] [CONFIRM] Personal computer confirmed by user
+[18:35:58] [OK] Domain check passed -- not domain joined
+[18:35:58] [OK] Administrator access confirmed
+[18:36:56] [INFO] Windows Edition: Professional -- Windows 11 Pro Professional -- Windows 11 Pro
+[18:36:57] [INFO] RAM: 32 GB (ample)
+[18:36:57] [WARN] Could not activate sleep prevention: Cannot convert value "-2147483648" to type "System.UInt32". Error: "Value was either too large or too small for a UInt32."
+[18:36:57] [OK] AC power confirmed. Battery present: True (100%). Sleep prevention active.
+[18:37:54] [INFO] Mode selected: Console
+[18:39:00] [WARN] Could not activate sleep prevention: Cannot convert value "-2147483648" to type "System.UInt32". Error: "Value was either too large or too small for a UInt32."

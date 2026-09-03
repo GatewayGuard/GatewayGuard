@@ -1,0 +1,45 @@
+﻿============================================================
+  GatewayGuard Windows 11 Security Hardening Tool v3.1
+  Build: ascii31
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-07-16 22:26:01
+  Computer: CGDELL
+  Machine:  Dell Inc. Latitude 5430
+  Machine ID: 565F4EC4F822 (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[22:26:01] [START] Tool launched v3.1 build ascii31
+[22:26:01] [INFO] Machine: Dell Inc. Latitude 5430 | MachineID: 565F4EC4F822
+[22:26:01] [OK] Sleep/shutdown prevention activated
+[22:26:03] [KEY] Continue accepted at: Show-FontInstructions
+[22:26:04] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[22:26:04] [SCREEN] Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[22:26:06] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[22:26:06] [SCREEN] Rendered: BEFORE YOU START -- WINDOW SETUP  (Screen 4 of 5)
+[22:26:51] [KEY] Nav 'BACK' at: Show-FontInstructions
+[22:26:51] [SCREEN] Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[22:26:54] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[22:26:54] [SCREEN] Rendered: BEFORE YOU START -- WINDOW SETUP  (Screen 4 of 5)
+[22:26:55] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[22:26:56] [SCREEN] Rendered: WHAT HAPPENS NEXT -- PLEASE READ  (Screen 5 of 5)
+[22:27:15] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[22:27:15] [SCREEN] Rendered: HOW TO SCROLL BACK (AND COPY) IN THIS WINDOW
+[22:28:49] [KEY] Continue accepted at: Show-ScrollCopyTip
+[22:28:49] [SCREEN] Rendered: !  IMPORTANT -- READ BEFORE CONTINUING
+[22:28:56] [KEY] Key 'Y' accepted at: Test-PersonalComputer
+[22:28:56] [CONFIRM] Personal computer confirmed by user
+[22:28:56] [OK] Domain check passed -- not domain joined
+[22:28:56] [OK] Administrator access confirmed
+[22:29:01] [KEY] Continue accepted at: Test-AdminAccess
+[22:29:01] [INFO] Windows Edition: Professional -- Windows 11 Pro
+[22:29:02] [INFO] RAM: 32 GB (ample)
+[22:30:11] [KEY] Key 'Y' accepted at: Test-TimeDateSync
+[22:30:11] [OK] Time/date confirmed correct by user: Thursday, July 16, 2026 -- 10:29 PM (UTC-05:00) Eastern Time (US & Canada)
+[22:30:14] [SCREEN] Rendered: YOUR SYSTEM AT A GLANCE
+[22:30:14] [INFO] System Baseline Summary displayed
+[22:30:50] [OK] Sleep prevention deactivated -- normal power management restored (called from: )

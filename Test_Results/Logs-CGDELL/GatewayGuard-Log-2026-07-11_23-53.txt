@@ -1,0 +1,56 @@
+﻿============================================================
+  GatewayGuard Windows 11 Security Hardening Tool v3.1
+  Build: ascii25
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-07-11 23:53:22
+  Computer: CGDELL
+  Machine:  Dell Inc. Latitude 5430
+  Machine ID: 565F4EC4F822 (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[23:53:22] [START] Tool launched v3.1 build ascii25
+[23:53:22] [INFO] Machine: Dell Inc. Latitude 5430 | MachineID: 565F4EC4F822
+[23:53:22] [OK] QuickEdit mode disabled for this session (FT-01 mitigation)
+[23:53:22] [OK] Sleep/shutdown prevention activated
+[23:53:33] [KEY] Key 'R' accepted at: Show-ResumePrompt
+[23:53:33] [STATE] User chose to RESUME from checkpoint: Malwarebytes
+[23:53:49] [KEY] Continue accepted at: Show-ResumePrompt
+[23:53:53] [KEY] Key 'Y' accepted at: Test-PersonalComputer
+[23:53:53] [CONFIRM] Personal computer confirmed by user
+[23:53:53] [OK] Domain check passed -- not domain joined
+[23:53:53] [OK] Administrator access confirmed
+[23:53:54] [KEY] Continue accepted at: Test-AdminAccess
+[23:53:54] [INFO] Windows Edition: Professional -- Windows 11 Pro
+[23:53:55] [INFO] RAM: 32 GB (ample)
+[23:54:16] [KEY] Key 'Y' accepted at: Test-DefenderPrimary
+[23:54:16] [WARN] Continuing with Defender real-time OFF
+[23:54:19] [KEY] Continue accepted at: Test-DefenderPrimary
+[23:54:19] [STATE] Checkpoint saved: DefenderAV
+[23:54:19] [OK] Sleep/shutdown prevention activated
+[23:54:19] [OK] AC power confirmed. Battery present: True (100%). Sleep prevention active.
+[23:54:29] [KEY] Continue accepted at: Test-PowerStatus
+[23:54:45] [INFO] Power settings: PW=NOT required -- change recommended FastStart=DISABLED -- GOOD WOL=DISABLED -- GOOD Screen=Could not read -- check manually in Settings -> System -> Power & sleep CritBatt=Could not read -- check manually in Power settings
+[00:05:12] [KEY] Key 'N' accepted at: Run-PowerSettingsCheck
+[00:07:03] [KEY] Key 'N' accepted at: Run-PowerSettingsCheck
+[00:08:09] [KEY] Continue accepted at: Run-PowerSettingsCheck
+[00:08:09] [STATE] Checkpoint saved: PowerSettings
+[00:08:09] [START] === Apps Audit Started ===
+[00:08:10] [DONE] === Apps Audit Complete ===
+[00:09:12] [KEY] Continue accepted at: Run-AppsAudit
+[00:09:12] [STATE] Checkpoint saved: AppsAudit
+[00:12:54] [KEY] Key '1' accepted at: W11-SecurityHardening-v3-ascii25-2026-07-11.ps1
+[00:12:54] [INFO] Mode selected: Console
+[00:26:51] [KEY] Continue accepted at: Show-ScopeDisclaimer
+[02:24:14] [KEY] Key 'Y' accepted at: Confirm-Exit
+[02:24:14] [EXIT] User confirmed exit
+[02:24:14] [OK] Sleep prevention deactivated -- normal power management restored
+
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================

@@ -1,0 +1,52 @@
+﻿======================================================================
+  STAY AWAKE -- display off, machine running
+======================================================================
+  machine  : CGDELL
+  run at   : 2026-08-24 09:31:44
+  elevated : True
+
+  BEFORE -- current values, seconds (0 = never)
+
+  sleep after            AC=0            DC=0
+  display off after      AC=600          DC=600
+  hibernate after        AC=0            DC=0
+
+  UNDO FILE ALREADY EXISTS -- LEAVING IT ALONE.
+    C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool2\PowerSettings-UNDO-CGDELL.txt
+    Written 2026-08-24 02:36:48 by Set-StayAwake-2026-08-24.ps1
+
+  It holds the settings from BEFORE the first run, which is what an
+  undo needs. Overwriting it now would record the current -- already
+  changed -- values and quietly destroy the only way back.
+
+  To capture a fresh baseline deliberately: run the undo first
+  (Run-StayAwake.bat undo), then run this again.
+
+  APPLYING
+
+  display off after      10 minutes (AC and battery)
+  sleep                  never (AC and battery)
+  hibernate              never (AC and battery)
+
+  AFTER -- read back from the machine
+
+  sleep after            AC=0            DC=0
+  display off after      AC=600          DC=600
+  hibernate after        AC=0            DC=0
+
+======================================================================
+  DONE. The display will go dark; the machine keeps running.
+======================================================================
+
+  STILL DO THESE TWO THINGS BY HAND:
+
+  1. PLUG IN THE POWER ADAPTER. This is a notebook. Nothing above
+     protects a battery that runs flat.
+
+  2. LEAVE THE LID OPEN. Closing the lid puts this machine into
+     Modern Standby whatever the timeouts say, and the lid setting
+     is hidden from powercfg on this model, so the script cannot
+     set it for you. Screen dark with the lid open is what you want.
+
+  To put everything back:  Run-StayAwake.bat undo
+

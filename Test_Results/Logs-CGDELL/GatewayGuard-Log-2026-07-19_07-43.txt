@@ -1,0 +1,83 @@
+﻿============================================================
+  GatewayGuard Windows 11 Security Hardening Tool v3.1
+  Build: ascii32
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-07-19 07:43:43
+  Computer: CGDELL
+  Machine:  Dell Inc. Latitude 5430
+  Machine ID: 565F4EC4F822 (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[07:43:43] [START] Tool launched v3.1 build ascii32
+[07:43:43] [INFO] Machine: Dell Inc. Latitude 5430 | MachineID: 565F4EC4F822
+[07:43:43] [OK] Sleep/shutdown prevention activated
+[07:43:43] [SCREEN] [SCREEN-25] Rendered: Welcome Back (Resume Prompt)
+[07:43:43] [SCREEN] Rendered: WELCOME BACK
+[07:43:49] [KEY] Key 'S' accepted at: Show-ResumePrompt
+[07:43:49] [STATE] User chose to START OVER -- checkpoint cleared
+[07:43:49] [SCREEN] [SCREEN-01] Rendered: Welcome / Font Instructions
+[07:43:55] [KEY] Continue accepted at: Show-FontInstructions
+[07:44:06] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[07:44:06] [SCREEN] Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[07:46:28] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[07:46:28] [SCREEN] Rendered: BEFORE YOU START -- WINDOW SETUP  (Screen 4 of 5)
+[07:46:42] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[07:46:42] [SCREEN] Rendered: WHAT HAPPENS NEXT -- PLEASE READ  (Screen 5 of 5)
+[07:46:51] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[07:46:51] [SCREEN] Rendered: HOW TO SCROLL BACK (AND COPY) IN THIS WINDOW
+[07:46:51] [SCREEN] [SCREEN-02] Rendered: Scroll and Copy Tip
+[07:47:05] [KEY] Continue accepted at: Show-ScrollCopyTip
+[07:47:05] [SCREEN] Rendered: !  IMPORTANT -- READ BEFORE CONTINUING
+[07:47:13] [KEY] Key 'Y' accepted at: Test-PersonalComputer
+[07:47:13] [SCREEN] [SCREEN-05] Rendered: Personal Computer Check
+[07:47:13] [CONFIRM] Personal computer confirmed by user
+[07:47:13] [OK] Domain check passed -- not domain joined
+[07:47:13] [OK] Administrator access confirmed
+[07:47:20] [KEY] Continue accepted at: Test-AdminAccess
+[07:47:20] [INFO] Windows Edition: Professional -- Windows 11 Pro
+[07:47:20] [INFO] RAM: 32 GB (ample)
+[07:47:24] [KEY] Key 'Y' accepted at: Test-TimeDateSync
+[07:47:24] [OK] Time/date confirmed correct by user: Sunday, July 19, 2026 -- 7:47 AM (UTC-05:00) Eastern Time (US & Canada)
+[07:47:27] [SCREEN] Rendered: YOUR SYSTEM AT A GLANCE
+[07:47:27] [INFO] System Baseline Summary displayed
+[07:47:27] [SCREEN] [SCREEN-09] Rendered: System Baseline Summary
+[07:47:34] [KEY] Continue accepted at: Show-SystemBaselineSummary
+[07:47:34] [STATE] Checkpoint saved: Baseline
+[07:47:34] [SCREEN] Rendered: REMINDER: PRE-SCAN RECOMMENDED
+[07:52:28] [KEY] Key 'Y' accepted at: Show-PreScanGate
+[07:52:28] [CONFIRM] Repeat run -- user confirmed to continue
+[07:52:28] [SCREEN] Rendered: MALWAREBYTES NOT DETECTED
+[07:55:12] [KEY] Key 'N' accepted at: Show-MalwarebytesFollowUp
+[07:55:12] [SKIP] User skipped Malwarebytes install
+[07:55:17] [KEY] Continue accepted at: Show-MalwarebytesFollowUp
+[07:55:17] [STATE] Checkpoint saved: Malwarebytes
+[07:55:18] [OK] Defender confirmed as primary AV
+[07:55:39] [KEY] Continue accepted at: Test-DefenderPrimary
+[07:55:39] [STATE] Checkpoint saved: DefenderAV
+[07:55:40] [OK] Sleep/shutdown prevention activated
+[07:55:40] [OK] AC power confirmed. Battery present: True (100%). Sleep prevention active.
+[07:56:12] [KEY] Continue accepted at: Test-PowerStatus
+[07:56:30] [KEY] Continue accepted at: Run-PowerSettingsCheck
+[07:56:30] [SCREEN] Rendered: POWER SETTINGS -- SECURITY REVIEW
+[07:56:30] [INFO] Power settings: PW=NOT required -- change recommended FastStart=DISABLED -- GOOD WOL=DISABLED -- GOOD Screen=Found: NEVER (your existing setting) -- recommend 5 min: Settings -> System -> Power & sleep CritBatt=HIBERNATE -- GOOD
+[07:57:47] [KEY] Key 'N' accepted at: Run-PowerSettingsCheck
+[08:00:19] [KEY] Continue accepted at: Run-PowerSettingsCheck
+[08:00:19] [STATE] Checkpoint saved: PowerSettings
+[08:00:19] [START] === Apps Audit Started ===
+[08:00:20] [SCREEN] Rendered: APPS AUDIT RESULTS
+[08:00:20] [DONE] === Apps Audit Complete ===
+[08:00:30] [KEY] Continue accepted at: Run-AppsAudit
+[08:00:30] [STATE] Checkpoint saved: AppsAudit
+[08:00:30] [SCREEN] Rendered: GatewayGuard Windows 11 Security Hardening Tool v3.1
+[08:01:53] [KEY] Key '1' accepted at: Select-Mode
+[08:01:53] [INFO] Mode selected: Console
+[08:01:56] [SCREEN] Rendered: QUICK QUESTION -- YOUR PASSWORDS
+[08:02:25] [KEY] Key 'Y' accepted at: Show-ScopeDisclaimer
+[08:02:25] [INFO] User has a password manager -- Edge Password Saving change stays available
+[08:02:28] [KEY] Continue accepted at: Show-ScopeDisclaimer
+[08:02:28] [SCREEN] Rendered: WHAT THIS TOOL DOES AND DOES NOT DO

@@ -1,0 +1,40 @@
+﻿
+==============================================================
+  STORE DOMAIN CHECK
+  Run: 2026-09-01 14:22 on CGDELL
+==============================================================
+
+  This check is READ-ONLY. It changes nothing.
+
+--------------------------------------------------------------
+  1. THE NEW STORE RECORD
+--------------------------------------------------------------
+
+  LIVE, AND POINTING AT GUMROAD.
+
+    store.gatewayguard.co  ->  domains.gumroad.com
+
+  What to do next: go to your Gumroad Settings, then Advanced,
+  put store.gatewayguard.co in the Custom domain box and click Verify.
+
+--------------------------------------------------------------
+  2. NOTHING ELSE WAS DISTURBED
+--------------------------------------------------------------
+
+  These were correct before the store record was added. They
+  should be unchanged. If any line says MISSING, something was
+  edited that should not have been.
+
+  WEBSITE (apex)      OK        4 of 4 GitHub Pages addresses present
+  WEBSITE (www)       OK        www -> gatewayguard.github.io
+  EMAIL (MX)          OK        2 mail server(s) listed
+                                  mx2.privateemail.com
+                                  mx1.privateemail.com
+  EMAIL (SPF)         OK        anti-spam record present
+  MICROSOFT 365       OK        domain verification record present
+
+--------------------------------------------------------------
+  Full results saved to:
+    C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Test_Results\StoreDomain-CGDELL-2026-09-01_14-22.txt
+--------------------------------------------------------------
+
