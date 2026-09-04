@@ -97,14 +97,21 @@ You can upload files from your hard drive or from Dropbox."*
 
 ### The Guide
 
+> **CORRECTED 2026-09-04. Step 4 used to say "upload all five, they can be
+> dragged in together." Under Option B that would give every buyer all five
+> sizes and breach the licence.** The store is already built the right way --
+> ***measured 2026-09-04 from the download page of order
+> `oRdas6pjue4Bh-DGiv6aoA==`: it lists exactly ONE file.*** These steps now say
+> what was actually done.
+
 1. Sign in at **gumroad.com** and open **Products**
 2. Click **GatewayGuard Windows Security Walkthrough Guide**
 3. Click **Next: Customize**, then the **Content** tab
-4. Upload **all five** `TESTFILE - GatewayGuard Guide - *.pdf` files from
-   `Store_TestFiles\`. They can be dragged in together
-5. Check they are listed **12, 14, 16, 18, 20** in that order. If Gumroad sorts
-   them some other way, drag them into order -- **a reader looking for large
-   print should not have to hunt**
+4. **Select a version first, then upload only that version's file.** Repeat five
+   times, one file per version. **Never drag all five in together** -- files
+   dropped without a version selected attach to the product, and then every
+   buyer receives all five.
+5. Check each version shows **one** file, and that it is the matching size
 6. **Save**
 
 ### Checkup

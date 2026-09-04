@@ -154,18 +154,61 @@ touched it.** Say the word and I will remove it.
 
 ---
 
+## THE DOWNLOAD -- ALL FOUR QUESTIONS NOW ANSWERED
+
+***Added 2026-09-04. Bill downloaded the purchased file and it is in
+`Test_Results\`. Every open question from the test purchase is closed, and all
+four answers are good.***
+
+**1. It delivers ONE file, and it is the size that was bought.**
+***measured, the download page for order `oRdas6pjue4Bh-DGiv6aoA==`
+(`gumroad.com/d/8013fce3f54425a3c19de0d2f44e456f`): `content_items` holds
+exactly one entry*** -- `TESTFILE - GatewayGuard Guide - 20 point print
+(largest)`, PDF, 69,251 bytes, 3 pages. **Not all five.**
+
+**This was the biggest open risk and it could easily have gone the other way.**
+The upload instructions in `GatewayGuard_StoreTestFiles-2026-09-02-1119.md` said
+*"upload all five ... they can be dragged in together"* -- written before Option
+B, and files dropped without a version selected attach to the **product**, which
+would give every buyer all five and breach the licence. **The store was built
+correctly anyway.** That instruction is now corrected in place.
+
+**2. The filename survives Gumroad exactly.** ***measured:***
+
+```
+TESTFILE - GatewayGuard Guide - 20 point print (largest).pdf
+```
+
+Spaces, hyphens and parentheses all intact -- nothing rewritten, nothing
+escaped, no hash appended. **This closes the question flagged as unmeasured on
+2026-09-02**, and it means the descriptive filenames are safe to use for the
+real files.
+
+**3. The file is byte-for-byte the file that was uploaded.**
+***measured:*** MD5 `2f31443968084e26e1f85d4e2eca67f4` on the downloaded copy
+and on the source in `Store_TestFiles\`. Gumroad does not re-encode, watermark
+or alter a PDF.
+
+**4. It opens, and it is genuinely 20 point.** ***measured:*** not encrypted, 3
+pages, real selectable text, Garamond and Garamond-Bold, US Letter 612 x 792,
+body type resolving to **19.99 pt**.
+
+*(The 16-point PDF sitting in `Test_Results\` is byte-identical to its source
+too, so it was copied by hand rather than bought -- it predates the Guide being
+published. Nothing to chase.)*
+
+---
+
 ## WHAT IS STILL NOT MEASURED
 
-**The download itself.** ***measured: no purchased Guide PDF has been saved to
-`Downloads` or into the repository.*** So these remain open, and they are the
-whole reason for a test purchase:
+***The download questions are all answered -- see the section above.*** What
+remains:
 
-1. **Does the download deliver the 20-point file, and only that one?** Under
-   Option B a buyer must not receive all five.
-2. **What is the filename after it lands?** It carries spaces and parentheses,
-   and some stores rewrite those. This was flagged as unmeasured yesterday and
-   still is.
-3. **Does the PDF open, with sharp text?**
-
-Open the receipt's **View content** link, download it, and drop the file into
-`Test_Results\`. I will read the filename and confirm the file.
+- ***Not measured:*** the terms-acceptance URL field at checkout. There is still
+  no licence page on `gatewayguard.co` for it to point at (**T-EULA**).
+- ***Not measured:*** the five real Guide PDFs. The versions still carry the
+  `TESTFILE - ` stand-ins, so the whole chain is proven with placeholders and
+  has to be re-run once the real files exist -- though only the files change,
+  not the setup.
+- ***Not measured:*** if the receipt's `gumroad.com` links can be pointed at the
+  custom domain.
