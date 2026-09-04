@@ -699,3 +699,77 @@ Both DECISION NEEDED markers on v3.0 are answered and now built:
   with the full fine print.***
 
 **Sections 1, 5 and 9 can take the paragraphs already drafted in full.**
+
+---
+
+## UPDATE 19:58 -- EVERYTHING ON THE LIST IS CLOSED. THE STORE IS FINISHED.
+
+***measured 19:56 from the bundle buyer's own download page
+(`gumroad.com/d/4989d0ea539a8c01c1add2046bff3a38`) and from the receipt PDF.***
+
+### The receipt no longer says it twice
+
+| | Before, 18:35 | Now, 19:53 |
+|---|---|---|
+| Refund paragraph | **2x** | **1x** |
+| Thank-you message | **absent** | **present**, section 4j verbatim |
+
+The message reads as written: *"Your download link is below and holds two files
+- Checkup, and the Guide in the print size you chose... If the print size does
+not suit you, reply to this email and we will send you a different one, free."*
+
+### And it delivered the right two files
+
+```
+FILES OFFERED TO THIS BUNDLE BUYER: 2
+   TESTFILE - GatewayGuard Guide - 14 point print.pdf   68,709 bytes
+   TESTFILE - GatewayGuard Checkup v3.1.zip              3,059 bytes
+```
+
+Order `bKTU8Nul-_tGaDmjYB3Sjw==`, **$29.99**, variant **`14 point - bigger
+print`**.
+
+**This is a stronger test than the first bundle purchase.** That one bought 12
+point, which is the first version in the list -- a wrong mapping could still
+have looked right. **This one bought the second version and received the 14
+point file**, 68,709 bytes, matching the 14-point source exactly. **The
+version-to-file mapping is correct, not coincidental.**
+
+---
+
+## FINAL STATE -- ALL THREE PRODUCTS, MEASURED NOT ASSUMED
+
+| Product | URL | Price | Versions | Refund | Files delivered |
+|---|---|---|---|---|---|
+| Checkup | `/l/checkup` | $19.99 | 4 | 14-day | **1** -- the Checkup zip |
+| The Guide | `/l/guide` | $12.99 | 5 | none | **1** -- the chosen print size |
+| The bundle | `/l/bundle` | $29.99 | 5 | 14-day | **2** -- Checkup plus the chosen size |
+
+- **Six test purchases**, every download page read directly rather than trusted.
+- **Four distinct print sizes returned** -- 20, 18, 12, 14 -- across Guide and
+  bundle purchases.
+- **Every delivered file byte-identical** to its uploaded source.
+- **Copy: zero problems** -- no stray or trailing spaces, no asterisks, and none
+  of the eight phrases that were wrong at some point in the last three days.
+- **Every receipt correct** -- one refund paragraph, one thank-you, the variant
+  named, no charge taken.
+
+**Nothing on the store list remains open.**
+
+## WHAT IS NEXT
+
+**Licence v3.0.** Both DECISION NEEDED markers are answered *and now proven in
+the field*:
+
+- **Print sizes, Option B** -- a buyer receives the one size they chose,
+  demonstrated on four different sizes.
+- **Bundle refund, Option A** -- 14 days, live and printing on receipts.
+
+**Sections 1, 5 and 9 take paragraphs already drafted in full.** Then the
+`.docx` is rebuilt from the Markdown, which v3.0 made the source.
+
+**Still ahead of the real launch**, unchanged by today: the five real Guide PDFs
+and the signed Checkup build replace the `TESTFILE - ` stand-ins, and the
+licence needs a public web page for the checkout terms field (**T-EULA**).
+***measured 2026-09-02 and not re-checked: there is no licence page on
+gatewayguard.co.***
