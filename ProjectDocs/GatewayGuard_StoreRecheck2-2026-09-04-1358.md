@@ -630,3 +630,72 @@ versions and a buyer receives exactly one copy of it -- ***measured on order
 
 Then buy the 10-PC version once and I will read the download page, the same way
 I read the bundle's.
+
+---
+
+## UPDATE 19:30 -- THE 10-PC PACK IS FIXED. EVERY PRODUCT IS NOW PROVEN BY PURCHASE.
+
+***measured 19:28 from the 10-PC buyer's own download page
+(`gumroad.com/d/d86a4f7488d63783a8409c5b0271d78a`, token recovered from the
+receipt PDF's raw bytes), and from the files in `Test_Results\`.***
+
+```
+FILES OFFERED TO THIS 10-PC BUYER: 1
+   TESTFILE - GatewayGuard Checkup v3.1.zip   3,059 bytes
+```
+
+**One file. Not ten. Not nested.** The last time this version was bought it
+delivered `10PCs.zip` holding ten byte-identical copies named `- Copy` through
+`- Copy (10)`. **That is gone.**
+
+| | |
+|---|---|
+| Order | `5Uuzp504LaeHV3rE7w6iZw==` |
+| Total | **$79.99** -- the decided 10-PC price |
+| Variant on the receipt | **`10 PCs`** -- **no asterisks** |
+| Receipt refund text | **once** |
+| Receipt thank-you | **present** |
+| Zip MD5 | `01734b64d6eb3d8f2b9b6211fa4806bc` -- **identical to the uploaded source** |
+| Zip contents | the four files the licence names: the `.bat`, the `.ps1`, the read-me, the licence placeholder |
+
+---
+
+## THE STORE IS DONE -- ALL THREE PRODUCTS PROVEN END TO END
+
+**Every one has been bought, and in each case the download page was read
+directly rather than trusted.**
+
+| Product | Price | Versions | Refund | Bought | Files delivered |
+|---|---|---|---|---|---|
+| Checkup | $19.99 | 4 | 14-day | `5Uuzp504LaeHV3rE7w6iZw==` at $79.99 on the 10-PC version | **1** -- the Checkup zip |
+| The Guide | $12.99 | 5 | none | `oRdas6pjue4Bh-DGiv6aoA==`, `NHP951KeZRn-KjboUFw1aw==` | **1** -- the chosen print size only |
+| The bundle | $29.99 | 5 | 14-day | `ygejIi8e4fQA0kNdzGUIOQ==` | **2** -- Checkup plus the chosen print size |
+
+**Copy: zero problems across the store**, measured 19:18 -- no stray spaces, no
+trailing spaces, no asterisks, and none of the eight phrases that have been
+wrong at some point in the last three days.
+
+**Four different print sizes have come back on four different purchases** -- 20,
+18, 12 and 12 -- so the version mechanism is reading the buyer's choice, not
+repeating a stored value.
+
+---
+
+## THE ONE THING NOT YET CONFIRMED
+
+**The bundle's receipt message.** ***measured on the 18:35 bundle receipt: the
+refund paragraph printed twice and no thank-you appeared.*** The replacement is
+section **4j** of the paste file. **The next bundle purchase will show whether
+it took** -- Checkup's and the Guide's receipts are both already correct, one
+refund paragraph and one thank-you each.
+
+## AND THE LICENCE IS UNBLOCKED
+
+Both DECISION NEEDED markers on v3.0 are answered and now built:
+
+- **Print sizes -- Option B.** Answered 2026-09-02, and ***proven in the field:
+  a Guide buyer receives one size, the one they chose.***
+- **Bundle refund -- Option A.** ***measured live: 14-day money back guarantee
+  with the full fine print.***
+
+**Sections 1, 5 and 9 can take the paragraphs already drafted in full.**
