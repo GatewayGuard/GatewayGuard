@@ -439,3 +439,82 @@ separates a free fix to your version from a paid new annual version, and
 
 *Confirmed right: published, $29.99 against $32.98 apart -- saves $2.99 exactly
 as decided -- and both products are attached with Checkup on `One PC`.*
+
+---
+
+## UPDATE 18:55 -- THE BUNDLE WORKS. BUYER PICKS THE PRINT SIZE, PROVEN BY PURCHASE.
+
+***measured 18:52 from `store.gatewayguard.co/l/digital` and from
+`Test_Results\Gmail - You bought GatewayGuard Checkup and Security Walkthrough Guide!.pdf`.***
+
+**The rebuild as a normal digital product did exactly what it was supposed to.**
+
+| | |
+|---|---|
+| Type / published | **digital**, **published** |
+| Price | **$29.99** -- against $32.98 apart, saves $2.99 |
+| **Versions** | **5**, all five print sizes, `0` additional amount on each |
+| Order | `ygejIi8e4fQA0kNdzGUIOQ==`, 18:35, **$29.99** |
+| **Variant on the receipt** | **`12 point - standard print`** |
+| Refund | **`14-day money back guarantee`**, full fine print present |
+
+**The buyer chose a print size and the receipt recorded it.** That is the whole
+thing the last two days were about, and it is done.
+
+**Three other things came right in the same pass:**
+
+- **The two sentences that were false yesterday are now true.** *"as a PDF in
+  the print size you choose"* and *"The Guide in the print size you pick"* -- the
+  product can now do what they say. **Nothing to change.**
+- **`issue a fix` is back**, so the description no longer reads as promising the
+  paid annual version.
+- **The attributes carry what the buyer receives**, including a print-size row.
+
+**The bundle refund decision is MADE: Option A, 14 days.** It matches Checkup
+and the recommendation. **Licence Section 9 now has to be finalised with Option
+A's paragraph** -- that is one of the two DECISION NEEDED markers blocking
+licence v3.0, and it can now come out.
+
+---
+
+### THREE SPACING SLIPS, ALL ON NEW TEXT
+
+***measured:***
+
+| Where | What is there |
+|---|---|
+| Version 1 description | `and we will     send you a different one` -- **five spaces** |
+| Attribute 1, right cell | `The Guide - you pick the print size ` -- **trailing space** |
+| Attribute 3, left cell | `Digitally signed - Verifies the creator's identity. ` -- **trailing space** |
+
+Version 1's is section **2f**, version 1 description, one clean line. The two
+attribute cells only need the trailing space deleted.
+
+*Attribute row 3 also says one thing twice -- both cells are about the
+signature. Section 4g's third row pairs `Checkup is plain text you can read`
+with `It is digitally signed by us`, which is two facts. Your call.*
+
+### THE URL IS `digital`, WHICH IS A GUMROAD WORD, NOT A PRODUCT NAME
+
+***measured: the live address is `store.gatewayguard.co/l/digital`.***
+
+`bundle` is still held by the **old bundle-type product**, which is unpublished
+and now does nothing. **Delete or rename that one, then move this product to
+`bundle`.** Do it before any real sale -- a changed URL after real customers
+hold the old link is a support problem, and right now the only purchase is a
+test.
+
+### THE DOWNLOAD DID NOT FINISH -- STILL UNVERIFIED
+
+***measured: no bundle download reached `Test_Results\`.*** What is in
+`Downloads` is **`Unconfirmed 29519.crdownload`, 3,059 bytes, 18:41** -- an
+interrupted download, and 3,059 bytes is the size of the Checkup zip.
+
+**So the one thing still unproven is the thing the new structure exists for:**
+
+- **Does the 12-point purchase deliver TWO files** -- the Checkup zip and the
+  12-point Guide PDF -- **and only those two?**
+- **Not five PDFs, and not a zip inside a zip.**
+
+Open the receipt's **View content** again, let both files finish, and drop them
+in `Test_Results\`. I will confirm what a buyer actually receives.
