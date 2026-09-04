@@ -356,3 +356,86 @@ label-with-dash shape, and both its cells are about signing, so the row says one
 thing twice. Section 4g's three rows cover what you get, the print size, the
 platform and the signing -- **and the print-size row is the one a bundle buyer
 most needs to see.**
+
+---
+
+## UPDATE 16:32 -- THE ANSWER: NO, A BUNDLE HOLDS ONE VARIANT PER PRODUCT
+
+***measured 16:30, the published bundle's own data:***
+
+```
+bundle_products:
+  GatewayGuard Windows Security Walkthrough Guide   variant: "12 point - standard print"
+  GatewayGuard Checkup                              variant: "One PC"
+```
+
+**One `variant` field per included product. Not a list.** Bill asked if all five
+could be selected: **they cannot.** Gumroad's bundle asks the SELLER to pick one
+version of each included product, and the buyer never sees a choice.
+
+**So today every bundle buyer receives 12 point -- the smallest of the five.**
+
+### THIS MAKES TWO LIVE SENTENCES FALSE, ON A PUBLISHED PRODUCT
+
+***measured, the bundle description as it stands:***
+
+- *"The GatewayGuard Windows Security Walkthrough Guide, as a PDF **in the print
+  size you choose**."*
+- *"The Guide **in the print size you pick**."*
+
+**Neither is true.** The bundle is published and can take money, so this is the
+Tamper Protection shape on the page that takes the money -- the exact failure
+the briefing names as open item 0a. **It has to be fixed today, whichever route
+is chosen below.**
+
+**And 12 point is the worst of the five to have fixed.** The sizes exist as a
+vision accommodation. A large-print reader sent 12 point cannot read what they
+bought; a 12-point reader sent 18 point can read it perfectly well. **If one
+size must be fixed, it should be a large one.**
+
+### FOUR ROUTES
+
+**1. Give the BUNDLE its own five versions.** ***Not measured -- I cannot see if
+Gumroad offers "Add version" on a bundle product.*** ***measured: the bundle has
+`options: []`, so none exist today.*** If the control is there, five bundle
+versions each pointing at a different Guide variant restores the choice exactly.
+**Cleanest if it exists. Look for the Versions section on the bundle's edit
+page and tell me.**
+
+**2. Five separate bundle products**, one per size. Certain to work, and ugly:
+five listings, five prices to keep in step, and a storefront of near-duplicates.
+**Only if route 1 does not exist and route 3 is rejected.**
+
+**3. Fix one size, say so plainly, and keep the free swap.** *(recommended for
+today)* Set the bundle's Guide variant to **16 point - large print** and replace
+both sentences:
+
+```
+The GatewayGuard Windows Security Walkthrough Guide, as a PDF in 16 point large print. It covers the same ground on paper -- what each setting does, why it matters, and how to check and change it yourself. If a different size suits you better, reply to your receipt and we will send it free.
+```
+
+```
+Checkup v3.1, for one PC. The Guide in 16 point large print, with a free swap to any of the other four sizes. A log of every choice you made, saved on your own computer. If we issue a fix for the version of Checkup you bought, it is free.
+```
+
+**The free-swap sentence is not a workaround** -- it is already the promise in
+licence Option B and on all five Guide versions. This route just makes the
+bundle say it out loud.
+
+**4. Put all five in the bundle.** Contradicts your own Option B answer, so it
+reopens a settled decision. **Not recommended, and listed only so the choice is
+complete.**
+
+### TWO OTHER THINGS ON THE PUBLISHED BUNDLE
+
+**The refund is still not set.** ***measured: `refund_policy: none`, on a
+product that is now published and can take money.*** Checkup states 14 days and
+the Guide states no refund; the bundle states nothing. **Option A or B, section
+4h. This is the last open decision.**
+
+**`a change` is still there** where it should read `a fix` -- the licence
+separates a free fix to your version from a paid new annual version, and
+*"a change"* can be read as promising the annual update.
+
+*Confirmed right: published, $29.99 against $32.98 apart -- saves $2.99 exactly
+as decided -- and both products are attached with Checkup on `One PC`.*
