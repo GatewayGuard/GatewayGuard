@@ -12,6 +12,14 @@
 - **Checked against:** the live pricing section, `CLAUDE.md` product rules, and
   the 30-day refund decision
 
+
+> **DO NOT COPY FROM THIS FILE. 2026-09-04.** Every block of copy here is
+> hard-wrapped at about 66 characters, and **those wraps are real line
+> breaks** -- pasted into a Gumroad box they arrive as stray and doubled
+> spaces. Bill traced every spacing defect on the store to exactly this.
+> **Paste only from `GatewayGuard_GumroadPasteText-2026-09-04-1008.md`,**
+> where each field is one unbroken line. This file keeps the reasoning.
+
 ---
 
 ## BEFORE ANYTHING ELSE -- TWO THINGS THE SCREENSHOTS SHOW
