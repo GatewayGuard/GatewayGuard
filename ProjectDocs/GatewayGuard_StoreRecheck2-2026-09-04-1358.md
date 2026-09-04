@@ -518,3 +518,69 @@ interrupted download, and 3,059 bytes is the size of the Checkup zip.
 
 Open the receipt's **View content** again, let both files finish, and drop them
 in `Test_Results\`. I will confirm what a buyer actually receives.
+
+---
+
+## UPDATE 19:10 -- THE DOWNLOAD IS CORRECT. THE WHOLE CHAIN IS PROVEN ON ALL THREE PRODUCTS.
+
+***measured 19:08 from the buyer's own download page for order
+`ygejIi8e4fQA0kNdzGUIOQ==` (`gumroad.com/d/4db9e590439ccec291433c2c3f963ece`,
+the link taken out of the receipt PDF), and from the two files in
+`Test_Results\`.***
+
+### Exactly two files, and exactly the right two
+
+```
+FILES OFFERED TO THIS BUYER: 2
+   TESTFILE - GatewayGuard Guide - 12 point print (smallest).pdf   65,925 bytes
+   TESTFILE - GatewayGuard Checkup v3.1.zip                          3,059 bytes
+```
+
+**Not five PDFs. Not a zip inside a zip. The Guide file matches the version
+bought.** That is the structure doing its job.
+
+**Both are byte-identical to what was uploaded:**
+
+| File | MD5 downloaded | MD5 source |
+|---|---|---|
+| Checkup zip | `01734b64d6eb3d8f2b9b6211fa4806bc` | same |
+| 12-point PDF | `7730d19e6d0fbfe15493b4287cac05ac` | same |
+
+**The zip opens and holds the four files the licence names** -- the starter
+`.bat`, the `.ps1`, the read-me and the licence placeholder. **The PDF is
+genuinely 12 point** -- body type resolving to 12.00 pt on US Letter.
+
+*The `(1)` in `TESTFILE - GatewayGuard Checkup v3.1 (1).zip` on disk is Chrome
+adding a suffix because that filename already existed in the folder. ***measured:
+Gumroad delivers it as `TESTFILE - GatewayGuard Checkup v3.1.zip`.*** Nothing to
+fix.*
+
+### THIS ALSO PROVES THE FIX FOR THE 10-PC PACK
+
+**The bundle attaches the SAME Checkup zip to five versions, and a buyer
+receives one copy of it.** That is exactly what the four Checkup pack versions
+need. ***measured 2026-09-04, and unchanged: the 10-PC pack still delivers
+`10PCs.zip`, ten byte-identical copies nested inside a zip.*** **Attach the one
+zip to all four pack versions and it will behave the way the bundle just did.**
+
+### BOTH LICENCE MARKERS ARE NOW ANSWERED
+
+The two DECISION NEEDED markers blocking licence v3.0 were **the Guide's print
+sizes** and **the bundle refund**.
+
+- **Print sizes: Option B**, answered 2026-09-02 -- *"NO, ONLY ONE HE CHOOSES"*
+  -- and now built and proven in the store.
+- **Bundle refund: Option A**, ***measured on the live product: `14-day money
+  back guarantee` with the full fine print.***
+
+**v3.0 can be finalised.** Section 1, Section 5 and Section 9 take the Option B
+and Option A paragraphs already drafted in full. **Say the word and I will
+apply them.**
+
+### WHAT IS LEFT ON THE STORE
+
+1. **Three spacing slips** -- five spaces in version 1's description, a trailing
+   space on two attribute cells.
+2. **The URL is `digital`.** Free `bundle` from the old bundle-type product and
+   move this one to it, before any real sale.
+3. **The 10-PC pack still ships ten copies of one file.**
