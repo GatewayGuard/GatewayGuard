@@ -182,52 +182,84 @@ Every step says what you should see
 *Cells run 27 to 35 characters, so both sides carry real weight and the six
 facts are all distinct.*
 
-### 2f. The five version NAMES
+### 2f. The five versions -- name and description together
 
+> **A LABEL IS NEVER THE VALUE.** Every heading below says which box it is for.
+> **Copy only from inside the grey blocks.** On 2026-09-04 the Checkup pack
+> names went in as `**One PC**`, asterisks and all, because a bold heading in
+> this file read like the value. Headings are now worded so they cannot.
+
+**Version 1 -- paste into the NAME box:**
 ```
 12 point - standard print
 ```
-```
-14 point - bigger print
-```
-```
-16 point - large print
-```
-```
-18 point - extra large print
-```
-```
-20 point - largest print
-```
 
-### 2g. The five version DESCRIPTIONS
-
-**12 point**
+**Version 1 -- paste into the DESCRIPTION box:**
 ```
 The size of type used in most printed letters and forms. Choose this if ordinary print gives you no trouble. Not the right size? Write to support@gatewayguard.co and we will send you a different one, free.
 ```
 
-**14 point**
+**Version 1 -- additional amount:**
+```
+0
+```
+
+**Version 2 -- paste into the NAME box:**
+```
+14 point - bigger print
+```
+
+**Version 2 -- paste into the DESCRIPTION box:**
 ```
 A step up from an ordinary printed letter. Choose this if small print has started to tire your eyes. Not the right size? Write to support@gatewayguard.co and we will send you a different one, free.
 ```
 
-**16 point**
+**Version 2 -- additional amount:**
+```
+0
+```
+
+**Version 3 -- paste into the NAME box:**
+```
+16 point - large print
+```
+
+**Version 3 -- paste into the DESCRIPTION box:**
 ```
 Large print. Choose this if you hold pages further away than you used to, or reach for a brighter lamp. Not the right size? Write to support@gatewayguard.co and we will send you a different one, free.
 ```
 
-**18 point**
+**Version 3 -- additional amount:**
+```
+0
+```
+
+**Version 4 -- paste into the NAME box:**
+```
+18 point - extra large print
+```
+
+**Version 4 -- paste into the DESCRIPTION box:**
 ```
 Extra large print. Choose this if large-print books are what you reach for. Not the right size? Write to support@gatewayguard.co and we will send you a different one, free.
 ```
 
-**20 point**
+**Version 4 -- additional amount:**
+```
+0
+```
+
+**Version 5 -- paste into the NAME box:**
+```
+20 point - largest print
+```
+
+**Version 5 -- paste into the DESCRIPTION box:**
 ```
 The largest size we make. Choose this if you use a magnifier for ordinary print, or if a large-print book is still hard work. Not the right size? Write to support@gatewayguard.co and we will send you a different one, free.
 ```
 
-**Additional amount on all five:**
+**Version 5 -- additional amount:**
 ```
 0
 ```
@@ -250,57 +282,76 @@ Find `harden your PC`, replace with `secure your PC`.
 | 5 PCs | 30 | $49.99 | $10.00 |
 | 10 PCs | 60 | $79.99 | $8.00 |
 
-### Names
+### The four versions -- name, description and amount together
 
+> **A LABEL IS NEVER THE VALUE. Copy only from inside the grey blocks.**
+
+**Pack 1 -- paste into the NAME box:**
 ```
 One PC
 ```
-```
-3 PCs
-```
-```
-5 PCs
-```
-```
-10 PCs
-```
 
-### Descriptions
-
-**One PC**
+**Pack 1 -- paste into the DESCRIPTION box:**
 ```
 Checkup for one computer. Most people want this one.
 ```
 
-**3 PCs**
+**Pack 1 -- additional amount:**
+```
+0
+```
+
+**Pack 2 -- paste into the NAME box:**
+```
+3 PCs
+```
+
+**Pack 2 -- paste into the DESCRIPTION box:**
 ```
 Checkup for three computers - any three Windows 11 PCs you own. That works out at $11.66 a PC.
 ```
 
-**5 PCs**
+**Pack 2 -- additional amount:**
+```
+15
+```
+
+**Pack 3 -- paste into the NAME box:**
+```
+5 PCs
+```
+
+**Pack 3 -- paste into the DESCRIPTION box:**
 ```
 Checkup for five computers - any five Windows 11 PCs you own. That works out at $10.00 a PC.
 ```
 
-**10 PCs**
+**Pack 3 -- additional amount:**
+```
+30
+```
+
+**Pack 4 -- paste into the NAME box:**
+```
+10 PCs
+```
+
+**Pack 4 -- paste into the DESCRIPTION box:**
 ```
 Checkup for ten computers - any ten Windows 11 PCs you own. That works out at $8.00 a PC.
 ```
 
-### Additional amounts
-
-```
-0
-```
-```
-15
-```
-```
-30
-```
+**Pack 4 -- additional amount:**
 ```
 60
 ```
+
+### Every pack version gets THE SAME single file
+
+**Not one copy per PC.** ***measured 2026-09-04, `Test_ResultsPCs.zip`: the
+10-PC version delivered a zip containing ten byte-identical copies of the
+Checkup zip, named `- Copy (2)` through `- Copy (10)`.*** A pack sells more
+**licences**, not more files. Attach the one Checkup zip to all four versions.
 
 ### The paragraph to add to Checkup's description
 
