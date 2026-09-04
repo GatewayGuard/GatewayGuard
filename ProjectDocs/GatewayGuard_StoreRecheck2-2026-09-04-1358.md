@@ -287,3 +287,72 @@ Items 1-5 are done, 6 is the description paragraph above, and the `14 ways`
 typo joins them. **The 10-PC pack content is still unverified** -- the last
 download was ten copies of one file, and only a fresh pack purchase shows if
 that changed.
+
+---
+
+## UPDATE 15:34 -- CHECKUP AND THE GUIDE ARE 100%. THE BUNDLE IS EMPTY.
+
+***measured 15:32 from all three product pages' data payloads.***
+
+### Items 1-6: DONE
+
+| | |
+|---|---|
+| Checkup fine print | `within 14 days` -- ***measured: `14 ways` now occurs 0 times*** |
+| Guide description | **`once downloaded` paragraph deleted** |
+| Every version name, description and attribute, both products | **zero stray spaces, zero trailing spaces, zero asterisks, zero line breaks** |
+| Prices | Checkup `0/1500/3000/6000`, Guide five zeroes, bundle `2999` |
+
+**Both live products are clean. Nothing outstanding on either.**
+
+### The bundle -- four things, and the first one stops everything
+
+**1. IT IS EMPTY.** ***measured: `bundle_products: []`.*** It is a Gumroad
+bundle product with **no products in it**. A buyer who paid $29.99 today would
+receive nothing. Add Checkup and the Guide on the Content tab.
+
+**2. It is not published.** ***measured: `is_published: false`.*** Same state
+the Guide was in on 2026-09-03 -- the page loads over a direct link and cannot
+be bought. Publish after 1, 3 and 4 are settled, not before.
+
+**3. No refund policy is set at all.** ***measured: `refund_policy: none`.***
+The 30-day badge is gone, which is right, but nothing replaced it. **This is
+still the open decision** -- Option A (14 days) or Option B (no refund), both
+written out in section 4h. **My recommendation is A.** Whatever you pick has to
+match licence Section 9 word for word.
+
+**4. How does a bundle buyer choose their print size?** ***Not measured -- and
+it is the one thing I cannot see from here.*** The Guide has five versions;
+this bundle has none. When you add the Guide on the Content tab, Gumroad will
+either let the buyer pick at checkout or make you pick one size for everybody.
+**If it makes you pick, every bundle buyer gets the same size**, and that breaks
+the promise Option B put in the licence. **Tell me what the screen offers and I
+will work out the route.**
+
+### The description is right, with one word worth changing
+
+The text pasted cleanly -- clean paragraphs, no stray spaces. Two notes:
+
+- **`If we issue a change for the version of Checkup you bought, it is free.`**
+  Mine said **`a fix`**, and the difference matters: the licence deliberately
+  separates a **fix** to your version (free) from a **new annual version**
+  (a separate purchase). *"A change"* can be read as promising the annual
+  update. **Put `fix` back.**
+- The opening line `The program and the written guide, together, for one PC.`
+  is not there; it now opens on *"Some people want the work done for them."*
+  Fine if deliberate.
+
+### The attributes lost the two most important facts
+
+***measured, the two rows now live:***
+
+| | |
+|---|---|
+| `Works on Windows 11 Home and Pro` | `Plain text you can read.` |
+| `Digitally signed - Verifies the creator's identity.` | `Ensures the program has not been altered.` |
+
+**Nothing there says what the buyer receives.** Row 2 is also back to the
+label-with-dash shape, and both its cells are about signing, so the row says one
+thing twice. Section 4g's three rows cover what you get, the print size, the
+platform and the signing -- **and the print-size row is the one a bundle buyer
+most needs to see.**
