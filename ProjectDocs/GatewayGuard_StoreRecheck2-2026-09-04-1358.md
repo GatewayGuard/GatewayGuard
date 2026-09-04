@@ -162,3 +162,68 @@ two things are unconfirmed:
   refund fine print, and the Guide's fine print does print in the receipt.
 
 **Save that receipt and I will read both.**
+
+---
+
+## UPDATE 14:17 -- THE GUIDE IS ALMOST CLEAN, CHECKUP IS UNTOUCHED, AND BOTH PREDICTIONS LANDED
+
+***measured 14:15 from both product pages, and from
+`Test_Results\Gmail - You bought GatewayGuard Checkup!.pdf`.***
+
+### The pack purchase works, and it proved both open questions
+
+Order `ymY-t7oR6YmC9vttlPHtsA==`, 13:20, **$79.99** -- the 10-PC price is exactly
+right, and the receipt carries a `Variant` line as the Guide's does.
+
+**Both things I could not check yesterday are now confirmed, and both are bad:**
+
+1. ***measured, the receipt prints the variant as:*** `**10 PCs**` -- **the
+   asterisks reach the buyer.** They are in the receipt email, which cannot be
+   edited after sending.
+2. ***measured, the receipt prints:*** *"Email **support@gatewayguard.co (Not
+   .com)** from the address you bought with"* -- **the warning reaches the buyer
+   attached to the email address.**
+
+### The Guide -- three of four fixed
+
+| Version | Before | Now |
+|---|---|---|
+| 1 name | `12  point - standard print ` | `12 point - standard print ` -- **double space gone, trailing space remains** |
+| 2 | OK | **OK** |
+| 3 desc | leading space, `or  reach` | **OK** |
+| 4 desc | `a      different one` | **OK** |
+| 5 desc | `size?  Write` | **still there, and worse** |
+
+**Version 5 picked up a new fault while being edited by hand.**
+***measured, live:***
+
+> *"...if a large-print book is still **ard** work. Not the right size?&nbsp;&nbsp;Write to*
+> *support@gatewayguard.co..."*
+
+**The `h` is missing from "hard".** There is also still the double space after
+`size?`, and a line break before `support@`. **This is the third version of that
+one sentence.** Clear the box and paste section 2f's version 5 description
+whole -- do not repair it in place.
+
+### Checkup -- nothing was re-pasted
+
+***measured, all unchanged:*** the four names still carry `**` asterisks, the
+fine print still says `(Not .com)`, the `3 PCs` description still ends with a
+line break.
+
+*The four line breaks inside the fine print turn out not to matter -- the
+receipt prints the whole thing as one paragraph. Dropped from the list.*
+
+### What is left, in order
+
+1. **Checkup: re-paste the four version names** from section 3. They reach
+   buyers with asterisks.
+2. **Checkup: re-paste the refund fine print** from section 1a. Remove
+   `(Not .com)`.
+3. **Checkup: re-paste the `3 PCs` description** from section 3.
+4. **Guide: re-paste version 5's description** from section 2f, and clear the
+   trailing space from version 1's name.
+5. **The 10-PC pack still delivers ten copies of one file.** Unchanged. Attach
+   the single Checkup zip to all four versions.
+6. **The Guide's refund still says "final once downloaded."** Section 2b.
+7. **The bundle is still 404.**
