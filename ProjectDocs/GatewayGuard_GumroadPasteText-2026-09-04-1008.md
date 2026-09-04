@@ -136,43 +136,51 @@ No refunds allowed
 Thank you for choosing the GatewayGuard Windows Security Walkthrough Guide. Your download link is below -- it is the print size you chose, and the words are the same in all five. If the size does not suit you, reply to this email and we will send you a different one, free.
 ```
 
-### 2e. Details table -- four rows, each cell one line
+### 2e. Details table -- three rows, two independent details per row
 
-**Label 1**
-```
-Format
-```
-**Value 1**
-```
-PDF
-```
+***REVISED 2026-09-04 on Bill's correction.*** This section used to give
+label/value pairs -- `Format` / `PDF`. **That was wrong for this layout.**
+Gumroad renders the two cells pushed to opposite ends of a full-width row, with
+no spacing control, so a short word on each side turns the row into mostly gap.
+**The only lever is how long the two strings are.**
 
-**Label 2**
-```
-Print size
-```
-**Value 2**
-```
-You choose one of five. The words are identical.
-```
+***measured, Checkup's four live rows:*** they are already two independent
+details each -- `19 settings explained simply` / `Fixed only with your
+approval` -- and they read well. **That is the shape.**
 
-**Label 3**
+*The real defect in the Guide's row 1 was not the structure. It was that "five
+print sizes" and "choose only one" contradicted each other in the same row.
+Every pair below is checked for that.*
+
+**Row 1, left**
 ```
-Works on
+A PDF you download and keep
 ```
-**Value 3**
+**Row 1, right**
 ```
-Windows 11 Home and Pro
+Five print sizes - you pick one
 ```
 
-**Label 4**
+**Row 2, left**
 ```
-Needs Checkup?
+Works on Windows 11 Home and Pro
 ```
-**Value 4**
+**Row 2, right**
 ```
-No. The Guide is complete on its own.
+Printing your copy is allowed
 ```
+
+**Row 3, left**
+```
+You do not need Checkup to use it
+```
+**Row 3, right**
+```
+Every step says what you should see
+```
+
+*Cells run 27 to 35 characters, so both sides carry real weight and the six
+facts are all distinct.*
 
 ### 2f. The five version NAMES
 
@@ -375,42 +383,33 @@ WHAT YOU GET
 Checkup v3.1, for one PC. The Guide in the print size you pick. A log of every choice you made, saved on your own computer. If we issue a fix for the version of Checkup you bought, it is free.
 ```
 
-### 4g. Details table
+### 4g. Details table -- same shape as 2e
 
-**Label 1**
-```
-Works on
-```
-**Value 1**
-```
-Windows 11 Home and Pro
-```
-
-**Label 2**
-```
-What you get
-```
-**Value 2**
+**Row 1, left**
 ```
 Checkup for one PC, and the Guide
 ```
-
-**Label 3**
+**Row 1, right**
 ```
-Guide format
-```
-**Value 3**
-```
-PDF, in the print size you choose
+The Guide in the print size you pick
 ```
 
-**Label 4**
+**Row 2, left**
 ```
-Source
+Works on Windows 11 Home and Pro
 ```
-**Value 4**
+**Row 2, right**
 ```
-Plain text you can read. Digitally signed.
+No account, nothing to install
+```
+
+**Row 3, left**
+```
+Checkup is plain text you can read
+```
+**Row 3, right**
+```
+It is digitally signed by us
 ```
 
 ### 4h. Refund -- PICK ONE. The 30 days now on the screen is in neither option.
