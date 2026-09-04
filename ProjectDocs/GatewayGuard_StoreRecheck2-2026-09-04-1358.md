@@ -584,3 +584,49 @@ apply them.**
 2. **The URL is `digital`.** Free `bundle` from the old bundle-type product and
    move this one to it, before any real sale.
 3. **The 10-PC pack still ships ten copies of one file.**
+
+---
+
+## UPDATE 19:20 -- THE STORE MEASURES CLEAN. ONE ITEM LEFT.
+
+***measured 19:18 across all three published products -- every version name,
+every version description, every attribute cell, every description and every
+refund fine print.***
+
+| Product | URL | Price | Versions | Refund | Result |
+|---|---|---|---|---|---|
+| Checkup | `/l/checkup` | $19.99 | 4 | 14-day money back guarantee | **CLEAN** |
+| The Guide | `/l/guide` | $12.99 | 5 | No refunds allowed | **CLEAN** |
+| The bundle | `/l/bundle` | $29.99 | 5 | 14-day money back guarantee | **CLEAN** |
+
+**TOTAL PROBLEMS ACROSS THE STORE: 0.**
+
+Checked for: leading and trailing spaces, doubled spaces, stray `**` asterisks,
+and every phrase that has been wrong at some point in the last three days --
+`gatewayguide`, `whether`, `harden`, `once downloaded`, `14 ways`, `(Not .com)`,
+`issue a change`, `ard work`. **None of them appears anywhere.**
+
+### The URL is fixed
+
+***measured: the storefront lists the bundle at `store.gatewayguard.co/l/bundle`,
+and that address serves the new five-version digital product.***
+
+`/l/digital` **also still resolves to the same product**. Gumroad keeps the
+previous custom URL working as an alias, so the test receipt's link is not
+broken. **Nothing to clean up** -- it is one product with two addresses, and the
+storefront and every new receipt will use `/l/bundle`.
+
+### ONE ITEM LEFT ON THE WHOLE STORE
+
+**The 10-PC Checkup pack still delivers ten copies of one file.**
+***measured 2026-09-04 and unchanged: `10PCs.zip` is a zip holding ten
+byte-identical copies of the Checkup zip, named `- Copy` through
+`- Copy (10)`.***
+
+**The bundle has now proved the fix.** It attaches the same Checkup zip to five
+versions and a buyer receives exactly one copy of it -- ***measured on order
+`ygejIi8e4fQA0kNdzGUIOQ==`: two files offered, one of them that single zip.***
+**Do the same on the four pack versions: one Checkup zip, attached to each.**
+
+Then buy the 10-PC version once and I will read the download page, the same way
+I read the bundle's.
