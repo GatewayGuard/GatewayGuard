@@ -227,3 +227,63 @@ receipt prints the whole thing as one paragraph. Dropped from the list.*
    the single Checkup zip to all four versions.
 6. **The Guide's refund still says "final once downloaded."** Section 2b.
 7. **The bundle is still 404.**
+
+---
+
+## UPDATE 15:10 -- ITEMS 1-5 ARE CLEAN. TWO THINGS LEFT.
+
+***measured 15:08 from both product pages' data payloads.***
+
+### Everything re-pasted is correct
+
+| | |
+|---|---|
+| Checkup version names | `One PC` `3 PCs` `5 PCs` `10 PCs` -- **asterisks gone** |
+| Checkup `(Not .com)` | **gone** |
+| Checkup `3 PCs` trailing break | **gone** |
+| Guide version 1 name | `12 point - standard print` -- **trailing space gone** |
+| Guide version 5 | **`hard work` restored**, double space and line break gone |
+| Guide versions 2, 3, 4 | clean |
+| Guide `harden` | **changed to `secure`** -- not asked for, and right |
+| All amounts | `0 / 1500 / 3000 / 6000` and five zeroes on the Guide |
+
+**Zero stray spaces, zero trailing spaces, zero asterisks across every name,
+description and attribute on both products.**
+
+### WHY YOU COULD NOT FIND #6 -- you already fixed it, in the field I named
+
+***measured, the Guide's refund fine print, now exactly section 2b:***
+
+> *"All sales final. Every setting the Guide covers is published free at
+> gatewayguard.co, so you can read the whole scope before you buy..."*
+
+**That field is right.** The `once downloaded` sentence I am still seeing is
+somewhere else -- **it is the last paragraph of the product DESCRIPTION**:
+
+> *"All Sales Final: Due to the instant delivery nature of digital files
+> (PDF/reference guides), all standalone guide sales are final once downloaded.
+> Free online documentation is available at gatewayguard.co to preview all 19
+> covered security settings before purchase."*
+
+**Delete that paragraph from the description.** It is the old refund text
+duplicated, and Gumroad prints the refund policy by itself -- so the buyer reads
+the same terms twice, in two different wordings, one of which carries a
+condition licence v3.0 does not have. **This is the same duplication that was in
+the Guide's receipt thank-you, now living in the description.**
+
+### ONE NEW ONE, AND IT IS IN THE REFUND TERMS
+
+***measured, Checkup's fine print:*** *"write to us within **14 ways** of
+buying"*
+
+**`ways` should be `days`.** ***measured: `14 days` occurs 0 times, `14 ways`
+occurs 1 time.*** It is one letter, in the sentence that states the refund
+window, so it is worth a clean re-paste of the whole field from section 1a
+rather than a one-character edit.
+
+### Then item 7
+
+Items 1-5 are done, 6 is the description paragraph above, and the `14 ways`
+typo joins them. **The 10-PC pack content is still unverified** -- the last
+download was ten copies of one file, and only a fresh pack purchase shows if
+that changed.
