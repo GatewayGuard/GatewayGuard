@@ -495,6 +495,24 @@ Checkup is plain text you can read
 It is digitally signed by us
 ```
 
+### 4j. Receipt message -- the field that is printing the refund twice
+
+***measured 2026-09-04 on the receipt for order `ygejIi8e4fQA0kNdzGUIOQ==`: the
+refund paragraph appears TWICE and the words "Thank you for choosing" appear
+ZERO times.*** The refund text has been pasted into the **receipt message**
+field as well as the refund field, and Gumroad prints the refund policy on its
+own. **Same defect the Guide had at 07:52 and that was fixed by 13:55.**
+
+**Clear that box and paste this instead:**
+
+```
+Thank you for choosing GatewayGuard Checkup and the Security Walkthrough Guide. Your download link is below and holds two files - Checkup, and the Guide in the print size you chose. Nothing on your PC is changed unless you say yes, and you can read every line of Checkup yourself. If the print size does not suit you, reply to this email and we will send you a different one, free.
+```
+
+*It names both files, so a buyer seeing two downloads knows both are theirs; it
+carries the permission promise; and it carries the free swap, which is the way
+back for someone who picked the wrong size.*
+
 ### 4h. Refund -- PICK ONE. The 30 days now on the screen is in neither option.
 
 **OPTION A -- 14 days.** *(recommended -- reasoning in
