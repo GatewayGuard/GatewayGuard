@@ -370,6 +370,38 @@ If a computer fails and you replace it, email us at support@gatewayguard.co and 
 
 # 4. THE BUNDLE
 
+> **BUILD IT AS A NORMAL PRODUCT, NOT AS A GUMROAD "BUNDLE".**
+> ***measured by Bill at the editor, 2026-09-04: a Gumroad bundle product has no
+> Versions section at all.*** It stores ONE fixed variant per included product
+> -- ours was stuck on `12 point - standard print` -- so the buyer could never
+> pick a print size, and licence Option B promises they can.
+>
+> **A "bundle" here only has to mean a product that contains both files.** A
+> normal digital product with five versions does that, and the buyer picks.
+> **This is what section 4i always described; the instructions just did not say
+> "normal product" out loud.**
+>
+> **What you give up, and it is real:** the native bundle auto-follows the two
+> products, so a file change there flows through. A normal product does not --
+> **if Checkup's zip or a Guide PDF changes, this product's files must be
+> updated too.** Two files, five versions. The real files do not exist yet, so
+> the cost is paid once, when they land.
+
+### 4z. BUILD ORDER -- the slug will block you if you do this out of sequence
+
+1. **Take the slug off the old bundle first.** The existing bundle product owns
+   `bundle`, and Gumroad will not let a new product claim a URL another product
+   is using. Change the old one to `bundle-old`, or delete it outright.
+2. **Create a NEW product.** Type: digital. Not a bundle.
+3. Name, URL, summary, price, description, details -- sections 4a to 4g below.
+4. **Turn on Versions and create the five** -- section 4i.
+5. **Content tab: select a version, then attach TWO files to it** -- Checkup's
+   zip and that one Guide PDF. Repeat five times.
+   **Two separate files, never a zip inside a zip**, and never five PDFs on one
+   version.
+6. Set the refund -- section 4h. **This is still your decision.**
+7. Publish. Then buy it once and tell me, and I will read what a buyer receives.
+
 ### 4a. Name
 
 ```
@@ -492,16 +524,25 @@ Fine print:
 A bundle includes the Guide, which is sold without a refund. Every setting the Guide covers is published free at gatewayguard.co, so you can read the whole scope before you buy. For that reason a bundle purchase is not refundable. If you want Checkup with its 14-day refund, buy Checkup on its own.
 ```
 
-### 4i. The bundle's five print-size versions
+### 4i. The five versions -- what goes in each
 
-Same names, descriptions and `0` amounts as sections **2f** and **2g** above.
-Each version's content is **Checkup's file plus that one Guide PDF**.
+**Names and descriptions: use sections 2f's five, unchanged.** They are already
+written as one unbroken line each, and the buyer is making the same choice here
+as on the Guide.
 
----
+**Additional amount: `0` on all five.** The price is $29.99 whichever size they
+pick.
 
-## AFTER YOU PASTE -- ONE CHECK THAT COSTS NOTHING
+**Content on each version -- TWO files:**
 
-Tell me when you have saved, and I will re-read every field from the live pages
-and report any string that does not match this file character for character.
-**That is a measurement, not a look** -- it catches a stray space no eye will
-see, which is the whole reason this file exists.
+| Version | File 1 | File 2 |
+|---|---|---|
+| 12 point - standard print | the Checkup zip | the 12 point Guide PDF |
+| 14 point - bigger print | the Checkup zip | the 14 point Guide PDF |
+| 16 point - large print | the Checkup zip | the 16 point Guide PDF |
+| 18 point - extra large print | the Checkup zip | the 18 point Guide PDF |
+| 20 point - largest print | the Checkup zip | the 20 point Guide PDF |
+
+**The same Checkup zip on all five.** ***The 10-PC pack is the lesson here:
+attaching copies produced ten identical files the buyer could not choose
+between.*** One file, attached five times, is right.
