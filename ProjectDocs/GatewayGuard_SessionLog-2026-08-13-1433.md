@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-04 20:00 ET
+- **Last Modified:** 2026-09-05 00:23 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -14,6 +14,136 @@
   Downloaded by Bill at session end and uploaded to project immediately.
 
 ---
+---
+
+## Session: 2026-09-04 20:19 to 2026-09-05 00:23 [Claude Code -- CGDELL] -- I FILLED CLOUD'S MEMORY WITH A WEB ARTICLE, AND THE MOUSE FIX NEEDED TWO MECHANISMS NOT ONE
+
+**Four asks, and the two that took longest were both caused by me.**
+
+### THE PCMAG ARTICLE, AND WHO PUT IT THERE
+
+Bill asked why Cloud was full. ***measured, commit `17fc9fa`, 2026-09-03:***
+a Claude Code session ran a broad `git add` and committed **665 files** --
+402 from `Store_TestFiles`, 262 from `ProjectDocs`. **256 were a saved PCMag
+web article, 14.6 MB, straight into the folder Cloud reads.** The commit
+message was about Gumroad receipts and never mentioned 665 files or a web
+page. The author field says Bill because that is the repository's git
+identity on every commit; only the Claude trailer distinguishes them.
+
+**Cloud scope cut 19,026 KB -> 3,476 KB, an 82% reduction.** Also retired 26
+superseded or binary documents and `Tool\Run_Comments`, which held a
+`Recovery Keys.txt` **inside Cloud's scope** -- it contained the words
+"Recovery Keys" and no keys. Nothing deleted; everything is in `Archive\`.
+
+**Gate 26 is the guard: `Tool2\Run-RepoBloatCheck.bat`, run at session
+start.** Its check 4 -- commits adding more than 60 files -- would have
+caught this on the day. **Its first run found a second one nobody had looked
+for: a saved Gmail receipt, 63 files, 22.9 MB.** Retired; the receipts
+survive as five PDFs.
+
+### THE MOUSE -- ONE SYMPTOM, TWO MECHANISMS, AND I CHASED THE WRONG ONE TWICE
+
+Bill said the 30-pixel drag threshold did nothing. It was set correctly.
+**The first real defect was mine:** the script wrote the registry and never
+applied it live, and when I added the live call I used `0x004E` for height on
+the strength of its name. ***measured:*** `0x004E` is invalid, error 1439.
+`0x004C` sets width, **`0x004D` sets height.** So the threshold went live at
+**200 wide by 30 tall -- which behaves like no change at all**, because a
+drag only has to beat one axis.
+
+Then Bill: *"working on the mouse, but not on the laptop flat below keyboard
+mouse."* **That was the answer.** The touchpad drags through the Precision
+Touchpad driver's own tap-twice-and-hold gesture, which never consults the
+threshold. **No number could ever have fixed the touchpad.** `TapAndDrag`
+1 -> 0.
+
+**I had flagged the touchpad as unmeasured that same morning and then spent
+two rounds turning the threshold dial instead of testing it.** That is the
+lesson worth keeping.
+
+### WEBSITE -- FOUR CLAIMS THE BUILD DOES NOT SUPPORT
+
+- **The pricing section said the annual update "scans your drives again".**
+  ***measured against ascii43:*** one scan, `Start-MpWDOScan` at line 4375,
+  no drive-scope parameter, `C:` only. On the page that takes the money.
+- **`fast-startup` and `wake-on-lan` both said the reminders "still run".**
+  FT-203: created by `schtasks.exe`, no battery flags, so they never run on
+  a laptop on battery.
+- **`wake-on-lan`'s tag was past tense and used the company name for the
+  product name.**
+- Windows Hello now leads with the recommendation; Tamper Protection says it
+  is essential -- both from Bill's ascii43 notes.
+
+**Checked and deliberately NOT changed:** setting 6's page. Bill's note says
+Checkup does not apply it; ***measured, line 6389:*** it does, under
+`CanAuto=$true`, falling back to manual only when Tamper Protection blocks
+the write. The page is right; that is an F6 wording item.
+
+**Stale in the briefing:** it says the copy pass is done on ZERO pages. It is
+complete on all 19.
+
+### POWERSHELL FULL SCREEN
+
+***measured:*** Windows Terminal is installed and configured, but is **not**
+the default console host, so PowerShell opened in conhost at 120x50. Terminal
+now opens maximized and the Start Menu shortcut is set to Maximized.
+**Deliberately not changed:** the per-app `HKCU:\Console` values, which
+govern every PowerShell console and risk re-earning the box-width defects;
+and making Terminal the default host, which changes what Checkup runs in --
+Bill's call. **Found and reported: QuickEdit is on**, which is the FT-63
+click-freeze trigger.
+
+### WHY CLOUD COULD NOT FIND THE ascii43 RESULTS -- I ANSWERED THIS WRONG TWICE
+
+First answer: `Test_Results\` is outside the connector scope. True, but
+**Bill corrected me** -- his notes have been quoted in full in the run2
+triage, in `ProjectDocs\`, since 2026-08-30.
+
+Second answer: **no file in scope had the words "test results" in its name.**
+Also true, also not the cause -- and the file I had just built repeated the
+mistake, named `FieldRunEvidence`. Renamed
+`GatewayGuard_TestResults-ascii43-2026-09-04-2345.md`, now a hub naming the
+four analysis documents. Builder: `Tool2\build_fieldrun_sourcepack.py`.
+
+**Then Bill: "i gave him a copy of the .md file right away."** So the real
+cause is the message he had pasted three times -- **an upload into a full
+project knowledge is refused.** Same root as the first ask: the PCMag article
+filled it on 09-03, and everything after that bounced.
+
+**Both wrong answers had correct measurements behind them. The conclusions
+were too quick, and each ignored something Bill already knew.**
+
+---
+
+### FOR BILL -- WHERE THINGS STAND
+
+1. **Try the touchpad.** `TapAndDrag` is off; it may need a sign-out. Settings
+   > Bluetooth and devices > Touchpad > Taps -- the tap-twice-and-drag box
+   should be clear.
+2. **Cloud may still be holding the old snapshot.** Removing files from the
+   repo does not remove them from project knowledge. ***inferred, not
+   measured -- I cannot see Cloud's state:*** remove the existing synced
+   content in the Cloud project first, especially anything named "Spy on Me
+   No More", then sync, then ask for the ascii43 test results.
+3. **`GatewayGuard_License-2026-08-24-1820.docx` is still in Cloud's scope
+   and unreadable.** It would not move -- permission denied, open in Word.
+   Close it and it goes to `Archive\`.
+4. **Unchanged and still ahead of launch:** ascii43 is half built -- F4, the
+   F5 remnants and the F6 wording block. The five real Guide PDFs and the
+   signed build still replace the `TESTFILE -` stand-ins, and the licence
+   still needs a public web page.
+
+### FOR THE NEXT CLAUDE
+
+1. **Run gate 26 at session start.** It is now a rule in `CLAUDE.md`.
+2. **Never `git add` a directory or a wildcard without looking at what is in
+   it.** Stage by name. The count in `git status` is a claim about your own
+   change -- read it before committing.
+3. **Never write a flag value you have not seen work**, Win32 calls included.
+   `0x004E` cost a round trip because its name was convincing.
+4. **Name a document with the words the person asking will use.** A correct
+   file nobody can find is not filed, it is lost.
+
 ---
 
 ## Session: 2026-09-02 18:35 to 2026-09-04 20:00 [Claude Code -- CGDELL] -- THE STORE IS FINISHED AND PROVEN BY PURCHASE, AND THE SPACING BUG WAS MINE ALL ALONG
