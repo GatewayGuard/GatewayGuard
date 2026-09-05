@@ -1,0 +1,83 @@
+﻿======================================================================
+  MOUSE SETTINGS -- WHAT IS STORED, AND WHAT IS ACTUALLY IN FORCE
+======================================================================
+  machine  : CGDELL
+  user     : willi
+  run at   : 2026-09-04 21:05:31
+  booted   : 2026-08-31 13:42:48
+
+  READ-ONLY. Nothing on this PC was changed by running this.
+
+======================================================================
+  1. THE DRAG THRESHOLD -- the one that stops folders moving by slip
+======================================================================
+
+  STORED in the registry  : DragHeight 30 , DragWidth 30
+  IN FORCE right now      : height 30 , width 30 pixels
+
+  Windows default is 4. This project sets 30.
+
+  RESULT: SET AND WORKING. Both stored and in force at 30 pixels.
+          You must move the mouse about 8 mm with the button held
+          down before Windows will drag anything.
+
+======================================================================
+  2. THE THREE THINGS THAT CAN DEFEAT A CORRECT DRAG THRESHOLD
+======================================================================
+
+  A 30-pixel threshold is not the whole story. Each of these can still
+  let a folder move, and none of them is obvious.
+
+  -- ClickLock (Settings, Mouse, Turn on ClickLock) -------------------
+     stored : (not set)   hold time : 1200 ms
+     Off. Good -- this is not what is moving your folders.
+
+  -- Touchpad tap-and-drag -------------------------------------------
+     TapAndDrag : 1   (1 = on, 0 = off)
+     ON. A tap-and-hold on the touchpad starts a drag by a
+     different route. If folders move when you are using the
+     touchpad and not the mouse, this is the likely cause.
+
+  -- Double-click speed, as a drag cause ------------------------------
+     stored : 650 ms   in force : 650 ms
+     Comfortable. Not a cause.
+
+======================================================================
+  3. THE CHECKUP MOUSE SETTINGS (Run-MouseSetup.bat)
+======================================================================
+
+  These are the settings that make Checkup readable in a console.
+
+  [SET     ] MouseWheelRouting    is 2            wanted 2
+               Scroll what is under the pointer, with no click. Avoids FT-63.
+  [SET     ] WheelScrollLines     is 5            wanted 5
+               5 lines per notch instead of 3.
+  [SET     ] DoubleClickSpeed     is 650          wanted 650
+               A slow double-click still counts as one.
+  [SET     ] DoubleClickWidth     is 6            wanted 6
+               Pointer may drift 6 px between the two clicks.
+  [SET     ] DoubleClickHeight    is 6            wanted 6
+               Same, vertically.
+  [SET     ] CursorBaseSize       is 64           wanted 64
+               Large pointer.
+  [SET     ] SnapToDefaultButton  is 1            wanted 1
+               Pointer jumps to the default button in a dialog.
+
+  7 of 7 set as wanted, 0 not.
+
+======================================================================
+  4. IN FORCE RIGHT NOW, straight from Windows
+======================================================================
+
+  Drag threshold      : 30 x 30 pixels
+  Double-click time   : 650 ms
+  Double-click area   : 6 x 6 pixels
+  Wheel scroll lines  : 5
+  Mouse buttons       : 16
+  Buttons swapped     : False
+  Wheel present       : True
+
+  These are the numbers Windows is using at this moment. Where one of
+  them disagrees with section 3, the setting is stored but has not
+  taken effect yet -- sign out and sign back in.
+======================================================================
