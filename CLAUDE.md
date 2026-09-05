@@ -582,6 +582,58 @@ Full detail, with the evidence for each failed step: briefing section 8a.
 
 ---
 
+## REVIEW AND CLEAN OUT THE REPOSITORY AT THE START OF EVERY SESSION
+
+**Bill, 2026-09-04: "New rule at the start of every session review and
+cleanout the repo as much as possible."**
+
+**Run `Tool2\Run-RepoBloatCheck.bat` (gate 26) as part of session start**,
+beside the briefing and `CURRENT.md`. Read-only, no admin, moves nothing.
+Then act on what it reports — do not just read it out.
+
+**What earned this, and it was mine.** ***measured, commit `17fc9fa`,
+2026-09-03:*** a Claude Code session working on Gumroad store defects ran a
+broad `git add` and committed **665 files** — 402 from `Store_TestFiles`, 262
+from `ProjectDocs`. **256 of those were a saved PCMag web article and its
+`_files` folder, 14.6 MB, landing directly in the folder Cloud reads.** The
+commit message described receipts and refund terms and **never mentioned 665
+files or a web page**. A day later Cloud refused to sync because project
+knowledge was full, and by then the article was **79% of everything Cloud
+could see**. A second commit the same day, `b4b999f`, added 177.
+
+Gate 26's first run found a **second** one nobody had looked for: a saved
+Gmail receipt, **63 files and 22.9 MB**, in `Test_Results\`. Both are now in
+`Archive\`. The receipts themselves survive as PDFs, which is what the record
+actually needed.
+
+**The five things it checks, and why each is there:**
+
+1. **The size of what Cloud can see**, against a 4 MB budget. Cloud gives no
+   warning before it fills; it simply refuses.
+2. **Files in Cloud's scope Cloud cannot read** — `.docx`, `.pdf`, images.
+   They spend the budget and return nothing. This is why twins exist.
+3. **Files over 20 KB that `CURRENT.md` does not name.** Not proof of
+   anything. It is where dead weight hides.
+4. **Commits that added more than 60 files at once.** This is the check that
+   would have caught `17fc9fa` on the day. **A commit message that does not
+   account for its own file count is the warning sign.**
+5. **Any folder ending `_files`** — what a browser's Save Page As produces.
+   A third-party page is never a project document.
+
+**THE HABIT THAT CAUSED IT, stated plainly so it is not repeated: never
+`git add` a directory or a wildcard when you have not looked at what is in
+it.** Stage the files the work actually touched, by name. If a commit is
+about receipts, it contains receipt files and nothing else. The count in
+`git status` is a claim about your own change — read it before committing,
+the way any other claim gets read.
+
+**Retire, do not delete.** `git mv` into `Archive\`, which is outside the
+connector scope. The file stays tracked, stays on disk, stays recoverable,
+and stops costing Cloud anything. Nothing in this project has ever needed to
+be deleted to solve a capacity problem.
+
+---
+
 ## THE TEN-MINUTE RULE -- STOP AND WRITE IT UP
 
 Bill, 2026-08-12: *"If an issue can't be solved in 10 minutes or so, write up
