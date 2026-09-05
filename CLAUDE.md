@@ -9,7 +9,21 @@
   September 1 on 2026-08-30.** Exactly two weeks later, same weekday.
   **Never write a countdown here** -- "six days" was wrong the next morning
   and stayed wrong. Write the date; let the reader subtract.
-- **Current build:** ascii43 (9,002 non-blank lines / 9,382 total) — **IN PROGRESS, not finished and never field run.** F1, F2, F3, F5 and part of F6 are committed; F4 (second drive), the F5 remnants and the F6 wording block are not built. Always confirm current build number before any edit session
+- **Current build:** ascii43 (9,002 non-blank lines / 9,382 total) — **BUILT AND FIELD RUN TWICE.** F1, F2, F3, F5 and part of F6 are in it.
+  - **THE NEXT BUILD IS ascii44. THE REMAINING WORK IS NOT "FINISHING ascii43".**
+    Bill, 2026-09-05: *"hope you mean ascii44."* He was right, and this line
+    was why: it said **"IN PROGRESS, not finished and never field run"** while
+    ***measured:*** `Test_Results\FieldRun-ascii43\` holds **five run logs**,
+    2026-08-26 18:07 through 2026-08-30 11:04, triaged in two documents. It
+    was field run twice. The line was wrong on the very sentence that tells
+    you to confirm the build number, so it misled the reader it existed to
+    protect.
+  - **Still to build, and it lands in ascii44:** F4 (second drive), the F5
+    remnants, and the F6 wording block. Plus FT-220, already recorded as
+    ascii44. **A build that has been field run is spent** — Build Naming Rules
+    below: never reuse a build number, and same-day superseding builds still
+    increment. New work means a new number, always.
+  - Always confirm the current build number before any edit session
   - **Line-count convention:** the quoted figure is the `Measure-Object -Line`
     **non-blank** number, per Playbook Appendix A. The old "ascii36 (6,134
     lines)" entry used the total-lines figure instead — two different methods

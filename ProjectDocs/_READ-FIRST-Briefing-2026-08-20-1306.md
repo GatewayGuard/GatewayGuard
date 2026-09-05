@@ -660,7 +660,13 @@ the real documents survive under hyphenated names.
    Protection shape on the page that takes the money. It is left as received
    because the honest fix waits on F4's measurement.
 
-1. **FINISH ascii43, then field-run it on SANDY.** *(Updated 2026-08-23. The
+1. **BUILD ascii44, then field-run it on SANDY.** *(Updated 2026-09-05. This
+   item said "FINISH ascii43" and that is now wrong: **ascii43 was field run
+   twice**, 2026-08-26 to 2026-08-30, five logs in
+   `Test_Results\FieldRun-ascii43\` and two triage documents. A build that has
+   been field run is spent -- the remaining work takes a new number. Bill
+   caught this: "hope you mean ascii44.")*
+   *(Updated 2026-08-23. The
    guide is no longer the blocker -- it is written, see section 1. **F6 is the
    block to do**: the biggest, entirely unblocked, and pure wording.)*
  *(Updated 2026-08-22.
