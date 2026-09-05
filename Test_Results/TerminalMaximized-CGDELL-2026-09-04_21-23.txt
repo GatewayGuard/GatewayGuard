@@ -1,0 +1,57 @@
+﻿======================================================================
+  MAKE THE POWERSHELL WINDOW OPEN FULL SCREEN EVERY TIME
+======================================================================
+  machine : CGDELL
+  user    : willi
+  run at  : 2026-09-04 21:23:49
+  mode    : APPLY
+
+  Not administrator. Everything here is your own user profile.
+
+----------------------------------------------------------------------
+  1. WINDOWS TERMINAL -- open every new window full screen
+----------------------------------------------------------------------
+
+  settings file : C:\Users\willi\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
+  launchMode now: (not set)
+  backup written: C:\Users\willi\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json.gg-backup-2026-09-04_21-23
+  SET AND READ BACK. launchMode is maximized.
+
+----------------------------------------------------------------------
+  2. THE START MENU SHORTCUT -- open full screen from Start
+----------------------------------------------------------------------
+
+  Using your own copy of the shortcut.
+  shortcut     : C:\Users\willi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk
+  window style : 1   (1 = normal window, 3 = maximized)
+  SET AND READ BACK. Window style is now 3.
+
+----------------------------------------------------------------------
+  3. REPORTED, NOT CHANGED -- QuickEdit mode
+----------------------------------------------------------------------
+
+  QuickEdit, the default for all console windows : 1
+  QuickEdit, PowerShell only : 1
+
+  QuickEdit ON means clicking inside a console window starts selecting
+  text, and while text is selected the program STOPS until you press
+  Escape or Enter. That is FT-63, and it is the most likely reason a
+  window looks frozen after you click in it.
+
+  Checkup protects itself -- it re-asserts the console flags before
+  every read. Your own PowerShell window does not.
+
+  Not changed here on purpose: turning it off costs you click-to-select,
+  which is a real loss. To turn it off by hand: click the icon at the
+  top left of the window, choose Properties, and clear QuickEdit Mode.
+
+----------------------------------------------------------------------
+  WHEN THIS TAKES EFFECT
+----------------------------------------------------------------------
+
+  Close the PowerShell window and open a NEW one from Start. Windows
+  reads both of these when the window opens, so the window you are
+  reading this in will not change.
+
+  TO UNDO: run Run-TerminalMaximized-Revert.bat.
+======================================================================
