@@ -118,14 +118,21 @@ if (-not $hasPtp) {
 } else {
     Say ("     TapAndDrag : " + (Show $tapDrag) + "   (1 = on, 0 = off)")
     if ((Show $tapDrag) -eq '1') {
-        Say "     ON. Tapping twice and holding on the touchpad starts a drag"
-        Say "     without pressing a button. NOT MEASURED: nobody has tested"
-        Say "     if the 30-pixel threshold applies to that route as well."
-        Say "     If folders still move when you use the touchpad but never"
-        Say "     when you use the mouse, turn this off in Settings, Bluetooth"
-        Say "     and devices, Touchpad, Taps."
+        Say "     ON, AND THIS IS A CONFIRMED CAUSE."
+        Say ""
+        Say "     measured on CGDELL 2026-09-04: with the drag threshold at"
+        Say "     200 x 200, the mouse obeyed it and the touchpad did not."
+        Say "     Bill: 'working on the mouse, but not on the laptop flat"
+        Say "     below keyboard mouse.'"
+        Say ""
+        Say "     The touchpad driver starts its own drag on a double-tap and"
+        Say "     never asks Windows about the threshold, so NO number in the"
+        Say "     drag-threshold script can fix the touchpad. This setting is"
+        Say "     the one that governs it."
+        Say ""
+        Say "     Fix: run Run-SetTouchpadDrag.bat."
     } else {
-        Say "     Off. Not a cause."
+        Say "     Off. The touchpad will not start a drag from a double-tap."
     }
 }
 Say ""
