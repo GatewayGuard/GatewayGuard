@@ -85,7 +85,7 @@ three named exceptions and a log-file requirement. **That has been
 withdrawn.**"*
 
 **And the reason was written down** -- ***sourced,
-`Decisions-RefundAndTerms-2026-08-22-1510.md`:***
+`GatewayGuard_Decisions-RefundAndTerms-2026-08-22-1510.md`:***
 
 > *"**Any condition at all.** 'No questions asked' earns its keep only if there
 > are none. A single hedge undoes the whole sentence."*

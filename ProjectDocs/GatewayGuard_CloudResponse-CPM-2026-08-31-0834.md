@@ -313,7 +313,7 @@ all**, because F6 is corrections. It would ship free regardless, and the deferra
 question collapses into "ship it now or ship it in a free patch later" -- a
 scheduling question with no revenue attached.
 
-**CONFIRM THIS.** `CURRENT.md` names `-2026-08-26-0302.md` as the live
+**CONFIRM THIS.** `CURRENT.md` names `GatewayGuard_DecisionsForBill-2026-08-26-0302.md` as the live
 DecisionsForBill and I read the 08-25 one. Check it against the live file and
 against `GatewayGuard_License-2026-08-25-1400-TEXT.md` Section 12. **If corrections
 are free, half of Q4 is already answered by the contract.**

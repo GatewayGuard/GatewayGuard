@@ -5,8 +5,8 @@
 - **Document Name:** GatewayGuard_DefectPassResponse
 - **Last Modified:** 2026-08-22 15:25 ET
 - **Last Editor:** Claude Code (CGDELL)
-- **Answers:** Cloud's defect pass over `GuideRewrite-Draft-2026-08-22-1000.md`
-  and `MarketingPlan-2026-08-22-1000.md` (findings G-1 to G-5, M-1 to M-5)
+- **Answers:** Cloud's defect pass over `GatewayGuard_GuideRewrite-Draft-2026-08-22-1000.md`
+  and `GatewayGuard_MarketingPlan-2026-08-22-1000.md` (findings G-1 to G-5, M-1 to M-5)
 - **Status:** Every finding checked against the files. **All nine stand.**
   One is fixed; the rest are specified here for Cloud to fold in.
 
@@ -67,7 +67,7 @@ needs Bill's decision on which position is correct."* **It does not.** That
 paragraph asks Bill for a decision that no longer exists, and item 3 of WHAT
 MUST HAPPEN BEFORE THIS SHIPS repeats it. Both come out.
 
-**The same stale claim is in `PricingCopy-2026-08-22-1000.md` line 188** -- *"it
+**The same stale claim is in `GatewayGuard_PricingCopy-2026-08-22-1000.md` line 188** -- *"it
 has a live W-07 collision with the guide's setting 12."* Also comes out.
 
 ### THE LIVE DIVERGENCE IS SETTING 11, AND BOTH DOCUMENTS ARE SILENT ON IT
@@ -318,7 +318,7 @@ row should say so, or this gets "fixed" by somebody being thorough.
 
 ## M-5 -- FIXED
 
-`ProjectNotes-2026-08-09-1435.md` line 1248 was drafted **customer copy** reading
+`GatewayGuard_ProjectNotes-2026-08-09-1435.md` line 1248 was drafted **customer copy** reading
 *"$9.99/year -- less than one month of any antivirus subscription."* Now
 **$12.99/year**, with a note saying why.
 

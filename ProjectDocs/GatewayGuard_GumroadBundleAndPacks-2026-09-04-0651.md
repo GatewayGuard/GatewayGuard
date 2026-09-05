@@ -328,6 +328,6 @@ product level and applies to every version, so repeating it four times would
 just be four places to get out of step.
 
 **Still open, and it is the attorney's:** ***sourced,
-`AttorneyConsult2-Revised-2026-08-25-1010.md` B4*** -- is a pack refund
+`GatewayGuard_AttorneyConsult2-Revised-RefundAndGumroad-2026-08-25-1010.md` B4*** -- is a pack refund
 all-or-nothing once a buyer has installed on some of the PCs? Nothing above
 depends on the answer, but the licence does.

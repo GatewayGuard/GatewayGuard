@@ -99,7 +99,7 @@
 **One unique filename per document type, forever.**
 
 **Filename syntax:** `[ProjectName]_[DocumentType]-YYYY-MM-DD-HHMM.ext`
-**Example:** `GatewayGuard_CodingStandards-2026-07-21-1009.md`
+**Example:** `GatewayGuard_CodingStandards-2026-07-21-1009.md` (superseded; now `GatewayGuard_CodingStandards-2026-08-07-1330.md`)
 
 - The core descriptive name of a file never changes across its lifetime.
 - The filename always ends with `-YYYY-MM-DD-HHMM` before the extension.

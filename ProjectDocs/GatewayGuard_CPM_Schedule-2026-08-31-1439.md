@@ -251,12 +251,12 @@ prove a download that has nothing to download.
 float.** The gap was real but it was not on the binding chain.
 
 | **LEGAL AND STORE -- Bill's 2b, 2c, 2d** | | | | | | | | | |
-| T-LZ1 | **Bill reviews the 10 consult questions** -- `AttorneyConsult2-Revised-RefundAndGumroad-2026-08-25-1010.md` | B | 0.25 | -- | 0 | 0.25 | 0 | 0.25 | **0 (CRITICAL)** |
+| T-LZ1 | **Bill reviews the 10 consult questions** -- `GatewayGuard_AttorneyConsult2-Revised-RefundAndGumroad-2026-08-25-1010.md` | B | 0.25 | -- | 0 | 0.25 | 0 | 0.25 | **0 (CRITICAL)** |
 | T-LZ2 | **LegalZoom consult -- book and hold** | B | **3-10** | T-LZ1 | 0.25 | 3.25-10.25 | 0.25 | 3.25-10.25 | **0 (CRITICAL) LONGEST POLE** |
 | T-LZ3 | Final EULA edits from the consult answers | C+B | 0.5 | T-LZ2 | 3.25 | 3.75 | 8.75 | 9.25 | 5.5 |
 | T-PAY1 | **Research Gumroad payment processing** -- payout, fees, tax handling, file delivery, receipts, refund mechanics | C | 0.5 | -- | 0 | 0.5 | 1.5 | 2.0 | 1.5 |
 | T-PAY2 | **Bill connects the payout method** -- ***nothing publishes until this is done.*** **2026-09-02: bank details entered; four settings to fix and the publish warning still to be confirmed gone -- `GatewayGuard_GumroadPayoutReview-2026-09-02-1145.md`** | B | 0.15 | T-PAY1 | 0.5 | 0.65 | 2.0 | 2.15 | 1.5 |
-| T-GR1 | **Gumroad: set up both products** -- name, URL slug, description, pricing, **refund toggle twice** (***measured: it is per-product, not account-wide***). Copy already written in `GumroadListings-2026-08-25-0015.md` | B | 0.25 | T-PAY2 | 0.65 | 0.9 | 2.15 | 2.4 | 1.5 |
+| T-GR1 | **Gumroad: set up both products** -- name, URL slug, description, pricing, **refund toggle twice** (***measured: it is per-product, not account-wide***). Copy already written in `GatewayGuard_GumroadListings-2026-08-25-0015.md` | B | 0.25 | T-PAY2 | 0.65 | 0.9 | 2.15 | 2.4 | 1.5 |
 | T-GR2 | **Decide and build the early-buyer bundle credit** -- a $17.00 code for Guide buyers | B+C | 0.15 | T-GR1 | 0.9 | 1.05 | 2.4 | 2.55 | 1.5 |
 | T-PAY3 | **Wire checkout into the website** -- buy links, file delivery, receipt text, EULA link | C+B | 0.5 | T-GR2, T-LZ3 | 3.75 | 4.25 | 9.25 | 9.75 | 5.5 |
 | T-TP | **Test purchase -- Gumroad's test card, BOTH products. NOT a real card** (see `GatewayGuard_GumroadTestPurchase-2026-09-02-1040.md`) | B | 0.1 | **T-PAY3, T-UPG** | 4.25 | 4.4 | 9.75 | 9.9 | 5.5 |
@@ -271,7 +271,7 @@ float.** The gap was real but it was not on the binding chain.
 | T-GA | **Bill reads and approves the guide, 1,976 lines** -- ***4-6 h, one contiguous block*** | B | **0.75** | T-GPG | 2.25 | 3.0 | 2.75 | 3.5 | 0.5 |
 | T-GX | Export the guide -- PDF, all five print sizes | C | 0.5 | T-GA | 3.0 | 3.5 | 3.5 | 4.0 | 0.5 |
 | **WEBSITE -- Bill's 2a** | | | | | | | | | |
-| T-WR1 | **Bill picks the item-2 phrasing** -- three options in `HtmlWebsiteReview-2026-08-22-2220.md`; **option 2 recommended.** *The cheapest unblock on the board* | B | 0.1 | -- | 0 | 0.1 | 4.4 | 4.5 | 4.4 |
+| T-WR1 | **Bill picks the item-2 phrasing** -- three options in `GatewayGuard_HtmlWebsiteReview-2026-08-22-2220.md`; **option 2 recommended.** *The cheapest unblock on the board* | B | 0.1 | -- | 0 | 0.1 | 4.4 | 4.5 | 4.4 |
 | T-WR2 | **Copy pass, 19 pages** -- items 2, 3, 6, 8, 13, 18, 19, 21. Done on zero so far | C | 1.5 | T-WR1 | 0.1 | 1.6 | 4.5 | 6.0 | 4.4 |
 | T-WPR | **Fix the pricing page's false claim** -- it says the annual update *"scans your drives again"*; ***measured against ascii43: Checkup reads `C:` only*** | C | 0.25 | -- | 0 | 0.25 | 5.75 | 6.0 | 5.75 |
 | T-WR3 | **Bill reviews `WebSite\html\` -- all 20 files** | B | 0.25 | T-WR2, T-WPR | 1.6 | 1.85 | 6.0 | 6.25 | 4.4 |

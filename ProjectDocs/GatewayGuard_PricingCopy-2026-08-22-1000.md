@@ -196,7 +196,7 @@ rewritten with *"if"*.
 1. **The multi-year terms and their prices** (`[[TIERS]]`) — which terms exist, and what each costs.
 2. **How "10% per year" applies** — flat 10% off the yearly price on every multi-year plan, or a discount that deepens with the term. One reading only; I cannot build the table from both.
 3. **Is "annual" the right cadence**, or should it read "when Windows changes"? Every block above uses *yearly* and *a year*. If the cadence changes, sections 2e, 3 and 4 all change with it.
-4. **The refund policy.** Not raised in the pricing request, and it belongs here anyway: the plans block is the first place on the site that asks a buyer for money more than once. `ReviewOfCloudDrafts-2026-08-18.md` calls this the only genuine store blocker, and it is still open.
+4. **The refund policy.** Not raised in the pricing request, and it belongs here anyway: the plans block is the first place on the site that asks a buyer for money more than once. `GatewayGuard_ReviewOfCloudDrafts-2026-08-18.md` calls this the only genuine store blocker, and it is still open.
 
 ---
 

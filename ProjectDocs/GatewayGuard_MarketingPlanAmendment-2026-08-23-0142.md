@@ -17,7 +17,7 @@
   refund/terms decision record and the defect pass response were both renamed
   with `-HHMM` suffixes in commit `e4a4654`. Blocks 2e and 2f cited the old
   names. Now `-1510` and `-1525`. **Supersedes
-  `GatewayGuard_MarketingPlanAmendment-2026-08-22-2307.md`.**
+  `GatewayGuard_MarketingPlanAmendment-2026-08-22-2307.md` (superseded; now `GatewayGuard_MarketingPlanAmendment-2026-08-23-1816.md`).**
 
 - 2026-08-22 23:07: Created. Closes the three marketing findings handed back to
   Cloud, plus M-4's residual short form. **Line numbers throughout are Claude

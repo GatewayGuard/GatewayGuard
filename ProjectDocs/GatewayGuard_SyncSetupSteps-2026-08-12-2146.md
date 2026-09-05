@@ -6,7 +6,7 @@
 - **Status:** Working procedure -- follow at the keyboard
 - **Companion to:** `GatewayGuard_SyncPlan-*.md` (the what and why; this is the how)
 - **Change History Log:**
-  - 2026-08-12 21:46: **A6-PRE added: THE INDEX CAN BE FROZEN WHILE THE CONNECTOR READS "CONNECTED".** Measured -- Cloud's newest visible file was `ProjectInstructions-2026-08-10-2245.md` (commit `212fb8e`, 2026-08-10 22:46); **30 later commits were invisible**, including everything from 2026-08-11 and 2026-08-12. Connector attached, both entries present, four paths in scope, repository and branch correct, all pushed -- and serving a two-day-old snapshot. **A6 passed against that frozen index on 2026-08-11 14:45 and could not have done otherwise:** all three of its targets last changed 2026-08-09 or earlier, so all three sat in the stale index. **A connector proof MUST test a file written AFTER the last proof.** Also records that a GitHub connector is NOT a tool -- it indexes into project knowledge -- so its absence from the tool registry proves nothing, a wrong turn that cost a full day.
+  - 2026-08-12 21:46: **A6-PRE added: THE INDEX CAN BE FROZEN WHILE THE CONNECTOR READS "CONNECTED".** Measured -- Cloud's newest visible file was `ProjectInstructions-2026-08-10-2245.md` (superseded; now `GatewayGuard_ProjectInstructions-2026-08-12-1652.md`) (commit `212fb8e`, 2026-08-10 22:46); **30 later commits were invisible**, including everything from 2026-08-11 and 2026-08-12. Connector attached, both entries present, four paths in scope, repository and branch correct, all pushed -- and serving a two-day-old snapshot. **A6 passed against that frozen index on 2026-08-11 14:45 and could not have done otherwise:** all three of its targets last changed 2026-08-09 or earlier, so all three sat in the stale index. **A connector proof MUST test a file written AFTER the last proof.** Also records that a GitHub connector is NOT a tool -- it indexes into project knowledge -- so its absence from the tool registry proves nothing, a wrong turn that cost a full day.
   - 2026-08-12 18:11: **A5: the four-item scope is split across TWO connector entries -- do not delete either.** The project content list shows `GatewayGuard/GatewayGuard main` twice. They are not duplicates: one carries `WebSite/Rules/`, the other `Tool/`, `ProjectDocs/` and `CLAUDE.md`. **The list shows repository and branch but NOT scope**, so the two are indistinguishable in the interface and "that is a duplicate, remove it" is the natural wrong conclusion. Claude Code recommended exactly that on 2026-08-12, from the list alone; Bill caught it. Deleting either would silently halve Cloud's visibility while the remaining entry still reported the repository as connected.
   - 2026-08-12 15:12: **`Check-Claude-Cloud.txt` renamed to
     `Start-Claude-Cloud.txt`**, to pair with `Start-CC.txt`. Pointer updated in
@@ -52,7 +52,7 @@
     PASSED three times while quoting the wrong file. The answer key wrote line 2
     as `<!-- Dated: ... ET -->` **with the value elided**, and line 1 is
     identical in three files -- root `CLAUDE.md` (2026-08-09 17:05),
-    `ProjectDocs/CLAUDE-2026-07-25.md` (2026-07-25 15:30), and
+    `ProjectDocs/CLAUDE-2026-07-25.md` (superseded; now `CLAUDE.md`) (2026-07-25 15:30), and
     `WebSite/Index-Builds/ForCloudUpload-2026-08-02-1218/CLAUDE.md`
     (2026-07-26 06:19). Two are named exactly `CLAUDE.md`. The key therefore
     accepted all three, and what came back was the frozen snapshot.
@@ -656,7 +656,7 @@ not moved since 2026-08-10 22:46.**
 
 **How it was found.** Cloud was asked to run `project_knowledge_search` and
 name the source file of every hit. The newest file it could see anywhere was
-`ProjectDocs/GatewayGuard_ProjectInstructions-2026-08-10-2245.md`, added in
+`ProjectDocs/GatewayGuard_ProjectInstructions-2026-08-10-2245.md` (superseded; now `GatewayGuard_ProjectInstructions-2026-08-12-1652.md`), added in
 commit `212fb8e` at 2026-08-10 22:46. The next commit landed 2026-08-11 00:17.
 **Thirty commits after the freeze point were invisible** -- including every
 document produced on 2026-08-11 and 2026-08-12.
@@ -777,7 +777,7 @@ named exactly `CLAUDE.md`:**
 | File | Header date |
 |---|---|
 | `CLAUDE.md` (root) | 2026-08-09 17:05 ET |
-| `ProjectDocs/CLAUDE-2026-07-25.md` | 2026-07-25 15:30 ET |
+| `ProjectDocs/CLAUDE-2026-07-25.md` (superseded; now `CLAUDE.md`) | 2026-07-25 15:30 ET |
 | `WebSite/Index-Builds/ForCloudUpload-2026-08-02-1218/CLAUDE.md` | 2026-07-26 06:19 ET |
 
 The old key wrote line 2 as `<!-- Dated: ... ET -->` with the value elided, so

@@ -16,7 +16,7 @@
 > **`ProjectDocs\GatewayGuard_License-BILLS-ANSWERS-2026-09-02-1553-TEXT.md`**
 
 ***measured: 44 changed lines against the committed v3.0.*** **That file is the
-input to the next session. `GatewayGuard_License-2026-09-02-1553-TEXT.md` no
+input to the next session. `GatewayGuard_License-BILLS-ANSWERS-2026-09-02-1553-TEXT.md` no
 longer exists** -- it was renamed, not deleted, and the rename is committed.
 
 **Do not re-ask the two blocking questions. Both are answered in his markup.**

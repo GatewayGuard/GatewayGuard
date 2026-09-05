@@ -266,7 +266,7 @@ with it afterwards, which is the drift W-07 exists to prevent, pointed inward.
 
 **So FT-220 moves out of F6 and becomes ascii44 scope**, gated on the guide
 rewrite from v9 landing. Commissioned from Cloud 2026-08-21 --
-`Cloud-GuideRewrite-2026-08-21.txt` names the four settings and exactly what
+`GatewayGuard_CloudRequest-GuideRewrite-2026-08-21.md` names the four settings and exactly what
 the guide must answer for each.
 
 **FT-221 is NOT affected and stays in ascii43.** It is not a wording item: the

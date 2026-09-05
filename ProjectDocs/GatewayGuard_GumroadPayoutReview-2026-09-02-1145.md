@@ -42,7 +42,7 @@ test purchase -- is free to move.
 
 **That agrees with everything else on the page** -- Account type Business, Legal
 business name GatewayGuard LLC, Type LLC, a business Tax ID -- **and with the
-record**: ***sourced, `BankLetterRequest-2026-08-02-1820-TEXT.md`***, the bank
+record**: ***sourced, `GatewayGuard_BankLetterRequest-2026-08-02-1820-TEXT.md`***, the bank
 letter concerns the *"GatewayGuard LLC Business Account"*, type *"business
 checking"*.
 
@@ -173,7 +173,7 @@ GST likewise for Australia and Singapore.
 $16.61.** The tax is never your money and never your filing.
 
 **This closes an item that has been open since 14 August** --
-`LaunchPlan-2026-08-14-0107.md` item **C3, "Sales tax handling on Gumroad",
+`GatewayGuard_LaunchPlan-2026-08-14-0107.md` item **C3, "Sales tax handling on Gumroad",
 assigned to Bill.** ***The answer is that Gumroad handles it as marketplace
 facilitator and there is nothing to set up.*** Still worth putting to the
 attorney as a confirmation rather than a question.

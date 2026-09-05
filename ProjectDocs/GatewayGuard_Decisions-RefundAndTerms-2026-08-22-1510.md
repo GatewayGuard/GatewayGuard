@@ -20,7 +20,7 @@
 ## WHY THIS IS A SEPARATE DOCUMENT
 
 Both decisions belong to documents **Claude Cloud is actively rewriting** --
-`MarketingPlan-2026-08-22-1000.md` and `PricingCopy-2026-08-22-1000.md`. A
+`GatewayGuard_MarketingPlan-2026-08-22-1000.md` and `GatewayGuard_PricingCopy-2026-08-22-1000.md`. A
 decision written only into a file that is about to be re-delivered is a decision
 that can quietly vanish. **Governing documents are Claude Code's to author**, so
 the decision lives here and the other documents cite it.

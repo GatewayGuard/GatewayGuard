@@ -45,7 +45,7 @@ deliberately **outside** the Claude Cloud connector scope.
 -- see the font section below for why.
 
 **Five sizes, because that is what the real Guide is.** ***sourced,
-`MarketingSourcePack-2026-08-13-1427.md`:*** *"includes five print sizes (12,
+`GatewayGuard_MarketingSourcePack-2026-08-13-1427.md`:*** *"includes five print sizes (12,
 14, 16, 18, and 20 pt)"*, and the licence: *"supplied as PDF files with
 identical wording in five print sizes."*
 
@@ -258,7 +258,7 @@ contractual mismatch, not a layout choice, and it would be discovered by
 whichever buyer read the agreement.
 
 **The question was already asked and settled.**
-`LicenceVsEulaNorms-2026-08-25-1045.md` raised it directly -- *"Does a buyer
+`GatewayGuard_LicenceVsEulaNorms-2026-08-25-1045.md` raised it directly -- *"Does a buyer
 get one of the five, or all five?"* -- and answered it *"measured, the pricing
 page: they receive all five."* The licence was then written to say so.
 

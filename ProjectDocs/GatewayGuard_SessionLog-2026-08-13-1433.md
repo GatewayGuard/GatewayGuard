@@ -437,7 +437,7 @@ receipt, and in their Downloads folder six months later.
 
 ### LICENCE v3.0 DRAFTED
 
-`GatewayGuard_License-2026-09-02-1553-TEXT.md`, applying Bill's Consult A
+`GatewayGuard_License-BILLS-ANSWERS-2026-09-02-1553-TEXT.md`, applying Bill's Consult A
 answers. Checkup **14 days**, the Guide **sold without a refund**, the log-file
 requirement removed, the two billing exceptions removed **entirely** rather than
 reworded -- Bill: *"the last thing the buyer will think to do is go back and read
@@ -1493,14 +1493,14 @@ capabilities.** The upload closed four gaps that more searching would not have.
 
 ### WHAT WAS APPLIED
 
-- **Pack 1** (`GuideSectionReplacements-2026-08-23-0142.md`, 439 lines) --
+- **Pack 1** (`GatewayGuard_GuideSectionReplacements-2026-08-23-0142.md`, 439 lines) --
   G1 device encryption with the recovery-key section, G2 accounts and sign-in,
   **setting 10 given the body section it never had** (the gap that left
   FT-226 class fix with nowhere to point), the Word TOC placeholder out of
   the body, the closed W-07 collision removed, four items folded into *Getting
   help* in second person, seven British spellings swept.
 - **Cloud four post-pack-1 defects**, all confirmed against the file first.
-- **Pack 2** (`GuideSectionReplacementsPack2-2026-08-23-1816.md`, 996 lines) --
+- **Pack 2** (`GatewayGuard_GuideSectionReplacementsPack2-2026-08-23-1816.md`, 996 lines) --
   G3, G4, G5, G6. Seven blocks, 58 marker lines replaced with 695 lines.
 - **Cloud 08-23 marketing amendment** -- M-1 to M-4, decisions 2 and 7.
 - **Item 7 closed** from Bill two Edge screenshots.
@@ -1563,7 +1563,7 @@ Bill first instruction was a $29.99 bundle. **Measured: $19.99 + $8.99 =
 $28.98, so the bundle cost $1.01 MORE than its parts.** Raised before logging.
 Bill resolved it by **raising the Guide to $12.99** rather than cutting the
 bundle -- $32.98 separately, so $29.99 now saves $2.99. Recorded in
-`PriceDecision-GuideAndBundle-2026-08-23-1816.md`.
+`GatewayGuard_PriceDecision-GuideAndBundle-2026-08-23-1816.md`.
 
 ### DEFECTS FOUND AND FIXED IN LIVE COPY
 
@@ -1596,7 +1596,7 @@ product cannot do -- the Tamper Protection shape, one level more serious.**
 
 1. **Item 2 phrasing** -- one word from Bill unblocks Cloud copy pass on all
    19 pages. Recommendation on the table: option 2.
-2. **`MarketingPlanAmendment-2026-08-23-1816.md`** -- committed, not applied.
+2. **`GatewayGuard_MarketingPlanAmendment-2026-08-23-1816.md`** -- committed, not applied.
    It supersedes the `-0142` applied at 14:02, so it needs diffing first.
 3. **Which index file is live** -- two candidates differ by **64 lines**, and
    Cloud note that they match is wrong. **Both meta descriptions carry
@@ -1872,7 +1872,7 @@ given was stale after the rename. **A good check working, not a Cloud failure.**
 root files instead of following it -- **and one of those two was itself ten days
 stale, so I was following a bad example rather than the rule.**
 
-- `For-Cloud-2026-08-22-2300.txt` -> **`ProjectDocs\GatewayGuard_CloudHandoff-2026-08-22-2300.md`**, named in `CURRENT.md`, which now resolves **40 documents**.
+- `For-Cloud-2026-08-22-2300.txt` **was renamed** to **`ProjectDocs\GatewayGuard_CloudHandoff-2026-08-22-2300.md`**, named in `CURRENT.md`, which now resolves **40 documents**.
 - **`Marketing-For-Cloud.txt` RETIRED** to `Archive\Root-Retired-2026-08-23\`. Untouched since 2026-08-13 while everything it restated moved into `ProjectDocs\`. **A paste block that restates documents Cloud can already open is a second copy that can go stale -- and it had.**
 - **`Start-Claude-Cloud.txt` stays at the root**, and it is the only file that should be there: it is what Bill pastes to **begin** a chat, before Cloud can read anything at all.
 
@@ -1994,7 +1994,7 @@ gap-ridden draft would only have to be redone.
 
 ### CLOUD'S FIVE ITEMS, ALL ACTIONED
 
-1. **New guide draft committed** -- `GuideRewrite-Draft-2026-08-22-1000.md`,
+1. **New guide draft committed** -- `GatewayGuard_GuideRewrite-Draft-2026-08-22-1000.md`,
    absorbing the FT-220 sections with VERIFY markers intact.
 2. **G1-G6 gap-fill handed back** --
    `GatewayGuard_GuideGapFill-fromV9-2026-08-22-1224.md`, 524 lines. **A
@@ -2008,7 +2008,7 @@ gap-ridden draft would only have to be redone.
    only the newest). The stale **Field test plan** row removed: it only ever
    resolved to the ascii40 plan and was superseded by the Field checklist row.
    27 documents resolved.
-5. **Marketing + pricing** -- new master `MarketingPlan-2026-08-22-1000.md`
+5. **Marketing + pricing** -- new master `GatewayGuard_MarketingPlan-2026-08-22-1000.md`
    with Cloud's 08-22 blocks applied (decision 4 rewritten, 6 closed, 7 added,
    the not-peers note, the press yearly-update answer, the no-subscription
    family retired). `PricingCopy-Draft` committed but **NOT applied to the
@@ -2020,7 +2020,7 @@ gap-ridden draft would only have to be redone.
   moved to the guide's position; **`advertising-id.html` (11) aligned on Bill's
   call**, creating a known temporary guide-vs-site divergence that is recorded
   in the page header and briefed to Cloud
-  (`CloudRequest-GuideSetting11-2026-08-21.md`).
+  (`GatewayGuard_CloudRequest-GuideSetting11-2026-08-21.md`).
 - **ascii43 field checklist written** --
   `GatewayGuard_FieldChecklist-ascii43-2026-08-22.md` *(renamed 2026-08-22 with the FT-226 correction)*: Part A what to SKIP,
   Part B what to LOOK FOR by family, Part C the encryption path, Part D the
@@ -3371,7 +3371,7 @@ behind, and is invisible to newest-wins because the name differs. A session on
 SANDY loading it gets a rulebook without the two most recent rules -- including
 the one telling it not to ask for permission. **Not touched. Bill's call.**
 
-### `GatewayGuard_ProjectNotes-2026-07-12-r3.md` was not ProjectNotes
+### `GatewayGuard_ProjectNotes-2026-07-12-r3.md` (superseded; now `GatewayGuard_ProjectNotes-2026-08-09-1435.md`) was not ProjectNotes
 
 Its internal header reads `# GatewayGuard Project Instructions`,
 `Document Name: GatewayGuard_ProjectInstructions`, `Dated: 2026-08-02 18:20`.
@@ -3619,7 +3619,7 @@ repository is read by Cloud and pushed to GitHub.
 
 ### Applied the same hour
 
-- **`SyncPlan-2026-08-10-1119.md` and `SyncSetupSteps-2026-08-11-1445.md`
+- **`SyncPlan-2026-08-10-1119.md` (superseded; now `GatewayGuard_SyncPlan-2026-08-12-1726.md`) and `SyncSetupSteps-2026-08-11-1445.md` (superseded; now `GatewayGuard_SyncSetupSteps-2026-08-12-2146.md`)
   retired** (`git rm`, commit `0dea8a3` holds them). Both were superseded by
   the `-1512` versions and both still carried the dead
   `Check-Claude-Cloud.txt` pointer.
@@ -3656,7 +3656,7 @@ briefing line 625 says "rewrite Phase 3" and means the migration plan.
 1. **The Cloud connector question** -- ask for the panther line before
    building `CURRENT.md`.
 2. ~~Two dead pointers to the old filename.~~ **CLOSED same session.**
-   `GatewayGuard_SyncPlan-2026-08-12-1512.md` and
+   `GatewayGuard_SyncPlan-2026-08-12-1512.md` (superseded; now `GatewayGuard_SyncPlan-2026-08-12-1726.md`) and
    `GatewayGuard_SyncSetupSteps-2026-08-12-1512.md` issued; the superseded
    versions retired. Deferring them was the wrong call and Bill said so --
    the deferral optimised for tidy filename lineage over two documents that
@@ -3749,7 +3749,7 @@ scoped for ascii40 -- an optional second destination, off by default.
 
 ### I wrote a script that already existed
 
-`Tool\Sync-Logs.ps1` duplicated `Collect-CheckupLogs-2026-08-07.ps1`, five
+`Tool\Sync-Logs.ps1` duplicated `Collect-CheckupLogs-2026-08-07.ps1` (superseded; now `Collect-CheckupLogs-2026-08-12.ps1`), five
 days old and better in one respect: it derives the project root from its own
 location rather than hardcoding Bill's path. **Deleted mine; merged the
 improvements into the existing one** (`Collect-CheckupLogs-2026-08-12.ps1`).
@@ -3831,7 +3831,7 @@ ten-minute rule below the real lesson of the day.
 
 **The index was frozen at commit `212fb8e`, 2026-08-10 22:46** -- thirty
 commits behind. Found two ways that agreed: Cloud's newest visible file was
-`ProjectInstructions-2026-08-10-2245.md`, and `git log --all --diff-filter=A`
+`ProjectInstructions-2026-08-10-2245.md` (superseded; now `GatewayGuard_ProjectInstructions-2026-08-12-1652.md`), and `git log --all --diff-filter=A`
 confirmed every file it named had genuinely existed here. So they were
 connector content, not uploads.
 
@@ -3909,10 +3909,10 @@ Reporting `0 0` and treating the work as delivered was the gap.
 - `ProjectDocs\CURRENT.md` (generated) and `Tool\Update-Current.ps1` +
   `Run-UpdateCurrent.bat`
 - `Tool\Collect-CheckupLogs-2026-08-12.ps1` (merged; `Sync-Logs.ps1` deleted)
-- `ProjectDocs\GatewayGuard_SyncPlan-2026-08-12-1512.md` and
+- `ProjectDocs\GatewayGuard_SyncPlan-2026-08-12-1512.md` (superseded; now `GatewayGuard_SyncPlan-2026-08-12-1726.md`) and
   `GatewayGuard_SyncSetupSteps-2026-08-12-1512.md` (both predecessors retired)
 - `Test_Results\Logs\` -- 104 files consolidated
-- `ProjectDocs\GatewayGuard_SessionLog-2026-08-12-2316.md` (this file)
+- `ProjectDocs\GatewayGuard_SessionLog-2026-08-12-2316.md` (superseded; now `GatewayGuard_SessionLog-2026-08-13-1433.md`) (this file)
 - `Start-Claude-Cloud.txt` (renamed from `Check-Claude-Cloud.txt`, rewritten)
 - `CLAUDE.md`, `.gitignore`, `Start-CC.txt`, `Check-Connector.txt` (edited)
 
@@ -4094,7 +4094,7 @@ September 1 launch and it is closed.
 
 - Read the **wrong tree** for the first 20 minutes of 2026-08-08 â€” a stale
   copy, three commits behind.
-- Recorded `TestHistory-ascii39-2026-08-02-0914.md` as **"never existed."** It
+- Recorded `TestHistory-ascii39-2026-08-02-0914.md` (superseded; now `GatewayGuard_TestHistory-ascii39-2026-08-02-1335.md`) as **"never existed."** It
   exists in project knowledge; it had never reached the tree.
 - Declared **Python unavailable** after `python3` failed. `python` and `py`
   both work.
@@ -4138,14 +4138,14 @@ All five are the same shape and produced the new rule above.
 - Proposed editor tag system (Claude.ai / Claude Code / Bill in headers)
 - Answered why two-Claude workflow exists and how to manage it
 - Produced structured plan for session handoff (see WorkflowGuide below)
-- Produced `GatewayGuard_SessionLog-2026-08-04-1105.md` (this file)
+- Produced `GatewayGuard_SessionLog-2026-08-04-1105.md` (superseded; now `GatewayGuard_SessionLog-2026-08-13-1433.md`) (this file)
 - Updating `GatewayGuard_ProjectInstructions` with new rules (in progress)
 
 ### Pending
 - Rewrite CLAUDE.md with updated header, editor tags, corrections
 - Rewrite WebsiteStandards with updated sitemap and new rules
 - Rewrite CodingStandards with new rules
-- Delete `GatewayGuard_CodingStandards-2026-07-26-0619.md` from project
+- Delete `GatewayGuard_CodingStandards-2026-07-26-0619.md` (superseded; now `GatewayGuard_CodingStandards-2026-08-07-1330.md`) from project
 - Delete superseded HTML files from project
 - Guide rewrite (v9 â†’ current)
 - Upload all 19 final HTML pages to GitHub guide/ folder
@@ -4158,8 +4158,8 @@ All five are the same shape and produced the new rule above.
 - `GatewayGuard_All19_Final-2026-08-02-1820.zip` â€” all 19 guide pages
 - `GatewayGuard_BankLetterRequest-2026-08-02-1820.docx` â€” bank letter
 - `GatewayGuard_TomorrowActionList-2026-08-02-1820.docx` â€” action list
-- `GatewayGuard_ProjectInstructions-2026-08-02-1820.md` â€” updated rules
-- `_READ-FIRST-Briefing-2026-08-02-1820.md` â€” session briefing
+- `GatewayGuard_ProjectInstructions-2026-08-02-1820.md` (superseded; now `GatewayGuard_ProjectInstructions-2026-08-12-1652.md`) â€” updated rules
+- `_READ-FIRST-Briefing-2026-08-02-1820.md` (superseded; now `_READ-FIRST-Briefing-2026-08-20-1306.md`) â€” session briefing
 
 ### Rules decided this session
 - EDITOR TAG SYSTEM: every file header identifies last editor

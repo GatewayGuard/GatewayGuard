@@ -134,8 +134,8 @@ two questions.
 
 The licence work has a step reading *"Make a test purchase and confirm the
 acceptance is recorded in the sales CSV"* -- it appears in
-`CloudResearch-Licence-2026-08-25-1435.md` twice and in
-`DecisionsForBill-2026-08-26-0302.md`.
+`GatewayGuard_CloudResearch-Licence-2026-08-25-1435.md` twice and in
+`GatewayGuard_DecisionsForBill-2026-08-26-0302.md`.
 
 ***sourced:*** *"This test sale will not be displayed in your Audience
 Dashboard alongside your other sales."*

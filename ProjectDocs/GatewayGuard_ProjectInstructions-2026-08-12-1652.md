@@ -44,7 +44,7 @@
     measured FullyDecrypted the same day. This is the MACHINE-STATE CURRENCY
     rule catching its own table again.
   - 2026-08-10 22:45: **Rescued a rule that had been missing for five weeks.**
-    `GatewayGuide_Project_Instructions-2026-07-03.md` -- written under the
+    `GatewayGuide_Project_Instructions-2026-07-03.md` (superseded; now `GatewayGuard_ProjectInstructions-2026-08-12-1652.md`) -- written under the
     RETIRED `GatewayGuide` spelling -- required that ProjectNotes be **updated**
     when new decisions, research or builds are discussed, not merely consulted.
     Every other rule in that file was carried into this document. That one was
@@ -106,7 +106,7 @@
     RESEARCH BEFORE STATING.** The prior text said CGDELL carried BitLocker,
     TPM, and Secure Boot **off**. That is false and was contradicted by this
     project's own measurements taken four days earlier
-    (`GatewayGuard_TestHistory-ascii39-2026-08-02-0914.md`): CGDELL reads
+    (`GatewayGuard_TestHistory-ascii39-2026-08-02-0914.md` (superseded; now `GatewayGuard_TestHistory-ascii39-2026-08-02-1335.md`)): CGDELL reads
     `Encrypted / 100 / FullyEncrypted`, signs in with a **Microsoft account**,
     and reads Secure Boot `False`. Added the ENCRYPTION STATE MATRIX to the
     MACHINE CHECK section so the fleet's real state is stated once, in one
@@ -163,7 +163,7 @@ instructions, where it had sat uncarried since 2026-07-03.)*
 **One unique filename per document type, forever.**
 
 **Filename syntax:** `[ProjectName]_[DocumentType]-YYYY-MM-DD-HHMM.ext`
-**Example:** `GatewayGuard_CodingStandards-2026-07-20-0908.md`
+**Example:** `GatewayGuard_CodingStandards-2026-07-20-0908.md` (superseded; now `GatewayGuard_CodingStandards-2026-08-07-1330.md`)
 
 - The core descriptive name of a file never changes across its lifetime.
 - The filename always ends with `-YYYY-MM-DD-HHMM` before the extension.
@@ -324,7 +324,7 @@ without needing this file to be corrected first.
 
 **What earned this (2026-08-06):** the RESEARCH BEFORE STATING section
 of this document said CGDELL carried BitLocker, TPM, and Secure Boot
-**off**. `GatewayGuard_TestHistory-ascii39-2026-08-02-0914.md`, written
+**off**. `GatewayGuard_TestHistory-ascii39-2026-08-02-0914.md` (superseded; now `GatewayGuard_TestHistory-ascii39-2026-08-02-1335.md`), written
 four days earlier, recorded CGDELL as fully encrypted and signed in with
 a Microsoft account -- measured, cross-checked, and logged under three
 separate FT numbers. Claude reasoned from the stale line, told Bill his
@@ -574,7 +574,7 @@ document and the rule stops comparing the old one to the new -- silently,
 forever. Nothing reports it, because from the rule's point of view they are two
 unrelated documents.
 
-*Measured 2026-08-10:* `GatewayGuide_Project_Instructions-2026-07-03.md`, under
+*Measured 2026-08-10:* `GatewayGuide_Project_Instructions-2026-07-03.md` (superseded; now `GatewayGuard_ProjectInstructions-2026-08-12-1652.md`), under
 the retired folder spelling, held a rule requiring ProjectNotes to be UPDATED
 and not merely checked. Every other rule in it had been carried across. That one
 sat uncarried for five weeks, and no gate could have found it.
@@ -626,7 +626,7 @@ to underscores instead of removing them, and reported five guide PDFs as
 missing that were tracked in git the whole time. **Bill caught it, not the
 process.** Separately, a bidirectional prefix match accepted the undated
 `GatewayGuard_CPM_Schedule.md` as a match for
-`GatewayGuard_CPM_Schedule-2026-07-30-2208.md` -- a different and older file.
+`GatewayGuard_CPM_Schedule-2026-07-30-2208.md` (superseded; now `GatewayGuard_CPM_Schedule-2026-08-31-1439.md`) -- a different and older file.
 
 ### V-3 -- FOR CUMULATIVE DOCUMENTS, TEST THE CONTENT, NOT THE FILENAME
 
@@ -636,12 +636,12 @@ self-contained replacement carrying cumulative history -- so an older dated
 version is almost never a loss. **"Not in the tree" is the wrong test.
 "Content not in the tree" is the right one.**
 
-*Earned:* `GatewayGuard_TestHistory-ascii39-2026-08-02-0914.md` was reported as
+*Earned:* `GatewayGuard_TestHistory-ascii39-2026-08-02-0914.md` (superseded; now `GatewayGuard_TestHistory-ascii39-2026-08-02-1335.md`) was reported as
 existing only in Cloud and queued for recovery. The tree's `-2026-08-02-1335`
 already contained its change-history entry, its FT-163/FT-164 sections, and
 everything after -- 54,666 bytes against the earlier 36,971, because each
 version absorbs the last. Nothing had ever been missing. The same was true of
-`ProjectInstructions-2026-08-02-1820.md`. **Bill stopped this one:** *"We spend
+`ProjectInstructions-2026-08-02-1820.md` (superseded; now `GatewayGuard_ProjectInstructions-2026-08-12-1652.md`). **Bill stopped this one:** *"We spend
 too much time on useless old files that have been superceded."*
 
 **Only chase content that exists nowhere else** -- genuinely new material, or

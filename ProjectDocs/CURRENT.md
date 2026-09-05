@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-05 11:41 ET -->
-<!-- Commit: 3f9291f -->
+<!-- Generated: 2026-09-05 11:54 ET -->
+<!-- Commit: d934798 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-05 11:41 ET  |  **Commit:** `3f9291f`  |  **Made:** 2026-09-05 00:27 ET
-- **Commit subject:** The next build is ascii44. Both status lines said "finish ascii43" and were wrong
+- **Generated:** 2026-09-05 11:54 ET  |  **Commit:** `d934798`  |  **Made:** 2026-09-05 11:43 ET
+- **Commit subject:** Cloud recommended building three things ascii43 already has
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 

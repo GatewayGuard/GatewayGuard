@@ -6,7 +6,7 @@
 - **Machine:** CGDELL
 - **Status:** Cumulative Master Document (supersedes all prior versions)
 - **Supersedes:** `GatewayGuard_NamingStandard-2026-07-18-r2.md` and
-  `GatewayGuard_NamingStandard-2026-07-18.md` -- both lost, see PROVENANCE
+  `GatewayGuard_NamingStandard-2026-07-18.md` (superseded; now `GatewayGuard_NamingStandard-2026-08-09-1345.md`) -- both lost, see PROVENANCE
 
 **Change History Log:**
 - 2026-08-09 13:45: Rebuilt after the r2 file was confirmed lost. Added

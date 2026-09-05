@@ -78,8 +78,8 @@ $problems = 0
 #   families with no anchor :  4 -> 2  (GuideRewrite-Draft and MarketingPlan
 #                                       now resolve; License-TEXT and one other
 #                                       remain)
-$BASE_DEAD_POINTERS_GOVERNING = 9
-$BASE_DEAD_POINTERS_ALL       = 51
+$BASE_DEAD_POINTERS_GOVERNING = 0
+$BASE_DEAD_POINTERS_ALL       = 0
 $BASE_DATE_MISMATCH           = 0
 $BASE_UNRESOLVED_FAMILIES     = 0
 # CHECK 6 ADDED 2026-08-23. Bill: "put times in the filename." The convention
@@ -337,6 +337,8 @@ if ($deadGov -gt $BASE_DEAD_POINTERS_GOVERNING -or $deadAll -gt $BASE_DEAD_POINT
     W "  RESULT: FAIL -- a NEW dead pointer appeared. Fix it, do not raise the baseline."
 } elseif ($deadGov -lt $BASE_DEAD_POINTERS_GOVERNING -or $deadAll -lt $BASE_DEAD_POINTERS_ALL) {
     W ("  RESULT: improved. Lower the baselines in this script to " + $deadGov + " and " + $deadAll + ".")
+} elseif ($deadGov -eq 0 -and $deadAll -eq 0) {
+    W "  RESULT: clear -- no dead pointers anywhere in ProjectDocs."
 } else {
     W "  RESULT: holding at the baseline. Carried, not passed."
 }
@@ -423,6 +425,8 @@ if ($unresolved -gt $BASE_UNRESOLVED_FAMILIES) {
     W "  RESULT: FAIL -- add a row to Update-Current.ps1, or retire the old copies."
 } elseif ($unresolved -lt $BASE_UNRESOLVED_FAMILIES) {
     W ("  RESULT: improved. Lower the baseline in this script to " + $unresolved + ".")
+} elseif ($unresolved -eq 0) {
+    W "  RESULT: clear -- every family with copies is named in CURRENT.md."
 } else {
     W "  RESULT: holding at the baseline. Carried, not passed."
 }

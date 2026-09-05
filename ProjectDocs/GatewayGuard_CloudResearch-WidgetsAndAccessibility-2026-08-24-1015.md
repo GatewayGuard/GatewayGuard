@@ -13,8 +13,8 @@
 - **Status:** RESEARCH AND RECOMMENDATION. Amends no rule until Bill approves.
   Section 7.7 is a **draft** rule.
 - **SUPERSEDES, and both must be retired unread:**
-  - `GatewayGuard_CloudResearch-WidgetsAndWordAccessibility-2026-08-24.md`
-  - `GatewayGuard_CloudResearch-WidgetsAndAccessibility-2026-08-24-0930.md`
+  - `GatewayGuard_CloudResearch-WidgetsAndWordAccessibility-2026-08-24.md` (superseded; now `GatewayGuard_CloudResearch-WidgetsAndAccessibility-2026-08-24-1015.md`)
+  - `GatewayGuard_CloudResearch-WidgetsAndAccessibility-2026-08-24-0930.md` (superseded; now `GatewayGuard_CloudResearch-WidgetsAndAccessibility-2026-08-24-1015.md`)
 - **Change History Log:**
   - 2026-08-24 10:15: **Timestamp given by Bill and applied.** Filename, the
     `Dated:` line and the target path all carry `-2026-08-24-1015` and no

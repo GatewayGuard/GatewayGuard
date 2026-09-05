@@ -139,7 +139,7 @@ address.** So this is not a launch blocker and nothing waits on it.
 
 ***Corrected 2026-09-01.*** This paragraph originally named
 `gatewayguard.gumroad.com` and claimed it resolved. **It does not** -- the
-username is **`wfbii`**, per `GumroadListings-2026-08-25-0015.md`
+username is **`wfbii`**, per `GatewayGuard_GumroadListings-2026-08-25-0015.md`
 (`wfbii.gumroad.com/l/checkup`). The name was assumed from the company rather
 than read from the record, which is the mistake `CLAUDE.md` calls reasoning
 from something adjacent instead of reading what is on disk.

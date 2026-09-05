@@ -8,15 +8,15 @@
 - **Decided by:** Bill, 2026-09-02 -- *"Checkup is going to be a 14 day refund
   policy"*
 - **Supersedes:** the 30-day decision of 2026-08-24, recorded in
-  `Decisions-RefundAndTerms-2026-08-22-1510.md` and
-  `AttorneyNote-RefundPolicy-2026-08-24-1210.md`
+  `GatewayGuard_Decisions-RefundAndTerms-2026-08-22-1510.md` and
+  `GatewayGuard_AttorneyNote-RefundPolicy-2026-08-24-1210.md`
 
 ---
 
 ## THE ONE THING THAT HAS TO BE SETTLED FIRST
 
 **The licence does not have a Checkup refund clause. It has ONE clause covering
-both products.** ***sourced, `License-2026-08-25-1400-TEXT.md`, Section 9:***
+both products.** ***sourced, `GatewayGuard_License-2026-08-25-1400-TEXT.md`, Section 9:***
 
 > *"**Checkup and the Guide** are downloadable files. If **either one** is not
 > what you expected, write to us within **30 days** of buying and we will refund
@@ -61,12 +61,12 @@ are.** These are the live ones:
 
 | File | What carries the 30 days |
 |---|---|
-| `License-2026-08-25-1400-TEXT.md` | **Section 9, the operative clause.** Also the change-summary at item 2, and Section 9's closing line about Gumroad's own policy running *"longer than our 30 days"* |
-| `AttorneyConsult2-Revised-RefundAndGumroad-2026-08-25-1010.md` | **12 instances.** The consult is built on the 30-day rule and has not happened yet |
-| `AttorneyNote-RefundPolicy-2026-08-24-1210.md` | 10 instances -- the note that established the 30 days |
-| `Decisions-RefundAndTerms-2026-08-22-1510.md` | 14 instances -- the decision record |
-| `GumroadListings-2026-08-25-0015.md` | The Guide's product copy |
-| `MarketingPlan-2026-08-22-1000.md`, `WebSite\` | Customer-facing promises |
+| `GatewayGuard_License-2026-08-25-1400-TEXT.md` | **Section 9, the operative clause.** Also the change-summary at item 2, and Section 9's closing line about Gumroad's own policy running *"longer than our 30 days"* |
+| `GatewayGuard_AttorneyConsult2-Revised-RefundAndGumroad-2026-08-25-1010.md` | **12 instances.** The consult is built on the 30-day rule and has not happened yet |
+| `GatewayGuard_AttorneyNote-RefundPolicy-2026-08-24-1210.md` | 10 instances -- the note that established the 30 days |
+| `GatewayGuard_Decisions-RefundAndTerms-2026-08-22-1510.md` | 14 instances -- the decision record |
+| `GatewayGuard_GumroadListings-2026-08-25-0015.md` | The Guide's product copy |
+| `GatewayGuard_MarketingPlan-2026-08-22-1000.md`, `WebSite\` | Customer-facing promises |
 
 **Nothing else has been edited.** Changing a number in ninety places before the
 shape is settled is how a document ends up saying two things at once.

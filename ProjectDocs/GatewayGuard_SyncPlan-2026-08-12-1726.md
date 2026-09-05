@@ -227,8 +227,8 @@ with later.** Flagged by Cloud's own review, 2026-08-09.
 
 **What earned this rule (measured 2026-08-08):** every dead pointer found in
 the governing documents was in a file whose `Last Editor:` line reads
-Claude.ai. The 2026-08-06 briefing named `CodingStandards-2026-08-02-0741.md`
-and `TestHistory-ascii39-2026-08-02-0914.md`; the first had been renamed, and
+Claude.ai. The 2026-08-06 briefing named `CodingStandards-2026-08-02-0741.md` (superseded; now `GatewayGuard_CodingStandards-2026-08-07-1330.md`)
+and `TestHistory-ascii39-2026-08-02-0914.md` (superseded; now `GatewayGuard_TestHistory-ascii39-2026-08-02-1335.md`); the first had been renamed, and
 the second **exists in Claude project knowledge but had never reached the
 tree** -- an earlier version of this plan said it "never existed," which was an
 unverified negative and is corrected here. Cloud could not have known about the

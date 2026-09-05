@@ -116,7 +116,7 @@ Stated so each is a decision and not an omission.
   deepening reading of "10% per year" is still Bill's to settle. **No marketing
   copy can mention multi-year plans until it is.**
 - **The five-editions pitch and the retired ink-saver line.** Unaffected.
-- **The refund policy**, which `ReviewOfCloudDrafts-2026-08-18.md` calls the
+- **The refund policy**, which `GatewayGuard_ReviewOfCloudDrafts-2026-08-18.md` calls the
   only genuine store blocker. **Unchanged and still open.** It matters more now:
   the plan's promise to the skeptic is *read every line after you buy and return
   it if you do not like what you find*, and that promise has no policy behind it.
