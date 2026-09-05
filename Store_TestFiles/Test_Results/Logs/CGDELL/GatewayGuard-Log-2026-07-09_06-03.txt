@@ -1,3 +1,0 @@
-﻿[06:03:41] [START] Tool launched v3.1 build ascii23
-[06:03:41] [WARN] Could not activate sleep prevention: Cannot convert value "-2147483648" to type "System.UInt32". Error: "Value was either too large or too small for a UInt32."
-[06:04:09] [STATE] User chose to START OVER -- checkpoint cleared

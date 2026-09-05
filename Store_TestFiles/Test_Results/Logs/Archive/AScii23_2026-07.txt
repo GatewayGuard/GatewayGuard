@@ -1,4 +1,0 @@
- 1. Change wording on first screen to: 'Now scroll to the top of this and all following windows using the mouse ball or scrollbar on the right side, so you don't miss anything.' or  remove this screen as this is duplicated in greater detail in the next window
-2. Eliminate the first screen set and its statement. Make your font the first screen and before you start the second screen.  
-3. Adjust before you start screen wording to include 'Always scroll' to the top of a screen'
-4.

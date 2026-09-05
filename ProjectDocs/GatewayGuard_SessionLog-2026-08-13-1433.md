@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-02 18:13 ET
+- **Last Modified:** 2026-09-04 20:00 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -14,6 +14,106 @@
   Downloaded by Bill at session end and uploaded to project immediately.
 
 ---
+---
+
+## Session: 2026-09-02 18:35 to 2026-09-04 20:00 [Claude Code -- CGDELL] -- THE STORE IS FINISHED AND PROVEN BY PURCHASE, AND THE SPACING BUG WAS MINE ALL ALONG
+
+**Three products are live, priced, versioned and proven end to end.** Checkup
+$19.99 with four PC packs, the Guide $12.99 in five print sizes, and a $29.99
+bundle. **Six test purchases, and in every case the buyer's own download page
+was read directly rather than trusted.** Zero copy defects across the store at
+close.
+
+### THE DEFECT I CAUSED, AND BILL FOUND
+
+**Every stray space on the store came from my documents, not his typing.** I
+hard-wrapped each block of copy at about 66 characters to keep the files tidy.
+**Those wraps are real line breaks**, and pasted into a one-line field each
+becomes a space -- two where the wrap fell beside an existing one. `12  point`
+wrapped after `12`; `a      different one` after `a`; `or  reach` after `or`.
+
+**I called them "typing slips" three times, in three documents, before Bill
+said: *"All of the previous spacing errors were caused by this."*** He was
+right. **A second version of the same mistake followed** -- the Checkup pack
+names went live as `**One PC**`, asterisks and all, because a bold heading in
+my paste file was word-for-word the value beneath it, and it reached a buyer's
+receipt.
+
+**Fix: `GatewayGuard_GumroadPasteText-2026-09-04-1008.md`, every field as one
+physical line, 62 blocks checked mechanically for wraps, padding and
+asterisks.** Headings there can never be the value again. The four older copy
+documents carry DO NOT COPY banners.
+
+### WHAT MEASURING CAUGHT THAT LOOKING WOULD NOT
+
+- **The Guide had no buy button because `is_published` was false.** Everything
+  else was already correct. One click.
+- **The 10-PC pack shipped ten copies of one file**, nested in a zip, named
+  `- Copy (2)` through `- Copy (10)`. A pack sells licences, not files.
+- **A Gumroad "bundle" product has no Versions at all.** It stores one fixed
+  variant per included product, so every bundle buyer would have received 12
+  point -- while the description promised *"the print size you choose"*.
+  **Rebuilt as a normal digital product with five versions.** The instruction
+  had said "five versions" since 09-02; it never said "normal product", which
+  is how the wrong type got built.
+- **`gatewayguide.co`** -- not our domain -- sat in two Guide fields for three
+  days and reached buyers' receipts twice in one email.
+- **`14 ways of buying`** in the refund terms, and **`still ard work`** in a
+  version description. **Both arrived from repairing text in place**, which is
+  why the closing rule is: clear the box, paste the whole field.
+
+### THE PROOF THAT MATTERS
+
+**Buying the second version returned the second file.** The first bundle
+purchase took 12 point -- the first in the list, where a wrong mapping still
+looks right. The last took **14 point** and received the 14-point PDF.
+**Four distinct print sizes across the purchases.** The version-to-file mapping
+is correct, not coincidental.
+
+### LICENCE v3.0 IS UNBLOCKED
+
+Both DECISION NEEDED markers are answered **and now demonstrated in the field**:
+**print sizes Option B** (a buyer receives the one size they chose) and the
+**bundle refund Option A** (14 days, live and printing on receipts). Sections
+1, 5 and 9 take paragraphs already drafted in full.
+
+---
+
+### FOR BILL -- WHERE THINGS STAND
+
+1. **Nothing on the store is open.** It can take money today.
+2. **Cloud has a research request waiting** --
+   `GatewayGuard_CloudRequest-ascii43Research-2026-09-04-2000.md`, covering your
+   20-point aside plus four other research asks from the ascii43 results. It
+   asks for findings **and a recommendation** on each, and the plan you wanted
+   in a `.md`.
+3. **Say the word and licence v3.0 gets finalised** -- it is one editing pass.
+4. **Still ahead of launch, unchanged:** the five real Guide PDFs and the signed
+   Checkup build replace the `TESTFILE -` stand-ins, and the licence needs a
+   public web page for Gumroad's checkout terms field (**T-EULA**).
+   ***measured 2026-09-02 and not re-checked: there is no licence page on
+   gatewayguard.co.***
+
+### FOR THE NEXT CLAUDE -- FOUR THINGS
+
+1. **Paste-ready copy lives in ONE file** --
+   `GatewayGuard_GumroadPasteText-2026-09-04-1008.md`. **Never hand Bill a
+   wrapped block again.** Any string he will paste is one physical line, and no
+   heading may be identical to the value under it.
+2. **The store can be measured without asking him.** Each Gumroad product page
+   ships its full state in a `data-page` attribute -- `curl` the page, unescape
+   it, read `props.product`: `is_published`, `price_cents`, `options`,
+   `attributes`, `refund_policy`. **A buyer's download page can be read too**:
+   pull the `gumroad.com/d/<token>` link out of the receipt PDF (annotations, or
+   raw bytes if the annotations were flattened) and read `content.content_items`.
+   **That is how every claim in this session was settled.**
+3. **A screenshot is not a measurement.** Twice the screen showed text that was
+   not saved, and once PDF extraction collapsed a double space and made a
+   defect look fixed. **Read the stored value.**
+4. **ascii43 is still half built and none of the ascii43 research is built.**
+   F4, the F5 remnants and the F6 wording block remain. The store work touched
+   none of it.
+
 ---
 
 ## Session: 2026-09-02 10:37 to 18:13 [Claude Code -- CGDELL] -- THE STORE OPENED, AND THREE THINGS NOBODY HAD A TASK FOR

@@ -1,9 +1,0 @@
-to do: 
-
-1. pricing scheme in guide and online
-2. Eulo and consult
-3. Additional consults
-4. download all project files to gatewayguard folder and have claude code compare to all files on gatewayguard folder on onedrive a) which ones are missing from GatewayGuard folder and need to be updated 2) zip up  all files that have older dates and i will remove the .zip file for safekeeping. 3) setup projectdocs to have same exact files as project files. 4) develop procedure that both claude cloud and claude code have in their instructions. make project instructions and claud.md agree 100%, but ask is this is a good idea, 5) show claude code the setup agreed to with claude cloud.
-5. fix storage issue
-6, we need to make changes to how we present
-  and market our pricing.  situaion is a) we provide free guide online for all users. b) we sell our guide for $12.99. We sell our Checkup tool for $19.99. We bundle the guide and checkup tool for $29.99.  We have pricing for 3,5 and 10 pack bundles also.  There is an annual upgrade fee for purchasing our latest version of Checkup that handles Microsoft's annual Windows 11 upgrade for home and pro.  

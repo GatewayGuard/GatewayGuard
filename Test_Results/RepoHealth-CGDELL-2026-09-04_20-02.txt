@@ -3,10 +3,10 @@
 ======================================================================
   repository     : C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard
   machine        : CGDELL
-  run at         : 2026-08-23 01:36:02
+  run at         : 2026-09-04 20:02:43
 
 -- 1. IS THE REPOSITORY SOUND ----------------------------------------
-  dangling objects (normal, ignored) : 76
+  dangling objects (normal, ignored) : 5
   RESULT: sound. No missing objects, no broken links.
 
 -- 2. HAS ONEDRIVE WRITTEN ANY CONFLICT COPIES -----------------------
@@ -20,19 +20,19 @@
   damaged, a pushed repository is a re-clone and nothing is lost.
   commits not yet on GitHub : 0
   RESULT: safe. GitHub holds every commit.
-  tracked files changed or missing on disk : 15
+  tracked files changed or missing on disk : 424
+       D "MB/Dell MB check run 2026-07-16-09-40.txt"
+       D "MB/MB EULA.pdf"
+       D "MB/MB Inbound rules.txt"
+       D "MB/MB Outbound Rules.txt"
+       D "MB/MB Privacy policy. - Copy.pdf"
+       D "MB/MB Privacy policy..pdf"
+       D MB/MB_Privacy_policy_.pdf
+       D MB/MB_State_Capture_Template.txt
        M Notes/CC-Add-ons-Startup.txt
        M Notes/Notes-2026-08-21-1408.txt
        D Presentation/20260726_161618.jpg
        D Presentation/GatewayGuard_FamilyPresentation_v3-2026-07-03.pptx
-       D Presentation/GatewayGuard_PresentationCompanionSheet-2026-07-03.md
-       D Presentation/SecGuard_Pres.txt
-       D "Presentation/What is Ascii.txt"
-       D "Presentation/presentation notes2.txt"
-       M ProjectDocs/CURRENT.md
-       M ProjectDocs/GatewayGuard_SessionLog-2026-08-13-1433.md
-       D "Recovery Keys/Recovery Keys.txt"
-       D Run_Comments/Ascii20-ideapad-comments.txt
 
 -- 4. THE STANDING RISK ----------------------------------------------
   .git is INSIDE the synced OneDrive folder. Every commit rewrites five

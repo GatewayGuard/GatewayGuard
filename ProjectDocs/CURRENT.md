@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-02 18:14 ET -->
-<!-- Commit: 7540350 -->
+<!-- Generated: 2026-09-04 20:02 ET -->
+<!-- Commit: 2729263 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-02 18:14 ET  |  **Commit:** `7540350`  |  **Made:** 2026-09-02 15:55 ET
-- **Commit subject:** Licence v3.0: Bill's Consult A answers applied, two decisions left marked
+- **Generated:** 2026-09-04 20:02 ET  |  **Commit:** `2729263`  |  **Made:** 2026-09-04 19:56 ET
+- **Commit subject:** Bundle receipt fixed and the right two files delivered; the store is finished
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -19,7 +19,7 @@ document family and the single filename that is live right now. Take every
 filename from this table -- never from memory, never from another document,
 never by guessing which date looks newest.
 
-**53 rows follow.** If you cannot see all 53 of them, your
+**54 rows follow.** If you cannot see all 54 of them, your
 retrieval truncated the table -- **say so and ask for the rest, rather
 than answering from the handful you received.**
 
@@ -75,7 +75,7 @@ All paths are relative to `ProjectDocs/`.
 
 ### CLOUD REQUESTS AND CLOUD RESEARCH
 
-**9 rows in this group.** If you see fewer, this group was truncated -- say so.
+**10 rows in this group.** If you see fewer, this group was truncated -- say so.
 
 | What it is | The current file | Older versions present |
 |---|---|---|
@@ -85,6 +85,7 @@ All paths are relative to `ProjectDocs/`.
 | Cloud request | `GatewayGuard_CloudRequest-Review-2026-08-21.md` | -- |
 | Cloud request | `GatewayGuard_CloudRequest-ResearchBlock-2026-08-24-0222.md` | -- |
 | Cloud request | `GatewayGuard_CloudRequest-CPM-2026-08-30-2200.md` | -- |
+| Cloud request | `GatewayGuard_CloudRequest-ascii43Research-2026-09-04-2000.md` | -- |
 | Cloud research (delivered) | `GatewayGuard_CloudResearch-WidgetsAndAccessibility-2026-08-24-1015.md` | -- |
 | Cloud research (delivered) | `GatewayGuard_CloudResearch-Licence-2026-08-25-1435.md` | -- |
 | Review of Cloud research | `GatewayGuard_ReviewOfCloudResearch-2026-08-24-1105.md` | -- |
@@ -166,7 +167,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-09-02 10:37 to 18:13 [Claude Code -- CGDELL] -- THE STORE OPENED, AND THREE THINGS NOBODY HAD A TASK FOR
+## Session: 2026-09-02 18:35 to 2026-09-04 20:00 [Claude Code -- CGDELL] -- THE STORE IS FINISHED AND PROVEN BY PURCHASE, AND THE SPACING BUG WAS MINE ALL ALONG
 ```
 
 **If it is not in your copy of the session log, you are reading an old
