@@ -1,5 +1,16 @@
-<!-- Dated: 2026-09-04 23:42 ET -->
-# Field run evidence -- ascii43
+<!-- Dated: 2026-09-04 23:45 ET -->
+# ascii43 TEST RESULTS -- Bill's run notes and every run log
+
+*Also called: the ascii43 field test results, the ascii43 field run, Bill's ascii43 notes, the ascii43 test run.*
+
+## Where the ANALYSIS of these results lives
+
+This file is the **raw evidence**. What was decided about it is in these, all in `ProjectDocs\` and all readable:
+
+- `GatewayGuard_FieldTestTriage-ascii43run2-*.md` -- every finding, triaged. **Bill's notes are quoted in full in Part 2.**
+- `GatewayGuard_FieldTestTriage-ascii43run1-*.md` -- the earlier run.
+- `GatewayGuard_ResponseToBillsNotes-ascii43-*.md` -- the answer to each note.
+- `GatewayGuard_FieldChecklist-ascii43-*.md` -- what was tested.
 
 **GENERATED FILE. Do not edit by hand.** Rebuild it with `python Tool2\build_fieldrun_sourcepack.py ascii43`.
 

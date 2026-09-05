@@ -93,11 +93,53 @@ def main():
 
     now = datetime.datetime.now()
     stamp = now.strftime("%Y-%m-%d-%H%M")
-    out = PROJDOCS / f"GatewayGuard_FieldRunEvidence-{build}-{stamp}.md"
+    # NAME IT THE WAY BILL ASKS FOR IT. Bill, 2026-09-04, on being told Cloud
+    # could not find his results: "but you wrote .md with my results and it is
+    # in project docs." He was right -- his notes were quoted in the triage,
+    # in scope, since 2026-08-30.
+    #
+    # ***measured 2026-09-04:*** NOT ONE file in the connector scope had the
+    # words "test results" in its name. They were called FieldTestTriage,
+    # ResponseToBillsNotes, FieldChecklist. Cloud searches project knowledge
+    # by relevance, so a question about "my ascii43 test results" had no
+    # filename to land on. The first version of this script called its output
+    # FieldRunEvidence and repeated the same mistake.
+    #
+    # Use the words the person asking will actually use.
+    out = PROJDOCS / f"GatewayGuard_TestResults-{build}-{stamp}.md"
 
     parts = []
     parts.append(f"<!-- Dated: {now.strftime('%Y-%m-%d %H:%M')} ET -->")
-    parts.append(f"# Field run evidence -- {build}")
+    parts.append(f"# {build} TEST RESULTS -- Bill's run notes and every run log")
+    parts.append("")
+    parts.append(
+        f"*Also called: the {build} field test results, the {build} field run, "
+        f"Bill's {build} notes, the {build} test run.*"
+    )
+    parts.append("")
+    parts.append("## Where the ANALYSIS of these results lives")
+    parts.append("")
+    parts.append(
+        "This file is the **raw evidence**. What was decided about it is in "
+        "these, all in `ProjectDocs\\` and all readable:"
+    )
+    parts.append("")
+    parts.append(
+        "- `GatewayGuard_FieldTestTriage-" + build + "run2-*.md` -- every "
+        "finding, triaged. **Bill's notes are quoted in full in Part 2.**"
+    )
+    parts.append(
+        "- `GatewayGuard_FieldTestTriage-" + build + "run1-*.md` -- the "
+        "earlier run."
+    )
+    parts.append(
+        "- `GatewayGuard_ResponseToBillsNotes-" + build + "-*.md` -- the "
+        "answer to each note."
+    )
+    parts.append(
+        "- `GatewayGuard_FieldChecklist-" + build + "-*.md` -- what was "
+        "tested."
+    )
     parts.append("")
     parts.append(
         "**GENERATED FILE. Do not edit by hand.** Rebuild it with "
