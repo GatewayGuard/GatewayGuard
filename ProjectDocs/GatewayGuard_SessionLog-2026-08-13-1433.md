@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-05 00:23 ET
+- **Last Modified:** 2026-09-05 11:45 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -15,6 +15,118 @@
 
 ---
 ---
+
+## Session: 2026-09-05 11:09 to 11:45 [Claude Code -- CGDELL] -- CLOUD RECOMMENDED BUILDING THREE THINGS THAT ARE ALREADY BUILT, AND ONE WOULD HAVE MADE THE PRODUCT WORSE
+
+**Bill gave seven tasks and went out for several hours.** Everything that
+needed no decision is done; everything that needs him is in one document with
+a recommendation against each question.
+
+**Capacity, recorded because it was asked for:** Cloud project knowledge
+**54%**, GitHub repo **56%**. The 82% scope cut on 09-04 worked and uploads
+are landing again.
+
+### THE THREE CORRECTIONS TO CLOUD, AND THEY ARE ALL ONE SHAPE
+
+Cloud's ascii43 research is good -- properly sourced to Microsoft, NCSC, CISA
+and NIST, and it settles questions Bill has carried for weeks. **But three of
+its build recommendations are for work already in ascii43**, and I only found
+that by opening the source for each one.
+
+1. **"Read `IsTamperProtected` directly."** ***Measured, lines 5647-5666:***
+   already the primary read since ascii33, FT-105, with a registry fallback.
+   What survives is the run *order* and the re-read after a manual fix.
+2. **"Set setting 6 to `CanAuto=$false`."** ***Measured, lines 6389-6410:***
+   the write is attempted with `-EA Stop` and the permission-denied case is
+   caught and handled. **On a PC where the write is allowed it succeeds
+   today** -- the change would have switched off a working path for every
+   customer. Cloud measured that the *read* is blocked, then reasoned to the
+   *write*, labelled that step "near-certain, not measured," and built the
+   recommendation on the unmeasured half.
+3. **"Make setting 15 conditional."** ***Measured, lines 6665-6689 and
+   6476-6490:*** it has been conditional since ascii39 -- Checkup asks about a
+   password manager before the checklist and leaves Edge saving on if the
+   answer is no. Cloud's question to Bill about the settings freeze was moot.
+
+**This is not carelessness.** Cloud reads the repository through
+relevance-ranked fragments, so a function it did not retrieve is invisible to
+it. **The rule sent back to it: before recommending that anything be BUILT,
+establish it is not already built and say how** -- including the third form,
+*"I could not retrieve the function; Claude Code should check."* That form
+costs nothing and would have caught all three.
+
+### WHAT CLOUD FOUND THAT IS REAL, AND ONE OF IT IS A LAUNCH ITEM
+
+- **Nuisance-software blocking is never read.** ***Measured: the string
+  `PUAProtection` does not appear anywhere in ascii43.*** Defender only
+  catches this class of software when it is on. Biggest genuine gap found.
+- **No signature-age read.** A scan with stale definitions prints a clean
+  result that means nothing -- the FT-162 shape again.
+- **GUI mode is labelled "Recommended for first time users."** ***Measured,
+  lines 8064-8073***, against the build's own header at line 642: *"Run-GUIMode
+  (mode 2) has never been inventoried. Every field log to date is mode 1."*
+  **The screen sends our exact customer down the one untested path.** Bill's
+  decision; my recommendation is to drop the word now.
+- The password, two-step sign-in and encryption-scope answers are sourced and
+  usable. Items 18 and 19 gave Bill a documented answer to something he
+  noticed himself.
+
+### THE WEBSITE -- CLEANER THAN THE BRIEFING SAID
+
+***Measured:*** the nineteen pages pass every mechanical rule. No banned
+words, no "switch" as a verb, no `.com`, no v3.0. **I raised a false alarm on
+`wake-on-lan.html` -- five hits for "switch" -- and then read them: all five
+are inside the HTML comment that records the fix.** The three real remaining
+uses are the allowed noun.
+
+**Two sourced additions to `bitlocker.html`**, both Microsoft's own documented
+behaviour and neither making a new claim about Checkup: why a PC set up with a
+Microsoft account is probably already encrypted while a local-account PC is
+not, and why a plugged-in USB drive is not encrypted -- which is exactly what
+makes it a good place for the recovery key.
+
+**I wrote one sentence claiming Checkup names your account type, then checked
+it.** Bill had that line removed in ascii41. The sentence now says only what
+the build measurably does.
+
+### THE BRIEFING WAS STALE IN FIVE PLACES, ALL NOW FIXED
+
+It said ascii43 was **never field run** while five logs sit in
+`Test_Results\FieldRun-ascii43\`; it named a superseded field checklist; it
+said the website copy pass was on **zero** pages when it is complete on
+nineteen; it carried the **withdrawn** `N = go back` ruling in two places; and
+item 0a described a pricing claim that was fixed on 09-04.
+
+**Four of the five had already been contradicted in writing by the previous
+session's own log.** Correcting `CLAUDE.md` and open item 1 yesterday did not
+correct section 1, twelve lines away.
+
+### DELIVERED
+
+- `GatewayGuard_ReviewOfCloudResearch-ascii43-2026-09-05-1130.md` -- for Bill
+- `GatewayGuard_NoteToCloud-2026-09-05-1130.md` -- corrections, six research
+  items, four writing jobs
+- `GatewayGuard_ascii44BuildPlan-2026-09-05-1130.md` -- four blocks; **A and B
+  need no decision and are two thirds of the build**
+- `GatewayGuard_AttorneyQuestions-Consult2-2026-09-05-1130.md` -- **every
+  section reference renumbered for licence v3.1**; the old questions cite v2.0,
+  where the liability cap was Section 10 (now 11) and severability Section 12
+  (now 14). Sending them beside v3.1 would have pointed the attorney at the
+  wrong clauses.
+- `GatewayGuard_DecisionsForBill-2026-09-05-1130.md` -- 16 questions, each with
+  a recommendation so he can answer "agree"
+
+### FOR THE NEXT CLAUDE
+
+1. **`Tool2\Run-DocCheck.bat` has been failing since 2026-08-23** -- dead
+   pointers across ProjectDocs went 59 -> 84 against a baseline of 51. **The
+   live documents are fine (9, at baseline).** The 84 is superseded drafts
+   pointing at each other. It is a real cleanup and nobody has done it.
+2. **Correcting a fact in one document does not correct its twin.** Five stale
+   briefing lines today, four of them already disproved in the previous
+   session's own log. **Grep the claim, not the file.**
+3. **Read the surrounding markup before reporting a grep hit.** Five "switch"
+   hits in a page were a comment describing the fix.
 
 ## Session: 2026-09-04 20:19 to 2026-09-05 00:23 [Claude Code -- CGDELL] -- I FILLED CLOUD'S MEMORY WITH A WEB ARTICLE, AND THE MOUSE FIX NEEDED TWO MECHANISMS NOT ONE
 

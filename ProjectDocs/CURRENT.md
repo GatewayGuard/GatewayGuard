@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-05 00:25 ET -->
-<!-- Commit: 3b336b1 -->
+<!-- Generated: 2026-09-05 11:41 ET -->
+<!-- Commit: 3f9291f -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-05 00:25 ET  |  **Commit:** `3b336b1`  |  **Made:** 2026-09-05 00:24 ET
-- **Commit subject:** Session log: the web article, the two-mechanism mouse, and two wrong answers
+- **Generated:** 2026-09-05 11:41 ET  |  **Commit:** `3f9291f`  |  **Made:** 2026-09-05 00:27 ET
+- **Commit subject:** The next build is ascii44. Both status lines said "finish ascii43" and were wrong
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -19,7 +19,7 @@ document family and the single filename that is live right now. Take every
 filename from this table -- never from memory, never from another document,
 never by guessing which date looks newest.
 
-**55 rows follow.** If you cannot see all 55 of them, your
+**58 rows follow.** If you cannot see all 58 of them, your
 retrieval truncated the table -- **say so and ask for the rest, rather
 than answering from the handful you received.**
 
@@ -70,13 +70,13 @@ All paths are relative to `ProjectDocs/`.
 | Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii43run2-2026-08-30-1723.md` | 2 |
 | Response to Bill's field notes | `GatewayGuard_ResponseToBillsNotes-ascii43-2026-08-30-1815.md` | 0 |
 | Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii43-2026-08-26-1730.md` | 2 |
-| Build plan (current) | `GatewayGuard_ascii43BuildPlan-2026-08-21.md` | 0 |
+| Build plan (current) | `GatewayGuard_ascii44BuildPlan-2026-09-05-1130.md` | 1 |
 | Future settings (candidate list) | `GatewayGuard_FutureSettings-2026-08-24-2310.md` | 0 |
 | Guide FT-220 sections | `GatewayGuard_GuideFT220-Sections-2026-08-21-1445.md` | 0 |
 
 ### CLOUD REQUESTS AND CLOUD RESEARCH
 
-**10 rows in this group.** If you see fewer, this group was truncated -- say so.
+**12 rows in this group.** If you see fewer, this group was truncated -- say so.
 
 | What it is | The current file | Older versions present |
 |---|---|---|
@@ -89,7 +89,9 @@ All paths are relative to `ProjectDocs/`.
 | Cloud request | `GatewayGuard_CloudRequest-ascii43Research-2026-09-04-2000.md` | -- |
 | Cloud research (delivered) | `GatewayGuard_CloudResearch-WidgetsAndAccessibility-2026-08-24-1015.md` | -- |
 | Cloud research (delivered) | `GatewayGuard_CloudResearch-Licence-2026-08-25-1435.md` | -- |
+| Cloud research (delivered) | `GatewayGuard_CloudResearch-ascii43-2026-09-05-0018.md` | -- |
 | Review of Cloud research | `GatewayGuard_ReviewOfCloudResearch-2026-08-24-1105.md` | -- |
+| Review of Cloud research | `GatewayGuard_ReviewOfCloudResearch-ascii43-2026-09-05-1130.md` | -- |
 
 ### MARKETING, GUIDE, WEBSITE, PRICING AND THE LICENCE
 
@@ -105,18 +107,19 @@ All paths are relative to `ProjectDocs/`.
 | Pricing copy (website) | `GatewayGuard_PricingCopy-2026-08-22-1000.md` | 1 |
 | Annual price decision | `GatewayGuard_PriceDecision-Annual-2026-08-21-1445.md` | 0 |
 | Refund policy and terms | `GatewayGuard_Decisions-RefundAndTerms-2026-08-22-1510.md` | 0 |
-| Licence agreement (EULA) | `GatewayGuard_License-BILLS-ANSWERS-2026-09-02-1553-TEXT.md` | 4 |
+| Licence agreement (EULA) | `GatewayGuard_License-2026-09-05-0018-TEXT.md` | 5 |
 
 ### WORKING RULES AND WHAT IS WAITING ON BILL
 
-**5 rows in this group.** If you see fewer, this group was truncated -- say so.
+**6 rows in this group.** If you see fewer, this group was truncated -- say so.
 
 | What it is | The current file | Older versions present |
 |---|---|---|
 | Cloud working rules | `GatewayGuard_CloudWorkingRules-2026-08-25-1400.md` | 0 |
 | Cloud research brief (licence) | `GatewayGuard_CloudResearchBrief-Licence-2026-08-25-1400.md` | 0 |
-| Note to Cloud (session close) | `GatewayGuard_NoteToCloud-2026-08-28-1300.md` | 2 |
-| Everything waiting on Bill | `GatewayGuard_DecisionsForBill-2026-08-26-0302.md` | 2 |
+| Note to Cloud (session close) | `GatewayGuard_NoteToCloud-2026-09-05-1130.md` | 3 |
+| Attorney questions (current set) | `GatewayGuard_AttorneyQuestions-Consult2-2026-09-05-1130.md` | 1 |
+| Everything waiting on Bill | `GatewayGuard_DecisionsForBill-2026-09-05-1130.md` | 3 |
 | Pricing reconciliation (one-time packs) | `PricingReconciliation-2026-07-16.md` | 0 |
 
 ### FIXES, REVIEWS AND MEASURED RESEARCH
@@ -168,7 +171,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-09-04 20:19 to 2026-09-05 00:23 [Claude Code -- CGDELL] -- I FILLED CLOUD'S MEMORY WITH A WEB ARTICLE, AND THE MOUSE FIX NEEDED TWO MECHANISMS NOT ONE
+## Session: 2026-09-05 11:09 to 11:45 [Claude Code -- CGDELL] -- CLOUD RECOMMENDED BUILDING THREE THINGS THAT ARE ALREADY BUILT, AND ONE WOULD HAVE MADE THE PRODUCT WORSE
 ```
 
 **If it is not in your copy of the session log, you are reading an old

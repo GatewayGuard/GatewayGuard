@@ -1,0 +1,80 @@
+﻿======================================================================
+  GATE 26 -- SESSION-START REPO REVIEW
+======================================================================
+  repository : C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard
+  run at     : 2026-09-05 11:09:57
+
+  READ-ONLY. Nothing is moved, deleted or committed.
+
+----------------------------------------------------------------------
+  1. WHAT CLOUD CAN SEE
+----------------------------------------------------------------------
+
+  scope   : ProjectDocs, Tool, WebSite/Rules, CLAUDE.md
+  files   : 197
+  size    : 3493 KB
+  budget  : 4096 KB
+
+  Within budget -- 85% used.
+
+----------------------------------------------------------------------
+  2. IN CLOUD'S SCOPE BUT CLOUD CANNOT READ THEM
+----------------------------------------------------------------------
+
+  Cloud reads text. A .docx or .pdf spends the budget and delivers
+  nothing -- which is why this project generates .md twins.
+
+  1 files, 16 KB of unreadable weight:
+
+        16 KB  ProjectDocs/GatewayGuard_License-2026-08-24-1820.docx
+
+----------------------------------------------------------------------
+  3. IN SCOPE, OVER 20 KB, AND CURRENT.md DOES NOT NAME THEM
+----------------------------------------------------------------------
+
+  Not proof of anything -- CURRENT.md does not list every working file.
+  It is simply where dead weight hides. Look, decide, move to Archive.
+
+  6 files, 700 KB:
+
+       553 KB  Tool/W11-SecurityHardening-v3-ascii43-2026-08-21-1752.ps1
+        42 KB  ProjectDocs/GatewayGuard_GuideSectionReplacementsPack2-2026-08-23-1816.md
+        32 KB  ProjectDocs/GatewayGuard_StoreRecheck2-2026-09-04-1358.md
+        27 KB  ProjectDocs/GatewayGuard_CloudResponse-CPM-2026-08-31-0834.md
+        24 KB  ProjectDocs/Review-of-HtmlWebsiteReview-2026-08-22-2220md.md
+        22 KB  ProjectDocs/gatewayguard projects-TEXT.md
+
+----------------------------------------------------------------------
+  4. COMMITS THAT ADDED A LOT OF FILES AT ONCE
+----------------------------------------------------------------------
+
+  Anything over 60 added files in one commit. This is the check
+  that would have caught the PCMag article on the day it landed.
+
+  2 found in the last 40 commits:
+
+    17fc9fa  2026-09-03   665 files added
+              Both test purchases went through; seven defects still live on the store
+    b4b999f  2026-09-03   177 files added
+              The Guide has no buy button because is_published is false; receipt filed
+
+  A commit message that does not account for its own file count is
+  the warning sign. Check what actually went in.
+
+----------------------------------------------------------------------
+  5. SAVED WEB PAGES ANYWHERE IN THE REPOSITORY
+----------------------------------------------------------------------
+
+  A folder ending _files is what a browser's Save Page As produces.
+  These are third-party pages. They are never project documents.
+
+  You bought GatewayGuard Checkup! - william.wfbiii@gmail.com - Gmail_files
+    63 files, 22914 KB -- outside Cloud scope
+  Spy on Me No More_ The Shocking Windows 11 Upgrade Every PC User Needs _ PCMag_files
+    255 files, 13373 KB -- outside Cloud scope
+
+======================================================================
+  2 thing(s) worth acting on. Nothing was changed -- move
+  anything you retire to Archive with git mv, so it stays in the
+  repository and stays recoverable.
+======================================================================

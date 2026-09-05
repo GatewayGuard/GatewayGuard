@@ -80,8 +80,8 @@ $problems = 0
 #                                       remain)
 $BASE_DEAD_POINTERS_GOVERNING = 9
 $BASE_DEAD_POINTERS_ALL       = 51
-$BASE_DATE_MISMATCH           = 1
-$BASE_UNRESOLVED_FAMILIES     = 2
+$BASE_DATE_MISMATCH           = 0
+$BASE_UNRESOLVED_FAMILIES     = 0
 # CHECK 6 ADDED 2026-08-23. Bill: "put times in the filename." The convention
 # had been the working practice for weeks -- 53 of 85 dated files in
 # ProjectDocs already carried one -- and NOTHING CHECKED IT, so it drifted, and
@@ -93,7 +93,7 @@ $BASE_UNRESOLVED_FAMILIES     = 2
 # family created on the same day with no time are A TIE, and a tie resolves
 # silently and arbitrarily. On 2026-08-22 the pricing row resolved to a
 # superseded draft for a neighbouring reason and nothing said so.
-$BASE_NO_TIME_IN_NAME         = 13
+$BASE_NO_TIME_IN_NAME         = 10
 
 $bt = [char]96   # backtick, built by code point so the regex below stays legible
 

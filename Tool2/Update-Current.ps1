@@ -183,6 +183,12 @@ $wanted = @(
     # by the 'GatewayGuard_CloudHandoff-*' glob below and hijack the row that
     # names what Cloud was TOLD, pointing it at Claude Code's reply instead.
     @{ Label = 'Note to Cloud (session close)'; Pattern = 'GatewayGuard_NoteToCloud-*.md' },
+    # Added 2026-09-05. THE ATTORNEY QUESTIONS HAD NO ROW. The August 7 set
+    # cites the v2.0 agreement, where the liability cap was Section 10 and
+    # severability Section 12; in v3.1 those are Sections 11 and 14. Sending
+    # the old questions beside the current agreement would have pointed the
+    # attorney at the wrong clauses, and nothing named which set was live.
+    @{ Label = 'Attorney questions (current set)'; Pattern = 'GatewayGuard_AttorneyQuestions-*.md' },
     # Added 2026-08-25. The single list of everything waiting on Bill. It had no
     # row, so the 24 August edition could only be found by remembering its name
     # -- which is the failure this whole file exists to prevent.

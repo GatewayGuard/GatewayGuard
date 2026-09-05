@@ -1,0 +1,130 @@
+﻿======================================================================
+  DOCUMENT GATE  --  SyncPlan section 6c
+======================================================================
+  repository : C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard
+  machine    : CGDELL
+  run at     : 2026-09-05 11:42:00
+
+  governing documents named by CURRENT.md : 49
+  of those, present-tense about NOW       : 6 (incl. CLAUDE.md)
+
+-- 1. VOLATILE FACTS -- STATED ONCE, AND TRUE ------------------------
+  Section 7b: a fact stated once can be wrong. A fact stated twice can be
+  INCONSISTENT, and then nobody knows which to believe. So each fact below
+  is counted across the live documents AND checked against the machine.
+
+  ACTIVE BUILD NUMBER
+      _READ-FIRST-Briefing-2026-08-20-1306.md:126  says 43
+      CLAUDE.md:12  says 43
+      measured now : ascii43
+      OK -- agrees with itself and with the machine.
+
+  BUILD SIZE -- non-blank lines
+      _READ-FIRST-Briefing-2026-08-20-1306.md:133  says 9,002
+      CLAUDE.md:12  says 9,002
+      measured now : 9002
+      OK -- agrees with itself and with the machine.
+
+  BUILD SIZE -- total lines
+      _READ-FIRST-Briefing-2026-08-20-1306.md:134  says 9,382
+      CLAUDE.md:12  says 9,382
+      measured now : 9382
+      OK -- agrees with itself and with the machine.
+
+  COMMITS
+      _READ-FIRST-Briefing-2026-08-20-1306.md:199  says 402
+      measured now : 402
+      OK -- agrees with itself and with the machine.
+
+  TRACKED FILES
+      _READ-FIRST-Briefing-2026-08-20-1306.md:200  says 1,235
+      measured now : 1235
+      OK -- agrees with itself and with the machine.
+
+  UNPUSHED COMMITS
+      _READ-FIRST-Briefing-2026-08-20-1306.md:201  says 0
+      measured now : 0
+      OK -- agrees with itself and with the machine.
+
+-- 2. DEAD POINTERS --------------------------------------------------
+  A pointer that lies is worse than no pointer. Every dated filename in
+  backticks must exist somewhere in the tree.
+
+      GatewayGuard_ProjectInstructions-2026-08-12-1652.md:47  -> GatewayGuide_Project_Instructions-2026-07-03.md
+      GatewayGuard_ProjectInstructions-2026-08-12-1652.md:109  -> GatewayGuard_TestHistory-ascii39-2026-08-02-0914.md
+      GatewayGuard_ProjectInstructions-2026-08-12-1652.md:166  -> GatewayGuard_CodingStandards-2026-07-20-0908.md
+      GatewayGuard_ProjectInstructions-2026-08-12-1652.md:327  -> GatewayGuard_TestHistory-ascii39-2026-08-02-0914.md
+      GatewayGuard_ProjectInstructions-2026-08-12-1652.md:577  -> GatewayGuide_Project_Instructions-2026-07-03.md
+      GatewayGuard_ProjectInstructions-2026-08-12-1652.md:629  -> GatewayGuard_CPM_Schedule-2026-07-30-2208.md
+      GatewayGuard_ProjectInstructions-2026-08-12-1652.md:639  -> GatewayGuard_TestHistory-ascii39-2026-08-02-0914.md
+      GatewayGuard_ProjectInstructions-2026-08-12-1652.md:644  -> ProjectInstructions-2026-08-02-1820.md
+      GatewayGuard_CodingStandards-2026-08-07-1330.md:102  -> GatewayGuard_CodingStandards-2026-07-21-1009.md
+  dead pointers in the live documents : 9   (baseline 9)
+  dead pointers across all ProjectDocs : 84   (baseline 51)
+  RESULT: FAIL -- a NEW dead pointer appeared. Fix it, do not raise the baseline.
+
+-- 3. FILENAME DATE vs INTERNAL Dated: -------------------------------
+  Naming standard: the two are updated in the same edit, never one alone.
+
+  documents whose header disagrees with their name : 0   (baseline 0)
+  documents carrying no Dated: header at all       : 7   (reported, not failed)
+  RESULT: clear.
+
+-- 4. ONE LIVE COPY, OR CURRENT.md NAMES WHICH ONE -------------------
+  Several copies are fine as long as something says which is live. What is
+  not fine is three drafts and nothing to choose between them.
+
+      OK        GatewayGuard_CloudHandoff.md  -- 3 copies, CURRENT.md names the live one
+      OK        GatewayGuard_CPM_Schedule.md  -- 2 copies, CURRENT.md names the live one
+      OK        GatewayGuard_DecisionsForBill.md  -- 4 copies, CURRENT.md names the live one
+      OK        GatewayGuard_License-TEXT.md  -- 5 copies, CURRENT.md names the live one
+      OK        GatewayGuard_MarketingPlan.md  -- 4 copies, CURRENT.md names the live one
+      OK        GatewayGuard_MarketingPlanAmendment.md  -- 4 copies, CURRENT.md names the live one
+      OK        GatewayGuard_NoteToCloud.md  -- 4 copies, CURRENT.md names the live one
+      OK        GatewayGuard_ScreenNumberTable.md  -- 2 copies, CURRENT.md names the live one
+  families with copies and no anchor : 0   (baseline 2)
+  RESULT: improved. Lower the baseline in this script to 0.
+
+-- 5. THE CONTENT STAMP ----------------------------------------------
+  SyncPlan 6c, last item: the stamp should carry a hash of the file's own
+  content. Without one, two files with the same Dated: line and different
+  text read as identical -- which is exactly what a mid-session edit makes.
+  SyncPlan records the hash as ASPIRATIONAL, not built. This section
+  verifies any stamp that IS there and counts the rest. It does not invent
+  a number and call it adopted.
+
+  live documents carrying a content hash : 0 of 6
+  RESULT: not adopted yet. This is SyncPlan 6c's open item, unchanged.
+          To adopt: add a line to each live document reading
+          Content-SHA256: <first 16 hex of the SHA-256 of the file with
+          that line removed>, and this section starts enforcing it.
+
+======================================================================
+  6. FILENAME CARRIES A TIME  --  filename-YYYY-MM-DD-HHMM.ext
+======================================================================
+
+  governing documents with no time in the filename : 10   (baseline 10)
+
+     Screen numbering table  ->  GatewayGuard_ScreenNumberTable-2026-08-17.md
+     Cloud request  ->  GatewayGuard_CloudRequest-GuideRewrite-2026-08-21.md
+     Cloud request  ->  GatewayGuard_CloudRequest-GuideSetting11-2026-08-21.md
+     Cloud request  ->  GatewayGuard_CloudRequest-PricingCopy-2026-08-21.md
+     Cloud request  ->  GatewayGuard_CloudRequest-Review-2026-08-21.md
+     Pricing reconciliation (one-time packs)  ->  PricingReconciliation-2026-07-16.md
+     Offline scan research  ->  GatewayGuard_OfflineScanResearch-2026-08-21.md
+     AV scan coverage test  ->  GatewayGuard_AVScanCoverageTest-2026-08-21.md
+     Scheduled task defects (FT-203)  ->  GatewayGuard_ScheduledTaskDefects-2026-08-20.md
+     ascii41 findings -- fixed or not  ->  GatewayGuard_ascii41Findings-FixedOrNot-2026-08-19.md
+
+  RESULT: at baseline. These predate the rule being checked.
+          Take the time from each file's own Last Modified header, so
+          the filename and the header cannot disagree.
+
+======================================================================
+  1 THING(S) NEED ATTENTION -- see above
+======================================================================
+
+  Baselines are a RATCHET. Fix the finding; never raise the number.
+  Sections 2 and 4 report at their baseline rather than failing, because
+  the exceptions predate the gate. Section 1 fails on sight -- it is small,
+  it is exact, and it is where the briefing went three builds stale.

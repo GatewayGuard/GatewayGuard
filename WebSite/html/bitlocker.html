@@ -1,6 +1,18 @@
 <!-- Dated: 2026-07-30 23:10 EDT -->
 <!-- File: guide/bitlocker.html -->
 <!-- GatewayGuard LLC -- gatewayguard.co/guide/bitlocker -->
+<!-- Change History:
+     2026-09-05 11:29: Two sourced additions, no claim about Checkup changed.
+     (1) Local account vs Microsoft account decides if Device encryption is
+         already on. Sourced: Microsoft Support, "Device Encryption in
+         Windows" -- "If you're using a local account, Device Encryption
+         isn't turned on automatically."
+     (2) Encryption covers internal drives only; a plugged-in USB drive is
+         not encrypted and Home cannot encrypt it. Sourced: Microsoft Learn,
+         BitLocker overview -- "Device encryption encrypts only the OS drive
+         and fixed drives, it doesn't encrypt external/USB drives."
+         Stated as the reason a USB copy of the key is readable elsewhere.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -133,6 +145,8 @@ footer { background: var(--white); border: 4px solid var(--black); max-width: va
   <h3 style="font-size:17px;margin-top:22px;">Windows 11 Home</h3>
   <ol class="steps-list"><li><div class="step-text">Press the <strong>Windows key</strong> and type <strong>encryption</strong>.</div></li><li><div class="step-text">Open <strong>Device encryption settings</strong>.</div></li><li><div class="step-text">Look at the <strong>Device encryption</strong> switch. <strong>It should say On. If it says Off, click it to turn it On.</strong></div></li><li><div class="step-text">If there is no Device encryption page at all, your PC does not support it. That is a hardware limitation and not something you did wrong &#8212; see <em>What to expect</em> below.</div></li></ol>
 
+  <div class="note-box"><strong>Why yours may already be on &#8212; or may not be.</strong> It depends on how the PC was first set up. If you signed in with a Microsoft account when the PC was new, Windows very likely turned Device encryption on by itself and saved your recovery key to that account. If the PC was set up with a local account &#8212; a user name and password that only exist on this computer &#8212; Windows does <strong>not</strong> turn it on for you. You turn it on yourself, using the steps above, and there is no copy of your key anywhere until you make one. Checkup reads what your encryption is set to, and the steps it shows you match the kind of account your PC uses.</div>
+
   <h3 style="font-size:17px;margin-top:22px;">Windows 11 Pro</h3>
   <ol class="steps-list"><li><div class="step-text">Press the <strong>Windows key</strong>, type <strong>windows security</strong>, and open <strong>Windows Security</strong>.</div></li><li><div class="step-text">In the left-hand panel, select <strong>Device security</strong>.</div></li><li><div class="step-text">Scroll down &#8212; or use the down arrow key or the Page Down key &#8212; and select <strong>Manage BitLocker drive encryption</strong>.</div></li><li><div class="step-text">Look at your <strong>C:</strong> drive. <strong>If it says BitLocker on, there is nothing to do.</strong> If it says <strong>BitLocker off</strong>, click <strong>Turn on BitLocker</strong> and follow the prompts.</div></li><li><div class="step-text"><strong>Do not walk away during the next step.</strong> Windows will offer to save your recovery key. Save it before you go any further &#8212; the section below tells you where.</div></li></ol>
 </section>
@@ -151,6 +165,8 @@ footer { background: var(--white); border: 4px solid var(--black); max-width: va
     <li><div class="step-text"><strong>A password manager</strong> &#8212; if you use one, paste the key as a secure note.</div></li>
   </ol>
   <div class="note-box" style="margin-top:16px;"><strong>GatewayGuard showed you this key during setup.</strong> If you saved it then, you&#8217;re done. If you cannot remember saving it, check your Microsoft account at the link above before doing anything else.</div>
+
+  <div class="note-box" style="margin-top:16px;"><strong>A USB drive is a safe place for the key, and here is why.</strong> Encryption covers the drives inside your PC. A USB drive or memory stick plugged into it is <strong>not</strong> encrypted, and Windows 11 Home cannot encrypt one. So the key file you save to a USB drive stays readable on any other computer &#8212; which is exactly what you need on the day your own PC will not open. Store it away from the laptop.</div>
 </section>
 <section class="content-section">
   <h2>Your backup plan &#8212; what to do the day the key is asked for</h2>

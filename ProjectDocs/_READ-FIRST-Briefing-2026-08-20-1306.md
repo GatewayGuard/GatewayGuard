@@ -123,7 +123,13 @@ have passed it wrongly** -- `edge://settings/help` drives the updater directly,
 so it cannot see the unattended check stop. **A test that cannot fail is worse
 than no test.**
 
-**Active build: ascii43, HALF BUILT AND NEVER FIELD RUN** --
+**Active build: ascii43 -- BUILT AND FIELD RUN TWICE. THE NEXT BUILD IS
+ascii44.** *(Corrected 2026-09-05. This line said "HALF BUILT AND NEVER
+FIELD RUN" while* ***measured:*** *`Test_Results\FieldRun-ascii43\` holds
+five run logs, 2026-08-26 18:07 to 2026-08-30 11:04, triaged in two
+documents. A build that has been field run is spent -- the remaining work
+takes a new number. The build plan is
+`GatewayGuard_ascii44BuildPlan-2026-09-05-1130.md`.)* --
 `Tool\W11-SecurityHardening-v3-ascii43-2026-08-21-1752.ps1`, **9,002 non-blank
 lines / 9,382 total**. Gates 12, 12b and 24 PASS, 0 non-ASCII, 0 duplicate
 functions, 10 carried oversize screens. **Next free screen ID 90.**
@@ -137,13 +143,15 @@ gate-24-blocked until a full scan is measured covering `D:` **on SANDY**), the
 **F5 remnants** (FT-195a, FT-175b, FT-225 -- scoped to the one inconsistent
 screen), and the **F6 wording block** (~20 items + FT-222).
 
-**Field checklist for it:** `GatewayGuard_FieldChecklist-ascii43-2026-08-22.md`.
+**Field checklist for it:** `GatewayGuard_FieldChecklist-ascii43-2026-08-26-1730.md`.
+*(Corrected 2026-09-05; this line named the superseded 08-22 file, which
+`CURRENT.md` has not pointed at since 08-26.)*
 **Next free FT number: 238.** *(FT-237 assigned 2026-08-22: Checkup's
 Advertising ID revert path names `Let apps use advertising ID`, which is a
 stem, not the on-screen label. Belongs to the unbuilt F6 wording block --
 see `GatewayGuard_DefectPassResponse-2026-08-22-1525.md`.)* *(FT-236 assigned 2026-08-22: the ascii43 field
 checklist demanded "B is the ONLY Back key, N must never take you back",
-contradicting Bill's own ruling that `N = go back` stays in real Y/N
+contradicting what was then Bill's ruling that `N = go back` stays in real Y/N
 questions. Cloud's point, and it is right: a checklist that contradicts a
 settled decision is a defect in the checklist, not a build-scheduling fact,
 so it gets a number and is fixed once instead of re-tagged every build.)*
@@ -188,21 +196,36 @@ by hand is how a plan starts lying.
 
 | | |
 |---|---|
-| Commits | **270** |
-| Tracked files | **642** |
+| Commits | **402** |
+| Tracked files | **1,235** |
 | Unpushed | **0** |
-| Untracked | 28 |
-| Modified | 4 |
-| Deleted on disk, still tracked | 10 -- Bill's folder reorganisation, moves not losses |
-| `.git` | **45 MB** |
+| Untracked | 40 |
+| Modified | 11 |
+| Deleted on disk, still tracked | 18 -- Bill's folder reorganisation, moves not losses |
+| `.git` | **63 MB** |
 
-*(Measured 2026-08-23 22:50. The previous figures were taken 2026-08-20 and
-were 94 commits and 91 files stale by the time they were replaced -- on the
-table that says "stated HERE ONLY". Re-measure it, do not carry it forward.)*
+*(Measured 2026-09-05 11:45. The previous figures were taken 2026-08-23 and
+had gone 132 commits and 593 files stale -- on the table that says "stated
+HERE ONLY". Re-measure it, do not carry it forward.)*
 
 **The tracked-file count was taken three ways and all three agree** --
-`ls-files`, `ls-files -z`, and `ls-tree -r HEAD` each return 551. That is the
-method the 2026-08-13 caution below demands, and it is cheap.
+`ls-files`, `ls-files -z`, and `ls-tree -r HEAD` each return **1,235**.
+
+> **The block that stood here disagreed with itself.** The table said 642
+> tracked files and the paragraph directly beneath it said all three methods
+> "each return 551". **Two different numbers, four lines apart, in the section
+> that exists to be the single source for them.** Neither was right by
+> 2026-09-05. That is why the figures are re-measured at session end rather
+> than carried, and why the three-way check is quoted with the number it
+> actually returned.
+
+**The 18 deletions are folder moves, and none is a loss.** `MB\` is now
+untracked `Migration\MB\`; `Presentation\` is tracked at
+`ProjectDocs\Presentation\`; `Run_Comments\` matches
+`Archive\ToolRunComments-Retired-2026-09-04\`. **`Recovery Keys\Recovery
+Keys.txt` has no copy on disk** -- and ***measured: it is 13 bytes in HEAD and
+contains only the words "Recovery Keys", no keys.*** Same empty shell as the
+one retired on 09-04. Every one is recoverable from the last commit.
 
 ---
 
@@ -649,12 +672,25 @@ the real documents survive under hyphenated names.
    `GatewayGuard_HtmlWebsiteReview-2026-08-22-2220.md`; **the recommendation is
    option 2**, because it carries a second sentence for the two settings
    Checkup cannot change and so cannot reproduce the Tamper Protection defect.
-   **Eleven of 19 pages have their factual (A) items built. The copy pass has
-   been done on ZERO.**
+   **Eleven of 19 pages have their factual (A) items built.** *(Corrected
+   2026-09-05: this said the copy pass had been done on ZERO pages. It is
+   **complete on all 19**, and* ***measured 2026-09-05:*** *the pages pass
+   every mechanical rule -- no banned words, no "switch" as a verb, no
+   `.com`, no v3.0. The three remaining uses of "switch" are the allowed
+   noun.)*
 
-0a. **A PURCHASE PAGE PROMISES WHAT THE PRODUCT CANNOT DO.** The new pricing
-   section, `WebSite\html\GatewayGuard_PricingSectionHtml-2026-08-23-1816.html`,
-   says the annual update *"scans your drives again"*. **Measured against
+0a. **CLOSED 2026-09-04.** *(This item read "A PURCHASE PAGE PROMISES WHAT
+   THE PRODUCT CANNOT DO" -- the pricing section said the annual update
+   "scans your drives again", which ascii43 cannot do.* ***Measured
+   2026-09-05, the live file:*** *it now reads "can start a Microsoft Defender
+   offline scan while it is there -- the same one it offers the first time you
+   run it, and only if you say yes." That is supportable and approval-gated.
+   The paragraph below is kept for the reasoning, which still governs any
+   future claim on that page.)*
+
+   The old text, for the record: the pricing section
+   `WebSite\html\GatewayGuard_PricingSectionHtml-2026-08-23-1816.html`
+   said the annual update *"scans your drives again"*. **Measured against
    ascii43: zero second-drive handling, and `Start-MpWDOScan` has no scope
    parameter. Checkup reads `C:` only** -- FT-167. This is the Tamper
    Protection shape on the page that takes the money. It is left as received
@@ -681,8 +717,13 @@ the real documents survive under hyphenated names.
      scan. The wording must say "full scan of all your drives", never
      "offline scan".*
    - **F5 remnants** -- FT-195a, FT-175b, and FT-225 scoped to the one
-     genuinely inconsistent screen (Bill's call: `N = go back` stays as the
-     natural answer in real Y/N/S questions).
+     genuinely inconsistent screen. **The parenthetical that stood here --
+     "Bill's call: `N = go back` stays as the natural answer in real Y/N/S
+     questions" -- is WITHDRAWN.** Bill reversed it 2026-08-30: *"N always
+     means no and B should always be used to say back."* FT-236 is
+     withdrawn on its premise; the build moves, not the checklist. **7
+     prompts change in ascii44**; the 11 `N = exit` sites wait on the `X`
+     decision. See `CLAUDE.md` under Product Rules and triage Part 5.
    - **F6 wording block** -- ~20 items plus FT-222.
    - **FT-220 is ascii44, not ascii43** -- it waits on the guide (W-07).
 
