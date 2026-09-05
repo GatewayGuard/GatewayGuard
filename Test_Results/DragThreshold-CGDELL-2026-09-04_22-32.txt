@@ -1,0 +1,49 @@
+﻿======================================================================
+  MOUSE DRAG THRESHOLD -- how far the mouse must move before Windows
+  treats a click as a drag.
+======================================================================
+  machine : CGDELL
+  user    : willi
+  run at  : 2026-09-04 22:32:15
+
+-- BEFORE -------------------------------------------------------------
+  stored in registry : DragHeight 200 , DragWidth 200
+  live in Windows    : 200x200  (width x height, in pixels)
+
+-- SETTING both values to 200 pixels --------------------------------
+
+  You will have to move the mouse 200 pixels -- about 52.9 mm on a
+  standard-density screen -- with the button held down before Windows
+  will start dragging. A normal click, and a twitch during a click,
+  will not move a folder.
+
+  Deliberate drag-and-drop still works. It just has to look
+  deliberate.
+
+  [1 of 2] Written to the registry, so it survives a sign-out.
+  [2 of 2] Pushed into the running system. No sign-out needed.
+
+-- AFTER --------------------------------------------------------------
+  stored in registry : DragHeight 200 , DragWidth 200
+  live in Windows    : 200x200   <-- read in a NEW process
+
+  CONFIRMED. Stored and live, both at 200.
+
+  NOW TEST IT, and this is the part that actually answers the
+  question. Open File Explorer and try to nudge a folder with a
+  short flick of the mouse.
+
+    - If the folder does NOT move, the setting is working.
+    - If the folder STILL moves, then File Explorer is ignoring
+      this setting, and no number will fix it. Say so, and the
+      answer has to be found somewhere else. That is a real
+      result, not a failure.
+
+-- TO UNDO ------------------------------------------------------------
+  Double-click Run-SetDragThreshold-Revert.bat. It puts both values
+  back to 4 and applies that immediately too.
+
+-- IF A FOLDER EVER DOES MOVE BY ACCIDENT -----------------------------
+  Press Ctrl+Z in File Explorer straight away. That undoes the move
+  and puts the folder back where it was.
+======================================================================
