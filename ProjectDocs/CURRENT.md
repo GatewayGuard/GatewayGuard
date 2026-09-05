@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-04 20:02 ET -->
-<!-- Commit: 2729263 -->
+<!-- Generated: 2026-09-05 00:25 ET -->
+<!-- Commit: 3b336b1 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-04 20:02 ET  |  **Commit:** `2729263`  |  **Made:** 2026-09-04 19:56 ET
-- **Commit subject:** Bundle receipt fixed and the right two files delivered; the store is finished
+- **Generated:** 2026-09-05 00:25 ET  |  **Commit:** `3b336b1`  |  **Made:** 2026-09-05 00:24 ET
+- **Commit subject:** Session log: the web article, the two-mechanism mouse, and two wrong answers
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -19,7 +19,7 @@ document family and the single filename that is live right now. Take every
 filename from this table -- never from memory, never from another document,
 never by guessing which date looks newest.
 
-**54 rows follow.** If you cannot see all 54 of them, your
+**55 rows follow.** If you cannot see all 55 of them, your
 retrieval truncated the table -- **say so and ask for the rest, rather
 than answering from the handful you received.**
 
@@ -33,7 +33,7 @@ All paths are relative to `ProjectDocs/`.
 |---|---|---|
 | Briefing -- read this first | `_READ-FIRST-Briefing-2026-08-20-1306.md` | 0 |
 | Session log | `GatewayGuard_SessionLog-2026-08-13-1433.md` | 0 |
-| Project instructions | `GatewayGuard_ProjectInstructions-2026-08-12-1652.md` | 1 |
+| Project instructions | `GatewayGuard_ProjectInstructions-2026-08-12-1652.md` | 0 |
 | Coding standards | `GatewayGuard_CodingStandards-2026-08-07-1330.md` | 0 |
 | Defect prevention playbook | `GatewayGuard_DefectPreventionPlaybook-2026-07-26-0619.md` | 0 |
 | Website standards | `GatewayGuard_WebsiteStandards-2026-07-26-0619.md` | 0 |
@@ -62,13 +62,14 @@ All paths are relative to `ProjectDocs/`.
 
 ### THE BUILD AND ITS FIELD TESTS
 
-**6 rows in this group.** If you see fewer, this group was truncated -- say so.
+**7 rows in this group.** If you see fewer, this group was truncated -- say so.
 
 | What it is | The current file | Older versions present |
 |---|---|---|
-| Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii43run2-2026-08-30-1723.md` | 4 |
+| Test results (raw run notes and logs) | `GatewayGuard_TestResults-ascii43-2026-09-04-2345.md` | 0 |
+| Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii43run2-2026-08-30-1723.md` | 2 |
 | Response to Bill's field notes | `GatewayGuard_ResponseToBillsNotes-ascii43-2026-08-30-1815.md` | 0 |
-| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii43-2026-08-26-1730.md` | 3 |
+| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii43-2026-08-26-1730.md` | 2 |
 | Build plan (current) | `GatewayGuard_ascii43BuildPlan-2026-08-21.md` | 0 |
 | Future settings (candidate list) | `GatewayGuard_FutureSettings-2026-08-24-2310.md` | 0 |
 | Guide FT-220 sections | `GatewayGuard_GuideFT220-Sections-2026-08-21-1445.md` | 0 |
@@ -97,14 +98,14 @@ All paths are relative to `ProjectDocs/`.
 | What it is | The current file | Older versions present |
 |---|---|---|
 | Marketing plan (current) | `GatewayGuard_MarketingPlan-2026-08-22-1000.md` | 3 |
-| Guide rewrite draft (current) | `GatewayGuard_GuideRewrite-Draft-2026-08-22-1000.md` | 2 |
-| Website source pack (19 guide pages) | `GatewayGuard_WebsiteSourcePack-2026-08-22-2235.md` | 2 |
+| Guide rewrite draft (current) | `GatewayGuard_GuideRewrite-Draft-2026-08-22-1000.md` | 0 |
+| Website source pack (19 guide pages) | `GatewayGuard_WebsiteSourcePack-2026-08-22-2235.md` | 0 |
 | Guide v9 source pack | `GatewayGuard_GuideV9-SourcePack-2026-08-15-1436.md` | 0 |
 | Marketing source pack | `GatewayGuard_MarketingSourcePack-2026-08-13-1427.md` | 0 |
 | Pricing copy (website) | `GatewayGuard_PricingCopy-2026-08-22-1000.md` | 1 |
 | Annual price decision | `GatewayGuard_PriceDecision-Annual-2026-08-21-1445.md` | 0 |
 | Refund policy and terms | `GatewayGuard_Decisions-RefundAndTerms-2026-08-22-1510.md` | 0 |
-| Licence agreement (EULA) | `GatewayGuard_License-BILLS-ANSWERS-2026-09-02-1553-TEXT.md` | 5 |
+| Licence agreement (EULA) | `GatewayGuard_License-BILLS-ANSWERS-2026-09-02-1553-TEXT.md` | 4 |
 
 ### WORKING RULES AND WHAT IS WAITING ON BILL
 
@@ -167,7 +168,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-09-02 18:35 to 2026-09-04 20:00 [Claude Code -- CGDELL] -- THE STORE IS FINISHED AND PROVEN BY PURCHASE, AND THE SPACING BUG WAS MINE ALL ALONG
+## Session: 2026-09-04 20:19 to 2026-09-05 00:23 [Claude Code -- CGDELL] -- I FILLED CLOUD'S MEMORY WITH A WEB ARTICLE, AND THE MOUSE FIX NEEDED TWO MECHANISMS NOT ONE
 ```
 
 **If it is not in your copy of the session log, you are reading an old

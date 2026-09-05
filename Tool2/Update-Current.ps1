@@ -85,6 +85,11 @@ $wanted = @(
     # Added 2026-08-17. Bill's 11 ascii40 field findings, triaged and located
     # in source. This is the document a session should read before touching
     # ascii41 -- it is the reason every fix in that build exists.
+    # Named "Test results" on purpose. Bill asks for "my ascii43 test results",
+    # and on 2026-09-04 not one file in Cloud's scope carried those words --
+    # they were all FieldTestTriage, ResponseToBillsNotes, FieldChecklist. The
+    # row label is what Cloud reads, so it uses Bill's words too.
+    @{ Label = 'Test results (raw run notes and logs)'; Pattern = 'GatewayGuard_TestResults-*.md'; Group = 'THE BUILD AND ITS FIELD TESTS' },
     @{ Label = 'Field test triage (latest)';  Pattern = 'GatewayGuard_FieldTestTriage-*.md'; Group = 'THE BUILD AND ITS FIELD TESTS' },
     @{ Label = "Response to Bill's field notes"; Pattern = 'GatewayGuard_ResponseToBillsNotes-*.md' },
     # Added 2026-08-18. The at-the-keyboard checklist for the current build --
