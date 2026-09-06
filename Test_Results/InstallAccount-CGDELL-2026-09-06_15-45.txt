@@ -1,0 +1,85 @@
+﻿======================================================================
+  INSTALL ACCOUNT AND ENCRYPTION STATUS  --  CGDELL
+  2026-09-06 15:45:26   READ-ONLY, nothing changed
+======================================================================
+
+  Running elevated: True
+
+----------------------------------------------------------------------
+  1. WHEN WAS WINDOWS INSTALLED
+----------------------------------------------------------------------
+  InstallDate      : 06/30/2026 20:54:04
+  RegisteredOwner  : william.wfbiii@gmail.com
+  EditionID        : Professional
+  DisplayVersion   : 25H2
+
+  READ THIS: if RegisteredOwner is an EMAIL ADDRESS, a Microsoft
+  account was used when Windows was set up. If it is a plain name
+  or blank or an OEM's name, that is a local-account setup OR a
+  manufacturer image -- which is why signal 2 below matters.
+
+----------------------------------------------------------------------
+  2. THE ACCOUNTS ON THIS PC  --  Local or MicrosoftAccount
+----------------------------------------------------------------------
+  Administrator          Enabled=False  Source=Local
+  CGAdmin                Enabled=True   Source=Local
+  DefaultAccount         Enabled=False  Source=Local
+  Guest                  Enabled=False  Source=Local
+  localuser              Enabled=True   Source=Local
+  WDAGUtilityAccount     Enabled=False  Source=Local
+  willi                  Enabled=True   Source=MicrosoftAccount
+
+  Microsoft accounts found: 1
+
+----------------------------------------------------------------------
+  3. PROFILE FOLDERS, OLDEST FIRST  --  who signed in first
+----------------------------------------------------------------------
+  Default User           6/30/2026 8:54:00 PM  (built-in, ignore)
+  All Users              6/30/2026 8:54:00 PM  (built-in, ignore)
+  Default                6/30/2026 9:36:14 PM  (built-in, ignore)
+  Public                 6/30/2026 9:38:30 PM  (built-in, ignore)
+  willi                  7/1/2026 11:42:04 AM   [888 min after install]
+
+  FIRST REAL PROFILE: willi
+  Its account type  : MicrosoftAccount
+
+  => SIGNAL 2 SAYS: a MICROSOFT ACCOUNT signed in first.
+
+----------------------------------------------------------------------
+  4. IS ANY DRIVE ALREADY ENCRYPTED  --  question 7(a)
+----------------------------------------------------------------------
+  C:   Protection=On         Status=FullyEncrypted         Method=XtsAes128
+       key protector: Tpm
+       key protector: RecoveryPassword
+       key protector: RecoveryPassword
+       key protector: RecoveryPassword
+       key protector: RecoveryPassword
+  D:   Protection=Off        Status=FullyDecrypted         Method=None
+  G:   Protection=Off        Status=FullyDecrypted         Method=None
+  E:   Protection=Off        Status=FullyDecrypted         Method=None
+  F:   Protection=Off        Status=FullyDecrypted         Method=None
+
+  => 1 volume(s) ALREADY ENCRYPTED.
+     Bill's 7(a): for those, the 'should we turn it on' question is moot.
+
+----------------------------------------------------------------------
+  5. WHAT THIS IS AND IS NOT EVIDENCE OF
+----------------------------------------------------------------------
+  TWO SIGNALS, and they are independent:
+    1. RegisteredOwner -- an email address means a Microsoft account
+       was used at setup.
+    2. The FIRST profile folder's account type.
+
+  WHEN THEY AGREE, that is as close to proof as this machine offers.
+  WHEN THEY DISAGREE, believe neither on its own and say so. The
+  usual cause is a manufacturer image, which stamps RegisteredOwner
+  before the customer ever sees the PC.
+
+  WHAT THIS CANNOT TELL YOU: whether the person was OFFERED
+  encryption during setup. Nothing on the machine records the
+  question, only the outcome. That is Bill's 7(c) and it is a
+  documentation question, not a measurement.
+
+======================================================================
+  Saved to: C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Test_Results\InstallAccount-CGDELL-2026-09-06_15-45.txt
+======================================================================

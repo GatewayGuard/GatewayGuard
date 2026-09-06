@@ -250,15 +250,46 @@ condition -- `Restore-ScreenSnapshot` returned false. ***Measured, line
 match the console's current width. **So the console window's width changed
 during the run.** That much is solid.
 
-**What produced the four-way overlay in shot 21 I have not proven**, and I am
-not going to guess at it in this document. The leading candidate is Windows'
-own console re-wrapping the buffer when the window is widened -- the bands are
-evenly spaced, which is what re-wrapping produces -- but there is a second
-candidate inside our own restore path, and I have not separated them.
+**AND THE CAUSE IS NOW SETTLED. It is Windows, and it is on by default.**
 
-**It reproduces in about two minutes on CGDELL:** run Checkup, drag the
-console window wider mid-run, press B. I will do that rather than reason about
-it.
+***Sourced, Microsoft's own console code and issue tracker:*** the console has
+a feature called **"Wrap text output on resize."** When the window is resized,
+`ResizeWithReflow` **takes every stored row apart and re-splits it to the new
+width.** Microsoft's own bug list carries this exact consequence -- issue #383
+is titled ***"'Layout / Wrap text output on resize' option breaks pseudographic
+UI."*** **Checkup is a pseudographic UI.** Its screens are boxes drawn out of
+`+`, `=` and `|`.
+
+***Measured on CGDELL today, `HKCU\Console`:*** **`LineWrap = 1`.** The feature
+is **on**. ***Measured, same key:*** the window is **120 columns**.
+
+**Here is the whole failure, start to finish:**
+
+1. ***Measured, ascii44 line 2231:*** Checkup sizes every box **to the window
+   width at the moment it draws it** -- exactly as FT-217 requires.
+2. The user drags the window to a different width.
+3. Windows re-splits every stored row to the new width. **The boxes come
+   apart.** That is shot 21.
+4. ***Measured, line 2113:*** Checkup's snapshots are keyed to the width they
+   were captured at, so after a resize **none of them can be replayed**. That
+   is shot 22's apology.
+
+> **Nothing in Checkup is doing anything wrong here, and that is exactly why
+> it cannot recover.** Every protection it has -- the width-fitting, the
+> snapshot guard, the honest apology -- is keyed to *the width at draw time*.
+> **Nothing looks again afterwards**, so the tool never learns the window
+> moved, and the one thing it could do about it -- redraw the screen at the
+> new width -- is the one thing it cannot do, because it keeps a **picture**
+> of each screen rather than the **lines** it was built from.
+>
+> **That is the fix, and it is a small one:** keep the current screen's text
+> lines alongside the picture. Then a prompt that notices the width has
+> changed can simply draw the screen again, correctly, at the new size --
+> instead of apologising on an empty console. **Look-back after a resize
+> starts working as a side effect.**
+
+**Still your call whether it goes into ascii44.** It is not in Block A and I
+have not touched it.
 
 **What is already clear enough to call a defect, whatever the cause:**
 
@@ -428,22 +459,45 @@ everywhere for its own separate reason.
 - The control is **"Protect from harmful sites and downloads"**, and Edge
   itself says it **uses Microsoft Defender SmartScreen**
 
-**That answers an open question in the build's own notes** -- note 14 says
-*"Edge phishing vs SmartScreen needs research."* **It is one feature under two
-names**: Windows SmartScreen (our setting 4) and Edge's front end for it (our
-setting 6).
+**CHECKED, AND IT FOUND SOMETHING BETTER THAN I EXPECTED.**
 
-**And it raises something I need to check.** ***Measured, ascii44 line 6533:***
-after applying setting 6 the tool tells the user *"All 3 phishing protection
-options enabled."* **Your write-up describes one toggle, not three.** Either
-Edge changed its layout under us or that message is describing registry values
-rather than what is on the user's screen. **Either way a senior reading "3
-options" and finding one switch is exactly the mismatch the literal-labels
-rule exists to prevent.** I will check it against a real Edge settings page
-and report.
+**First, a correction to what I told you an hour ago.** I said the tool's
+message *"All 3 phishing protection options enabled"* looked wrong against
+your one-toggle description, and I said I would check it. **I checked, and the
+message is right -- I had aimed it at the wrong feature.** There are **three**
+controls here, not two:
 
-> **I am committing your write-up to `ProjectDocs\` as a `.md` so Cloud can
-> read it.** That closes its request.
+| | What it is | Where the user finds it | Does Checkup handle it? |
+|---|---|---|---|
+| **Setting 4** | Windows SmartScreen, apps and downloads | Windows Security | **Yes** |
+| **Setting 6** | **Windows** Enhanced Phishing Protection -- and it genuinely has **three** switches | Windows Security -> App & browser control -> Reputation-based protection | **Yes** |
+| **Your write-up** | **Edge's own** "Protect from harmful sites and downloads" | `edge://settings/privacy/security` | ***measured: no. Not one Edge policy key anywhere in the build.*** |
+
+**So your write-up names a control Checkup does not check at all.** That is
+worth more than the confirmation I thought I was getting.
+
+### But it did turn up a real defect, and it is one word
+
+***Measured, ascii44 line 5758:*** setting 6 is called **"Edge Phishing
+Protection (all 3)"** in the checklist -- **and it has nothing to do with
+Edge.** It writes Windows settings, and its own manual instructions correctly
+send the user to Windows Security without mentioning Edge.
+
+***And the website already has it right:*** `phishing-protection.html` is
+titled **"Enhanced Phishing Protection -- Setting 6"** and names the Windows
+panel. **The tool and the website disagree, and this time the tool is the one
+that is wrong.**
+
+> **Why a customer cares:** the checklist name is what a senior reads when
+> deciding what to leave ticked. **Someone who uses Chrome can reasonably
+> untick a row labelled "Edge Phishing Protection"** -- and switch off a
+> protection that has nothing to do with which browser they use.
+>
+> **The fix is the name**, to match the website and the Windows panel:
+> *Enhanced Phishing Protection (all 3)*. One line, no behaviour change.
+
+**Your write-up is committed to `ProjectDocs\` as a `.md`**, with all of this
+recorded in it. That closes Cloud's request.
 
 ## 16. The licence as a web page -- YOUR ANSWER IS ABOUT SOMETHING ELSE
 

@@ -1,7 +1,7 @@
 @echo off
 REM Dated: 2026-08-19 18:30 EDT
 REM File: Show-AllScreens.bat (always-current gallery launcher)
-REM CURRENT BUILD: W11-SecurityHardening-v3-ascii43-2026-08-21-1752.ps1   (lives in ..\Tool\)
+REM CURRENT BUILD: W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1   (lives in ..\Tool\)
 REM
 REM  Opens GatewayGuard Checkup in SCREEN GALLERY mode: it shows you every
 REM  screen in the tool, one at a time, with Next / Back / Jump / Quit.
@@ -16,4 +16,4 @@ REM  A self-elevating .bat was flagged by Malwarebytes as an exploit payload
 REM  (field-confirmed 2026-07-04).
 REM
 cd /d "%~dp0"
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "..\Tool\W11-SecurityHardening-v3-ascii43-2026-08-21-1752.ps1" -Gallery
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "..\Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1" -Gallery
