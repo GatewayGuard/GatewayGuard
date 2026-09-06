@@ -9,7 +9,7 @@
   September 1 on 2026-08-30.** Exactly two weeks later, same weekday.
   **Never write a countdown here** -- "six days" was wrong the next morning
   and stayed wrong. Write the date; let the reader subtract.
-- **Current build:** ascii44 (9,152 non-blank lines / 9,537 total) — **IN BUILD.** Block A is being built now; nothing in it has been field run.
+- **Current build:** ascii44 (9,208 non-blank lines / 9,593 total) — **IN BUILD.** Block A is being built now; nothing in it has been field run.
   - **ascii43 is SPENT and retired to `Builds\`.** It was field run twice,
     2026-08-26 to 08-30, five logs in `Test_Results\FieldRun-ascii43\`.
     `Tool\` holds only ascii44. F1, F2, F3, F5 and part of F6 came from it.
@@ -26,6 +26,11 @@
     painted on top of the one before it. **FT-243**, the required log notice
     moved off the decline-only screen and onto the review screen the rule
     names.
+    **FT-255**, five `powercfg` parses that could never populate `$Matches`
+    -- on an array `-match` is a filter and sets nothing, so the `if` passed
+    and the next line read a stale or null `$Matches`. **FT-245**, the
+    silent-error breadcrumb named where the user was, not where the fault
+    was.
   - **Plan:** `ProjectDocs\GatewayGuard_ascii44BuildPlan-2026-09-05-1130.md`.
     Blocks A and B need no decision from Bill; C and D do.
   - **THE NEXT BUILD IS ascii44. THE REMAINING WORK IS NOT "FINISHING ascii43".**

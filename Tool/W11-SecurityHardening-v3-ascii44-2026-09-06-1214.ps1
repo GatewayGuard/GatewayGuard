@@ -64,6 +64,30 @@
 #           on the Screen." The once-only guard was correct all along;
 #           it was guarding the wrong screen.
 #
+#   FT-255: FIVE PARSES COULD NEVER POPULATE $Matches. powercfg returns an
+#           ARRAY, and on an array -match is a FILTER: it returns the
+#           matching element, so the `if` passes, but it NEVER sets
+#           $Matches. Measured on CGDELL 2026-09-06. So the next
+#           expression read a $Matches this statement did not set --
+#           $null, or whatever an unrelated earlier match had left. A
+#           number from a stale $Matches is worse than no number. The
+#           correct pattern, ($x | Out-String) -match, was already in this
+#           file at two other reads. NOT a site: the manage-bde read,
+#           which is piped through Out-String at assignment already.
+#   FT-246: the password-on-wake re-read is one of those five, which
+#           explains two failures and makes the one success suspect.
+#           What is still unknown is INSTRUMENTED, not guessed: when the
+#           parse finds nothing the raw powercfg output is now logged.
+#   FT-256: RAISED, NOT FIXED. Measured on CGDELL, elevated: this query
+#           can return the scheme header and NO setting block at all --
+#           and the status read then reports "NOT required" from a read
+#           that produced nothing, which is the FT-120/FT-123 shape.
+#           No parse change fixes that; it needs its own work.
+#   FT-245: the silent-error breadcrumb said "at Show-ScopeDisclaimer",
+#           where the USER was, not where the fault was. Wording only --
+#           severity unchanged, because an access denial logged as INFO
+#           is how a real failure becomes invisible.
+#
 # CHANGES FROM ascii39 (2026-08-15 -- ASCII40: THE THREE FIELD BLOCKERS):
 #   SCOPE NOTE. Two of the three blockers are in this build. FT-172 (the
 #   shown-as screen numbers) is held pending Bill's approval of the
@@ -3188,7 +3212,14 @@ function Write-PendingErrors {
                              ($ggMsg -match 'Cannot find path'))
                 $ggStatus = if ($ggBenign) { "INFO" } else { "ERROR" }
                 $ggLabel  = if ($ggBenign) { "NOT SET (expected)" } else { "SILENT ERROR" }
-                Write-Log -Message ($ggLabel + " at " + $Where + ": " + $ggMsg + $(if ($ggAt) { " | " + $ggAt } else { "" })) -Status $ggStatus
+                # FT-245 (ascii44): $Where is where the USER was, not where the
+                # fault was -- every line read "SILENT ERROR at
+                # Show-ScopeDisclaimer" and sent readers to the wrong function.
+                # The real location is the position message. Wording only:
+                # severity is NOT reclassified, because turning an access
+                # denial into INFO is how a real failure becomes invisible.
+                $ggFault = if ($ggAt) { $ggAt } else { "location not recorded" }
+                Write-Log -Message ($ggLabel + " -- fault at: " + $ggFault + " -- user was at: " + $Where + " -- " + $ggMsg) -Status $ggStatus
             } catch {}
         }
     } catch {}
@@ -5024,7 +5055,11 @@ function Run-PowerSettingsCheck {
     # 1. Password on wake
     try {
         $pw = powercfg /query SCHEME_CURRENT SUB_NONE CONSOLELOCK 2>$null
-        $acVal = if ($pw -match "Current AC Power Setting Index: 0x(\w+)") { [Convert]::ToUInt32($Matches[1], 16) } else { $null }
+        # FT-255 (ascii44): powercfg returns an ARRAY. On an array -match is a
+        # FILTER and does NOT populate $Matches -- measured on CGDELL
+        # 2026-09-06. Out-String makes it a scalar match, which is the
+        # pattern already used at the screen-timeout and battery reads.
+        $acVal = if (($pw | Out-String) -match "Current AC Power Setting Index: 0x(\w+)") { [Convert]::ToUInt32($Matches[1], 16) } else { $null }
         $results["PasswordOnWake"] = if ($acVal -eq 1) { "REQUIRED -- GOOD" } else { "NOT required -- change recommended" }
     } catch { $results["PasswordOnWake"] = "Unknown" }
 
@@ -5288,10 +5323,25 @@ function Apply-PowerSettings {
             $ggNow = "could not re-read -- check manually"
             try {
                 $ggQ = powercfg /query SCHEME_CURRENT SUB_NONE CONSOLELOCK 2>&1
-                if ($ggQ -match "Current AC Power Setting Index: 0x(\w+)") {
+                # FT-255 (ascii44): powercfg returns an ARRAY. On an array -match is a
+        # FILTER and does NOT populate $Matches -- measured on CGDELL
+        # 2026-09-06. Out-String makes it a scalar match, which is the
+        # pattern already used at the screen-timeout and battery reads.
+                if (($ggQ | Out-String) -match "Current AC Power Setting Index: 0x(\w+)") {
                     $ggNow = if ([Convert]::ToUInt32($Matches[1], 16) -eq 1) { "REQUIRED" } else { "still NOT required" }
+                } else {
+                    # FT-246/FT-256 (ascii44): the parse found nothing. Log the RAW
+                    # output so the next field run says WHY, instead of only
+                    # "could not re-read". Measured on CGDELL 2026-09-06: this
+                    # query can return the scheme header and no setting block at
+                    # all, which is FT-256 and is not fixed by any parse change.
+                    $ggRaw = ((($ggQ | Out-String) -replace "\s+", " ").Trim())
+                    if ($ggRaw.Length -gt 300) { $ggRaw = $ggRaw.Substring(0, 300) + "..." }
+                    Write-Log -Message "Password on wake re-read found no setting index (FT-256). Raw powercfg output: $ggRaw" -Status "WARN"
                 }
-            } catch {}
+            } catch {
+                Write-Log -Message "Password on wake re-read threw: $_" -Status "WARN"
+            }
             Write-Host "  OK  Password on wake" -ForegroundColor Green
             Write-Host "      Was:  $ggWas" -ForegroundColor Gray
             Write-Host "      Now:  $ggNow" -ForegroundColor Cyan
@@ -6170,7 +6220,7 @@ function Get-AllStatuses {
                 }
             }
             17 {
-                try { $pw = powercfg /query SCHEME_CURRENT SUB_NONE CONSOLELOCK 2>$null; $acVal = if ($pw -match "Current AC Power Setting Index: 0x(\w+)") { [Convert]::ToUInt32($Matches[1], 16) } else { $null }; $s.Status = if ($acVal -eq 1) { "REQUIRED -- GOOD" } else { "Not required -- needs attention" } }
+                try { $pw = powercfg /query SCHEME_CURRENT SUB_NONE CONSOLELOCK 2>$null; $acVal = if (($pw | Out-String) -match "Current AC Power Setting Index: 0x(\w+)") { [Convert]::ToUInt32($Matches[1], 16) } else { $null }; $s.Status = if ($acVal -eq 1) { "REQUIRED -- GOOD" } else { "Not required -- needs attention" } }   # FT-255: Out-String -- -match on an array never sets $Matches
                 catch { $s.Status = "Unknown" }
             }
             18 {
@@ -8086,8 +8136,14 @@ function Show-BitLockerScreen {
         # Save original AC sleep and display timeout values
         $blOrigSleepRaw = powercfg /query SCHEME_CURRENT SUB_SLEEP STANDBYIDLE 2>$null
         $blOrigDisplayRaw = powercfg /query SCHEME_CURRENT SUB_VIDEO VIDEOIDLE 2>$null
-        $blOrigSleep = if ($blOrigSleepRaw -match "Current AC Power Setting Index: 0x(\w+)") { [Convert]::ToUInt32($Matches[1], 16) } else { 0 }
-        $blOrigDisplay = if ($blOrigDisplayRaw -match "Current AC Power Setting Index: 0x(\w+)") { [Convert]::ToUInt32($Matches[1], 16) } else { 0 }
+        # FT-255 (ascii44): powercfg returns an ARRAY. On an array -match is a
+        # FILTER and does NOT populate $Matches -- measured on CGDELL
+        # 2026-09-06. Out-String makes it a scalar match, which is the
+        # pattern already used at the screen-timeout and battery reads.
+        # These two are the values RESTORED after an overnight encryption
+        # run, so a wrong read here leaves the machine on the wrong timeouts.
+        $blOrigSleep = if (($blOrigSleepRaw | Out-String) -match "Current AC Power Setting Index: 0x(\w+)") { [Convert]::ToUInt32($Matches[1], 16) } else { 0 }
+        $blOrigDisplay = if (($blOrigDisplayRaw | Out-String) -match "Current AC Power Setting Index: 0x(\w+)") { [Convert]::ToUInt32($Matches[1], 16) } else { 0 }
 
         # Set both to Never (0 = never)
         powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_SLEEP STANDBYIDLE 0 | Out-Null
