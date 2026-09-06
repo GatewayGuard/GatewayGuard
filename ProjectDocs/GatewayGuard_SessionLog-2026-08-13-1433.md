@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-05 11:45 ET
+- **Last Modified:** 2026-09-06 12:35 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -15,6 +15,82 @@
 
 ---
 ---
+
+## Session: 2026-09-06 12:14 to 12:35 [Claude Code -- CGDELL] -- ascii44 BLOCK A IS BUILT, AND MEASURING FIRST FOUND TWO DEFECTS NOBODY HAD LOOKED FOR
+
+**Bill said "go". Block A is eight items and all eight are done, one family
+per commit, every edit through `gg_edit.py`.** ascii43 retired to `Builds\`;
+`Tool\` holds only ascii44. 9,382 -> 9,616 lines.
+
+### THE TWO THINGS FOUND BY LOOKING WIDER THAN THE TRIAGE
+
+**FT-242 was eight writes. It is nine.** The triage audited `Apply-Setting`,
+lines 6200-6600. Auditing the WHOLE file found a ninth in
+`Apply-PowerSettings` -- a second apply path for setting 18 that the line
+range never covered. Fixing only the audited range would have left the same
+defect live in another function, which is the "is this the only function that
+does this job?" failure this file already records twice.
+
+**FT-246 was not intermittent. It could never have worked.** The triage said
+two failures and one success across three runs, and said not to guess.
+***measured on CGDELL:*** `powercfg` returns an **array**, and on an array
+`-match` is a **filter** -- it returns the matching element, so the `if`
+passes, but it **never sets `$Matches`**. The next line then reads a
+`$Matches` the statement did not set. **So the one "success" is suspect**, not
+reassuring: it could only have come from a stale `$Matches` left by something
+else. **Five sites had it**, including the two values restored after an
+overnight encryption run. **The correct pattern was already in the file,
+twice** -- `($x | Out-String) -match`. Filed FT-255.
+
+### WHAT WAS RAISED AND DELIBERATELY NOT FIXED
+
+- **FT-254** -- `Test-TimeDateSync` prints "Time sync settings corrected"
+  after four calls that all carry `-EA SilentlyContinue`. Same class as
+  FT-242, but guarding only the registry write would still let a failed
+  `Set-Service` print success, so it needs all four decided together.
+- **FT-256** -- ***measured, elevated:*** `powercfg /query SCHEME_CURRENT
+  SUB_NONE CONSOLELOCK` returns the scheme header and **no setting block at
+  all**, exit code 0. The status read then reports "NOT required" from a read
+  that produced **nothing** -- the FT-120/FT-123 shape. No parse change fixes
+  it. **So the build now logs the raw output when the parse finds nothing**,
+  and the next field run will say why instead of "could not re-read".
+
+**Instrumenting what is not known, instead of guessing at it, is what the
+triage asked for and it is what happened.**
+
+### THE BACK KEY -- FIVE SITES, NOT SEVEN, AND THE REASON MATTERS
+
+The operative half of Bill's ruling is **"N must never take you back."** So
+each of the seven was tested on whether `N` actually navigates backward. Five
+do and are now `B`, including screen 27. Two do not: *"Still correct?"*, where
+`N` already means no and goes nowhere, and the Sleep/Display question, where
+`N` never went back at all -- only the **label** said it did, so the label was
+fixed and the key kept. **The 11 `N = Exit` sites are untouched**, waiting on
+the `X` decision.
+
+### WHAT NEEDS BILL, AND IT IS ONE LOOK
+
+**Screen 12's drive order cannot be verified here.** ***measured:*** CGDELL
+has one disk, so the multi-drive ordering the change exists for produces
+identical output on this machine. It is proven against synthetic disks and it
+needs one look on SANDY. **Low risk is not verified.**
+
+### THE EIGHT COMMITS
+
+`74aaa12` A1 nine writes | `09bf5cd` A2 the battery reminders | `4842e7c` A3
+the Back key | `16b757d` A4/A5 two unreadable screens | `dfed505` A6/A7 the
+`$Matches` class | `862e061` A8 screen 12
+
+### FOR THE NEXT CLAUDE
+
+1. **Measure before instrumenting.** FT-246 was scheduled as "add logging and
+   wait for the next field run". Ten minutes of measurement gave the exact
+   mechanism instead, and turned one finding into five.
+2. **When a triage names a line range, the range is the triage's scope, not
+   the defect's.** Two of this build's findings were outside one.
+3. **Read the assignment before believing a grep.** The `manage-bde` parse
+   looked like a sixth `$Matches` bug and is not -- it is piped through
+   `Out-String` where it is assigned.
 
 ## Session: 2026-09-05 11:09 to 11:45 [Claude Code -- CGDELL] -- CLOUD RECOMMENDED BUILDING THREE THINGS THAT ARE ALREADY BUILT, AND ONE WOULD HAVE MADE THE PRODUCT WORSE
 

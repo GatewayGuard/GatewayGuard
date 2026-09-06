@@ -123,16 +123,41 @@ have passed it wrongly** -- `edge://settings/help` drives the updater directly,
 so it cannot see the unattended check stop. **A test that cannot fail is worse
 than no test.**
 
-**Active build: ascii43 -- BUILT AND FIELD RUN TWICE. THE NEXT BUILD IS
-ascii44.** *(Corrected 2026-09-05. This line said "HALF BUILT AND NEVER
-FIELD RUN" while* ***measured:*** *`Test_Results\FieldRun-ascii43\` holds
-five run logs, 2026-08-26 18:07 to 2026-08-30 11:04, triaged in two
-documents. A build that has been field run is spent -- the remaining work
-takes a new number. The build plan is
-`GatewayGuard_ascii44BuildPlan-2026-09-05-1130.md`.)* --
-`Tool\W11-SecurityHardening-v3-ascii43-2026-08-21-1752.ps1`, **9,002 non-blank
-lines / 9,382 total**. Gates 12, 12b and 24 PASS, 0 non-ASCII, 0 duplicate
+**Active build: ascii44 -- BLOCK A COMPLETE, NOT YET FIELD RUN** --
+`Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1`, **9,231 non-blank
+lines / 9,616 total**. Gates 12, 12b and 24 PASS, 0 non-ASCII, 0 duplicate
 functions, 10 carried oversize screens. **Next free screen ID 90.**
+
+**Only ONE build's figures belong in this block.** It briefly carried both
+ascii43's and ascii44's on 2026-09-06 and the document gate caught it within
+the minute -- section 7b exists because a fact stated twice can be
+INCONSISTENT, and then nobody knows which to believe. The predecessor is named
+below, without numbers; its numbers are in git and in its own commits.
+
+**ascii43 is SPENT and retired to `Builds\`.** It was field run twice,
+2026-08-26 18:07 to 2026-08-30 11:04, five logs in
+`Test_Results\FieldRun-ascii43\`, triaged in two documents. **A build that
+has been field run is spent -- the remaining work takes a new number.**
+
+**Plan for ascii44:** `GatewayGuard_ascii44BuildPlan-2026-09-05-1130.md`.
+Blocks A and B need no decision from Bill; C and D do.
+
+**IN ascii44 SO FAR (Block A, eight items, one family per commit):** FT-242
+nine registry writes that could not fail; FT-203 the two reminders that could
+never run on battery; the Back key, `B` at five sites; FT-244 two screens the
+user could not read; FT-243 the log notice moved to the review screen; FT-255
+five `powercfg` parses that could never populate `$Matches`; FT-245 the
+silent-error breadcrumb; screen 12's drive order.
+
+**RAISED IN ascii44 AND DELIBERATELY NOT FIXED, each with its reason in the
+build header:** **FT-254** (`Test-TimeDateSync` prints success after four
+unguarded calls) and **FT-256** (`powercfg` can return no CONSOLELOCK block at
+all, so the status read reports "NOT required" from a read that produced
+nothing -- instrumented, not guessed at).
+
+**NEEDS ONE LOOK ON SANDY:** screen 12's drive order. CGDELL has a single
+disk, so the multi-drive ordering the change exists for cannot be observed
+here.
 
 **BUILT SO FAR, one family per commit, every edit through `gg_edit.py`:** F1
 keyboard (FT-204, 206, 207, 223, 232), F2 width (FT-217/199), F3 log (FT-231),
@@ -196,20 +221,20 @@ by hand is how a plan starts lying.
 
 | | |
 |---|---|
-| Commits | **402** |
-| Tracked files | **1,235** |
+| Commits | **410** |
+| Tracked files | **1,258** |
 | Unpushed | **0** |
-| Untracked | 40 |
-| Modified | 11 |
+| Untracked | 34 |
+| Modified | 6 |
 | Deleted on disk, still tracked | 18 -- Bill's folder reorganisation, moves not losses |
 | `.git` | **63 MB** |
 
-*(Measured 2026-09-05 11:45. The previous figures were taken 2026-08-23 and
+*(Measured 2026-09-06 12:35. The previous figures were taken 2026-08-23 and
 had gone 132 commits and 593 files stale -- on the table that says "stated
 HERE ONLY". Re-measure it, do not carry it forward.)*
 
 **The tracked-file count was taken three ways and all three agree** --
-`ls-files`, `ls-files -z`, and `ls-tree -r HEAD` each return **1,235**.
+`ls-files`, `ls-files -z`, and `ls-tree -r HEAD` each return **1,258**.
 
 > **The block that stood here disagreed with itself.** The table said 642
 > tracked files and the paragraph directly beneath it said all three methods
