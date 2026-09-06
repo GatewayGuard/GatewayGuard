@@ -194,6 +194,7 @@ $wanted = @(
     @{ Label = 'SANDY reinstall instructions'; Pattern = 'GatewayGuard_SandyReinstall-*.md' },
     @{ Label = 'Licence sections 7/8/9 -- with and without'; Pattern = 'GatewayGuard_LicenceSections789-*.md' },
     @{ Label = 'Store operations (versions, updates)'; Pattern = 'GatewayGuard_StoreOperations-*.md' },
+    @{ Label = 'PUA specimens recovered (AV test)'; Pattern = 'GatewayGuard_PUASamplesRecovered-*.md' },
     # Added 2026-08-25. The single list of everything waiting on Bill. It had no
     # row, so the 24 August edition could only be found by remembering its name
     # -- which is the failure this whole file exists to prevent.

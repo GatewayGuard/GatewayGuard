@@ -1,0 +1,297 @@
+﻿======================================================================
+  SEARCH FOR THE 2026-07-19 MALWAREBYTES PUP DETECTIONS
+  CGDELL   2026-09-06 16:42:29
+  READ-ONLY -- nothing is opened, run, copied, moved or deleted.
+======================================================================
+
+  The report listed 18 detections. They are 6 DISTINCT files:
+    CLIENTSETUP_D-0.EXE                      PUP.Optional.DllFilesFixer   x12
+    CLAIMID800393432WILLIANF_BURNSIII.ZIP    PUP.Optional.DllFilesFixer   x1
+    WAVE BROWSER.EXE                         PUP.Optional.Wave            x2
+    WAVE BROWSER (2).EXE                     PUP.Optional.Wave            x1
+    TOTALAV.EXE                              PUP.Optional.TotalAV         x1
+    ZOOMINFOCONTACTCONTRIBUTOR.EXE           PUP.Optional.ZoomInfo        x1
+
+  All 18 were on SANDY's D: and every one says 'No Action By User'.
+  Scan report header: Threats Quarantined: 0.
+
+----------------------------------------------------------------------
+  DRIVE E:\
+----------------------------------------------------------------------
+  Files enumerated : 462,492   (65 sec)
+  Name matches     : 10
+
+  E:\Users\willi\Documents\Documents - Copy (2)\LOANS\Downloads\claimid800393432willianf_burnsiii.zip
+     size 10,917,613 bytes   modified 4/14/2017 9:44:07 AM
+     SHA-256 B79F43E3735D9B80A86C774EF4E4C5923DE2183F7EA199A6D7DB69DC84B5229F
+     name matches, CONTENT DOES NOT -- a different file with the same name
+
+  E:\Users\willi\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  E:\Users\willi\Documents\Documents - Copy (2)\VA LOAN\Downloads\claimid800393432willianf_burnsiii.zip
+     size 10,917,613 bytes   modified 4/14/2017 9:44:07 AM
+     SHA-256 B79F43E3735D9B80A86C774EF4E4C5923DE2183F7EA199A6D7DB69DC84B5229F
+     name matches, CONTENT DOES NOT -- a different file with the same name
+
+  E:\Users\willi\Documents\Documents - Copy (2)\VA LOAN\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  E:\Users\willi\Documents\LOANS\Downloads\claimid800393432willianf_burnsiii.zip
+     size 10,917,613 bytes   modified 4/14/2017 9:44:07 AM
+     SHA-256 B79F43E3735D9B80A86C774EF4E4C5923DE2183F7EA199A6D7DB69DC84B5229F
+     name matches, CONTENT DOES NOT -- a different file with the same name
+
+  E:\Users\willi\Documents\LOANS\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  E:\Users\willi\Documents\VA LOAN\Downloads\claimid800393432willianf_burnsiii.zip
+     size 10,917,613 bytes   modified 4/14/2017 9:44:07 AM
+     SHA-256 B79F43E3735D9B80A86C774EF4E4C5923DE2183F7EA199A6D7DB69DC84B5229F
+     name matches, CONTENT DOES NOT -- a different file with the same name
+
+  E:\Users\willi\Documents\VA LOAN\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  E:\Users\willi\Downloads\claimid800393432willianf_burnsiii.zip
+     size 10,917,613 bytes   modified 4/14/2017 9:44:07 AM
+     SHA-256 B79F43E3735D9B80A86C774EF4E4C5923DE2183F7EA199A6D7DB69DC84B5229F
+     name matches, CONTENT DOES NOT -- a different file with the same name
+
+  E:\Users\willi\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+----------------------------------------------------------------------
+  DRIVE G:\
+----------------------------------------------------------------------
+  Files enumerated : 699,321   (60 sec)
+  Name matches     : 31
+
+  G:\May-2023\Documents - Copy\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\May-2023\Documents - Copy\cooking\Mediterranean\Documents\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\May-2023\Documents - Copy\Documents\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\May-2023\Documents - Copy\Documents\cooking\Mediterranean\Documents\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\May-2023\Documents - Copy\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\May-2023\Documents - Copy\Documents\Documents - Copy (2)\VA LOAN\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\May-2023\Documents - Copy\Documents\Documents - Copy (3)\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\May-2023\Documents - Copy\Documents\Documents - Copy (3)\cooking\Mediterranean\Documents\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\May-2023\Documents - Copy\Documents\LOANS\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\May-2023\Documents - Copy\Documents\VA LOAN\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\May-2023\Documents - Copy\LOANS\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\May-2023\Documents - Copy\VA LOAN\Downloads\claimid800393432willianf_burnsiii.zip
+     size 13,529,844 bytes   modified 6/4/2021 3:25:07 PM
+     SHA-256 729D0208A13395F818FF20BFC1B14B0CE918F1744FBA8D36E132253E1B18F341
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\May-2023\Documents - Copy\VA LOAN\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\May-2023\Downloads\TotalAV.exe
+     size 34,031,304 bytes   modified 1/8/2021 1:16:27 PM
+     SHA-256 3B0CACDA195CD3F1A50EE5C9842E14753E92A4E63DE75AD7C15BAA16C0A8A688
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\May-2023\Downloads\Wave Browser (1).exe
+     size 849,848 bytes   modified 5/24/2022 4:31:22 PM
+     SHA-256 81B9CC993AD57F3D16146842665B8C82A2C29D7E571F38CF14A4AB2B24148ECB
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\May-2023\Downloads\Wave Browser (2).exe
+     size 866,032 bytes   modified 12/12/2022 9:48:52 AM
+     SHA-256 216D4BCEA4BBE226F0C610C59B911CF9351FEA34178A1F8EC04DAD99F4F1BDBC
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\May-2023\Downloads\Wave Browser.exe
+     size 849,848 bytes   modified 5/19/2022 8:06:23 AM
+     SHA-256 81B9CC993AD57F3D16146842665B8C82A2C29D7E571F38CF14A4AB2B24148ECB
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\May-2023\Downloads\ZoomInfoContactContributor.exe
+     size 265,600 bytes   modified 11/29/2022 1:24:16 PM
+     SHA-256 71DE08D14B90196B02293DDCA105DC367837280BEE2224815E35FF7F17363C48
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\OLD_PC\Documents - Copy\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\OLD_PC\Documents - Copy\cooking\Mediterranean\Documents\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\OLD_PC\Documents - Copy\Documents\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\OLD_PC\Documents - Copy\Documents\cooking\Mediterranean\Documents\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\OLD_PC\Documents - Copy\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\OLD_PC\Documents - Copy\Documents\Documents - Copy (2)\VA LOAN\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\OLD_PC\Documents - Copy\Documents\Documents - Copy (3)\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\OLD_PC\Documents - Copy\Documents\Documents - Copy (3)\cooking\Mediterranean\Documents\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\OLD_PC\Documents - Copy\Documents\LOANS\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\OLD_PC\Documents - Copy\Documents\VA LOAN\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\OLD_PC\Documents - Copy\LOANS\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\OLD_PC\Documents - Copy\VA LOAN\Downloads\claimid800393432willianf_burnsiii.zip
+     size 13,529,844 bytes   modified 6/4/2021 3:25:07 PM
+     SHA-256 729D0208A13395F818FF20BFC1B14B0CE918F1744FBA8D36E132253E1B18F341
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+  G:\OLD_PC\Documents - Copy\VA LOAN\Downloads\clientsetup_d-0.exe
+     size 2,786,824 bytes   modified 3/28/2017 9:36:46 AM
+     SHA-256 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+     *** CONFIRMED -- SHA-256 matches the scan report ***
+
+======================================================================
+  RESULT
+======================================================================
+
+  36 FILE(S) CONFIRMED BY SHA-256:
+
+  CLIENTSETUP_D-0.EXE  --  29 cop(y/ies)
+      E:\Users\willi\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+      E:\Users\willi\Documents\Documents - Copy (2)\VA LOAN\Downloads\clientsetup_d-0.exe
+      E:\Users\willi\Documents\LOANS\Downloads\clientsetup_d-0.exe
+      E:\Users\willi\Documents\VA LOAN\Downloads\clientsetup_d-0.exe
+      E:\Users\willi\Downloads\clientsetup_d-0.exe
+      G:\May-2023\Documents - Copy\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+      G:\May-2023\Documents - Copy\cooking\Mediterranean\Documents\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+      G:\May-2023\Documents - Copy\Documents\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+      G:\May-2023\Documents - Copy\Documents\cooking\Mediterranean\Documents\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+      G:\May-2023\Documents - Copy\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+      G:\May-2023\Documents - Copy\Documents\Documents - Copy (2)\VA LOAN\Downloads\clientsetup_d-0.exe
+      G:\May-2023\Documents - Copy\Documents\Documents - Copy (3)\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+      G:\May-2023\Documents - Copy\Documents\Documents - Copy (3)\cooking\Mediterranean\Documents\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+      G:\May-2023\Documents - Copy\Documents\LOANS\Downloads\clientsetup_d-0.exe
+      G:\May-2023\Documents - Copy\Documents\VA LOAN\Downloads\clientsetup_d-0.exe
+      G:\May-2023\Documents - Copy\LOANS\Downloads\clientsetup_d-0.exe
+      G:\May-2023\Documents - Copy\VA LOAN\Downloads\clientsetup_d-0.exe
+      G:\OLD_PC\Documents - Copy\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+      G:\OLD_PC\Documents - Copy\cooking\Mediterranean\Documents\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+      G:\OLD_PC\Documents - Copy\Documents\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+      G:\OLD_PC\Documents - Copy\Documents\cooking\Mediterranean\Documents\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+      G:\OLD_PC\Documents - Copy\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+      G:\OLD_PC\Documents - Copy\Documents\Documents - Copy (2)\VA LOAN\Downloads\clientsetup_d-0.exe
+      G:\OLD_PC\Documents - Copy\Documents\Documents - Copy (3)\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+      G:\OLD_PC\Documents - Copy\Documents\Documents - Copy (3)\cooking\Mediterranean\Documents\Bath\Documents\Documents - Copy (2)\LOANS\Downloads\clientsetup_d-0.exe
+      G:\OLD_PC\Documents - Copy\Documents\LOANS\Downloads\clientsetup_d-0.exe
+      G:\OLD_PC\Documents - Copy\Documents\VA LOAN\Downloads\clientsetup_d-0.exe
+      G:\OLD_PC\Documents - Copy\LOANS\Downloads\clientsetup_d-0.exe
+      G:\OLD_PC\Documents - Copy\VA LOAN\Downloads\clientsetup_d-0.exe
+
+  CLAIMID800393432WILLIANF_BURNSIII.ZIP  --  2 cop(y/ies)
+      G:\May-2023\Documents - Copy\VA LOAN\Downloads\claimid800393432willianf_burnsiii.zip
+      G:\OLD_PC\Documents - Copy\VA LOAN\Downloads\claimid800393432willianf_burnsiii.zip
+
+  TOTALAV.EXE  --  1 cop(y/ies)
+      G:\May-2023\Downloads\TotalAV.exe
+
+  WAVE BROWSER.EXE  --  2 cop(y/ies)
+      G:\May-2023\Downloads\Wave Browser (1).exe
+      G:\May-2023\Downloads\Wave Browser.exe
+
+  WAVE BROWSER (2).EXE  --  1 cop(y/ies)
+      G:\May-2023\Downloads\Wave Browser (2).exe
+
+  ZOOMINFOCONTACTCONTRIBUTOR.EXE  --  1 cop(y/ies)
+      G:\May-2023\Downloads\ZoomInfoContactContributor.exe
+
+  DISTINCT SPECIMENS RECOVERED: 6 of 6
+
+  These are the real samples the Defender-vs-Malwarebytes comparison
+  needs. LEAVE THEM WHERE THEY ARE for now -- copying them anywhere
+  is a decision for Bill, not for this script.
+
+======================================================================
+  Saved to: C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Test_Results\PUASampleSearch-CGDELL-2026-09-06_16-42.txt
+======================================================================

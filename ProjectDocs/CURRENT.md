@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-06 15:57 ET -->
-<!-- Commit: aea5ba9 -->
+<!-- Generated: 2026-09-06 16:47 ET -->
+<!-- Commit: 639e25b -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-06 15:57 ET  |  **Commit:** `aea5ba9`  |  **Made:** 2026-09-06 15:55 ET
-- **Commit subject:** The eight follow-ups from Bill's decisions: research, instructions, licence
+- **Generated:** 2026-09-06 16:47 ET  |  **Commit:** `639e25b`  |  **Made:** 2026-09-06 15:57 ET
+- **Commit subject:** Session recorded: Bill's 16 decisions, the broken launcher, screen 16
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -19,7 +19,7 @@ document family and the single filename that is live right now. Take every
 filename from this table -- never from memory, never from another document,
 never by guessing which date looks newest.
 
-**63 rows follow.** If you cannot see all 63 of them, your
+**64 rows follow.** If you cannot see all 64 of them, your
 retrieval truncated the table -- **say so and ask for the rest, rather
 than answering from the handful you received.**
 
@@ -111,7 +111,7 @@ All paths are relative to `ProjectDocs/`.
 
 ### WORKING RULES AND WHAT IS WAITING ON BILL
 
-**11 rows in this group.** If you see fewer, this group was truncated -- say so.
+**12 rows in this group.** If you see fewer, this group was truncated -- say so.
 
 | What it is | The current file | Older versions present |
 |---|---|---|
@@ -124,6 +124,7 @@ All paths are relative to `ProjectDocs/`.
 | SANDY reinstall instructions | `GatewayGuard_SandyReinstall-2026-09-06-1600.md` | 0 |
 | Licence sections 7/8/9 -- with and without | `GatewayGuard_LicenceSections789-2026-09-06-1600.md` | 0 |
 | Store operations (versions, updates) | `GatewayGuard_StoreOperations-2026-09-06-1600.md` | 0 |
+| PUA specimens recovered (AV test) | `GatewayGuard_PUASamplesRecovered-2026-09-06-1650.md` | 0 |
 | Everything waiting on Bill | `GatewayGuard_DecisionsForBill-2026-09-06-1528.md` | 4 |
 | Pricing reconciliation (one-time packs) | `PricingReconciliation-2026-07-16.md` | 0 |
 

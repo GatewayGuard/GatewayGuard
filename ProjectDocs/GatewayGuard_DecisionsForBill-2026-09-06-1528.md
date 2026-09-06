@@ -78,7 +78,29 @@ Nobody has run the code since, so nobody knows if it still happens.
 > passes a field run** -- that keeps both modes available, costs one line, and
 > does not touch your decision to test it.
 
-## 2. Malwarebytes -- the quarantined files. Answered, and mostly not the way you hoped
+## 2. Malwarebytes -- SOLVED AT 16:42. ALL SIX SPECIMENS RECOVERED.
+
+> ### EVERYTHING BELOW THIS BOX IS SUPERSEDED. Read the box, then skip to question 3.
+>
+> **Bill supplied the scan report at 16:30 and it settled the whole question.**
+> ***Measured, `Tool2\Find-PUASamples-2026-09-06.ps1`, 1,161,813 files across
+> E: and G:, every hit confirmed by SHA-256: all 6 distinct specimens found,
+> 36 copies. Four of the six are in one folder, `G:\May-2023\Downloads\`.***
+>
+> **THE MALWAREBYTES COMPARISON IS NO LONGER BLOCKED.**
+>
+> **And the premise underneath my answer below was wrong.** ***The report's own
+> header reads `Threats Quarantined: 0`, and all 18 lines say "No Action By
+> User."*** **Nothing was ever quarantined**, so the question was never whether
+> deleted quarantine can be recovered -- it was where the originals were, and
+> they were on a backup drive the whole time.
+>
+> **Full detail, including what I got wrong about PUA blocking:**
+> `GatewayGuard_PUASamplesRecovered-2026-09-06-1650.md`.
+
+**Kept below for the record, because it explains why the search was built to
+match on hashes rather than names -- which is the thing that stopped it
+reporting four false hits on E:.**
 
 You asked three things. Here they are in order, with what each is worth.
 
@@ -164,6 +186,22 @@ index, three invisible comments in the build.
 has its own website page (`WebSite\html\`, ***measured: 19 setting pages***)
 and its own guide section. Setting 20 needs both, written to the same standard
 as the rest.
+
+> ### CORRECTION, 16:50 -- THE CASE FOR THIS IS WEAKER THAN I TOLD YOU
+>
+> I called it *"the closest thing to a genuinely missing setting the research
+> found"*, and said our scans would *"stay weaker than they need to be"*
+> without it. **Both halves of PUA blocking have been ON BY DEFAULT since
+> August 2021** -- *sourced, Microsoft Support, and Edge's own documentation
+> for the browser half.* ***Measured on CGDELL today: `PUAProtection = 1`, and
+> nobody here turned it on.***
+>
+> **So setting 20 is a confirmation plus a catch for the minority where
+> something switched it off -- not a missing protection.** That is still a
+> real job, and several of the existing nineteen are also usually already
+> correct. **But you chose the more expensive option partly on my wording, so
+> you should know the wording was wrong before I build it.** Your decision
+> stands unless you say otherwise.
 
 **What setting 20 will do**, and both halves are needed because they are
 separate switches:
