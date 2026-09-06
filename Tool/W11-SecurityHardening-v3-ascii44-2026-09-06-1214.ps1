@@ -32,6 +32,22 @@
 #           settings object, and LOGS WHAT IT READS BACK.
 #           WakeToRun stays False on purpose -- product decision.
 #
+#   BACK KEY: B IS NOW THE ONLY BACK KEY. Bill, 2026-08-30: "N always
+#           means no and B should always be used to say back." Measured
+#           on ascii43, N meant three different things across 30 of the
+#           47 Read-ValidKey sites -- No at 12, Back at 7, Exit at 11 --
+#           so nobody could predict it. Five sites where N actually
+#           navigated backward are now B: the resume re-check, the
+#           critical-deselected review, the encryption decline, the
+#           BitLocker decline, and screen 27's "Ready to proceed?",
+#           which is the one Bill hit.
+#           NOT changed: "Still correct?", where N already means no and
+#           navigates nowhere. Label fixed at the Sleep/Display question,
+#           where N said "go back" but actually left the flow.
+#           THE 11 N = EXIT SITES ARE UNTOUCHED -- X = Exit is not
+#           decided, and changing two of N's three meanings at once is
+#           how the confusion returns wearing a different letter.
+#
 # CHANGES FROM ascii39 (2026-08-15 -- ASCII40: THE THREE FIELD BLOCKERS):
 #   SCOPE NOTE. Two of the three blockers are in this build. FT-172 (the
 #   shown-as screen numbers) is held pending Bill's approval of the
@@ -3848,11 +3864,11 @@ function Show-ResumeReverify {
             "  Nothing on your computer has been changed.                ",
             "                                                             ",
             "  Press Y to close Checkup now.                             ",
-            "  Press N to go back -- it IS your computer and you want    ",
+            "  Press B to go back -- it IS your computer and you want    ",
             "  to carry on where you left off.                           "
         )
         Write-Host ""
-        $rcSure = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Close Checkup? (Y = close / N = go back): "
+        $rcSure = Read-ValidKey -ValidKeys @("Y","B") -Prompt "Close Checkup? (Y = close / B = go back): "
         if ($rcSure.ToUpper() -eq "Y") {
             Write-Host ""
             Write-Host "  Exiting. No changes made." -ForegroundColor Yellow
@@ -6263,10 +6279,10 @@ function Test-NonRecommendedSelections {
             Write-Host ""
         }
         Write-Host "  Y = These are intentional -- continue" -ForegroundColor White
-        Write-Host "  N = Go back and review my selections" -ForegroundColor White
+        Write-Host "  B = Go back and review my selections" -ForegroundColor White
         Write-Host "  S = Show me what each item does before I decide" -ForegroundColor White
         Write-Host ""
-        $resp = Read-ValidKey -ValidKeys @("Y","N","S") -Prompt "Your choice (Y = Continue / N = Go back / S = Show me each item): "
+        $resp = Read-ValidKey -ValidKeys @("Y","B","S") -Prompt "Your choice (Y = Continue / B = Go back / S = Show me each item): "
         if ($resp.ToUpper() -eq "S") {
             # Drain buffered auto-repeats of the accepted key (FT-65)
             try { while ($Host.UI.RawUI.KeyAvailable) { $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") } } catch {}
@@ -6295,7 +6311,7 @@ function Test-NonRecommendedSelections {
         Write-Log -Message "User confirmed intentional skip of security-critical items at stage: $Stage" -Status "NOTED"
         return $true
     }
-    return $false   # N = go back and review selections
+    return $false   # B = go back and review selections
 }
 
 # ============================================================
@@ -7532,8 +7548,8 @@ function Show-BitLockerFinalDecline {
         Write-Host ""
         $script:GGLogNoticeShown = $true
     }
-    $fd = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Continue WITHOUT encryption? (Y = Yes, continue / N = Go back and select it): "
-    if ($fd.ToUpper() -eq "N") { return "GoBack" }
+    $fd = Read-ValidKey -ValidKeys @("Y","B") -Prompt "Continue WITHOUT encryption? (Y = Yes, continue / B = Go back and select it): "
+    if ($fd.ToUpper() -eq "B") { return "GoBack" }
     Write-Log -Message "NOTED: User chose not to apply: Drive Encryption (BitLocker) -- Status: not encrypted -- can be enabled later by re-running the tool" -Status "NOTED"
     return "Skip"
 }
@@ -7558,17 +7574,17 @@ function Show-BitLockerDeclineHeadsUp {
         )
         Write-Host ""
         Write-Host "  Y = Continue WITHOUT encryption" -ForegroundColor White
-        Write-Host "  N = Go back and select encryption" -ForegroundColor White
+        Write-Host "  B = Go back and select encryption" -ForegroundColor White
         Write-Host "  S = Show me the full explanation" -ForegroundColor White
         Write-Host ""
-        $bd = Read-ValidKey -ValidKeys @("Y","N","S") -Prompt "Your choice (Y = Continue / N = Go back / S = Show me): "
+        $bd = Read-ValidKey -ValidKeys @("Y","B","S") -Prompt "Your choice (Y = Continue / B = Go back / S = Show me): "
         if ($bd.ToUpper() -eq "S") {
             # Drain buffered auto-repeats of the accepted key (FT-65)
             try { while ($Host.UI.RawUI.KeyAvailable) { $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") } } catch {}
             Show-BitLockerWhyEncrypt
         }
     } while ($bd.ToUpper() -eq "S")
-    if ($bd.ToUpper() -eq "N") { return "GoBack" }
+    if ($bd.ToUpper() -eq "B") { return "GoBack" }
     return Show-BitLockerFinalDecline
 }
 
@@ -8083,7 +8099,7 @@ function Show-BitLockerScreen {
             Write-Host "  Before leaving this overnight, set them manually:" -ForegroundColor Yellow
             Write-Host "  Settings -> System -> Power & sleep -> set both to Never" -ForegroundColor Yellow
             Write-Host ""
-            $blSleepAck = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Have you set Sleep and Display to Never manually? (Y = Yes, continue / N = No, go back): "
+            $blSleepAck = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Have you set Sleep and Display to Never manually? (Y = Yes, continue / N = No, not yet): "
             if ($blSleepAck.ToUpper() -eq "N") {
                 Write-Host ""
                 Write-Host "  Set Sleep and Display to Never in Settings, then run Checkup again to enable BitLocker." -ForegroundColor Yellow
@@ -8622,10 +8638,10 @@ function Run-ConsoleMode {
                 Write-Log -Message "Review listing rendered -- awaiting Ready-to-proceed" -Status "INFO"   # FT-68 (ascii29): brackets the listing loop in the log
 
                 do {
-                    $finalCheck = Read-ValidKey -ValidKeys @("Y","N","Q") -Prompt "Ready to proceed? (Y = Start / N = Go back / Q = Quit): "
+                    $finalCheck = Read-ValidKey -ValidKeys @("Y","B","Q") -Prompt "Ready to proceed? (Y = Start / B = Go back / Q = Quit): "
                     switch ($finalCheck.ToUpper()) {
                         "Q" { Confirm-Exit; continue checklistLoop }
-                        "N" { continue checklistLoop }
+                        "B" { continue checklistLoop }
                     }
                 } while ($finalCheck.ToUpper() -ne "Y")
 

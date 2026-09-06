@@ -9,7 +9,7 @@
   September 1 on 2026-08-30.** Exactly two weeks later, same weekday.
   **Never write a countdown here** -- "six days" was wrong the next morning
   and stayed wrong. Write the date; let the reader subtract.
-- **Current build:** ascii44 (9,100 non-blank lines / 9,485 total) — **IN BUILD.** Block A is being built now; nothing in it has been field run.
+- **Current build:** ascii44 (9,116 non-blank lines / 9,501 total) — **IN BUILD.** Block A is being built now; nothing in it has been field run.
   - **ascii43 is SPENT and retired to `Builds\`.** It was field run twice,
     2026-08-26 to 08-30, five logs in `Test_Results\FieldRun-ascii43\`.
     `Tool\` holds only ascii44. F1, F2, F3, F5 and part of F6 came from it.
@@ -20,6 +20,8 @@
     battery -- `Set-GGTaskSettings` now fixes the three settings after the
     task is created and logs what it reads back. Measured on CGDELL
     2026-09-06: `Test_Results\TaskSettings-CGDELL-2026-09-06_12-20.txt`.
+    **The Back key**: five sites where `N` actually navigated backward are
+    now `B`, including screen 27's "Ready to proceed?", the one Bill hit.
   - **Plan:** `ProjectDocs\GatewayGuard_ascii44BuildPlan-2026-09-05-1130.md`.
     Blocks A and B need no decision from Bill; C and D do.
   - **THE NEXT BUILD IS ascii44. THE REMAINING WORK IS NOT "FINISHING ascii43".**
@@ -165,7 +167,17 @@ predict what `N` does before pressing it, which is a head-on breach of the
 User-Facing Clarity Rule below. Bill hit this at screen 27 and wrote
 *"Don't use N to go back use B, Change everywhere it is needed."*
 
-**The model to copy already exists in the build** -- line 8548:
+**THE `B` HALF IS BUILT, in ascii44, 2026-09-06.** Five sites where `N`
+actually navigated backward now use `B`: the resume re-check, the
+critical-deselected review, the encryption decline, the BitLocker decline,
+and screen 27. ***measured after the change: no prompt in the build
+advertises `N` as Back.*** Two of the seven the triage listed were left
+alone on purpose -- "Still correct?", where `N` already means no and
+navigates nowhere, and the Sleep/Display question, where `N` never went
+back at all and only the label said it did (label fixed, key kept).
+**The 11 `N` = Exit sites are untouched**, waiting on the `X` decision.
+
+**The model to copy already exists in the build** -- line 8667:
 `@("Y","N","B")` / `"Choice (Y = Re-apply / N = Skip / B = Back): "`. It is
 the **only** one of 30 sites that offers `B`.
 
