@@ -9,7 +9,7 @@
   September 1 on 2026-08-30.** Exactly two weeks later, same weekday.
   **Never write a countdown here** -- "six days" was wrong the next morning
   and stayed wrong. Write the date; let the reader subtract.
-- **Current build:** ascii44 (9,116 non-blank lines / 9,501 total) — **IN BUILD.** Block A is being built now; nothing in it has been field run.
+- **Current build:** ascii44 (9,152 non-blank lines / 9,537 total) — **IN BUILD.** Block A is being built now; nothing in it has been field run.
   - **ascii43 is SPENT and retired to `Builds\`.** It was field run twice,
     2026-08-26 to 08-30, five logs in `Test_Results\FieldRun-ascii43\`.
     `Tool\` holds only ascii44. F1, F2, F3, F5 and part of F6 came from it.
@@ -22,6 +22,10 @@
     2026-09-06: `Test_Results\TaskSettings-CGDELL-2026-09-06_12-20.txt`.
     **The Back key**: five sites where `N` actually navigated backward are
     now `B`, including screen 27's "Ready to proceed?", the one Bill hit.
+    **FT-244**, screen 32 drawn and wiped in the same second, and screen 34
+    painted on top of the one before it. **FT-243**, the required log notice
+    moved off the decline-only screen and onto the review screen the rule
+    names.
   - **Plan:** `ProjectDocs\GatewayGuard_ascii44BuildPlan-2026-09-05-1130.md`.
     Blocks A and B need no decision from Bill; C and D do.
   - **THE NEXT BUILD IS ascii44. THE REMAINING WORK IS NOT "FINISHING ascii43".**

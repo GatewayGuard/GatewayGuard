@@ -48,6 +48,22 @@
 #           decided, and changing two of N's three meanings at once is
 #           how the confusion returns wearing a different letter.
 #
+#   FT-244: SCREEN 32 WAS DRAWN AND NEVER PAUSED. Setup-ScheduledTasks
+#           begins with Clear-Host, so SCREEN-69 was painted and wiped
+#           in the same second -- measured 16:09:43, 2026-08-30, two
+#           renders one second apart with no keypress between them.
+#           Bill: "Is there a screen 32." Same family: Show-ManualSteps
+#           (SCREEN-72) was the only wrap-up screen with no Clear-Host,
+#           so it painted on top of the previous one -- Bill: "Scr 34 -
+#           appeared at a bottom of Scr 3b."
+#   FT-243: THE REQUIRED LOG NOTICE WAS ON A SCREEN HALF THE USERS NEVER
+#           REACH. The rule says it goes on the review screen, once. It
+#           was inside Show-BitLockerFinalDecline -- screen 25e, reached
+#           only by DECLINING encryption -- so anyone who accepted
+#           encryption never saw it. Bill, screen 27: "Did not see this
+#           on the Screen." The once-only guard was correct all along;
+#           it was guarding the wrong screen.
+#
 # CHANGES FROM ascii39 (2026-08-15 -- ASCII40: THE THREE FIELD BLOCKERS):
 #   SCOPE NOTE. Two of the three blockers are in this build. FT-172 (the
 #   shown-as screen numbers) is held pending Bill's approval of the
@@ -7046,6 +7062,11 @@ function Show-OneDriveOffer {
 }
 
 function Show-ManualSteps {
+    # FT-244 (ascii44): this was the ONLY wrap-up screen with no
+    # Clear-Host -- Setup-ScheduledTasks and Show-OneDriveOffer both
+    # clear. So SCREEN-72 painted on top of whatever was already on
+    # screen. Bill: "Scr 34 - appeared at a bottom of Scr 3b. Fix this."
+    Clear-Host
     Write-Host ""
     Show-StepHeader -Key "ManualSteps" -Section "Wrapping Up"
     Draw-Box -ScreenId "72" -Color White -Lines @(
@@ -7543,11 +7564,10 @@ function Show-BitLockerFinalDecline {
         "     where it is, especially when traveling.                 "
     )
     Write-Host ""
-    if (-not $script:GGLogNoticeShown) {
-        Write-Host "  For your protection, your choices can be reviewed in your log." -ForegroundColor Gray
-        Write-Host ""
-        $script:GGLogNoticeShown = $true
-    }
+    # FT-243 (ascii44): the log notice used to live here. This screen is
+    # reached ONLY by declining encryption, so a user who accepted it
+    # never saw the notice at all -- and the rule says it belongs on the
+    # review screen. Moved there; the once-only guard moved with it.
     $fd = Read-ValidKey -ValidKeys @("Y","B") -Prompt "Continue WITHOUT encryption? (Y = Yes, continue / B = Go back and select it): "
     if ($fd.ToUpper() -eq "B") { return "GoBack" }
     Write-Log -Message "NOTED: User chose not to apply: Drive Encryption (BitLocker) -- Status: not encrypted -- can be enabled later by re-running the tool" -Status "NOTED"
@@ -8635,6 +8655,16 @@ function Run-ConsoleMode {
                 Write-Host ""
                 Write-Host "  $selectedCount item(s) will be applied -- selecting them was your approval. Any that need a manual step will show you how." -ForegroundColor Yellow
                 Write-Host ""
+                # FT-243 (ascii44): the required notice, on the review
+                # screen the rule names. Bill, screen 27: "Did not see
+                # this on the Screen -- choices can be reviewed in your
+                # log." It was on screen 25e, which only appears if you
+                # decline encryption. The once-only guard is unchanged.
+                if (-not $script:GGLogNoticeShown) {
+                    Write-Host "  For your protection, your choices can be reviewed in your log." -ForegroundColor Gray
+                    Write-Host ""
+                    $script:GGLogNoticeShown = $true
+                }
                 Write-Log -Message "Review listing rendered -- awaiting Ready-to-proceed" -Status "INFO"   # FT-68 (ascii29): brackets the listing loop in the log
 
                 do {
@@ -8856,6 +8886,12 @@ function Run-ConsoleMode {
                     "  Log saved to your GatewayGuard folder.                       ",
                     "  See manual steps below for items needing your action.  "
                 )
+                # FT-244 (ascii44): Setup-ScheduledTasks begins with
+                # Clear-Host, so without this pause screen 32 was drawn
+                # and wiped in the same second -- measured 16:09:43,
+                # 2026-08-30. Bill: "Is there a screen 32."
+                Write-Host ""
+                Pause-ForUser "  Press Enter or Space to continue..."
                 Setup-ScheduledTasks
                 Show-ConvenienceReview   # FT-70 (ascii29): was called twice back-to-back -- deduped
                 Show-OneDriveOffer       # FT-191: only if no OneDrive
