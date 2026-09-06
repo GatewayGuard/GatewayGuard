@@ -1,0 +1,31 @@
+﻿FT-203 -- scheduled task settings, measured on CGDELL at 2026-09-06 12:20:18
+
+-- 1. New-ScheduledTaskSettingsSet parameters that exist on this PS --
+     StartWhenAvailable             EXISTS
+     AllowStartIfOnBatteries        EXISTS
+     DontStopIfGoingOnBatteries     EXISTS
+     WakeToRun                      EXISTS
+
+-- 2. create via schtasks.exe, same shape as the build --
+     schtasks exit 0 -- SUCCESS: The scheduled task "GG-THROWAWAY-FT203" has successfully been created.
+
+-- 3. DEFAULTS as created --
+     StartWhenAvailable             False
+     DisallowStartIfOnBatteries     True
+     StopIfGoingOnBatteries         True
+     WakeToRun                      False
+
+-- 4. apply: mutate the three properties on the EXISTING settings object --
+     (not New-ScheduledTaskSettingsSet, which would reset every other setting)
+     Set-ScheduledTask returned without error
+
+-- 5. READ BACK from the task store --
+     StartWhenAvailable             True   expected True   OK
+     DisallowStartIfOnBatteries     False  expected False  OK
+     StopIfGoingOnBatteries         False  expected False  OK
+     WakeToRun                      False  expected False  OK
+
+  RESULT: the approach works -- safe to write into the build
+
+-- 6. cleanup --
+     GG-THROWAWAY-FT203 removed: True

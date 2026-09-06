@@ -20,6 +20,18 @@
 #           FT-254 raised for Test-TimeDateSync (3931), same class,
 #           four calls that need deciding together.
 #
+#   FT-203: BOTH REMINDERS WERE OFF BY DEFAULT ON A LAPTOP. schtasks.exe
+#           has no switch for a missed start, for waking, or for battery,
+#           so every task it creates carries
+#           DisallowStartIfOnBatteries=True and StartWhenAvailable=False.
+#           A senior on battery at 10:00 got no reminder, and it was not
+#           shown when they plugged in either -- while the log said
+#           [GOOD] Scheduled task created, which was true. The task
+#           existed; it could not fire. New Set-GGTaskSettings runs after
+#           the create, mutates the three properties on the task's own
+#           settings object, and LOGS WHAT IT READS BACK.
+#           WakeToRun stays False on purpose -- product decision.
+#
 # CHANGES FROM ascii39 (2026-08-15 -- ASCII40: THE THREE FIELD BLOCKERS):
 #   SCOPE NOTE. Two of the three blockers are in this build. FT-172 (the
 #   shown-as screen numbers) is held pending Bill's approval of the
@@ -7090,6 +7102,51 @@ function Show-ManualSteps {
 # real Win32 CommandLineToArgvW escaping convention (backslash-escaped
 # quotes, `\"..\"`, around any inner path/value that needs its own quoting),
 # and invoke schtasks.exe directly via System.Diagnostics.Process.
+function Set-GGTaskSettings {
+    # FT-203 (ascii44): schtasks.exe has no switch for a missed start, for
+    # waking, or for battery -- the complete /create switch list has none of
+    # them, so every task it makes is off by default on a laptop. This runs
+    # AFTER the task exists and adjusts the three that matter.
+    #
+    # VERIFIED 2026-09-06 measured on CGDELL (Tool2\Test-TaskSettings-2026-09-06.ps1):
+    #   as created  StartWhenAvailable False / DisallowStartIfOnBatteries True /
+    #               StopIfGoingOnBatteries True / WakeToRun False
+    #   after this  True / False / False / False, confirmed by read-back.
+    #
+    # Mutates the EXISTING settings object rather than building a new one with
+    # New-ScheduledTaskSettingsSet, which would reset every setting not named.
+    #
+    # WakeToRun is deliberately left False. Product decision: waking a sleeping
+    # laptop to show a message box is what people uninstall software over.
+    #
+    # Returns a hashtable: Ok, and the four values AS READ BACK.
+    param([string]$TaskName)
+
+    $out = @{ Ok = $false; StartWhenAvailable = $null; DisallowStartIfOnBatteries = $null
+              StopIfGoingOnBatteries = $null; WakeToRun = $null; Error = "" }
+    try {
+        $ggTask = Get-ScheduledTask -TaskName $TaskName -EA Stop
+        $ggSet  = $ggTask.Settings
+        $ggSet.StartWhenAvailable         = $true
+        $ggSet.DisallowStartIfOnBatteries = $false
+        $ggSet.StopIfGoingOnBatteries     = $false
+        Set-ScheduledTask -TaskName $TaskName -Settings $ggSet -EA Stop | Out-Null
+
+        # READ BACK. Report what the task store says, never what was intended.
+        $ggAfter = (Get-ScheduledTask -TaskName $TaskName -EA Stop).Settings
+        $out.StartWhenAvailable         = $ggAfter.StartWhenAvailable
+        $out.DisallowStartIfOnBatteries = $ggAfter.DisallowStartIfOnBatteries
+        $out.StopIfGoingOnBatteries     = $ggAfter.StopIfGoingOnBatteries
+        $out.WakeToRun                  = $ggAfter.WakeToRun
+        $out.Ok = ($ggAfter.StartWhenAvailable -eq $true -and
+                   $ggAfter.DisallowStartIfOnBatteries -eq $false -and
+                   $ggAfter.StopIfGoingOnBatteries -eq $false)
+    } catch {
+        $out.Error = "$_"
+    }
+    return $out
+}
+
 function Invoke-SchTasksCreate {
     param([string]$Arguments)
     $psi = New-Object System.Diagnostics.ProcessStartInfo
@@ -7210,6 +7267,20 @@ Add-Type -AssemblyName System.Windows.Forms
         $ggT1Result = Invoke-SchTasksCreate -Arguments $ggT1Args
         if ($ggT1Result.ExitCode -ne 0) { throw "schtasks exit $($ggT1Result.ExitCode) -- $($ggT1Result.Output)" }
 
+        # FT-203 (ascii44): the task exists, but schtasks left it unable to
+        # run on battery and unable to catch up a missed start. Fix the three
+        # settings, then LOG WHAT WAS READ BACK.
+        $ggSetT1 = Set-GGTaskSettings -TaskName $ggT1Name
+        if ($ggSetT1.Ok) {
+            Write-Log -Message ("Reminder settings confirmed by read-back -- runs on battery: yes, catches a missed start: yes, wakes the PC: no (T1)") -Status "GOOD"
+        } elseif ($ggSetT1.Error) {
+            $results += @{ Text = "  [!] Reminder created, but its battery settings could not be adjusted -- it may not run on battery"; Color = "Yellow" }
+            Write-Log -Message ("Reminder settings NOT adjusted (T1) -- $($ggSetT1.Error)") -Status "WARN"
+        } else {
+            $results += @{ Text = "  [!] Reminder created, but its battery settings did not take -- it may not run on battery"; Color = "Yellow" }
+            Write-Log -Message ("Reminder settings read back WRONG (T1) -- StartWhenAvailable=$($ggSetT1.StartWhenAvailable) DisallowStartIfOnBatteries=$($ggSetT1.DisallowStartIfOnBatteries) StopIfGoingOnBatteries=$($ggSetT1.StopIfGoingOnBatteries)") -Status "WARN"
+        }
+
         $results += @{ Text = "  [OK] Quarterly offline-scan reminder scheduled (Jan/Apr/Jul/Oct, 1st @ 10AM)"; Color = "Green" }
         Write-Log -Message "Scheduled task created: GatewayGuard - Quarterly Defender Offline Scan (reminder popup -- FT-175)" -Status "GOOD"
     } catch {
@@ -7266,6 +7337,20 @@ Add-Type -AssemblyName System.Windows.Forms
         $ggT2Args = "/create /f /tn `"$ggT2Name`" /tr `"$ggT2Tr`" /sc monthly /d 1 /st 10:00"
         $ggT2Result = Invoke-SchTasksCreate -Arguments $ggT2Args
         if ($ggT2Result.ExitCode -ne 0) { throw "schtasks exit $($ggT2Result.ExitCode) -- $($ggT2Result.Output)" }
+
+        # FT-203 (ascii44): the task exists, but schtasks left it unable to
+        # run on battery and unable to catch up a missed start. Fix the three
+        # settings, then LOG WHAT WAS READ BACK.
+        $ggSetT2 = Set-GGTaskSettings -TaskName $ggT2Name
+        if ($ggSetT2.Ok) {
+            Write-Log -Message ("Reminder settings confirmed by read-back -- runs on battery: yes, catches a missed start: yes, wakes the PC: no (T2)") -Status "GOOD"
+        } elseif ($ggSetT2.Error) {
+            $results += @{ Text = "  [!] Reminder created, but its battery settings could not be adjusted -- it may not run on battery"; Color = "Yellow" }
+            Write-Log -Message ("Reminder settings NOT adjusted (T2) -- $($ggSetT2.Error)") -Status "WARN"
+        } else {
+            $results += @{ Text = "  [!] Reminder created, but its battery settings did not take -- it may not run on battery"; Color = "Yellow" }
+            Write-Log -Message ("Reminder settings read back WRONG (T2) -- StartWhenAvailable=$($ggSetT2.StartWhenAvailable) DisallowStartIfOnBatteries=$($ggSetT2.DisallowStartIfOnBatteries) StopIfGoingOnBatteries=$($ggSetT2.StopIfGoingOnBatteries)") -Status "WARN"
+        }
 
         $results += @{ Text = "  [OK] Monthly Malwarebytes scan reminder scheduled (1st of each month @ 10AM)"; Color = "Green" }
         Write-Log -Message "Scheduled task created: GatewayGuard - Monthly Malwarebytes Reminder" -Status "GOOD"

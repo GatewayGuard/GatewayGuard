@@ -9,13 +9,17 @@
   September 1 on 2026-08-30.** Exactly two weeks later, same weekday.
   **Never write a countdown here** -- "six days" was wrong the next morning
   and stayed wrong. Write the date; let the reader subtract.
-- **Current build:** ascii44 (9,020 non-blank lines / 9,400 total) — **IN BUILD.** Block A is being built now; nothing in it has been field run.
+- **Current build:** ascii44 (9,100 non-blank lines / 9,485 total) — **IN BUILD.** Block A is being built now; nothing in it has been field run.
   - **ascii43 is SPENT and retired to `Builds\`.** It was field run twice,
     2026-08-26 to 08-30, five logs in `Test_Results\FieldRun-ascii43\`.
     `Tool\` holds only ascii44. F1, F2, F3, F5 and part of F6 came from it.
   - **In ascii44 so far:** FT-242, the nine registry writes that could not
     fail. Eight were the audited set; the ninth was in `Apply-PowerSettings`,
     a second apply path for setting 18 outside the range the triage checked.
+    **FT-203**, the two reminders that could never fire on a laptop on
+    battery -- `Set-GGTaskSettings` now fixes the three settings after the
+    task is created and logs what it reads back. Measured on CGDELL
+    2026-09-06: `Test_Results\TaskSettings-CGDELL-2026-09-06_12-20.txt`.
   - **Plan:** `ProjectDocs\GatewayGuard_ascii44BuildPlan-2026-09-05-1130.md`.
     Blocks A and B need no decision from Bill; C and D do.
   - **THE NEXT BUILD IS ascii44. THE REMAINING WORK IS NOT "FINISHING ascii43".**
