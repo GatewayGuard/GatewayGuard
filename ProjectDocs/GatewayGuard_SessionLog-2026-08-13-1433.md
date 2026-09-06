@@ -16,7 +16,7 @@
 ---
 ---
 
-## Session: 2026-09-06 13:58 to 16:00 [Claude Code -- CGDELL] -- BILL'S 16 DECISIONS REVIEWED, AND THE LAUNCHER I BROKE THIS MORNING WOULD NOT HAVE STARTED
+## Session: 2026-09-06 13:58 to 17:00 [Claude Code -- CGDELL] -- ALL SIX PUP SPECIMENS RECOVERED, AND THE LAUNCHER I BROKE THIS MORNING WOULD NOT HAVE STARTED
 
 **Bill answered all 16 questions** (`ProjectDocs\Bills 16 Decisions.txt`) and
 asked for a review. Eleven are settled and being worked from. **Four still
@@ -107,6 +107,55 @@ clean install needs no BitLocker key -- the second drive is where the key
 matters**); Sections 7/8/9 shown three ways with the cost of each removal; the
 store-operations note from Bill's Gumroad research; and four new attorney
 questions -- A9(d), A10, C7, C8.
+
+### BILL HANDED OVER THE SCAN REPORT AND IT SOLVED THE WHOLE QUESTION
+
+**At 16:30 Bill produced his Malwarebytes Custom Scan Report of 2026-07-19**
+and asked me to search the attached E: and G: drives. ***Measured: 1,161,813
+files enumerated, every hit confirmed by SHA-256 -- ALL 6 DISTINCT SPECIMENS
+RECOVERED, 36 copies. Four of the six sit in one folder,
+`G:\May-2023\Downloads\`.*** **The Malwarebytes-versus-Defender comparison
+was blocked on having no samples. It no longer is.**
+
+**MATCHING ON HASH RATHER THAN NAME IS WHAT MADE IT RIGHT, and there is proof
+in the output.** ***Measured: E: holds four files named
+`claimid800393432willianf_burnsiii.zip` and not one of them is the flagged
+file*** -- different SHA-256, 10.9 MB against 13.5 MB, 2017 against 2021. **A
+name search would have reported four hits and been wrong about all four.**
+
+### TWO CORRECTIONS, BOTH MINE, BOTH IN WRITING BESIDE THE DECISION THEY AFFECT
+
+**1. Nothing was ever quarantined.** ***Measured, the report's own header:
+`Threats Quarantined: 0`, and all 18 lines say "No Action By User."***
+**I had spent the afternoon answering whether deleted Malwarebytes quarantine
+can be recovered -- sourcing it properly, and aiming it at something that
+never happened.** The files were listed and left in place. **They may still be
+on SANDY's D: as well**, which nobody had thought to check.
+
+**The lesson is the cheap one: I reasoned about a mechanism before reading the
+document that described the event.** Bill had the report the whole time; I did
+not ask for it.
+
+**2. PUA blocking is ON BY DEFAULT and I told Bill the opposite.** I called it
+*"the closest thing to a genuinely missing setting the research found."*
+***Sourced, Microsoft: on by default since August 2021, and Edge's half is on
+by default too. Measured on CGDELL: `PUAProtection = 1`, and nobody here
+turned it on.*** **So setting 20 is a confirmation plus a catch for the
+minority, not a missing protection.** Bill chose the more expensive option
+partly on my wording. **The correction is recorded beside his answer; his
+decision stands unless he changes it.**
+
+### WHAT I DID NOT DO
+
+**Nothing was copied, moved or deleted on either backup drive.** Building the
+test folder needs Bill's word **and a Defender exclusion added first** --
+without it Defender may remove the specimens before Malwarebytes ever sees
+them, and the comparison would measure nothing.
+
+**The scan report is now in `Test_Results\`.** It was on a Desktop outside the
+project while being the evidence the whole AV comparison rests on. **The doc
+gate caught that as a dead pointer the moment a document referenced it**,
+which is the gate working exactly as intended.
 
 ### GATES
 

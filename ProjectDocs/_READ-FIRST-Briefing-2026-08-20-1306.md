@@ -217,22 +217,49 @@ schedule's computed float and the marketing plan's launch-week table. They are
 flagged in place rather than silently shifted, because shifting a critical path
 by hand is how a plan starts lying.
 
-### Git -- measured 2026-09-06 15:55, and stated HERE ONLY
+### Git -- measured 2026-09-06 17:00, and stated HERE ONLY
 
-*(Commits reads **415**: 414 was measured at 15:55, and the commit that
-carries this line makes it 415. Every other figure is the 15:55 reading.
+*(Commits reads **417**: 416 was measured at 17:00, and the commit that
+carries this line makes it 417. Every other figure is the 17:00 reading.
 A count written before its own commit is off by one on the line whose
 whole job is being right.)*
 
 | | |
 |---|---|
-| Commits | **415** |
-| Tracked files | **1,272** |
+| Commits | **417** |
+| Tracked files | **1,277** |
 | Unpushed | **0** |
-| Untracked | 39 |
-| Modified | 4 |
-| Deleted on disk, still tracked | 18 -- Bill's folder reorganisation, moves not losses |
+| Untracked | 43 |
+| Modified | 5 |
+| Deleted on disk, still tracked | 20 -- see the note below |
 | `.git` | **61 MB** |
+
+**The deleted count moved from 18 to 20 during the 2026-09-06 afternoon
+session, and it is worth one paragraph rather than a silent edit.** Both new
+ones are Malwarebytes reports of 2026-07-16, deleted from
+`Test_Results\Logs\Archive\Malwarebytes_Reports\` -- the Deep Scan report of
+09:54:06 and the Threat Scan report of 02:41:55.
+
+*(Their names are written out rather than quoted as paths, because the
+document gate reads a quoted filename as a pointer and correctly reports a
+pointer to a file that is not there. Naming a gone file is not the same as
+pointing at one.)*
+
+***Measured: that folder's timestamp is 2026-09-06 16:21***, which is between
+that session's 16:00 commit and Bill handing over a Malwarebytes report at
+16:30 -- **so the likely cause is Bill in his own reports folder, finding the
+file he wanted.** *inferred, not measured: nothing in the session wrote to
+that folder.*
+
+**Both are committed, so both are recoverable in one command:**
+
+```
+git checkout -- "Test_Results/Logs/Archive/Malwarebytes_Reports/"
+```
+
+**They were deliberately NOT restored.** The other 18 are Bill's folder
+reorganisation, and quietly putting files back would fight a tidy-up he
+meant to do. **Recoverable and recorded beats restored and unasked-for.**
 
 *(Measured 2026-09-06 15:55. The previous figures were taken 2026-08-23 and
 had gone 132 commits and 593 files stale -- on the table that says "stated

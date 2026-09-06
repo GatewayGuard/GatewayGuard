@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-06 16:47 ET -->
-<!-- Commit: 639e25b -->
+<!-- Generated: 2026-09-06 17:01 ET -->
+<!-- Commit: 9f87fe7 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-06 16:47 ET  |  **Commit:** `639e25b`  |  **Made:** 2026-09-06 15:57 ET
-- **Commit subject:** Session recorded: Bill's 16 decisions, the broken launcher, screen 16
+- **Generated:** 2026-09-06 17:01 ET  |  **Commit:** `9f87fe7`  |  **Made:** 2026-09-06 16:48 ET
+- **Commit subject:** All six PUP specimens found on the backup drives; two corrections
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -177,7 +177,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-09-06 13:58 to 16:00 [Claude Code -- CGDELL] -- BILL'S 16 DECISIONS REVIEWED, AND THE LAUNCHER I BROKE THIS MORNING WOULD NOT HAVE STARTED
+## Session: 2026-09-06 13:58 to 17:00 [Claude Code -- CGDELL] -- ALL SIX PUP SPECIMENS RECOVERED, AND THE LAUNCHER I BROKE THIS MORNING WOULD NOT HAVE STARTED
 ```
 
 **If it is not in your copy of the session log, you are reading an old
