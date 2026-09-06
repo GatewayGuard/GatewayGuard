@@ -1,0 +1,93 @@
+Bills 16 Decisions
+1. C
+2. There are not quarantined files in MB on Sandy, I deleted then a while back.  Does MB still have then saved somewhere you can still get to  or can you do a sweep of of sandy c: free space to find and restore them.  Otherwise search for some legitimate other means if have some 2-3 old backup drives I can add and you could search for the files on there, fi we still have a list of there names?
+3.B
+4.If they have an acceptable non-browser password manager let them continue to use it, ptherwise: we can tell them A} continue to use there browser manager, but check which one they have and make recommendations on the minimum settings. B) Research what experst and MS say about saving passwords, settings to use, i.e. only in one browser or in all the browsers they use. if all that they use, then provide minimum settings for each, if they say use only one check which one they use the most and explain to the user their reasons for only using one. 
+5. Agree
+6. put them in test results and triage them
+7. A. you need to know if the drive is already encrypted. If already installed this is mute question b. Can you tell what account was active when it windows was installed.  Research what i Believe to be true the user during installation is asked with either account if they want to encrypt their drives. The turn ti on your self is not wrong, if a isnot  true. c. if the research is not definitive, then at some point after testing I will restore windows on Sandy with a complete remove the old and install a complete new windows environment. d. find the instructions for doing this on Sandy using the bitlocker key we get when we encrypt. Let me know what you findout
+8. What could happen differently withcheckup looping from the user running updates until they get the 'you are uptodate' message. We should test this our on Sandy and CGDELL.
+9. Agree X later on
+10. B in ascii45
+11. B
+12. Remove and show me
+!3. Here is how gumroads handles it: 
+Conversation with Gemini
+1. Does gumroad maintain emails and can they deliver at no charge file updates 2. Does gumroad maintain an uptodate file of emails of who brought what and is it accessible by product seller.\?
+
+1. Yes. Gumroad maintains customer email addresses and allows sellers to send file updates at no extra charge.  
+Gumroad
+
+How updates work: When you replace or upload a new file version to an existing product on Gumroad, you can send an automated email update directly to past buyers containing the updated files or access links.
+
+Cost: This built-in messaging feature is included in Gumroad's standard platform fees (there are no extra subscription fees or broadcast limits for sending product updates).  
+Swell
+
+2. Yes. Gumroad automatically logs and maintains an up-to-date database of buyer email addresses and purchase details, which is accessible to the seller at any time.
+
+Seller Access: Under the Customers / Audience tab in your seller dashboard, you can view the buyer's email address, exact product purchased, date/time of purchase, price paid, and transaction history.
+
+Exporting Data: You own your customer data and can export your entire buyer email list to a CSV file whenever you want (e.g., to import into an external email service like ConvertKit, Mailchimp, or Beehiiv).  
+Gumroad
+
+IS there any limit?
+
+There are virtually no limits on the size of your audience or file uploads, but Gumroad does enforce a few specific account safeguards and technical limits:
+
+Account Requirement for Bulk Emails ($100 Threshold): To prevent spam, Gumroad does not let new seller accounts send broadcast or automated emails to customers until the account has earned at least $100 after fees and received its first payout.  
+Gumroad
+
+Individual File Upload Limits: Single file uploads directly to Gumroad are generally capped at 16 GB per file. However, there is no hard cap on the total number of files you can attach to a product or deliver via updates.
+
+No Subscriber or Broadcast Limits: Once your account meets the payout threshold, there is no limit on how many customer email addresses you can maintain, nor is there a cap on the number of file update emails you can broadcast.
+
+Daily/Rate Limits: Standard transactional emails (like receipt and instant download links when someone makes a purchase) deliver automatically without cap. If you send massive manual broadcasts (e.g., to tens of thousands of buyers at once), Gumroad handles queueing automatically behind the scenes to protect deliverability.
+
+If you are just getting started on a fresh account, you can update your product files on the backend right away, but you won't be able to trigger the blast update email to past buyers until you hit that initial $100 payout milestone.  
+Omid Saffari
+
+is the $100 payout a one time thing
+
+No. The $100 payout threshold is a one-time milestone, not a recurring monthly or per-broadcast fee.
+
+How the Email Threshold Works: Once your account achieves $100 in cumulative net sales and passes Gumroad’s initial anti-spam security verification, your account permanently unlocks the broad email marketing and update features.
+
+Payout Balance vs. Account Unlocks:
+
+The $100 threshold acts as a one-time "account verification" gate designed to stop spammers from creating throwaway accounts to send free bulk spam.
+
+The standard minimum balance required for regular weekly Friday payouts is $10.  
+InsightRaider
+
+Long-Term Status: Once you cross that initial $100 mark, your broadcast privileges remain unlocked—even during slow months where you aren't actively hitting high sales numbers.
+
+Gemini
+14. Use 3.1
+15. gemini - To locate and manage phishing and security protection settings in Microsoft Edge, follow these steps:Open Microsoft Edge.type or paste edge://settings/privacy/security  directly into your Edge address bar to jump straight to the security  settings page) Scroll down to the Security section.Locate 
+Protect from harmful sites and downloads
+Uses Microsoft Defender SmartScreen and toggle it On or Off to protect against phishing scams and malicious sites.  
+16. How gumroad works - I like the first option:
+Yes, there are multiple ways to integrate a Gumroad product onto your webpage depending on how you want customers to interact with the checkout process.
+
+### 1. Direct Text Link or Custom Button (Redirect)
+
+This is the simplest method. You link any standard HTML button, text link, or image on your site directly to your Gumroad product URL (e.g., `[https://yourname.gumroad.com/l/productname](https://yourname.gumroad.com/l/productname)`).
+
+* **How it works:** When clicked, the user leaves your website entirely and is redirected to your checkout page hosted securely on Gumroad.
+
+### 2. Modal Overlay / Pop-up Widget
+
+This keeps users on your site by triggering an interactive checkout overlay when they click a button.
+
+* **How it works:** You grab the modal overlay snippet from your Gumroad account's widget generator and paste it into your webpage's HTML. It typically requires adding a small script tag to your header and giving your CTA button a specific class (like `class="gumroad-button"`). Clicking it pops up the secure checkout modal right over your page.
+
+### 3. Inline Embed
+
+If you want the product's entire preview card, description, and purchase form to live directly inside your webpage layout without a pop-up:
+
+* **How it works:** You select the **Embed** option in the Gumroad widget builder, which generates a comprehensive HTML/JavaScript block. Paste that snippet directly into a custom HTML section of your site builder, and the full product widget will render inline.
+
+*(Note: Many modern site builders—such as Carrd, WordPress plugins, or Webflow—also have native Gumroad blocks or elements where you simply paste your product link or ID, and the platform automatically configures the overlay or embed code for you.)*
+
+
+

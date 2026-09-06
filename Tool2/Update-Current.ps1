@@ -189,6 +189,7 @@ $wanted = @(
     # the old questions beside the current agreement would have pointed the
     # attorney at the wrong clauses, and nothing named which set was live.
     @{ Label = 'Attorney questions (current set)'; Pattern = 'GatewayGuard_AttorneyQuestions-*.md' },
+    @{ Label = 'Edge phishing / SmartScreen settings'; Pattern = 'GatewayGuard_EdgePhishingSettings-*.md' },
     # Added 2026-08-25. The single list of everything waiting on Bill. It had no
     # row, so the 24 August edition could only be found by remembering its name
     # -- which is the failure this whole file exists to prevent.

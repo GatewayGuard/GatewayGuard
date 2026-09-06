@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-06 12:37 ET -->
-<!-- Commit: 862e061 -->
+<!-- Generated: 2026-09-06 15:32 ET -->
+<!-- Commit: 9a8bf24 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-06 12:37 ET  |  **Commit:** `862e061`  |  **Made:** 2026-09-06 12:35 ET
-- **Commit subject:** ascii44 A8 -- screen 12: the SSD is Drive 1
+- **Generated:** 2026-09-06 15:32 ET  |  **Commit:** `9a8bf24`  |  **Made:** 2026-09-06 12:37 ET
+- **Commit subject:** Block A recorded: session log, briefing, CURRENT
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -19,7 +19,7 @@ document family and the single filename that is live right now. Take every
 filename from this table -- never from memory, never from another document,
 never by guessing which date looks newest.
 
-**58 rows follow.** If you cannot see all 58 of them, your
+**59 rows follow.** If you cannot see all 59 of them, your
 retrieval truncated the table -- **say so and ask for the rest, rather
 than answering from the handful you received.**
 
@@ -111,7 +111,7 @@ All paths are relative to `ProjectDocs/`.
 
 ### WORKING RULES AND WHAT IS WAITING ON BILL
 
-**6 rows in this group.** If you see fewer, this group was truncated -- say so.
+**7 rows in this group.** If you see fewer, this group was truncated -- say so.
 
 | What it is | The current file | Older versions present |
 |---|---|---|
@@ -119,7 +119,8 @@ All paths are relative to `ProjectDocs/`.
 | Cloud research brief (licence) | `GatewayGuard_CloudResearchBrief-Licence-2026-08-25-1400.md` | 0 |
 | Note to Cloud (session close) | `GatewayGuard_NoteToCloud-2026-09-05-1130.md` | 3 |
 | Attorney questions (current set) | `GatewayGuard_AttorneyQuestions-Consult2-2026-09-05-1130.md` | 1 |
-| Everything waiting on Bill | `GatewayGuard_DecisionsForBill-2026-09-05-1130.md` | 3 |
+| Edge phishing / SmartScreen settings | `GatewayGuard_EdgePhishingSettings-2026-09-06-1528.md` | 0 |
+| Everything waiting on Bill | `GatewayGuard_DecisionsForBill-2026-09-06-1528.md` | 4 |
 | Pricing reconciliation (one-time packs) | `PricingReconciliation-2026-07-16.md` | 0 |
 
 ### FIXES, REVIEWS AND MEASURED RESEARCH
