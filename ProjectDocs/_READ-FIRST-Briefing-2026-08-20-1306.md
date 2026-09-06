@@ -217,19 +217,24 @@ schedule's computed float and the marketing plan's launch-week table. They are
 flagged in place rather than silently shifted, because shifting a critical path
 by hand is how a plan starts lying.
 
-### Git -- measured 2026-08-23 22:50, and stated HERE ONLY
+### Git -- measured 2026-09-06 15:55, and stated HERE ONLY
+
+*(Commits reads **415**: 414 was measured at 15:55, and the commit that
+carries this line makes it 415. Every other figure is the 15:55 reading.
+A count written before its own commit is off by one on the line whose
+whole job is being right.)*
 
 | | |
 |---|---|
-| Commits | **410** |
-| Tracked files | **1,258** |
+| Commits | **415** |
+| Tracked files | **1,272** |
 | Unpushed | **0** |
-| Untracked | 34 |
-| Modified | 6 |
+| Untracked | 39 |
+| Modified | 4 |
 | Deleted on disk, still tracked | 18 -- Bill's folder reorganisation, moves not losses |
-| `.git` | **63 MB** |
+| `.git` | **61 MB** |
 
-*(Measured 2026-09-06 12:35. The previous figures were taken 2026-08-23 and
+*(Measured 2026-09-06 15:55. The previous figures were taken 2026-08-23 and
 had gone 132 commits and 593 files stale -- on the table that says "stated
 HERE ONLY". Re-measure it, do not carry it forward.)*
 

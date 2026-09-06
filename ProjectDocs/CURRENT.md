@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-06 15:52 ET -->
-<!-- Commit: eaa65f4 -->
+<!-- Generated: 2026-09-06 15:57 ET -->
+<!-- Commit: aea5ba9 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-06 15:52 ET  |  **Commit:** `eaa65f4`  |  **Made:** 2026-09-06 15:45 ET
-- **Commit subject:** Fix two launchers left pointing at retired ascii43; correct setting 6
+- **Generated:** 2026-09-06 15:57 ET  |  **Commit:** `aea5ba9`  |  **Made:** 2026-09-06 15:55 ET
+- **Commit subject:** The eight follow-ups from Bill's decisions: research, instructions, licence
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -176,7 +176,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-09-06 12:14 to 12:35 [Claude Code -- CGDELL] -- ascii44 BLOCK A IS BUILT, AND MEASURING FIRST FOUND TWO DEFECTS NOBODY HAD LOOKED FOR
+## Session: 2026-09-06 13:58 to 16:00 [Claude Code -- CGDELL] -- BILL'S 16 DECISIONS REVIEWED, AND THE LAUNCHER I BROKE THIS MORNING WOULD NOT HAVE STARTED
 ```
 
 **If it is not in your copy of the session log, you are reading an old

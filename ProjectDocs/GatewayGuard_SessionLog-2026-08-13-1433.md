@@ -16,6 +16,107 @@
 ---
 ---
 
+## Session: 2026-09-06 13:58 to 16:00 [Claude Code -- CGDELL] -- BILL'S 16 DECISIONS REVIEWED, AND THE LAUNCHER I BROKE THIS MORNING WOULD NOT HAVE STARTED
+
+**Bill answered all 16 questions** (`ProjectDocs\Bills 16 Decisions.txt`) and
+asked for a review. Eleven are settled and being worked from. **Four still
+need one line from him: 2, 8, 12 and 16.**
+
+### THE LAUNCHER WAS BROKEN, BY ME, THIS MORNING
+
+***Measured:*** retiring ascii43 to `Builds\` left **`Run-GatewayGuard.bat`
+and `Show-AllScreens.bat` both naming
+`W11-SecurityHardening-v3-ascii43-2026-08-21-1752.ps1` in `..\Tool\`**, where
+it no longer is. **The launcher Bill double-clicks would have printed "cannot
+find the Checkup program file" -- the ascii44 field run could not have
+started.**
+
+**CLAUDE.md's own rule covers this exactly:** *"when one file references
+another by exact filename, update that reference in the same response whenever
+the referenced filename changes."* **The move and the reference went in
+different responses.** Block A's gates all passed because none of them opens a
+`.bat`.
+
+**Fixed byte-exact in Python with CRLF and bare-LF assertions** -- four lines
+across two files, nothing else touched. **The 2026-09-05 line-ending incident
+is why the assertions are there.**
+
+### TWO CORRECTIONS I HAD TO MAKE TO MY OWN REVIEW
+
+**1. I overstated what setting 20 costs.** I told Bill option B would break
+*"every 19-settings reference on the website, the guide and the packaging."*
+***Measured across the repository: two customer-facing lines on the website
+index, three comments in the build that no user sees.*** The real cost is a
+twentieth website page and guide section. **He chose the more expensive option
+while I was overstating its price.**
+
+**2. I flagged "All 3 phishing protection options" as wrong. It is right.**
+I aimed it at the wrong feature. ***Measured, ascii44 lines 6527-6533:***
+setting 6 writes `HKLM\...\WTDS\Components` -- **Windows** Enhanced Phishing
+Protection, which genuinely has three toggles. Bill's Gemini write-up
+describes **Edge's** own control, which ***measured: the build does not touch
+at all -- there is not one Edge policy key in it.***
+
+**But the check found a real defect:** ***measured, line 5758:*** setting 6 is
+**named "Edge Phishing Protection (all 3)"** and has nothing to do with Edge,
+while `WebSite\html\phishing-protection.html` already calls it Enhanced
+Phishing Protection. **The tool and the website disagree and the tool is
+wrong. A Chrome user can reasonably untick a row labelled "Edge."**
+
+### THE SCREEN-16 SCREENSHOTS -- CAUSE FOUND, AND IT IS WINDOWS
+
+**I found Bill's two screenshots myself** in his OneDrive folder rather than
+asking him to move them, and put them in `Test_Results\FieldRun-ascii43\`.
+They show screen 16 painted four times over itself, then a blank console
+apologising.
+
+***Sourced, Microsoft's own terminal issue #383: "'Wrap text output on resize'
+option breaks pseudographic UI."*** ***Measured, `HKCU\Console` on CGDELL:
+`LineWrap = 1`.*** **Checkup is a pseudographic UI and the feature is on by
+default.**
+
+**The whole failure:** Checkup sizes every box to the window at draw time,
+exactly as FT-217 requires; the user resizes; Windows re-splits every stored
+row; the boxes come apart; and **every protection Checkup has is keyed to the
+width at draw time, so nothing ever looks again.** It keeps a **picture** of
+each screen rather than the **lines** it was built from, so it cannot redraw.
+
+**Raised, not fixed. Bill's call whether it goes into ascii44.**
+
+### THE MALWAREBYTES SAMPLES -- NOT RECOVERABLE, BUT THE NAMES PROBABLY ARE
+
+***Sourced, Malwarebytes:*** quarantined items are stored **encrypted** and
+Delete is permanent. **So carving SANDY's free space would return ciphertext
+nothing can open** -- the database row that decrypts it went at the same time.
+
+***Measured on CGDELL:*** **19 scan-report files** in
+`MBAMService\ScanResults`, hex-encoded on disk. **Scan reports survive
+quarantine deletion.** So the 18 names are very likely still on SANDY, and the
+route is five minutes in the app's Reports tab, not a forensic operation.
+
+***Sourced, AMTSO:*** there is a **PUA test file** the industry detects only
+when PUA blocking is on. **That verifies setting 20 with no sample recovery at
+all** -- but by agreement every product detects it, so it cannot decide
+Malwarebytes. Only the real samples could have.
+
+### THE EIGHT FOLLOW-UPS, ALL DELIVERED
+
+Password-manager research (the NCSC **recommends** browser managers for our
+customer, so our copy overstates the risk); the SANDY reinstall document (**a
+clean install needs no BitLocker key -- the second drive is where the key
+matters**); Sections 7/8/9 shown three ways with the cost of each removal; the
+store-operations note from Bill's Gumroad research; and four new attorney
+questions -- A9(d), A10, C7, C8.
+
+### GATES
+
+Doc gate clear -- **dead pointers 0**, families clear, headers clear.
+Repo health **ALL CLEAR**. **One dead pointer appeared during the session**,
+from renaming the attorney document, and the gate caught it inside a minute.
+
+---
+---
+
 ## Session: 2026-09-06 12:14 to 12:35 [Claude Code -- CGDELL] -- ascii44 BLOCK A IS BUILT, AND MEASURING FIRST FOUND TWO DEFECTS NOBODY HAD LOOKED FOR
 
 **Bill said "go". Block A is eight items and all eight are done, one family
