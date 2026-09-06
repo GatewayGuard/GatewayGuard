@@ -88,6 +88,16 @@
 #           severity unchanged, because an access denial logged as INFO
 #           is how a real failure becomes invisible.
 #
+#   SCREEN 12: THE SSD IS NOW DRIVE 1, at Bill's request. The list was
+#           sorted by DeviceId -- hardware enumeration order, which means
+#           nothing to the customer, on the first screen that tells them
+#           anything about their own machine. SSDs first, the rest after,
+#           DeviceId as the tiebreak. Deliberately not a plain reverse,
+#           which is only correct with exactly two drives in exactly the
+#           wrong order. NOT VERIFIED ON A MULTI-DRIVE MACHINE: measured
+#           on CGDELL 2026-09-06, Get-PhysicalDisk returns one disk, so
+#           the output here is unchanged. Check screen 12 on SANDY.
+#
 # CHANGES FROM ascii39 (2026-08-15 -- ASCII40: THE THREE FIELD BLOCKERS):
 #   SCOPE NOTE. Two of the three blockers are in this build. FT-172 (the
 #   shown-as screen numbers) is held pending Bill's approval of the
@@ -4140,7 +4150,20 @@ function Show-SystemBaselineSummary {
         # Size and a MediaType of 'SSD'. Win32_DiskDrive reports that same
         # drive as 'Fixed hard disk media', which is why the type is read
         # from Get-PhysicalDisk and not from WMI.
-        $ggDisks = @(Get-PhysicalDisk -EA SilentlyContinue | Sort-Object DeviceId)
+        # ascii44, Bill's request: THE SSD IS DRIVE 1. This was
+        # Sort-Object DeviceId -- hardware enumeration order, which means
+        # nothing to the customer, and it is the first thing screen 12
+        # tells them about their own machine. SSDs first, everything else
+        # after, DeviceId as the tiebreak inside each group. Sorting on
+        # MediaType uses only the property already read two lines below.
+        # NOT a plain reverse: that is right only with exactly two drives
+        # in exactly the wrong order, and wrong with three.
+        # NOT VERIFIED ON A MULTI-DRIVE MACHINE -- measured on CGDELL
+        # 2026-09-06, Get-PhysicalDisk returns one disk, so the output is
+        # unchanged here. Check screen 12 on SANDY during the field run.
+        $ggDisks = @(Get-PhysicalDisk -EA SilentlyContinue |
+                     Sort-Object @{ Expression = { if ([string]$_.MediaType -eq "SSD") { 0 } else { 1 } } },
+                                 @{ Expression = { $_.DeviceId } })
         if ($ggDisks.Count -eq 0) {
             $lines += "  Storage:      Could not detect"
         } else {
