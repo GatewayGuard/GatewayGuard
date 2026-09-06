@@ -184,7 +184,7 @@ correct section 1, twelve lines away.
   items, four writing jobs
 - `GatewayGuard_ascii44BuildPlan-2026-09-05-1130.md` -- four blocks; **A and B
   need no decision and are two thirds of the build**
-- `GatewayGuard_AttorneyQuestions-Consult2-2026-09-05-1130.md` -- **every
+- `GatewayGuard_AttorneyQuestions-Consult2-2026-09-06-1600.md` -- **every
   section reference renumbered for licence v3.1**; the old questions cite v2.0,
   where the liability cap was Section 10 (now 11) and severability Section 12
   (now 14). Sending them beside v3.1 would have pointed the attorney at the

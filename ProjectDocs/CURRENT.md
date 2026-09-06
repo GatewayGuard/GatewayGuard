@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-06 15:32 ET -->
-<!-- Commit: 9a8bf24 -->
+<!-- Generated: 2026-09-06 15:52 ET -->
+<!-- Commit: eaa65f4 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-06 15:32 ET  |  **Commit:** `9a8bf24`  |  **Made:** 2026-09-06 12:37 ET
-- **Commit subject:** Block A recorded: session log, briefing, CURRENT
+- **Generated:** 2026-09-06 15:52 ET  |  **Commit:** `eaa65f4`  |  **Made:** 2026-09-06 15:45 ET
+- **Commit subject:** Fix two launchers left pointing at retired ascii43; correct setting 6
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -19,7 +19,7 @@ document family and the single filename that is live right now. Take every
 filename from this table -- never from memory, never from another document,
 never by guessing which date looks newest.
 
-**59 rows follow.** If you cannot see all 59 of them, your
+**63 rows follow.** If you cannot see all 63 of them, your
 retrieval truncated the table -- **say so and ask for the rest, rather
 than answering from the handful you received.**
 
@@ -111,15 +111,19 @@ All paths are relative to `ProjectDocs/`.
 
 ### WORKING RULES AND WHAT IS WAITING ON BILL
 
-**7 rows in this group.** If you see fewer, this group was truncated -- say so.
+**11 rows in this group.** If you see fewer, this group was truncated -- say so.
 
 | What it is | The current file | Older versions present |
 |---|---|---|
 | Cloud working rules | `GatewayGuard_CloudWorkingRules-2026-08-25-1400.md` | 0 |
 | Cloud research brief (licence) | `GatewayGuard_CloudResearchBrief-Licence-2026-08-25-1400.md` | 0 |
 | Note to Cloud (session close) | `GatewayGuard_NoteToCloud-2026-09-05-1130.md` | 3 |
-| Attorney questions (current set) | `GatewayGuard_AttorneyQuestions-Consult2-2026-09-05-1130.md` | 1 |
+| Attorney questions (current set) | `GatewayGuard_AttorneyQuestions-Consult2-2026-09-06-1600.md` | 1 |
 | Edge phishing / SmartScreen settings | `GatewayGuard_EdgePhishingSettings-2026-09-06-1528.md` | 0 |
+| Password manager research | `GatewayGuard_PasswordManagerResearch-2026-09-06-1600.md` | 0 |
+| SANDY reinstall instructions | `GatewayGuard_SandyReinstall-2026-09-06-1600.md` | 0 |
+| Licence sections 7/8/9 -- with and without | `GatewayGuard_LicenceSections789-2026-09-06-1600.md` | 0 |
+| Store operations (versions, updates) | `GatewayGuard_StoreOperations-2026-09-06-1600.md` | 0 |
 | Everything waiting on Bill | `GatewayGuard_DecisionsForBill-2026-09-06-1528.md` | 4 |
 | Pricing reconciliation (one-time packs) | `PricingReconciliation-2026-07-16.md` | 0 |
 

@@ -1,4 +1,4 @@
-<!-- Dated: 2026-09-05 11:30 ET -->
+<!-- Dated: 2026-09-06 16:00 ET -->
 <!-- Editor: Claude Code (CGDELL) -->
 # Attorney consultation questions -- SECOND ROUND -- revised for licence v3.1
 
@@ -8,6 +8,8 @@
   agreement** -- see the renumbering table below.
 - **Attachment to send with it:** the current licence, generated from
   `GatewayGuard_License-2026-09-05-0018-TEXT.md` (v3.1)
+- **Revised 2026-09-06:** four questions added from the Sections 7/8/9 review
+  -- **A9(d)**, **A10**, **C7** and **C8**. Nothing was removed or renumbered.
 - **Status:** DRAFT for Bill's review. **Markdown is the source; generate the
   `.docx` from this file, not the other way round.**
 
@@ -51,7 +53,7 @@ GATEWAYGUARD LLC -- ATTORNEY CONSULTATION QUESTIONS, SECOND ROUND
 
 Follow-up to the consultation of August 4, 2026, and to your written comments
 
-Dated: 2026-09-05 11:30 ET
+Dated: 2026-09-06 16:00 ET
 
 From: William F. Burns III, GatewayGuard LLC, Brunswick, Maine
 
@@ -136,6 +138,33 @@ no-refund term to the point where we should not state it at all?**
 **(c)** Does the EU/UK fourteen-day withdrawal right reach us through a
 Gumroad sale, and if it does, is the waiver Gumroad presents at checkout
 sufficient, or does something need to appear in our agreement?
+
+**(d)** *(added 2026-09-06)* **Section 9 states the reason for the no-refund
+term inside the agreement itself** -- three sentences explaining that the
+contents are readable free beforehand. **Does stating the reason there
+strengthen the term, or is it doing no legal work?** We ask because Bill has
+asked for that passage to be cut on tone grounds, and **we will not cut it if
+it is what makes the term defensible.** One line either way settles it.
+
+### A10. A correction issued inside the buyer's fourteen days *(new, 2026-09-06)*
+
+Checkup carries a fourteen-day no-reason refund window. Separately, if we
+issue a **correction** to the version someone bought -- a defect fix, not a
+new annual version -- they are licensed to run it at no charge, and Gumroad
+serves it from the same download link they already have.
+
+**These two will meet.** A customer hits a defect on day 13, we ship a fix on
+day 15.
+
+**(a)** Does the refund window run from the original purchase, full stop, or
+can a correction restart or extend it?
+
+**(b)** The agreement says "within 14 days of buying," which we read as
+unambiguous. **Is it, in a consumer context, where the buyer may reasonably
+say the product they were sold did not work until day 15?**
+
+**(c)** Is there wording you would add now that costs us nothing and closes
+this before it happens?
 
 ---
 
@@ -261,6 +290,42 @@ If the signed build is ever tampered with, or the code-signing token is
 compromised, what are we legally required to do and how quickly? Post-launch
 guidance is acceptable but we would like the outline now.
 
+### C7. Do the specific disclaimers earn their place? *(new, 2026-09-06)*
+
+**Section 8 opens with a general "as is."** It then spends three separate
+paragraphs saying what we specifically do not promise -- immunity from every
+threat, correct operation on every hardware combination, and that approved
+settings survive Windows updates.
+
+**Does the specific wording do more work than the general phrase, in a
+consumer agreement?** Our assumption is yes -- that a general "as is" is read
+narrowly and the specifics are what put the buyer on notice -- **but it is an
+assumption, and it is the only thing keeping those paragraphs in a document
+Bill wants shortened.**
+
+**If they add nothing, we will cut all three and the section gets much
+shorter.** If they matter, we will say so and leave them.
+
+### C8. Is the logged approval worth anything as evidence? *(new, 2026-09-06)*
+
+**This follows directly from C2 and is the practical half of it.**
+
+Section 7 says a program is removed only after the customer approves it on
+screen, and that **Checkup records the approval with the date and time in a
+log file on the customer's own PC.**
+
+**(a)** If a customer later says they never agreed to a removal, **is our own
+program's log entry -- sitting on their machine, editable by them, never sent
+to us -- worth anything at all?**
+
+**(b)** If it is worth something, **should the wording be firmer than it is
+now?** Bill has flagged the current sentence as reading like marketing, and we
+would rather tighten it than soften it if it is load-bearing.
+
+**(c)** Is there anything cheap that would make the record materially better
+-- a specific phrasing on the approval screen, for instance -- that we should
+build before launch rather than after?
+
 ---
 
 ## CONSULT D -- CONTRACT COMPLETENESS AND RUNNING THE BUSINESS
@@ -367,6 +432,6 @@ B4, B5, C6, D5, D7, D8.
 
 ---
 
-GatewayGuard_AttorneyQuestions-Consult2 | Dated: 2026-09-05 11:30 ET
+GatewayGuard_AttorneyQuestions-Consult2 | Dated: 2026-09-06 16:00 ET
 
 Attachment: GatewayGuard License Agreement, version 3.1
