@@ -92,6 +92,40 @@
     (`Test-TimeDateSync` prints success after four unguarded calls) and
     FT-256 (`powercfg` can return no CONSOLELOCK block at all, so the
     status read reports "NOT required" from a read that produced nothing).
+  - **FT-259, RAISED NOT FIXED — Bill's call, 2026-09-07: "build the height
+    check later." CHECKUP NEVER ASKS HOW TALL THE USER'S WINDOW IS.**
+    ***Measured on the ascii44 source: `WindowWidth`/`BufferSize.Width` is
+    read at 5 sites — that is FT-217 — while `WindowSize.Height` appears
+    exactly once, inside `Save-ScreenSnapshot`, where it bounds a capture
+    and has nothing to do with whether a screen fits.***
+    **The 26-line rule assumes a window tall enough to show 26 lines, and
+    nothing checks that assumption.** ***Measured on CGDELL 2026-09-07: the
+    terminal was 81 columns by **21 rows**, because Windows was at 150%
+    zoom and the terminal font was 20 — the two multiply.*** At 21 rows a
+    26-line screen loses its top 5 lines before the user sees them, and
+    SCREEN-72 at 55 lines loses 34. **The user reads the bottom of a
+    screen, sees the prompt, and answers a question whose top scrolled away
+    unseen.** It is a Class 1 invisible failure: nothing errors, nothing is
+    logged, and the user cannot tell it happened.
+    **THE PEOPLE MOST LIKELY TO HAVE A SHORT WINDOW ARE EXACTLY OUR
+    CUSTOMERS** — a senior who set a large font because they cannot see
+    well gets fewer rows for that reason.
+    **The fix, in two levels:** (1) at startup, measure the window height
+    and, if it is under the tallest screen, say so and show how to make the
+    window taller — cheap, safe, turns an invisible failure into a
+    ten-second fix; (2) page long screens so nothing scrolls away unseen —
+    the real fix, and it belongs with the redraw work below.
+  - **ALSO RAISED, same session: BACK REPLAYS A PHOTOGRAPH, NOT THE WORDS.**
+    ***Measured: `Save-ScreenSnapshot` stores `GetBufferContents` cells plus
+    the buffer width; `Restore-ScreenSnapshot` returns `$false` the moment
+    `$Snapshot.Width -ne $ggUI.BufferSize.Width`***, and the user gets
+    *"this screen could not be redrawn exactly."* **So resizing the window
+    breaks Back.** Storing each screen's **text lines** beside the picture
+    would let Checkup redraw at any width, would make Back survive a
+    resize, and would allow a redraw key for a screen that has gone stale.
+    ***Measured scope: 72 screens, 67 of them already drawn through one
+    shared routine that has the text in its hands; 5 are hand-drawn (IDs
+    76, 77, 85, 86, 87).*** One central change plus five small ones.
   - **Needs one look on SANDY:** screen 12's drive order. CGDELL has a
     single disk, so multi-drive ordering could not be observed here.
   - **Plan:** `ProjectDocs\GatewayGuard_ascii44BuildPlan-2026-09-05-1130.md`.
