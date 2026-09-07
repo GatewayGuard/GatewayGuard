@@ -9,7 +9,7 @@
   September 1 on 2026-08-30.** Exactly two weeks later, same weekday.
   **Never write a countdown here** -- "six days" was wrong the next morning
   and stayed wrong. Write the date; let the reader subtract.
-- **Current build:** ascii44 (9,274 non-blank lines / 9,659 total) — **BLOCK A COMPLETE, NOT YET FIELD RUN.**
+- **Current build:** ascii44 (9,372 non-blank lines / 9,760 total) — **BLOCK A COMPLETE, NOT YET FIELD RUN.**
   - **ascii43 is SPENT and retired to `Builds\`.** It was field run twice,
     2026-08-26 to 08-30, five logs in `Test_Results\FieldRun-ascii43\`.
     `Tool\` holds only ascii44. F1, F2, F3, F5 and part of F6 came from it.
@@ -48,6 +48,30 @@
     whatever the value says -- the same class of wrong GOOD. Not set on
     CGDELL, and "off by policy" needs a decision about what Checkup should
     then offer, so it belongs with the F6 wording block.
+    **FT-258**, and this is the answer to the line above — Bill, 2026-09-07:
+    *"add the policy check to checkup."* `Get-GGPolicyLock` reports when a
+    Group Policy is **forcing** a setting, so Checkup says so instead of
+    offering a fix that cannot work. **A value under
+    `HKLM\SOFTWARE\Policies` beats the switch in Windows Security**, so the
+    user clicks and nothing happens, and concludes they did it wrong.
+    **Every key was read out of Windows' own policy definitions in
+    `C:\Windows\PolicyDefinitions\*.admx`** — the ADMX declares the exact
+    key, value name, and the numbers meaning enabled and disabled — and all
+    five were then re-verified against those files mechanically. **Never
+    remembered, never inferred.** **Three settings, each for a measured
+    reason:** item 4 SmartScreen, where the verdict is *wrong* without it
+    because the check reads the **user's** value and the policy lives
+    elsewhere; items 2 and 7, where the verdict is already right because
+    both read the **effective** state, so the policy is added only as the
+    *reason* and never flips a GOOD. **Items 12–15 are deliberately
+    excluded: Checkup sets those through policy keys itself**, so a check
+    would report our own work as an outside override. One insertion point,
+    not three — the pass runs before the auto-deselect, so an ON-by-policy
+    GOOD is deselected by the existing loop. ***Measured: with no policy
+    set, the pass changes nothing at all***, which is the common case.
+    **Not wired:** the firewall's Private and Public profiles — the ADMX
+    declares only Domain and Standard, and nothing on this machine let the
+    other two be verified.
   - **Raised in ascii44, NOT fixed, and each says why:** FT-254
     (`Test-TimeDateSync` prints success after four unguarded calls) and
     FT-256 (`powercfg` can return no CONSOLELOCK block at all, so the

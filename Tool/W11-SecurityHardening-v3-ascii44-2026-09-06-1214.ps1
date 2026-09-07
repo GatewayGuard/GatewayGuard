@@ -3583,6 +3583,55 @@ function Test-DomainJoin {
 }
 
 # ============================================================
+# GROUP POLICY OVERRIDE CHECK  (FT-258)
+# ============================================================
+# A value under HKLM\SOFTWARE\Policies BEATS the setting the user can
+# reach in Windows Security. When one is present and hostile the user
+# clicks the switch and nothing happens -- it bounces back or is greyed
+# out -- and they conclude they did it wrong. Checkup should say so.
+#
+# On a home machine these arrive from a work or school account signed
+# into Windows, a "debloat" or "privacy" tool run once and forgotten, a
+# technician, an old antivirus that switched Defender off by policy and
+# never put it back, or malware.
+#
+# Every key passed to this is read out of Windows own policy definitions
+# in C:\Windows\PolicyDefinitions -- see build_ascii44_ft258_policy.py
+# for the exact ADMX file, policy name and numbers behind each one.
+#
+# Returns "OFF" if a policy forces the setting off, "ON" if a policy
+# forces it on, and $null if no policy applies. A key that cannot be
+# READ returns nothing for that entry rather than a guess -- FT-120,
+# FT-141 and FT-257 are all the same rule: a check that did not
+# establish the state never invents a definite answer.
+#
+# Each entry in -Checks is a hashtable:
+#     @{ Path = "HKLM:\SOFTWARE\Policies\..."   # the policy key
+#        Name = "EnableSmartScreen"              # the value name
+#        OnWhen  = 1                             # optional
+#        OffWhen = 0 }                           # optional
+function Get-GGPolicyLock {
+    param(
+        [Parameter(Mandatory=$true)][array]$Checks
+    )
+    foreach ($ggC in $Checks) {
+        $ggVal = $null
+        try {
+            $ggVal = (Get-ItemProperty -Path $ggC.Path -Name $ggC.Name -EA Stop).($ggC.Name)
+        } catch {
+            # Missing key, missing value, or a refused read. All three mean
+            # "this entry tells us nothing", so move on.
+            continue
+        }
+        if ($null -eq $ggVal) { continue }
+        # Compared as text so a REG_SZ policy cannot throw a cast error.
+        if ($null -ne $ggC.OffWhen -and "$ggVal" -eq "$($ggC.OffWhen)") { return "OFF" }
+        if ($null -ne $ggC.OnWhen  -and "$ggVal" -eq "$($ggC.OnWhen)")  { return "ON" }
+    }
+    return $null
+}
+
+# ============================================================
 # STEP 3: ADMIN CHECK
 # ============================================================
 function Test-AdminAccess {
@@ -6350,6 +6399,58 @@ function Get-AllStatuses {
     # log and had to be inferred from the gap between two timestamps.
     try { Disable-QuickEdit } catch {}
     try { Write-Log -Message "Get-AllStatuses complete -- all $($Settings.Count) settings probed" -Status "DONE" } catch {}
+
+    # FT-258: SAY WHEN A GROUP POLICY IS THE REASON.
+    # Runs after every status is probed and BEFORE the auto-deselect
+    # below, so an ON-by-policy GOOD is still deselected by the existing
+    # loop and nothing has to be duplicated here.
+    # Three settings only, and each for a measured reason:
+    #   4  the verdict is WRONG without this -- the check reads the USER's
+    #      SmartScreenEnabled value, and the policy lives elsewhere and
+    #      overrides it, so it can read "Warn" while SmartScreen is off.
+    #   2  and 7 already read the EFFECTIVE state (Get-MpComputerStatus,
+    #      Get-NetFirewallProfile), so their verdict is already right. The
+    #      policy is added only as the REASON, and never turns a GOOD into
+    #      a BAD or back.
+    # Items 12-15 are excluded on purpose: Checkup sets those through
+    # policy keys itself, so a check would report our own work as an
+    # outside override.
+    foreach ($s in $Settings) {
+        $ggLock = $null
+        try {
+            switch ($s.ID) {
+                2 {
+                    $ggLock = Get-GGPolicyLock @(
+                        @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender";                          Name = "DisableAntiSpyware";        OffWhen = 1 },
+                        @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection";     Name = "DisableRealtimeMonitoring"; OffWhen = 1 })
+                }
+                4 {
+                    $ggLock = Get-GGPolicyLock @(
+                        @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System";                           Name = "EnableSmartScreen";         OnWhen = 1; OffWhen = 0 })
+                }
+                7 {
+                    $ggLock = Get-GGPolicyLock @(
+                        @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile";            Name = "EnableFirewall";            OffWhen = 0 },
+                        @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile";          Name = "EnableFirewall";            OffWhen = 0 })
+                }
+            }
+        } catch { $ggLock = $null }
+
+        if ($ggLock -eq "OFF") {
+            # Applying cannot work while the policy stands, so do not offer
+            # it as a fix -- tell the user what is holding it instead.
+            if ($s.ID -eq 4) {
+                $s.Status = "OFF by a policy on this PC -- Checkup cannot change it"
+            } elseif ([string]$s.Status -notmatch "policy") {
+                $s.Status = [string]$s.Status + " -- held OFF by a policy on this PC"
+            }
+            $s.Selected = $false
+            try { Write-Log -Message ("$($s.Name) | held OFF by a Group Policy -- the switch in Windows Security will not stick (FT-258)") -Status "WARN" } catch {}
+        } elseif ($ggLock -eq "ON" -and $s.ID -eq 4) {
+            $s.Status = "ON by a policy on this PC -- GOOD"
+            try { Write-Log -Message ("$($s.Name) | held ON by a Group Policy (FT-258)") -Status "GOOD" } catch {}
+        }
+    }
 
     # Auto-deselect items already at recommended setting
     foreach ($s in $Settings) {
