@@ -9,7 +9,7 @@
   September 1 on 2026-08-30.** Exactly two weeks later, same weekday.
   **Never write a countdown here** -- "six days" was wrong the next morning
   and stayed wrong. Write the date; let the reader subtract.
-- **Current build:** ascii44 (9,231 non-blank lines / 9,616 total) — **BLOCK A COMPLETE, NOT YET FIELD RUN.**
+- **Current build:** ascii44 (9,274 non-blank lines / 9,659 total) — **BLOCK A COMPLETE, NOT YET FIELD RUN.**
   - **ascii43 is SPENT and retired to `Builds\`.** It was field run twice,
     2026-08-26 to 08-30, five logs in `Test_Results\FieldRun-ascii43\`.
     `Tool\` holds only ascii44. F1, F2, F3, F5 and part of F6 came from it.
@@ -32,6 +32,22 @@
     silent-error breadcrumb named where the user was, not where the fault
     was.
     **Screen 12**, the SSD is now Drive 1.
+    **FT-257**, the SmartScreen status check reported **"ON -- GOOD" from a
+    value that was not there**. The test was `$ss -ne "Off"`, and an absent
+    `SmartScreenEnabled` is `$null`, which is not `"Off"` -- so a machine
+    that had never had the setting written was told it was on and fine.
+    ***Measured on CGDELL 2026-09-07: the value was absent while Windows
+    Security was posting a warning asking for reputation checking to be
+    turned on.*** Bill was looking at that warning when he asked why it
+    disagreed with what I had read him. `-EA SilentlyContinue` made it
+    worse -- a **refused** read also landed as `$null`, so blocked and
+    absent both reported GOOD. **A wrong GOOD is the worst kind here: it
+    deselects the item, so the user is never offered the fix.** Now
+    `-EA Stop` with a typed catch, and five distinct answers. **Raised, not
+    fixed:** a Group Policy `EnableSmartScreen` of 0 forces SmartScreen off
+    whatever the value says -- the same class of wrong GOOD. Not set on
+    CGDELL, and "off by policy" needs a decision about what Checkup should
+    then offer, so it belongs with the F6 wording block.
   - **Raised in ascii44, NOT fixed, and each says why:** FT-254
     (`Test-TimeDateSync` prints success after four unguarded calls) and
     FT-256 (`powercfg` can return no CONSOLELOCK block at all, so the

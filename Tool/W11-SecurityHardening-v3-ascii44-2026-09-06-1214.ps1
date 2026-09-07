@@ -6026,7 +6026,50 @@ function Get-AllStatuses {
                 }
             }
             4 {
-                try { $ss = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -EA SilentlyContinue).SmartScreenEnabled; $s.Status = if ($ss -ne "Off") { "ON -- GOOD" } else { "OFF -- needs attention" } }
+                # FT-257 (ascii44): THIS REPORTED "ON -- GOOD" FROM A VALUE
+                # THAT WAS NOT THERE. The test was ($ss -ne "Off"), and an
+                # ABSENT SmartScreenEnabled reads as $null -- which is not
+                # "Off", so it took the GOOD branch. MEASURED on CGDELL
+                # 2026-09-07: the value was absent while Windows Security
+                # was itself posting a warning asking for reputation
+                # checking to be turned on. Bill was looking at that warning
+                # when he asked why we disagreed with his screen.
+                # -EA SilentlyContinue made it worse: a REFUSED read also
+                # lands as $null, so blocked and absent both reported GOOD.
+                # That is FT-141 on a different key, and the same fix
+                # applies -- -EA Stop with a typed catch, so BLOCKED and
+                # ABSENT are told apart and neither is guessed at.
+                # WHY A WRONG GOOD IS THE WORST KIND: "GOOD" in the status
+                # deselects the item a few lines below, so the user is never
+                # offered the fix and never sees the question.
+                try {
+                    $ss        = $null
+                    $ssBlocked = $false
+                    try {
+                        $ss = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name SmartScreenEnabled -EA Stop).SmartScreenEnabled
+                    } catch [System.Security.SecurityException] {
+                        $ssBlocked = $true
+                    } catch [System.UnauthorizedAccessException] {
+                        $ssBlocked = $true
+                    } catch {
+                        # A missing key or missing value lands here, leaves
+                        # $ss null and $ssBlocked false, and is reported as
+                        # "not configured" below -- which for an absent
+                        # value is the truth.
+                        if ($_.Exception -is [System.Security.SecurityException]) { $ssBlocked = $true }
+                    }
+                    if ($ssBlocked) {
+                        $s.Status = "Unknown -- could not read; check by hand"
+                    } elseif ($null -eq $ss -or "$ss" -eq "") {
+                        $s.Status = "Not configured -- needs attention"
+                    } elseif ("$ss" -eq "Off") {
+                        $s.Status = "OFF -- needs attention"
+                    } elseif ("$ss" -eq "Warn" -or "$ss" -eq "RequireAdmin") {
+                        $s.Status = "ON -- GOOD"
+                    } else {
+                        $s.Status = "Unknown setting -- check by hand"
+                    }
+                }
                 catch { $s.Status = "Unknown" }
             }
             5 {
