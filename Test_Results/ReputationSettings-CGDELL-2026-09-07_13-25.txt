@@ -1,0 +1,80 @@
+﻿======================================================================
+  TURN ON REPUTATION-BASED PROTECTION
+  CGDELL   2026-09-07 13:25:59
+======================================================================
+
+  Administrator: True
+
+----------------------------------------------------------------------
+  BEFORE -- and this is the undo record
+----------------------------------------------------------------------
+  Check apps and files (SmartScreen)             was: NOT SET
+  Phishing protection -- service                 was: NOT SET
+  Phishing protection -- warn on malicious app   was: NOT SET
+  Phishing protection -- warn on password reuse  was: NOT SET
+  Phishing protection -- warn on unsafe app      was: NOT SET
+  SmartScreen for Microsoft Store apps           was: NOT SET
+
+  Undo file written: C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Test_Results\ReputationSettings-UNDO-CGDELL-2026-09-07_13-25.json
+
+----------------------------------------------------------------------
+  WRITING -- every value is read back before it is called done
+----------------------------------------------------------------------
+  ON      Check apps and files (SmartScreen)
+          read back as: Warn
+  FAILED  Phishing protection -- service
+          Requested registry access is not allowed.
+          reads back as: still NOT SET
+          Tamper Protection can refuse this. Set it by hand in
+          Windows Security if it will not take.
+  FAILED  Phishing protection -- warn on malicious app
+          Requested registry access is not allowed.
+          reads back as: still NOT SET
+          Tamper Protection can refuse this. Set it by hand in
+          Windows Security if it will not take.
+  FAILED  Phishing protection -- warn on password reuse
+          Requested registry access is not allowed.
+          reads back as: still NOT SET
+          Tamper Protection can refuse this. Set it by hand in
+          Windows Security if it will not take.
+  FAILED  Phishing protection -- warn on unsafe app
+          Requested registry access is not allowed.
+          reads back as: still NOT SET
+          Tamper Protection can refuse this. Set it by hand in
+          Windows Security if it will not take.
+  ON      SmartScreen for Microsoft Store apps
+          read back as: 1
+
+  Written and verified: 2 of 6
+
+----------------------------------------------------------------------
+  ONE SETTING LEFT FOR YOU, ON PURPOSE
+----------------------------------------------------------------------
+
+  'Block downloads' -- the second half of potentially unwanted app
+  blocking. Setting it from a script means an Edge policy key, which
+  marks your browser as managed by an organisation and greys the
+  setting out in Edge's own options. A tick box is better.
+
+  Windows Security -> App and browser control ->
+  Reputation-based protection settings -> Potentially unwanted app
+  blocking -> tick 'Block downloads'.
+
+  'Block apps', the other half, is already on.
+
+----------------------------------------------------------------------
+  AFTER
+----------------------------------------------------------------------
+  Real-time protection : True
+  PUA blocking         : 1
+  Tamper protection    : True
+
+  Some of these take effect only after Windows Security is reopened,
+  and phishing protection may need a restart. Check the screen.
+
+======================================================================
+  UNDO: Run-RestoreReputationSettings.bat
+  It reads ReputationSettings-UNDO-CGDELL-2026-09-07_13-25.json
+======================================================================
+
+  Saved to: C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Test_Results\ReputationSettings-CGDELL-2026-09-07_13-25.txt

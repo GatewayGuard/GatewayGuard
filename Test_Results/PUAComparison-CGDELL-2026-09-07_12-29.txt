@@ -1,0 +1,142 @@
+﻿======================================================================
+  DEFENDER vs MALWAREBYTES -- SIX REAL PUP SPECIMENS
+  CGDELL   2026-09-07 12:29:18
+======================================================================
+
+  Nothing is executed. The specimens are read, never run.
+  Undo everything: Run-PUATestCleanup.bat
+
+  Running as   : CGDELL\willi
+  Administrator: True
+
+----------------------------------------------------------------------
+  BEFORE STATE
+----------------------------------------------------------------------
+  Defender real-time protection : True
+  Defender running mode         : Normal
+  Signature version             : 1.459.95.0
+  Signatures last updated       : 9/7/2026 3:26:54 AM
+  PUA protection (PUAProtection): 1   (0=off 1=block 2=audit)
+  Existing folder exclusions    : none
+  Malwarebytes version          : 5.1.0.1797
+  Malwarebytes service          : Running
+
+  Backup drives:
+    G:  ATTACHED      holds five of the six specimens -- REQUIRED
+    E:  ATTACHED      holds extra copies of one specimen only -- optional
+
+  Specimen sources (first reachable copy of each):
+    OK      G:\May-2023\Documents - Copy\LOANS\Downloads\clientsetup_d-0.exe
+    OK      G:\May-2023\Documents - Copy\VA LOAN\Downloads\claimid800393432willianf_burnsiii.zip
+    OK      G:\May-2023\Downloads\Wave Browser.exe
+    OK      G:\May-2023\Downloads\Wave Browser (2).exe
+    OK      G:\May-2023\Downloads\TotalAV.exe
+    OK      G:\May-2023\Downloads\ZoomInfoContactContributor.exe
+
+----------------------------------------------------------------------
+  PHASE 1 -- EXCLUSION, THEN STAGE
+----------------------------------------------------------------------
+
+  The exclusion goes on BEFORE any file is copied. The other order
+  loses the specimens to real-time protection on the way in.
+
+  Test folder : C:\AVTestKit\07_pua
+  Exclusion   : REGISTERED and read back from Defender.
+
+  STAGED  clientsetup_d-0.exe
+          SHA-256 verified -- this is the file Malwarebytes flagged
+  STAGED  claimid800393432willianf_burnsiii.zip
+          SHA-256 verified -- this is the file Malwarebytes flagged
+  STAGED  Wave Browser.exe
+          SHA-256 verified -- this is the file Malwarebytes flagged
+  STAGED  Wave Browser (2).exe
+          SHA-256 verified -- this is the file Malwarebytes flagged
+  STAGED  TotalAV.exe
+          SHA-256 verified -- this is the file Malwarebytes flagged
+  STAGED  ZoomInfoContactContributor.exe
+          SHA-256 verified -- this is the file Malwarebytes flagged
+
+  Staged and verified: 6 of 6
+
+----------------------------------------------------------------------
+  PHASE 2 -- DEFENDER REAL-TIME PROTECTION, ON WRITE
+----------------------------------------------------------------------
+
+  This is the question a home user actually cares about: if one of
+  these lands on the machine, does Defender take it by itself?
+
+  Folder (NOT excluded): C:\AVTestKit\07_pua_rtp
+  Waiting 25 seconds after the copy, then looking.
+
+  KEPT   clientsetup_d-0.exe
+         Defender real-time did NOT act on it.
+  KEPT   claimid800393432willianf_burnsiii.zip
+         Defender real-time did NOT act on it.
+  KEPT   Wave Browser.exe
+         Defender real-time did NOT act on it.
+  KEPT   Wave Browser (2).exe
+         Defender real-time did NOT act on it.
+  KEPT   TotalAV.exe
+         Defender real-time did NOT act on it.
+  KEPT   ZoomInfoContactContributor.exe
+         Defender real-time did NOT act on it.
+
+  Removed by real-time protection: 0 of 6
+
+  Defender logged no new threat during this phase.
+
+  Write-test folder removed. Only the protected set remains.
+
+----------------------------------------------------------------------
+  PHASE 3 -- DEFENDER ON-DEMAND SCAN OF THE PROTECTED FOLDER
+----------------------------------------------------------------------
+
+  Command:
+    MpCmdRun.exe -Scan -ScanType 3 -File "C:\AVTestKit\07_pua" -DisableRemediation
+
+  -DisableRemediation means Defender REPORTS and does not act, and
+  it ignores the folder exclusion, so this is a real verdict.
+
+  Scan finished in 2.9 seconds, exit code 0.
+
+  --- MpCmdRun output, verbatim ---
+  | Scan starting...
+  | Scan finished.
+  | Scanning C:\AVTestKit\07_pua found no threats.
+  --- end of output ---
+
+  Exit code 0: the scan completed and found nothing to report.
+
+  Specimens still present after the scan: 6 of 6
+
+======================================================================
+  NEXT STEP -- THE MALWAREBYTES HALF
+======================================================================
+
+  Malwarebytes Free has no command line, so this half is done in its
+  window. It takes about a minute.
+
+    1. Open Malwarebytes.
+    2. Click Scan on the left, then Advanced scanners,
+       then Configure Scan under Custom Scan.
+    3. Tick ONLY this folder in the tree:
+         C:\AVTestKit\07_pua
+    4. Make sure 'Scan for rootkits' and 'Scan within archives'
+       are turned on. The archive option matters -- one specimen
+       is a .zip.
+    5. Start the scan.
+    6. When it lists what it found, DO NOT quarantine. Close the
+       results instead. The names are what we came for, and the
+       files are needed again for the write-up.
+
+  Then run Run-MBScanResult.bat. It reads Malwarebytes' own result
+  file and writes the list of names beside this one.
+
+======================================================================
+  WHEN THE WHOLE TEST IS DONE: Run-PUATestCleanup.bat
+  It removes the folder and the Defender exclusion, and proves both
+  are gone. An exclusion left behind is a real hole in a real
+  machine, so do not skip it.
+======================================================================
+
+  Saved to: C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Test_Results\PUAComparison-CGDELL-2026-09-07_12-29.txt

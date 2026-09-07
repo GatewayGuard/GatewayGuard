@@ -1,0 +1,29 @@
+﻿======================================================================
+  PUA TEST CLEANUP
+  CGDELL   2026-09-07 13:27:32
+======================================================================
+
+  Administrator: True
+
+  FOLDERS
+    removed      C:\AVTestKit\07_pua   (6 file(s))
+    not present  C:\AVTestKit\07_pua_rtp
+    kept         C:\AVTestKit   (6 other item(s) in it -- not ours)
+
+  DEFENDER EXCLUSION
+    removed and verified gone: C:\AVTestKit\07_pua
+    remaining exclusion: 
+
+  QUARANTINE
+    Defender is holding no threat records.
+
+    Malwarebytes keeps its own quarantine. If anything was
+    quarantined there, clear it in the Malwarebytes window under
+    Detection History.
+
+======================================================================
+  The specimens on E: and G: were never touched. The test can be
+  staged again at any time with Run-PUAComparison.bat.
+======================================================================
+
+  Saved to: C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Test_Results\PUATestCleanup-CGDELL-2026-09-07_13-27.txt

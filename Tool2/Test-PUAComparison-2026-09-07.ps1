@@ -37,8 +37,16 @@
 param(
     [string]$TestRoot    = "C:\AVTestKit",
     [switch]$SkipWriteTest,
+    [switch]$NoExclusion,
     [int]   $WriteTestWaitSeconds = 25
 )
+
+# -NoExclusion stages the six specimens with NOTHING holding Defender
+# back -- no folder exclusion at all. That is the honest picture of what
+# happens to a home machine when these files land on it. The originals on
+# G: are untouched, so if Defender takes the copies, nothing is lost and
+# the test can simply be run again.
+if ($NoExclusion) { $SkipWriteTest = $true }   # the whole run IS the write test
 
 $ErrorActionPreference = "Continue"
 $ProgressPreference    = "SilentlyContinue"
@@ -217,19 +225,33 @@ if (-not (Test-Path -LiteralPath $ggProtected)) {
 }
 Add-Line ("  Test folder : {0}" -f $ggProtected)
 
-Add-MpPreference -ExclusionPath $ggProtected -EA SilentlyContinue
-
-# Read it back. If it did not register we stop, before copying anything.
-$ggNow = @((Get-MpPreference).ExclusionPath)
-if ($ggNow -contains $ggProtected) {
-    Add-Line "  Exclusion   : REGISTERED and read back from Defender."
+if ($NoExclusion) {
+    Add-Line "  Exclusion   : NONE -- deliberately. Defender is not being held"
+    Add-Line "                back at all. If it wants these files, it takes them."
+    $ggStillOn = @((Get-MpPreference).ExclusionPath | Where-Object { $_ -eq $ggProtected })
+    if ($ggStillOn.Count -gt 0) {
+        Add-Line ""
+        Add-Line "  STOPPED. An exclusion for this folder is STILL in force, so the"
+        Add-Line "  run would not test what it claims to. Run Run-PUATestCleanup.bat"
+        Add-Line "  first. Nothing has been staged."
+        Save-Now
+        exit 1
+    }
 } else {
-    Add-Line "  Exclusion   : DID NOT REGISTER."
-    Add-Line ""
-    Add-Line "  STOPPED before copying anything. Tamper Protection can block"
-    Add-Line "  this. Nothing has been staged, so nothing is at risk."
-    Save-Now
-    exit 1
+    Add-MpPreference -ExclusionPath $ggProtected -EA SilentlyContinue
+
+    # Read it back. If it did not register we stop, before copying anything.
+    $ggNow = @((Get-MpPreference).ExclusionPath)
+    if ($ggNow -contains $ggProtected) {
+        Add-Line "  Exclusion   : REGISTERED and read back from Defender."
+    } else {
+        Add-Line "  Exclusion   : DID NOT REGISTER."
+        Add-Line ""
+        Add-Line "  STOPPED before copying anything. Tamper Protection can block"
+        Add-Line "  this. Nothing has been staged, so nothing is at risk."
+        Save-Now
+        exit 1
+    }
 }
 Add-Line ""
 

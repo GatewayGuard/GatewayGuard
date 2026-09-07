@@ -1,0 +1,76 @@
+﻿======================================================================
+  SCAN CONTROL -- was Defender actually looking?
+  CGDELL   2026-09-07 12:31:48
+======================================================================
+
+  Specimen: the EICAR test string. 68 bytes of text, no code, not
+  malware. Every scanner is built to flag it. A miss here can only
+  mean the scan did not look.
+
+  Administrator: True
+  Real-time protection : True
+  PUA protection       : 1
+  Exclusions in force  : C:\AVTestKit\07_pua
+
+----------------------------------------------------------------------
+  CONTROL A -- REAL-TIME PROTECTION, ON WRITE
+----------------------------------------------------------------------
+
+  Folder (NOT excluded): C:\AVTestKit\07_ctl_rtp
+  Expect TAKEN. If it survives, real-time protection is not working
+  and the PUA write test proved nothing.
+
+  RESULT: KEPT.
+  Defender real-time did NOT take a file it is guaranteed to detect.
+  Real-time protection is not doing its job on this machine, and
+  the PUA write-test result cannot be trusted.
+
+  Defender logged no new threat record for this.
+
+----------------------------------------------------------------------
+  CONTROL B -- THE ON-DEMAND SCAN, INSIDE THE EXCLUDED FOLDER
+----------------------------------------------------------------------
+
+  Control file written into the excluded folder: C:\AVTestKit\07_pua\control.txt
+
+  Running the identical command the PUA test ran:
+    MpCmdRun.exe -Scan -ScanType 3 -File "C:\AVTestKit\07_pua" -DisableRemediation
+
+  Exit code 2.
+  --- MpCmdRun output, verbatim ---
+  | Scan starting...
+  | Scan finished.
+  | Scanning C:\AVTestKit\07_pua found 1 threats.
+  | <===========================LIST OF DETECTED THREATS==========================>
+  | ----------------------------- Threat information ------------------------------
+  | Threat                  : Virus:DOS/EICAR_Test_File
+  | Resources               : 1 total
+  |     file                : C:\AVTestKit\07_pua\control.txt
+  | -------------------------------------------------------------------------------
+  --- end of output ---
+
+  RESULT: FOUND.
+
+  Both dull explanations are dead:
+    - the scan DOES look at this folder, and
+    - -DisableRemediation really does ignore the exclusion.
+
+  So Defender's 'no threats' on the six PUP installers was a real
+  verdict. It looked at them and did not object.
+
+  CLEANUP
+    control file removed from the PUA folder -- Malwarebytes will
+    see only the six specimens.
+    control folder removed.
+
+  Files now in the PUA folder: 6
+    claimid800393432willianf_burnsiii.zip
+    clientsetup_d-0.exe
+    TotalAV.exe
+    Wave Browser (2).exe
+    Wave Browser.exe
+    ZoomInfoContactContributor.exe
+
+======================================================================
+  Saved to: C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Test_Results\ScanControl-CGDELL-2026-09-07_12-31.txt
+======================================================================

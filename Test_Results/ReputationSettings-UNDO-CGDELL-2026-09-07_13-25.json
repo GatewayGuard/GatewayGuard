@@ -1,0 +1,50 @@
+﻿[
+    {
+        "Label":  "Check apps and files (SmartScreen)",
+        "Path":  "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer",
+        "Name":  "SmartScreenEnabled",
+        "Existed":  false,
+        "OldValue":  null,
+        "Type":  "String"
+    },
+    {
+        "Label":  "Phishing protection -- service",
+        "Path":  "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\WTDS\\Components",
+        "Name":  "ServiceEnabled",
+        "Existed":  false,
+        "OldValue":  null,
+        "Type":  "DWord"
+    },
+    {
+        "Label":  "Phishing protection -- warn on malicious app",
+        "Path":  "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\WTDS\\Components",
+        "Name":  "NotifyMalicious",
+        "Existed":  false,
+        "OldValue":  null,
+        "Type":  "DWord"
+    },
+    {
+        "Label":  "Phishing protection -- warn on password reuse",
+        "Path":  "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\WTDS\\Components",
+        "Name":  "NotifyPasswordReuse",
+        "Existed":  false,
+        "OldValue":  null,
+        "Type":  "DWord"
+    },
+    {
+        "Label":  "Phishing protection -- warn on unsafe app",
+        "Path":  "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\WTDS\\Components",
+        "Name":  "NotifyUnsafeApp",
+        "Existed":  false,
+        "OldValue":  null,
+        "Type":  "DWord"
+    },
+    {
+        "Label":  "SmartScreen for Microsoft Store apps",
+        "Path":  "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AppHost",
+        "Name":  "EnableWebContentEvaluation",
+        "Existed":  false,
+        "OldValue":  null,
+        "Type":  "DWord"
+    }
+]
