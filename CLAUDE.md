@@ -136,6 +136,42 @@
     recommendation, labelled `F = Fix the screen`** — it says to a
     non-technical reader exactly what it does, which is the test in the
     User-Facing Clarity Rule.
+  - **THE MOUSE SETTING FIXES — BUILT, PARTLY MEASURED, AND SEQUENCED.**
+    **Bill, 2026-09-07:** *"I still want to do further testing on [these]
+    before checkup launch, but after website fully built and guide in final
+    draft form."* **So: not now. After the website and the guide, before
+    launch.** This entry exists because the work was in `Tool2\` and
+    `Test_Results\` and **nowhere in this file** — Bill had to ask whether
+    it had been recorded, which is the definition of a pointer that does
+    not exist.
+    **What they are for, and it is not comfort — it is FT-63.**
+    ***Measured on CGDELL 2026-08-19: `MouseWheelRouting` was 0***, meaning
+    the wheel scrolls only the **active** window, so the user must **click**
+    the console before they can scroll it — **and clicking a console window
+    starts a text selection, which is FT-63, the selection that freezes
+    Checkup on its next write.** Setting it to 2 scrolls whatever is under
+    the pointer with no click at all. ***Measured the same day:
+    `DoubleClickSpeed` was 200 ms against Windows' default of 500.*** At
+    200 a missed double-click becomes **two single clicks**, which in a
+    console starts a selection and then extends it. **These are two direct
+    contributors to Bill's own field findings 15, 24 and 32 —** *"the same
+    question repeated multiple times"*, *"crazy things started
+    happening... 20+ command screens"*, *"Mouse goes crazy again"*.
+    **What exists, measured:** five scripts and seven launchers in `Tool2\`
+    — `Set-MouseForCheckup-2026-08-19.ps1`, `Set-DragThreshold-*`,
+    `Set-TouchpadDrag-*`, `Test-MouseSettings-*`, and revert launchers for
+    each. Settings touched: `MouseWheelRouting`, `DoubleClickSpeed`,
+    `DragHeight`/`DragWidth`, `ClickLock`, `SnapToDefaultButton`. **All
+    per-user (HKCU), no administrator, no self-elevation**, undo file
+    written before anything changes, and `MouseSettings-UNDO-CGDELL.txt`
+    and `-SANDY.txt` both already exist.
+    **The open question the further testing has to answer:** ***measured
+    2026-09-04, `DragThreshold` runs — the registry value was written
+    correctly (30 → 200) but the LIVE value read back as "could not read",
+    twice.*** So it is stored and not confirmed applied, and the file says
+    to sign out and re-run. **Until a run confirms the live value, the fix
+    is written-not-proven** — the same shape as every other "reported
+    success from a read that produced nothing" in this project.
   - **ALSO RAISED, same session: BACK REPLAYS A PHOTOGRAPH, NOT THE WORDS.**
     ***Measured: `Save-ScreenSnapshot` stores `GetBufferContents` cells plus
     the buffer width; `Restore-ScreenSnapshot` returns `$false` the moment
