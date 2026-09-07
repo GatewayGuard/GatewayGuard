@@ -110,11 +110,32 @@
     **THE PEOPLE MOST LIKELY TO HAVE A SHORT WINDOW ARE EXACTLY OUR
     CUSTOMERS** — a senior who set a large font because they cannot see
     well gets fewer rows for that reason.
-    **The fix, in two levels:** (1) at startup, measure the window height
-    and, if it is under the tallest screen, say so and show how to make the
-    window taller — cheap, safe, turns an invisible failure into a
-    ten-second fix; (2) page long screens so nothing scrolls away unseen —
-    the real fix, and it belongs with the redraw work below.
+    **BILL SET THE REQUIREMENT, 2026-09-07, and it replaces the two-level
+    plan I had proposed:** *"The final fix has to be one key that resets
+    the screen to what works best on their pc terminal windows settings."*
+    **ONE KEY. The user presses it and the screen is right.** They are not
+    told to resize anything, not given instructions, and not asked to
+    understand anything.
+    **That requirement forces the whole design — it cannot be met by a
+    startup warning.** To be correct after one keypress the key must, at
+    the moment it is pressed: **re-measure BOTH width and height** (not
+    the values from draw time), **redraw the current screen from its own
+    text** — which is why the words must be stored and not a photograph —
+    and **page it if it is taller than the window**, or the redraw still
+    scrolls the top away and the key has not delivered what it promised.
+    **It must work at EVERY prompt**, so it belongs in the three shared
+    readers, ***measured: `Pause-ForUser` 78 sites, `Read-ValidKey` 60,
+    `Read-NavKey` 7***.
+    **THE KEY CANNOT BE `R`.** ***Measured: `R` is already taken at three
+    prompts*** — `@("R","S")` resume-or-start-over at line 3909, `@("E","R")`
+    exit-confirm at 4444, and `@("R","A","C","Q","P")` at 8704. A key that
+    means one thing in most places and another in three is FT-236 again,
+    which is the defect Bill's own rule *"N always means no and B should
+    always be used to say back"* exists to kill. ***Measured: `F`, `D` and
+    `L` appear in no key comparison anywhere in the build.*** **`F` is the
+    recommendation, labelled `F = Fix the screen`** — it says to a
+    non-technical reader exactly what it does, which is the test in the
+    User-Facing Clarity Rule.
   - **ALSO RAISED, same session: BACK REPLAYS A PHOTOGRAPH, NOT THE WORDS.**
     ***Measured: `Save-ScreenSnapshot` stores `GetBufferContents` cells plus
     the buffer width; `Restore-ScreenSnapshot` returns `$false` the moment
