@@ -1,0 +1,85 @@
+﻿======================================================================
+  PHISHING PROTECTION -- WHAT CHECKUP SAYS IN EVERY CIRCUMSTANCE
+  CGDELL   2026-09-07 16:11:14
+======================================================================
+
+  The real setting is only READ. Tamper Protection means nothing but
+  Windows can change it, which is why part 2 needs you at the screen.
+
+  Testing the check inside: W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1
+  Extracted item 6's check: 2901 characters, verbatim from the build.
+
+----------------------------------------------------------------------
+  PART 1 -- WHAT THE CODE DOES WITH EVERY REGISTRY STATE
+----------------------------------------------------------------------
+
+  Run against a throwaway key, not the real one. The 4 values are
+  ServiceEnabled / NotifyMalicious / NotifyPasswordReuse /
+  NotifyUnsafeApp, shown in that order. '-' means the value is absent.
+
+  key does not exist at all              -> Not configured -- all 3 need to be enabled
+  key exists but is EMPTY  <-- CGDELL    -> Not configured -- all 3 need to be enabled
+  1 1 1 1   all four written on          -> All 3 ON -- GOOD
+  0 0 0 0   all four written off         -> Service OFF -- all 3 need attention
+  0 1 1 1   service off, rest on         -> Service OFF -- all 3 need attention
+  1 0 1 1   malicious sites off          -> Partial -- missing: malicious sites
+  1 1 0 1   password reuse off           -> Partial -- missing: password reuse
+  1 1 1 0   unsafe storage off           -> Partial -- missing: unsafe password storage
+  1 0 0 0   service on, all warns off    -> Partial -- missing: malicious sites, password reuse, unsafe password storage
+  1 1 1 -   one value simply absent      -> Partial -- missing: unsafe password storage
+  -  1 1 1  service value absent         -> Service OFF -- all 3 need attention
+
+  throwaway key removed: True
+
+  NOT REPRODUCIBLE HERE: a read REFUSED by Tamper Protection. The
+  code answers that with 'Unknown -- Tamper Protection blocks this
+  check; verify by hand', which is the right answer and was put
+  there by FT-141. It cannot be provoked on a throwaway key,
+  because only the real key is protected.
+
+----------------------------------------------------------------------
+  PART 2 -- WHAT THIS MACHINE ACTUALLY HOLDS, RIGHT NOW
+----------------------------------------------------------------------
+
+  What the screen was set to: all four ticked (Bill confirmed on screen)
+
+  key exists : True   (HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WTDS\Components)
+    ServiceEnabled         NOT SET
+    NotifyMalicious        NOT SET
+    NotifyPasswordReuse    NOT SET
+    NotifyUnsafeApp        NOT SET
+
+  CHECKUP WOULD SAY:  Unknown -- Tamper Protection blocks this check; verify by hand
+
+----------------------------------------------------------------------
+  THE MAP SO FAR -- every run of this test, oldest first
+----------------------------------------------------------------------
+
+  2026-09-07 16:11  screen: all four ticked (Bill confirmed on screen)
+     registry [- - - -]  ->  Unknown -- Tamper Protection blocks this check; verify by hand
+
+  Map file: C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Test_Results\PhishingStates-RealityMap-CGDELL.csv
+
+----------------------------------------------------------------------
+  HOW TO FILL IN THE REST
+----------------------------------------------------------------------
+
+  Only Windows can change these values, so each combination has to be
+  set on screen and then read here. In Windows Security ->
+  App and browser control -> Reputation-based protection settings ->
+  Phishing protection.
+
+  Worth capturing, in this order:
+    1. all four ON            (the normal machine)
+    2. the service OFF        (the top switch off)
+    3. service ON, one warning OFF
+    4. back to all four ON    (leave the machine safe)
+
+  Run this after each change. Every run adds a row above, so the
+  screen-to-registry map builds up as you go.
+
+  ** Put the machine back to all four ON when finished. **
+
+======================================================================
+  Saved to: C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Test_Results\PhishingStates-CGDELL-2026-09-07_16-11.txt
+======================================================================
