@@ -130,7 +130,28 @@ its absence produced real defects — FT-30, FT-33, FT-114 are all in that code.
 
 # 6. THE QUESTION, AND CLAUDE CODE'S ANSWER
 
-## Claude Code says: KEEP IT. The testing argues for keeping it, not removing it.
+## BILL'S OWN STEER, AND IT OUTRANKS EVERYTHING BELOW
+
+**Bill, 2026-09-07, closing the session:** *"the av was just a thought. the
+important thing is the user and providing them with easy way to do things."*
+
+**Read that as the tie-breaker.** The lab scores, the detection counts and the
+false-positive rates all matter less than what the senior has to DO. Any answer
+that leaves the customer with a second program to run, a list of scary-looking
+detections to judge, and a monthly reminder to act on, is losing on the measure
+Bill has just said is the important one.
+
+**It points at section 6b, not 6a** — take Malwarebytes out of the tool, keep it
+in the guide as an optional second opinion.
+
+## 6a. My FIRST answer was KEEP IT, and it was written without reading our own research
+
+**Recorded because the mistake matters more than the answer.** I wrote the
+section below before opening
+`ProjectDocs\GatewayGuard_CloudResearch-ascii43-2026-09-05-0018.md`, which is
+two days old, answers this same question with sourced lab evidence, and
+**pre-registers the decision rule**. Bill had to point me at his own repository.
+See section 6b for what the answer became once I read it.
 
 **The reasoning, in one line: the product's central claim is that Defender
 alone is not enough, and today is the first time this project has measured
@@ -172,6 +193,57 @@ decision:
 **None of those is about protection.** They are about cost and complexity, and
 they are real. **But the test measured protection, and on protection the answer
 is not close.**
+
+---
+
+# 6b. THE REVISED ANSWER: OUT OF THE TOOL, INTO THE GUIDE
+
+**Not "keep it" and not "delete it".** **Remove Malwarebytes from what Checkup
+does; keep it in the guide as an optional second opinion the reader can take or
+leave.**
+
+**This is Cloud's own fallback, reached independently and then confirmed by
+Bill's steer above.** *Cloud, 2026-09-05:* *"If Defender misses what
+Malwarebytes catches, keep Malwarebytes as an optional second opinion the guide
+describes, not something the tool orchestrates."*
+
+**What Cloud's research established, sourced, and what it did NOT:**
+
+- *Sourced, AV-Comparatives Real-World Protection Feb–May 2026:* **Defender is
+  ADVANCED+; Malwarebytes Premium was downgraded for above-average false
+  positives.** *Sourced, Malware Protection Test March 2026, 10,000 samples:*
+  Microsoft among the top-rated, the spread on the order of 0.08 points.
+- **That covers MALWARE.** *Cloud, explicitly:* on PUPs, **"nobody has published
+  that"**, and it named the test.
+- **Cloud pre-registered the decision rule:** *"What would change my mind. The
+  item-12 test showing Defender+PUA misses a material fraction of real PUPs
+  that Malwarebytes free catches."*
+
+***That test was run 2026-09-07 and Defender missed 6 of 6*** — so the rule is
+**half met**. The other half, that Malwarebytes free catches them, still rests
+on the 2026-07-19 SANDY report and has not been re-run on CGDELL. **Section 4.1
+stands and should be closed before anything is removed.**
+
+**Why "out of the tool" is the right shape rather than a compromise:**
+
+- **It is the only option that reduces what the senior has to do.** Bill's
+  steer, applied.
+- **It keeps the one thing the test showed Malwarebytes is better at**, without
+  the tool asking the user to act on scary detections that are, in the
+  project's own field record, usually safe to leave alone. ***Measured, the
+  2026-07-19 report: `Threats Quarantined: 0`, all 18 lines "No Action By
+  User"*** — nothing was acted on and nothing went wrong.
+- **It removes the complexity that has produced real defects**: 13
+  `Get-MalwarebytesState` call sites, three settings whose verdict depends on
+  it, FT-30, FT-33, FT-114, the monthly reminder task, and the SANDY firewall
+  DHCP failure.
+- **It is honest about the false-positive evidence** rather than ignoring it.
+
+**What comes out:** the Malwarebytes screens, the monthly reminder task, the
+trial-detection branches in items 2, 5 and 7, and the licence/pricing
+references. **What stays:** a guide section that says, in plain words, what
+Defender did and did not catch in our own testing — which we can now write from
+measurement instead of assertion.
 
 ---
 

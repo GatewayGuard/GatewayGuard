@@ -1,4 +1,4 @@
-<!-- Dated: 2026-08-13 14:33 EDT -->
+﻿<!-- Dated: 2026-08-13 14:33 EDT -->
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
@@ -12,6 +12,132 @@
   Code) so any Claude instance can resume with full context.
   Updated after every file produced or decision made.
   Downloaded by Bill at session end and uploaded to project immediately.
+
+---
+---
+
+## Session: 2026-09-07 12:14 to 19:15 [Claude Code -- CGDELL] -- DEFENDER MISSED SIX OF SIX, AND THE TERMINAL RITUAL WAS THREE BUGS
+
+**Bill's closing steer, and it decided the day's biggest question:** *"the av
+was just a thought. the important thing is the user and providing them with
+easy way to do things."*
+
+### THE AV TEST RAN, AND THE CONTROL IS WHAT MAKES IT MEAN ANYTHING
+
+***Measured across four runs on CGDELL -- with a Defender exclusion, without
+one, before the reputation settings were turned on and after: Defender took
+none of six real PUP installers on write, and its on-demand scan reported no
+threats every time.*** PUA blocking was on throughout, set locally, no policy
+overriding it.
+
+**"Found no threats" has two opposite meanings and the words cannot separate
+them.** So EICAR went into the same folder under the identical command and was
+***found and named in seconds*** -- which also confirmed MpCmdRun's own help
+that `-DisableRemediation` ignores exclusions. The project's AVTestKit then had
+EICAR ***found in all six hiding places, including inside a ZIP and an
+alternate data stream***. The scanner works, it looked, and it did not object.
+
+### I ANSWERED THE MALWAREBYTES QUESTION WITHOUT READING OUR OWN RESEARCH
+
+Bill asked whether Malwarebytes should come out. I wrote the findings document
+and answered **"keep it"** -- **without opening
+`GatewayGuard_CloudResearch-ascii43-2026-09-05-0018.md`, two days old, same
+question, sourced lab evidence, and a pre-registered decision rule naming the
+exact test.** Bill had to point me at his own repository.
+
+**Reading it changed the answer to: out of the tool, into the guide** -- which
+is Cloud's own fallback, and which Bill's steer above then confirmed. *Sourced,
+Cloud from AV-Comparatives Feb-May 2026:* Defender is ADVANCED+ while
+Malwarebytes Premium was downgraded for above-average false positives. **So
+Malwarebytes is ahead on PUPs and behind on malware, and the only answer that
+keeps the first, respects the second and reduces what the senior has to do is
+to stop the tool orchestrating it.** Recorded in
+`GatewayGuard_AVTestFindings-2026-09-07-1808.md` with the failure kept in
+section 6a. **Still open: the Malwarebytes half was never run on CGDELL.**
+
+### TWO CHECKS FIXED, BOTH THE SAME FAULT POINTING OPPOSITE WAYS
+
+**FT-257.** The SmartScreen check tested `$ss -ne "Off"`, so an **absent**
+value -- `$null`, which is not `"Off"` -- reported **"ON -- GOOD"**.
+***Measured on CGDELL: the value was absent while Windows Security was posting
+a warning asking for reputation checking to be turned on.*** A wrong GOOD
+deselects the item, so the user is never offered the fix. Five answers now, all
+run against the shipped block extracted from the build itself.
+
+**FT-258.** Bill: *"add the policy check to checkup."* `Get-GGPolicyLock`
+reports when a Group Policy is **forcing** a setting, so Checkup says so instead
+of offering a fix that cannot work. **Every key was read out of Windows' own
+`PolicyDefinitions\*.admx`** and re-verified mechanically. **FT-258b** was
+Bill's catch the same hour -- *"I thought there were 3 and now you mentioned
+four"* -- and he was right: ***StandardProfile IS Private***, so I had
+double-counted one firewall profile under two names. **The lesson is bigger
+than the miscount: the ADMX I verified against carries
+`supportedOn = SUPPORTED_WindowsXPSP2`, so it was real but not complete, and I
+read its silence as proof of absence.**
+
+### THE TERMINAL RITUAL WAS THREE SEPARATE BUGS, AND THE THIRD REACHES CUSTOMERS
+
+Bill has been doing four steps to restore his screen after any break, which was
+also producing duplicate messages. ***Measured, and two guesses ruled out
+first: the display never sleeps and the machine never sleeps.***
+
+1. **Content not repainting** -- Windows Terminal redraws only what it thinks
+   changed. Fixed with `rendering.disablePartialInvalidation`. **The name was
+   verified against the strings compiled into
+   `Microsoft.Terminal.Settings.Model.dll`, and the two settings I would have
+   written from memory do not exist in this version** -- they would have looked
+   like a fix while changing nothing.
+2. **The window far too small** -- ***measured: 81 columns by 21 rows***,
+   because 150% Windows zoom and a font size of 20 multiply. Font set to 16 at
+   Bill's instruction.
+3. **FT-259, and this is the one that reaches customers.** ***Measured: the
+   build reads the window WIDTH at 5 sites and the HEIGHT at one that has
+   nothing to do with fitting a screen.*** **At 21 rows a 26-line screen loses
+   its top five lines and SCREEN-72 loses 34, with nothing logged and no way
+   for the user to know.** **The people most likely to have a short window are
+   exactly our customers.**
+   **Bill set the requirement and it is better than what I proposed:** *"The
+   final fix has to be one key that resets the screen to what works best on
+   their pc terminal windows settings."* **One key forces the whole design** --
+   re-measure both dimensions at the moment it is pressed, redraw from the
+   screen's own **text** rather than the photograph Back currently replays, and
+   page it if it is taller than the window. ***Measured: `R` cannot be the key,
+   it is taken at three prompts; `F`, `D` and `L` are free.*** Recommending
+   **`F = Fix the screen`**. Raised, not built.
+
+### ALSO RECORDED, BECAUSE IT EXISTED NOWHERE BILL COULD SEE IT
+
+**The mouse setting fixes.** Five scripts, seven launchers, four result files,
+undo files for both machines -- and **zero mentions in CLAUDE.md** until Bill
+asked. ***Measured 2026-08-19: `MouseWheelRouting` was 0, so the wheel scrolls
+only the active window, so the user must CLICK the console to scroll it -- and
+clicking a console starts a text selection, which is FT-63, the freeze.*** Bill
+hit that freeze himself this evening. Sequenced by him: after the website and
+the guide, before launch. **The open question is recorded too:** ***the drag
+threshold was written to the registry correctly but the LIVE value read back as
+"could not read", twice*** -- stored, not confirmed applied.
+
+### WHAT BILL ASKED THAT I COULD ONLY ANSWER BY MEASURING
+
+**Do antivirus programs skip files they already know are clean?** ***Measured:
+89,433 files scanned three times with nothing changed -- 190s, 218s, 259s.
+Slower each time, not faster.*** And the reason it cannot work that way is that
+**definitions change daily**, so any "known clean" memory must be discarded
+whenever they do. **Can a file be changed without the dates showing it?**
+***Demonstrated on this machine: same size, all three dates identical,
+different contents, no administrator rights.*** The trustworthy signal is the
+volume's own change journal, not the file's dates.
+
+### STATE AT CLOSE
+
+**Bill's six PUP copies are staged at `C:\AVTestKit\07_pua`** with **no
+Defender exclusion in force**, and the EICAR kit is in `C:\AVTestKit`.
+`Run-PUATestCleanup.bat` and `Run-AVTestKitCleanup.bat` remove them.
+**Reputation settings: SmartScreen and Store-app SmartScreen turned on and
+verified; the four phishing values could not be written because Tamper
+Protection refuses -- and Bill's screen then showed all four already ON, which
+is how FT-141's "blocked is not absent" trap was walked into again, this time
+by my own ad-hoc reads.** Undo file written before anything changed.
 
 ---
 ---

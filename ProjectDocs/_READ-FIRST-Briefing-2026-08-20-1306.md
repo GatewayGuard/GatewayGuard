@@ -1,4 +1,4 @@
-<!-- Dated: 2026-08-20 13:06 ET -->
+﻿<!-- Dated: 2026-08-20 13:06 ET -->
 # READ FIRST -- Session Briefing
 **Document Name:** _READ-FIRST-Briefing
 **Last Modified:** 2026-08-23 22:50 ET
@@ -124,9 +124,13 @@ so it cannot see the unattended check stop. **A test that cannot fail is worse
 than no test.**
 
 **Active build: ascii44 -- BLOCK A COMPLETE, NOT YET FIELD RUN** --
-`Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1`, **9,231 non-blank
-lines / 9,616 total**. Gates 12, 12b and 24 PASS, 0 non-ASCII, 0 duplicate
+`Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1`, **9,387 non-blank
+lines / 9,775 total**. Gates 12, 12b and 24 PASS, 0 non-ASCII, 0 duplicate
 functions, 10 carried oversize screens. **Next free screen ID 90.**
+*(Grew 2026-09-07: FT-257, the SmartScreen check that reported "ON -- GOOD"
+from a value that was not there; FT-258, the Group Policy override check, with
+every key read out of Windows' own `PolicyDefinitions\*.admx`; FT-258b, the
+third firewall profile.)*
 
 **Only ONE build's figures belong in this block.** It briefly carried both
 ascii43's and ascii44's on 2026-09-06 and the document gate caught it within
@@ -217,22 +221,38 @@ schedule's computed float and the marketing plan's launch-week table. They are
 flagged in place rather than silently shifted, because shifting a critical path
 by hand is how a plan starts lying.
 
-### Git -- measured 2026-09-06 17:00, and stated HERE ONLY
+### Git -- measured 2026-09-07 19:20, and stated HERE ONLY
 
-*(Commits reads **417**: 416 was measured at 17:00, and the commit that
-carries this line makes it 417. Every other figure is the 17:00 reading.
+*(Commits reads **428**: 427 was measured at 19:20, and the commit that
+carries this line makes it 428. Every other figure is the 19:20 reading.
 A count written before its own commit is off by one on the line whose
 whole job is being right.)*
 
 | | |
 |---|---|
-| Commits | **417** |
-| Tracked files | **1,277** |
+| Commits | **428** |
+| Tracked files | **1,307** |
 | Unpushed | **0** |
-| Untracked | 43 |
-| Modified | 5 |
+| Untracked | 258 -- see the note below |
+| Modified | 27 |
 | Deleted on disk, still tracked | 20 -- see the note below |
-| `.git` | **61 MB** |
+| `.git` | **63 MB** |
+
+**Untracked went from 43 to 258 on 2026-09-07, and none of it is a Cloud
+problem.** ***Measured, grouped by folder: 188 under `Guide\Documents\Bridge`,
+12 under `Certificates\Windows_SAC_10.9_R1_GA`, 21 in `Test_Results`, 19 in
+`Notes`, 8 in `Migration\MB`.*** **None is committed, so none costs Cloud
+anything**, and `Guide\`, `Certificates\` and `Migration\` are outside the
+connector scope regardless. ***Measured: the four largest are SafeNet
+Authentication Client installers totalling about 156 MB*** -- the code-signing
+token software, which belongs on disk.
+
+**Two things worth Bill's eye rather than any action here.** `Guide\Documents\
+Bridge\` holds bridge (the card game) documents including a saved web page with
+its `_files` folder -- **gate 26 flags exactly that shape**, and it looks like
+personal material that landed in a project folder rather than anything the
+guide needs. **Nothing has been moved or deleted:** these are untracked, so
+they are not recoverable from git, and the standing rule is to ask first.
 
 **The deleted count moved from 18 to 20 during the 2026-09-06 afternoon
 session, and it is worth one paragraph rather than a silent edit.** Both new
@@ -731,11 +751,25 @@ the real documents survive under hyphenated names.
    `ProjectDocs\GatewayGuard_AVTestFindings-2026-09-07-1808.md`** — what was
    tested, the four runs, the control that makes them mean anything, and an
    honest section on the limits.
-   **Claude Code's answer is KEEP IT**, and the one-line reason is that
+   **Claude Code's answer, revised after reading Cloud's own research: TAKE IT
+   OUT OF THE TOOL, KEEP IT IN THE GUIDE** as an optional second opinion --
+   which is Cloud's own fallback, reached independently and then confirmed by
+   Bill's own steer at the close of the session: *"the important thing is the
+   user and providing them with easy way to do things."*
+   **The two measurements it rests on, and they cut opposite ways:**
    ***measured 2026-09-07, Defender objected to none of six real unwanted
-   programs across four runs, while its scanner was proven working three
-   separate ways*** — so the week we finally measured "Defender alone is not
-   enough" is the wrong week to remove the second scanner.
+   programs across four runs, with its scanner proven working three separate
+   ways*** — so Malwarebytes is doing real work on PUPs; and *sourced, Cloud
+   from AV-Comparatives Feb–May 2026*, **Defender is ADVANCED+ while
+   Malwarebytes Premium was downgraded for above-average false positives** —
+   so on malware it is Defender that is ahead. **Out of the tool, into the
+   guide is the only answer that keeps the first and respects the second while
+   reducing what the senior has to do.**
+   **MY FIRST ANSWER WAS "KEEP IT", WRITTEN WITHOUT READING
+   `GatewayGuard_CloudResearch-ascii43-2026-09-05-0018.md`** — two days old,
+   same question, sourced lab evidence, and a **pre-registered decision rule**
+   naming the exact test. Bill had to point me at his own repository. That
+   failure is recorded in the findings document, section 6a.
    **CLOUD: answer section 7 in a new dated document in `ProjectDocs\`, and
    say where you disagree.**
    **BEFORE ANY DECISION, ONE THING IS MISSING AND IT IS FIVE MINUTES OF
