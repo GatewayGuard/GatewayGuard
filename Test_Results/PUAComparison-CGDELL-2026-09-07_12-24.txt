@@ -1,0 +1,53 @@
+﻿======================================================================
+  DEFENDER vs MALWAREBYTES -- SIX REAL PUP SPECIMENS
+  CGDELL   2026-09-07 12:24:37
+======================================================================
+
+  Nothing is executed. The specimens are read, never run.
+  Undo everything: Run-PUATestCleanup.bat
+
+  Running as   : CGDELL\willi
+  Administrator: True
+
+----------------------------------------------------------------------
+  BEFORE STATE
+----------------------------------------------------------------------
+  Defender real-time protection : True
+  Defender running mode         : Normal
+  Signature version             : 1.459.95.0
+  Signatures last updated       : 9/7/2026 3:26:54 AM
+  PUA protection (PUAProtection): 1   (0=off 1=block 2=audit)
+  Existing folder exclusions    : none
+  Malwarebytes version          : 5.1.0.1797
+  Malwarebytes service          : Running
+
+  Backup drives:
+    G:  NOT HERE      holds five of the six specimens -- REQUIRED
+    E:  NOT HERE      holds extra copies of one specimen only -- optional
+
+  Specimen sources (first reachable copy of each):
+    MISSING clientsetup_d-0.exe
+            looked at: G:\May-2023\Documents - Copy\LOANS\Downloads\clientsetup_d-0.exe
+            looked at: G:\OLD_PC\Documents - Copy\LOANS\Downloads\clientsetup_d-0.exe
+            looked at: E:\Users\willi\Downloads\clientsetup_d-0.exe
+            looked at: E:\Users\willi\Documents\LOANS\Downloads\clientsetup_d-0.exe
+    MISSING claimid800393432willianf_burnsiii.zip
+            looked at: G:\May-2023\Documents - Copy\VA LOAN\Downloads\claimid800393432willianf_burnsiii.zip
+            looked at: G:\OLD_PC\Documents - Copy\VA LOAN\Downloads\claimid800393432willianf_burnsiii.zip
+    MISSING Wave Browser.exe
+            looked at: G:\May-2023\Downloads\Wave Browser.exe
+            looked at: G:\May-2023\Downloads\Wave Browser (1).exe
+    MISSING Wave Browser (2).exe
+            looked at: G:\May-2023\Downloads\Wave Browser (2).exe
+    MISSING TotalAV.exe
+            looked at: G:\May-2023\Downloads\TotalAV.exe
+    MISSING ZoomInfoContactContributor.exe
+            looked at: G:\May-2023\Downloads\ZoomInfoContactContributor.exe
+
+  STOPPED. 6 of 6 specimen(s) have no reachable copy.
+
+  NOTHING HAS BEEN CHANGED. No exclusion was added and no file was
+  copied -- this check runs before either of those.
+
+  Plug the G: backup drive back in and run this again. G: is the
+  one that matters; E: only carries duplicates.
