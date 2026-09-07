@@ -723,6 +723,29 @@ the real documents survive under hyphenated names.
 
 ## 10. OPEN ITEMS, IN ORDER
 
+0aa. **A QUESTION BILL PUT TO BOTH CLAUDES, 2026-09-07: SHOULD MALWAREBYTES
+   COME OUT OF THE PROJECT?** His words: *"with your write up the summary of
+   our av testing findings ask yourself and cloud if you think we should
+   delete malwarebytes from our project."*
+   **Everything needed to answer is in
+   `ProjectDocs\GatewayGuard_AVTestFindings-2026-09-07-1808.md`** — what was
+   tested, the four runs, the control that makes them mean anything, and an
+   honest section on the limits.
+   **Claude Code's answer is KEEP IT**, and the one-line reason is that
+   ***measured 2026-09-07, Defender objected to none of six real unwanted
+   programs across four runs, while its scanner was proven working three
+   separate ways*** — so the week we finally measured "Defender alone is not
+   enough" is the wrong week to remove the second scanner.
+   **CLOUD: answer section 7 in a new dated document in `ProjectDocs\`, and
+   say where you disagree.**
+   **BEFORE ANY DECISION, ONE THING IS MISSING AND IT IS FIVE MINUTES OF
+   BILL'S TIME.** ***The Malwarebytes half was never run on CGDELL*** — that
+   result is from 2026-07-19 on SANDY, same six files confirmed by hash, but
+   a different machine and definitions two months old. **The six specimens
+   are staged at `C:\AVTestKit\07_pua` right now.** One Malwarebytes custom
+   scan of that folder, quarantining nothing, then
+   `Tool2\Run-MBScanResult.bat` reads its answer.
+
 0. **THE CHEAPEST UNBLOCK ON THE BOARD IS ONE WORD FROM BILL.** The `.html`
    copy pass -- items 2, 3, 6, 8, 13, 18, 19 and 21, across all 19 pages --
    is held until Bill picks one of three phrasings for item 2. They are in
