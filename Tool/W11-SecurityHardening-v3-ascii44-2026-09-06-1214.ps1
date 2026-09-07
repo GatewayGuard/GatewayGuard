@@ -6429,9 +6429,24 @@ function Get-AllStatuses {
                         @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System";                           Name = "EnableSmartScreen";         OnWhen = 1; OffWhen = 0 })
                 }
                 7 {
+                    # THREE profiles, not two, and one of them wears an old
+                    # name. Measured 2026-09-07: Get-NetFirewallProfile
+                    # returns Domain, Private and Public, while the
+                    # firewall's own registry calls Private "Standard" --
+                    # the name it had on Windows XP, which had only two
+                    # profiles. StandardProfile IS Private.
+                    # Domain and Standard are declared in Windows' own
+                    # WindowsFirewall.admx. PUBLIC IS NOT IN ANY ADMX ON
+                    # THIS MACHINE -- that template is the XP-era one and
+                    # predates the Private/Public split. Public is included
+                    # on the basis of the firewall's live store, which uses
+                    # exactly this name and value beside the other two.
+                    # Public matters most to our customer: it is the profile
+                    # that applies on hotel and coffee-shop wifi.
                     $ggLock = Get-GGPolicyLock @(
                         @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile";            Name = "EnableFirewall";            OffWhen = 0 },
-                        @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile";          Name = "EnableFirewall";            OffWhen = 0 })
+                        @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile";          Name = "EnableFirewall";            OffWhen = 0 },
+                        @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile";            Name = "EnableFirewall";            OffWhen = 0 })
                 }
             }
         } catch { $ggLock = $null }

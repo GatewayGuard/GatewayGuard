@@ -9,7 +9,7 @@
   September 1 on 2026-08-30.** Exactly two weeks later, same weekday.
   **Never write a countdown here** -- "six days" was wrong the next morning
   and stayed wrong. Write the date; let the reader subtract.
-- **Current build:** ascii44 (9,372 non-blank lines / 9,760 total) — **BLOCK A COMPLETE, NOT YET FIELD RUN.**
+- **Current build:** ascii44 (9,387 non-blank lines / 9,775 total) — **BLOCK A COMPLETE, NOT YET FIELD RUN.**
   - **ascii43 is SPENT and retired to `Builds\`.** It was field run twice,
     2026-08-26 to 08-30, five logs in `Test_Results\FieldRun-ascii43\`.
     `Tool\` holds only ascii44. F1, F2, F3, F5 and part of F6 came from it.
@@ -69,9 +69,25 @@
     not three — the pass runs before the auto-deselect, so an ON-by-policy
     GOOD is deselected by the existing loop. ***Measured: with no policy
     set, the pass changes nothing at all***, which is the common case.
-    **Not wired:** the firewall's Private and Public profiles — the ADMX
-    declares only Domain and Standard, and nothing on this machine let the
-    other two be verified.
+    **FT-258b, the correction Bill caught the same hour:** *"I thought there
+    were 3 and now you mentioned four."* He was right — **I double-counted
+    one profile under two names.** ***Measured: `Get-NetFirewallProfile`
+    returns three — Domain, Private, Public — while the firewall's own live
+    store names them `DomainProfile`, `StandardProfile`, `PublicProfile`.
+    StandardProfile IS Private***, the name it carried on Windows XP. So
+    "Domain and Standard" already covered Domain **and** Private, and only
+    **Public** was missing. All three are now wired and ***measured
+    identical to the live store***.
+    **The lesson, and it is the one worth keeping: the source I verified
+    against was real but not complete, and I reported its silence as proof
+    of absence.** ***Measured: "PublicProfile" appears in no `.admx` on this
+    machine, and the two firewall policies that are declared carry
+    `supportedOn = SUPPORTED_WindowsXPSP2`*** — an XP-era template, and XP
+    had only two profiles. Modern firewall policy comes through the Advanced
+    Security snap-in, not that ADMX. **One command against a second source —
+    the firewall's own store — settled it.** Public is also the profile that
+    matters most to the customer: it is the one that applies on hotel and
+    coffee-shop wifi.
   - **Raised in ascii44, NOT fixed, and each says why:** FT-254
     (`Test-TimeDateSync` prints success after four unguarded calls) and
     FT-256 (`powercfg` can return no CONSOLELOCK block at all, so the
