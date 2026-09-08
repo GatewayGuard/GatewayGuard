@@ -88,6 +88,37 @@
     the firewall's own store — settled it.** Public is also the profile that
     matters most to the customer: it is the one that applies on hotel and
     coffee-shop wifi.
+  - **FT-260, RAISED NOT FIXED — THE POLICY CHECK CANNOT SEE THE LOCK THAT
+    IS ACTUALLY IN FORCE ON CGDELL. Bill's screenshots, 2026-09-08.**
+    Windows Security shows *"This setting is managed by Smart App Control"*
+    above **Check apps and files**, with that toggle **greyed out** while
+    SmartScreen for Microsoft Edge beside it is live and clickable.
+    **Check apps and files is item 4 — a numbered checklist item.**
+    ***Measured on CGDELL 2026-09-08: `VerifiedAndReputablePolicyState = 1`,
+    Smart App Control On and enforced.***
+    **FT-258's `Get-GGPolicyLock` reads only `HKLM\SOFTWARE\Policies`. Smart
+    App Control locks from `HKLM\SYSTEM\CurrentControlSet\Control\CI\Policy`,
+    and *measured: the ascii44 source carries ZERO occurrences of "Smart App
+    Control"*.** So Checkup reports no lock while a control sits greyed out on
+    the user's own screen.
+    ***The measurement makes the point exactly: on this machine no Group
+    Policy is forcing anything — all three policy keys exist and hold no
+    values — and the one mechanism that IS forcing a setting is the one the
+    check cannot see.*** **This is FT-258b's lesson again, one day later: the
+    source I verified against was real but not complete.**
+    **DELIBERATELY NOT OVERSTATED: Smart App Control forces both controls ON,
+    so no user ever meets one that is off and unclickable. There is no dead
+    end here.** The cost is a senior seeing a greyed control and assuming they
+    broke it.
+    **Also taken over: `Block apps` under Potentially unwanted app blocking**
+    — ***measured 2026-08-24***, already recorded in
+    `GatewayGuard_Research-Items15and20-2026-08-24-0917.md`, and the ascii44
+    plan already asks for one plain sentence about it. **What is new is that
+    it reaches a NUMBERED ITEM, so that sentence has to cover both.**
+    **Smart App Control is not one of the 19 and is nowhere in the build.
+    Whether it should be checked is Bill's call, not a fix.** Full write-up
+    with every path:
+    `ProjectDocs\GatewayGuard_SettingsLocationList-2026-09-08-0924.md`.
   - **Raised in ascii44, NOT fixed, and each says why:** FT-254
     (`Test-TimeDateSync` prints success after four unguarded calls) and
     FT-256 (`powercfg` can return no CONSOLELOCK block at all, so the
