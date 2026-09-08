@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-06 17:01 ET -->
-<!-- Commit: 9f87fe7 -->
+<!-- Generated: 2026-09-08 07:09 ET -->
+<!-- Commit: a6dd415 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-06 17:01 ET  |  **Commit:** `9f87fe7`  |  **Made:** 2026-09-06 16:48 ET
-- **Commit subject:** All six PUP specimens found on the backup drives; two corrections
+- **Generated:** 2026-09-08 07:09 ET  |  **Commit:** `a6dd415`  |  **Made:** 2026-09-07 19:08 ET
+- **Commit subject:** Session close: Defender missed six of six, and the answer changed once I read our own research
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -19,7 +19,7 @@ document family and the single filename that is live right now. Take every
 filename from this table -- never from memory, never from another document,
 never by guessing which date looks newest.
 
-**64 rows follow.** If you cannot see all 64 of them, your
+**65 rows follow.** If you cannot see all 65 of them, your
 retrieval truncated the table -- **say so and ask for the rest, rather
 than answering from the handful you received.**
 
@@ -111,7 +111,7 @@ All paths are relative to `ProjectDocs/`.
 
 ### WORKING RULES AND WHAT IS WAITING ON BILL
 
-**12 rows in this group.** If you see fewer, this group was truncated -- say so.
+**13 rows in this group.** If you see fewer, this group was truncated -- say so.
 
 | What it is | The current file | Older versions present |
 |---|---|---|
@@ -125,6 +125,7 @@ All paths are relative to `ProjectDocs/`.
 | Licence sections 7/8/9 -- with and without | `GatewayGuard_LicenceSections789-2026-09-06-1600.md` | 0 |
 | Store operations (versions, updates) | `GatewayGuard_StoreOperations-2026-09-06-1600.md` | 0 |
 | PUA specimens recovered (AV test) | `GatewayGuard_PUASamplesRecovered-2026-09-06-1650.md` | 0 |
+| AV test findings + keep-or-drop Malwarebytes | `GatewayGuard_AVTestFindings-2026-09-07-1808.md` | 0 |
 | Everything waiting on Bill | `GatewayGuard_DecisionsForBill-2026-09-06-1528.md` | 4 |
 | Pricing reconciliation (one-time packs) | `PricingReconciliation-2026-07-16.md` | 0 |
 
@@ -177,7 +178,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-09-06 13:58 to 17:00 [Claude Code -- CGDELL] -- ALL SIX PUP SPECIMENS RECOVERED, AND THE LAUNCHER I BROKE THIS MORNING WOULD NOT HAVE STARTED
+## Session: 2026-09-07 12:14 to 19:15 [Claude Code -- CGDELL] -- DEFENDER MISSED SIX OF SIX, AND THE TERMINAL RITUAL WAS THREE BUGS
 ```
 
 **If it is not in your copy of the session log, you are reading an old

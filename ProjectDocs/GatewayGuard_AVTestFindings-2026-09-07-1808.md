@@ -86,17 +86,63 @@ file, renamed extension, six folders deep, hidden+system, **inside a ZIP**, and
 
 ---
 
+# 3b. THE MALWAREBYTES HALF — RUN 2026-09-08, AND THE GAP CLOSES BOTH WAYS
+
+**Bill ran it the next morning.** Report:
+`Test_Results\Malwarebytes Custom Scan Report 2026-09-08 070306.txt`;
+parsed to `Test_Results\MBScanResult-CGDELL-2026-09-08_07-09.txt`.
+**Limit 4.1 below is now closed** — both halves are measured on the same
+machine, on the same twelve files, within a day of each other.
+
+***Measured. Malwarebytes 5.6.5.306, licence Free, definitions 1.0.114296,
+custom scan of `C:\AVTestKit`, archives ON, rootkit scanning OFF. 12 objects
+scanned, 11 detected, `Threats Quarantined: 0`, every line "No Action By
+User", and all 12 files still on disk afterwards.***
+
+| | Defender, 2026-09-07 | Malwarebytes Free, 2026-09-08 |
+|---|---|---|
+| The 6 EICAR placements | **6 of 6** | **5 of 6** |
+| — inside a ZIP | found | found |
+| — inside an alternate data stream | **found** | **NOT found** |
+| The 6 real PUPs | **0 of 6** | **6 of 6** |
+
+**Every one of the six PUP detections matches the staged file by SHA-256**, so
+these are the same specimens, not lookalikes:
+`PUP.Optional.ZoomInfo`, `PUP.Optional.Wave` (×2), `PUP.Optional.TotalAV`,
+`PUP.Optional.DllFilesFixer` (×2, one of them **found inside the .zip**).
+
+## What this settles, and what it does not
+
+**IT SETTLES CLOUD'S PRE-REGISTERED RULE, COMPLETELY.** Cloud asked for
+*"Defender+PUA missing a material fraction of real PUPs that Malwarebytes free
+catches."* ***Measured: Defender missed 6 of 6 and Malwarebytes free caught
+6 of 6.*** That is not a fraction. It is all of them, both ways.
+
+**AND IT CUTS THE OTHER WAY TOO, WHICH THE FIRST HALF DID NOT SHOW.**
+***Malwarebytes did not find EICAR in the alternate data stream — the hiding
+place Defender did find.*** An ADS is a classic place to hide something.
+
+**State that carefully: rootkit scanning was OFF in this scan.** ADS
+examination may belong to that option. **So this is not "Malwarebytes cannot
+find an ADS" — it is "with the options a normal custom scan uses, it did
+not."** ***That is worth one more run with rootkits enabled before it goes in
+the guide.***
+
+**The two products are complementary, and now that is measured rather than
+assumed.** Each found something the other missed, on the same twelve files, on
+the same machine, a day apart.
+
+---
+
 # 4. THE HONEST LIMITS OF WHAT WE PROVED
 
 **These belong in any decision made on this evidence.**
 
-1. **THE MALWAREBYTES HALF WAS NEVER RUN ON CGDELL.** The Malwarebytes result
-   is from **2026-07-19, on SANDY**, in the scan report at
-   `Test_Results\MBCustomScan-SANDY-2026-07-19_1505.txt`. Same six files,
-   confirmed by hash — but **a different machine and definitions two months
-   old.** The comparison is real and it is half-aged.
-   **The six specimens are staged at `C:\AVTestKit\07_pua` right now.** One
-   Malwarebytes custom scan makes it current. **Do that before deciding.**
+1. **CLOSED 2026-09-08 — see section 3b.** *(This read "THE MALWAREBYTES HALF
+   WAS NEVER RUN ON CGDELL" and it was the biggest hole in the evidence. Bill
+   ran the scan the next morning.* ***Measured: 6 of 6 PUPs found, every hash
+   matching the staged file.*** *The comparison is now same machine, same
+   files, one day apart. A new limit took its place — see 5.)*
 2. **Defender's real-time protection was not observed acting on anything**
    during these runs — not on the PUPs, and not on EICAR written to an
    ordinary folder. Its **on-demand** scanner was proven working three
@@ -107,6 +153,13 @@ file, renamed extension, six folders deep, hidden+system, **inside a ZIP**, and
    circulating today.
 4. **One machine, one sample of six.** Six is enough to show a difference
    exists. It is not enough to size it.
+5. **NEW, 2026-09-08: the Malwarebytes scan had rootkit scanning OFF**, and it
+   was that scan which missed EICAR in an alternate data stream. ***Measured,
+   its own options block: `Rootkits: Disabled`.*** ADS examination may belong
+   to that option. **So "Malwarebytes missed the ADS" must not be written as
+   "Malwarebytes cannot find an ADS"** until one more run with rootkit scanning
+   enabled says which it is. **One scan settles it, and it should be settled
+   before that sentence goes anywhere near the guide.**
 
 ---
 

@@ -1,0 +1,72 @@
+﻿======================================================================
+  WHAT MALWAREBYTES FOUND -- read from its own scan record
+  CGDELL   2026-09-08 07:09:19
+  READ-ONLY -- nothing is scanned, changed or removed.
+======================================================================
+
+----------------------------------------------------------------------
+  SCAN RECORD  de6e1ad0-ab74-11f1-8090-cc96e589c552.json
+  written      9/8/2026 7:03:55 AM
+----------------------------------------------------------------------
+
+  Malwarebytes version : 5.6.5.306
+  Licence state        : free
+  Database version     : 
+  Detection date/time  : 2026-09-08T11:03:06Z
+  Objects scanned      : 12
+  Scan ended           : 2026-09-08T11:03:55Z
+  Told to scan         : C:\AVTestKit
+  PUP handling         : detect
+  PUM handling         : detect
+  Scan inside archives : True
+
+  DETECTIONS IN THIS SCAN: 11
+
+  IN THE TEST FOLDER (C:\AVTestKit\07_pua): 6
+
+    C:\AVTESTKIT\07_PUA\ZOOMINFOCONTACTCONTRIBUTOR.EXE
+       Malwarebytes calls it : PUP.Optional.ZoomInfo
+       SHA-256               : 71DE08D14B90196B02293DDCA105DC367837280BEE2224815E35FF7F17363C48
+       size                  : 265,600 bytes
+       action taken          : quarantine
+
+    C:\AVTESTKIT\07_PUA\WAVE BROWSER (2).EXE
+       Malwarebytes calls it : PUP.Optional.Wave
+       SHA-256               : 216D4BCEA4BBE226F0C610C59B911CF9351FEA34178A1F8EC04DAD99F4F1BDBC
+       size                  : 866,032 bytes
+       action taken          : quarantine
+
+    C:\AVTESTKIT\07_PUA\WAVE BROWSER.EXE
+       Malwarebytes calls it : PUP.Optional.Wave
+       SHA-256               : 81B9CC993AD57F3D16146842665B8C82A2C29D7E571F38CF14A4AB2B24148ECB
+       size                  : 849,848 bytes
+       action taken          : quarantine
+
+    C:\AVTESTKIT\07_PUA\TOTALAV.EXE
+       Malwarebytes calls it : PUP.Optional.TotalAV
+       SHA-256               : 3B0CACDA195CD3F1A50EE5C9842E14753E92A4E63DE75AD7C15BAA16C0A8A688
+       size                  : 34,031,304 bytes
+       action taken          : quarantine
+
+    C:\AVTESTKIT\07_PUA\CLIENTSETUP_D-0.EXE
+       Malwarebytes calls it : PUP.Optional.DllFilesFixer
+       SHA-256               : 6B1A9C62C1C0E084EA30BD9CBE991FE859938FEA3A67378CB0ABF400AC264816
+       size                  : 2,786,824 bytes
+       action taken          : quarantine
+
+    C:\AVTESTKIT\07_PUA\CLAIMID800393432WILLIANF_BURNSIII.ZIP
+       Malwarebytes calls it : PUP.Optional.DllFilesFixer
+       SHA-256               : 729D0208A13395F818FF20BFC1B14B0CE918F1744FBA8D36E132253E1B18F341
+       size                  : 13,529,844 bytes
+       action taken          : quarantine
+       inside the archive    : clientsetup_d-0.exe
+
+  ELSEWHERE ON THE MACHINE: 5 detection(s), by name:
+        5  EICAR-AV-Test
+
+  These are not part of the test. They are listed so the count
+  above is not read as our six.
+
+======================================================================
+  Saved to: C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Test_Results\MBScanResult-CGDELL-2026-09-08_07-09.txt
+======================================================================

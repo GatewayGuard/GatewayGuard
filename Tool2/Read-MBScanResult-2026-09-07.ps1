@@ -118,7 +118,11 @@ foreach ($f in $ggFiles) {
         Add-Line ("       Malwarebytes calls it : {0}" -f $t.threatName)
         Add-Line ("       SHA-256               : {0}" -f $t.mainTrace.objectSha256)
         Add-Line ("       size                  : {0:N0} bytes" -f [long]$t.mainTrace.objectSize)
-        Add-Line ("       action taken          : {0}" -f $t.mainTrace.cleanAction)
+        # NOT "action taken". Measured 2026-09-08: cleanAction read
+        # "quarantine" for all six while the text report said "No Action
+        # By User" and all six files were still on disk. It is what
+        # Malwarebytes WOULD do, not what it did.
+        Add-Line ("       it would         : {0}" -f $t.mainTrace.cleanAction)
         if ($t.mainTrace.archiveMember) {
             Add-Line ("       inside the archive    : {0}" -f $t.mainTrace.archiveMember)
         }

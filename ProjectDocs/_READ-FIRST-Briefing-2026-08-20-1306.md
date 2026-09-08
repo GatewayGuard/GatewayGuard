@@ -772,7 +772,16 @@ the real documents survive under hyphenated names.
    failure is recorded in the findings document, section 6a.
    **CLOUD: answer section 7 in a new dated document in `ProjectDocs\`, and
    say where you disagree.**
-   **BEFORE ANY DECISION, ONE THING IS MISSING AND IT IS FIVE MINUTES OF
+   **THE MISSING HALF WAS RUN 2026-09-08 AND THE RULE IS NOW FULLY MET.**
+   ***Measured, Malwarebytes Free 5.6.5.306 on CGDELL, same twelve files:
+   6 of 6 PUPs found, every hash matching the staged file -- and 5 of 6 EICAR
+   placements, MISSING the alternate data stream that Defender found.*** So
+   each product caught something the other missed, on one machine, a day
+   apart. **Caveat recorded as limit 4.5: that scan had rootkit scanning OFF,
+   so the ADS miss needs one more run before it is written as a capability
+   claim.** Section 3b has the table.
+   *(The paragraph below is kept for the record of what was outstanding.)*
+   **BEFORE ANY DECISION, ONE THING WAS MISSING AND IT WAS FIVE MINUTES OF
    BILL'S TIME.** ***The Malwarebytes half was never run on CGDELL*** — that
    result is from 2026-07-19 on SANDY, same six files confirmed by hash, but
    a different machine and definitions two months old. **The six specimens
