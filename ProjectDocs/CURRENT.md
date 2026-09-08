@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-08 08:20 ET -->
-<!-- Commit: 045980b -->
+<!-- Generated: 2026-09-08 09:02 ET -->
+<!-- Commit: a872258 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-08 08:20 ET  |  **Commit:** `045980b`  |  **Made:** 2026-09-08 08:06 ET
-- **Commit subject:** The session that logged everything except itself
+- **Generated:** 2026-09-08 09:02 ET  |  **Commit:** `a872258`  |  **Made:** 2026-09-08 08:20 ET
+- **Commit subject:** The missing session is filed, and Update-Current now says how old the log is
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -19,7 +19,7 @@ document family and the single filename that is live right now. Take every
 filename from this table -- never from memory, never from another document,
 never by guessing which date looks newest.
 
-**65 rows follow.** If you cannot see all 65 of them, your
+**66 rows follow.** If you cannot see all 66 of them, your
 retrieval truncated the table -- **say so and ask for the rest, rather
 than answering from the handful you received.**
 
@@ -131,7 +131,7 @@ All paths are relative to `ProjectDocs/`.
 
 ### FIXES, REVIEWS AND MEASURED RESEARCH
 
-**10 rows in this group.** If you see fewer, this group was truncated -- say so.
+**11 rows in this group.** If you see fewer, this group was truncated -- say so.
 
 | What it is | The current file | Older versions present |
 |---|---|---|
@@ -142,6 +142,7 @@ All paths are relative to `ProjectDocs/`.
 | Website review (Bill, 19 pages) | `GatewayGuard_HtmlWebsiteReview-2026-08-22-2220.md` | 0 |
 | Cloud handoff (what Cloud was told) | `GatewayGuard_CloudHandoff-2026-08-25-0921.md` | 2 |
 | Offline scan research | `GatewayGuard_OfflineScanResearch-2026-08-21.md` | 0 |
+| Settings Checkup cannot read vs cannot change | `GatewayGuard_SettingsReadVsChange-2026-09-08-0901.md` | 0 |
 | AV scan coverage test | `GatewayGuard_AVScanCoverageTest-2026-08-21.md` | 0 |
 | Scheduled task defects (FT-203) | `GatewayGuard_ScheduledTaskDefects-2026-08-20.md` | 0 |
 | ascii41 findings -- fixed or not | `GatewayGuard_ascii41Findings-FixedOrNot-2026-08-19.md` | 0 |

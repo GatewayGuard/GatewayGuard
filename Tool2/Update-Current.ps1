@@ -231,6 +231,10 @@ $wanted = @(
     # has no scope parameter, so D: coverage needs a full ONLINE scan and the
     # screen wording must say so. Gate 24 blocks the text until this is read.
     @{ Label = 'Offline scan research';       Pattern = 'GatewayGuard_OfflineScanResearch-*.md' },
+    # Added 2026-09-08, answering Cloud's own question that morning. It needs a
+    # row for the reason every row here exists: Cloud cannot glob, so a file it
+    # cannot name is a file it cannot open -- and this one was written FOR it.
+    @{ Label = 'Settings Checkup cannot read vs cannot change'; Pattern = 'GatewayGuard_SettingsReadVsChange-*.md' },
     @{ Label = 'AV scan coverage test';       Pattern = 'GatewayGuard_AVScanCoverageTest-*.md' },
     # FT-203: both scheduled reminders carry DisallowStartIfOnBatteries, so on
     # a laptop on battery they never run -- while the log writes [GOOD]. Carries
