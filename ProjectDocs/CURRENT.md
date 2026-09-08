@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-08 07:09 ET -->
-<!-- Commit: a6dd415 -->
+<!-- Generated: 2026-09-08 07:47 ET -->
+<!-- Commit: f08f3de -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-08 07:09 ET  |  **Commit:** `a6dd415`  |  **Made:** 2026-09-07 19:08 ET
-- **Commit subject:** Session close: Defender missed six of six, and the answer changed once I read our own research
+- **Generated:** 2026-09-08 07:47 ET  |  **Commit:** `f08f3de`  |  **Made:** 2026-09-08 07:39 ET
+- **Commit subject:** One button press demonstrated the whole finding
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 

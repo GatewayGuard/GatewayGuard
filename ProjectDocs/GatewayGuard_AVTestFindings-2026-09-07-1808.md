@@ -1,16 +1,72 @@
-<!-- Dated: 2026-09-07 18:08 ET -->
+﻿<!-- Dated: 2026-09-07 18:08 ET -->
 <!-- Editor: Claude Code (CGDELL) -->
 # AV testing findings — and the question Bill put: should Malwarebytes come out of the project?
 
 - **Document Name:** GatewayGuard_AVTestFindings
-- **Last Modified:** 2026-09-07 18:08 ET
+- **Last Modified:** 2026-09-08 07:50 ET
+- **Change log:** *2026-09-08 07:50 -- section 0 (the file index for Cloud),
+  3b (the Malwarebytes half), 3c (what one button press proved), 3d (the
+  output problem) and a rewritten section 7 added. Both halves of the
+  comparison are now measured on the same machine.*
 - **Last Editor:** Claude Code (CGDELL)
 - **Bill, 2026-09-07:** *"with your write up the summary of our av testing
   findings ask yourself and cloud if you think we should delete malwarebytes
   from our project."*
-- **THIS IS A QUESTION PUT TO BOTH CLAUDES.** Claude Code's answer is below.
-  **Cloud: read section 6 and answer it in your own words, from the evidence
-  in sections 1–4, and say plainly where you disagree.**
+- **Bill, 2026-09-08:** *"add in the details and findings filenames etc. for
+  cloud to review and let's get his read of all of it."*
+- **THIS IS A QUESTION PUT TO BOTH CLAUDES.**
+  **CLOUD: section 0 is your file index. Section 7 is your seven questions.**
+  Claude Code's answer is section 6b, and section 6a records that the first
+  answer was wrong because it was written without reading Cloud's own research.
+  **Both halves of the comparison are now measured on the same machine** —
+  Defender in section 2, Malwarebytes in 3b, the control that makes them mean
+  anything in 3, and what a single button press proved in 3c.
+
+---
+
+# 0. EVERY FILE THIS RESTS ON — CLOUD, THIS IS YOUR INDEX
+
+**Cloud cannot list a directory, so every filename is written out here.** All
+paths are from the repository root. **Ask Bill to attach any of these you
+cannot retrieve** rather than reasoning around a file you could not open.
+
+## The evidence — `Test_Results\`
+
+| File | What it holds |
+|---|---|
+| `PUASampleSearch-CGDELL-2026-09-06_16-42.txt` | the six specimens recovered from the backup drives, each confirmed by SHA-256 |
+| `PUAComparison-CGDELL-2026-09-07_12-29.txt` | Defender run 1 — with a folder exclusion |
+| `PUAComparison-CGDELL-2026-09-07_12-52.txt` | Defender run 2 — **no exclusion** |
+| `PUAComparison-CGDELL-2026-09-07_13-26.txt` | Defender run 3 — reputation settings on, excluded |
+| `PUAComparison-CGDELL-2026-09-07_13-27.txt` | Defender run 4 — reputation settings on, no exclusion |
+| `ScanControl-CGDELL-2026-09-07_12-31.txt` | **the control** — EICAR in the same folder, same command, found in seconds |
+| `AVTestKit-Manifest-CGDELL-2026-09-07_12-45.txt` | the six EICAR placements as staged |
+| `Malwarebytes Custom Scan Report 2026-09-08 070306.txt` | **Malwarebytes run 1** |
+| `Malwarebytes Custom Scan Report 2026-09-08 071949.txt` | **Malwarebytes run 2, as administrator** |
+| `MBScanResult-CGDELL-2026-09-08_07-09.txt` | run 1 parsed out of Malwarebytes' own JSON record |
+| `ProtectionHistory-CGDELL-2026-09-08_07-38.txt` | **what Defender did when Bill pressed Start actions** |
+| `MBCustomScan-SANDY-2026-07-19_1505.txt` | the original 2026-07-19 SANDY scan that started all of this |
+
+## The tools — `Tool2\`
+
+`Find-PUASamples-2026-09-06.ps1` (recovered the specimens) ·
+`Test-PUAComparison-2026-09-07.ps1` + `Run-PUAComparison.bat` (the Defender
+runs) · `Test-ScanControl-2026-09-07.ps1` + `Run-ScanControl.bat` (the control)
+· `Read-MBScanResult-2026-09-07.ps1` + `Run-MBScanResult.bat` (reads
+Malwarebytes' JSON) · `Check-ProtectionHistory-2026-08-28.ps1` +
+`Run-ProtectionHistoryCheck.bat` (writes Defender's history to a file) ·
+`Make-AVTestKit-2026-08-21.ps1` + `Run-AVTestKit.bat` (the EICAR placements) ·
+`Run-PUATestCleanup.bat` and `Run-AVTestKitCleanup.bat` (undo)
+
+## The documents that bear on the decision
+
+- **`GatewayGuard_CloudResearch-ascii43-2026-09-05-0018.md`, items 9–11** —
+  **Cloud, this is your own work, and it is the most important document here.**
+  It carries the AV-Comparatives evidence and the pre-registered decision rule.
+- `GatewayGuard_PUASamplesRecovered-2026-09-06-1650.md` — how the specimens
+  were found, and the two corrections that came with them.
+- `GatewayGuard_AVScanCoverageTest-2026-08-21.md` — the protocol the EICAR kit
+  follows, and the reserved `07_pua` slot these specimens were staged into.
 
 ---
 
@@ -206,6 +262,53 @@ names, and the event-log cross-check. **That is a guide item: a user told to
 
 ---
 
+# 3d. WHAT EACH PRODUCT GIVES THE USER AFTERWARDS — AND THIS IS A PRODUCT PROBLEM
+
+**Bill, 2026-09-08, having just run a Defender scan:** *"not sure where output
+is, won't let me copy but shows result in detail on screen if you click on
+severe threat found."* **He asked the same question twice in one morning, which
+is how this section came to exist.**
+
+***Measured, both products, this morning:***
+
+| | **Microsoft Defender** | **Malwarebytes Free** |
+|---|---|---|
+| Writes a report file | **No. None.** | **Yes** — a text report the user can save |
+| Machine-readable record | only via PowerShell and the event log | **Yes** — JSON at `C:\ProgramData\Malwarebytes\MBAMService\ScanResults\` |
+| Can the user copy the result | **No** — Protection history is a screen only | **Yes** |
+| Includes file hashes | not in the UI | **Yes — MD5 and SHA-256 per detection** |
+
+**Malwarebytes' report is why this whole investigation was possible.** The
+2026-07-19 SANDY report carried **SHA-256 for every detection**, which is how
+six specimens were found on a backup drive two months later and proved to be
+the same files. ***Measured: a name-only search would have returned four wrong
+hits on E: for one of them.*** **Defender's output could not have done that.**
+
+## Why this matters more than it looks
+
+**Our customer is a senior who has been told to run a scan.** If something is
+found, the useful next step is almost always *show someone what it said* — a
+family member, a support call, us.
+
+- **With Malwarebytes they can.** Save the report, attach it.
+- **With Defender they cannot.** They can read it on screen and nothing else.
+  Bill — who builds security software — could not get it out, and said so.
+
+**Checkup can close this, and it already owns the code.**
+***`Tool2\Check-ProtectionHistory-2026-08-28.ps1` was written in August and
+does exactly this*** — it reads Defender's detections, threat names and the
+1116/1117 event-log entries and writes them to a text file.
+
+**The proposal: Checkup writes Defender's protection history into the user's
+own log.** Then a customer who has run a scan has something to send, whichever
+product found it. **That is a Checkup feature that exists in no antivirus
+product, it costs one function call, and it is squarely on Bill's "give them an
+easy way to do things."**
+
+**Cloud: question 5 in section 7 asks you to weigh this.**
+
+---
+
 # 4. THE HONEST LIMITS OF WHAT WE PROVED
 
 **These belong in any decision made on this evidence.**
@@ -378,19 +481,69 @@ measurement instead of assertion.
 
 # 7. CLOUD — YOUR TURN
 
+**Bill, 2026-09-08:** *"let's get his read of all of it."*
+
 **Answer in your own words, in a new dated document in `ProjectDocs\`, and say
-where you disagree.** Specifically:
+plainly where you disagree.** Section 0 is your index — **ask Bill to attach
+anything you cannot retrieve rather than reasoning around a file you could not
+open.** Name what you read for every factual sentence, per the Cloud Working
+Rules.
 
-1. **Do you agree Malwarebytes stays?** If not, what evidence are you weighing
-   that section 6 is not?
-2. **Section 4 lists four limits on what was proved. Is any of them fatal to
-   the conclusion?** In particular: is a two-month-old result from a different
-   machine good enough to base a product decision on, or must the CGDELL scan
-   be run first?
-3. **Is there a fifth limit nobody has named?**
-4. **If Malwarebytes stays, does the GUIDE currently make the case for it?**
-   ***Measured: only 1 of the 19 website pages mentions it.*** If the product's
-   central claim is "Defender alone is not enough", one page may be too few —
-   and we now have measured evidence to write from instead of assertion.
+**Start here, because it is your own work and it framed everything:**
+`GatewayGuard_CloudResearch-ascii43-2026-09-05-0018.md`, items 9–11.
 
-**Name what you read for every factual sentence, per the Cloud Working Rules.**
+## The seven questions
+
+1. **YOUR OWN DECISION RULE HAS BEEN MET. Does it hold?** You wrote: *"What
+   would change my mind. The item-12 test showing Defender+PUA misses a
+   material fraction of real PUPs that Malwarebytes free catches."* ***Measured:
+   Defender 0 of 6, Malwarebytes free 6 of 6, same machine, same files, one day
+   apart.*** **You pre-registered the rule and the result cleared it by the
+   widest possible margin. Do you stand by the rule, or does something about
+   the test make you want to revise it after the fact?** If the latter, say so
+   openly — that is a legitimate answer and a much more useful one than a
+   silent change of position.
+
+2. **Do you agree with the landing — OUT OF THE TOOL, INTO THE GUIDE?** It is
+   your own fallback sentence. Section 6b argues it is now the only option that
+   keeps what Malwarebytes is measurably better at, respects your
+   false-positive evidence, and reduces what the senior has to do — Bill's
+   stated priority. **If you disagree, is your objection to the evidence or to
+   the shape of the answer?**
+
+3. **THE FINDING THAT CUTS THE OTHER WAY. Have I stated it too strongly?**
+   ***Measured across two scans, one as administrator with memory and startup
+   enabled: Malwarebytes did not detect EICAR in an alternate data stream that
+   Defender detected and then removed.*** And ***measured, Bill at the keyboard:
+   Malwarebytes will not offer rootkit scanning on a folder at all, only on a
+   whole drive.*** **Is "in a folder scan, Malwarebytes does not examine
+   alternate data streams" a fair sentence for the guide, or does it still need
+   the full-drive run first?**
+
+4. **Section 4 lists five limits. Is any of them fatal — and is there a
+   sixth?** Limit 4.1 is closed and limit 4.5 is narrowed; 4.2, 4.3 and 4.4
+   stand. **The one I am least sure of is 4.3: these files are three to nine
+   years old.** Does that undermine the PUP result, or is a vendor's continued
+   detection of an old PUP exactly the point?
+
+5. **THE OUTPUT PROBLEM — section 3d, and this may be the most valuable thing
+   in the document.** ***Defender writes no report and its Protection history
+   cannot be copied; Malwarebytes writes a text report and a JSON record with
+   SHA-256 per detection.*** **Should Checkup write Defender's protection
+   history into the user's own log?** The code exists already
+   (`Check-ProtectionHistory-2026-08-28.ps1`). **Weigh it against everything
+   else competing for time before a 2026-09-15 launch, and say where you would
+   put it.**
+
+6. **IF MALWAREBYTES LEAVES THE TOOL, WHAT HAPPENS TO THE COPY?**
+   ***Measured: 136 mentions in the build, 13 `Get-MalwarebytesState` call
+   sites, three settings whose verdict depends on it, a scheduled task, and
+   only 1 of the 19 website pages mentioning it.*** **That last number now
+   looks wrong in both directions** — too few if we recommend it, too many if
+   we do not. **What should the guide and the website actually say, given we
+   can now write from measurement instead of assertion?**
+
+7. **WHAT HAVE I MISSED?** Bill's steer was *"the important thing is the user
+   and providing them with easy way to do things."* **Read the whole document
+   against that sentence and tell me where the answer still asks too much of a
+   senior.**
