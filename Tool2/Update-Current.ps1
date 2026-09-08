@@ -235,6 +235,11 @@ $wanted = @(
     # row for the reason every row here exists: Cloud cannot glob, so a file it
     # cannot name is a file it cannot open -- and this one was written FOR it.
     @{ Label = 'Settings Checkup cannot read vs cannot change'; Pattern = 'GatewayGuard_SettingsReadVsChange-*.md' },
+    # Added 2026-09-08 at Bill's request -- the keyboard list: all 19 settings
+    # plus the app-blocking group, one line each, where to find it and what it
+    # should say. Paired with the row above: that one says what Checkup can do
+    # to each setting, this one says where the setting is.
+    @{ Label = 'Where every setting lives (one line each)'; Pattern = 'GatewayGuard_SettingsLocationList-*.md' },
     @{ Label = 'AV scan coverage test';       Pattern = 'GatewayGuard_AVScanCoverageTest-*.md' },
     # FT-203: both scheduled reminders carry DisallowStartIfOnBatteries, so on
     # a laptop on battery they never run -- while the log writes [GOOD]. Carries
