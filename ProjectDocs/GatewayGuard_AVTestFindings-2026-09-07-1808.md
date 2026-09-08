@@ -122,11 +122,47 @@ catches."* ***Measured: Defender missed 6 of 6 and Malwarebytes free caught
 ***Malwarebytes did not find EICAR in the alternate data stream — the hiding
 place Defender did find.*** An ADS is a classic place to hide something.
 
-**State that carefully: rootkit scanning was OFF in this scan.** ADS
-examination may belong to that option. **So this is not "Malwarebytes cannot
-find an ADS" — it is "with the options a normal custom scan uses, it did
-not."** ***That is worth one more run with rootkits enabled before it goes in
-the guide.***
+**Run 2, 2026-09-08 07:19, settled most of that same morning.** Bill ran it
+**as administrator**, and reported the reason the caveat cannot simply be
+lifted: ***"MB would not let me select rootkit scan unless I ran it on entire
+drive."***
+
+***Measured, run 2's own options block: Memory ENABLED, Startup ENABLED,
+Archives ENABLED, Rootkits STILL Disabled. 124,720 objects scanned against
+run 1's 12 — and the same 11 detections. The alternate data stream was missed
+again.***
+
+| | Run 1, 07:03 | Run 2, 07:19, as administrator |
+|---|---|---|
+| Objects scanned | 12 | **124,720** |
+| Memory / Startup | disabled | **enabled** |
+| Rootkits | disabled | **disabled — cannot be enabled on a folder** |
+| Detections | 11 | **11** |
+| The alternate data stream | missed | **missed** |
+
+**And the specimen is genuinely there — checked, because a miss means nothing
+if the thing was absent.** ***Measured after both scans: the host file carries
+two streams, `:$DATA` at 77 bytes and `hidden` at 70; the hidden one holds the
+real EICAR string; and Defender scanned that folder again minutes later and
+named it outright — `Virus:DOS/EICAR_Test_File` in
+`C:\AVTestKit\06_ads\readme.txt:hidden`.***
+
+## So the claim can now be stated, and it is narrower and more useful
+
+**"In a custom folder scan, Malwarebytes does not examine alternate data
+streams. Defender does."** Measured twice, once with administrator rights and
+memory and startup scanning enabled.
+
+**And a second finding fell out of it, which matters more to our customer than
+the first: MALWAREBYTES WILL NOT DO A ROOTKIT SCAN OF A FOLDER AT ALL.** It
+offers that option only on a whole drive. **So "scan this folder" is always
+Malwarebytes' weaker scan**, and a senior told to check one folder gets the
+weaker one without being told.
+
+**Still genuinely open, and much narrower:** does a **full-drive** Malwarebytes
+scan with rootkit scanning enabled find an alternate data stream? **That is a
+different scan type, it takes far longer, and no guide sentence should depend
+on it until someone runs it.**
 
 **The two products are complementary, and now that is measured rather than
 assumed.** Each found something the other missed, on the same twelve files, on
@@ -153,13 +189,17 @@ the same machine, a day apart.
    circulating today.
 4. **One machine, one sample of six.** Six is enough to show a difference
    exists. It is not enough to size it.
-5. **NEW, 2026-09-08: the Malwarebytes scan had rootkit scanning OFF**, and it
-   was that scan which missed EICAR in an alternate data stream. ***Measured,
-   its own options block: `Rootkits: Disabled`.*** ADS examination may belong
-   to that option. **So "Malwarebytes missed the ADS" must not be written as
-   "Malwarebytes cannot find an ADS"** until one more run with rootkit scanning
-   enabled says which it is. **One scan settles it, and it should be settled
-   before that sentence goes anywhere near the guide.**
+5. **NARROWED the same morning, and it is now a small gap rather than an open
+   question.** *(This read: the Malwarebytes scan had rootkit scanning off, so
+   the ADS miss might be an options artefact.* ***Run 2 was made as
+   administrator with memory and startup enabled, 124,720 objects against 12,
+   and missed the stream again — and rootkit scanning could not be enabled at
+   all, because Malwarebytes offers it only on a whole drive, not a folder.***
+   *So for any folder scan the finding is settled.)*
+   **What remains open is only this:** does a **full-drive** Malwarebytes scan
+   with rootkit scanning on find an alternate data stream? Different scan type,
+   far longer to run, and **no sentence in the guide should rest on it until
+   someone does.**
 
 ---
 

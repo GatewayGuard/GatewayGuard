@@ -777,9 +777,13 @@ the real documents survive under hyphenated names.
    6 of 6 PUPs found, every hash matching the staged file -- and 5 of 6 EICAR
    placements, MISSING the alternate data stream that Defender found.*** So
    each product caught something the other missed, on one machine, a day
-   apart. **Caveat recorded as limit 4.5: that scan had rootkit scanning OFF,
-   so the ADS miss needs one more run before it is written as a capability
-   claim.** Section 3b has the table.
+   apart. **Run 2 the same morning, as administrator, settled the caveat:**
+   ***memory and startup enabled, 124,720 objects against 12, same 11
+   detections, stream missed again -- and rootkit scanning could NOT be
+   enabled, because Malwarebytes offers it only on a whole drive, never on a
+   folder.*** **That is a second finding and it matters more to our customer
+   than the first: "scan this folder" is always Malwarebytes' weaker scan, and
+   the user is not told.** Section 3b has both tables.
    *(The paragraph below is kept for the record of what was outstanding.)*
    **BEFORE ANY DECISION, ONE THING WAS MISSING AND IT WAS FIVE MINUTES OF
    BILL'S TIME.** ***The Malwarebytes half was never run on CGDELL*** — that
