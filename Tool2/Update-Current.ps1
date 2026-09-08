@@ -116,6 +116,10 @@ $wanted = @(
     # nowhere to appear. Multi for the same reason as the requests above --
     # each is a distinct handoff, not a version of one file.
     @{ Label = 'Cloud research (delivered)';  Pattern = 'GatewayGuard_CloudResearch-*.md'; Multi = $true },
+    # Added 2026-09-08. Cloud's ANSWERS to a numbered question set, as distinct
+    # from its research. Multi for the same reason as the requests and the
+    # research above: each is a separate handoff, not a version of one file.
+    @{ Label = 'Cloud answer (delivered)';    Pattern = 'GatewayGuard_CloudAnswer-*.md'; Multi = $true },
     @{ Label = 'Review of Cloud research';    Pattern = 'GatewayGuard_ReviewOfCloudResearch-*.md'; Multi = $true },
     # --- THE THREE SOURCE PACKS, added 2026-08-15 -------------------------
     # Each is a readable extraction of material Cloud cannot otherwise reach,

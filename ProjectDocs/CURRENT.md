@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-08 09:25 ET -->
-<!-- Commit: 075677e -->
+<!-- Generated: 2026-09-08 16:22 ET -->
+<!-- Commit: 9091db3 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-08 09:25 ET  |  **Commit:** `075677e`  |  **Made:** 2026-09-08 09:03 ET
-- **Commit subject:** Cloud asked what Checkup cannot read vs cannot change; measured, and there is a third category
+- **Generated:** 2026-09-08 16:22 ET  |  **Commit:** `9091db3`  |  **Made:** 2026-09-08 10:55 ET
+- **Commit subject:** FT-260 into CLAUDE.md, placed where the reader has just learned about FT-258
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -19,7 +19,7 @@ document family and the single filename that is live right now. Take every
 filename from this table -- never from memory, never from another document,
 never by guessing which date looks newest.
 
-**67 rows follow.** If you cannot see all 67 of them, your
+**68 rows follow.** If you cannot see all 68 of them, your
 retrieval truncated the table -- **say so and ask for the rest, rather
 than answering from the handful you received.**
 
@@ -76,7 +76,7 @@ All paths are relative to `ProjectDocs/`.
 
 ### CLOUD REQUESTS AND CLOUD RESEARCH
 
-**12 rows in this group.** If you see fewer, this group was truncated -- say so.
+**13 rows in this group.** If you see fewer, this group was truncated -- say so.
 
 | What it is | The current file | Older versions present |
 |---|---|---|
@@ -90,6 +90,7 @@ All paths are relative to `ProjectDocs/`.
 | Cloud research (delivered) | `GatewayGuard_CloudResearch-WidgetsAndAccessibility-2026-08-24-1015.md` | -- |
 | Cloud research (delivered) | `GatewayGuard_CloudResearch-Licence-2026-08-25-1435.md` | -- |
 | Cloud research (delivered) | `GatewayGuard_CloudResearch-ascii43-2026-09-05-0018.md` | -- |
+| Cloud answer (delivered) | `GatewayGuard_CloudAnswer-Malwarebytes-2026-09-08-1105.md` | -- |
 | Review of Cloud research | `GatewayGuard_ReviewOfCloudResearch-2026-08-24-1105.md` | -- |
 | Review of Cloud research | `GatewayGuard_ReviewOfCloudResearch-ascii43-2026-09-05-1130.md` | -- |
 
