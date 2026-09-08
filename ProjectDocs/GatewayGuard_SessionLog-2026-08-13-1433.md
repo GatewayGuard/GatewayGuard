@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-06 12:35 ET
+- **Last Modified:** 2026-09-08 08:04 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -12,6 +12,223 @@
   Code) so any Claude instance can resume with full context.
   Updated after every file produced or decision made.
   Downloaded by Bill at session end and uploaded to project immediately.
+
+---
+---
+
+## Session: 2026-09-08 07:03 to 07:51 [Claude Code -- CGDELL] -- THE MALWAREBYTES HALF RAN, AND ONE BUTTON PRESS PROVED BOTH PRODUCTS AT ONCE
+
+*(Filed at 08:04 the same morning by the NEXT session, not by the one that did
+the work. That session committed and pushed five times, regenerated
+`CURRENT.md` and ran both repository gates -- and never wrote itself down.
+**Why, and what would have caught it, is the last section of this entry.**
+Start and end times are the first and last measured artifacts; the
+conversation began earlier and its start is not recorded anywhere.)*
+
+### THE HALF THAT HAD BEEN OUTSTANDING SINCE JULY IS NOW MEASURED
+
+**Bill ran the Malwarebytes scan.** Both halves of the antivirus test now exist
+on the **same machine**, on the **same twelve files**, one day apart.
+
+***Measured: Malwarebytes Free 5.6.5.306, definitions 1.0.114296, custom scan
+of `C:\AVTestKit`, archives ON and rootkits OFF. 12 objects, 11 detected,
+Threats Quarantined 0, every line "No Action By User", and all 12 files still
+on disk afterwards.***
+
+| | Defender 09-07 | Malwarebytes 09-08 |
+|---|---|---|
+| 6 EICAR placements | 6 of 6 | 5 of 6 |
+| -- inside a ZIP | found | found |
+| -- inside a data stream | **FOUND** | **NOT FOUND** |
+| 6 real PUPs | **0 of 6** | **6 of 6** |
+
+***Every PUP detection matches the staged file by SHA-256***, including the one
+found inside the `.zip` -- so these are the same specimens and not lookalikes.
+
+**Cloud's pre-registered decision rule is now fully met.** It asked for
+"Defender+PUA missing a material fraction of real PUPs that Malwarebytes free
+catches". ***Measured: Defender missed 6 of 6 and Malwarebytes caught 6 of 6.***
+Not a fraction -- all of them, both ways.
+
+**And it cuts the other way, which the first half could not show.** Malwarebytes
+did not find EICAR in the alternate data stream, a classic hiding place that
+Defender did find.
+
+**One defect fixed in my own script, and it is this project's own recurring
+shape.** The reader printed "action taken" for Malwarebytes' `cleanAction`
+field. ***Measured: `cleanAction` read "quarantine" for all six while the text
+report said "No Action By User" and all six files were still on disk.*** It is
+what Malwarebytes **would** do, not what it did -- a label misstating a
+measurement, inside a script written to report one.
+
+### RUN 2 AS ADMINISTRATOR SETTLED THE CAVEAT, AND FOUND SOMETHING BIGGER
+
+**Bill:** *"the second scan I ran as administrator a custom scan on avtestkit.
+MB would not let me select rootkit scan unless I ran it on entire drive."*
+
+***Measured, run 2's own options block: Memory ENABLED, Startup ENABLED,
+Archives ENABLED, Rootkits STILL Disabled. 124,720 objects scanned against run
+1's 12, and the same 11 detections. The data stream was missed again.***
+
+**The control was checked first, because a miss means nothing if the specimen
+is not there.** ***Measured after both scans: the host file carries two streams,
+`:$DATA` at 77 bytes and `hidden` at 70; the hidden one holds the real EICAR
+string; and Defender rescanned that folder minutes later and named it outright
+-- `Virus:DOS/EICAR_Test_File` in `C:\AVTestKit\06_ads\readme.txt:hidden`.***
+
+**So the claim is now narrow and safe to make: in a custom FOLDER scan,
+Malwarebytes does not examine alternate data streams. Defender does.** Measured
+twice, the second time with administrator rights and memory and startup
+scanning on.
+
+**A SECOND FINDING FELL OUT OF IT, AND IT MATTERS MORE TO OUR CUSTOMER.
+Malwarebytes will not do a rootkit scan of a FOLDER at all** -- it offers that
+option only on a whole drive. **So "scan this folder" is always Malwarebytes'
+weaker scan, and a senior told to check one folder gets the weaker one without
+being told so.**
+
+**Still open, deliberately:** if a FULL-DRIVE Malwarebytes scan with rootkits on
+finds a data stream. Different scan type, far longer, and **no guide sentence
+should rest on it until someone runs it.**
+
+### ONE BUTTON PRESS DEMONSTRATED THE WHOLE FINDING
+
+Bill right-clicked `C:\AVTestKit`, ran Defender's scan, was told a severe threat
+was found, and clicked **Start actions**. Not an experiment -- what any user
+would do.
+
+***Measured immediately afterwards: the 5 plain EICAR placements, all removed.
+The EICAR inside the ZIP, removed. The EICAR in the data stream, REMOVED -- the
+one Malwarebytes could not see across two scans. Bill's 6 real unwanted
+programs, ALL SIX UNTOUCHED.***
+
+**One press of one button cleaned every specimen Defender considers a threat,
+including the best-hidden one, and walked past all six real PUPs without a
+word.** The case for both products, and against relying on either alone, in a
+single observation.
+
+Sources, all readable: `Test_Results\ProtectionHistory-CGDELL-2026-09-08_07-38.txt`,
+and Defender's own event log -- ***id 1116 detected 07:28:56, id 1117 action
+taken 07:29:28, both naming `readme.txt:hidden` explicitly.***
+
+**A GUIDE ITEM FELL OUT OF IT.** Bill asked where the output file was. **There
+is none.** ***Measured: Defender writes no report; its results live in Windows
+Security's Protection history, and that screen cannot be copied from*** -- he
+said so at the keyboard. `Tool2\Run-ProtectionHistoryCheck.bat` writes the same
+information to a text file, and it was built in August for exactly this. **A
+user told to "check Protection history" cannot send anyone what they saw, and
+the guide should say what to do instead.**
+
+*(Note for whoever reads that output next: its summary line says "6 of 12
+placements" because it checks `C:` and `D:` and only `C:` was ever staged. The
+script says so in its own caveat block; the `C:` section is the answer.)*
+
+### THE WRITE-UP WAS FINISHED FOR CLOUD -- AN INDEX, THE OUTPUT RATIONALE, SEVEN QUESTIONS
+
+**Bill:** *"add in the details and findings filenames etc. for cloud to review
+and let's get his read of all of it."*
+
+**Section 0 is the file index, and it exists because Cloud cannot list a
+directory.** Every filename it needs is written out -- twelve evidence files in
+`Test_Results\` with a line each saying what they hold, the fourteen tools in
+`Tool2\`, and the three documents that bear on the decision. It tells Cloud to
+**ask Bill to attach anything it cannot retrieve**, rather than reasoning around
+a file it could not open.
+
+**Section 3d is the antivirus output rationale, and it exists because Bill asked
+the same question twice in one morning** -- *"not sure where output is, won't let
+me copy"*. ***Measured, both products: Defender writes NO report and its
+Protection history cannot be copied; Malwarebytes writes a text report AND a
+JSON record carrying MD5 and SHA-256 per detection.***
+
+**That asymmetry is why this whole investigation was possible.** The 2026-07-19
+SANDY report's hashes are how six specimens were found on a backup drive two
+months later and proved to be the same files -- ***measured, a name-only search
+would have returned four wrong hits on `E:` for one of them.*** Defender's
+output could not have done that.
+
+**And it is a product proposal:** Checkup should write Defender's protection
+history into the user's own log, so a customer who ran a scan has something to
+send. **The code already exists** -- `Tool2\Check-ProtectionHistory-2026-08-28.ps1`,
+written in August. Cloud is asked to weigh it against everything else competing
+for time before 09-15.
+
+**Section 7 was rewritten as seven questions rather than four.** The first is
+the sharp one: **Cloud pre-registered the decision rule, the test cleared it by
+the widest possible margin, and it is asked whether it stands by the rule or
+wants to revise it after the fact** -- with the note that revising openly is a
+legitimate answer and more useful than a silent change of position.
+
+Doc gate: 0 dead pointers in the live set and across all `ProjectDocs\`, 0
+header mismatches, 0 unanchored families.
+
+### CLEANUP -- VERIFIED AFTERWARDS, NOT ASSUMED
+
+***Measured: `C:\AVTestKit` gone; Defender folder exclusions 0; real-time
+protection on; PUA blocking on (1); Bill's originals on `G:` 6 of 6 present.***
+
+**The six PUP specimens on the backup drives were never touched at any point in
+this test** -- they were copied, never moved, and the count has matched every
+time it was checked.
+
+**Left in place deliberately, because Bill asked for them and they are
+protections rather than test scaffolding:** SmartScreen "Check apps and files"
+set to Warn, and Store-app SmartScreen on. **Undo is
+`Tool2\Run-RestoreReputationSettings.bat`**, which reads the undo file written
+before either was changed.
+
+**One thing NOT cleared, and it is Bill's to decide:** Defender still holds a
+quarantine record for `Virus:DOS/EICAR_Test_File` from the specimens it removed.
+Harmless -- the test string is not malware and the files are gone -- but it sits
+in Protection history until cleared by hand there.
+
+### WHY THIS ENTRY WAS MISSING, AND IT IS NOT "SOMEBODY FORGOT"
+
+**The session-end ritual is four steps: write the session log, run
+`Update-Current`, commit and push, tell Bill to sync.** ***Measured: three of
+the four ran.*** `CURRENT.md` carries its own stamp of 07:47; the document and
+repository gates wrote `DocCheck-CGDELL-2026-09-08_07-48.txt` and
+`RepoHealth-CGDELL-2026-09-08_07-48.txt`; five commits were pushed and the
+unpushed count is 0. **Only the first step was skipped.**
+
+**NOTHING CHECKS THAT STEP, AND THAT IS THE WHOLE ANSWER.**
+
+***Measured, `Tool2\Update-Current.ps1` line 318: it takes the FIRST
+`## Session:` heading in the log, whatever date that heading carries, and stops
+only if there is no heading at ALL.*** So with no entry written for the day, it
+silently lifted the **2026-09-07** heading and published it as the freshness
+sentinel. **`CURRENT.md` now tells Cloud to prove its snapshot against a heading
+that is a day old -- and Cloud will pass.** The sentinel exists to catch a stale
+snapshot and it cannot catch a stale log.
+
+***Measured, `Tool2\Check-Docs-2026-08-20.ps1` line 136: the session log is
+deliberately EXEMPT from the date-checking gate***, and correctly so -- it is a
+dated record, allowed to carry old figures because it reports what was true on
+its own date. **But the exemption means no gate looks at the log at all.**
+
+**So this is the project's own recurring shape, one more time: a gate with no
+check is a wish.** Two of the four ritual steps have automation. The step that
+was skipped is the one held only in memory.
+
+**The same drift was sitting one line above it.** ***Measured: `Last Modified`
+in this file's own header read 2026-09-06 12:35 while the 2026-09-07 entry sat
+directly beneath it.*** Corrected in the same edit as this entry. **Cloud caught
+that identical failure on 2026-08-22 and it came straight back**, because the
+correction was a value and not a check.
+
+**The fix is one comparison, in a script that is already holding the answer.**
+`Update-Current.ps1` opens the log and reads the top heading every single run.
+Comparing the date in that heading against today's date is one line, and it
+could then say so the way it already refuses when a pattern matches nothing.
+**Raised, not built** -- it changes what a session-end tool does, so it is
+Bill's call, not mine.
+
+### STATE AT CLOSE
+
+**The machine is clean and the test is over.** Nothing is staged, no exclusion
+is in force, and both products' halves are measured and written up.
+**`GatewayGuard_AVTestFindings-2026-09-07-1808.md` is finished and pushed, and
+Cloud's answer to its section 7 is the outstanding item.**
 
 ---
 ---

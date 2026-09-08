@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-08 07:47 ET -->
-<!-- Commit: f08f3de -->
+<!-- Generated: 2026-09-08 08:05 ET -->
+<!-- Commit: 2b26479 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-08 07:47 ET  |  **Commit:** `f08f3de`  |  **Made:** 2026-09-08 07:39 ET
-- **Commit subject:** One button press demonstrated the whole finding
+- **Generated:** 2026-09-08 08:05 ET  |  **Commit:** `2b26479`  |  **Made:** 2026-09-08 07:51 ET
+- **Commit subject:** Cleanup: the test folders and every trace of them are gone
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -178,7 +178,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-09-07 12:14 to 19:15 [Claude Code -- CGDELL] -- DEFENDER MISSED SIX OF SIX, AND THE TERMINAL RITUAL WAS THREE BUGS
+## Session: 2026-09-08 07:03 to 07:51 [Claude Code -- CGDELL] -- THE MALWAREBYTES HALF RAN, AND ONE BUTTON PRESS PROVED BOTH PRODUCTS AT ONCE
 ```
 
 **If it is not in your copy of the session log, you are reading an old
