@@ -1,0 +1,77 @@
+﻿======================================================================
+  DEFENDER PROTECTION HISTORY -- TO A FILE
+======================================================================
+  machine  : CGDELL
+  run at   : 2026-09-08 07:38:13
+  elevated : True
+
+----------------------------------------------------------------------
+  1. DETECTIONS  (Get-MpThreatDetection -- what Protection History shows)
+----------------------------------------------------------------------
+    total detection records : 1
+
+    9/8/2026 7:28:56 AM  action-success=True
+        C:\AVTestKit\05_archive\bundle.zip
+        C:\AVTestKit\01_plain\specimen.txt
+        C:\AVTestKit\02_renamed\invoice.dat
+        C:\AVTestKit\03_deep\a\b\c\d\e\buried.txt
+        C:\AVTestKit\04_hidden\systemfile.txt
+        C:\AVTestKit\05_archive\bundle.zip->eicar_2026-09-07_12-45.txt
+        C:\AVTestKit\06_ads\readme.txt:hidden
+
+----------------------------------------------------------------------
+  2. THREAT NAMES  (Get-MpThreat)
+----------------------------------------------------------------------
+    Virus:DOS/EICAR_Test_File                     severity=5 active=False
+
+----------------------------------------------------------------------
+  3. CROSS-CHECK -- event log 1116 (detected) / 1117 (action taken)
+----------------------------------------------------------------------
+    events found (cap 60) : 2
+    9/8/2026 7:29:28 AM  id 1117  Virus:DOS/EICAR_Test_File
+        C:\AVTestKit\05_archive\bundle.zip; file:_C:\AVTestKit\01_plain\specimen.txt; file:_C:\AVTestKit\02_renamed\invoice.dat; file:_C:\AVTestKit\03_deep\a\b\c\d\e\buried.txt; file:_C:\AVTestKit\04_hidden\systemfile.txt; file:_C:\AVTestKit\05_archive\bundle.zip->eicar_2026-09-07_12-45.txt; file:_C:\AVTestKit\06_ads\readme.txt:hidden
+    9/8/2026 7:28:56 AM  id 1116  Virus:DOS/EICAR_Test_File
+        C:\AVTestKit\05_archive\bundle.zip; file:_C:\AVTestKit\01_plain\specimen.txt; file:_C:\AVTestKit\02_renamed\invoice.dat; file:_C:\AVTestKit\03_deep\a\b\c\d\e\buried.txt; file:_C:\AVTestKit\04_hidden\systemfile.txt; file:_C:\AVTestKit\05_archive\bundle.zip->eicar_2026-09-07_12-45.txt; file:_C:\AVTestKit\06_ads\readme.txt:hidden
+
+----------------------------------------------------------------------
+  4. AVTESTKIT COVERAGE -- WHICH SPECIMENS WERE DETECTED?
+----------------------------------------------------------------------
+
+    --- C: ---
+      DETECTED  plain file, plain name         C:\AVTestKit\01_plain\specimen.txt
+      DETECTED  renamed extension (.dat)       C:\AVTestKit\02_renamed\invoice.dat
+      DETECTED  deeply nested folder           C:\AVTestKit\03_deep\a\b\c\d\e\buried.txt
+      DETECTED  hidden + system attributes     C:\AVTestKit\04_hidden\systemfile.txt
+      DETECTED  inside ZIP archive             C:\AVTestKit\05_archive\bundle.zip
+      DETECTED  ADS (alternate data stream)    C:\AVTestKit\06_ads\readme.txt
+
+    --- D: ---
+      not seen   plain file, plain name         D:\AVTestKit\01_plain\specimen.txt
+      not seen   renamed extension (.dat)       D:\AVTestKit\02_renamed\invoice.dat
+      not seen   deeply nested folder           D:\AVTestKit\03_deep\a\b\c\d\e\buried.txt
+      not seen   hidden + system attributes     D:\AVTestKit\04_hidden\systemfile.txt
+      not seen   inside ZIP archive             D:\AVTestKit\05_archive\bundle.zip
+      not seen   ADS (alternate data stream)    D:\AVTestKit\06_ads\readme.txt
+
+    DETECTED: 6 of 12 placements.
+
+    NOT SEEN in Protection History:
+      - D: plain file, plain name
+      - D: renamed extension (.dat)
+      - D: deeply nested folder
+      - D: hidden + system attributes
+      - D: inside ZIP archive
+      - D: ADS (alternate data stream)
+
+    A placement 'not seen' means it does not appear in the detection
+    records READ ABOVE. Three things can cause that, and they are not
+    the same finding:
+      (a) the scan genuinely did not detect it;
+      (b) it was detected on an EARLIER run and already quarantined,
+          so this run had nothing left to find;
+      (c) the specimen was never written -- check the kit manifest.
+    Check the manifest and the detection timestamps before concluding.
+
+======================================================================
+  DONE -- nothing on this machine was changed.
+======================================================================

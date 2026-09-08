@@ -170,6 +170,42 @@ the same machine, a day apart.
 
 ---
 
+# 3c. THE WHOLE FINDING, DEMONSTRATED BY ONE BUTTON PRESS
+
+**2026-09-08 07:28.** Bill right-clicked `C:\AVTestKit`, chose Defender's scan,
+was told a **severe** threat was found, and clicked **Start actions**. He was
+not running an experiment. He was doing what any user would do.
+
+***Measured immediately afterwards, and this is the cleanest statement of the
+whole test:***
+
+| Defender was pointed at one folder and told to act | Result |
+|---|---|
+| The 5 plain EICAR placements | **all removed** |
+| The EICAR inside the ZIP | **removed** |
+| **The EICAR in the alternate data stream** | **removed — the stream Malwarebytes could not see** |
+| **Bill's 6 real unwanted programs** | **all six untouched** |
+
+***Sources, all readable rather than a screen Bill could not copy from:
+`Test_Results\ProtectionHistory-CGDELL-2026-09-08_07-38.txt`; Defender's own
+event log, id 1116 detected at 07:28:56 and id 1117 action taken at 07:29:28,
+both naming `readme.txt:hidden` explicitly; and a directory listing showing
+07_pua still holding all six files.***
+
+**One press of one button cleaned every specimen Defender considers a threat,
+including the best-hidden one, and walked past all six real unwanted programs
+without a word.** That is the case for both products, and the case against
+relying on either alone, in a single observation.
+
+**Where the output lives, since this cost Bill a question:** Defender writes no
+report file. Its results are in **Windows Security → Protection history**,
+which cannot be copied from. **`Tool2\Run-ProtectionHistoryCheck.bat` writes
+the same information to a text file in `Test_Results\`** — detections, threat
+names, and the event-log cross-check. **That is a guide item: a user told to
+"check Protection history" cannot send anyone what they saw.**
+
+---
+
 # 4. THE HONEST LIMITS OF WHAT WE PROVED
 
 **These belong in any decision made on this evidence.**
