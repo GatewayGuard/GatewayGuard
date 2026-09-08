@@ -481,3 +481,57 @@ foreach ($r in $resolved) {
 Write-Host ""
 Write-Host ("  " + $outFile)
 Write-Host ""
+
+# --- IS THAT HEADING ACTUALLY CURRENT? (added 2026-09-08) ----------------
+# The sentinel above is lifted from the newest '## Session:' heading WHATEVER
+# its date, and this script stops only when the log has no heading AT ALL. So a
+# session that never wrote itself down publishes the PREVIOUS session's heading
+# as the freshness proof, and Cloud passes a check that should have failed.
+#
+# Measured 2026-09-08: that morning's session committed and pushed five times,
+# ran both gates and regenerated this file -- and wrote no log entry. CURRENT.md
+# then told Cloud to prove its snapshot against a heading a day old. Nothing
+# noticed until the next session went looking.
+#
+# THIS DOES NOT REFUSE TO WRITE. A session-end tool that can block is a new way
+# for session end to fail, and the failure it prevents costs a couple of minutes
+# of reconstruction from the commit messages. It says the age out loud, at the
+# moment the log should have been written.
+#
+# A session that runs past midnight is filed under its START date but its
+# heading names both -- "2026-09-04 20:19 to 2026-09-05 00:23". So take the
+# LATEST date in the heading, never the first, or every spanning session raises
+# a false alarm the morning after.
+$ggDates = @([regex]::Matches($sessionHead, '\d{4}-\d{2}-\d{2}') | ForEach-Object {
+    $ggD = [datetime]::MinValue
+    if ([datetime]::TryParseExact($_.Value, 'yyyy-MM-dd',
+            [System.Globalization.CultureInfo]::InvariantCulture,
+            [System.Globalization.DateTimeStyles]::None, [ref]$ggD)) { $ggD }
+})
+
+Write-Host ""
+if ($ggDates.Count -eq 0) {
+    Write-Host "  SESSION LOG -- no date could be read out of the newest heading:"
+    Write-Host ("    " + $sessionHead)
+} else {
+    $ggNewest = @($ggDates | Sort-Object)[-1]
+    $ggAge    = [int]((Get-Date).Date - $ggNewest.Date).TotalDays
+    if ($ggAge -le 0) {
+        Write-Host "  SESSION LOG -- newest entry is dated today. Good."
+    } else {
+        $ggWord = "days"
+        if ($ggAge -eq 1) { $ggWord = "day" }
+        Write-Host "  --------------------------------------------------------------"
+        Write-Host ("  SESSION LOG IS " + $ggAge + " " + $ggWord + " OLD.")
+        Write-Host ("  Newest entry is dated " + $ggNewest.ToString("yyyy-MM-dd") + ".")
+        Write-Host ""
+        Write-Host "  If work was done today, IT HAS NOT BEEN WRITTEN DOWN."
+        Write-Host "  The sentinel in CURRENT.md now carries that older heading,"
+        Write-Host "  so Cloud will pass a freshness check it should fail."
+        Write-Host ""
+        Write-Host "  CURRENT.md WAS still written -- this is a warning, not a stop."
+        Write-Host "  Write the entry, then run this again."
+        Write-Host "  --------------------------------------------------------------"
+    }
+}
+Write-Host ""

@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-08 08:05 ET -->
-<!-- Commit: 2b26479 -->
+<!-- Generated: 2026-09-08 08:20 ET -->
+<!-- Commit: 045980b -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-08 08:05 ET  |  **Commit:** `2b26479`  |  **Made:** 2026-09-08 07:51 ET
-- **Commit subject:** Cleanup: the test folders and every trace of them are gone
+- **Generated:** 2026-09-08 08:20 ET  |  **Commit:** `045980b`  |  **Made:** 2026-09-08 08:06 ET
+- **Commit subject:** The session that logged everything except itself
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 

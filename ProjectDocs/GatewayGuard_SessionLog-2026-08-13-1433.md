@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-08 08:04 ET
+- **Last Modified:** 2026-09-08 08:18 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -1034,6 +1034,154 @@ is the source until the two decisions land.
   was the last one still carrying the real-card instruction.
 - **13 commits, all pushed and verified at 0 unpushed.**
 
+---
+
+## Session: 2026-08-31 14:44 to 2026-09-01 16:34 [Claude Code -- CGDELL] -- THE STORE CAME UP ON ITS OWN DOMAIN, AND THE FAULT WAS .com TYPED WHERE .co BELONGS
+
+*(Filed 2026-09-08 08:18 by a later session, from the five commit messages and
+the documents they name. **The gap was found by checking every commit day since
+01-Aug against this log**, after the same thing happened on 2026-09-08. See the
+note at the end -- **the first count of this gap was wrong, and the way it was
+wrong is worth more than the entry.**)*
+
+### THE CRITICAL PATH WAS REDRAWN, AND THE LOOP CLOUD DREW DOES NOT EXIST
+
+**CPM Rev 8.** Bill's six tasks are in the network with IDs: the website html
+review, the Gumroad two-product setup, the LegalZoom consult and licence edits,
+the Gumroad payment research and wiring, the ascii43 research, and the response
+with recommendations. **Rebaselined from 01-Sep/ascii39 to 15-Sep/ascii43.**
+
+**Five of Cloud's ten open questions were answered from disk, and three of them
+changed the plan:**
+
+- **The freeze-to-screenshots loop Cloud drew is not real.** ***Measured: the
+  guide reference carries section names, 13 of 19 are already correct, and all
+  six broken destinations exist in the guide today.*** The loop breaks for **six
+  string replacements**. **No guide lock was ever needed.**
+- **The 29 VERIFY markers are real unmeasured claims about Windows**, not
+  cosmetic ones -- so Cloud's go/no-go condition on the guide launch **stands**.
+- ***Measured: `$BuildID` renders on exactly two screens, neither of them a
+  setting screen***, so the screenshot set survives a build increment.
+
+**Also confirmed: the licence grants corrections free, so deferring the wording
+block earns nothing.** Cloud's response had been sitting untracked and was
+committed with it.
+
+### THE CUSTOM DOMAIN -- ONE ADDED RECORD, NOT THE TWO THE HELP ARTICLE ASKS FOR
+
+**Gumroad's own article gives two options and both would have taken the website
+down.** ***Measured on the live DNS: the apex carries the four GitHub Pages A
+records, `www` CNAMEs to `gatewayguard.github.io`, and the apex ALSO carries the
+privateemail MX pair, the SPF record and the Microsoft 365 verification TXT.***
+
+**The article's apex option puts a CNAME on a name already holding MX and TXT,
+which the DNS standard does not allow** -- so following it **risks
+`support@gatewayguard.co`**, the customer mailbox.
+
+**The subdomain path, documented in the same article, adds one record and
+removes none:** `store` CNAME to `domains.gumroad.com`. ***Measured:
+`store.gatewayguard.co` was free (NXDOMAIN).*** Registrar is Namecheap, so the
+article's GoDaddy section does not apply at all.
+
+`Tool2\Run-CheckStoreDomain.bat` was built with it -- it reports in plain
+English if the store record is live **and re-checks that the website, mail, SPF
+and Microsoft records were not disturbed.** Read-only, no administrator. Run
+once, all six rows OK.
+
+**A separate finding was recorded rather than folded in:** ***measured,
+`gatewayguard.co`, `www` and `gatewayguard.github.io` all returned HTTP 404.***
+**The record had said "index + 404 live on GitHub Pages" since 02-Aug and that
+was no longer true.**
+
+### THE VERIFY FAILURE WAS `.com` TYPED WHERE `.co` BELONGS
+
+**The Namecheap record was correct from the first attempt.** ***Gumroad was
+checking `store.gatewayguard.com` -- a domain on GoDaddy nameservers that we do
+not own -- and said so in its own error message, which quotes the domain
+back.*** Corrected in the Gumroad box and it verified immediately.
+
+**The diagnostic order that found it is recorded, because it is reusable:**
+resolve from the authoritative nameservers, then from two public resolvers, then
+read the HTTP response headers to prove requests were reaching Gumroad, **then
+read the error message's own wording.**
+
+**Two corrections went into the document itself, and both are this project's
+recurring shapes:**
+
+- **It claimed `gatewayguard.gumroad.com` resolves. It does not.** ***the
+  username was `wfbii`, which was in the Gumroad listings document all
+  along***
+  -- **the name was assumed from the company rather than read from the record.**
+- **Step 3 said a failed Verify is "almost always propagation, not a mistake"
+  -- which is the advice that walked straight past this.** It now says to **read
+  the domain in the error message first.**
+
+### THE ACCOUNT EMAIL, THE USERNAME, AND THE ONLY FREE MOMENT TO CHANGE IT
+
+**Bill changed the Gumroad account email to `admin@gatewayguard.co`.** It
+matches the split already in the record: ***measured across `ProjectDocs\`,
+`WebSite\` and `CLAUDE.md`, `support@` appears 46 times as the customer address
+and `admin@` 14 times as the business one***, already given to LegalZoom, the
+bank and the attorney. **A payment account is business.**
+
+**Two things were raised beside it, and both were then closed the next day.**
+
+- **The mailbox needed confirming.** The domain's MX and SPF are healthy, which
+  proves the **domain** receives mail but **not that the `admin@` mailbox
+  exists**, and that cannot be checked from outside. It now carries Gumroad's
+  password resets, payout notices and tax documents, **so it is the recovery
+  path for the money.** ***Closed 09-01: Gumroad's own confirmation message
+  arrived in it.***
+- **The username was still `wfbii`**, which is separate from the account email
+  and is what appears in **receipts and download links**. *Sourced, Gumroad's own
+  article:* those links get embedded in receipts and printed QR codes and keep
+  working forever -- **so changing the username is free before publishing and
+  breaks live links after launch.** Nothing was published yet, so **that was the
+  only free moment.**
+
+### THE STORE PLUMBING IS DONE
+
+***Measured from outside: `gatewayguard.gumroad.com`, `store.gatewayguard.co`
+and both product URLs all return 200, and the Let's Encrypt certificate for
+`store.gatewayguard.co` is issued through 2026-11-30.*** Username
+**`gatewayguard`**, slugs **`checkup`** and **`guide`**. **The username and both
+slugs were changed before anything was published, which was the only window in
+which that was free.**
+
+**ONE ITEM OPENED, AND IT IS A LICENCE PROBLEM, NOT A STORE ONE.** The guide was
+listed as **"GatewayGuard Windows 11 Security Companion"**, and ***"Companion"
+appears nowhere in the record as a name for it.*** **The licence defines The
+Guide as "the GatewayGuard Windows Security Walkthrough Guide, a PDF document"
+-- in three versions and in the attorney consult.** **A buyer would be accepting
+a licence that names the product something the page does not.** Either the
+product or the defined term has to move, and **the licence was already going to
+the attorney, so it can ride along.**
+
+### HOW THIS GAP WAS FOUND, AND THE COUNT THAT WAS WRONG FIRST
+
+**After 2026-09-08's entry went missing, every commit day since 01-Aug was
+checked against this log.** ***Measured: 34 commit days, 12 with no heading
+carrying that date.*** Seven of the twelve are covered by a session that ran
+past midnight and is filed under its start date, **so the first honest answer
+was "five genuinely unlogged days, and 2026-09-01 is one of them."**
+
+**That answer was still wrong, and it was wrong in this project's oldest way: it
+counted a proxy.** A **day** is not a **session**. ***Measured, the
+`Claude-Session` trailer on the commits themselves: `session_01YVtEqzQqz...`
+carries FIVE commits, 2026-08-31 14:44 through 2026-09-01 16:34.*** **So the
+missing entry was never "three commits on 09-01" -- it is one session of five
+commits spanning two days**, and the 08-31 heading already in this log covers
+only that morning's four commits, which carry no session trailer at all and
+belong to an earlier session.
+
+**The day-level check said 08-31 was logged. Half of it was not.**
+
+**The lesson, and it is worth more than the entry: the commits carry a session
+ID, and that is the real grouping key.** Counting by calendar day answers a
+question nobody asked and reads exactly like the answer to the one that
+matters.
+
+---
 ---
 
 ## Session: 2026-08-30 17:10 to 2026-08-31 09:30 [Claude Code -- CGDELL] -- THE RUN HAD FINISHED AND NOBODY HAD LOOKED, EIGHT REGISTRY WRITES CANNOT REPORT FAILURE, AND CURRENT.md COULD NOT DELIVER ITS OWN ROWS
