@@ -72,8 +72,8 @@ reason for this list:**
 
 | Toggle | It should say | Note |
 |---|---|---|
-| Check apps and files | **On** | This is setting 4. ***Measured on CGDELL 2026-09-07: it reads back as `Warn`, which is On*** |
-| SmartScreen for Microsoft Edge | **On** | **Confirmed by Bill on CGDELL, 2026-09-08 -- it IS on this screen**, as its own on/off separate from Check apps and files. **It also has a second on/off inside Edge:** three dots > Settings > Privacy, search, and services. **Two controls, same protection.** *Confirmed on Windows 11 Pro 25H2; not yet looked at on Home* |
+| Check apps and files | **On** | This is setting 4. ***Measured on CGDELL 2026-09-07: it reads back as `Warn`, which is On.*** **On this PC the toggle is GREYED OUT with a yellow line saying "This setting is managed by Smart App Control" -- see the note below. That is not a fault** |
+| SmartScreen for Microsoft Edge | **On** | **Confirmed by Bill on CGDELL, 2026-09-08 -- it IS on this screen**, as its own on/off separate from Check apps and files. **It also has its own on/off inside Edge:** three dots > Settings > **Privacy, search, and services** > **Security** -- where it is called **Protect from harmful sites and downloads**, with a second toggle **Share detected scam sites**. ***Both confirmed On from Bill's screenshot, 2026-09-08.*** **Two controls, same protection.** *Confirmed on Windows 11 Pro 25H2; not yet looked at on Home* |
 | **Potentially unwanted app blocking** | **On**, and **open it** -- it has **two** tick boxes inside | See the note below. This is the one that catches the junk installers |
 | SmartScreen for Microsoft Store apps | **On** | |
 | **Phishing protection** -- Warn me about malicious apps and sites | **On** | These three together are setting 6 |
@@ -102,6 +102,45 @@ registry values read NOT SET while the screen showed all four ticked ON.***
 **For this one group, the screen is the truth and the registry is not.** If
 Checkup says "Unknown -- Tamper Protection blocks this check", that is the
 correct answer and not a fault.
+
+### 3. SMART APP CONTROL IS ON THIS PC, AND IT TAKES TWO OF THESE OVER
+
+***Measured on CGDELL 2026-09-08: `VerifiedAndReputablePolicyState = 1`, which
+is Smart App Control On and enforced.***
+
+**When it is on, Windows takes over two controls on this screen and greys them
+out:**
+
+- **Check apps and files** -- the yellow line above it reads *"This setting is
+  managed by Smart App Control."*
+- **Block apps**, inside Potentially unwanted app blocking. ***Measured
+  2026-08-24, same machine.***
+
+**Neither is a fault and neither is something Checkup did.** Windows forces
+both **on** while Smart App Control is enforced, which is why they show On and
+cannot be clicked. **A greyed-out control is the thing a reader assumes they
+broke**, so it needs saying.
+
+**Where to look at Smart App Control itself:**
+**Windows Security > App & browser control > Smart App Control** --
+On / Evaluation / Off. ***Measured On on this PC.***
+
+**Two things this raises, both recorded rather than acted on here:**
+
+1. **Smart App Control is not one of the 19 settings and appears nowhere in
+   the build.** ***Measured: zero occurrences in the ascii44 source.*** Whether
+   it should be checked is a product decision, not a fix.
+2. **FT-260 -- Checkup cannot see this kind of lock.** The policy check added
+   yesterday looks only under `HKLM\SOFTWARE\Policies`. **Smart App Control
+   locks settings from somewhere else entirely**
+   (`HKLM\SYSTEM\CurrentControlSet\Control\CI\Policy`), so Checkup would
+   report no lock while a control sits greyed out on screen. ***Measured on
+   this PC: no Group Policy is forcing anything -- all three policy keys exist
+   but hold no values -- and the one thing that IS forcing a setting is the one
+   the check cannot see.*** Same shape as the firewall-profile miss: the source
+   checked was real but not complete.
+
+---
 
 ---
 
