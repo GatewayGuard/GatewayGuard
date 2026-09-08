@@ -73,7 +73,7 @@ reason for this list:**
 | Toggle | It should say | Note |
 |---|---|---|
 | Check apps and files | **On** | This is setting 4. ***Measured on CGDELL 2026-09-07: it reads back as `Warn`, which is On*** |
-| SmartScreen for Microsoft Edge | **On** | **Not verified on this machine.** It is named on the guide page, but Microsoft has been moving this one into Edge's own settings. **If it is not on that screen, look in Edge: three dots > Settings > Privacy, search, and services > Security.** Tell me either way and I will correct the guide page |
+| SmartScreen for Microsoft Edge | **On** | **Confirmed by Bill on CGDELL, 2026-09-08 -- it IS on this screen**, as its own on/off separate from Check apps and files. **It also has a second on/off inside Edge:** three dots > Settings > Privacy, search, and services. **Two controls, same protection.** *Confirmed on Windows 11 Pro 25H2; not yet looked at on Home* |
 | **Potentially unwanted app blocking** | **On**, and **open it** -- it has **two** tick boxes inside | See the note below. This is the one that catches the junk installers |
 | SmartScreen for Microsoft Store apps | **On** | |
 | **Phishing protection** -- Warn me about malicious apps and sites | **On** | These three together are setting 6 |
@@ -134,3 +134,7 @@ numbers: `GatewayGuard_SettingsReadVsChange-2026-09-08-0901.md`.
   saying ON while the registry said NOT SET.
 - `Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1` -- the settings
   table itself, 19 items.
+- **Bill at the screen, CGDELL, 2026-09-08** -- the SmartScreen for Microsoft
+  Edge row. He looked because the row said it was unverified, and it was the
+  fastest way to settle it. *Windows 11 Pro 25H2; the Home machines have not
+  been looked at.*
