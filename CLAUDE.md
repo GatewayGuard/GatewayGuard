@@ -9,7 +9,7 @@
   September 1 on 2026-08-30.** Exactly two weeks later, same weekday.
   **Never write a countdown here** -- "six days" was wrong the next morning
   and stayed wrong. Write the date; let the reader subtract.
-- **Current build:** ascii44 (9,387 non-blank lines / 9,775 total) — **BLOCK A COMPLETE, NOT YET FIELD RUN.**
+- **Current build:** ascii44 (9,458 non-blank lines / 9,847 total) — **BLOCK A COMPLETE, NOT YET FIELD RUN.**
   - **ascii43 is SPENT and retired to `Builds\`.** It was field run twice,
     2026-08-26 to 08-30, five logs in `Test_Results\FieldRun-ascii43\`.
     `Tool\` holds only ascii44. F1, F2, F3, F5 and part of F6 came from it.
@@ -88,6 +88,34 @@
     the firewall's own store — settled it.** Public is also the profile that
     matters most to the customer: it is the one that applies on hotel and
     coffee-shop wifi.
+    **FT-256, FIXED 2026-09-08 — Bill: "fix ft-256". THE MIRROR OF
+    FT-257, AND IT WAS REPRODUCING ON THIS MACHINE WHILE WE DISCUSSED IT.**
+    Two sites parsed `powercfg /query ... CONSOLELOCK` for a setting index
+    and, when the parse found nothing, **fell through to the ELSE branch and
+    reported "NOT required"** — a verdict invented from silence.
+    ***Measured on CGDELL 2026-09-08 21:29, elevated: the query returns
+    `Power Scheme GUID: ... (Balanced)` and NO setting index line at all***,
+    so the shipped build was telling this machine its password-on-wake was
+    not set when nothing had been read.
+    **FT-257 was the same fault pointing the other way** — an absent value
+    became a wrong GOOD, which **deselects** the item. Here it is a wrong
+    BAD, which is the safer direction because it offers a fix that may be
+    unneeded rather than hiding one that is needed. **It is still a verdict
+    from a read that did not happen.**
+    **FIX: one shared reader, `Get-GGConsoleLockState`, replacing two private
+    copies of a two-outcome parse.** Four answers — REQUIRED /
+    NOT_REQUIRED / NO_INDEX / NO_OUTPUT — and it carries the raw output so
+    the log says WHY. **The unknown deliberately keeps the item SELECTED**,
+    because auto-deselect keys on "GOOD": a reading we could not take is not
+    a reason to hide a fix that is harmless and idempotent.
+    ***Verified against the SHIPPED function extracted from the build
+    itself: live run returns NO_INDEX with the header as its raw output, and
+    all four states map to the right words at both call sites.*** Width
+    checked too — the new power-screen string is 31 characters against the
+    34 already on that line, so the box cannot widen (FT-117/FT-122).
+    Gates after: 12, 12b, 24 PASS, parse 0 errors, 0 non-ASCII, 87 functions
+    and no duplicates. Wrapper:
+    `Tool2uild_ascii44_ft256_consolelock.py`.
   - **FT-260, RAISED NOT FIXED — THE POLICY CHECK CANNOT SEE THE LOCK THAT
     IS ACTUALLY IN FORCE ON CGDELL. Bill's screenshots, 2026-09-08.**
     Windows Security shows *"This setting is managed by Smart App Control"*
@@ -119,10 +147,10 @@
     Whether it should be checked is Bill's call, not a fix.** Full write-up
     with every path:
     `ProjectDocs\GatewayGuard_SettingsLocationList-2026-09-08-2130.md`.
-  - **Raised in ascii44, NOT fixed, and each says why:** FT-254
-    (`Test-TimeDateSync` prints success after four unguarded calls) and
-    FT-256 (`powercfg` can return no CONSOLELOCK block at all, so the
-    status read reports "NOT required" from a read that produced nothing).
+  - **Raised in ascii44 and still NOT fixed:** **FT-254** alone
+    (`Test-TimeDateSync` prints success after four unguarded calls).
+    *(FT-256 was on this line until 2026-09-08 and is now fixed — see
+    the entry above.)*
   - **FT-259, RAISED NOT FIXED — Bill's call, 2026-09-07: "build the height
     check later." CHECKUP NEVER ASKS HOW TALL THE USER'S WINDOW IS.**
     ***Measured on the ascii44 source: `WindowWidth`/`BufferSize.Width` is

@@ -78,11 +78,22 @@
 #           explains two failures and makes the one success suspect.
 #           What is still unknown is INSTRUMENTED, not guessed: when the
 #           parse finds nothing the raw powercfg output is now logged.
-#   FT-256: RAISED, NOT FIXED. Measured on CGDELL, elevated: this query
-#           can return the scheme header and NO setting block at all --
-#           and the status read then reports "NOT required" from a read
-#           that produced nothing, which is the FT-120/FT-123 shape.
-#           No parse change fixes that; it needs its own work.
+#   FT-256: FIXED 2026-09-08 (Bill: "fix ft-256"). Measured on CGDELL,
+#           elevated: this query can return the scheme header and NO
+#           setting block at all -- and BOTH read sites then reported
+#           "NOT required" from a read that produced nothing, which is
+#           the FT-120/FT-123 shape and the mirror of FT-257.
+#           FIX: one shared reader, Get-GGConsoleLockState, with FOUR
+#           outcomes -- REQUIRED / NOT_REQUIRED / NO_INDEX / NO_OUTPUT --
+#           replacing two private copies of a two-outcome parse. A failed
+#           read now says "could not read" and logs the raw powercfg
+#           output, so the next field run says WHY.
+#           The unknown keeps the item SELECTED, because auto-deselect
+#           keys on "GOOD" -- so the user is still offered the fix. That
+#           is deliberate: the fix is harmless and idempotent, and a
+#           reading we could not take is not a reason to hide it.
+#           Live instance measured the same day:
+#           Test_Results\SettingsStatus-CGDELL-2026-09-08_21-29.txt
 #   FT-245: the silent-error breadcrumb said "at Show-ScopeDisclaimer",
 #           where the USER was, not where the fault was. Wording only --
 #           severity unchanged, because an access denial logged as INFO
@@ -5116,6 +5127,48 @@ function Test-PowerStatus {
 # ============================================================
 # STEP 10: POWER SETTINGS CHECK
 # ============================================================
+function Get-GGConsoleLockState {
+    # FT-256 (ascii44, FIXED 2026-09-08). Bill: "fix ft-256".
+    #
+    # THE DEFECT THIS REPLACES: two sites parsed this query for a setting
+    # index and, when the parse found nothing, fell through to the ELSE
+    # branch and reported "NOT required". A verdict from a read that produced
+    # nothing -- the FT-120/FT-123 shape, and the exact mirror of FT-257,
+    # where an absent value became a wrong GOOD.
+    #
+    # A wrong BAD is the safer direction: it offers a fix that may be
+    # unneeded rather than hiding one that is needed. It is still wrong. It
+    # tells the user their PC is insecure when we do not know.
+    #
+    # VERIFIED 2026-09-08 measured on CGDELL, elevated: powercfg /query
+    # SCHEME_CURRENT SUB_NONE CONSOLELOCK returned the scheme header and NO
+    # "Current AC Power Setting Index:" line at all.
+    # Test_Results\SettingsStatus-CGDELL-2026-09-08_21-29.txt
+    #
+    # FOUR ANSWERS, never two. The caller chooses the wording; this decides
+    # only what was actually true. Raw carries the output so the log says WHY.
+    $ggOut = ""
+    try {
+        $ggQ   = powercfg /query SCHEME_CURRENT SUB_NONE CONSOLELOCK 2>&1
+        $ggOut = ($ggQ | Out-String)
+    } catch {
+        return @{ State = "NO_OUTPUT"; Value = $null; Raw = "powercfg threw: $_" }
+    }
+    if ([string]::IsNullOrWhiteSpace($ggOut)) {
+        return @{ State = "NO_OUTPUT"; Value = $null; Raw = "" }
+    }
+    $ggRaw = (($ggOut -replace "\s+", " ").Trim())
+    if ($ggRaw.Length -gt 300) { $ggRaw = $ggRaw.Substring(0, 300) + "..." }
+    # FT-255 (ascii44): Out-String FIRST. On an array -match is a filter and
+    # never populates $Matches.
+    if ($ggOut -match "Current AC Power Setting Index:\s*0x(\w+)") {
+        $ggVal = [Convert]::ToUInt32($Matches[1], 16)
+        if ($ggVal -eq 1) { return @{ State = "REQUIRED";     Value = $ggVal; Raw = $ggRaw } }
+        return @{ State = "NOT_REQUIRED"; Value = $ggVal; Raw = $ggRaw }
+    }
+    return @{ State = "NO_INDEX"; Value = $null; Raw = $ggRaw }
+}
+
 function Run-PowerSettingsCheck {
     Clear-Host
     Write-Host ""
@@ -5125,15 +5178,21 @@ function Run-PowerSettingsCheck {
     $results = @{}
 
     # 1. Password on wake
-    try {
-        $pw = powercfg /query SCHEME_CURRENT SUB_NONE CONSOLELOCK 2>$null
-        # FT-255 (ascii44): powercfg returns an ARRAY. On an array -match is a
-        # FILTER and does NOT populate $Matches -- measured on CGDELL
-        # 2026-09-06. Out-String makes it a scalar match, which is the
-        # pattern already used at the screen-timeout and battery reads.
-        $acVal = if (($pw | Out-String) -match "Current AC Power Setting Index: 0x(\w+)") { [Convert]::ToUInt32($Matches[1], 16) } else { $null }
-        $results["PasswordOnWake"] = if ($acVal -eq 1) { "REQUIRED -- GOOD" } else { "NOT required -- change recommended" }
-    } catch { $results["PasswordOnWake"] = "Unknown" }
+    # FT-256 (ascii44, fixed 2026-09-08): this used to report "NOT required"
+    # whenever the parse found nothing, which is a verdict from silence.
+    # Get-GGConsoleLockState separates a real NO from a failed read, and FT-255
+    # (Out-String before -match) lives inside it now rather than being repeated.
+    # The unknown wording is 31 chars against the 34 of the line above it, so
+    # the box cannot get wider -- FT-117/FT-122.
+    $ggCL = Get-GGConsoleLockState
+    switch ($ggCL.State) {
+        "REQUIRED"     { $results["PasswordOnWake"] = "REQUIRED -- GOOD" }
+        "NOT_REQUIRED" { $results["PasswordOnWake"] = "NOT required -- change recommended" }
+        default        {
+            $results["PasswordOnWake"] = "Could not read -- check by hand"
+            try { Write-Log -Message "Password on wake: read produced no setting index (FT-256, $($ggCL.State)). Raw powercfg output: $($ggCL.Raw)" -Status "WARN" } catch {}
+        }
+    }
 
     # 2. Fast Startup
     try {
@@ -6335,8 +6394,21 @@ function Get-AllStatuses {
                 }
             }
             17 {
-                try { $pw = powercfg /query SCHEME_CURRENT SUB_NONE CONSOLELOCK 2>$null; $acVal = if (($pw | Out-String) -match "Current AC Power Setting Index: 0x(\w+)") { [Convert]::ToUInt32($Matches[1], 16) } else { $null }; $s.Status = if ($acVal -eq 1) { "REQUIRED -- GOOD" } else { "Not required -- needs attention" } }   # FT-255: Out-String -- -match on an array never sets $Matches
-                catch { $s.Status = "Unknown" }
+                # FT-256 (ascii44, fixed 2026-09-08): "Not required -- needs
+                # attention" used to be printed when the parse found nothing.
+                # A failed read now says so, and an unknown keeps the item
+                # SELECTED (auto-deselect keys on "GOOD"), so the user is still
+                # offered the fix. The wording matches item 4's, which is
+                # already proven in this render path.
+                $ggCL17 = Get-GGConsoleLockState
+                $s.Status = switch ($ggCL17.State) {
+                    "REQUIRED"     { "REQUIRED -- GOOD" }
+                    "NOT_REQUIRED" { "Not required -- needs attention" }
+                    default        { "Unknown -- could not read; check by hand" }
+                }
+                if (@("REQUIRED","NOT_REQUIRED") -notcontains $ggCL17.State) {
+                    try { Write-Log -Message "Item 17 (password on wake): read produced no setting index (FT-256, $($ggCL17.State)). Raw powercfg output: $($ggCL17.Raw)" -Status "WARN" } catch {}
+                }
             }
             18 {
                 try { $fs = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power" -EA Stop).HiberbootEnabled; $s.Status = if ($fs -eq 0) { "DISABLED -- GOOD" } else { "Enabled -- needs attention" } }
