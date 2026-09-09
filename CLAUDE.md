@@ -118,7 +118,7 @@
     **Smart App Control is not one of the 19 and is nowhere in the build.
     Whether it should be checked is Bill's call, not a fix.** Full write-up
     with every path:
-    `ProjectDocs\GatewayGuard_SettingsLocationList-2026-09-08-0924.md`.
+    `ProjectDocs\GatewayGuard_SettingsLocationList-2026-09-08-2130.md`.
   - **Raised in ascii44, NOT fixed, and each says why:** FT-254
     (`Test-TimeDateSync` prints success after four unguarded calls) and
     FT-256 (`powercfg` can return no CONSOLELOCK block at all, so the
@@ -329,7 +329,9 @@
 
 ## Product Rules (User-Facing)
 
-- Only name approved AV products by name: **Microsoft Defender (USA)** and **Malwarebytes Free (USA)**
+- Only name approved AV products by name: **Microsoft Defender (USA)**, and
+  **Malwarebytes Free (USA)** — **which from 2026-09-08 appears in the
+  GUIDE ONLY and never in the tool.** See Approved Products below.
 - Always include country of origin for AV recommendations
 - Never name unapproved or competitor products
 - "For your protection, your choices can be reviewed in your log" — shown **once only**, on the review screen
@@ -1059,8 +1061,59 @@ and reports — not working artifacts. (Confirmed 2026-07-26.)
 
 ## Approved Products Named in Tool
 
-- Microsoft Defender (USA)
-- Malwarebytes Free (USA)
+- **Microsoft Defender (USA)** — the protection. In the tool and the guide.
+- **Malwarebytes Free (USA)** — **IN THE GUIDE ONLY, from 2026-09-08.**
+
+**BILL'S DECISION, 2026-09-08: "Malwarebytes is out of Checkup."** It stays
+in the guide as an **optional second opinion the reader may choose**, and the
+tool stops orchestrating it entirely.
+
+**Why, and it is measured on both sides.** ***Measured on CGDELL 2026-09-07
+and 09-08, same twelve files, one day apart: Defender flagged 0 of 6 real
+unwanted programs, Malwarebytes Free flagged 6 of 6.*** So Malwarebytes is
+doing real work there. **But Cloud's answer of 2026-09-08 sharpened what that
+result means, and the guide wording turns on it: the gap is partly a
+disagreement about what "unwanted" MEANS, not only about what each product
+can find** — one of the six is a commercially sold antivirus that
+Malwarebytes classifies as unwanted, and *sourced, AV-Comparatives Feb-May
+2026*, **that same aggressive line is what Malwarebytes Premium was
+downgraded for.** Those are not two facts, they are one fact seen from both
+sides. **So the guide may say the two vendors disagree. It may NOT say
+Defender is weak on unwanted programs.**
+
+**REMOVAL IS GENERALISATION, NOT DELETION — and getting this wrong brings
+back three fixed defects.** ***Measured: `Get-MalwarebytesState` has 13 call
+sites, and items 2 and 7 change their verdict on it because a third-party AV
+takes real-time protection from Defender.*** **Every third-party AV does that,
+not just Malwarebytes.** Replace it with a generic "which product holds
+real-time protection" read from `root\SecurityCenter2` `AntiVirusProduct`,
+**or FT-30, FT-33 and FT-114 return for every customer running Norton, McAfee
+or Bitdefender — which is more customers than Malwarebytes ever was.**
+
+**Also in scope of the removal, each measured:** the four Malwarebytes
+screens; the scheduled task **`GatewayGuard - Monthly Malwarebytes Reminder`**
+(build line 7604) **plus a one-time removal of it from machines that already
+carry it**; 3 mentions in the licence; and ***THREE website pages, nine
+mentions — `periodic-scanning.html` 7, `defender-realtime.html` 1,
+`tamper-protection.html` 1.*** **Cloud predicted one page and zero settings
+pages; all three ARE settings pages, and periodic-scanning needs rewriting
+rather than editing**, because the setting only exists as a concept when
+another antivirus holds real-time protection. ***Measured: pricing copy has
+zero mentions.***
+
+**SETTING 5, DEFENDER PERIODIC SCANNING, IS ALSO OUT — same decision, same
+day.** It only means anything while another antivirus holds real-time
+protection, which is the arrangement the tool no longer runs. **So the product
+is 18 settings, not 19.**
+
+**DO NOT RENUMBER. 5 is simply gone.** Every log ever written names items by
+ID. **A gap in the numbers costs nothing; a renumber makes every earlier log
+wrong about which setting it was discussing.** Same rule as the screen IDs.
+
+**Where each setting is, what Checkup can read and change, and what it is set
+to — measured, one line each:**
+`ProjectDocs\GatewayGuard_SettingsLocationList-2026-09-08-2130.md`.
+Re-runnable with `Tool2\Run-SettingsStatus.bat`, read-only.
 
 ## Domain / Business
 

@@ -1,0 +1,148 @@
+======================================================================
+  CHECKUP SETTINGS STATUS -- read / change / current value
+  CGDELL   2026-09-08 21:29:20
+======================================================================
+
+  Administrator : True
+  Windows       : Microsoft Windows 11 Pro  25H2
+
+  READ-ONLY. Nothing was changed.
+
+----------------------------------------------------------------------
+  THE SETTINGS
+----------------------------------------------------------------------
+
+  [ 1]  Windows Update
+        Checkup can READ   : YES
+        Checkup can CHANGE : YES
+        Current on this PC : service StartType = Manual, Status = Stopped
+
+  [ 2]  Defender Real-Time Protection
+        Checkup can READ   : YES
+        Checkup can CHANGE : YES -- unless another AV holds it
+        Current on this PC : RealTimeProtectionEnabled = True
+
+  [ 3]  Tamper Protection
+        Checkup can READ   : YES
+        Checkup can CHANGE : NO -- Windows forbids it, by design
+        Current on this PC : IsTamperProtected = True
+        Note               : Checkup shows the Windows Security path instead
+
+  [ 4]  SmartScreen (Check apps and files)
+        Checkup can READ   : YES
+        Checkup can CHANGE : YES -- registry write works even when the toggle is greyed
+        Current on this PC : SmartScreenEnabled = 'Warn'
+        Note               : Smart App Control is ON, so the Windows Security toggle is GREYED OUT (FT-260)
+
+  [ 5]  Defender Periodic Scanning
+        Checkup can READ   : --
+        Checkup can CHANGE : --
+        Current on this PC : REMOVED FROM CHECKUP
+        Note               : Bill's decision 2026-09-08. It only means anything when another AV holds real-time protection
+
+  [ 6]  Edge Phishing Protection (3 options)
+        Checkup can READ   : NO -- BLOCKED by Tamper Protection
+        Checkup can CHANGE : NO -- writes refused too
+        Current on this PC : cannot be read here
+        Note               : The SCREEN is the truth for this one, not the registry
+
+  [ 7]  Firewall (all profiles)
+        Checkup can READ   : YES
+        Checkup can CHANGE : YES
+        Current on this PC : Domain=True, Private=True, Public=True
+
+  [ 8]  BitLocker / Device Encryption
+        Checkup can READ   : YES
+        Checkup can CHANGE : YES -- only on its own screen, with explicit permission
+        Current on this PC : ProtectionStatus = On
+        Note               : Product rule, not a technical limit
+
+  [ 9]  Windows Hello
+        Checkup can READ   : YES
+        Checkup can CHANGE : NO -- enrolment needs the person at the machine
+        Current on this PC : PIN/biometric configured = False
+        Note               : Checkup shows the Settings path instead
+
+  [10]  Remote Desktop -- Disable
+        Checkup can READ   : YES
+        Checkup can CHANGE : YES
+        Current on this PC : fDenyTSConnections = 1 (disabled)
+        Note               : Not present on Windows 11 Home at all
+
+  [11]  Advertising ID -- Turn Off
+        Checkup can READ   : YES
+        Checkup can CHANGE : YES
+        Current on this PC : Enabled = 0 (off)
+        Note               : A blocked read currently reports "needs attention" -- a false BAD
+
+  [12]  Diagnostic Data -- Required Only
+        Checkup can READ   : YES
+        Checkup can CHANGE : YES
+        Current on this PC : ABSENT (absent = Windows default, sending extra)
+        Note               : A blocked read currently reports "needs attention" -- a false BAD
+
+  [13]  Edge Startup Boost + Background
+        Checkup can READ   : YES
+        Checkup can CHANGE : YES
+        Current on this PC : StartupBoost=ABSENT, Background=ABSENT
+        Note               : Absent usually means the Edge default, which is ON
+
+  [14]  Widgets -- Disable
+        Checkup can READ   : YES
+        Checkup can CHANGE : YES
+        Current on this PC : TaskbarDa = 1 (ON)
+
+  [15]  Edge Password Saving -- Disable
+        Checkup can READ   : YES
+        Checkup can CHANGE : YES
+        Current on this PC : ABSENT
+
+  [16]  Memory Integrity (Core Isolation)
+        Checkup can READ   : YES
+        Checkup can CHANGE : YES -- but needs a RESTART to take effect
+        Current on this PC : SecurityServicesRunning contains 2 = True
+
+  [17]  Password Required on Wake
+        Checkup can READ   : NO -- powercfg returned no CONSOLELOCK block
+        Checkup can CHANGE : YES
+        Current on this PC : could not read
+        Note               : This is FT-256 -- the build reports "NOT required" from a read that produced nothing
+
+  [18]  Fast Startup -- Disable
+        Checkup can READ   : YES
+        Checkup can CHANGE : YES
+        Current on this PC : HiberbootEnabled = 0 (off)
+
+  [19]  Wake on LAN -- Disable
+        Checkup can READ   : YES
+        Checkup can CHANGE : YES
+        Current on this PC : Ethernet=Enabled; Wi-Fi=Disabled
+        Note               : Every adapter must be done, not just one
+
+----------------------------------------------------------------------
+  WHAT IS NO LONGER IN CHECKUP -- Bill's decision, 2026-09-08
+----------------------------------------------------------------------
+
+  * MALWAREBYTES comes out of the tool entirely. It stays in the
+    guide as an optional second opinion the reader may choose.
+  * SETTING 5, Defender Periodic Scanning, comes out. It only means
+    anything while another antivirus holds real-time protection,
+    which is the arrangement the tool no longer orchestrates.
+
+  So the list is 18 settings. IDs are NOT renumbered -- 5 is simply
+  gone, because the log and the screen table refer to items by ID and
+  renumbering would make every earlier log wrong.
+
+----------------------------------------------------------------------
+  SMART APP CONTROL
+----------------------------------------------------------------------
+
+  VerifiedAndReputablePolicyState = 1   (0=Off, 1=On, 2=Evaluation)
+
+  ON. Windows takes over 'Check apps and files' and 'Block apps'
+  and greys them out. Not a fault, and not something Checkup did.
+  Checkup cannot see this lock -- that is FT-260.
+
+======================================================================
+  Saved to: C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Test_Results\SettingsStatus-CGDELL-2026-09-08_21-29.txt
+======================================================================

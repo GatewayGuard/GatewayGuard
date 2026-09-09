@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-08 16:22 ET -->
-<!-- Commit: 9091db3 -->
+<!-- Generated: 2026-09-08 21:32 ET -->
+<!-- Commit: 92c62fe -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-08 16:22 ET  |  **Commit:** `9091db3`  |  **Made:** 2026-09-08 10:55 ET
-- **Commit subject:** FT-260 into CLAUDE.md, placed where the reader has just learned about FT-258
+- **Generated:** 2026-09-08 21:32 ET  |  **Commit:** `92c62fe`  |  **Made:** 2026-09-08 16:23 ET
+- **Commit subject:** Cloud's Malwarebytes answer filed and stamped, with one measured correction
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -144,7 +144,7 @@ All paths are relative to `ProjectDocs/`.
 | Cloud handoff (what Cloud was told) | `GatewayGuard_CloudHandoff-2026-08-25-0921.md` | 2 |
 | Offline scan research | `GatewayGuard_OfflineScanResearch-2026-08-21.md` | 0 |
 | Settings Checkup cannot read vs cannot change | `GatewayGuard_SettingsReadVsChange-2026-09-08-0901.md` | 0 |
-| Where every setting lives (one line each) | `GatewayGuard_SettingsLocationList-2026-09-08-0924.md` | 0 |
+| Where every setting lives (one line each) | `GatewayGuard_SettingsLocationList-2026-09-08-2130.md` | 0 |
 | AV scan coverage test | `GatewayGuard_AVScanCoverageTest-2026-08-21.md` | 0 |
 | Scheduled task defects (FT-203) | `GatewayGuard_ScheduledTaskDefects-2026-08-20.md` | 0 |
 | ascii41 findings -- fixed or not | `GatewayGuard_ascii41Findings-FixedOrNot-2026-08-19.md` | 0 |
