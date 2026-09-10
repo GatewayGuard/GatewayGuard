@@ -1,0 +1,97 @@
+======================================================================
+  DRAG THRESHOLD -- THE FIELD TEST THE 2026-09-04 SCRIPT WAS BUILT FOR
+  CGDELL   2026-09-10 15:50
+======================================================================
+
+  This is the manual result the automated scripts cannot produce
+  themselves -- they can set and read back the number, but only a
+  human at the mouse can say whether a folder actually moved.
+
+  Triggered by Bill reporting the mouse "acting strange" after
+  switching from a wireless mouse to a wired one (reboot in between).
+
+----------------------------------------------------------------------
+  TEST 1 -- 30 pixels (~8mm), the value CLAUDE.md has documented
+  as the shipped default since August
+----------------------------------------------------------------------
+
+  Confirmed stored AND live at 30x30 (SystemParametersInfo re-read,
+  not just registry) immediately before the test.
+
+  BILL'S RESULT: "not only does it move easily, it grabbed something
+  and moved it before I could stop it."
+
+  RESULT: FAILED. An accidental drag went through at the documented
+  production value.
+
+----------------------------------------------------------------------
+  TEST 2 -- 200 pixels (~5.3cm), the diagnostic value from the
+  2026-09-04-2229 script, built specifically to answer whether
+  Windows 11 File Explorer honours this setting at all
+----------------------------------------------------------------------
+
+  Confirmed stored AND live at 200x200 (SystemParametersInfo re-read)
+  immediately before the test.
+
+  BILL'S RESULT: "It doesn't move until I reach 5 cm, though it has
+  grabbed wherever the folder or file the pointer was on when I held
+  down the left button. The moving image does not show until I pass
+  the 5 cm."
+
+  RESULT: PASSED. No drag/relocation until the threshold was crossed.
+  The item is selected/highlighted on button-down (normal, expected --
+  that is a click registering, not a premature drag), and the drag
+  ghost image only appears past 200 pixels.
+
+----------------------------------------------------------------------
+  WHAT THIS SETTLES
+----------------------------------------------------------------------
+
+  THE 2026-09-04 OPEN QUESTION IS ANSWERED: Windows 11 File Explorer
+  DOES honour SM_CXDRAG / SM_CYDRAG via DragDetect(). This was not
+  known before today -- the script that sets this value said plainly
+  it had not been verified, because Explorer runs on a newer input
+  stack than the API being called.
+
+  THE DOCUMENTED VALUE OF 30 IS FIELD-DISPROVEN. It let a real,
+  observed accidental drag through, on the first attempt, on this
+  machine, today.
+
+  THE VALUE 200 IS FIELD-CONFIRMED to prevent the same accidental
+  drag under the same conditions.
+
+----------------------------------------------------------------------
+  WHAT IS NOT SETTLED, AND SHOULD NOT BE ASSUMED
+----------------------------------------------------------------------
+
+  WHY 30 failed is not established. Two candidate explanations, ruled
+  neither in nor out:
+
+    1. This wired mouse may translate the same hand movement into
+       more on-screen pixels than the wireless mouse it replaced
+       (different sensor sensitivity/DPI). NOT MEASURED -- the
+       wireless mouse was not tested the same way today.
+
+    2. 30 pixels (8mm) may simply be too small a distance to
+       reliably separate "click with a twitch" from "intended drag"
+       on ANY mouse, and Windows' pointer acceleration means a FAST
+       flick covers more on-screen pixels than a slow deliberate
+       move of the same physical distance. This does not require any
+       wired/wireless difference to be true.
+
+  Telling these apart would need the SAME test repeated with the
+  wireless mouse reconnected. Not done -- raised for Bill to decide
+  if it is worth the ten minutes.
+
+----------------------------------------------------------------------
+  STATE AT CLOSE
+----------------------------------------------------------------------
+
+  Left at 200x200 (stored and live), because it is the only one of
+  the two values tested today that actually stopped the accidental
+  drag. CLAUDE.md's build entry updated to match -- it no longer
+  documents 30 as the working value.
+
+  Undo: Run-SetDragThreshold-Revert.bat -- puts both back to
+  Windows' own default of 4, applied immediately, no sign-out needed.
+======================================================================

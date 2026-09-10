@@ -224,13 +224,33 @@
     per-user (HKCU), no administrator, no self-elevation**, undo file
     written before anything changes, and `MouseSettings-UNDO-CGDELL.txt`
     and `-SANDY.txt` both already exist.
-    **The open question the further testing has to answer:** ***measured
-    2026-09-04, `DragThreshold` runs — the registry value was written
-    correctly (30 → 200) but the LIVE value read back as "could not read",
-    twice.*** So it is stored and not confirmed applied, and the file says
-    to sign out and re-run. **Until a run confirms the live value, the fix
-    is written-not-proven** — the same shape as every other "reported
-    success from a read that produced nothing" in this project.
+    **RESOLVED 2026-09-10 — THE FIELD TEST THE 09-04 SCRIPT WAS BUILT FOR
+    FINALLY HAPPENED, AND IT ANSWERED THE QUESTION THE OTHER WAY THAN
+    EXPECTED.** Bill reported the mouse "acting strange" after switching
+    from his wireless mouse to a wired one. Checking found the drag
+    threshold had been sitting at **200 pixels since 2026-09-04** — a
+    deliberate diagnostic value, never reverted, never tested. ***Reset
+    to 30, the documented shipped value, and confirmed stored AND live
+    (SystemParametersInfo re-read) before Bill tried dragging a folder.
+    Result: "not only does it move easily, it grabbed something and
+    moved it before I could stop it."*** **30 pixels failed a direct
+    field test on the very first try.**
+    Set back to 200 and tested the same way. ***Result: "It doesn't
+    move until I reach 5 cm... the moving image does not show until I
+    pass the 5 cm."*** **200 passed.**
+    **So the 09-04 uncertainty is settled: Windows 11 File Explorer DOES
+    honour SM_CXDRAG/SM_CYDRAG via `DragDetect()`.** That was not known
+    before today. **What was wrong was the number, not the mechanism —
+    the documented default of 30 has been field-disproven, and 200 is
+    field-confirmed.** Left at 200, live and stored. Full record:
+    `Test_Results\DragThreshold-FieldTest-CGDELL-2026-09-10_15-50.txt`.
+    **NOT ESTABLISHED, and not to be assumed either way:** whether 30
+    failed because this specific wired mouse turns the same hand
+    movement into more on-screen pixels than the wireless one did, or
+    because 8mm is simply too small a distance for any mouse to
+    reliably separate a twitch from an intended drag once Windows'
+    pointer acceleration is in play. Telling these apart needs the same
+    test repeated with the wireless mouse reconnected — not done.
   - **ALSO RAISED, same session: BACK REPLAYS A PHOTOGRAPH, NOT THE WORDS.**
     ***Measured: `Save-ScreenSnapshot` stores `GetBufferContents` cells plus
     the buffer width; `Restore-ScreenSnapshot` returns `$false` the moment
