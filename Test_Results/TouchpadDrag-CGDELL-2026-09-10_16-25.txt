@@ -1,0 +1,24 @@
+﻿======================================================================
+  LAPTOP TOUCHPAD -- stop it moving folders by accident
+======================================================================
+  machine : CGDELL
+  user    : willi
+  run at  : 2026-09-10 16:25:37
+
+-- WHY THE MOUSE OBEYED AND THE TOUCHPAD DID NOT ----------------------
+
+  They are two different mechanisms, and only one of them reads the
+  drag threshold.
+
+    The MOUSE asks Windows how far you moved before it decides you
+    meant to drag. That is the drag threshold, and raising it works.
+
+    The TOUCHPAD has its own gesture -- tap twice and hold -- and the
+    touchpad driver starts the drag itself. It never asks Windows
+    about the threshold, so no number could ever have fixed it.
+
+-- BEFORE -------------------------------------------------------------
+  TapAndDrag   : 0   (1 = on, 0 = off)
+  AAPThreshold : 2   (touchpad sensitivity -- reported only)
+
+  REPORT ONLY -- nothing was changed.

@@ -224,26 +224,32 @@
     per-user (HKCU), no administrator, no self-elevation**, undo file
     written before anything changes, and `MouseSettings-UNDO-CGDELL.txt`
     and `-SANDY.txt` both already exist.
-    **RESOLVED 2026-09-10 — THE FIELD TEST THE 09-04 SCRIPT WAS BUILT FOR
-    FINALLY HAPPENED, AND IT ANSWERED THE QUESTION THE OTHER WAY THAN
-    EXPECTED.** Bill reported the mouse "acting strange" after switching
-    from his wireless mouse to a wired one. Checking found the drag
-    threshold had been sitting at **200 pixels since 2026-09-04** — a
-    deliberate diagnostic value, never reverted, never tested. ***Reset
-    to 30, the documented shipped value, and confirmed stored AND live
-    (SystemParametersInfo re-read) before Bill tried dragging a folder.
-    Result: "not only does it move easily, it grabbed something and
-    moved it before I could stop it."*** **30 pixels failed a direct
-    field test on the very first try.**
-    Set back to 200 and tested the same way. ***Result: "It doesn't
+    **CORRECTED 2026-09-10 — my own first write of this entry claimed
+    2026-09-10 was the first time the 200-pixel value was field tested.
+    That was wrong, and the session log I should have checked first
+    already had the answer: Bill confirmed 200 working on the mouse the
+    same night the fix was built, 2026-09-04 — "working on the mouse,
+    but not on the laptop flat below keyboard mouse." That second half
+    of the sentence is why the touchpad has its OWN separate fix below;
+    the touchpad drags through its own tap-twice-and-hold gesture and
+    never consults this threshold at all, so no number here could ever
+    have fixed it.**
+    **WHAT 2026-09-10 ACTUALLY ESTABLISHED, narrower than first
+    claimed:** the setting had been sitting at 200 untouched for six
+    days with no further testing recorded, so today re-confirmed it
+    survives a mouse swap (wireless to wired) and a reboot. ***Reset to
+    30, the documented shipped value, confirmed stored AND live
+    (SystemParametersInfo re-read), then tested: "not only does it move
+    easily, it grabbed something and moved it before I could stop
+    it."*** **30 failed.** Set back to 200, same test: ***"It doesn't
     move until I reach 5 cm... the moving image does not show until I
-    pass the 5 cm."*** **200 passed.**
-    **So the 09-04 uncertainty is settled: Windows 11 File Explorer DOES
-    honour SM_CXDRAG/SM_CYDRAG via `DragDetect()`.** That was not known
-    before today. **What was wrong was the number, not the mechanism —
-    the documented default of 30 has been field-disproven, and 200 is
-    field-confirmed.** Left at 200, live and stored. Full record:
-    `Test_Results\DragThreshold-FieldTest-CGDELL-2026-09-10_15-50.txt`.
+    pass the 5 cm."*** **200 held**, consistent with 09-04.
+    **The documented shipped default of 30 is field-disproven — twice
+    now, six days apart — and 200 is field-confirmed twice.** Left at
+    200, live and stored. Full record:
+    `Test_Results\DragThreshold-FieldTest-CGDELL-2026-09-10_15-50.txt`
+    (corrected in place, not reissued, so the mistake stays visible
+    rather than quietly vanishing).
     **NOT ESTABLISHED, and not to be assumed either way:** whether 30
     failed because this specific wired mouse turns the same hand
     movement into more on-screen pixels than the wireless one did, or

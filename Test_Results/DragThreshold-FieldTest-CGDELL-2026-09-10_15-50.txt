@@ -1,7 +1,23 @@
 ======================================================================
-  DRAG THRESHOLD -- THE FIELD TEST THE 2026-09-04 SCRIPT WAS BUILT FOR
-  CGDELL   2026-09-10 15:50
+  DRAG THRESHOLD -- A RE-TEST, NOT THE FIRST TEST -- SEE THE CORRECTION
+  CGDELL   2026-09-10 15:50, corrected 16:30
 ======================================================================
+
+  CORRECTION, added after Bill pointed it out: this file originally
+  said today was the first time the 200-pixel value had been field
+  tested. WRONG. The session log already recorded Bill confirming 200
+  working on the mouse the same night the fix was built, 2026-09-04 --
+  "working on the mouse, but not on the laptop flat below keyboard
+  mouse." That sentence is also the whole reason the touchpad has its
+  own separate fix (TapAndDrag, see Set-TouchpadDrag-2026-09-04-2243.ps1)
+  rather than a threshold number -- the touchpad drags through its own
+  gesture and never consults this setting at all.
+
+  So what today actually adds: the setting had sat untouched at 200 for
+  six days with no further testing recorded, and today re-confirmed it
+  still holds after a mouse swap (wireless to wired) and a reboot.
+  Kept below, unedited, so the mistake stays visible rather than
+  quietly vanishing.
 
   This is the manual result the automated scripts cannot produce
   themselves -- they can set and read back the number, but only a
@@ -47,18 +63,37 @@
   WHAT THIS SETTLES
 ----------------------------------------------------------------------
 
-  THE 2026-09-04 OPEN QUESTION IS ANSWERED: Windows 11 File Explorer
-  DOES honour SM_CXDRAG / SM_CYDRAG via DragDetect(). This was not
-  known before today -- the script that sets this value said plainly
-  it had not been verified, because Explorer runs on a newer input
-  stack than the API being called.
+  THE 2026-09-04 QUESTION WAS ALREADY ANSWERED THEN, AND TODAY AGREES:
+  Windows 11 File Explorer honours SM_CXDRAG / SM_CYDRAG via
+  DragDetect() on the mouse. Bill confirmed this on 2026-09-04 too --
+  see the correction at the top of this file.
 
-  THE DOCUMENTED VALUE OF 30 IS FIELD-DISPROVEN. It let a real,
+  THE DOCUMENTED VALUE OF 30 IS FIELD-DISPROVEN, TODAY. It let a real,
   observed accidental drag through, on the first attempt, on this
-  machine, today.
+  machine.
 
-  THE VALUE 200 IS FIELD-CONFIRMED to prevent the same accidental
-  drag under the same conditions.
+  THE VALUE 200 IS FIELD-CONFIRMED A SECOND TIME, six days apart, to
+  prevent the same accidental drag under the same conditions.
+
+----------------------------------------------------------------------
+  THE TOUCHPAD, CHECKED THE SAME SESSION -- READ ONLY, NOTHING CHANGED
+----------------------------------------------------------------------
+
+  Bill: "after that we set the laptop surface finger mouse pointer to
+  a higher setting also 200 and it still is working."
+
+  Measured, live, via Set-TouchpadDrag-2026-09-04-2243.ps1 -ReportOnly:
+
+    TapAndDrag   : 0     (0 = off -- matches the 2026-09-04 fix, holding)
+    AAPThreshold : 2     (touchpad sensitivity -- this script only
+                          reports this value, it has never set it)
+    CursorSpeed  : 10
+
+  NONE OF THESE READS 200. The only "200" that exists anywhere in this
+  project's mouse work is the mouse drag threshold above -- there is no
+  touchpad setting at that number in the registry key this project
+  touches. Asked Bill where he set it, to avoid filing a guess as a
+  confirmed fact. Not yet answered as of this writing.
 
 ----------------------------------------------------------------------
   WHAT IS NOT SETTLED, AND SHOULD NOT BE ASSUMED
