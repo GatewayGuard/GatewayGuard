@@ -1,0 +1,26 @@
+    │                                                                     │
+├─────┼─────────────────────────────────────────────────────────────────────┤
+│ 10  │ FT-144 — Device Encryption screens: account reads Local,            │
+│     │ recovery-key screen before the sign-in steps, four screens not one  │
+├─────┼─────────────────────────────────────────────────────────────────────┤
+│ 11  │ FT-153 — intro is 6 screens; every screen ends with a blank line    │
+├─────┼─────────────────────────────────────────────────────────────────────┤
+│ 12  │ FT-154 — Defender Offline Scan listed before Malwarebytes           │
+├─────┼─────────────────────────────────────────────────────────────────────┤
+│ 13  │ FT-155 — checklist item 6 reads Edge Phishing Protection (all 3)    │
+├─────┼─────────────────────────────────────────────────────────────────────┤
+│ 14  │ FT-152 — note any screen still saying "this tool" instead of        │
+│     │ Checkup                                                             │
+├─────┼─────────────────────────────────────────────────────────────────────┤
+│     │ FT-146/147 — press B everywhere offered; never "as far back as you  │
+│ 15  │ can go". Then resize the window — B should not be offered at the    │
+│     │ new width                                                           │
+├─────┼─────────────────────────────────────────────────────────────────────┤
+│ 16  │ FT-148 — afterwards, Tool\Run-PSErrorCheck.bat, count 4104 events   │
+└─────┴─────────────────────────────────────────────────────────────────────┘
+
+Do not let encryption start. Read the Device Encryption screens and back out.
+
+Then Tool\Run-CollectLogs.bat and send me the log.
+
+One thing to expect: item 10 will now genuinely test the local branch, which it wouldn't have an hour ago. That check is live for the first time.

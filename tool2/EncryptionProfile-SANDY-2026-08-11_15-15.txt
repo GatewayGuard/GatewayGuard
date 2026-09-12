@@ -1,0 +1,51 @@
+﻿================================================================
+ ENCRYPTION PROFILE AND TIMING -- ALL FIXED DRIVES (read-only)
+ Computer : SANDY
+ Run date : 2026-08-11 15:15:40
+ Checker  : Measure-Encryption-2026-08-02 (rev 2 -- multi-drive)
+================================================================
+
+FIXED DRIVES FOUND: 2
+
+--- C: Windows ---
+  size / used         : 237.3 GB / 67.7 GB  (29% full)
+  disk number         : 1
+  drive model         : WDC PC SN520 SDAPNUW-256G-1006
+  media type / bus    : SSD / NVMe
+  physical size       : 238 GB
+  encryption status   : FullyDecrypted
+  percent encrypted   : 0
+  method              : None
+  read via            : Get-BitLockerVolume
+
+--- D: (no label) ---
+  size / used         : 931.5 GB / 78.9 GB  (8% full)
+  disk number         : 0
+  drive model         : ST1000LM035-1RK172
+  media type / bus    : HDD / RAID
+  physical size       : 932 GB
+  encryption status   : FullyDecrypted
+  percent encrypted   : 0
+  method              : None
+  read via            : Get-BitLockerVolume
+
+
+ENCRYPTION MODE PREDICTION
+  sleep support       : Modern Standby (S0 Low Power Idle)
+  predicted mode      : USED-SPACE-ONLY -- only the space in use is encrypted
+  => estimate the time from the USED figures above, not the volume sizes.
+
+CPU  : Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz  (4 cores / 8 threads)
+RAM  : 8 GB
+Edition: Core
+
+NOT CONVERTING RIGHT NOW -- profile captured, nothing to time.
+
+  encrypted     : none
+  NOT encrypted : C: D:
+
+  To capture a real timing, START THIS SCRIPT FIRST, leave it running,
+  then turn encryption on. It samples every 60 seconds.
+
+  Samples CSV : C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\EncryptionSamples-SANDY-2026-08-11_15-15.csv
+================================================================

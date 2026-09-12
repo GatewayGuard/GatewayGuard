@@ -1,0 +1,292 @@
+GatewayGuard Website Deployment Instructions
+Dated: 2026-08-02 20:02 EDT
+Machine: CGDELL (Dell Latitude 5430)
+
+Change History:
+  2026-08-02 20:02: Complete replacement of the 2026-07-21 10:09 version.
+                    Rewritten for bulk upload of 19 guide pages using
+                    GitHub's Add file > Upload files (drag and drop),
+                    replacing the one-file-at-a-time pencil-editor method.
+                    W3C validation switched to the Validate by File Upload
+                    tab. Added filename verification pre-check and the
+                    index.html branch (home page vs guide index).
+  2026-07-21 10:09: Revised under new file naming and revision rules.
+  2026-07-21 09:33: Initial file with W3C validation and browser check.
+
+=====================================================================
+WHAT YOU ARE DEPLOYING
+=====================================================================
+  19 setting pages  --> gatewayguard.co/guide/[name].html
+  1 index.html      --> see STEP 6, pick Branch A or Branch B
+
+Repo:   https://github.com/gatewayguard/gatewayguard.github.io
+Branch: main
+Live:   https://gatewayguard.co
+
+Verified 2026-08-02 (sourced, GitHub Docs):
+  - Add file > Upload files accepts drag and drop of files OR a folder
+  - Up to 100 files at a time
+  - 25 MiB per file through the browser (our pages are far under this)
+
+=====================================================================
+PRE-CHECK 0 -- FILENAMES (DO THIS FIRST, IT IS THE ONE THAT BITES)
+=====================================================================
+The uploaded filename becomes the live URL. A timestamp in the
+filename means a broken link from the guide index and from the tool.
+
+1. Unzip GatewayGuard_All19_Final-2026-08-02-1820.zip to a folder
+   you can find easily. Suggested location:
+
+C:\Users\CGAdmin\Downloads\gg-deploy
+
+2. Open that folder in File Explorer. Confirm you see exactly these
+   19 names, all lowercase, NO date, NO time, NO "GatewayGuard_"
+   prefix:
+
+advertising-id.html
+bitlocker.html
+defender-realtime.html
+diagnostic-data.html
+edge-startup.html
+fast-startup.html
+firewall.html
+memory-integrity.html
+password-manager.html
+password-on-wake.html
+periodic-scanning.html
+phishing-protection.html
+remote-desktop.html
+smartscreen.html
+tamper-protection.html
+wake-on-lan.html
+widgets.html
+windows-hello.html
+windows-update.html
+
+3. If ANY file has a timestamp or a prefix, rename it now to match
+   the list above. Do not upload until all 19 match exactly.
+
+4. Count them. It must be 19. If it is not 19, stop and report back.
+
+=====================================================================
+STEP 1 OF 7 -- BROWSER CHECK (Rule W-03)
+=====================================================================
+Claude's preview does not render CSS. Your own eyes are the check.
+
+1. In C:\Users\CGAdmin\Downloads\gg-deploy, double-click
+   bitlocker.html. It opens in your default browser.
+2. Confirm:
+   - Nav bar shows and is readable
+   - Breadcrumb reads Home > Guide > [setting name]
+   - Body text is Arial, page is not full-width edge to edge
+   - Footer shows support@gatewayguard.co
+   - No solid black filled blocks (borders and text only)
+3. Repeat for two more pages of your choice -- pick one long page
+   (windows-update.html) and one short page (widgets.html).
+4. If anything looks wrong on any of the three, STOP. Report back
+   before uploading anything.
+
+Spot-checking three is deliberate: if the template is right on
+three, it is right on all 19, because they share one stylesheet.
+
+=====================================================================
+STEP 2 OF 7 -- W3C VALIDATION (Rule W-04)
+=====================================================================
+Every file, one at a time. About 20 seconds each once you get the
+rhythm -- roughly 7 minutes for all 19.
+
+1. Go to:
+
+https://validator.w3.org/#validate_by_upload
+
+2. Click "Choose File" (or "Browse").
+3. Navigate to C:\Users\CGAdmin\Downloads\gg-deploy
+4. Pick the first file. Click "Check."
+5. Read the result:
+   - "Document checking completed. No errors or warnings" = PASS
+   - Any ERROR = FAIL. Write down the filename and the error text.
+   - Warnings alone = acceptable, but note them.
+6. Press the browser Back button. Repeat from step 2 for the next
+   file.
+7. Keep a running tally on paper: 19 filenames, PASS or FAIL beside
+   each.
+
+If ANY file fails: do not upload that file. Upload the passing ones,
+report the failures back to Claude with the exact error text, and
+upload the fixed file afterward.
+
+=====================================================================
+STEP 3 OF 7 -- UPLOAD THE 19 PAGES TO THE guide FOLDER
+=====================================================================
+METHOD 1 -- drag the folder (preferred, one commit, all 19 at once)
+
+1. In File Explorer, inside C:\Users\CGAdmin\Downloads\gg-deploy,
+   create a new folder named exactly:
+
+guide
+
+2. Move all 19 .html files INTO that guide folder.
+   (Lowercase "guide". The name of this folder becomes the folder
+   name on the website.)
+
+3. Go to:
+
+https://github.com/gatewayguard/gatewayguard.github.io
+
+4. Above the file list, click the "Add file" dropdown, then click
+   "Upload files".
+
+5. Drag the guide FOLDER from File Explorer onto the upload area
+   in the browser.
+
+6. STOP AND VERIFY BEFORE COMMITTING. The screen must list 19 files
+   and each one must show the path starting with guide/ -- for
+   example: guide/bitlocker.html
+   If the paths do NOT start with guide/, click Cancel and use
+   Method 2 below instead. Do not commit files to the repo root.
+
+7. In the commit message box, type:
+
+Add 19 guide setting pages 2026-08-02
+
+8. Leave "Commit directly to the main branch" selected.
+
+9. Click "Commit changes".
+
+10. If the Commit button does not respond, press F11 (full screen
+    toggle) and click again. This is a known GitHub editor quirk.
+    If still stuck, press Ctrl+Shift+R and repeat from step 4.
+
+METHOD 2 -- navigate into the folder first (fallback)
+
+1. Go to the repo, click the "guide" folder in the file list to
+   open it.
+2. Click "Add file" > "Upload files".
+3. Confirm the breadcrumb at the top of the upload page reads:
+   gatewayguard.github.io / guide /
+   If it does not say guide, back out and try again.
+4. Drag the 19 .html files (not the folder -- the files) onto the
+   upload area.
+5. Commit message, branch, and commit button as in Method 1.
+
+=====================================================================
+STEP 4 OF 7 -- CONFIRM THE 19 PAGES ARE LIVE
+=====================================================================
+1. Wait 60 seconds after the commit.
+2. Go to:
+
+https://gatewayguard.co/guide/bitlocker.html
+
+3. Press Ctrl+Shift+R to hard refresh past the browser cache.
+4. Confirm the page loads and looks the same as it did locally.
+5. Check two more, one from the middle and one from the end of the
+   alphabet:
+
+https://gatewayguard.co/guide/password-manager.html
+
+https://gatewayguard.co/guide/windows-update.html
+
+6. If a page shows 404 after 3 minutes: check the filename in the
+   repo against the URL you typed. Case matters -- Bitlocker.html
+   and bitlocker.html are two different files to GitHub Pages.
+
+=====================================================================
+STEP 5 OF 7 -- CLICK EVERY LINK ON THE GUIDE INDEX
+=====================================================================
+1. Go to:
+
+https://gatewayguard.co/guide/index.html
+
+2. Press Ctrl+Shift+R.
+3. Click every one of the 19 setting cards, one at a time, using
+   the browser Back button between each.
+4. Every one must open a real page. None may 404.
+5. Write down any that 404. A 404 here means the link text in the
+   index and the uploaded filename disagree -- report which ones
+   and Claude will correct the index.
+
+This step is the whole point of the upload. Do not skip it.
+
+=====================================================================
+STEP 6 OF 7 -- THE index.html FILE
+=====================================================================
+UNRESOLVED: Claude does not know which index.html you mean. Pick the
+branch that matches the file you have, and tell Claude which one you
+used so the record is right.
+
+BRANCH A -- it is the HOME page (goes to the repo root)
+  Destination: https://gatewayguard.co/
+  1. Browser-check it locally (Step 1 method) and W3C-validate it
+     (Step 2 method). Both are required, same as the 19.
+  2. Go to the repo root:
+
+https://github.com/gatewayguard/gatewayguard.github.io
+
+  3. Click "index.html" in the file list.
+  4. Click the pencil icon (Edit this file).
+  5. Press Ctrl+A, then Delete, to clear the old content.
+  6. Open your new index.html in Notepad. Ctrl+A, Ctrl+C.
+  7. Click back in the GitHub editor. Ctrl+V.
+  8. Scroll down, click "Commit changes...", message:
+
+Update home page 2026-08-02
+
+  9. Click the green "Commit changes" button.
+ 10. Wait 60 seconds, go to https://gatewayguard.co and
+     Ctrl+Shift+R. Confirm it loads and the footer shows
+     support@gatewayguard.co.
+
+BRANCH B -- it is the GUIDE index (goes in the guide folder)
+  Destination: https://gatewayguard.co/guide/index.html
+  Same as Branch A, except at step 3 you first click the "guide"
+  folder, THEN click index.html inside it. Commit message:
+
+Update guide index 2026-08-02
+
+  Then re-run STEP 5 above -- a new guide index means all 19 links
+  need clicking again.
+
+Why the pencil editor and not drag-and-drop for this one: it is a
+single file replacing a single file, and the pencil route shows you
+the old content before you overwrite it.
+
+=====================================================================
+STEP 7 OF 7 -- CLOSE THE LOOP
+=====================================================================
+1. Report back to Claude:
+   - Did all 19 validate clean? Any failures, with exact error text.
+   - Did all 19 links on the guide index open? Any 404s.
+   - Which index.html branch you used, A or B.
+2. Upload to the Claude project so future sessions can read them:
+
+GatewayGuard_DeploymentSteps-2026-08-02-2002.txt
+
+3. Delete from the Claude project (superseded by this file):
+
+GatewayGuard_DeploymentSteps-2026-07-21-1009.txt
+
+4. Still outstanding from the 2026-08-02 18:20 briefing -- delete
+   the 17 old timestamped HTML files from the Claude project. The
+   no-timestamp set is authoritative. Do this by hand in the Claude
+   project interface; Claude cannot delete project files.
+
+=====================================================================
+IF SOMETHING GOES WRONG
+=====================================================================
+Uploaded to the wrong place (files landed in the repo root):
+  Every file you uploaded shows in the root file list. Open each
+  one, click the trash/delete icon, commit. Then redo STEP 3 using
+  Method 2. Nothing is lost -- your local copies are untouched.
+
+Committed a bad file:
+  GitHub keeps every version. Click the file, click "History", pick
+  the previous commit, click the "..." menu, "View file", then copy
+  that content back in through the pencil editor.
+
+Page loads but looks unstyled:
+  The stylesheet path is wrong for the folder depth. Report it --
+  do not try to fix the CSS link by hand.
+
+Page 404s after 3 minutes:
+  Filename case mismatch, or the file went to the root instead of
+  guide/. Check the repo file list before anything else.

@@ -1,0 +1,15 @@
+Response-GatewayGuard_CloudRequest-Review-2026-08-21
+
+1. Can't setup payment until we have a link on gatewayguard.co for gumroad to link to so it can process payments.  Will need to setup two one for checkup and one for the security guide
+2. Must wait until we have Gumroad setlup with the two products and  the EULA finalized - will get to it today or tomorrow
+3. see response to 2 above
+4. see response to 2 above
+5. CGDELL winver OS Name Microsoft Windows 11 Pro
+Version	10.0.26200 Build 26200
+Sandy winver 25H2 (OS Build 26200.9168)
+6. remove mention of them in terms of their availability and pricing.  Do tell buyers to contact support@gatewayguard.co, if they are interested in a bundle of the Checkup product.   
+7. No Fee ever - but how do we apply this to a bundle? Research how others handle this.
+8. I thought the new terms would apply to my new Gatewayguard account on gumroad setup on 08-25-2026
+9. three things I could do, run ascii43 on sandy 2 Review website\html (have they all been updated with  yours and clouds my comments or are there questions yet?) 3. setup gumroad but it requires research on how to setup our website and gumroad to interact.  
+
+

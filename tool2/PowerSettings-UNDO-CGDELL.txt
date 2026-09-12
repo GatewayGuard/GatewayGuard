@@ -1,0 +1,7 @@
+﻿# GatewayGuard power-settings undo -- CGDELL
+# Written 2026-08-24 02:36:48 by Set-StayAwake-2026-08-24.ps1
+# Format: SUBGROUP|SETTING|AC_seconds|DC_seconds
+# Put it all back:  Run-StayAwake.bat undo
+SUB_SLEEP|STANDBYIDLE|0|180
+SUB_VIDEO|VIDEOIDLE|0|0
+SUB_SLEEP|HIBERNATEIDLE|0|2147483647

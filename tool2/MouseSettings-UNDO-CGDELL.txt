@@ -1,0 +1,2 @@
+﻿HKCU:\Control Panel\Desktop|WheelScrollLines|3
+HKCU:\Control Panel\Mouse|DoubleClickSpeed|200

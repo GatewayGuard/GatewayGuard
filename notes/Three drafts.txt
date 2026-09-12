@@ -1,0 +1,39 @@
+ Three drafts
+
+  A — Ideas You Send Us. The feedback gap. Deliberately narrower than
+  Malwarebytes': theirs also takes a licence to use a business customer's name
+  and logo in marketing, which is wrong in an agreement sold to households. Its
+  second paragraph explains why the clause exists and gives the customer
+  something back — I've flagged that to the attorney as cuttable if it weakens
+  the clause legally, because it's doing work for the brand rather than the
+  contract.
+
+  B — Your Privacy. It opens with the line most companies can't write: Checkup
+  collects nothing. That's true and it's unusual.
+
+  It carries three warnings rather than pretending to be finished:
+
+  - "We never see your card number" is a claim about Gumroad's system. I haven't
+    checked it. Almost certainly true if they're merchant of record, but it isn't
+    ours to assume.
+  - The email paragraph is worded to stay on the transactional side of the spam
+    rules, using the research already in your Appendix. Confirm that's the shape
+    you want.
+  - It points at a privacy policy that doesn't exist. There's an outline for that
+    at the end — with one item to check first: whether your site carries any
+    analytics at all. If the answer is none, that's worth saying out loud.
+
+  C — the printed copy. Three options rather than one, because it's your call. My
+  recommendation is one copy per person in the household — it solves the case
+  that actually happens, keeps the household boundary Section 5 already uses, and
+  a customer can tell whether they're inside it.
+
+  Still not drafted, and each says why
+
+  The bare "Remove" margin note — two readings, entirely different edits, still
+  not guessed at.
+
+  Multi-PC pack scope — a product decision, not a drafting one.
+
+  The Appendix four — arbitration, entire-agreement, assignment, export. Drafting
+  them would prejudge the question the attorney has to answer.

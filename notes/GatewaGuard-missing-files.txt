@@ -1,0 +1,8 @@
+GatewayGuard_NamingStandard-2026-07-18-r2.md
+Run-GatewayGuard.bat
+GatewayGuard_FutureProjects-2026-07-19.md
+GatewayGuard_ProjectFiles_DeleteKeep-2026-07-21-2023.txt
+GatewayGuard_FilesCleanupList-2026-07-24-0846.docx
+Run-ExternalCommandCheck.bat
+GatewayGuard_SessionLog.md
+GatewayGuard_All19_Final-2026-08-02-1820.zip

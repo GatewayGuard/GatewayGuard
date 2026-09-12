@@ -1,0 +1,85 @@
+SUBJECT: Project GitHub connector not exposed as a tool; project knowledge
+frozen at an older commit
+
+ENVIRONMENT
+- Interface: claude.ai (web/mobile chat)
+- Model: Claude Opus 5
+- Context: a Project, with project knowledge enabled and a GitHub connector
+  configured against a private org repo (GatewayGuard/GatewayGuard)
+- Date of this session: 2026-08-12 Time 22:14
+
+WHAT I EXPECT
+My project instructions tell Claude to read governing documents directly
+from the repository at session start, beginning with ProjectDocs/CURRENT.md.
+This worked in a prior session (2026-08-11), where Claude could name repo
+file paths directly.
+
+WHAT HAPPENS INSTEAD
+In this session Claude has no GitHub tool available at all. It cannot read
+any repository file. It reports the following, all of which it verified
+rather than assumed:
+
+1. No GitHub connector appears in its tool list. Enumerated: 38 tools, none
+   of which reads a git repository.
+
+2. search_mcp_registry returned 10 connectors (Digits, alphaXiv, Helix,
+   august, Klaviyo, Alpha Vantage, Freshservice, Plaid, MuleSoft, Signeasy).
+   No GitHub connector among them.
+
+3. The code-execution container is empty of project files. Verified:
+     ls /mnt/project/                          -> 0 entries
+     ls /mnt/user-data/uploads/                -> empty
+     find / -maxdepth 6 -name "CURRENT.md"     -> no output
+     find / -maxdepth 6 -type d -name ".git"   -> no output
+
+4. The container CAN reach GitHub over the network (api.github.com returns
+   200, a public repo clones successfully), but the repo is private, so this
+   is not a usable path without credentials — which should not be pasted
+   into a chat.
+
+5. project_knowledge_search DOES work, and returns results with repo-style
+   path prefixes (ProjectDocs/..., Tool/..., CLAUDE.md). So the connector
+   evidently populated project knowledge at some earlier point.
+
+THE ACTUAL PROBLEM: THE SNAPSHOT IS STALE AND NOTHING SIGNALS IT
+Project knowledge appears frozen at approximately 2026-08-10. Evidence,
+from five separate searches:
+
+- ProjectDocs/CURRENT.md does not surface in any search.
+- The newest documents present are
+    GatewayGuard_ProjectInstructions-2026-08-10-2245.md
+    GatewayGuard_SyncPlan-2026-08-10-1119.md
+- Both still describe the PRE-CURRENT.md method of locating documents
+  (glob by filename pattern, take newest by date in filename). Neither
+  mentions CURRENT.md. So the snapshot predates its creation.
+- My instructions include a sentinel-phrase check: find the exact phrase
+  "local account named panther" in the current briefing. That phrase appears
+  nowhere in project knowledge. The word "panther" appears exactly once, in
+  an unrelated "Prepared for:" line in OneDrive-Resolution-Steps-2026-08-03.md.
+
+The sentinel check did its job — Claude stopped rather than answering from a
+stale snapshot. But it only worked because I had written that check myself.
+Nothing in the product indicated the connector was absent or that project
+knowledge was out of date.
+
+WHAT I WOULD LIKE ANSWERED
+1. Why is a project's configured GitHub connector available in one session
+   and absent in the next? Is this expected behavior, a per-conversation
+   setting, an auth expiry, or a fault?
+2. Does the GitHub connector expose live repo reads as a tool, or does it
+   only populate project knowledge via a sync? If the latter, what triggers
+   a sync — manual, scheduled, or on-demand?
+3. How do I force a re-sync so newly committed files (ProjectDocs/CURRENT.md)
+   become visible?
+4. Is there any way for Claude, or for me, to see the commit or timestamp
+   that project knowledge currently reflects? Right now a stale snapshot is
+   indistinguishable from a current one from inside the conversation, which
+   is the core risk: this project's documents change several times a day, and
+   an answer from a four-day-old snapshot looks exactly like a correct one.
+
+WHY THIS MATTERS FOR MY USE CASE
+This is a solo software project with governing documents that change
+constantly and a hard launch date. The entire workflow is built on Claude
+reading current repository state rather than answering from memory. A silently
+stale snapshot is worse than no access at all, because it produces confident
+answers about a version of the project that no longer exists.

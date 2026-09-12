@@ -1,0 +1,65 @@
+=================================================================
+MB STATE AUDIT -- CAPTURE TEMPLATE
+Run on: Dell Latitude 5430 (Win 11 Pro)
+Run AFTER ascii32 field test, while machine is open
+Date/time to fill in: ___________________________
+=================================================================
+
+STEP 1: Open PowerShell as Administrator, paste and run each block.
+Copy the full output and paste below each command.
+
+-----------------------------------------------------------------
+COMMAND 1: SecurityCenter2 query
+-----------------------------------------------------------------
+Get-CimInstance -Namespace root\SecurityCenter2 -ClassName AntiVirusProduct | Select displayName, productState | Format-List
+
+OUTPUT:
+[paste here]
+
+-----------------------------------------------------------------
+COMMAND 2: Defender status
+-----------------------------------------------------------------
+Get-MpComputerStatus | Select RealTimeProtectionEnabled, AntivirusEnabled, AMRunningMode, AMProductVersion | Format-List
+
+OUTPUT:
+[paste here]
+
+-----------------------------------------------------------------
+COMMAND 3: MB registry key check
+-----------------------------------------------------------------
+Get-ChildItem "HKLM:\SOFTWARE" | Where-Object { $_.Name -like "*Malwarebytes*" } | Select Name
+
+OUTPUT:
+[paste here]
+
+-----------------------------------------------------------------
+COMMAND 4: MB registry key (alternate path)
+-----------------------------------------------------------------
+Get-ChildItem "HKLM:\SOFTWARE\WOW6432Node" | Where-Object { $_.Name -like "*Malwarebytes*" } | Select Name
+
+OUTPUT:
+[paste here]
+
+-----------------------------------------------------------------
+COMMAND 5: MB service state
+-----------------------------------------------------------------
+Get-Service | Where-Object { $_.Name -like "*Malwarebytes*" -or $_.Name -like "*MBAMService*" } | Select Name, Status, StartType
+
+OUTPUT:
+[paste here]
+
+-----------------------------------------------------------------
+COMMAND 6: Installed programs check
+-----------------------------------------------------------------
+Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*" | Where-Object { $_.DisplayName -like "*Malwarebytes*" } | Select DisplayName, DisplayVersion
+
+OUTPUT:
+[paste here]
+
+=================================================================
+WHAT WE'RE LOOKING FOR:
+- Does SC2 show MB or just Defender? (confirms trial-expired deregisters)
+- Which registry key path is correct for MB detection?
+- Is MBAMService present/running in trial-expired state?
+- What version of MB is installed?
+=================================================================

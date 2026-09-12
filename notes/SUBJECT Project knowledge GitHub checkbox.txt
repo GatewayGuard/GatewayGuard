@@ -1,0 +1,89 @@
+SUBJECT: Undocumented checkbox beside the Sync button on a GitHub-connected
+repository in project knowledge -- what is it?
+
+ATTACH A SCREENSHOT OF THE CONTROL BEFORE SENDING. That is the whole point of
+this note. Support's last question was "could you describe what happens when
+you click it?", and "it puts a checkmark in the box" is a true answer that
+cannot help them. A picture ends the round trip, because they can then see the
+control they have no documentation for.
+
+ENVIRONMENT
+- Interface: claude.ai (web)
+- Model: Claude Opus 5
+- Context: a Project with project knowledge enabled and a GitHub connector
+  configured against a private org repo (GatewayGuard/GatewayGuard)
+- Dates of the observations below: 2026-08-14
+- Prior ticket: I asked about this connector on 2026-08-12 and your answer was
+  clear and correct -- the connector syncs into project knowledge, exposes no
+  live repository tool, sync is manual, and there is no way to see which commit
+  a snapshot reflects. This note is a narrower follow-up about one UI control.
+
+THE CONTROL
+There is a checkbox beside the Sync button on the connected repository in the
+project knowledge panel. It has no visible label. I cannot find it described
+anywhere.
+
+WHAT I EXPECTED
+That the checkbox would be either documented, or explainable by support, or
+observably do something when ticked. None of the three is true.
+
+EVERY CHECK I RAN, WITH THE ACTUAL RESULT
+
+1. ASKED CHAT SUPPORT.
+   The agent asked me whether I had turned auto-sync on, and then said they
+   had no knowledge of the checkbox I was describing. Their guidance was
+   "try it and see if anything changes." I have tried it. See item 5.
+
+2. SEARCHED YOUR PUBLIC DOCUMENTATION, 2026-08-14.
+   support.claude.com/en/articles/10167454-use-the-github-integration
+   states that a connected repository has two controls: a Sync icon and a
+   Configure files icon. No checkbox is documented. The article's language
+   about syncing is manual throughout: "You can use the 'Sync' icon to ensure
+   you're working with the most up-to-date version of your codebase."
+
+3. FOUND A SIMILARLY-NAMED SETTING THAT IS A DIFFERENT FEATURE.
+   support.claude.com/en/articles/13837433-manage-plugins-for-your-organization
+   documents a "Sync automatically" toggle, but that governs GitHub-synced
+   PLUGIN MARKETPLACES in organization settings. It is not project knowledge,
+   and I do not think it is the same control.
+
+4. THE ARTICLE DOES NOT MATCH THE SHIPPED UI.
+   Observed directly on my screen, 2026-08-14: there is no "Configure files"
+   button. Reconfiguring is done by clicking the repository in project
+   knowledge, which opens its file directory; you change the selection and
+   press Add to save. So article 10167454 describes controls that are not
+   the ones I have, which is why I stopped trying to settle this from the
+   documentation.
+
+5. TICKED IT AND WATCHED. Nothing observable happened.
+   The box shows a checkmark. No message, no state change, no visible effect
+   on syncing.
+
+6. CHECKED WHAT IT DOES TO THE SNAPSHOT. It does not keep it current.
+   Over one day, 2026-08-14, project knowledge moved forward four times, and
+   each move followed shortly after I clicked Sync by hand. One concrete
+   case: I pushed commit 624c930 at 18:27, and afterwards the project was
+   still reading a snapshot generated at 17:20. Nothing arrived on its own.
+
+WHAT I WOULD LIKE ANSWERED
+1. What is the checkbox beside the Sync button? Please answer from the
+   product, not from article 10167454, which does not match my UI.
+2. Is it an auto-sync control for project knowledge? If so, what interval or
+   trigger does it use, and why did nothing arrive without a manual click
+   across a full day of commits?
+3. If it is NOT auto-sync, what is it, and is it safe to leave unticked?
+4. Is article 10167454 out of date? It describes a "Configure files" button
+   my UI does not have, and omits the checkbox my UI does have.
+5. Is there an internal name for this control I can search on?
+
+WHY THIS MATTERS FOR MY USE CASE
+This is a solo software project with a hard launch date and governing
+documents that change several times a day. Everything depends on Claude
+reading the current state of the repository rather than an older copy of it,
+and you have already confirmed there is no way to see which commit a snapshot
+reflects from inside a conversation. So an unlabelled control that might or
+might not automate syncing is not a cosmetic question -- if it works, it
+removes a manual step I currently have to remember after every push; if it
+does nothing, I would like to stop wondering about it.
+
+I am not asking you to change anything. I am asking what the control is.

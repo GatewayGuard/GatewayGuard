@@ -1,0 +1,62 @@
+I have what I need and will start
+  a new session to deal with Ascii40. Write your closing documents for claude
+  cloud and ending the session
+
+Claude_Code_Notes_2026-08-15-1232
+ Found it — and the clock check came out clean (12:26 ET now; the 08:45 commit
+  was earlier in this session, so the stamp is right).
+
+  ProjectDocs\GatewayGuard_LaunchPlan-2026-08-14-0107.md — its header says
+  exactly what you described: "Built from:
+  GatewayGuard_CPM_Schedule-2026-08-02-1201.md (critical path and float), the
+  ascii39 field results, and the repository as measured today." Five tracks (A
+  build, B certificate, C payments, D website, E guide), every task with an owner
+  and a duration.
+
+  Why you couldn't hand it to Cloud: it wasn't in CURRENT.md. It's been tracked
+  and pushed since 14 Aug, so Cloud could read it — but CURRENT.md is the file
+  Cloud follows to know which document is live, and the Launch Plan wasn't
+  listed. Cloud had no way to know it existed or that this copy was current.
+  That's the exact failure CURRENT.md exists to prevent, landing on the one
+  document whose whole job is saying what happens next.
+
+  Fixed. Update-Current.ps1 now resolves 13 documents instead of 11 — Launch plan
+  and the CPM schedule it derives from, so if the two ever disagree it's visible
+  which is the newer reading of the same critical path.
+
+  Also brought Track A up to date, since it still showed ascii40 unbuilt:
+
+  ┌─────┬─────────────────────────────────────────────────────────────────────┐
+  │     │                                                                     │
+  ├─────┼─────────────────────────────────────────────────────────────────────┤
+  │ A1  │ DONE 14 Aug 22:25 — mouse input was on and survived the mask        │
+  ├─────┼─────────────────────────────────────────────────────────────────────┤
+  │ A2  │ Two of three blockers in, gated                                     │
+  ├─────┼─────────────────────────────────────────────────────────────────────┤
+  │ A2a │ NEW — Bill approves the FT-172 approach. This is the entire         │
+  │     │ critical path now.                                                  │
+  ├─────┼─────────────────────────────────────────────────────────────────────┤
+  │ A2b │ NEW — build FT-172, starts the moment A2a is answered               │
+  ├─────┼─────────────────────────────────────────────────────────────────────┤
+  │ A3  │ Opened up to CGDELL, with the measurement that justifies it         │
+  └─────┴─────────────────────────────────────────────────────────────────────┘
+
+  On A3 and CGDELL — I took your "on cgdell" as the answer and wrote the
+  reasoning into the plan rather than leaving it in chat. The field test plan's
+  objection ("CGDELL did not fail, so measuring CGDELL proves nothing") was about
+  phase 0, which asked if the flag survives the mask. Phase 3 asks something
+  else: does ascii40 resist deliberate provocation. CGDELL starts at 0x01F7 —
+  QuickEdit and mouse input both on — where SANDY was 0x01B7 with QuickEdit
+  already off. CGDELL feeds more mouse activity into the buffer than SANDY did,
+  so it's the harsher host, not the weaker one. SANDY is still worth a run as the
+  machine that actually failed on a different Windows edition, but it's no
+  longer the only one that can answer A3.
+
+  Committed and pushed — sync now. Then Cloud reads CURRENT.md and the Launch
+  Plan is row 12.
+
+  To undo: git revert 1917ee6.
+
+  Still open: A2a. You asked to approve the $script:GGScreenOrder approach before
+  FT-172 gets built, and it's now the only thing on the critical path. Say the
+  word and it's about half a day.

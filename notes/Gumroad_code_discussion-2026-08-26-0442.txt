@@ -1,0 +1,65 @@
+p in gumroad to my knowledge
+
+● Bash(cd "/c/Users/willi/OneDrive - GatewayGuard LLC/GatewayGuard" && echo "===
+      DecisionsForBill A.1 exact ===" && sed -n '/CONNECT THE GUMROAD
+      PAYOUT/,/^## 2\./p' Pr…)
+  ⎿  === DecisionsForBill A.1 exact ===
+     ## 1. CONNECT THE GUMROAD PAYOUT METHOD * STILL BLOCKS LAUNCH
+     … +69 lines (ctrl+o to expand)
+  ⎿  Allowed by auto mode classifier
+
+● Bash(cd "/c/Users/willi/OneDrive - GatewayGuard LLC/GatewayGuard" && sed -n
+      '55,80p' ProjectDocs/GatewayGuard_NoteToCloud-2026-08-26-0302.md && echo
+      "=== any other g…)
+  ⎿  **2. Your section 6.7 finding reframes the whole thing, and I want to c
+     onfirm I
+     read it the way you meant it.** The position today is not neutral but
+     … +56 lines (ctrl+o to expand)
+
+● Your plan is right. One correction to the premise, three checks before you
+  press delete.
+
+  You have set something up. measured, from your own screenshots of 2026-08-25,
+  recorded in GatewayGuard_GumroadListings-2026-08-25-0015.md: a product exists
+  at gumroad.com/products/baeofh/edit (line 8), and your account's subdomain is
+  wfbii (line 51). So the account is not blank — you built a product page four
+  weeks ago and the record of it is what that whole listings document was written
+  from.
+
+  But it's worth nothing, so delete it anyway. The product carries Gumroad's
+  random slug baeofh, none of the final copy is entered (the listings doc is the
+  copy, still waiting), the refund toggle is off, and there's no payout method.
+  You lose about ten minutes of typing.
+
+  And the fresh account is genuinely better, for a reason the buyer sees. Today
+  your receipt and download link would read wfbii.gumroad.com/l/checkup. A new
+  account under the LLC lets you claim gatewayguard.gumroad.com. The listings doc
+  already flags baeofh as reading like a mistake — wfbii reads the same way to a
+  70-year-old who just entered a card number.
+
+  Three checks, in this order, before deleting:
+
+  1. Check gatewayguard is free as the subdomain BEFORE you delete. This is the
+     one sequence that can't be undone — delete first, find the handle taken, and
+     you've given up wfbii for nothing. (Not measured — I have not seen
+     Gumroad's signup form. Check it on your screen.)
+  2. Have you ever bought anything on Gumroad with that Google account? Gumroad
+     uses one account for buying and selling, so deleting takes any purchase
+     history and download links with it. You'd probably know, but it's ten
+     seconds while you're signed in.
+  3. Confirm admin@gatewayguard.co is delivering mail right now. The new account
+     has to confirm an address, and the payout and identity verification chain
+     runs through it. A privateemail.com login for it is recorded in Notes\, so
+     the mailbox exists — just make sure something lands in it.
+
+  One dated detail that doesn't change the plan but is worth knowing. Sourced,
+  Cloud from gumroad.com/terms, 2026-08-25: the terms updated 2026-08-17 and
+  existing accounts are bound 2026-09-16. A new account agrees to the new terms
+  on creation. Launch is 09-01 — so the old account would have sold your first
+  copies under terms it wasn't yet bound by, and the new one won't. Cleaner. It
+  does mean the attorney question about the terms diff (item 8 on your list)
+  applies from day one rather than from two weeks in.
+
+  At session close I'll write the account identity into the record —
+  admin@gatewayguard.co, and the fact that no document named it — so the next
+  session doesn't have to ask you again.

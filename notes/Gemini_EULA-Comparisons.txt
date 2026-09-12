@@ -1,0 +1,24 @@
+knowing what you know of our gatewayguard checkup software and windows security guide can you find me three examples of real-life eulas that have software products and documents they sell
+When building professional tools and technical hardening documentation—such as security configuration utilities, scripts, or instructional compliance guides—software publishers typically structure their EULAs and accompanying document licenses to precisely separate executable binary products from reference guides, whitepapers, or system administration manuals.
+
+Here are **three real-world examples** of technology companies and software publishers that explicitly name their software products *and* bundle companion documents (such as technical manuals, deployment guides, or administrative documentation) under unified legal terms:
+
+---
+
+### 1. Articulate Global, LLC (Authoring Software & Technical Help Guides)
+
+* **The Software Product:** Articulate Storyline / Rise (desktop and cloud-based digital content creation applications).
+* **The Documents Included:** The company defines its companion material explicitly as *"Documentation,"* which covers user guides, help manuals, online troubleshooting instructions, and technical specifications shipped or linked with the software.
+* **How the EULA Handles Both:** Articulate’s EULA groups these items together under a single defined term called **"Licensed Products"**. The agreement grants a non-exclusive license to use both the compiled object-code software and the written instructional documentation strictly for internal business operations, binding both to the same security restrictions, anti-reverse engineering clauses, and installation caps.
+
+### 2. VMware / Broadcom (Virtualization Software & Admin Handbooks)
+
+* **The Software Product:** VMware vSphere, ESXi, or Workstation Pro (enterprise and personal hypervisor management suites).
+* **The Documents Included:** System administration guides, command-line interface (CLI) reference manuals, architecture planning guides, and security hardening deployment whitepapers.
+* **How the EULA Handles Both:** VMware's standard End User License Agreement defines the licensed property to include both the software binaries and all accompanying user manuals or technical publications provided by the vendor. While the software binaries are tightly controlled via digital license keys and restricted installation terms, the EULA permits users to make a reasonable number of copies of the technical documentation exclusively for internal reference and training use by authorized system administrators.
+
+### 3. Microsoft Corporation (Windows OS & Deployment Whitepapers)
+
+* **The Software Product:** Windows 11 Pro (operating system software).
+* **The Documents Included:** Official Microsoft Deployment Toolkit (MDT) documentation, Group Policy reference spreadsheets, security baseline configuration guides, and administrator tech-net manuals.
+* **How the EULA Handles Both:** Microsoft’s Microsoft Software License Terms (MSLT) explicitly covers the operating system code while companion technical guidance and security configuration frameworks (like Windows security baselines) are governed by complementary terms on the Microsoft Learn/TechNet network. The EULA specifies the exact product edition (e.g., Windows 11 Pro) in its opening declarations and defines clear boundaries between executable OS files and administrative utility documentation, ensuring users cannot redistribute configuration templates or technical documentation outside authorized corporate deployment scopes.

@@ -1,0 +1,8 @@
+1.Find and quote 
+"SANDY converted to a local account named panther"
+2.  - H-3: validate at https://validator.w3.org — Validate by Direct Input, paste
+  the content, Check. Errors block; warnings don't.
+3. read ProjectDocs\GatewayGuard_WebsiteStandards-2026-07-26-0619.md
+4.  A one-paragraph summary is at
+  GatewayGuard_ProjectInstructions-2026-08-11-1616.md:701, which says
+  WebsiteStandards wins on any disagreement.

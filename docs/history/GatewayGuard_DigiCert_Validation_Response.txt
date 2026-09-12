@@ -1,0 +1,49 @@
+GatewayGuard LLC -- DigiCert OV Code Signing Certificate Validation Response
+=============================================================================
+
+1. Link to the website where your software will be hosted
+   https://gatewayguard.co
+
+2. Description of what your organization does
+   GatewayGuard LLC develops Windows 11 security hardening software for
+   non-technical home users, especially seniors. Our product guides users
+   through essential security configuration steps on their own PC, using
+   plain-language instructions designed for people with no technical
+   background.
+
+3. Description of the files that will be signed
+   A PowerShell script (.ps1) that performs Windows 11 security
+   configuration, accompanied by a batch launcher file (.bat). Both files
+   are distributed directly to end users as a downloadable product.
+
+4. Why do you need a code signing certificate?
+   To establish trust with end users and Windows SmartScreen. Without a
+   code signing certificate, Windows displays an "Unknown Publisher"
+   warning that would prevent non-technical users from running the
+   software. The certificate assures users that the files are authentic,
+   unmodified, and originate from GatewayGuard LLC.
+
+5. What will you be using the certificate to sign?
+   The GatewayGuard PowerShell script (.ps1). The accompanying batch
+   launcher (.bat) cannot be signed by design of the Windows signing
+   infrastructure, but signing the .ps1 establishes verified publisher
+   identity throughout the execution chain.
+
+6. What kind of files will you be signing? Please provide file extensions.
+   .ps1 (PowerShell script)
+
+7. Do you have an example code or file you need to sign?
+   Yes. The file is W11-SecurityHardening-v3-ascii33.ps1 -- a PowerShell
+   script that walks users through Windows 11 security hardening steps
+   interactively via a console interface.
+
+8. Do you have a website for your software or product?
+   Yes -- https://gatewayguard.co
+
+9. Does your organization offer residential proxy services or SOCKS4/5
+   proxy connections as part of your product or service offerings?
+   No. GatewayGuard LLC does not offer, provide, or facilitate any proxy
+   services of any kind. Our current product is a Windows 11 security
+   hardening tool and guide for home users, especially seniors.
+
+=============================================================================

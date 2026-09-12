@@ -1,0 +1,47 @@
+Summary of your action items right now:
+PriorityAction1Reboot Dell — let Defender take over from MB passive mode2After reboot, open MB on Dell → check Account/License line — confirm it says Free3Run the PowerShell check again after reboot to confirm AMRunningMode = Normal4Clarify the $400 cert question — share the link you're looking at5Run ascii31 per the test instructions above6Register at storedeveloper.microsoft.com (free, Company account)7Check phone number on Sectigo order — must be associable with GatewayGuard LLC Dell MB check run 2026-07-16-09-40.txt34 linestxtSkip to content
+Search
+My Account
+Products
+Pricing
+Partners
+About
+Resources
+Help
+Free Download
+When do we collect your information?
+What information do we collect?
+How do we collect your information?
+How do we use personal information?
+Exceptions
+Other Privacy Considerations
+Revisionpasted#2 - see dell mb check attachment- defender back in cntl.  #6 - can't find any license agreement, but MB says  free trial ended, AV protection is off and need to buy to restablish. Check pasted attached - MB privacy policy for license.  #7.  Search all our note files to see if you can find it, If not redo research on resellers of sectigo where  you buy through the reseller, but serctigo does the actually cert work.  You found this, may have been in one of deleted chats I did.  Can't order Sectigo until I get appoval for Maine LLC. #9 emails are gatewayguard.co.  Can't get securityguard out of my head, #10 - Review lates field-test note and projec note to see if there are any addional programming rules to add to project instructions.Reconciled certificate pricing conflicts and synthesized testing protocolsReconciled certificate pricing conflicts and synthesized testing protocols#7 first, because it changes what you buy — found it, and there's a discrepancy I have to flag.
+The decision you're remembering was made July 12 and logged in ProjectNotes: Sectigo quoted you $790 direct, I researched resellers, and you locked in "DigiCert via reseller is the way" at ~$399/yr. The reseller never touches the security part — they take the order and payment; the CA's own vetting team verifies GatewayGuard LLC, the CA issues the certificate, and the CA ships the token. Same certificate, same validation, same root of trust.
+The discrepancy: in this chat two days ago, working from stale notes, I walked you through ordering Sectigo direct at $715 — which contradicts your logged 7/12 decision. Good thing Maine LLC approval blocked the order. Per your flag-don't-smooth rule: the standing decision is DigiCert OV via reseller, and that's still the right call. Current verified prices:
+ResellerPriceLinkSignMyCode$399.99/yrsignmycode.com/digicert-code-signingCheapSSLsecurity~$406/yrcheapsslsecurity.com/digicert/code-signing-certificate.htmlSSL2BUY$549 + $120 tokenskip — pricier
+Two checkout notes: since February 2026, code signing certs are limited to 1-year terms, so buy 1 year. And confirm at checkout whether the DigiCert-shipped FIPS token is included or a separate ~$120 line item — it varies by reseller. Everything else from the step-by-step I gave you still applies (exact LLC name, admin@gatewayguard.co, phone verification, DUNS backup) — just at DigiCert-via-SignMyCode instead of sectigo.com. One technical note from the 7/12 decision log worth restating: .bat files cannot carry a digital signature — launch ships as signed .ps1 + plain .bat launcher, which is why the launcher stays minimal and stable.
+
+#2 — Defender confirmed back in control, and one detail matters for testing. RealTimeProtection True, AMRunningMode Normal — and notably, Malwarebytes has vanished from SecurityCenter2 entirely (only Windows Defender 397568 remains). So when the MB trial dies, MB doesn't just go passive — it deregisters as an AV product completely. The Dell is now the machine we've never had: Defender-primary, MB-installed-but-Free. Your ascii31 run today will exercise detection paths (the FT-30 context logic, items 2/3/5 statuses) that no previous run has touched. That's the most valuable test state the Dell has ever been in.
+#6 — There is no license line in the privacy policy, and that's expected. A privacy policy and a license agreement (EULA) are different documents — the "License Data" section you saw only describes what telemetry MB collects about license state. The in-app message you found — "free trial ended, AV protection is off, buy to re-establish" — is the license-state evidence we needed. FT-57 is now fully closed: the tool's TrialActive detection was correct all along, and the trial-expiry behavior is field-confirmed: real-time turns off, MB deregisters from SC2, Defender auto-resumes as primary. One clarification for your guide copy: MB Free still performs on-demand scans — "AV protection is off" means real-time protection only. The tool's existing wording ("When trial expires, Malwarebytes reverts to Free -- Defender will resume as primary AV automatically") is now verified accurate.
+#9 — Understood, gatewayguard.co. You've typed securityguard/securityguide three times now, which is exactly the kind of thing that ends up in a marketing doc at 11 PM. Suggest adding it to your personal proofreading checklist for website copy.
+#10 — Reviewed the recent field tests and notes. Four new instruction-level rules earned their place (code-level lessons like the [string] casts already live in the Playbook/CodingStandards — these are behavioral rules for the project instructions):
+
+UNRUN BUILD RULE: Never scope or build the next ascii until the current build has at least one field run with an uploaded log. An untested build is a liability, not a build. (ascii26 lesson; nearly repeated at ascii29→30.)
+
+
+RELEASE SIGNING RULE: Signing is the FINAL step, after the pre-build audit passes. Any edit after signing voids the signature — re-audit and re-sign. The .bat launcher cannot be signed and ships plain; keep it minimal and stable.
+
+
+STATUS-STRING CONTRACT: Status strings are matched by gate logic elsewhere in the code ("GOOD", "NOT Encrypted", "primary"). Never reword a status string without grepping every -match that consumes it, in the same edit. (FT-30/FT-57/FT-67.)
+
+
+STATE-MATRIX TESTING: Any feature that branches on machine state (drive encrypted vs. not; MB Premium/Trial/Free/absent) must be tested in each state before ship, with a note of which machine covers which state.
+
+Paste all four into project instructions and they're binding. The Playbook update I owe you (USER-FACING CLARITY entry plus the signing rule) comes with the ascii32 build response — not forgotten.
+Run ascii31 whenever ready — today's Dell state makes it the best test conditions yet.signmycode optios use 1. existing token, 2. Token and standard shipping $50, 3. Install on existing HSM - FreeOption 2 — Token and standard shipping, $50.
+Here's why the other two don't apply to you:
+Option 1 — Use existing token: You'd need to already own a FIPS-compliant token (SafeNet 5110 CC, 5110 FIPS, or 5110+ FIPS). You don't have one. A regular USB drive like your D: does not qualify — these are specialized cryptographic hardware devices.
+Option 3 — Install on existing HSM (Free): This is for organizations with a Hardware Security Module — either physical rack-mounted hardware or a cloud HSM like Azure KeyVault, AWS KMS, or a YubiKey configured for this purpose. You don't have any of these, and setting one up costs more in time and monthly fees than the $50 token.
+So: $399.99 + $50 = ~$450 total, DigiCert ships you a FIPS-compliant USB token with your certificate ready to install. That's the number for the CPM.
+The token arrives by mail after validation completes. When it does: install the DigiCert Hardware Certificate Installer (they'll send instructions), plug in the token, set your token password, store that password in Proton Pass — same drill I outlined before, just DigiCert's tooling instead of Sectigo's SafeNet client.
+One checkout reminder: the organization details must match your Maine LLC filing character-for-character, and use admin@gatewayguard.co as the contact email. And since Maine approval is still pending — if the order form lets you save a draft or you want to wait until the LLC shows Active in Maine's registry before submitting, that's the safer sequence. DigiCert's validation team will query the Maine SOS database, and an LLC that shows as pending will stall the order.

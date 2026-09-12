@@ -1,0 +1,56 @@
+# PowerShell
+*.ps1xml
+*.psd1.bak
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Build / working copies
+*-work.ps1
+*.tmp
+*.bak
+
+# OS noise
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Logs and generated test output (kept on disk, not versioned)
+tests/logs/*
+tests/results/*
+tests/screenshots/*
+!tests/logs/.gitkeep
+!tests/results/.gitkeep
+!tests/screenshots/.gitkeep
+
+# Editor/IDE
+.vscode/
+*.swp
+
+# Python
+__pycache__/
+*.pyc
+
+# Logs & tests
+tests/logs/
+tests/screenshots/
+*.log
+
+# Build artifacts
+build/
+dist/
+out/
+
+# OS junk
+Thumbs.db
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Generated files
+CURRENT.md

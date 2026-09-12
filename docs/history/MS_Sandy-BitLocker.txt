@@ -1,0 +1,3 @@
+This link comes from Sandy encryption settings. It is called 'Find your BitLocker recovery Key' in side encryption settings
+
+https://support.microsoft.com/en-US/Windows/Security/Encryption/find-your-bitlocker-recovery-key

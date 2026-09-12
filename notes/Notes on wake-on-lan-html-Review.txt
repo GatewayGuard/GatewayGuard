@@ -1,0 +1,59 @@
+Notes on wake=on=lan.html
+
+1. change phrase 'keeps a door open that'  to "opens a door nobody"
+2. change your decision phrase to "GatewayGuard (when we say Gatewayguard we mean the tool and the guide correct?)
+ will ask before changing it"
+3. After Found: Change 'whether you ' to  "Determined if" also same sentence, changed 'showed' to "shows". don't use past tense. 
+4. Action:  Change to "If On, GG explains what it does and asks for your approval (Strongly Recommended) to turn it Off ".
+5. next sentence' It is the combin..." is verbose and oondescending - following replaces whole paragraph.  Change to "If your machine can be turned on remotely, and let someone in (i.e. Remote Desktop, or any other way) this is a security hole attackers look for. Turning if ofF prevents this". 
+6. Does the tool checK FOR more then one.
+7. How to check -Change to  "Windows key & X or" ...)a) the dell Win 11 Pro - does not have the power management. b) It does have a Bluetooth, Ethernet and wifi adaptors.  The Bluetooth does not have power managenment. The ethernet and Wifi don't either, but have 20 +/- advanced settings where things reside such as:
+- wake from SOix Wake on the magic packet - Ethernet
+- wake on Link Settings EThernet
+- Wake on Magic Packet - Both
+- Wake on pattern match -Both
+8. change 'tick' everywhere to "checkmark" or in this case reword to use past tense "Ticked" is acceptable, tick, also a nasty bug is not.
+
+9. Copy button missing for dev mgr ...
+10. past tense again, asked change to asks
+11. Rewrite to give my more meaningful advice or say this is discussed in fast startup page NN, and add it there, (this gives them a reason to buy guide pdf - we should look to making many references in the  guide)  
+12. change wording to read" 'Your scheduled reminders still run. The monthly and quarterly scan reminders GatewayGuard recommends setting up are scheduled inside ....
+12. can you make up rules for the above and place it  everywhere and  then use it when rewriting guide, coding standards, website and tool. Absorb this then research it for making up some of the rules.  The document needs to checked for wordiness.  You are entirely right. Phrases like **"whether"** and **"that is"** (as well as filler phrases like *“the fact that,” “in terms of,”* and *“as to whether”*) are almost always wordy padding that add no actual meaning to a sentence. Removing them tightens your writing, makes your points sharper, and improves readability immediately.
+
+Here is how you can easily eliminate them without losing any context:
+
+### 1. Eliminating "Whether"
+
+When used in phrases like *“the question of whether”* or *“whether or not,”* the word is almost always dead weight.
+
+* **Wordy:** The system checks **whether** the box is ticked.
+* **Concise:** The system checks if the box is ticked. *(Or even better: The system checks if the box is ticked.)*
+* **Wordy:** GatewayGuard asked **whether** to turn it off.
+* **Concise:** GatewayGuard asked to turn it off. *(Or: GatewayGuard asked if you wanted to turn it off.)*
+
+### 2. Eliminating "That is"
+
+"That is" (and its sibling *“which is”*) frequently traps writers into creating passive, bloated clause structures when a simple modifier or direct noun will do.
+
+* **Wordy:** Remote Desktop and Wake on LAN are the two features **that are** designed to let someone in.
+* **Concise:** Remote Desktop and Wake on LAN are two features designed to let someone in.
+* **Wordy:** It is a real need—**that is**, in an office.
+* **Concise:** It is a real need in an office.
+
+---
+
+### A Quick Before-and-After Example
+
+> **Wordy Draft:**
+> The main issue is **whether** your computer is set up to wake up remotely, **that is**, via a network signal **that is** sent from another machine.
+
+> **Tightened Version:**
+> The main issue is whether your computer is set up to wake up remotely via a network signal sent from another machine.
+
+*(For  "whether" can often be swapped for "if" or cut entirely depending on the phrasing.)* 
+
+Trimming these fillers makes your writing punchier and respects your reader's time.
+13. Review and grep everywhere that we "recommend setting up" not 'set up' and such wording, we recommend, we  do not do without approval from the user. change in this doc.
+Aside put in notes 
+14. Aside: We need a program on the website that will grep emails and maybe send auto response for those that we can and more unusual or urgent ones to you for response and to  me for review and final response.  You will also need to review all emails and start creating auto response to them that can be used over and over again. Many might just be see instructions (give instruction name) on page X of guide. If they don't have the guide we can include a link to direct purchase on our website.
+Put in notes all things we need to do and add to CPM. for after finalizing the tool and guide. 

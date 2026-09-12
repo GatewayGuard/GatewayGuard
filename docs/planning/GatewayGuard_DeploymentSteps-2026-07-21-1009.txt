@@ -1,0 +1,196 @@
+GatewayGuard Website Deployment Instructions
+Dated: 2026-07-21 10:09 EDT
+Change History:
+  2026-07-21 10:09: Revised under new file naming and revision rules.
+                    Complete replacement of the 09:33 version. Cleanup
+                    section updated with current file list.
+  2026-07-21 09:33: Initial file with W3C validation (W-04) and browser
+                    check (W-03) as required pre-upload checks.
+
+Files to deploy (these are the current working copies):
+  GatewayGuard_index-2026-07-21-0933.html       --> deploys as index.html
+  GatewayGuard_guide-index-2026-07-21-0933.html --> deploys as guide/index.html
+
+NOTE: The HTML files carry the 0933 timestamp because that is when they
+were last edited. Their content has not changed since. Only re-produce
+an HTML file with a new timestamp when its content actually changes.
+
+=====================================================================
+REQUIRED PRE-UPLOAD CHECKS -- DO THESE BEFORE TOUCHING GITHUB
+=====================================================================
+Both checks below are MANDATORY for every file before it goes to
+GitHub. Do not skip them. A broken page going live is harder to fix
+than catching it here first.
+
+PRE-CHECK A -- Open in browser (Rule W-03)
+  Claude's preview does not render CSS. You must open each file in
+  Chrome or Edge on your PC and confirm it looks correct with your
+  own eyes before uploading.
+
+PRE-CHECK B -- W3C Validation (Rule W-04)
+  Go to: https://validator.w3.org
+  Click "Validate by Direct Input."
+  Open the HTML file in Notepad, copy all content, paste into the
+  validator, and click "Check."
+  ERRORS must be fixed before the file goes to GitHub.
+  Warnings are acceptable; errors are not.
+  Do this for EACH file separately.
+
+=====================================================================
+STEP 1 OF 8 -- Browser check: home page
+=====================================================================
+1. Find GatewayGuard_index-2026-07-21-0933.html in your Downloads
+   folder.
+2. Double-click it. It opens in your default browser.
+3. Confirm ALL of the following:
+   - Nav bar shows: Home | Download | Guide | Tips | Beta | Compatible
+   - Hero section shows with heading and two buttons
+   - "What GatewayGuard does" section shows 3 cards
+   - "How it works" section shows 3 steps
+   - "What it does NOT do" section shows 8 bullet items
+   - "Tested hardware" table shows 3 machines
+   - Download CTA section shows pricing
+   - Beta teaser section shows
+   - Footer shows "support@gatewayguard.co"
+     (NOT william.wfbiii@gmail.com)
+4. If anything looks wrong, stop. Do not continue until fixed.
+
+=====================================================================
+STEP 2 OF 8 -- W3C validation: home page
+=====================================================================
+1. Open GatewayGuard_index-2026-07-21-0933.html in Notepad
+   (right-click the file --> Open with --> Notepad).
+2. Press Ctrl+A, then Ctrl+C to copy all content.
+3. Go to: https://validator.w3.org/#validate_by_input
+4. Click in the text area, then press Ctrl+V to paste.
+5. Click "Check."
+6. Result must show: no errors (warnings only are acceptable).
+7. If there are ERRORS: stop. Note the error line numbers and
+   report back to Claude before continuing.
+8. If validation passes: proceed to Step 3.
+
+=====================================================================
+STEP 3 OF 8 -- Upload the home page to GitHub
+=====================================================================
+1. Go to: https://github.com/gatewayguard/gatewayguard.github.io
+2. Click on "index.html" in the file list.
+3. Click the pencil icon (Edit this file) in the top right.
+4. Press Ctrl+A to select all existing content. Delete it.
+5. Open GatewayGuard_index-2026-07-21-0933.html in Notepad.
+6. Press Ctrl+A to select all, then Ctrl+C to copy.
+7. Click back in the GitHub editor window. Press Ctrl+V to paste.
+8. Scroll to the bottom of the page.
+9. Click "Commit changes..."
+10. Leave the default commit message or type:
+    "Update home page 2026-07-21"
+11. Click "Commit changes" (green button).
+
+NOTE: If the Commit button is unresponsive, press F11 (full screen
+toggle), then try again. If still stuck, press Ctrl+Shift+R (hard
+refresh) and re-paste. This is a known GitHub online editor quirk.
+
+=====================================================================
+STEP 4 OF 8 -- Confirm home page is live
+=====================================================================
+1. Wait 60 seconds.
+2. Go to: https://gatewayguard.co
+3. Press Ctrl+Shift+R (hard refresh) to bypass browser cache.
+4. Confirm the page loads correctly and the footer shows
+   support@gatewayguard.co.
+5. If not live after 2 minutes, wait another minute and refresh again.
+6. DO NOT proceed to the guide index until the home page is
+   confirmed live. (Rule W-05: one file at a time.)
+
+=====================================================================
+STEP 5 OF 8 -- Browser check: guide index
+=====================================================================
+1. Find GatewayGuard_guide-index-2026-07-21-0933.html in your
+   Downloads folder.
+2. Double-click it. It opens in your default browser.
+3. Confirm ALL of the following:
+   - Nav bar shows with "Guide" underlined (active)
+   - Tool banner shows at the top
+   - Page heading "Security Settings Guide" shows
+   - Section 1: 8 setting cards with blue tags
+     (GatewayGuard handles this)
+   - Section 2: 4 setting cards with brown tags (You set this up)
+   - Section 3: 5 setting cards with purple tags (Your decision)
+   - Section 4: 2 setting cards with blue tags
+     (GatewayGuard handles this)
+   - Quick reference table shows all 19 rows
+   - "More from GatewayGuard" section shows 4 resource cards
+   - Footer shows "support@gatewayguard.co"
+4. If anything looks wrong, stop. Do not continue until fixed.
+
+=====================================================================
+STEP 6 OF 8 -- W3C validation: guide index
+=====================================================================
+1. Open GatewayGuard_guide-index-2026-07-21-0933.html in Notepad.
+2. Press Ctrl+A, then Ctrl+C to copy all content.
+3. Go to: https://validator.w3.org/#validate_by_input
+4. Click in the text area, then press Ctrl+V to paste.
+5. Click "Check."
+6. Result must show: no errors (warnings only are acceptable).
+7. If there are ERRORS: stop and report back to Claude before
+   continuing.
+8. If validation passes: proceed to Step 7.
+
+=====================================================================
+STEP 7 OF 8 -- Upload the guide index to GitHub
+=====================================================================
+1. Go to: https://github.com/gatewayguard/gatewayguard.github.io
+2. Click on the "guide" folder in the file list.
+3. Click on "index.html" inside the guide folder.
+   (If guide/index.html does not exist yet, see NOTE A below.)
+4. Click the pencil icon (Edit this file).
+5. Press Ctrl+A to select all existing content. Delete it.
+6. Open GatewayGuard_guide-index-2026-07-21-0933.html in Notepad.
+7. Press Ctrl+A, then Ctrl+C to copy.
+8. Click back in the GitHub editor. Press Ctrl+V to paste.
+9. Scroll to the bottom. Click "Commit changes..."
+10. Type commit message: "Update guide index 2026-07-21"
+11. Click "Commit changes" (green button).
+
+NOTE A -- If guide/index.html does not exist yet:
+  1. In the repo root, click "Add file" --> "Create new file"
+  2. In the filename box, type: guide/index.html
+     (The slash creates the guide folder automatically.)
+  3. Paste the file content and commit as above.
+
+=====================================================================
+STEP 8 OF 8 -- Confirm guide index is live
+=====================================================================
+1. Wait 60 seconds.
+2. Go to: https://gatewayguard.co/guide/index.html
+3. Press Ctrl+Shift+R to hard refresh.
+4. Confirm all 19 setting cards are visible and the page looks
+   correct.
+5. Click one or two setting card links -- they will show 404 for
+   now. That is expected. Those individual pages are not built yet.
+
+=====================================================================
+AFTER DEPLOYMENT -- Clean up old files from Claude project
+=====================================================================
+Once both pages are confirmed live, delete these from your Claude
+project (all superseded):
+
+  OLD HTML FILES (superseded by the 0933 versions):
+  index-2026-07-16-r4.html
+  guide-index-2026-07-18-r2.html
+  guide-index-2026-07-18-r4.html
+  guide-index-2026-07-18-r7.html
+
+  OLD INSTRUCTION/STANDARDS FILES (superseded by the 1009 versions):
+  GatewayGuard_ProjectInstructions-2026-07-20-0908.md
+  GatewayGuard_CodingStandards-2026-07-20-0908.md
+  GatewayGuard_WebsiteStandards-2026-07-18.md
+  Any 09:33-stamped versions of the above three, if uploaded.
+
+UPLOAD to the Claude project (current versions):
+  GatewayGuard_index-2026-07-21-0933.html
+  GatewayGuard_guide-index-2026-07-21-0933.html
+  GatewayGuard_ProjectInstructions-2026-07-21-1009.md
+  GatewayGuard_CodingStandards-2026-07-21-1009.md
+  GatewayGuard_WebsiteStandards-2026-07-21-1009.md
+  GatewayGuard_DeploymentSteps-2026-07-21-1009.txt (this file)
+

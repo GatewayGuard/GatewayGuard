@@ -1,0 +1,566 @@
+<!-- Dated: 2026-09-04 10:08 ET -->
+<!-- Editor: Claude Code (CGDELL) -->
+# EVERY GUMROAD FIELD, AS ONE UNBROKEN LINE -- paste from here, nowhere else
+
+- **Document Name:** GatewayGuard_GumroadPasteText
+- **Last Modified:** 2026-09-04 10:08 ET
+- **Last Editor:** Claude Code (CGDELL)
+- **For:** Bill, to copy straight into Gumroad
+- **Replaces, for copying purposes:** the copy blocks in
+  `GatewayGuard_GumroadListings-2026-08-25-0015.md`,
+  `GatewayGuard_GuideVersions-Gumroad-2026-09-02-1841.md`,
+  `GatewayGuard_GumroadBundleAndPacks-2026-09-04-0651.md` and
+  `GatewayGuard_StoreCopyRecheck-2026-09-04-0756.md`. Those keep the reasoning.
+  **This file is the only place to copy from.**
+
+---
+
+## THE BUG WAS MINE, AND IT EXPLAINS EVERY SPACING DEFECT
+
+**Bill found it, 2026-09-04:** *"All of the previous spacing errors were caused
+by this."* **He is right.**
+
+I wrapped every block of copy at about 66 characters to keep the documents tidy.
+**Those wraps are real line breaks.** Pasted into a Gumroad box that expects one
+line, each break becomes a space -- and where my wrap landed next to an existing
+space, it became two. That is exactly the pattern:
+
+| What was on the page | Where my wrap fell |
+|---|---|
+| `12  point - standard print ` | after `12`, and a trailing break |
+| `or  reach for a brighter lamp` | after `or` |
+| `a      different one` | after `a` |
+| `size?  Write to` | after `size?` |
+
+**I called these "typing slips" three times, in three documents.** They were not.
+**They were my formatting, arriving intact.** Corrected in the record.
+
+**The rule from here: any string meant to be pasted is written as ONE PHYSICAL
+LINE**, however long, inside a code fence. A blank line inside a block means a
+real paragraph break and is intended. Nothing else breaks.
+
+---
+---
+
+# 1. CHECKUP
+
+### 1a. Refund fine print -- THIS IS ITEM #3
+
+*Two paragraphs. The blank line between them is deliberate; there are no breaks
+inside either one.*
+
+```
+If Checkup is not what you expected, write to us within 14 days of buying and we will refund you in full. You do not have to give a reason.
+
+You do not need to prove anything, send us a log file, or let us try to fix the problem first. Email support@gatewayguard.co from the address you bought with and give us your order number. We aim to answer within two business days.
+```
+
+**If the box will only take one paragraph, use this instead:**
+
+```
+If Checkup is not what you expected, write to us within 14 days of buying and we will refund you in full. You do not have to give a reason. You do not need to prove anything, send us a log file, or let us try to fix the problem first. Email support@gatewayguard.co from the address you bought with and give us your order number. We aim to answer within two business days.
+```
+
+### 1b. Refund policy title
+
+```
+14-day money back guarantee
+```
+
+### 1c. The "whether" sentence -- find and replace in the description
+
+Find:
+
+```
+You choose whether to apply it.
+```
+
+Replace with:
+
+```
+You choose if it is applied.
+```
+
+### 1d. The packs sentence -- cut it, or build the packs
+
+The description currently ends with a sentence advertising packs that do not
+exist. **Either build the versions in section 3 below, or replace that sentence
+with nothing.** Find and delete:
+
+```
+Using more than one PC? Packs for 3, 5, and 10 are available at gatewayguard.co.
+```
+
+---
+---
+
+# 2. THE SECURITY GUIDE
+
+### 2a. The wrong domain -- it is in TWO fields
+
+**Find this in the description AND in the refund fine print:**
+
+```
+Free online documentation is available at gatewayguide.co (Not .com) to preview all 19 covered security settings before purchase.
+```
+
+**Replace both with:**
+
+```
+Free online documentation is available at gatewayguard.co to preview all 19 covered security settings before purchase.
+```
+
+*The "(not .com)" is dropped on purpose. It was there to prevent one mistake and
+it caused a worse one; a correct address does not need a warning attached.*
+
+### 2b. Refund fine print -- the whole field, corrected
+
+```
+All sales final. Every setting the Guide covers is published free at gatewayguard.co, so you can read the whole scope before you buy. Free online documentation is available there to preview all 19 covered security settings before purchase.
+```
+
+*"Once downloaded" is gone -- licence v3.0 sells the Guide without a refund, with
+no condition attached.*
+
+### 2c. Refund policy title
+
+```
+No refunds allowed
+```
+
+### 2d. Receipt thank-you message -- ITEM #4
+
+*Replaces what is there now, which is the refund paragraph pasted a second time.*
+
+```
+Thank you for choosing the GatewayGuard Windows Security Walkthrough Guide. Your download link is below -- it is the print size you chose, and the words are the same in all five. If the size does not suit you, reply to this email and we will send you a different one, free.
+```
+
+### 2e. Details table -- three rows, two independent details per row
+
+***REVISED 2026-09-04 on Bill's correction.*** This section used to give
+label/value pairs -- `Format` / `PDF`. **That was wrong for this layout.**
+Gumroad renders the two cells pushed to opposite ends of a full-width row, with
+no spacing control, so a short word on each side turns the row into mostly gap.
+**The only lever is how long the two strings are.**
+
+***measured, Checkup's four live rows:*** they are already two independent
+details each -- `19 settings explained simply` / `Fixed only with your
+approval` -- and they read well. **That is the shape.**
+
+*The real defect in the Guide's row 1 was not the structure. It was that "five
+print sizes" and "choose only one" contradicted each other in the same row.
+Every pair below is checked for that.*
+
+**Row 1, left**
+```
+A PDF you download and keep
+```
+**Row 1, right**
+```
+Five print sizes - you pick one
+```
+
+**Row 2, left**
+```
+Works on Windows 11 Home and Pro
+```
+**Row 2, right**
+```
+Printing your copy is allowed
+```
+
+**Row 3, left**
+```
+You do not need Checkup to use it
+```
+**Row 3, right**
+```
+Every step says what you should see
+```
+
+*Cells run 27 to 35 characters, so both sides carry real weight and the six
+facts are all distinct.*
+
+### 2f. The five versions -- name and description together
+
+> **A LABEL IS NEVER THE VALUE.** Every heading below says which box it is for.
+> **Copy only from inside the grey blocks.** On 2026-09-04 the Checkup pack
+> names went in as `**One PC**`, asterisks and all, because a bold heading in
+> this file read like the value. Headings are now worded so they cannot.
+
+**Version 1 -- paste into the NAME box:**
+```
+12 point - standard print
+```
+
+**Version 1 -- paste into the DESCRIPTION box:**
+```
+The size of type used in most printed letters and forms. Choose this if ordinary print gives you no trouble. Not the right size? Write to support@gatewayguard.co and we will send you a different one, free.
+```
+
+**Version 1 -- additional amount:**
+```
+0
+```
+
+**Version 2 -- paste into the NAME box:**
+```
+14 point - bigger print
+```
+
+**Version 2 -- paste into the DESCRIPTION box:**
+```
+A step up from an ordinary printed letter. Choose this if small print has started to tire your eyes. Not the right size? Write to support@gatewayguard.co and we will send you a different one, free.
+```
+
+**Version 2 -- additional amount:**
+```
+0
+```
+
+**Version 3 -- paste into the NAME box:**
+```
+16 point - large print
+```
+
+**Version 3 -- paste into the DESCRIPTION box:**
+```
+Large print. Choose this if you hold pages further away than you used to, or reach for a brighter lamp. Not the right size? Write to support@gatewayguard.co and we will send you a different one, free.
+```
+
+**Version 3 -- additional amount:**
+```
+0
+```
+
+**Version 4 -- paste into the NAME box:**
+```
+18 point - extra large print
+```
+
+**Version 4 -- paste into the DESCRIPTION box:**
+```
+Extra large print. Choose this if large-print books are what you reach for. Not the right size? Write to support@gatewayguard.co and we will send you a different one, free.
+```
+
+**Version 4 -- additional amount:**
+```
+0
+```
+
+**Version 5 -- paste into the NAME box:**
+```
+20 point - largest print
+```
+
+**Version 5 -- paste into the DESCRIPTION box:**
+```
+The largest size we make. Choose this if you use a magnifier for ordinary print, or if a large-print book is still hard work. Not the right size? Write to support@gatewayguard.co and we will send you a different one, free.
+```
+
+**Version 5 -- additional amount:**
+```
+0
+```
+
+### 2h. Optional -- the jargon word
+
+Find `harden your PC`, replace with `secure your PC`.
+
+---
+---
+
+# 3. THE CHECKUP PACKS -- versions on the Checkup product
+
+**Base price stays $19.99. The amounts below are added to it.**
+
+| Version | Additional amount | Buyer pays | Per PC |
+|---|---|---|---|
+| One PC | 0 | $19.99 | $19.99 |
+| 3 PCs | 15 | $34.99 | $11.66 |
+| 5 PCs | 30 | $49.99 | $10.00 |
+| 10 PCs | 60 | $79.99 | $8.00 |
+
+### The four versions -- name, description and amount together
+
+> **A LABEL IS NEVER THE VALUE. Copy only from inside the grey blocks.**
+
+**Pack 1 -- paste into the NAME box:**
+```
+One PC
+```
+
+**Pack 1 -- paste into the DESCRIPTION box:**
+```
+Checkup for one computer. Most people want this one.
+```
+
+**Pack 1 -- additional amount:**
+```
+0
+```
+
+**Pack 2 -- paste into the NAME box:**
+```
+3 PCs
+```
+
+**Pack 2 -- paste into the DESCRIPTION box:**
+```
+Checkup for three computers - any three Windows 11 PCs you own. That works out at $11.66 a PC.
+```
+
+**Pack 2 -- additional amount:**
+```
+15
+```
+
+**Pack 3 -- paste into the NAME box:**
+```
+5 PCs
+```
+
+**Pack 3 -- paste into the DESCRIPTION box:**
+```
+Checkup for five computers - any five Windows 11 PCs you own. That works out at $10.00 a PC.
+```
+
+**Pack 3 -- additional amount:**
+```
+30
+```
+
+**Pack 4 -- paste into the NAME box:**
+```
+10 PCs
+```
+
+**Pack 4 -- paste into the DESCRIPTION box:**
+```
+Checkup for ten computers - any ten Windows 11 PCs you own. That works out at $8.00 a PC.
+```
+
+**Pack 4 -- additional amount:**
+```
+60
+```
+
+### Every pack version gets THE SAME single file
+
+**Not one copy per PC.** ***measured 2026-09-04, `Test_ResultsPCs.zip`: the
+10-PC version delivered a zip containing ten byte-identical copies of the
+Checkup zip, named `- Copy (2)` through `- Copy (10)`.*** A pack sells more
+**licences**, not more files. Attach the one Checkup zip to all four versions.
+
+### The paragraph to add to Checkup's description
+
+*Three paragraphs; the blank lines are intended.*
+
+```
+MORE THAN ONE PC
+
+A 3, 5 or 10-PC pack covers that many computers -- any Windows 11 PCs you own. One copy runs on one computer.
+
+If a computer fails and you replace it, email us at support@gatewayguard.co and we will move that licence to the new PC. There is no charge for the move, and we are not going to make you prove anything.
+```
+
+---
+---
+
+# 4. THE BUNDLE
+
+> **BUILD IT AS A NORMAL PRODUCT, NOT AS A GUMROAD "BUNDLE".**
+> ***measured by Bill at the editor, 2026-09-04: a Gumroad bundle product has no
+> Versions section at all.*** It stores ONE fixed variant per included product
+> -- ours was stuck on `12 point - standard print` -- so the buyer could never
+> pick a print size, and licence Option B promises they can.
+>
+> **A "bundle" here only has to mean a product that contains both files.** A
+> normal digital product with five versions does that, and the buyer picks.
+> **This is what section 4i always described; the instructions just did not say
+> "normal product" out loud.**
+>
+> **What you give up, and it is real:** the native bundle auto-follows the two
+> products, so a file change there flows through. A normal product does not --
+> **if Checkup's zip or a Guide PDF changes, this product's files must be
+> updated too.** Two files, five versions. The real files do not exist yet, so
+> the cost is paid once, when they land.
+
+### 4z. BUILD ORDER -- the slug will block you if you do this out of sequence
+
+1. **Take the slug off the old bundle first.** The existing bundle product owns
+   `bundle`, and Gumroad will not let a new product claim a URL another product
+   is using. Change the old one to `bundle-old`, or delete it outright.
+2. **Create a NEW product.** Type: digital. Not a bundle.
+3. Name, URL, summary, price, description, details -- sections 4a to 4g below.
+4. **Turn on Versions and create the five** -- section 4i.
+5. **Content tab: select a version, then attach TWO files to it** -- Checkup's
+   zip and that one Guide PDF. Repeat five times.
+   **Two separate files, never a zip inside a zip**, and never five PDFs on one
+   version.
+6. Set the refund -- section 4h. **This is still your decision.**
+7. Publish. Then buy it once and tell me, and I will read what a buyer receives.
+
+### 4a. Name
+
+```
+GatewayGuard Checkup and Security Walkthrough Guide
+```
+
+### 4b. URL
+
+```
+bundle
+```
+
+### 4c. Summary
+
+```
+Checkup and the Guide together, for one PC. Save $2.99 on buying them apart.
+```
+
+### 4d. Call to action
+
+```
+I want this!
+```
+
+### 4e. Price
+
+```
+29.99
+```
+
+### 4f. Description
+
+*Each paragraph is one line. The blank lines are real paragraph breaks.*
+
+```
+The program and the written guide, together, for one PC.
+
+Some people want the work done for them. Some want to read it and do it themselves. Most want a bit of both -- and that is what this is.
+
+WHAT IS IN IT
+
+GatewayGuard Checkup, for one PC. It walks you through 19 Windows 11 security settings one at a time, tells you in plain words what it found, and asks your permission before it changes anything. If you say no, nothing happens.
+
+The GatewayGuard Windows Security Walkthrough Guide, as a PDF in the print size you choose. It covers the same ground on paper -- what each setting does, why it matters, and how to check and change it yourself.
+
+WHY BOTH
+
+Checkup does the work while you watch. The Guide explains it while you read, at your own pace, away from the screen. You can hand the Guide to someone else in the house, or keep it beside you the next time Windows moves something.
+
+Every step in the Guide says what you should see on your screen, what it should say, and what to do if it says something else.
+
+YOU CAN READ EVERY LINE OF CHECKUP
+
+Checkup is a plain text script, not a compiled program you have to trust. You or anyone you trust can open it and read it. It is digitally signed, so Windows can confirm it came from us and has not been altered.
+
+WHAT YOU NEED
+
+Windows 11 Home or Pro, and a PDF reader. Every Windows 11 PC already has one. No account to create, no sign-up, nothing to install.
+
+WHAT YOU GET
+
+Checkup v3.1, for one PC. The Guide in the print size you pick. A log of every choice you made, saved on your own computer. If we issue a fix for the version of Checkup you bought, it is free.
+```
+
+### 4g. Details table -- same shape as 2e
+
+**Row 1, left**
+```
+Checkup for one PC, and the Guide
+```
+**Row 1, right**
+```
+The Guide in the print size you pick
+```
+
+**Row 2, left**
+```
+Works on Windows 11 Home and Pro
+```
+**Row 2, right**
+```
+No account, nothing to install
+```
+
+**Row 3, left**
+```
+Checkup is plain text you can read
+```
+**Row 3, right**
+```
+It is digitally signed by us
+```
+
+### 4j. Receipt message -- the field that is printing the refund twice
+
+***measured 2026-09-04 on the receipt for order `ygejIi8e4fQA0kNdzGUIOQ==`: the
+refund paragraph appears TWICE and the words "Thank you for choosing" appear
+ZERO times.*** The refund text has been pasted into the **receipt message**
+field as well as the refund field, and Gumroad prints the refund policy on its
+own. **Same defect the Guide had at 07:52 and that was fixed by 13:55.**
+
+**Clear that box and paste this instead:**
+
+```
+Thank you for choosing GatewayGuard Checkup and the Security Walkthrough Guide. Your download link is below and holds two files - Checkup, and the Guide in the print size you chose. Nothing on your PC is changed unless you say yes, and you can read every line of Checkup yourself. If the print size does not suit you, reply to this email and we will send you a different one, free.
+```
+
+*It names both files, so a buyer seeing two downloads knows both are theirs; it
+carries the permission promise; and it carries the free swap, which is the way
+back for someone who picked the wrong size.*
+
+### 4h. Refund -- PICK ONE. The 30 days now on the screen is in neither option.
+
+**OPTION A -- 14 days.** *(recommended -- reasoning in
+`GatewayGuard_GumroadBundleAndPacks-2026-09-04-0651.md`)*
+
+Title:
+```
+14-day money back guarantee
+```
+
+Fine print:
+```
+If the bundle is not what you expected, write to us within 14 days of buying and we will refund the whole purchase. You do not have to give a reason.
+
+You do not need to prove anything, send us a log file, or let us try to fix the problem first. Email support@gatewayguard.co from the address you bought with and give us your order number. We aim to answer within two business days.
+```
+
+**OPTION B -- no refund.**
+
+Title:
+```
+No refunds allowed
+```
+
+Fine print:
+```
+A bundle includes the Guide, which is sold without a refund. Every setting the Guide covers is published free at gatewayguard.co, so you can read the whole scope before you buy. For that reason a bundle purchase is not refundable. If you want Checkup with its 14-day refund, buy Checkup on its own.
+```
+
+### 4i. The five versions -- what goes in each
+
+**Names and descriptions: use sections 2f's five, unchanged.** They are already
+written as one unbroken line each, and the buyer is making the same choice here
+as on the Guide.
+
+**Additional amount: `0` on all five.** The price is $29.99 whichever size they
+pick.
+
+**Content on each version -- TWO files:**
+
+| Version | File 1 | File 2 |
+|---|---|---|
+| 12 point - standard print | the Checkup zip | the 12 point Guide PDF |
+| 14 point - bigger print | the Checkup zip | the 14 point Guide PDF |
+| 16 point - large print | the Checkup zip | the 16 point Guide PDF |
+| 18 point - extra large print | the Checkup zip | the 18 point Guide PDF |
+| 20 point - largest print | the Checkup zip | the 20 point Guide PDF |
+
+**The same Checkup zip on all five.** ***The 10-PC pack is the lesson here:
+attaching copies produced ten identical files the buyer could not choose
+between.*** One file, attached five times, is right.

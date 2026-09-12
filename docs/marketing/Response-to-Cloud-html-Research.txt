@@ -1,0 +1,38 @@
+Response-to-Cloud-html-Research
+M-1 - **Windows key + W** still open the board? - Yes
+M-2 are `Widgets.exe` or `msedgewebview2.exe` running - YES see C:\Users\willi\OneDrive\Personal\Pictures\Screenshots latest 2 .pngs
+M-3 and M-4 - see lockscreen-CGDELL .png in C:\Users\willi\OneDrive\Pictures\Screenshots and lockscreen-Sandy in C:\Users\willi\OneDrive\Personal\Pictures\Screenshots
+M-4 - *Dashboards › Discover** control present on any machine here? -  yes win key W on both machines/settings icon - CGDell - On; Sandy - off see Gemini explanation in M-5 belos
+M-5 - Research this - Surprised you didn't find this out already.  Widgets was off on CGDELL - i turned it on and the weather appeared on the left side of the taskbar. same thing happened in Sandy.   From Gemini - You don’t need to hover anywhere special — **Windows Widgets no longer appear by hovering** (Microsoft removed hover‑to‑open in recent builds). Instead, you open the Widgets dashboard using one of these spots:
+
+---
+
+### 🟦 **Where to open the Widgets dashboard**
+You can open it from **three places**:
+
+- **Taskbar icon**  
+  Look for the **weather icon** on the **left side of your taskbar**.  
+  Click it once — that opens the Widgets dashboard. - Read my comments on M-5
+
+- **Keyboard shortcut**  
+  Press **Windows key + W**.   Yes on both Sandy and CGDELL
+
+- **Touch gesture (if you have a touchscreen)**  
+  Swipe **from the left edge of the screen toward the center**. Our test pcs have No touchscreens
+---
+
+### 🟦 If you *want* hover‑to‑open back  
+Microsoft removed the hover option, but you can still check:
+
+1. Open **Settings**  
+2. Go to **Personalization → Taskbar → Taskbar behaviors**  
+3. Look for **“Open Widgets board on hover”**  
+   - If it’s there, turn it on  
+   - If it’s missing, your Windows version no longer supports hover‑to‑open - Missing on both
+
+---
+
+### 🟦 Quick check  
+Do you see the **weather icon** on the left side of your taskbar right now? If not, I can help you turn Widgets back on. weather icon appear on both when you turn widgets to on. Show on Both test PCs when widges is on
+
+M-6 - Question for Claude90-]

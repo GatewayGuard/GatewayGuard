@@ -1,0 +1,49 @@
+4. ascii31 pre-run instructions:
+Before you run:
+
+Reboot the Dell first (item 2 above — let Defender take over properly)
+Confirm you're running as Administrator (right-click the .bat)
+Plug in AC power
+Close everything else — browser, email, all of it
+
+What to specifically test this run:
+
+N then P — deselect all, flip pages, confirm no crash (FT-71 was the fix)m
+S at the HEADS UP screen — confirm it clears and re-renders cleanly (FT-65)
+BitLocker flow — since MB trial is now expired,  Defender should be primary, meaning items 2/3/5 status will change. The HEADS UP screen may show different items. Watch what it says.
+Convenience Review counter — confirm it says "1 of X", "2 of X" not "11 of 5" (FT-74)
+Ctrl+C at the Welcome screen — confirm it opens the exit confirmation (FT-73)
+Upload the log when done
+
+Link to register: storedeveloper.microsoft.com
+
+GatewayGuide\Security\
+    Namecheap-admin-2FA-backup-codes.txt
+    BitLocker-Recovery-Key-CGDELL.txt
+    BitLocker-Recovery-Key-IdeaPad.txt
+    BitLocker-Recovery-Key-HP-SANDY.txt
+    Sectigo-Token-Password.txt  (add when token arrives) YOUR DELL BITLOCKER RECOVERY KEY
+Computer: CGDELL (Dell Latitude 5430)
+Key ID: 85D80E2E-95B0-47B0-9A5E-FD6AED29619A
+Recovery Key:
+290774-433433-100518-169356-525866-226699-583044-249381
+
+Summary of your action items right now:
+PriorityAction1Reboot Dell — let Defender take over from MB passive mode
+
+2 After reboot, open MB on Dell → check Account/License line
+
+— confirm it says Free 
+3 Run the PowerShell check again after reboot to confirm AMRunningMode = Normal
+
+4 Clarify the $400 cert question 
+
+— share the link you're looking at5Run ascii31 per the test instructions above6Register at storedeveloper.microsoft.com (free, Company account)7Check phone number on Sectigo order, must be associable with GatewayGuard LLC 
+
+On the ascii31 run — reminders while it's going:
+
+Since Defender is now primary and MB is Free, expect items 2, 3, 5 to show different statuses than every previous run. Defender Real-Time should now show GOOD instead of "MB Trial is primary." If any of them shows something weird (Unknown, blank, or stale MB-trial wording), that's exactly the state-matrix data we want — note it, don't fix around it.
+The BitLocker decision flow (FT-67) should fire since the Dell is still unencrypted and item 8 defaults unselected — that's your chance to walk the decline → write-up → go back → select → pre-run path end to end.
+If anything dies, the window should now stay open with an error message (FT-66 + FT-73). If it instead vanishes silently, that itself is a finding — note what screen you were on.
+
+Upload the log when done. If it's clean, ascii32 scope is: Mark mode reminders (3 locations, agreed wording), Playbook update (USER-FACING CLARITY + signing rule), and anything today's run surfaces.You’re out of usage credits. Buy more to keep going now, or ppwait until 11:50 AM when your plan
