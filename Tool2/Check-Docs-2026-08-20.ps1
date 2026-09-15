@@ -1,4 +1,4 @@
-# Dated: 2026-08-20 12:10 ET
+﻿# Dated: 2026-08-20 12:10 ET
 # File: Check-Docs-2026-08-20.ps1
 #
 #   WHY THIS EXISTS: this project has two dozen mechanical gates for code and
@@ -36,6 +36,11 @@ $repo = Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $repo
 
 $docs = Join-Path $repo "ProjectDocs"
+# All three ProjectDocs .md scans below exclude *-Sandy.md, added 2026-09-15.
+# Measured: 20+ old OneDrive conflict copies of this shape sat in this folder
+# for weeks, untracked, and were then picked up as real documents -- their
+# own stale internal pointers are what produced 9 dead-pointer and 2
+# header-mismatch findings against a baseline of 0.
 
 $stamp   = Get-Date -Format "yyyy-MM-dd_HH-mm"
 $results = Join-Path $repo "Test_Results"
@@ -327,7 +332,7 @@ foreach ($f in $factFiles) {
 W ("  dead pointers in the live documents : " + $deadGov + "   (baseline " + $BASE_DEAD_POINTERS_GOVERNING + ")")
 
 $deadAll = 0
-foreach ($f in (Get-ChildItem -LiteralPath $docs -Filter "*.md" -File)) {
+foreach ($f in (Get-ChildItem -LiteralPath $docs -Filter "*.md" -File | Where-Object { $_.Name -notmatch '-Sandy\.md$' })) {
     $deadAll += (Get-DeadPointers $f.FullName).Count
 }
 W ("  dead pointers across all ProjectDocs : " + $deadAll + "   (baseline " + $BASE_DEAD_POINTERS_ALL + ")")
@@ -353,7 +358,7 @@ W ""
 
 $mismatch = 0
 $noStamp  = 0
-foreach ($f in (Get-ChildItem -LiteralPath $docs -Filter "*.md" -File)) {
+foreach ($f in (Get-ChildItem -LiteralPath $docs -Filter "*.md" -File | Where-Object { $_.Name -notmatch '-Sandy\.md$' })) {
     # Generated twins carry the GENERATION time, not the source's date. That is
     # correct behaviour for build_readable_twins.py, so they are out of scope.
     if ($f.Name -like "*-TEXT.md") { continue }
@@ -395,7 +400,7 @@ W "  not fine is three drafts and nothing to choose between them."
 W ""
 
 $fam = @{}
-foreach ($f in (Get-ChildItem -LiteralPath $docs -Filter "*.md" -File)) {
+foreach ($f in (Get-ChildItem -LiteralPath $docs -Filter "*.md" -File | Where-Object { $_.Name -notmatch '-Sandy\.md$' })) {
     $m = [regex]::Match($f.Name, '^(.*?)-(\d{4}-\d{2}-\d{2}(?:-\d{3,4})?)(.*)$')
     if (-not $m.Success) { continue }
     $key = $m.Groups[1].Value + $m.Groups[3].Value

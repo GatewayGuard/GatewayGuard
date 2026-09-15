@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-08 21:32 ET -->
-<!-- Commit: 92c62fe -->
+<!-- Generated: 2026-09-15 14:07 ET -->
+<!-- Commit: 9fa7b7e -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-08 21:32 ET  |  **Commit:** `92c62fe`  |  **Made:** 2026-09-08 16:23 ET
-- **Commit subject:** Cloud's Malwarebytes answer filed and stamped, with one measured correction
+- **Generated:** 2026-09-15 14:07 ET  |  **Commit:** `9fa7b7e`  |  **Made:** 2026-09-10 16:27 ET
+- **Commit subject:** Correction: today was a re-test, not the first test -- Bill caught it
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -19,7 +19,7 @@ document family and the single filename that is live right now. Take every
 filename from this table -- never from memory, never from another document,
 never by guessing which date looks newest.
 
-**68 rows follow.** If you cannot see all 68 of them, your
+**70 rows follow.** If you cannot see all 70 of them, your
 retrieval truncated the table -- **say so and ask for the rest, rather
 than answering from the handful you received.**
 
@@ -33,7 +33,7 @@ All paths are relative to `ProjectDocs/`.
 |---|---|---|
 | Briefing -- read this first | `_READ-FIRST-Briefing-2026-08-20-1306.md` | 0 |
 | Session log | `GatewayGuard_SessionLog-2026-08-13-1433.md` | 0 |
-| Project instructions | `GatewayGuard_ProjectInstructions-2026-08-12-1652.md` | 0 |
+| Project instructions | `GatewayGuard_ProjectInstructions-2026-08-12-1652.md` | 1 |
 | Coding standards | `GatewayGuard_CodingStandards-2026-08-07-1330.md` | 0 |
 | Defect prevention playbook | `GatewayGuard_DefectPreventionPlaybook-2026-07-26-0619.md` | 0 |
 | Website standards | `GatewayGuard_WebsiteStandards-2026-07-26-0619.md` | 0 |
@@ -67,16 +67,16 @@ All paths are relative to `ProjectDocs/`.
 | What it is | The current file | Older versions present |
 |---|---|---|
 | Test results (raw run notes and logs) | `GatewayGuard_TestResults-ascii43-2026-09-04-2345.md` | 0 |
-| Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii43run2-2026-08-30-1723.md` | 2 |
+| Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii43run2-2026-08-30-1723.md` | 4 |
 | Response to Bill's field notes | `GatewayGuard_ResponseToBillsNotes-ascii43-2026-08-30-1815.md` | 0 |
-| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii43-2026-08-26-1730.md` | 2 |
+| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii43-2026-08-26-1730.md` | 3 |
 | Build plan (current) | `GatewayGuard_ascii44BuildPlan-2026-09-05-1130.md` | 1 |
 | Future settings (candidate list) | `GatewayGuard_FutureSettings-2026-08-24-2310.md` | 0 |
 | Guide FT-220 sections | `GatewayGuard_GuideFT220-Sections-2026-08-21-1445.md` | 0 |
 
 ### CLOUD REQUESTS AND CLOUD RESEARCH
 
-**13 rows in this group.** If you see fewer, this group was truncated -- say so.
+**15 rows in this group.** If you see fewer, this group was truncated -- say so.
 
 | What it is | The current file | Older versions present |
 |---|---|---|
@@ -87,10 +87,12 @@ All paths are relative to `ProjectDocs/`.
 | Cloud request | `GatewayGuard_CloudRequest-ResearchBlock-2026-08-24-0222.md` | -- |
 | Cloud request | `GatewayGuard_CloudRequest-CPM-2026-08-30-2200.md` | -- |
 | Cloud request | `GatewayGuard_CloudRequest-ascii43Research-2026-09-04-2000.md` | -- |
+| Cloud research (delivered) | `GatewayGuard_CloudResearch-ascii43-STAMP-PENDING.md` | -- |
 | Cloud research (delivered) | `GatewayGuard_CloudResearch-WidgetsAndAccessibility-2026-08-24-1015.md` | -- |
 | Cloud research (delivered) | `GatewayGuard_CloudResearch-Licence-2026-08-25-1435.md` | -- |
 | Cloud research (delivered) | `GatewayGuard_CloudResearch-ascii43-2026-09-05-0018.md` | -- |
 | Cloud answer (delivered) | `GatewayGuard_CloudAnswer-Malwarebytes-2026-09-08-1105.md` | -- |
+| External guide review + comments | `GatewayGuard_ExternalGuideReview-Comments-2026-09-15-1324.md` | 0 |
 | Review of Cloud research | `GatewayGuard_ReviewOfCloudResearch-2026-08-24-1105.md` | -- |
 | Review of Cloud research | `GatewayGuard_ReviewOfCloudResearch-ascii43-2026-09-05-1130.md` | -- |
 
@@ -101,14 +103,14 @@ All paths are relative to `ProjectDocs/`.
 | What it is | The current file | Older versions present |
 |---|---|---|
 | Marketing plan (current) | `GatewayGuard_MarketingPlan-2026-08-22-1000.md` | 3 |
-| Guide rewrite draft (current) | `GatewayGuard_GuideRewrite-Draft-2026-08-22-1000.md` | 0 |
-| Website source pack (19 guide pages) | `GatewayGuard_WebsiteSourcePack-2026-08-22-2235.md` | 0 |
+| Guide rewrite draft (current) | `GatewayGuard_GuideRewrite-Draft-2026-08-22-1000.md` | 2 |
+| Website source pack (19 guide pages) | `GatewayGuard_WebsiteSourcePack-2026-08-22-2235.md` | 2 |
 | Guide v9 source pack | `GatewayGuard_GuideV9-SourcePack-2026-08-15-1436.md` | 0 |
 | Marketing source pack | `GatewayGuard_MarketingSourcePack-2026-08-13-1427.md` | 0 |
 | Pricing copy (website) | `GatewayGuard_PricingCopy-2026-08-22-1000.md` | 1 |
 | Annual price decision | `GatewayGuard_PriceDecision-Annual-2026-08-21-1445.md` | 0 |
 | Refund policy and terms | `GatewayGuard_Decisions-RefundAndTerms-2026-08-22-1510.md` | 0 |
-| Licence agreement (EULA) | `GatewayGuard_License-2026-09-05-0018-TEXT.md` | 5 |
+| Licence agreement (EULA) | `GatewayGuard_License-2026-09-05-0018-TEXT.md` | 6 |
 
 ### WORKING RULES AND WHAT IS WAITING ON BILL
 

@@ -120,6 +120,10 @@ $wanted = @(
     # from its research. Multi for the same reason as the requests and the
     # research above: each is a separate handoff, not a version of one file.
     @{ Label = 'Cloud answer (delivered)';    Pattern = 'GatewayGuard_CloudAnswer-*.md'; Multi = $true },
+    # Added 2026-09-15. An external AI's review of the guide, pasted by
+    # Bill, preserved verbatim, with Cloud's comments and Claude Code's check
+    # in the same file. Also carries the 2026-09-15 launch date change.
+    @{ Label = 'External guide review + comments'; Pattern = 'GatewayGuard_ExternalGuideReview-Comments-*.md' },
     @{ Label = 'Review of Cloud research';    Pattern = 'GatewayGuard_ReviewOfCloudResearch-*.md'; Multi = $true },
     # --- THE THREE SOURCE PACKS, added 2026-08-15 -------------------------
     # Each is a readable extraction of material Cloud cannot otherwise reach,
@@ -277,8 +281,21 @@ function Get-GGNameDate {
     return ($last.Groups[1].Value + '-' + $time)
 }
 
+# OneDrive conflict-copy guard, added 2026-09-15. Measured: 29 files across
+# the repo carry a -Sandy or -SANDY suffix -- old per-machine snapshots
+# OneDrive kept when this folder synced to SANDY, dated 2026-08-02 through
+# 2026-08-28, untracked, none newer than that. Get-GGNameDate reads the SAME
+# embedded date out of X-2026-08-13-1433.md and X-2026-08-13-1433-Sandy.md
+# because the suffix has no digits, so the two tie and the tie-break (Name,
+# a culture-aware string sort) is not guaranteed to favour the real file --
+# measured 2026-09-15: it picked the six-day-stale Sandy session log as
+# current and CURRENT.md told Cloud so. This is the same failure class as
+# CLAUDE-Sandy.md, which reappeared after being removed once already --
+# excluding the shape rather than deleting the current instances is what
+# actually stops it recurring a third time.
 foreach ($w in $wanted) {
     $hits = @(Get-ChildItem -LiteralPath $docs -Filter $w.Pattern -File -EA SilentlyContinue |
+              Where-Object { $_.Name -notmatch '-Sandy\.[^.]+$' } |
               Sort-Object @{ Expression = { Get-GGNameDate $_.Name } }, Name)
     if ($hits.Count -eq 0) {
         $missing += $w.Pattern

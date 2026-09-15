@@ -5,8 +5,11 @@
 
 - **Product:** GatewayGuard — Windows 11 security hardening tool for non-technical home users
 - **Developer:** Solo (William F. Burns III / GatewayGuard LLC)
-- **Target launch:** **September 15, 2026** (Tuesday). **Bill moved it from
-  September 1 on 2026-08-30.** Exactly two weeks later, same weekday.
+- **Target launch:** **October 15, 2026** (Thursday). **Bill moved it from
+  September 15 on 2026-09-15**, per
+  `GatewayGuard_ExternalGuideReview-Comments-2026-09-15-1324.md`, so the
+  format pack and the 29 VERIFY-marker measurements (T-VF1) can land in one
+  guide revision **before** launch instead of after it.
   **Never write a countdown here** -- "six days" was wrong the next morning
   and stayed wrong. Write the date; let the reader subtract.
 - **Current build:** ascii44 (9,458 non-blank lines / 9,847 total) — **BLOCK A COMPLETE, NOT YET FIELD RUN.**
