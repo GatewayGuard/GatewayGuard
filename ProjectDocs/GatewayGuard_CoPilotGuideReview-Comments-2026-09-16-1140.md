@@ -163,6 +163,36 @@ missing rather than intentionally absent.
 
 ---
 
+## SMART APP CONTROL -- ONE SENTENCE, DECIDED 2026-09-16 13:39-14:53 ET
+
+*A separate question that arrived and closed the same afternoon as the
+Setting 5 wording above -- recorded here for the same reason: whoever
+writes the reconciliation pack needs both in one place.*
+
+**Decision: Smart App Control does not become a 20th setting. Add one
+sentence to the guide instead.** Bill asked the question, Copilot wrote an
+independent analysis
+(`Co-pilot-comments Smart App Control-2026-09-16-1445.txt`), and Claude Code
+reasoned it through separately -- all three landed on the same answer
+without seeing each other's work. Full reasoning and the sentence:
+`CLAUDE.md`, the FT-260 entry, and the complete history of how this was
+found:
+`GatewayGuard_SmartAppControl-ChatHistory-2026-09-16-1403.md`.
+
+**The sentence, wherever the guide sends a reader to Windows Security >
+App & browser control:**
+
+> If Windows says a setting is managed by Smart App Control, that setting
+> is already protected and cannot be changed there -- this is normal, not
+> a fault.
+
+**Where it applies in Copilot's Part 2 rewrite:** the "How To Check" steps
+for **Setting 4 (SmartScreen)** and the phishing-protection setting both
+send the reader to that same Windows Security screen -- the sentence
+belongs once, near those two, not repeated per setting.
+
+---
+
 ## SOURCES
 
 - `ProjectDocs\GatewayGuard_GuideRewrite-Draft-2026-08-22-1000.md`, line 297

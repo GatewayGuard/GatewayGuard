@@ -146,10 +146,38 @@
     `GatewayGuard_Research-Items15and20-2026-08-24-0917.md`, and the ascii44
     plan already asks for one plain sentence about it. **What is new is that
     it reaches a NUMBERED ITEM, so that sentence has to cover both.**
-    **Smart App Control is not one of the 19 and is nowhere in the build.
-    Whether it should be checked is Bill's call, not a fix.** Full write-up
-    with every path:
-    `ProjectDocs\GatewayGuard_SettingsLocationList-2026-09-08-2130.md`.
+    **DECIDED 2026-09-16 — Smart App Control does NOT become a 20th setting.
+    Checkup gains one guide sentence instead.** Bill's question, Copilot's
+    independent analysis, and Claude Code's own reasoning all converged on
+    the same answer without seeing each other's work first — three separate
+    passes, one conclusion. **Reasons, in order of weight:** the settings it
+    touches are already forced to the correct state, so there is no security
+    gap to close; many machines cannot freely enable it at all (Windows
+    installation history gates availability); and detecting it would add a
+    20th setting's worth of testing and support burden for zero customer
+    benefit, since there is nothing the customer can *do* about it. **The
+    guide sentence, wherever it sends a reader to that Windows Security
+    screen:** *"If Windows says a setting is managed by Smart App Control,
+    that setting is already protected and cannot be changed there — this is
+    normal, not a fault."* Filed for the reconciliation pack in
+    `GatewayGuard_CoPilotGuideReview-Comments-2026-09-16-1140.md`.
+    **THE ARCHITECTURAL LESSON, sharpened per Copilot's read — FT-260 was
+    never really about Smart App Control.** It is the first *measured*
+    instance of a general shape: **a setting can be forced, locked, or
+    overridden by a Windows mechanism that is not Group Policy at all**, so
+    a policy-only lock check can report "nothing is forcing this" while the
+    user's own screen shows otherwise. `Get-GGPolicyLock` covers the
+    mechanism it was built for; it was never meant to cover every mechanism
+    that can exist, and the next one will not announce itself either.
+    **Deferred, not scheduled:** a general "what else can lock a setting"
+    survey, only if a second real instance turns up — chasing hypothetical
+    future lock mechanisms now would be exactly the open-ended expansion
+    this project's own rules exist to prevent. **Smart App Control is not
+    one of the 19/18 and is nowhere in the build; that does not change.**
+    Full write-up with every path:
+    `ProjectDocs\GatewayGuard_SettingsLocationList-2026-09-08-2130.md`. The
+    complete chat history behind this decision, start to finish:
+    `ProjectDocs\GatewayGuard_SmartAppControl-ChatHistory-2026-09-16-1403.md`.
   - **Raised in ascii44 and still NOT fixed:** **FT-254** alone
     (`Test-TimeDateSync` prints success after four unguarded calls).
     *(FT-256 was on this line until 2026-09-08 and is now fixed — see
