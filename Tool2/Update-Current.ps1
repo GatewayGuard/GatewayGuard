@@ -132,6 +132,13 @@ $wanted = @(
     @{ Label = 'Smart App Control -- full chat history'; Pattern = 'GatewayGuard_SmartAppControl-ChatHistory-*.md' },
     @{ Label = 'Smart App Control -- decided, for Cloud'; Pattern = 'GatewayGuard_SmartAppControl-Decided-*.md' },
     @{ Label = 'Guide Part 3 review -- for Cloud'; Pattern = 'GatewayGuard_GuidePart3Review-ForCloud-*.md' },
+    # Added 2026-09-16. Verbatim .md twins of Copilot's three guide-rewrite
+    # .txt files, because none of the seven Copilot .txt files surfaced in
+    # Cloud's project-knowledge search this session -- the .docx/.pdf twin
+    # problem (CLAUDE.md, Step 5), showing up for .txt instead.
+    @{ Label = 'Co-Pilot Guide Part 1 (twin)'; Pattern = 'GatewayGuard_CoPilotGuidePart1-*.md' },
+    @{ Label = 'Co-Pilot Guide Part 2 (twin)'; Pattern = 'GatewayGuard_CoPilotGuidePart2-*.md' },
+    @{ Label = 'Co-Pilot Guide Part 3 (twin)'; Pattern = 'GatewayGuard_CoPilotGuidePart3-*.md' },
     @{ Label = 'Review of Cloud research';    Pattern = 'GatewayGuard_ReviewOfCloudResearch-*.md'; Multi = $true },
     # --- THE THREE SOURCE PACKS, added 2026-08-15 -------------------------
     # Each is a readable extraction of material Cloud cannot otherwise reach,

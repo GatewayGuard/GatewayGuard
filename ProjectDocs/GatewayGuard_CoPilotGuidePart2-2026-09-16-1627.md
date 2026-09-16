@@ -1,0 +1,407 @@
+<!-- Dated: 2026-09-16 16:27 ET -->
+<!-- Editor: Claude Code (CGDELL) -->
+# Copilot's Guide Rewrite -- Part 2 (Core Security Settings), verbatim
+
+- **Document Name:** GatewayGuard_CoPilotGuidePart2-2026-09-16-1627
+- **Dated:** 2026-09-16 16:27 ET
+- **Editor:** Claude Code (CGDELL)
+- **Purpose:** a verbatim `.md` twin of `Guide-Part 2 Core Security Settings-2026-09-16-1122.txt`, made because Claude Cloud's project-knowledge search did not surface any of the seven Copilot `.txt` files this session -- the same failure this project already fixed once for `.docx`/`.pdf` (Step 5, `CLAUDE.md`), showing up here for `.txt` instead.
+- **Nothing cut, nothing reworded below.** The `.txt` file named above remains the file of record; this exists only so Cloud's connector can read the same words.
+
+---
+
+Part 2: Core Security Settings
+
+This section covers the most important security protections available in Windows 11. For most home users, these settings provide the greatest security benefit and should be reviewed before moving on to privacy, convenience, or performance settings.
+
+Setting 1: Windows Update
+What It Is
+
+Windows Update downloads and installs security fixes, bug fixes, reliability improvements, and new Windows features.
+
+Why It Matters
+
+Every month Microsoft releases security updates that fix newly discovered vulnerabilities.
+
+Computers that miss updates remain exposed to security weaknesses that may already be known to criminals and malware authors.
+
+Many successful attacks target systems that are simply missing security updates.
+
+GatewayGuard Recommendation
+
+Recommended: Automatic Updates Enabled
+
+For most home users, Windows should automatically check for, download, and install updates.
+
+How To Check
+Open Settings.
+Select Windows Update.
+Review the update status.
+How To Change It
+Open Settings.
+Select Windows Update.
+Turn on automatic updates if they are disabled.
+Click Check for Updates.
+What To Expect
+Updates may require a restart.
+Some updates take several minutes to install.
+Major feature updates may take longer.
+When You Might Choose Differently
+
+The vast majority of home users should leave automatic updates enabled.
+
+Setting 2: Microsoft Defender Real-Time Protection
+What It Is
+
+Microsoft Defender continuously monitors your computer for malicious software.
+
+It checks:
+
+Files you open
+Files you download
+Programs you run
+Activity occurring in memory
+Why It Matters
+
+Real-time protection is your first line of defense against malware, ransomware, trojans, and other threats.
+
+Without it, malware may execute before Windows has a chance to inspect it.
+
+GatewayGuard Recommendation
+
+Recommended: On
+
+How To Check
+Open Windows Security.
+Select Virus & Threat Protection.
+Review Real-Time Protection.
+How To Change It
+Open Windows Security.
+Select Virus & Threat Protection.
+Select Manage Settings.
+Turn Real-Time Protection on.
+What To Expect
+
+No restart usually required.
+
+Protection begins immediately.
+
+When You Might Choose Differently
+
+Only when another trusted antivirus product is intentionally providing real-time protection.
+
+Setting 3: Tamper Protection
+What It Is
+
+Tamper Protection prevents programs, malware, and unauthorized users from disabling Microsoft Defender security settings.
+
+Why It Matters
+
+Many malicious programs attempt to disable security software before launching an attack.
+
+Tamper Protection makes those changes much more difficult.
+
+GatewayGuard Recommendation
+
+Recommended: On
+
+How To Check
+Open Windows Security.
+Select Virus & Threat Protection.
+Select Manage Settings.
+Locate Tamper Protection.
+How To Change It
+Open Windows Security.
+Select Virus & Threat Protection.
+Select Manage Settings.
+Turn Tamper Protection on.
+What To Expect
+
+No restart is required.
+
+When You Might Choose Differently
+
+Rarely. Most home users should leave Tamper Protection enabled at all times.
+
+Setting 4: SmartScreen
+What It Is
+
+Microsoft Defender SmartScreen helps identify potentially dangerous:
+
+Websites
+Downloads
+Applications
+
+before they can harm your computer.
+
+Why It Matters
+
+SmartScreen provides an additional layer of protection when browsing the Internet or downloading files.
+
+It can stop known malicious content before traditional antivirus detection occurs.
+
+GatewayGuard Recommendation
+
+Recommended: On
+
+How To Check
+Open Windows Security.
+Select App & Browser Control.
+Review SmartScreen settings.
+How To Change It
+Open Windows Security.
+Select App & Browser Control.
+Enable available SmartScreen protections.
+What To Expect
+
+Occasionally Windows may display warnings before opening unfamiliar programs.
+
+When You Might Choose Differently
+
+Advanced users who regularly test unsigned software may find SmartScreen warnings inconvenient.
+
+Setting 6: Edge Phishing Protection
+What It Is
+
+Phishing Protection helps identify:
+
+Password reuse
+Unsafe password storage
+Known phishing websites
+
+when using Microsoft Edge.
+
+Why It Matters
+
+Many account compromises begin with stolen passwords.
+
+Phishing Protection helps identify risky behavior before credentials are stolen.
+
+GatewayGuard Recommendation
+
+Recommended: All Options Enabled
+
+How To Check
+Open Windows Security.
+Select App & Browser Control.
+Open Reputation-Based Protection Settings.
+Review Phishing Protection options.
+How To Change It
+
+Enable all available phishing protection warnings.
+
+What To Expect
+
+Windows may occasionally display warnings related to password usage.
+
+When You Might Choose Differently
+
+Most home users should leave all phishing protections enabled.
+
+Setting 7: Microsoft Defender Firewall
+What It Is
+
+The Windows Firewall monitors network traffic entering and leaving your computer.
+
+Why It Matters
+
+A firewall helps block unauthorized network communications.
+
+It is particularly important when:
+
+Traveling
+Using public Wi-Fi
+Connecting to unfamiliar networks
+GatewayGuard Recommendation
+
+Recommended: All Profiles Enabled
+
+Domain
+Private
+Public
+How To Check
+Open Windows Security.
+Select Firewall & Network Protection.
+Review all profiles.
+How To Change It
+
+Enable any disabled firewall profile.
+
+What To Expect
+
+No restart required.
+
+Some applications may request firewall access the first time they run.
+
+When You Might Choose Differently
+
+Rarely. Most home users should keep all firewall profiles enabled.
+
+Setting 8: BitLocker or Device Encryption
+What It Is
+
+Encryption protects the contents of your drive if the computer is lost or stolen.
+
+Windows 11 Pro typically uses BitLocker.
+
+Windows 11 Home may use Device Encryption.
+
+Why It Matters
+
+Without encryption, anyone with physical access to the drive may be able to read your files.
+
+Encryption helps protect:
+
+Financial records
+Medical information
+Personal documents
+Family photos
+GatewayGuard Recommendation
+
+Recommended: Enabled
+
+Important
+
+Before enabling encryption:
+
+Back up important files.
+Save your recovery key.
+Store the recovery key somewhere safe.
+How To Check
+Windows 11 Home
+Open Settings.
+Search for Device Encryption.
+Windows 11 Pro
+Open Control Panel.
+Open BitLocker Drive Encryption.
+How To Change It
+
+Follow the step-by-step instructions provided by Checkup.
+
+What To Expect
+Initial encryption may take time.
+A recovery key will be generated.
+Encryption normally runs in the background.
+When You Might Choose Differently
+
+Desktop systems that never leave the home have lower physical theft exposure than laptops, but GatewayGuard still generally recommends encryption.
+
+Setting 9: Windows Hello
+What It Is
+
+Windows Hello allows sign-in using:
+
+PIN
+Fingerprint
+Facial recognition
+
+depending on hardware capabilities.
+
+Why It Matters
+
+Windows Hello is typically more secure and more convenient than relying solely on a traditional password.
+
+GatewayGuard Recommendation
+
+Recommended: Configure a PIN at Minimum
+
+How To Check
+Open Settings.
+Select Accounts.
+Select Sign-In Options.
+How To Change It
+
+Use Sign-In Options to configure:
+
+PIN
+Fingerprint
+Face Recognition
+
+if supported.
+
+What To Expect
+
+Setup usually takes only a few minutes.
+
+When You Might Choose Differently
+
+Users who prefer traditional passwords may continue using them, though a PIN is strongly recommended.
+
+Setting 10: Memory Integrity (Core Isolation)
+What It Is
+
+Memory Integrity is a Windows security feature designed to prevent malicious or untrusted code from running in protected parts of memory.
+
+Why It Matters
+
+Many modern attacks attempt to execute code within trusted system processes.
+
+Memory Integrity makes these attacks substantially more difficult.
+
+GatewayGuard Recommendation
+
+Recommended: On
+
+How To Check
+Open Windows Security.
+Select Device Security.
+Select Core Isolation.
+Review Memory Integrity.
+How To Change It
+
+Turn Memory Integrity on.
+
+What To Expect
+
+A restart is usually required.
+
+Some older drivers may be incompatible.
+
+When You Might Choose Differently
+
+If older hardware or software is incompatible, you may need to temporarily leave it disabled until compatible drivers become available.
+
+Setting 11: Password Required on Wake
+What It Is
+
+This setting requires you to sign in again when the computer wakes from sleep.
+
+Why It Matters
+
+Without a password requirement, someone could access your computer simply by waking it from sleep.
+
+GatewayGuard Recommendation
+
+Recommended: Required
+
+How To Check
+Open Settings.
+Select Accounts.
+Select Sign-In Options.
+Review wake-up sign-in requirements.
+How To Change It
+
+Set sign-in to be required whenever the computer wakes from sleep.
+
+What To Expect
+
+You will need to enter your PIN, password, fingerprint, or face recognition after waking the computer.
+
+When You Might Choose Differently
+
+Very few users should disable this protection.
+
+Part 3: Additional Security and Privacy Settings
+
+The next section covers settings that are still valuable but generally have less impact than the core security controls covered above. These include:
+
+Advertising ID
+Diagnostic Data
+Edge Startup Boost
+Windows Widgets
+Edge Password Saving
+Remote Desktop
+Fast Startup
+Wake on LAN
+
+These settings involve a mix of security, privacy, convenience, and performance considerations.Guiide
