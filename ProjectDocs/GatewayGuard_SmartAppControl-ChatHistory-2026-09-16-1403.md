@@ -10,8 +10,11 @@
   messages over several days.
 - **Reconstructed from this session's own conversation**, not from a saved
   transcript file (none exists) -- faithful to what was said, not a paraphrase.
-- **This is the input to a decision, not the decision.** Question 3, still
-  open: *does Checkup name Smart App Control in ascii45, or stay silent?*
+- **Updated 2026-09-16 15:08 ET** to add Stages 6-7 -- Copilot's independent
+  analysis and the decision that followed. **This document is no longer
+  only the input to a decision -- it now also contains the decision.** Left
+  under its original name and purpose (the running record, in sequence)
+  rather than closed off, since it was built to be read start to finish.
 
 ---
 
@@ -194,16 +197,85 @@ answering:
 
 ---
 
+## STAGE 6 -- COPILOT'S INDEPENDENT ANALYSIS (2026-09-16, later the same day)
+
+Bill sent this document to Copilot and asked for its thinking. Copilot
+produced `Co-pilot-comments Smart App Control-2026-09-16-1445.txt` -- a
+full write-up, without having seen Bill's or Claude Code's reasoning above.
+Its own executive summary:
+
+> Smart App Control is **not currently part of GatewayGuard Checkup** and is **not one of the 19 settings**. However, testing and screenshots revealed that Smart App Control can force certain Checkup-related settings into a secure state and prevent users from modifying them.
+>
+> The most important discovery is not the existence of Smart App Control itself.
+>
+> The important discovery is: **A setting can be controlled by a Windows mechanism that Checkup does not currently detect.**
+>
+> This creates a gap between Policy State and Effective State, and serves as the basis of FT-260.
+
+Its recommendation, reached the same way Bill's and Claude Code's was --
+independently:
+
+> ## Should Smart App Control Become A GatewayGuard Setting?
+> ### Recommendation
+> No.
+> **Scope Control** -- adding a new setting increases testing, documentation, validation, support burden.
+> **Limited User Action** -- many systems cannot freely enable Smart App Control; Windows installation history may affect availability.
+> **No Current Security Failure** -- the settings influenced by Smart App Control are already being forced into the recommended state. The user is not being made less secure.
+> **Customer Benefit Is Limited** -- detection alone would not necessarily provide an actionable next step.
+
+Its proposed guide language:
+
+> Add a short note: *"If Windows displays 'This setting is managed by Smart App Control,' the setting is already being protected by a Windows security feature and may not be editable. This is normal behavior."* Nothing more is required. No dedicated chapter. No numbered setting. No screenshots.
+
+And the reframing that Claude Code had not sharpened yet:
+
+> FT-260 is not fundamentally about Smart App Control. FT-260 demonstrates: **Effective State != Policy State.** A setting can be Forced, Managed, Locked, or Overridden without being controlled by traditional Group Policy. Future Windows features may create similar situations. For that reason FT-260 should be treated as an architecture finding rather than a Smart App Control feature request.
+
+Copilot also proposed a lettered backlog item (`FT-260a`) and a new
+standalone file, `ASCII45-KnownLimitations.md`. Neither was built -- see
+Stage 7.
+
+---
+
+## STAGE 7 -- THE DECISION (2026-09-16 14:55 ET)
+
+Claude Code's summary, from `GatewayGuard_SmartAppControl-Decided-2026-09-16-1455.md`:
+
+> **No new setting. One guide sentence instead.** Decided 2026-09-16.
+>
+> Three independent passes landed on the same conclusion without seeing each other's work first: Bill asked the question directly; Copilot wrote a full analysis after being shown the chat history; and Claude Code reasoned it through independently in conversation with Bill. All three: don't detect it, don't build it, add one sentence to the guide.
+>
+> **The sentence:** *"If Windows says a setting is managed by Smart App Control, that setting is already protected and cannot be changed there -- this is normal, not a fault."*
+
+**What was taken from Copilot's analysis:** the recommendation itself
+(matched what was already decided) and the "Effective State vs Policy
+State" framing, which sharpened `CLAUDE.md`'s FT-260 entry -- the finding
+was never really about Smart App Control specifically, it is the first
+measured case of a Windows mechanism other than Group Policy locking a
+setting.
+
+**What was not taken, and why:** Copilot's lettered backlog item and its
+proposed new standalone limitations file. `CLAUDE.md` already has a home
+for exactly this kind of note; a second file tracking the same fact would
+be the "state it twice" problem this project's own documentation habits
+exist to avoid. A dedicated file is Bill's call if ascii45 planning wants
+one, not something to stand up as a side effect of one finding.
+
+---
+
 ## WHERE THIS LEAVES THE DECISION
 
-**Question 3 is still open.** Everything above is the input to it, not the
-answer. In one sentence each:
+**Question 3 is answered, as of 2026-09-16.** In one sentence each:
 
 - **What it is:** a separate Windows 11 feature, not part of Checkup, that
   happens to force two of Checkup's own settings to the correct state.
-- **The gap:** Checkup's policy-lock check cannot see it, so it would
-  report "no lock" while a control sits visibly greyed out.
-- **The decision:** whether the guide gets one sentence explaining the
-  grey-out (recommended, low cost, prevents a support call) -- not whether
-  Checkup should manage, check, or change Smart App Control itself, which
-  nobody has proposed.
+- **The gap:** Checkup's policy-lock check cannot see it, so it reports
+  "no lock" while a control sits visibly greyed out -- raised as FT-260,
+  deliberately left unfixed and unscheduled, since it needs a second real
+  instance to be worth generalizing.
+- **The decision:** the guide gets one sentence explaining the grey-out.
+  Checkup does not manage, check, or change Smart App Control itself --
+  nobody proposed that, and nothing here changes it.
+- **Filed:** `CLAUDE.md`'s FT-260 entry, and
+  `GatewayGuard_CoPilotGuideReview-Comments-2026-09-16-1140.md` for the
+  reconciliation pack.

@@ -131,6 +131,7 @@ $wanted = @(
     @{ Label = 'Cloud response to the Co-Pilot set'; Pattern = 'GatewayGuard_CloudResponse-CoPilot*.md' },
     @{ Label = 'Smart App Control -- full chat history'; Pattern = 'GatewayGuard_SmartAppControl-ChatHistory-*.md' },
     @{ Label = 'Smart App Control -- decided, for Cloud'; Pattern = 'GatewayGuard_SmartAppControl-Decided-*.md' },
+    @{ Label = 'Guide Part 3 review -- for Cloud'; Pattern = 'GatewayGuard_GuidePart3Review-ForCloud-*.md' },
     @{ Label = 'Review of Cloud research';    Pattern = 'GatewayGuard_ReviewOfCloudResearch-*.md'; Multi = $true },
     # --- THE THREE SOURCE PACKS, added 2026-08-15 -------------------------
     # Each is a readable extraction of material Cloud cannot otherwise reach,

@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-16 14:56 ET -->
-<!-- Commit: 8d52a0f -->
+<!-- Generated: 2026-09-16 15:13 ET -->
+<!-- Commit: 973748e -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-16 14:56 ET  |  **Commit:** `8d52a0f`  |  **Made:** 2026-09-16 13:40 ET
-- **Commit subject:** The all-settings harness built, and its first run found a real gap: Setting 5 was never actually removed from the code
+- **Generated:** 2026-09-16 15:13 ET  |  **Commit:** `973748e`  |  **Made:** 2026-09-16 14:57 ET
+- **Commit subject:** Smart App Control decided: no 20th setting, one guide sentence -- three independent passes agreed
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -19,7 +19,7 @@ document family and the single filename that is live right now. Take every
 filename from this table -- never from memory, never from another document,
 never by guessing which date looks newest.
 
-**75 rows follow.** If you cannot see all 75 of them, your
+**76 rows follow.** If you cannot see all 76 of them, your
 retrieval truncated the table -- **say so and ask for the rest, rather
 than answering from the handful you received.**
 
@@ -76,7 +76,7 @@ All paths are relative to `ProjectDocs/`.
 
 ### CLOUD REQUESTS AND CLOUD RESEARCH
 
-**20 rows in this group.** If you see fewer, this group was truncated -- say so.
+**21 rows in this group.** If you see fewer, this group was truncated -- say so.
 
 | What it is | The current file | Older versions present |
 |---|---|---|
@@ -98,6 +98,7 @@ All paths are relative to `ProjectDocs/`.
 | Cloud response to the Co-Pilot set | `GatewayGuard_CloudResponse-CoPilot44-45-2026-09-16-1209.md` | 0 |
 | Smart App Control -- full chat history | `GatewayGuard_SmartAppControl-ChatHistory-2026-09-16-1403.md` | 0 |
 | Smart App Control -- decided, for Cloud | `GatewayGuard_SmartAppControl-Decided-2026-09-16-1455.md` | 0 |
+| Guide Part 3 review -- for Cloud | `GatewayGuard_GuidePart3Review-ForCloud-2026-09-16-1512.md` | 0 |
 | Review of Cloud research | `GatewayGuard_ReviewOfCloudResearch-2026-08-24-1105.md` | -- |
 | Review of Cloud research | `GatewayGuard_ReviewOfCloudResearch-ascii43-2026-09-05-1130.md` | -- |
 

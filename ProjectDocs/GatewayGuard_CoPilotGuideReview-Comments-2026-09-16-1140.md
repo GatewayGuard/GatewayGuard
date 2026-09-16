@@ -193,6 +193,107 @@ belongs once, near those two, not repeated per setting.
 
 ---
 
+## PART 3 ARRIVED -- 2026-09-16 15:12 ET, REVIEWED THE SAME WAY AS PART 1 AND 2
+
+`Co-Pilot part 3 Additional Security and Priv-2026-09-16-1448.txt` covers
+the remaining eight settings: Remote Desktop, Advertising ID, Diagnostic
+Data, Edge Startup Boost, Widgets, Edge Password Saving, Fast Startup, Wake
+on LAN.
+
+### The same two gaps as Parts 1 and 2, confirmed by the same greps
+
+***Measured:*** 0 VERIFY markers, 0 "with your approval" mentions, across
+Part 3. **The zero VERIFY count is not automatically wrong here the way it
+was for Part 2's BitLocker section** -- but checked against the live
+draft's actual marker list, **two of Part 3's eight settings do have real
+VERIFY claims that were dropped:**
+
+- **Diagnostic Data (setting 12).** The live draft flags *"Windows sends
+  the larger [diagnostic] level unless told otherwise"* and *"your computer
+  receives exactly the same updates either way"* as unmeasured. Copilot's
+  rewrite states both as plain fact, no flag.
+- **Edge Startup Boost (setting 13).** The live draft flags *"When this is
+  on, Edge is still running after you have closed it"* as unmeasured.
+  Copilot's rewrite states it as plain fact.
+
+**"With your approval" is absent for all eight**, including three settings
+that are genuinely automatic in the build (Edge Startup Boost, Widgets, and
+Edge Password Saving all show `CanAuto=$true`) -- so the guide describes
+manual steps for something Checkup can actually do with permission. Same
+gap, same fix: raise it in the reconciliation pack, not the sentence count.
+
+### A new problem neither Part 1 nor Part 2 had: THE SETTING NUMBERS DO NOT MATCH THE BUILD -- IN FOUR PLACES
+
+***Measured, both files' own headings, side by side:***
+
+| What Part 2/3 calls it | Real Checkup ID | Part's own number |
+|---|---|---|
+| Memory Integrity (Part 2) | **16** | labelled **10** |
+| Password Required on Wake (Part 2) | **17** | labelled **11** |
+| Fast Startup (Part 3) | **18** | labelled **16** |
+| Wake on LAN (Part 3) | **19** | labelled **17** |
+
+**Part 2 and Part 3 both used a running count of "the Nth setting this
+document happens to cover," not Checkup's real ID.** It tracked correctly
+through Firewall/BitLocker/Hello only because nothing had been skipped yet
+at that point in the sequence. The moment Memory Integrity was reached --
+the real jump from 9 straight to 16, because setting 5 is gone and 10-15
+are covered in Part 3, not Part 2 -- the running count and the real ID
+diverged and never came back together.
+
+**This directly breaks the rule Part 1's own quick-reference table states:**
+*"Setting numbers match GatewayGuard Checkup... should not be renumbered
+without a product decision."* **Setting 10 is now used for two different
+things in two different parts of the same guide** -- Memory Integrity in
+Part 2, Remote Desktop in Part 3. A reader told to check "Setting 16" for
+Fast Startup would find Memory Integrity on Checkup's own screen instead.
+
+**This is disqualifying on its own, independent of the VERIFY gaps above.**
+A numbering error sends the reader to the wrong screen; a dropped VERIFY
+marker ships an unmeasured claim. Both matter, but the numbering error is
+the one that makes the guide actively wrong the moment a reader tries to
+use it, not just imprecise about risk.
+
+### One thing Copilot got right without being asked
+
+**Part 3 already includes a grey-control note, unprompted:**
+
+> A Note About Gray or Locked Controls
+>
+> Occasionally Windows may display messages such as: "This setting is
+> managed by your organization" or "This setting is managed by Smart App
+> Control." In these situations, the setting may not be editable. This
+> does not necessarily indicate a problem... If GatewayGuard reports that
+> the setting is already configured correctly, no further action is
+> usually required.
+
+**This independently matches the Smart App Control decision made the same
+afternoon** (see `CLAUDE.md`'s FT-260 entry and
+`GatewayGuard_SmartAppControl-Decided-2026-09-16-1455.md`), and is broader
+in a good way -- it also covers the "managed by your organization" message,
+which a home PC can occasionally show for unrelated reasons even though
+this product is not built for managed machines. **Ties back to Checkup's
+own report, which is exactly the kind of grounding this project's rules
+ask for.** No changes recommended to this note; it can go into the
+reconciliation pack as written.
+
+### Revised recommendation
+
+**Hold stands, and the numbering error raises the stakes on holding it.**
+Wait for the reconciliation pack rather than adopting any part as written.
+The pack now needs to: restore the two Diagnostic Data and one Edge
+Startup Boost VERIFY markers found here (plus whatever Part 2's own
+BitLocker/Hello markers still need); add the missing permission line
+across all three parts; and **renumber the four section headings that
+disagree with Checkup's real IDs** -- Memory Integrity and Password
+Required on Wake in Part 2, Fast Startup and Wake on LAN in Part 3 -- **to
+16, 17, 18, 19.** ***Measured: Part 1's own quick-reference table already
+has this right*** -- rows 16-19 correctly name these four settings in that
+order. **Part 1 is not part of the error.** It is only Part 2's and Part
+3's section headings that drifted from it.
+
+---
+
 ## SOURCES
 
 - `ProjectDocs\GatewayGuard_GuideRewrite-Draft-2026-08-22-1000.md`, line 297
