@@ -1,0 +1,49 @@
+﻿======================================================================
+  ALL SETTINGS STATUS -- via Checkup's OWN detection code
+  machine  : CGDELL
+  user     : Dad
+  run at   : 2026-09-16 13:38:45
+  build    : W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1
+
+  READ-ONLY. This calls Checkup's real status-detection functions.
+  It never calls Apply-Setting. Nothing on this PC is changed.
+
+  Administrator : True
+  Windows edition: Professional
+
+----------------------------------------------------------------------
+  RESULT -- one line per setting, straight from Checkup's own code
+----------------------------------------------------------------------
+
+  [ 1]  Windows Update                         Enabled -- GOOD
+  [ 2]  Defender Real-Time VP (Virus Protection) ON -- GOOD  (Malwarebytes Free installed as a manual-scan companion; Defender remains primary)
+  [ 3]  Tamper Protection (Defender)           ON -- GOOD
+  [ 4]  SmartScreen                            ON -- GOOD
+  [ 5]  Defender Periodic Scanning             OFF is correct here -- GOOD
+  [ 6]  Edge Phishing Protection (all 3)       Unknown -- Tamper Protection blocks this check; verify by hand
+  [ 7]  Defender Firewall Protection (all profiles) ALL ON -- GOOD
+  [ 8]  BitLocker / Device Encryption          ENCRYPTED -- GOOD
+  [ 9]  Windows Hello (check only)             Not set up -- manual action needed
+  [10]  Remote Desktop -- Disable              DISABLED -- GOOD
+  [11]  Advertising ID -- Turn Off             OFF -- GOOD
+  [12]  Diagnostic Data -- Required Only       Sending extra data -- we will limit it
+  [13]  Edge Startup Boost and Background      Unknown -- could not check
+  [14]  Windows Widgets -- Disable             Unknown -- could not check
+  [15]  Edge Password Saving -- Disable        DISABLED -- GOOD
+  [16]  Memory Integrity (Core Isolation)      ON -- GOOD
+  [17]  Password Required on Wake              Unknown -- could not read; check by hand
+  [18]  Fast Startup -- Disable                DISABLED -- GOOD
+  [19]  Wake on LAN -- Disable                 Enabled -- consider disabling
+
+----------------------------------------------------------------------
+  HOW TO USE THIS
+----------------------------------------------------------------------
+
+  Run this BEFORE a build change and save the output. Run it again
+  AFTER the change, on the same machine. Any line that reads
+  differently than expected is worth a look before shipping -- it
+  means the change touched a setting it was not supposed to.
+
+  This is Checkup's real code, not a separate guess at what it should
+  say -- so a difference here is a difference in the build itself.
+

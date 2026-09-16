@@ -146,6 +146,23 @@ call (question 1 in Cloud's response), not decided here.
 
 ---
 
+## BILL'S DECISION ON THE SETTING 5 WORDING -- 2026-09-16 13:39 ET
+
+**Bill:** *"Not applicable to your configuration"* or similar wording, for
+the customer-facing table where the numbers jump from 4 to 6.
+
+**Recorded for whichever revision adopts this table** (held per the section
+above until Part 3 and a reconciliation pack):
+
+> **Not applicable** -- this check is no longer part of GatewayGuard Checkup.
+
+Kept short and matched to the table's own style (it already uses one-line
+status words like "On", "Off", "Configured" in that column), with the
+reason added in six words so a reader does not wonder if something is
+missing rather than intentionally absent.
+
+---
+
 ## SOURCES
 
 - `ProjectDocs\GatewayGuard_GuideRewrite-Draft-2026-08-22-1000.md`, line 297
