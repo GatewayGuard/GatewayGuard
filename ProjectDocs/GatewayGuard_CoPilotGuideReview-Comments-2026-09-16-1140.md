@@ -110,6 +110,42 @@ same-either-way action.
 
 ---
 
+## THE TWO CHECKS CLOUD ASKED FOR -- 2026-09-16, RUN AFTER RECEIPT
+
+*Cloud's response, `GatewayGuard_CloudResponse-CoPilot44-45-2026-09-16-1209.md`,
+named two greps this comment file had not run. Both run now, added here
+rather than in a third file, so the finding sits beside the section it
+changes.*
+
+**Does the rewrite carry the VERIFY markers? NO -- confirmed, not guessed.**
+***Measured: `grep -c VERIFY` on both files -- Part 1: 1 hit, Part 2: 0
+hits.*** The one hit in Part 1 is not a marker at all -- it is the ordinary
+sentence *"Verify the current configuration"*. **The real count of actual
+VERIFY markers carried into the rewrite is zero**, across both files,
+including Part 2's BitLocker and Windows Hello sections, which the live
+draft carries real markers on at lines 494-659. **This is exactly the
+failure the 09-15 external-review comments warned about: deleting a marker
+ships the claim unmeasured, with nothing left to find it by.** This raises
+what was hold 1 (the Setting 8 BitLocker sentence) to a hold on the **whole
+of Part 2's BitLocker and Windows Hello sections**, not one sentence in it.
+
+**Does it carry "With your approval, Checkup will..."? NO.** ***Measured:
+`grep -c "with your approval"`, case-insensitive, both files: 0.*** Bill's
+option 2 (2026-08-23) is absent from every one of the eleven rewritten
+settings. Cloud's fix is right-sized: this needs an eighth line under
+**GatewayGuard Recommendation**, not an eighth heading -- the seven-heading
+shape itself does not need to change.
+
+**Revised recommendation, given both results: hold the full rewrite**, not
+just the two items already flagged. Cloud's proposed path -- wait for Part
+3, then deliver a reconciliation pack (markers restored, the Checkup line
+added, Setting 8 and Setting 5 wording settled) against the Copilot text
+rather than a second competing rewrite -- is the smaller job and the one
+that does not risk shipping a silently unmeasured claim. That is Bill's
+call (question 1 in Cloud's response), not decided here.
+
+---
+
 ## SOURCES
 
 - `ProjectDocs\GatewayGuard_GuideRewrite-Draft-2026-08-22-1000.md`, line 297

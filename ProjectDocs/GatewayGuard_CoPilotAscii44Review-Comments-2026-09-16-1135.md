@@ -10,7 +10,9 @@
   `code ascii44-44 comments-2026-09-16-0925.txt` (a code-level review,
   duplicated verbatim as `Tool\I reviewed the comments document pl.txt`,
   now retired to `Archive\`), and `BitLocker-Test-Plan-2026-09-16-0948.md`.
-  A fourth, `Co-Pilot-ASCII45 Detailed Build Plan-2026-09-26-0942.txt`, is a
+  A fourth, `Co-Pilot-ASCII45 Detailed Build Plan-2026-09-16-0942.txt`
+  (renamed from a 2026-09-26 typo -- Cloud caught it, disk timestamp
+  confirms 09-16 09:42), is a
   forward plan built on the same findings -- referenced, not separately
   re-verified here.
 - **For:** Bill, then Claude Cloud

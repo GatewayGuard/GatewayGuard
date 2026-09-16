@@ -1,0 +1,405 @@
+ASCII45 Detailed Build Plan
+GatewayGuard Checkup v3.1
+Release Objective: Accuracy Hardening Before Launch
+
+Of all the candidate future builds, ASCII45 should focus entirely on accuracy, verification, and launch-risk reduction.
+
+Do not add new settings.
+
+Do not redesign UI.
+
+Do not add reporting features.
+
+The primary goal is:
+
+Eliminate every remaining case where Checkup or the Guide could confidently state something that has not been fully verified on real Windows 11 systems.
+
+This aligns directly with the FT-120, FT-141, FT-256, and FT-257 philosophy already visible throughout W11-SecurityHardening-v3-ascii44-2026-09-06-1214.txt.
+
+Build Theme
+ASCII45: Verification and Reality Pass
+Mission
+
+Convert all remaining:
+
+Assumed
+Believed
+Inferred
+Probably
+Research-only
+
+
+into:
+
+Measured
+Verified
+Observed
+Confirmed
+
+
+before launch.
+
+FT-260
+Remove Retired Setting 5 References
+Problem
+
+The project notes already identify a mismatch:
+
+Guide still references Setting 5.
+Checkup no longer appears to present Setting 5 to users.
+
+This creates user confusion and support issues.
+
+Required Work
+
+Audit:
+
+Guide
+CURRENT.md
+README
+Website pages
+Tool help text
+Checklist explanations
+Screen references
+GuideRef references
+
+Deliverable
+
+One authoritative answer:
+
+Setting 5 remains
+or
+Setting 5 retired
+
+
+No mixed state.
+
+FT-261
+BitLocker / Device Encryption Validation Matrix
+Risk Level
+
+Highest.
+
+The guide itself notes that incorrect BitLocker guidance can cause data loss.
+
+Test Matrix
+Windows 11 Home
+
+Test:
+
+Local account
+Microsoft account
+Online
+Offline
+Encryption enable
+Encryption already enabled
+
+Windows 11 Pro
+
+Test:
+
+BitLocker enable
+BitLocker disable
+Recovery key creation
+Recovery key retrieval
+Recovery prompt
+
+Verify
+Question 1
+
+Where does the recovery key actually go?
+
+Microsoft Account?
+AAD?
+Local disk?
+Nowhere?
+
+Question 2
+
+Can Home encrypt while using only a local account?
+
+Current code assumes yes. Verify again.
+
+Question 3
+
+What happens if Secure Boot is enabled after encryption?
+
+Current warnings should be validated with a controlled test.
+
+Question 4
+
+What happens after:
+
+Firmware update
+TPM reset
+UEFI change
+Boot order change
+
+Deliverable
+
+Generate:
+
+BitLockerVerification.md
+
+
+Use it as source material for:
+
+Guide
+Website pages
+Tool wording
+FT-262
+Windows Hello Reality Check
+Current State
+
+Detection today:
+
+Test-Path NGC
+
+Risk
+
+Folder existence ≠ Windows Hello operational.
+
+Possible states:
+
+Folder exists
+PIN removed
+PIN corrupted
+Hello disabled
+Biometrics unavailable
+
+New Detection Standards
+
+Need to determine:
+
+PIN Configured
+Biometric Configured
+Hello Enabled
+Unknown
+
+Deliverable
+
+Replace:
+
+Configured -- GOOD
+
+
+with:
+
+PIN configured
+Biometric configured
+Hello unavailable
+Could not verify
+
+
+when appropriate.
+
+FT-263
+Guide/Tool Synchronization Audit
+Problem
+
+The Guide and Checkup have evolved independently.
+
+Review document identifies several synchronization concerns.
+
+Audit Every Setting
+
+For each setting verify:
+
+Tool
+Guide
+Website
+GuideRef
+
+
+all agree.
+
+Validation Questions
+
+For every setting:
+
+What is it?
+Recommendation?
+Manual path?
+Can tool change it?
+Can tool only verify it?
+
+Deliverable
+
+Create:
+
+SettingCrosswalk.md
+
+
+Containing:
+
+ID
+Tool Name
+Guide Name
+Website Name
+Current Recommendation
+
+FT-264
+GuideRef Integrity Check
+
+Every GuideRef should point to an existing destination.
+
+Examples:
+
+Phase 1 Step 1
+Phase 1 Step 2
+Keep vs Disable Table
+
+
+appear throughout the settings array.
+
+Verify
+
+Every reference should resolve.
+
+No dead references.
+
+FT-265
+Strengthen Unknown Handling
+
+Current philosophy is strong:
+
+Unknown rather than wrong.
+
+
+ASCII44 applies this well.
+
+Expand It
+
+Review all settings.
+
+Any place that currently returns:
+
+Enabled
+Disabled
+Good
+Bad
+
+
+without proof should become:
+
+Unknown
+
+
+until verified.
+
+Focus Areas
+SmartScreen
+
+Already improved. Reconfirm.
+
+Password-on-Wake
+
+Already improved. Reconfirm.
+
+Widgets
+
+Still weak.
+
+Edge Password Saving
+
+Still weak.
+
+Startup Boost
+
+Still weak.
+
+FT-266
+Manual Verification Pack
+
+Create a reusable verification toolkit.
+
+Example output:
+
+GatewayGuard Verification Toolkit
+
+
+For each setting:
+
+Registry value
+Policy state
+Expected UI result
+Verification method
+
+Purpose
+
+Lets any future tester verify findings consistently.
+
+Supports T‑VF1 effort mentioned in guide planning.
+
+FT-267
+Security-Critical Settings Review
+
+Review only:
+
+Defender Real-Time
+Tamper Protection
+Firewall
+BitLocker
+Memory Integrity
+Remote Desktop
+
+
+For each answer:
+
+Can tool verify?
+Can tool apply?
+Can Windows override?
+Can Group Policy override?
+
+
+ASCII44 introduced policy awareness for several settings but coverage is incomplete.
+
+FT-268
+Launch Documentation Package
+
+At completion of ASCII45 produce:
+
+1. Verification Report
+ASCII45-VerificationReport.md
+
+2. Known Limitations
+ASCII45-KnownLimitations.md
+
+3. Verified Claims Register
+VerifiedClaims.md
+
+
+Tracks every statement previously marked:
+
+VERIFY
+
+
+and records:
+
+Verified
+Not Verified
+Reworded
+
+
+This directly supports the Guide launch process described in GatewayGuard_ExternalGuideReview-Comments-2026-09-15-1324.md.
+
+ASCII45 Success Criteria
+
+Before release:
+
+✅ All obsolete Setting 5 references resolved.
+ ✅ BitLocker behavior verified on Home and Pro.
+ ✅ Recovery-key behavior documented.
+ ✅ Windows Hello detection improved.
+ ✅ GuideRefs audited.
+ ✅ Tool-guide synchronization completed.
+ ✅ Every remaining VERIFY claim measured or rewritten.
+ ✅ Verification report produced.
+
+Expected Outcome
+
+When ASCII45 finishes, the product should be able to make this claim:
+
+“Every customer-facing recommendation and every security status shown by Checkup has either been directly measured on Windows 11 systems or explicitly identified as unknown.”
+
+That would be the strongest possible foundation for the October launch.

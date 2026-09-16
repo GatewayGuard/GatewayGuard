@@ -128,6 +128,7 @@ $wanted = @(
     # Code's check appended -- same reasoning as the row above.
     @{ Label = 'Co-Pilot ascii44/BitLocker review + comments'; Pattern = 'GatewayGuard_CoPilotAscii44Review-Comments-*.md' },
     @{ Label = 'Co-Pilot Guide rewrite review + comments';     Pattern = 'GatewayGuard_CoPilotGuideReview-Comments-*.md' },
+    @{ Label = 'Cloud response to the Co-Pilot set'; Pattern = 'GatewayGuard_CloudResponse-CoPilot*.md' },
     @{ Label = 'Review of Cloud research';    Pattern = 'GatewayGuard_ReviewOfCloudResearch-*.md'; Multi = $true },
     # --- THE THREE SOURCE PACKS, added 2026-08-15 -------------------------
     # Each is a readable extraction of material Cloud cannot otherwise reach,

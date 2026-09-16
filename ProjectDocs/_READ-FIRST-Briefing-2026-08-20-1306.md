@@ -1,7 +1,7 @@
 ﻿<!-- Dated: 2026-08-20 13:06 ET -->
 # READ FIRST -- Session Briefing
 **Document Name:** _READ-FIRST-Briefing
-**Last Modified:** 2026-08-23 22:50 ET
+**Last Modified:** 2026-09-16 12:30 ET
 **Last Editor:** Claude Code (CGDELL)
 **Purpose:** Read this before anything else at the start of every session.
 **Supersedes:** `_READ-FIRST-Briefing-2026-08-14-0041.md`, which by this
@@ -10,6 +10,13 @@ The tree was on **ascii42**. Three builds stale, on the first two lines any new
 session reads.
 
 **Change History Log:**
+- 2026-09-16 12:30: **LAUNCH DATE CORRECTED -- this document still said
+  September 15 the day after Bill moved it to October 15.** Found by Cloud's
+  09-16 response, not by this document's own reading -- exactly the
+  pointer-that-lies shape this file exists to catch, caught on itself.
+  Section on the target launch date rewritten; every other schedule this
+  briefing carries against the old 15-Sep date is still open, same sweep
+  as the 01-Sep move below.
 - 2026-08-23 22:50: **THE GUIDE IS FINISHED -- status block rewritten.** It
   said ascii43 half built and nothing about the guide, which was the day's
   entire work. Packs 1 and 2 applied, every retrieval gap closed, Part H cut on
@@ -214,12 +221,17 @@ still reads in sequence.)*
 log exists" while the log sat on disk untracked, because the check asked `git`
 and git was blind to it. **Look on disk.**
 
-**Target launch:** **September 15, 2026** (Tuesday) at gatewayguard.co.
-**Moved by Bill on 2026-08-30 from September 1** -- two weeks, same weekday.
-**Every schedule built against 01-Sep is now wrong**, including the CPM
-schedule's computed float and the marketing plan's launch-week table. They are
-flagged in place rather than silently shifted, because shifting a critical path
-by hand is how a plan starts lying.
+**Target launch:** **October 15, 2026** (Thursday) at gatewayguard.co.
+**Moved by Bill on 2026-09-15 from September 15**, so the format pack and the
+29 VERIFY-marker measurements (T-VF1) can land in one guide revision before
+launch instead of after it -- see
+`GatewayGuard_ExternalGuideReview-Comments-2026-09-15-1324.md`. **This
+briefing had not caught up to that move** -- Cloud's 2026-09-16 response
+found it still saying September 15 the day after the change, the same
+pointer-that-lies shape flagged below for the CPM schedule and the marketing
+plan's launch-week table when 01-Sep moved to 15-Sep. **Every schedule built
+against 15-Sep is now wrong too**, and needs the same sweep this section
+already asked for once.
 
 ### Git -- measured 2026-09-08 07:55, and stated HERE ONLY
 
