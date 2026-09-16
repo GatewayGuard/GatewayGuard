@@ -773,22 +773,14 @@
 #           That string does not match the auto-deselect patterns, so the
 #           item stays offered to the user instead of being silently
 #           skipped -- which is the correct handling for "we do not know".
-#   FT-123b (item 15 FIXED 2026-09-16, items 13/14 CARRIED). Copilot's
-#           ascii44 review named this same gap independently and proposed
-#           reading Edge's Preferences JSON. VERIFIED on CGDELL 2026-09-16:
-#           %LOCALAPPDATA%\Microsoft\Edge\User Data\Default\Preferences
-#           exists, parses, and its top-level credentials_enable_service key
-#           is present and readable -- that is item 15, now fixed, using the
-#           effective read only when the policy value is absent so Checkup's
-#           own applied changes (FT-258) still read from the policy key.
-#           Copilot's other two proposed keys do NOT hold up: measured the
-#           same file the same day, neither startup_boost_enabled (item 13)
-#           nor a top-level background_mode.enabled exists in it. Building
-#           against an unseen key name is gate 24's rule, applied to JSON.
-#           Items 13 and 14 (TaskbarDa, read but not cross-verified against
-#           the real taskbar) stay Unknown-only until that is settled.
-#           Known gap, stated rather than guessed: this reads the "Default"
-#           profile only. A reader on a second Edge profile is not covered.
+#   FT-123b (CARRIED, NOT FIXED): reading the real effective state means
+#           parsing the Edge profile Preferences JSON (items 13 and 15) and
+#           HKCU\...\Explorer\Advanced\TaskbarDa (item 14). Those are claims
+#           about external software behaviour: RESEARCH BEFORE STATING and
+#           gate 13 (documented state-matrix test) both apply and neither is
+#           satisfied yet. Reporting Unknown is honest in the meantime. The
+#           false BAD was not -- which is why the half that IS provable
+#           ships now rather than waiting.
 #
 #   FT-124: ENTER SILENTLY MEANT YES AT 32 PROMPTS. Read-ValidKey mapped
 #           VK 13 to "Y" whenever "Y" was in ValidKeys. Enter means "I have
@@ -6031,33 +6023,6 @@ function Get-MalwarebytesState {
     } catch { return "Unknown" }
 }
 
-function Get-GGEdgeEffectiveBool {
-    # FT-123b (partial), added 2026-09-16. Reads ONE key out of the user's
-    # own Edge profile, for the case FT-123 exists to catch: a setting the
-    # user changed inside Edge itself, which the policy key never saw.
-    #
-    # VERIFIED 2026-09-16 measured on CGDELL: the file exists, parses as
-    # JSON, and "credentials_enable_service" is present at the top level.
-    # Only that key is called verified -- see the header note by FT-123b for
-    # what was checked and did not hold up.
-    #
-    # Known gap, stated rather than guessed: "Default" profile only.
-    param([string]$KeyName)
-    $ggPrefPath = Join-Path $env:LOCALAPPDATA "Microsoft\Edge\User Data\Default\Preferences"
-    if (-not (Test-Path -LiteralPath $ggPrefPath)) {
-        return @{ Found = $false; Value = $null }
-    }
-    try {
-        $ggJson = Get-Content -LiteralPath $ggPrefPath -Raw -EA Stop | ConvertFrom-Json -EA Stop
-    } catch {
-        return @{ Found = $false; Value = $null }
-    }
-    if ($ggJson.PSObject.Properties.Name -notcontains $KeyName) {
-        return @{ Found = $false; Value = $null }
-    }
-    return @{ Found = $true; Value = [bool]$ggJson.$KeyName }
-}
-
 function Get-AllStatuses {
     foreach ($s in $Settings) {
         $s | Add-Member -NotePropertyName Status -NotePropertyValue "Checking..." -Force -ErrorAction SilentlyContinue
@@ -6394,23 +6359,11 @@ function Get-AllStatuses {
                 # said it was enabled." The policy value was absent because
                 # the user turned password saving off in Edge's own settings,
                 # and absent was being reported as enabled.
-                # FT-123b (partial, 2026-09-16): when the POLICY value is
-                # absent, this now also checks the user's own Edge profile
-                # before giving up and saying Unknown -- see
-                # Get-GGEdgeEffectiveBool. The policy read stays first and
-                # authoritative, because items 12-15 are the settings Checkup
-                # itself applies through policy keys (FT-258), so a change
-                # Checkup made must still read back from the policy key.
                 try {
                     $ep = (Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Edge" -EA SilentlyContinue).PasswordManagerEnabled
-                    if ($null -ne $ep) {
-                        $s.Status = if ($ep -eq 0) { "DISABLED -- GOOD" } else { "Enabled -- needs attention" }
-                    } else {
-                        $ggEff = Get-GGEdgeEffectiveBool -KeyName "credentials_enable_service"
-                        $s.Status = if (-not $ggEff.Found) { "Unknown -- could not check" }
-                                    elseif ($ggEff.Value -eq $false) { "DISABLED -- GOOD" }
-                                    else { "Enabled -- needs attention" }
-                    }
+                    $s.Status = if ($null -eq $ep) { "Unknown -- could not check" }
+                                elseif ($ep -eq 0)  { "DISABLED -- GOOD" }
+                                else                { "Enabled -- needs attention" }
                 }
                 catch { $s.Status = "Unknown -- could not check" }
             }

@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-15 14:07 ET -->
-<!-- Commit: 9fa7b7e -->
+<!-- Generated: 2026-09-16 11:37 ET -->
+<!-- Commit: fb240f0 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-15 14:07 ET  |  **Commit:** `9fa7b7e`  |  **Made:** 2026-09-10 16:27 ET
-- **Commit subject:** Correction: today was a re-test, not the first test -- Bill caught it
+- **Generated:** 2026-09-16 11:37 ET  |  **Commit:** `fb240f0`  |  **Made:** 2026-09-15 14:12 ET
+- **Commit subject:** External guide review filed, launch moved to Oct 15, and OneDrive -Sandy conflict copies stopped fooling the doc gates
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -19,7 +19,7 @@ document family and the single filename that is live right now. Take every
 filename from this table -- never from memory, never from another document,
 never by guessing which date looks newest.
 
-**70 rows follow.** If you cannot see all 70 of them, your
+**72 rows follow.** If you cannot see all 72 of them, your
 retrieval truncated the table -- **say so and ask for the rest, rather
 than answering from the handful you received.**
 
@@ -76,7 +76,7 @@ All paths are relative to `ProjectDocs/`.
 
 ### CLOUD REQUESTS AND CLOUD RESEARCH
 
-**15 rows in this group.** If you see fewer, this group was truncated -- say so.
+**17 rows in this group.** If you see fewer, this group was truncated -- say so.
 
 | What it is | The current file | Older versions present |
 |---|---|---|
@@ -93,6 +93,8 @@ All paths are relative to `ProjectDocs/`.
 | Cloud research (delivered) | `GatewayGuard_CloudResearch-ascii43-2026-09-05-0018.md` | -- |
 | Cloud answer (delivered) | `GatewayGuard_CloudAnswer-Malwarebytes-2026-09-08-1105.md` | -- |
 | External guide review + comments | `GatewayGuard_ExternalGuideReview-Comments-2026-09-15-1324.md` | 0 |
+| Co-Pilot ascii44/BitLocker review + comments | `GatewayGuard_CoPilotAscii44Review-Comments-2026-09-16-1135.md` | 0 |
+| Co-Pilot Guide rewrite review + comments | `GatewayGuard_CoPilotGuideReview-Comments-2026-09-16-1140.md` | 0 |
 | Review of Cloud research | `GatewayGuard_ReviewOfCloudResearch-2026-08-24-1105.md` | -- |
 | Review of Cloud research | `GatewayGuard_ReviewOfCloudResearch-ascii43-2026-09-05-1130.md` | -- |
 

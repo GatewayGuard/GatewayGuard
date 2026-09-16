@@ -1,114 +1,7 @@
-﻿# Dated: 2026-09-06 12:14 ET
+﻿# Dated: 2026-08-21 17:52 ET
 # ================================================================
-# FILE:    W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1
-# BUILD:   ascii44  |  Version 3.1
-# CHANGES FROM ascii43 (2026-09-06 -- ASCII44):
-#   FT-242: NINE REGISTRY WRITES COULD NOT FAIL. Without -EA Stop a
-#           refused Set-ItemProperty raises a non-terminating error --
-#           the catch never fires, and the next line sets
-#           $result = "... GOOD". The customer's support file recorded
-#           a success for a change the machine rejected. Bill caught it
-#           on screen 34: "I checked edge startup boost no change,
-#           still off", against a log reading
-#           "Before: Unknown -- could not check | Result: ... GOOD".
-#           Eight sites were in Apply-Setting; a ninth was found in
-#           Apply-PowerSettings, a second apply path for setting 18
-#           that the triage's line range never covered.
-#           NOT changed: Suspend-ScreenSaver and Restore-ScreenSaver
-#           (1574-1587), where -EA SilentlyContinue is correct -- a
-#           cosmetic failure must not abort a security run.
-#           FT-254 raised for Test-TimeDateSync (3931), same class,
-#           four calls that need deciding together.
-#
-#   FT-203: BOTH REMINDERS WERE OFF BY DEFAULT ON A LAPTOP. schtasks.exe
-#           has no switch for a missed start, for waking, or for battery,
-#           so every task it creates carries
-#           DisallowStartIfOnBatteries=True and StartWhenAvailable=False.
-#           A senior on battery at 10:00 got no reminder, and it was not
-#           shown when they plugged in either -- while the log said
-#           [GOOD] Scheduled task created, which was true. The task
-#           existed; it could not fire. New Set-GGTaskSettings runs after
-#           the create, mutates the three properties on the task's own
-#           settings object, and LOGS WHAT IT READS BACK.
-#           WakeToRun stays False on purpose -- product decision.
-#
-#   BACK KEY: B IS NOW THE ONLY BACK KEY. Bill, 2026-08-30: "N always
-#           means no and B should always be used to say back." Measured
-#           on ascii43, N meant three different things across 30 of the
-#           47 Read-ValidKey sites -- No at 12, Back at 7, Exit at 11 --
-#           so nobody could predict it. Five sites where N actually
-#           navigated backward are now B: the resume re-check, the
-#           critical-deselected review, the encryption decline, the
-#           BitLocker decline, and screen 27's "Ready to proceed?",
-#           which is the one Bill hit.
-#           NOT changed: "Still correct?", where N already means no and
-#           navigates nowhere. Label fixed at the Sleep/Display question,
-#           where N said "go back" but actually left the flow.
-#           THE 11 N = EXIT SITES ARE UNTOUCHED -- X = Exit is not
-#           decided, and changing two of N's three meanings at once is
-#           how the confusion returns wearing a different letter.
-#
-#   FT-244: SCREEN 32 WAS DRAWN AND NEVER PAUSED. Setup-ScheduledTasks
-#           begins with Clear-Host, so SCREEN-69 was painted and wiped
-#           in the same second -- measured 16:09:43, 2026-08-30, two
-#           renders one second apart with no keypress between them.
-#           Bill: "Is there a screen 32." Same family: Show-ManualSteps
-#           (SCREEN-72) was the only wrap-up screen with no Clear-Host,
-#           so it painted on top of the previous one -- Bill: "Scr 34 -
-#           appeared at a bottom of Scr 3b."
-#   FT-243: THE REQUIRED LOG NOTICE WAS ON A SCREEN HALF THE USERS NEVER
-#           REACH. The rule says it goes on the review screen, once. It
-#           was inside Show-BitLockerFinalDecline -- screen 25e, reached
-#           only by DECLINING encryption -- so anyone who accepted
-#           encryption never saw it. Bill, screen 27: "Did not see this
-#           on the Screen." The once-only guard was correct all along;
-#           it was guarding the wrong screen.
-#
-#   FT-255: FIVE PARSES COULD NEVER POPULATE $Matches. powercfg returns an
-#           ARRAY, and on an array -match is a FILTER: it returns the
-#           matching element, so the `if` passes, but it NEVER sets
-#           $Matches. Measured on CGDELL 2026-09-06. So the next
-#           expression read a $Matches this statement did not set --
-#           $null, or whatever an unrelated earlier match had left. A
-#           number from a stale $Matches is worse than no number. The
-#           correct pattern, ($x | Out-String) -match, was already in this
-#           file at two other reads. NOT a site: the manage-bde read,
-#           which is piped through Out-String at assignment already.
-#   FT-246: the password-on-wake re-read is one of those five, which
-#           explains two failures and makes the one success suspect.
-#           What is still unknown is INSTRUMENTED, not guessed: when the
-#           parse finds nothing the raw powercfg output is now logged.
-#   FT-256: FIXED 2026-09-08 (Bill: "fix ft-256"). Measured on CGDELL,
-#           elevated: this query can return the scheme header and NO
-#           setting block at all -- and BOTH read sites then reported
-#           "NOT required" from a read that produced nothing, which is
-#           the FT-120/FT-123 shape and the mirror of FT-257.
-#           FIX: one shared reader, Get-GGConsoleLockState, with FOUR
-#           outcomes -- REQUIRED / NOT_REQUIRED / NO_INDEX / NO_OUTPUT --
-#           replacing two private copies of a two-outcome parse. A failed
-#           read now says "could not read" and logs the raw powercfg
-#           output, so the next field run says WHY.
-#           The unknown keeps the item SELECTED, because auto-deselect
-#           keys on "GOOD" -- so the user is still offered the fix. That
-#           is deliberate: the fix is harmless and idempotent, and a
-#           reading we could not take is not a reason to hide it.
-#           Live instance measured the same day:
-#           Test_Results\SettingsStatus-CGDELL-2026-09-08_21-29.txt
-#   FT-245: the silent-error breadcrumb said "at Show-ScopeDisclaimer",
-#           where the USER was, not where the fault was. Wording only --
-#           severity unchanged, because an access denial logged as INFO
-#           is how a real failure becomes invisible.
-#
-#   SCREEN 12: THE SSD IS NOW DRIVE 1, at Bill's request. The list was
-#           sorted by DeviceId -- hardware enumeration order, which means
-#           nothing to the customer, on the first screen that tells them
-#           anything about their own machine. SSDs first, the rest after,
-#           DeviceId as the tiebreak. Deliberately not a plain reverse,
-#           which is only correct with exactly two drives in exactly the
-#           wrong order. NOT VERIFIED ON A MULTI-DRIVE MACHINE: measured
-#           on CGDELL 2026-09-06, Get-PhysicalDisk returns one disk, so
-#           the output here is unchanged. Check screen 12 on SANDY.
-#
+# FILE:    W11-SecurityHardening-v3-ascii43-2026-08-21-1752.ps1
+# BUILD:   ascii43  |  Version 3.1
 # CHANGES FROM ascii39 (2026-08-15 -- ASCII40: THE THREE FIELD BLOCKERS):
 #   SCOPE NOTE. Two of the three blockers are in this build. FT-172 (the
 #   shown-as screen numbers) is held pending Bill's approval of the
@@ -773,22 +666,14 @@
 #           That string does not match the auto-deselect patterns, so the
 #           item stays offered to the user instead of being silently
 #           skipped -- which is the correct handling for "we do not know".
-#   FT-123b (item 15 FIXED 2026-09-16, items 13/14 CARRIED). Copilot's
-#           ascii44 review named this same gap independently and proposed
-#           reading Edge's Preferences JSON. VERIFIED on CGDELL 2026-09-16:
-#           %LOCALAPPDATA%\Microsoft\Edge\User Data\Default\Preferences
-#           exists, parses, and its top-level credentials_enable_service key
-#           is present and readable -- that is item 15, now fixed, using the
-#           effective read only when the policy value is absent so Checkup's
-#           own applied changes (FT-258) still read from the policy key.
-#           Copilot's other two proposed keys do NOT hold up: measured the
-#           same file the same day, neither startup_boost_enabled (item 13)
-#           nor a top-level background_mode.enabled exists in it. Building
-#           against an unseen key name is gate 24's rule, applied to JSON.
-#           Items 13 and 14 (TaskbarDa, read but not cross-verified against
-#           the real taskbar) stay Unknown-only until that is settled.
-#           Known gap, stated rather than guessed: this reads the "Default"
-#           profile only. A reader on a second Edge profile is not covered.
+#   FT-123b (CARRIED, NOT FIXED): reading the real effective state means
+#           parsing the Edge profile Preferences JSON (items 13 and 15) and
+#           HKCU\...\Explorer\Advanced\TaskbarDa (item 14). Those are claims
+#           about external software behaviour: RESEARCH BEFORE STATING and
+#           gate 13 (documented state-matrix test) both apply and neither is
+#           satisfied yet. Reporting Unknown is honest in the meantime. The
+#           false BAD was not -- which is why the half that IS provable
+#           ships now rather than waiting.
 #
 #   FT-124: ENTER SILENTLY MEANT YES AT 32 PROMPTS. Read-ValidKey mapped
 #           VK 13 to "Y" whenever "Y" was in ValidKeys. Enter means "I have
@@ -1595,7 +1480,7 @@ param(
 )
 
 $ScriptVersion  = "3.1"
-$BuildID        = "ascii44"
+$BuildID        = "ascii43"
 $GuideURL       = "gatewayguard.co"
 
 # STATE/RESUME SYSTEM (UX-05, UX-06) -- survives the offline-scan reboot
@@ -3241,14 +3126,7 @@ function Write-PendingErrors {
                              ($ggMsg -match 'Cannot find path'))
                 $ggStatus = if ($ggBenign) { "INFO" } else { "ERROR" }
                 $ggLabel  = if ($ggBenign) { "NOT SET (expected)" } else { "SILENT ERROR" }
-                # FT-245 (ascii44): $Where is where the USER was, not where the
-                # fault was -- every line read "SILENT ERROR at
-                # Show-ScopeDisclaimer" and sent readers to the wrong function.
-                # The real location is the position message. Wording only:
-                # severity is NOT reclassified, because turning an access
-                # denial into INFO is how a real failure becomes invisible.
-                $ggFault = if ($ggAt) { $ggAt } else { "location not recorded" }
-                Write-Log -Message ($ggLabel + " -- fault at: " + $ggFault + " -- user was at: " + $Where + " -- " + $ggMsg) -Status $ggStatus
+                Write-Log -Message ($ggLabel + " at " + $Where + ": " + $ggMsg + $(if ($ggAt) { " | " + $ggAt } else { "" })) -Status $ggStatus
             } catch {}
         }
     } catch {}
@@ -3602,55 +3480,6 @@ function Test-DomainJoin {
 }
 
 # ============================================================
-# GROUP POLICY OVERRIDE CHECK  (FT-258)
-# ============================================================
-# A value under HKLM\SOFTWARE\Policies BEATS the setting the user can
-# reach in Windows Security. When one is present and hostile the user
-# clicks the switch and nothing happens -- it bounces back or is greyed
-# out -- and they conclude they did it wrong. Checkup should say so.
-#
-# On a home machine these arrive from a work or school account signed
-# into Windows, a "debloat" or "privacy" tool run once and forgotten, a
-# technician, an old antivirus that switched Defender off by policy and
-# never put it back, or malware.
-#
-# Every key passed to this is read out of Windows own policy definitions
-# in C:\Windows\PolicyDefinitions -- see build_ascii44_ft258_policy.py
-# for the exact ADMX file, policy name and numbers behind each one.
-#
-# Returns "OFF" if a policy forces the setting off, "ON" if a policy
-# forces it on, and $null if no policy applies. A key that cannot be
-# READ returns nothing for that entry rather than a guess -- FT-120,
-# FT-141 and FT-257 are all the same rule: a check that did not
-# establish the state never invents a definite answer.
-#
-# Each entry in -Checks is a hashtable:
-#     @{ Path = "HKLM:\SOFTWARE\Policies\..."   # the policy key
-#        Name = "EnableSmartScreen"              # the value name
-#        OnWhen  = 1                             # optional
-#        OffWhen = 0 }                           # optional
-function Get-GGPolicyLock {
-    param(
-        [Parameter(Mandatory=$true)][array]$Checks
-    )
-    foreach ($ggC in $Checks) {
-        $ggVal = $null
-        try {
-            $ggVal = (Get-ItemProperty -Path $ggC.Path -Name $ggC.Name -EA Stop).($ggC.Name)
-        } catch {
-            # Missing key, missing value, or a refused read. All three mean
-            # "this entry tells us nothing", so move on.
-            continue
-        }
-        if ($null -eq $ggVal) { continue }
-        # Compared as text so a REG_SZ policy cannot throw a cast error.
-        if ($null -ne $ggC.OffWhen -and "$ggVal" -eq "$($ggC.OffWhen)") { return "OFF" }
-        if ($null -ne $ggC.OnWhen  -and "$ggVal" -eq "$($ggC.OnWhen)")  { return "ON" }
-    }
-    return $null
-}
-
-# ============================================================
 # STEP 3: ADMIN CHECK
 # ============================================================
 function Test-AdminAccess {
@@ -3989,11 +3818,11 @@ function Show-ResumeReverify {
             "  Nothing on your computer has been changed.                ",
             "                                                             ",
             "  Press Y to close Checkup now.                             ",
-            "  Press B to go back -- it IS your computer and you want    ",
+            "  Press N to go back -- it IS your computer and you want    ",
             "  to carry on where you left off.                           "
         )
         Write-Host ""
-        $rcSure = Read-ValidKey -ValidKeys @("Y","B") -Prompt "Close Checkup? (Y = close / B = go back): "
+        $rcSure = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Close Checkup? (Y = close / N = go back): "
         if ($rcSure.ToUpper() -eq "Y") {
             Write-Host ""
             Write-Host "  Exiting. No changes made." -ForegroundColor Yellow
@@ -4218,20 +4047,7 @@ function Show-SystemBaselineSummary {
         # Size and a MediaType of 'SSD'. Win32_DiskDrive reports that same
         # drive as 'Fixed hard disk media', which is why the type is read
         # from Get-PhysicalDisk and not from WMI.
-        # ascii44, Bill's request: THE SSD IS DRIVE 1. This was
-        # Sort-Object DeviceId -- hardware enumeration order, which means
-        # nothing to the customer, and it is the first thing screen 12
-        # tells them about their own machine. SSDs first, everything else
-        # after, DeviceId as the tiebreak inside each group. Sorting on
-        # MediaType uses only the property already read two lines below.
-        # NOT a plain reverse: that is right only with exactly two drives
-        # in exactly the wrong order, and wrong with three.
-        # NOT VERIFIED ON A MULTI-DRIVE MACHINE -- measured on CGDELL
-        # 2026-09-06, Get-PhysicalDisk returns one disk, so the output is
-        # unchanged here. Check screen 12 on SANDY during the field run.
-        $ggDisks = @(Get-PhysicalDisk -EA SilentlyContinue |
-                     Sort-Object @{ Expression = { if ([string]$_.MediaType -eq "SSD") { 0 } else { 1 } } },
-                                 @{ Expression = { $_.DeviceId } })
+        $ggDisks = @(Get-PhysicalDisk -EA SilentlyContinue | Sort-Object DeviceId)
         if ($ggDisks.Count -eq 0) {
             $lines += "  Storage:      Could not detect"
         } else {
@@ -5135,48 +4951,6 @@ function Test-PowerStatus {
 # ============================================================
 # STEP 10: POWER SETTINGS CHECK
 # ============================================================
-function Get-GGConsoleLockState {
-    # FT-256 (ascii44, FIXED 2026-09-08). Bill: "fix ft-256".
-    #
-    # THE DEFECT THIS REPLACES: two sites parsed this query for a setting
-    # index and, when the parse found nothing, fell through to the ELSE
-    # branch and reported "NOT required". A verdict from a read that produced
-    # nothing -- the FT-120/FT-123 shape, and the exact mirror of FT-257,
-    # where an absent value became a wrong GOOD.
-    #
-    # A wrong BAD is the safer direction: it offers a fix that may be
-    # unneeded rather than hiding one that is needed. It is still wrong. It
-    # tells the user their PC is insecure when we do not know.
-    #
-    # VERIFIED 2026-09-08 measured on CGDELL, elevated: powercfg /query
-    # SCHEME_CURRENT SUB_NONE CONSOLELOCK returned the scheme header and NO
-    # "Current AC Power Setting Index:" line at all.
-    # Test_Results\SettingsStatus-CGDELL-2026-09-08_21-29.txt
-    #
-    # FOUR ANSWERS, never two. The caller chooses the wording; this decides
-    # only what was actually true. Raw carries the output so the log says WHY.
-    $ggOut = ""
-    try {
-        $ggQ   = powercfg /query SCHEME_CURRENT SUB_NONE CONSOLELOCK 2>&1
-        $ggOut = ($ggQ | Out-String)
-    } catch {
-        return @{ State = "NO_OUTPUT"; Value = $null; Raw = "powercfg threw: $_" }
-    }
-    if ([string]::IsNullOrWhiteSpace($ggOut)) {
-        return @{ State = "NO_OUTPUT"; Value = $null; Raw = "" }
-    }
-    $ggRaw = (($ggOut -replace "\s+", " ").Trim())
-    if ($ggRaw.Length -gt 300) { $ggRaw = $ggRaw.Substring(0, 300) + "..." }
-    # FT-255 (ascii44): Out-String FIRST. On an array -match is a filter and
-    # never populates $Matches.
-    if ($ggOut -match "Current AC Power Setting Index:\s*0x(\w+)") {
-        $ggVal = [Convert]::ToUInt32($Matches[1], 16)
-        if ($ggVal -eq 1) { return @{ State = "REQUIRED";     Value = $ggVal; Raw = $ggRaw } }
-        return @{ State = "NOT_REQUIRED"; Value = $ggVal; Raw = $ggRaw }
-    }
-    return @{ State = "NO_INDEX"; Value = $null; Raw = $ggRaw }
-}
-
 function Run-PowerSettingsCheck {
     Clear-Host
     Write-Host ""
@@ -5186,21 +4960,11 @@ function Run-PowerSettingsCheck {
     $results = @{}
 
     # 1. Password on wake
-    # FT-256 (ascii44, fixed 2026-09-08): this used to report "NOT required"
-    # whenever the parse found nothing, which is a verdict from silence.
-    # Get-GGConsoleLockState separates a real NO from a failed read, and FT-255
-    # (Out-String before -match) lives inside it now rather than being repeated.
-    # The unknown wording is 31 chars against the 34 of the line above it, so
-    # the box cannot get wider -- FT-117/FT-122.
-    $ggCL = Get-GGConsoleLockState
-    switch ($ggCL.State) {
-        "REQUIRED"     { $results["PasswordOnWake"] = "REQUIRED -- GOOD" }
-        "NOT_REQUIRED" { $results["PasswordOnWake"] = "NOT required -- change recommended" }
-        default        {
-            $results["PasswordOnWake"] = "Could not read -- check by hand"
-            try { Write-Log -Message "Password on wake: read produced no setting index (FT-256, $($ggCL.State)). Raw powercfg output: $($ggCL.Raw)" -Status "WARN" } catch {}
-        }
-    }
+    try {
+        $pw = powercfg /query SCHEME_CURRENT SUB_NONE CONSOLELOCK 2>$null
+        $acVal = if ($pw -match "Current AC Power Setting Index: 0x(\w+)") { [Convert]::ToUInt32($Matches[1], 16) } else { $null }
+        $results["PasswordOnWake"] = if ($acVal -eq 1) { "REQUIRED -- GOOD" } else { "NOT required -- change recommended" }
+    } catch { $results["PasswordOnWake"] = "Unknown" }
 
     # 2. Fast Startup
     try {
@@ -5462,25 +5226,10 @@ function Apply-PowerSettings {
             $ggNow = "could not re-read -- check manually"
             try {
                 $ggQ = powercfg /query SCHEME_CURRENT SUB_NONE CONSOLELOCK 2>&1
-                # FT-255 (ascii44): powercfg returns an ARRAY. On an array -match is a
-        # FILTER and does NOT populate $Matches -- measured on CGDELL
-        # 2026-09-06. Out-String makes it a scalar match, which is the
-        # pattern already used at the screen-timeout and battery reads.
-                if (($ggQ | Out-String) -match "Current AC Power Setting Index: 0x(\w+)") {
+                if ($ggQ -match "Current AC Power Setting Index: 0x(\w+)") {
                     $ggNow = if ([Convert]::ToUInt32($Matches[1], 16) -eq 1) { "REQUIRED" } else { "still NOT required" }
-                } else {
-                    # FT-246/FT-256 (ascii44): the parse found nothing. Log the RAW
-                    # output so the next field run says WHY, instead of only
-                    # "could not re-read". Measured on CGDELL 2026-09-06: this
-                    # query can return the scheme header and no setting block at
-                    # all, which is FT-256 and is not fixed by any parse change.
-                    $ggRaw = ((($ggQ | Out-String) -replace "\s+", " ").Trim())
-                    if ($ggRaw.Length -gt 300) { $ggRaw = $ggRaw.Substring(0, 300) + "..." }
-                    Write-Log -Message "Password on wake re-read found no setting index (FT-256). Raw powercfg output: $ggRaw" -Status "WARN"
                 }
-            } catch {
-                Write-Log -Message "Password on wake re-read threw: $_" -Status "WARN"
-            }
+            } catch {}
             Write-Host "  OK  Password on wake" -ForegroundColor Green
             Write-Host "      Was:  $ggWas" -ForegroundColor Gray
             Write-Host "      Now:  $ggNow" -ForegroundColor Cyan
@@ -5491,7 +5240,7 @@ function Apply-PowerSettings {
     if ($Choices["FastStartup"]) {
         try {
             $ggWas = [string]$Results["FastStartup"]
-            Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power" -Name HiberbootEnabled -Value 0 -Type DWord -Force -EA Stop
+            Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power" -Name HiberbootEnabled -Value 0 -Type DWord -Force
             $ggNow = "could not re-read -- check manually"   # FT-128 (ascii37)
             try {
                 $ggV = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power" -EA Stop).HiberbootEnabled
@@ -6031,33 +5780,6 @@ function Get-MalwarebytesState {
     } catch { return "Unknown" }
 }
 
-function Get-GGEdgeEffectiveBool {
-    # FT-123b (partial), added 2026-09-16. Reads ONE key out of the user's
-    # own Edge profile, for the case FT-123 exists to catch: a setting the
-    # user changed inside Edge itself, which the policy key never saw.
-    #
-    # VERIFIED 2026-09-16 measured on CGDELL: the file exists, parses as
-    # JSON, and "credentials_enable_service" is present at the top level.
-    # Only that key is called verified -- see the header note by FT-123b for
-    # what was checked and did not hold up.
-    #
-    # Known gap, stated rather than guessed: "Default" profile only.
-    param([string]$KeyName)
-    $ggPrefPath = Join-Path $env:LOCALAPPDATA "Microsoft\Edge\User Data\Default\Preferences"
-    if (-not (Test-Path -LiteralPath $ggPrefPath)) {
-        return @{ Found = $false; Value = $null }
-    }
-    try {
-        $ggJson = Get-Content -LiteralPath $ggPrefPath -Raw -EA Stop | ConvertFrom-Json -EA Stop
-    } catch {
-        return @{ Found = $false; Value = $null }
-    }
-    if ($ggJson.PSObject.Properties.Name -notcontains $KeyName) {
-        return @{ Found = $false; Value = $null }
-    }
-    return @{ Found = $true; Value = [bool]$ggJson.$KeyName }
-}
-
 function Get-AllStatuses {
     foreach ($s in $Settings) {
         $s | Add-Member -NotePropertyName Status -NotePropertyValue "Checking..." -Force -ErrorAction SilentlyContinue
@@ -6169,50 +5891,7 @@ function Get-AllStatuses {
                 }
             }
             4 {
-                # FT-257 (ascii44): THIS REPORTED "ON -- GOOD" FROM A VALUE
-                # THAT WAS NOT THERE. The test was ($ss -ne "Off"), and an
-                # ABSENT SmartScreenEnabled reads as $null -- which is not
-                # "Off", so it took the GOOD branch. MEASURED on CGDELL
-                # 2026-09-07: the value was absent while Windows Security
-                # was itself posting a warning asking for reputation
-                # checking to be turned on. Bill was looking at that warning
-                # when he asked why we disagreed with his screen.
-                # -EA SilentlyContinue made it worse: a REFUSED read also
-                # lands as $null, so blocked and absent both reported GOOD.
-                # That is FT-141 on a different key, and the same fix
-                # applies -- -EA Stop with a typed catch, so BLOCKED and
-                # ABSENT are told apart and neither is guessed at.
-                # WHY A WRONG GOOD IS THE WORST KIND: "GOOD" in the status
-                # deselects the item a few lines below, so the user is never
-                # offered the fix and never sees the question.
-                try {
-                    $ss        = $null
-                    $ssBlocked = $false
-                    try {
-                        $ss = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name SmartScreenEnabled -EA Stop).SmartScreenEnabled
-                    } catch [System.Security.SecurityException] {
-                        $ssBlocked = $true
-                    } catch [System.UnauthorizedAccessException] {
-                        $ssBlocked = $true
-                    } catch {
-                        # A missing key or missing value lands here, leaves
-                        # $ss null and $ssBlocked false, and is reported as
-                        # "not configured" below -- which for an absent
-                        # value is the truth.
-                        if ($_.Exception -is [System.Security.SecurityException]) { $ssBlocked = $true }
-                    }
-                    if ($ssBlocked) {
-                        $s.Status = "Unknown -- could not read; check by hand"
-                    } elseif ($null -eq $ss -or "$ss" -eq "") {
-                        $s.Status = "Not configured -- needs attention"
-                    } elseif ("$ss" -eq "Off") {
-                        $s.Status = "OFF -- needs attention"
-                    } elseif ("$ss" -eq "Warn" -or "$ss" -eq "RequireAdmin") {
-                        $s.Status = "ON -- GOOD"
-                    } else {
-                        $s.Status = "Unknown setting -- check by hand"
-                    }
-                }
+                try { $ss = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -EA SilentlyContinue).SmartScreenEnabled; $s.Status = if ($ss -ne "Off") { "ON -- GOOD" } else { "OFF -- needs attention" } }
                 catch { $s.Status = "Unknown" }
             }
             5 {
@@ -6394,23 +6073,11 @@ function Get-AllStatuses {
                 # said it was enabled." The policy value was absent because
                 # the user turned password saving off in Edge's own settings,
                 # and absent was being reported as enabled.
-                # FT-123b (partial, 2026-09-16): when the POLICY value is
-                # absent, this now also checks the user's own Edge profile
-                # before giving up and saying Unknown -- see
-                # Get-GGEdgeEffectiveBool. The policy read stays first and
-                # authoritative, because items 12-15 are the settings Checkup
-                # itself applies through policy keys (FT-258), so a change
-                # Checkup made must still read back from the policy key.
                 try {
                     $ep = (Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Edge" -EA SilentlyContinue).PasswordManagerEnabled
-                    if ($null -ne $ep) {
-                        $s.Status = if ($ep -eq 0) { "DISABLED -- GOOD" } else { "Enabled -- needs attention" }
-                    } else {
-                        $ggEff = Get-GGEdgeEffectiveBool -KeyName "credentials_enable_service"
-                        $s.Status = if (-not $ggEff.Found) { "Unknown -- could not check" }
-                                    elseif ($ggEff.Value -eq $false) { "DISABLED -- GOOD" }
-                                    else { "Enabled -- needs attention" }
-                    }
+                    $s.Status = if ($null -eq $ep) { "Unknown -- could not check" }
+                                elseif ($ep -eq 0)  { "DISABLED -- GOOD" }
+                                else                { "Enabled -- needs attention" }
                 }
                 catch { $s.Status = "Unknown -- could not check" }
             }
@@ -6441,21 +6108,8 @@ function Get-AllStatuses {
                 }
             }
             17 {
-                # FT-256 (ascii44, fixed 2026-09-08): "Not required -- needs
-                # attention" used to be printed when the parse found nothing.
-                # A failed read now says so, and an unknown keeps the item
-                # SELECTED (auto-deselect keys on "GOOD"), so the user is still
-                # offered the fix. The wording matches item 4's, which is
-                # already proven in this render path.
-                $ggCL17 = Get-GGConsoleLockState
-                $s.Status = switch ($ggCL17.State) {
-                    "REQUIRED"     { "REQUIRED -- GOOD" }
-                    "NOT_REQUIRED" { "Not required -- needs attention" }
-                    default        { "Unknown -- could not read; check by hand" }
-                }
-                if (@("REQUIRED","NOT_REQUIRED") -notcontains $ggCL17.State) {
-                    try { Write-Log -Message "Item 17 (password on wake): read produced no setting index (FT-256, $($ggCL17.State)). Raw powercfg output: $($ggCL17.Raw)" -Status "WARN" } catch {}
-                }
+                try { $pw = powercfg /query SCHEME_CURRENT SUB_NONE CONSOLELOCK 2>$null; $acVal = if ($pw -match "Current AC Power Setting Index: 0x(\w+)") { [Convert]::ToUInt32($Matches[1], 16) } else { $null }; $s.Status = if ($acVal -eq 1) { "REQUIRED -- GOOD" } else { "Not required -- needs attention" } }
+                catch { $s.Status = "Unknown" }
             }
             18 {
                 try { $fs = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power" -EA Stop).HiberbootEnabled; $s.Status = if ($fs -eq 0) { "DISABLED -- GOOD" } else { "Enabled -- needs attention" } }
@@ -6519,73 +6173,6 @@ function Get-AllStatuses {
     try { Disable-QuickEdit } catch {}
     try { Write-Log -Message "Get-AllStatuses complete -- all $($Settings.Count) settings probed" -Status "DONE" } catch {}
 
-    # FT-258: SAY WHEN A GROUP POLICY IS THE REASON.
-    # Runs after every status is probed and BEFORE the auto-deselect
-    # below, so an ON-by-policy GOOD is still deselected by the existing
-    # loop and nothing has to be duplicated here.
-    # Three settings only, and each for a measured reason:
-    #   4  the verdict is WRONG without this -- the check reads the USER's
-    #      SmartScreenEnabled value, and the policy lives elsewhere and
-    #      overrides it, so it can read "Warn" while SmartScreen is off.
-    #   2  and 7 already read the EFFECTIVE state (Get-MpComputerStatus,
-    #      Get-NetFirewallProfile), so their verdict is already right. The
-    #      policy is added only as the REASON, and never turns a GOOD into
-    #      a BAD or back.
-    # Items 12-15 are excluded on purpose: Checkup sets those through
-    # policy keys itself, so a check would report our own work as an
-    # outside override.
-    foreach ($s in $Settings) {
-        $ggLock = $null
-        try {
-            switch ($s.ID) {
-                2 {
-                    $ggLock = Get-GGPolicyLock @(
-                        @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender";                          Name = "DisableAntiSpyware";        OffWhen = 1 },
-                        @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection";     Name = "DisableRealtimeMonitoring"; OffWhen = 1 })
-                }
-                4 {
-                    $ggLock = Get-GGPolicyLock @(
-                        @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System";                           Name = "EnableSmartScreen";         OnWhen = 1; OffWhen = 0 })
-                }
-                7 {
-                    # THREE profiles, not two, and one of them wears an old
-                    # name. Measured 2026-09-07: Get-NetFirewallProfile
-                    # returns Domain, Private and Public, while the
-                    # firewall's own registry calls Private "Standard" --
-                    # the name it had on Windows XP, which had only two
-                    # profiles. StandardProfile IS Private.
-                    # Domain and Standard are declared in Windows' own
-                    # WindowsFirewall.admx. PUBLIC IS NOT IN ANY ADMX ON
-                    # THIS MACHINE -- that template is the XP-era one and
-                    # predates the Private/Public split. Public is included
-                    # on the basis of the firewall's live store, which uses
-                    # exactly this name and value beside the other two.
-                    # Public matters most to our customer: it is the profile
-                    # that applies on hotel and coffee-shop wifi.
-                    $ggLock = Get-GGPolicyLock @(
-                        @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile";            Name = "EnableFirewall";            OffWhen = 0 },
-                        @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile";          Name = "EnableFirewall";            OffWhen = 0 },
-                        @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile";            Name = "EnableFirewall";            OffWhen = 0 })
-                }
-            }
-        } catch { $ggLock = $null }
-
-        if ($ggLock -eq "OFF") {
-            # Applying cannot work while the policy stands, so do not offer
-            # it as a fix -- tell the user what is holding it instead.
-            if ($s.ID -eq 4) {
-                $s.Status = "OFF by a policy on this PC -- Checkup cannot change it"
-            } elseif ([string]$s.Status -notmatch "policy") {
-                $s.Status = [string]$s.Status + " -- held OFF by a policy on this PC"
-            }
-            $s.Selected = $false
-            try { Write-Log -Message ("$($s.Name) | held OFF by a Group Policy -- the switch in Windows Security will not stick (FT-258)") -Status "WARN" } catch {}
-        } elseif ($ggLock -eq "ON" -and $s.ID -eq 4) {
-            $s.Status = "ON by a policy on this PC -- GOOD"
-            try { Write-Log -Message ("$($s.Name) | held ON by a Group Policy (FT-258)") -Status "GOOD" } catch {}
-        }
-    }
-
     # Auto-deselect items already at recommended setting
     foreach ($s in $Settings) {
         if ($s.Status -match "GOOD") { $s.Selected = $false }
@@ -6646,10 +6233,10 @@ function Test-NonRecommendedSelections {
             Write-Host ""
         }
         Write-Host "  Y = These are intentional -- continue" -ForegroundColor White
-        Write-Host "  B = Go back and review my selections" -ForegroundColor White
+        Write-Host "  N = Go back and review my selections" -ForegroundColor White
         Write-Host "  S = Show me what each item does before I decide" -ForegroundColor White
         Write-Host ""
-        $resp = Read-ValidKey -ValidKeys @("Y","B","S") -Prompt "Your choice (Y = Continue / B = Go back / S = Show me each item): "
+        $resp = Read-ValidKey -ValidKeys @("Y","N","S") -Prompt "Your choice (Y = Continue / N = Go back / S = Show me each item): "
         if ($resp.ToUpper() -eq "S") {
             # Drain buffered auto-repeats of the accepted key (FT-65)
             try { while ($Host.UI.RawUI.KeyAvailable) { $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") } } catch {}
@@ -6678,7 +6265,7 @@ function Test-NonRecommendedSelections {
         Write-Log -Message "User confirmed intentional skip of security-critical items at stage: $Stage" -Status "NOTED"
         return $true
     }
-    return $false   # B = go back and review selections
+    return $false   # N = go back and review selections
 }
 
 # ============================================================
@@ -6857,7 +6444,7 @@ function Apply-Setting {
             try {
                 $rp = "HKCU:\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo"
                 if (-not (Test-Path $rp)) { New-Item -Path $rp -Force | Out-Null }
-                Set-ItemProperty -Path $rp -Name Enabled -Value 0 -Type DWord -Force -EA Stop
+                Set-ItemProperty -Path $rp -Name Enabled -Value 0 -Type DWord -Force
                 $result = "Advertising ID disabled -- GOOD"
             } catch { $result = "ERROR: $_" }
         }
@@ -6865,7 +6452,7 @@ function Apply-Setting {
             try {
                 $rp = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection"
                 if (-not (Test-Path $rp)) { New-Item -Path $rp -Force | Out-Null }
-                Set-ItemProperty -Path $rp -Name AllowTelemetry -Value 1 -Type DWord -Force -EA Stop
+                Set-ItemProperty -Path $rp -Name AllowTelemetry -Value 1 -Type DWord -Force
                 $result = "Diagnostic data set to Required Only -- GOOD"
             } catch { $result = "ERROR: $_" }
         }
@@ -6873,8 +6460,8 @@ function Apply-Setting {
             try {
                 $rp = "HKLM:\SOFTWARE\Policies\Microsoft\Edge"
                 if (-not (Test-Path $rp)) { New-Item -Path $rp -Force | Out-Null }
-                Set-ItemProperty -Path $rp -Name StartupBoostEnabled   -Value 0 -Type DWord -Force -EA Stop
-                Set-ItemProperty -Path $rp -Name BackgroundModeEnabled  -Value 0 -Type DWord -Force -EA Stop
+                Set-ItemProperty -Path $rp -Name StartupBoostEnabled   -Value 0 -Type DWord -Force
+                Set-ItemProperty -Path $rp -Name BackgroundModeEnabled  -Value 0 -Type DWord -Force
                 $result = "Edge startup boost and background mode disabled -- GOOD"
             } catch { $result = "ERROR: $_" }
         }
@@ -6882,7 +6469,7 @@ function Apply-Setting {
             try {
                 $rp = "HKLM:\SOFTWARE\Policies\Microsoft\Dsh"
                 if (-not (Test-Path $rp)) { New-Item -Path $rp -Force | Out-Null }
-                Set-ItemProperty -Path $rp -Name AllowNewsAndInterests -Value 0 -Type DWord -Force -EA Stop
+                Set-ItemProperty -Path $rp -Name AllowNewsAndInterests -Value 0 -Type DWord -Force
                 $result = "Windows Widgets disabled -- GOOD"
             } catch { $result = "ERROR: $_" }
         }
@@ -6899,7 +6486,7 @@ function Apply-Setting {
                 } else {
                     $rp = "HKLM:\SOFTWARE\Policies\Microsoft\Edge"
                     if (-not (Test-Path $rp)) { New-Item -Path $rp -Force | Out-Null }
-                    Set-ItemProperty -Path $rp -Name PasswordManagerEnabled -Value 0 -Type DWord -Force -EA Stop
+                    Set-ItemProperty -Path $rp -Name PasswordManagerEnabled -Value 0 -Type DWord -Force
                     $result = "Edge password saving disabled. Use a dedicated password manager. See Guide: Phase 5 at $GuideURL"
                 }
             } catch { $result = "ERROR: $_" }
@@ -6913,7 +6500,7 @@ function Apply-Setting {
 
                 $rp = "HKLM:\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity"
                 if (-not (Test-Path $rp)) { New-Item -Path $rp -Force | Out-Null }
-                Set-ItemProperty -Path $rp -Name Enabled -Value 1 -Type DWord -Force -EA Stop
+                Set-ItemProperty -Path $rp -Name Enabled -Value 1 -Type DWord -Force
                 $result = "Memory Integrity enabled -- RESTART REQUIRED to take effect.$drNote See Guide: Phase 1, Step 2"
             } catch { $result = "ERROR: $_" }
         }
@@ -6927,7 +6514,7 @@ function Apply-Setting {
         }
         18 {
             try {
-                Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power" -Name HiberbootEnabled -Value 0 -Type DWord -Force -EA Stop
+                Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power" -Name HiberbootEnabled -Value 0 -Type DWord -Force
                 $result = "Fast Startup disabled -- full clean shutdown now active -- GOOD"
             } catch { $result = "ERROR: $_" }
         }
@@ -7413,11 +7000,6 @@ function Show-OneDriveOffer {
 }
 
 function Show-ManualSteps {
-    # FT-244 (ascii44): this was the ONLY wrap-up screen with no
-    # Clear-Host -- Setup-ScheduledTasks and Show-OneDriveOffer both
-    # clear. So SCREEN-72 painted on top of whatever was already on
-    # screen. Bill: "Scr 34 - appeared at a bottom of Scr 3b. Fix this."
-    Clear-Host
     Write-Host ""
     Show-StepHeader -Key "ManualSteps" -Section "Wrapping Up"
     Draw-Box -ScreenId "72" -Color White -Lines @(
@@ -7490,51 +7072,6 @@ function Show-ManualSteps {
 # real Win32 CommandLineToArgvW escaping convention (backslash-escaped
 # quotes, `\"..\"`, around any inner path/value that needs its own quoting),
 # and invoke schtasks.exe directly via System.Diagnostics.Process.
-function Set-GGTaskSettings {
-    # FT-203 (ascii44): schtasks.exe has no switch for a missed start, for
-    # waking, or for battery -- the complete /create switch list has none of
-    # them, so every task it makes is off by default on a laptop. This runs
-    # AFTER the task exists and adjusts the three that matter.
-    #
-    # VERIFIED 2026-09-06 measured on CGDELL (Tool2\Test-TaskSettings-2026-09-06.ps1):
-    #   as created  StartWhenAvailable False / DisallowStartIfOnBatteries True /
-    #               StopIfGoingOnBatteries True / WakeToRun False
-    #   after this  True / False / False / False, confirmed by read-back.
-    #
-    # Mutates the EXISTING settings object rather than building a new one with
-    # New-ScheduledTaskSettingsSet, which would reset every setting not named.
-    #
-    # WakeToRun is deliberately left False. Product decision: waking a sleeping
-    # laptop to show a message box is what people uninstall software over.
-    #
-    # Returns a hashtable: Ok, and the four values AS READ BACK.
-    param([string]$TaskName)
-
-    $out = @{ Ok = $false; StartWhenAvailable = $null; DisallowStartIfOnBatteries = $null
-              StopIfGoingOnBatteries = $null; WakeToRun = $null; Error = "" }
-    try {
-        $ggTask = Get-ScheduledTask -TaskName $TaskName -EA Stop
-        $ggSet  = $ggTask.Settings
-        $ggSet.StartWhenAvailable         = $true
-        $ggSet.DisallowStartIfOnBatteries = $false
-        $ggSet.StopIfGoingOnBatteries     = $false
-        Set-ScheduledTask -TaskName $TaskName -Settings $ggSet -EA Stop | Out-Null
-
-        # READ BACK. Report what the task store says, never what was intended.
-        $ggAfter = (Get-ScheduledTask -TaskName $TaskName -EA Stop).Settings
-        $out.StartWhenAvailable         = $ggAfter.StartWhenAvailable
-        $out.DisallowStartIfOnBatteries = $ggAfter.DisallowStartIfOnBatteries
-        $out.StopIfGoingOnBatteries     = $ggAfter.StopIfGoingOnBatteries
-        $out.WakeToRun                  = $ggAfter.WakeToRun
-        $out.Ok = ($ggAfter.StartWhenAvailable -eq $true -and
-                   $ggAfter.DisallowStartIfOnBatteries -eq $false -and
-                   $ggAfter.StopIfGoingOnBatteries -eq $false)
-    } catch {
-        $out.Error = "$_"
-    }
-    return $out
-}
-
 function Invoke-SchTasksCreate {
     param([string]$Arguments)
     $psi = New-Object System.Diagnostics.ProcessStartInfo
@@ -7655,20 +7192,6 @@ Add-Type -AssemblyName System.Windows.Forms
         $ggT1Result = Invoke-SchTasksCreate -Arguments $ggT1Args
         if ($ggT1Result.ExitCode -ne 0) { throw "schtasks exit $($ggT1Result.ExitCode) -- $($ggT1Result.Output)" }
 
-        # FT-203 (ascii44): the task exists, but schtasks left it unable to
-        # run on battery and unable to catch up a missed start. Fix the three
-        # settings, then LOG WHAT WAS READ BACK.
-        $ggSetT1 = Set-GGTaskSettings -TaskName $ggT1Name
-        if ($ggSetT1.Ok) {
-            Write-Log -Message ("Reminder settings confirmed by read-back -- runs on battery: yes, catches a missed start: yes, wakes the PC: no (T1)") -Status "GOOD"
-        } elseif ($ggSetT1.Error) {
-            $results += @{ Text = "  [!] Reminder created, but its battery settings could not be adjusted -- it may not run on battery"; Color = "Yellow" }
-            Write-Log -Message ("Reminder settings NOT adjusted (T1) -- $($ggSetT1.Error)") -Status "WARN"
-        } else {
-            $results += @{ Text = "  [!] Reminder created, but its battery settings did not take -- it may not run on battery"; Color = "Yellow" }
-            Write-Log -Message ("Reminder settings read back WRONG (T1) -- StartWhenAvailable=$($ggSetT1.StartWhenAvailable) DisallowStartIfOnBatteries=$($ggSetT1.DisallowStartIfOnBatteries) StopIfGoingOnBatteries=$($ggSetT1.StopIfGoingOnBatteries)") -Status "WARN"
-        }
-
         $results += @{ Text = "  [OK] Quarterly offline-scan reminder scheduled (Jan/Apr/Jul/Oct, 1st @ 10AM)"; Color = "Green" }
         Write-Log -Message "Scheduled task created: GatewayGuard - Quarterly Defender Offline Scan (reminder popup -- FT-175)" -Status "GOOD"
     } catch {
@@ -7725,20 +7248,6 @@ Add-Type -AssemblyName System.Windows.Forms
         $ggT2Args = "/create /f /tn `"$ggT2Name`" /tr `"$ggT2Tr`" /sc monthly /d 1 /st 10:00"
         $ggT2Result = Invoke-SchTasksCreate -Arguments $ggT2Args
         if ($ggT2Result.ExitCode -ne 0) { throw "schtasks exit $($ggT2Result.ExitCode) -- $($ggT2Result.Output)" }
-
-        # FT-203 (ascii44): the task exists, but schtasks left it unable to
-        # run on battery and unable to catch up a missed start. Fix the three
-        # settings, then LOG WHAT WAS READ BACK.
-        $ggSetT2 = Set-GGTaskSettings -TaskName $ggT2Name
-        if ($ggSetT2.Ok) {
-            Write-Log -Message ("Reminder settings confirmed by read-back -- runs on battery: yes, catches a missed start: yes, wakes the PC: no (T2)") -Status "GOOD"
-        } elseif ($ggSetT2.Error) {
-            $results += @{ Text = "  [!] Reminder created, but its battery settings could not be adjusted -- it may not run on battery"; Color = "Yellow" }
-            Write-Log -Message ("Reminder settings NOT adjusted (T2) -- $($ggSetT2.Error)") -Status "WARN"
-        } else {
-            $results += @{ Text = "  [!] Reminder created, but its battery settings did not take -- it may not run on battery"; Color = "Yellow" }
-            Write-Log -Message ("Reminder settings read back WRONG (T2) -- StartWhenAvailable=$($ggSetT2.StartWhenAvailable) DisallowStartIfOnBatteries=$($ggSetT2.DisallowStartIfOnBatteries) StopIfGoingOnBatteries=$($ggSetT2.StopIfGoingOnBatteries)") -Status "WARN"
-        }
 
         $results += @{ Text = "  [OK] Monthly Malwarebytes scan reminder scheduled (1st of each month @ 10AM)"; Color = "Green" }
         Write-Log -Message "Scheduled task created: GatewayGuard - Monthly Malwarebytes Reminder" -Status "GOOD"
@@ -7915,12 +7424,13 @@ function Show-BitLockerFinalDecline {
         "     where it is, especially when traveling.                 "
     )
     Write-Host ""
-    # FT-243 (ascii44): the log notice used to live here. This screen is
-    # reached ONLY by declining encryption, so a user who accepted it
-    # never saw the notice at all -- and the rule says it belongs on the
-    # review screen. Moved there; the once-only guard moved with it.
-    $fd = Read-ValidKey -ValidKeys @("Y","B") -Prompt "Continue WITHOUT encryption? (Y = Yes, continue / B = Go back and select it): "
-    if ($fd.ToUpper() -eq "B") { return "GoBack" }
+    if (-not $script:GGLogNoticeShown) {
+        Write-Host "  For your protection, your choices can be reviewed in your log." -ForegroundColor Gray
+        Write-Host ""
+        $script:GGLogNoticeShown = $true
+    }
+    $fd = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Continue WITHOUT encryption? (Y = Yes, continue / N = Go back and select it): "
+    if ($fd.ToUpper() -eq "N") { return "GoBack" }
     Write-Log -Message "NOTED: User chose not to apply: Drive Encryption (BitLocker) -- Status: not encrypted -- can be enabled later by re-running the tool" -Status "NOTED"
     return "Skip"
 }
@@ -7945,17 +7455,17 @@ function Show-BitLockerDeclineHeadsUp {
         )
         Write-Host ""
         Write-Host "  Y = Continue WITHOUT encryption" -ForegroundColor White
-        Write-Host "  B = Go back and select encryption" -ForegroundColor White
+        Write-Host "  N = Go back and select encryption" -ForegroundColor White
         Write-Host "  S = Show me the full explanation" -ForegroundColor White
         Write-Host ""
-        $bd = Read-ValidKey -ValidKeys @("Y","B","S") -Prompt "Your choice (Y = Continue / B = Go back / S = Show me): "
+        $bd = Read-ValidKey -ValidKeys @("Y","N","S") -Prompt "Your choice (Y = Continue / N = Go back / S = Show me): "
         if ($bd.ToUpper() -eq "S") {
             # Drain buffered auto-repeats of the accepted key (FT-65)
             try { while ($Host.UI.RawUI.KeyAvailable) { $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") } } catch {}
             Show-BitLockerWhyEncrypt
         }
     } while ($bd.ToUpper() -eq "S")
-    if ($bd.ToUpper() -eq "B") { return "GoBack" }
+    if ($bd.ToUpper() -eq "N") { return "GoBack" }
     return Show-BitLockerFinalDecline
 }
 
@@ -8437,14 +7947,8 @@ function Show-BitLockerScreen {
         # Save original AC sleep and display timeout values
         $blOrigSleepRaw = powercfg /query SCHEME_CURRENT SUB_SLEEP STANDBYIDLE 2>$null
         $blOrigDisplayRaw = powercfg /query SCHEME_CURRENT SUB_VIDEO VIDEOIDLE 2>$null
-        # FT-255 (ascii44): powercfg returns an ARRAY. On an array -match is a
-        # FILTER and does NOT populate $Matches -- measured on CGDELL
-        # 2026-09-06. Out-String makes it a scalar match, which is the
-        # pattern already used at the screen-timeout and battery reads.
-        # These two are the values RESTORED after an overnight encryption
-        # run, so a wrong read here leaves the machine on the wrong timeouts.
-        $blOrigSleep = if (($blOrigSleepRaw | Out-String) -match "Current AC Power Setting Index: 0x(\w+)") { [Convert]::ToUInt32($Matches[1], 16) } else { 0 }
-        $blOrigDisplay = if (($blOrigDisplayRaw | Out-String) -match "Current AC Power Setting Index: 0x(\w+)") { [Convert]::ToUInt32($Matches[1], 16) } else { 0 }
+        $blOrigSleep = if ($blOrigSleepRaw -match "Current AC Power Setting Index: 0x(\w+)") { [Convert]::ToUInt32($Matches[1], 16) } else { 0 }
+        $blOrigDisplay = if ($blOrigDisplayRaw -match "Current AC Power Setting Index: 0x(\w+)") { [Convert]::ToUInt32($Matches[1], 16) } else { 0 }
 
         # Set both to Never (0 = never)
         powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_SLEEP STANDBYIDLE 0 | Out-Null
@@ -8476,7 +7980,7 @@ function Show-BitLockerScreen {
             Write-Host "  Before leaving this overnight, set them manually:" -ForegroundColor Yellow
             Write-Host "  Settings -> System -> Power & sleep -> set both to Never" -ForegroundColor Yellow
             Write-Host ""
-            $blSleepAck = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Have you set Sleep and Display to Never manually? (Y = Yes, continue / N = No, not yet): "
+            $blSleepAck = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Have you set Sleep and Display to Never manually? (Y = Yes, continue / N = No, go back): "
             if ($blSleepAck.ToUpper() -eq "N") {
                 Write-Host ""
                 Write-Host "  Set Sleep and Display to Never in Settings, then run Checkup again to enable BitLocker." -ForegroundColor Yellow
@@ -9012,23 +8516,13 @@ function Run-ConsoleMode {
                 Write-Host ""
                 Write-Host "  $selectedCount item(s) will be applied -- selecting them was your approval. Any that need a manual step will show you how." -ForegroundColor Yellow
                 Write-Host ""
-                # FT-243 (ascii44): the required notice, on the review
-                # screen the rule names. Bill, screen 27: "Did not see
-                # this on the Screen -- choices can be reviewed in your
-                # log." It was on screen 25e, which only appears if you
-                # decline encryption. The once-only guard is unchanged.
-                if (-not $script:GGLogNoticeShown) {
-                    Write-Host "  For your protection, your choices can be reviewed in your log." -ForegroundColor Gray
-                    Write-Host ""
-                    $script:GGLogNoticeShown = $true
-                }
                 Write-Log -Message "Review listing rendered -- awaiting Ready-to-proceed" -Status "INFO"   # FT-68 (ascii29): brackets the listing loop in the log
 
                 do {
-                    $finalCheck = Read-ValidKey -ValidKeys @("Y","B","Q") -Prompt "Ready to proceed? (Y = Start / B = Go back / Q = Quit): "
+                    $finalCheck = Read-ValidKey -ValidKeys @("Y","N","Q") -Prompt "Ready to proceed? (Y = Start / N = Go back / Q = Quit): "
                     switch ($finalCheck.ToUpper()) {
                         "Q" { Confirm-Exit; continue checklistLoop }
-                        "B" { continue checklistLoop }
+                        "N" { continue checklistLoop }
                     }
                 } while ($finalCheck.ToUpper() -ne "Y")
 
@@ -9243,12 +8737,6 @@ function Run-ConsoleMode {
                     "  Log saved to your GatewayGuard folder.                       ",
                     "  See manual steps below for items needing your action.  "
                 )
-                # FT-244 (ascii44): Setup-ScheduledTasks begins with
-                # Clear-Host, so without this pause screen 32 was drawn
-                # and wiped in the same second -- measured 16:09:43,
-                # 2026-08-30. Bill: "Is there a screen 32."
-                Write-Host ""
-                Pause-ForUser "  Press Enter or Space to continue..."
                 Setup-ScheduledTasks
                 Show-ConvenienceReview   # FT-70 (ascii29): was called twice back-to-back -- deduped
                 Show-OneDriveOffer       # FT-191: only if no OneDrive

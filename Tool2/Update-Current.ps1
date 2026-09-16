@@ -124,6 +124,10 @@ $wanted = @(
     # Bill, preserved verbatim, with Cloud's comments and Claude Code's check
     # in the same file. Also carries the 2026-09-15 launch date change.
     @{ Label = 'External guide review + comments'; Pattern = 'GatewayGuard_ExternalGuideReview-Comments-*.md' },
+    # Added 2026-09-16. Copilot's two review bundles, each with Claude
+    # Code's check appended -- same reasoning as the row above.
+    @{ Label = 'Co-Pilot ascii44/BitLocker review + comments'; Pattern = 'GatewayGuard_CoPilotAscii44Review-Comments-*.md' },
+    @{ Label = 'Co-Pilot Guide rewrite review + comments';     Pattern = 'GatewayGuard_CoPilotGuideReview-Comments-*.md' },
     @{ Label = 'Review of Cloud research';    Pattern = 'GatewayGuard_ReviewOfCloudResearch-*.md'; Multi = $true },
     # --- THE THREE SOURCE PACKS, added 2026-08-15 -------------------------
     # Each is a readable extraction of material Cloud cannot otherwise reach,
