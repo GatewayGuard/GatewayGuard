@@ -139,6 +139,7 @@ $wanted = @(
     @{ Label = 'Co-Pilot Guide Part 1 (twin)'; Pattern = 'GatewayGuard_CoPilotGuidePart1-*.md' },
     @{ Label = 'Co-Pilot Guide Part 2 (twin)'; Pattern = 'GatewayGuard_CoPilotGuidePart2-*.md' },
     @{ Label = 'Co-Pilot Guide Part 3 (twin)'; Pattern = 'GatewayGuard_CoPilotGuidePart3-*.md' },
+    @{ Label = 'Guide reconciliation pack (Co-Pilot Parts 1-3, applied)'; Pattern = 'GatewayGuard_GuideReconciliationPack-CoPilot-*.md' },
     @{ Label = 'Review of Cloud research';    Pattern = 'GatewayGuard_ReviewOfCloudResearch-*.md'; Multi = $true },
     # --- THE THREE SOURCE PACKS, added 2026-08-15 -------------------------
     # Each is a readable extraction of material Cloud cannot otherwise reach,

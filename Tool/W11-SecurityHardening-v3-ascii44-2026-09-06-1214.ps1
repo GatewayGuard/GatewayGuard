@@ -3663,31 +3663,17 @@ function Test-AdminAccess {
             "  !  ADMINISTRATOR ACCESS REQUIRED                          ",
             "---",
             "  This tool is running as a STANDARD USER.                  ",
-            "  Most security settings require Administrator access.       ",
+            "  Checkup must be run as Administrator to work properly.     ",
             "                                                             ",
-            "  TO RUN WITH FULL ACCESS:                                   ",
+            "  HOW TO RUN AS ADMINISTRATOR:                               ",
             "  * Close this window                                        ",
             "  * Right-click the tool -> Run as Administrator             ",
-            "  * Enter admin password if prompted                         ",
-            "                                                             ",
-            "  WHAT YOU CAN STILL DO WITHOUT ADMIN:                      ",
-            "  * Run Defender and Malwarebytes scans                      ",
-            "  * Check Windows Update status                              ",
-            "  * Review installed apps list                               ",
-            "  * Turn off Advertising ID (your account only)              ",
-            "                                                             ",
-            "  LIMITED MODE will now run -- admin-only settings           ",
-            "  will be skipped and flagged in the log.                    "
+            "  * Enter admin password if prompted                         "
         )
         Write-Host ""
-        do {
-            $cont = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Continue in Limited Mode? (Y = Continue / N = Exit): "
-            if ($cont.ToUpper() -eq "N") {
-                Write-Host "  Close this window and right-click -> Run as Administrator." -ForegroundColor Yellow
-                Save-Log; exit
-            }
-        } while ($cont.ToUpper() -ne "Y")
-        Write-Log -Message "Running in Limited Mode (no admin access)" -Status "WARN"
+        Pause-ForUser "  Press Enter or Space to CLOSE this window, then re-run as Administrator..."
+        Write-Log -Message "Not running as Administrator -- instructions shown, tool closed" -Status "EXIT"
+        Disable-SleepPrevention; Save-Log; exit
     } else {
         Write-Host ""
         Write-Host "  OK  Administrator access confirmed -- full access available." -ForegroundColor Green

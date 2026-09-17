@@ -12,7 +12,7 @@
 
 Part 2: Core Security Settings
 
-This section covers the most important security protections available in Windows 11. For most home users, these settings provide the greatest security benefit and should be reviewed before moving on to privacy, convenience, or performance settings.
+This section covers the most important security protections available in Windows 11. For many home users, these settings provide the greatest security benefit and should be reviewed before moving on to privacy, convenience, or performance settings.
 
 Setting 1: Windows Update
 What It Is
@@ -31,7 +31,9 @@ GatewayGuard Recommendation
 
 Recommended: Automatic Updates Enabled
 
-For most home users, Windows should automatically check for, download, and install updates.
+With your approval, Checkup will make this change for you.
+
+For many home users, Windows should automatically check for, download, and install updates.
 
 How To Check
 Open Settings.
@@ -71,6 +73,8 @@ GatewayGuard Recommendation
 
 Recommended: On
 
+With your approval, Checkup will make this change for you.
+
 How To Check
 Open Windows Security.
 Select Virus & Threat Protection.
@@ -105,6 +109,8 @@ GatewayGuard Recommendation
 
 Recommended: On
 
+Checkup checks this and shows you the steps; Windows requires that you make the change yourself.
+
 How To Check
 Open Windows Security.
 Select Virus & Threat Protection.
@@ -121,7 +127,7 @@ No restart is required.
 
 When You Might Choose Differently
 
-Rarely. Most home users should leave Tamper Protection enabled at all times.
+GatewayGuard recommends that all home users have Tamper Protection enabled.
 
 Setting 4: SmartScreen
 What It Is
@@ -144,14 +150,20 @@ GatewayGuard Recommendation
 
 Recommended: On
 
+With your approval, Checkup will make this change for you.
+
 How To Check
 Open Windows Security.
 Select App & Browser Control.
 Review SmartScreen settings.
+
+If Windows says a setting is managed by Smart App Control, that setting is already protected and cannot be changed there -- this is normal, not a fault.
+
 How To Change It
 Open Windows Security.
 Select App & Browser Control.
-Enable available SmartScreen protections.
+Select Reputation-based protection settings.
+Turn on Check apps and files, SmartScreen for Microsoft Edge, Potentially unwanted app blocking, and SmartScreen for Microsoft Store apps.
 What To Expect
 
 Occasionally Windows may display warnings before opening unfamiliar programs.
@@ -160,7 +172,7 @@ When You Might Choose Differently
 
 Advanced users who regularly test unsigned software may find SmartScreen warnings inconvenient.
 
-Setting 6: Edge Phishing Protection
+Setting 6: Enhanced Phishing Protection
 What It Is
 
 Phishing Protection helps identify:
@@ -181,6 +193,8 @@ GatewayGuard Recommendation
 
 Recommended: All Options Enabled
 
+With your approval, Checkup will try to make this change. On some computers Windows blocks it; Checkup then shows you the steps.
+
 How To Check
 Open Windows Security.
 Select App & Browser Control.
@@ -196,9 +210,9 @@ Windows may occasionally display warnings related to password usage.
 
 When You Might Choose Differently
 
-Most home users should leave all phishing protections enabled.
+Many home users should leave all phishing protections enabled.
 
-Setting 7: Microsoft Defender Firewall
+Setting 7: Firewall & network protection
 What It Is
 
 The Windows Firewall monitors network traffic entering and leaving your computer.
@@ -216,12 +230,14 @@ GatewayGuard Recommendation
 
 Recommended: All Profiles Enabled
 
+With your approval, Checkup will make this change for you.
+
 Domain
 Private
 Public
 How To Check
 Open Windows Security.
-Select Firewall & Network Protection.
+Select Firewall & network protection.
 Review all profiles.
 How To Change It
 
@@ -235,9 +251,9 @@ Some applications may request firewall access the first time they run.
 
 When You Might Choose Differently
 
-Rarely. Most home users should keep all firewall profiles enabled.
+Rarely. Many home users should keep all firewall profiles enabled.
 
-Setting 8: BitLocker or Device Encryption
+Setting 8: BitLocker Data Encryption
 What It Is
 
 Encryption protects the contents of your drive if the computer is lost or stolen.
@@ -245,6 +261,8 @@ Encryption protects the contents of your drive if the computer is lost or stolen
 Windows 11 Pro typically uses BitLocker.
 
 Windows 11 Home may use Device Encryption.
+
+⚠ VERIFY -- Home/Pro split and whether Device Encryption on Home requires a Microsoft account. BitLocker Test 2 on SANDY answers this; sentence held until then.
 
 Why It Matters
 
@@ -259,6 +277,8 @@ Family photos
 GatewayGuard Recommendation
 
 Recommended: Enabled
+
+With your approval, on its own screen, Checkup will turn this on for you. It will not start without your recovery key saved first.
 
 Important
 
@@ -281,6 +301,9 @@ Follow the step-by-step instructions provided by Checkup.
 What To Expect
 Initial encryption may take time.
 A recovery key will be generated.
+
+⚠ VERIFY -- on a Microsoft account the key is saved to the account automatically; on a local account it is saved nowhere automatically. One of the two claims that can cost a reader their files.
+
 Encryption normally runs in the background.
 When You Might Choose Differently
 
@@ -305,6 +328,10 @@ GatewayGuard Recommendation
 
 Recommended: Configure a PIN at Minimum
 
+Checkup checks this and shows you the steps; Windows requires that you make the change yourself.
+
+⚠ VERIFY -- a PIN can be created on a local account; a local account cannot reset a forgotten PIN without the account password.
+
 How To Check
 Open Settings.
 Select Accounts.
@@ -327,7 +354,7 @@ When You Might Choose Differently
 
 Users who prefer traditional passwords may continue using them, though a PIN is strongly recommended.
 
-Setting 10: Memory Integrity (Core Isolation)
+Setting 16: Memory Integrity
 What It Is
 
 Memory Integrity is a Windows security feature designed to prevent malicious or untrusted code from running in protected parts of memory.
@@ -341,6 +368,8 @@ Memory Integrity makes these attacks substantially more difficult.
 GatewayGuard Recommendation
 
 Recommended: On
+
+With your approval, Checkup will make this change for you. A restart is needed for it to take effect.
 
 How To Check
 Open Windows Security.
@@ -361,7 +390,7 @@ When You Might Choose Differently
 
 If older hardware or software is incompatible, you may need to temporarily leave it disabled until compatible drivers become available.
 
-Setting 11: Password Required on Wake
+Setting 17: Password Required on Wake
 What It Is
 
 This setting requires you to sign in again when the computer wakes from sleep.
@@ -374,6 +403,8 @@ GatewayGuard Recommendation
 
 Recommended: Required
 
+With your approval, Checkup will make this change for you.
+
 How To Check
 Open Settings.
 Select Accounts.
@@ -381,7 +412,7 @@ Select Sign-In Options.
 Review wake-up sign-in requirements.
 How To Change It
 
-Set sign-in to be required whenever the computer wakes from sleep.
+Under "If you've been away, when should Windows require you to sign in again?", choose "When PC wakes up from sleep."
 
 What To Expect
 
@@ -390,18 +421,3 @@ You will need to enter your PIN, password, fingerprint, or face recognition afte
 When You Might Choose Differently
 
 Very few users should disable this protection.
-
-Part 3: Additional Security and Privacy Settings
-
-The next section covers settings that are still valuable but generally have less impact than the core security controls covered above. These include:
-
-Advertising ID
-Diagnostic Data
-Edge Startup Boost
-Windows Widgets
-Edge Password Saving
-Remote Desktop
-Fast Startup
-Wake on LAN
-
-These settings involve a mix of security, privacy, convenience, and performance considerations.Guiide

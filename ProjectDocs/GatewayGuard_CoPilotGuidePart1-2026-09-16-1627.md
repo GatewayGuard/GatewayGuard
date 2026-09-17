@@ -83,14 +83,14 @@ Connect to the Internet.
 Install all available Windows updates.
 Save and close open work.
 Plug laptops into AC power before making major security changes.
-Run Checkup as Administrator when possible.
+Run Checkup as Administrator. Checkup requires it -- if it is not running as Administrator, it will show you how to close it and re-open it correctly, then stop.
 Understanding Recommendations
 
 Throughout this guide you will see recommendations such as:
 
 Recommended
 
-This is the setting GatewayGuard believes provides the best balance of security, practicality, and ease of use for most home users.
+This is the setting GatewayGuard believes provides the best balance of security, practicality, and ease of use for many home users.
 
 Optional
 
@@ -105,22 +105,22 @@ ID	Setting	GatewayGuard Recommendation1	Windows Update	On
 2	Defender Real-Time Protection	On
 3	Tamper Protection	On
 4	SmartScreen	On
-6	Edge Phishing Protection	On
-7	Firewall	On
-8	BitLocker / Device Encryption	On
+6	Enhanced Phishing Protection	On
+7	Firewall & network protection	On
+8	BitLocker Data Encryption	On
 9	Windows Hello	Configured
 10	Remote Desktop	Off
 11	Advertising ID	Off
 12	Diagnostic Data	Required Only
 13	Edge Startup Boost	Off
-14	Widgets	Off
+14	Windows Widgets	Off
 15	Edge Password Saving	Off when using a password manager
 16	Memory Integrity	On
 17	Password Required on Wake	On
 18	Fast Startup	Off
 19	Wake on LAN	Off unless required
 
-Setting numbers match GatewayGuard Checkup. Number 5 is intentionally omitted because it is no longer part of the active Checkup workflow and should not be renumbered without a product decision.
+Setting numbers match GatewayGuard Checkup. Number 5: Not applicable -- this check is no longer part of GatewayGuard Checkup.
 
 How to Use This Guide
 
@@ -136,7 +136,7 @@ How the setting affects security, privacy, or convenience.
 
 GatewayGuard Recommendation
 
-The setting recommended for most home users.
+The setting recommended for many home users.
 
 How to Check
 
@@ -172,13 +172,11 @@ Windows Update
 Defender Real-Time Protection
 Tamper Protection
 SmartScreen
-Edge Phishing Protection
-Firewall
-BitLocker / Device Encryption
+Enhanced Phishing Protection
+Firewall & network protection
+BitLocker Data Encryption
 Windows Hello
 Memory Integrity
 Password Required on Wake
 
-These settings provide the greatest security benefit for most home users.
-
-I would recommend this become the new opening section and replace most of the existing preamble before the detailed setting chapters begin. It is substantially shorter, easier to scan, and puts the Quick Reference table near the front as recommended during the review.
+These settings provide the greatest security benefit for many home users.

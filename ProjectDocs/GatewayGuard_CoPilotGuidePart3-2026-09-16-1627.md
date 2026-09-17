@@ -38,12 +38,19 @@ GatewayGuard Recommendation
 
 Recommended: Off
 
-Most home users do not need Remote Desktop.
+With your approval, Checkup will make this change for you.
+
+Many home users do not need Remote Desktop.
 
 How To Check
 Open Settings.
 Select System.
 Select Remote Desktop.
+
+If Settings > System has no Remote Desktop entry, your computer is Windows 11 Home and cannot accept these connections. There is nothing to turn off.
+
+⚠ VERIFY -- exact on-screen path and label on Pro; what Home shows (page absent, or present and greyed).
+
 How To Change It
 
 Turn Remote Desktop off unless you actively use it.
@@ -79,15 +86,17 @@ GatewayGuard Recommendation
 
 Recommended: Off
 
+With your approval, Checkup will make this change for you.
+
 How To Check
 Open Settings.
 Select Privacy & Security.
-Select General.
+Select Recommendations and offers.
 How To Change It
 
 Turn off:
 
-Let apps use my advertising ID to show me personalized ads.
+Let apps show me personalized ads by using my advertising ID.
 
 What To Expect
 
@@ -114,6 +123,8 @@ GatewayGuard Recommendation
 
 Recommended: Required Diagnostic Data Only
 
+With your approval, Checkup will make this change for you.
+
 How To Check
 Open Settings.
 Select Privacy & Security.
@@ -133,6 +144,8 @@ What To Expect
 
 Windows will continue sending information necessary to maintain and update the operating system.
 
+⚠ VERIFY -- Windows sends the larger level unless told otherwise; updates are identical at either level.
+
 When You Might Choose Differently
 
 Users participating in troubleshooting or preview programs may choose to provide additional diagnostic information.
@@ -140,7 +153,13 @@ Users participating in troubleshooting or preview programs may choose to provide
 Setting 13: Edge Startup Boost
 What It Is
 
-Startup Boost keeps portions of Microsoft Edge running in the background after you close the browser.
+Edge Startup Boost and Background Running are two separate toggles in Edge's settings, and Checkup treats them as one setting.
+
+Startup boost pre-loads part of Microsoft Edge when your PC starts, so the browser opens faster.
+
+Continue running background extensions and apps keeps Edge running in the background after you close it.
+
+⚠ VERIFY -- the running-after-close claim, and the exact current label of Edge's background-apps toggle.
 
 Why It Matters
 
@@ -152,21 +171,25 @@ GatewayGuard Recommendation
 
 Recommended: Off
 
+With your approval, Checkup will make this change for you.
+
 The performance benefit is usually small on modern hardware.
 
 How To Check
 Open Microsoft Edge.
 Open Settings.
 Select System and Performance.
+Open Startup boost first, or the toggles do not appear.
+Review Startup boost and Continue running background extensions and apps.
 How To Change It
 
-Turn Startup Boost off.
+Turn off Startup boost and Continue running background extensions and apps.
 
 What To Expect
 
 Edge may take slightly longer to start after a reboot.
 
-Most users will not notice a significant difference.
+Many users will not notice a significant difference.
 
 When You Might Choose Differently
 
@@ -174,7 +197,7 @@ You may leave Startup Boost enabled if:
 
 You open Edge frequently throughout the day.
 Faster browser startup is important to you.
-Setting 14: Widgets
+Setting 14: Windows Widgets
 What It Is
 
 Widgets display news, weather, sports, and other information on the Windows taskbar.
@@ -188,6 +211,8 @@ Disabling them can reduce distractions and background activity.
 GatewayGuard Recommendation
 
 Recommended: Off
+
+With your approval, Checkup will make this change for you.
 
 How To Check
 Right-click the taskbar.
@@ -227,6 +252,8 @@ GatewayGuard Recommendation
 
 Recommended: Off When Using A Dedicated Password Manager
 
+Checkup asks first if you use a password manager, and only offers this change if you do. With your approval, Checkup will make this change for you.
+
 How To Check
 Open Microsoft Edge.
 Open Settings.
@@ -243,7 +270,7 @@ When You Might Choose Differently
 
 If you do not use a password manager, Edge password saving remains significantly better than reusing weak passwords or storing them in unsecured locations.
 
-Setting 16: Fast Startup
+Setting 18: Fast Startup
 What It Is
 
 Fast Startup combines elements of shutdown and hibernation to reduce boot time.
@@ -260,15 +287,16 @@ GatewayGuard Recommendation
 
 Recommended: Off
 
+With your approval, Checkup will make this change for you.
+
 How To Check
 Open Control Panel.
 Select Power Options.
-Select Choose What The Power Buttons Do.
+Select Choose what the power buttons do.
+Select Change settings that are currently unavailable.
 How To Change It
 
-Disable:
-
-Turn on Fast Startup
+Untick Turn on fast startup (recommended).
 
 What To Expect
 
@@ -280,14 +308,14 @@ When You Might Choose Differently
 
 Users with older hardware may prefer the faster boot times provided by Fast Startup.
 
-Setting 17: Wake on LAN
+Setting 19: Wake on LAN
 What It Is
 
 Wake on LAN allows another device on the network to turn on your computer remotely.
 
 Why It Matters
 
-Most home users never use this capability.
+Many home users never use this capability.
 
 Leaving unnecessary remote-management features disabled reduces complexity and potential exposure.
 
@@ -295,16 +323,16 @@ GatewayGuard Recommendation
 
 Recommended: Off
 
+With your approval, Checkup will make this change for you.
+
 How To Check
-
-Wake on LAN settings may appear in:
-
-BIOS or UEFI settings
-Device Manager
-Network adapter properties
+Open Device Manager.
+Select Network adapters.
+Right-click each adapter and select Properties.
+Select the Power Management tab.
 How To Change It
 
-Disable Wake on LAN if you do not intentionally use remote wake functionality.
+Untick Allow this device to wake the computer, on each network adapter, if you do not intentionally use remote wake functionality.
 
 What To Expect
 

@@ -119,6 +119,31 @@
     Gates after: 12, 12b, 24 PASS, parse 0 errors, 0 non-ASCII, 87 functions
     and no duplicates. Wrapper:
     `Tool2uild_ascii44_ft256_consolelock.py`.
+  - **FT-261, FIXED 2026-09-17 — Bill: "don't let checkup run without
+    administrative rights." THE RESUME PATH STILL OFFERED THE LIMITED MODE
+    THAT FT-25 HAD ALREADY REMOVED FROM THE FRESH-RUN PATH, 2026-07-11.**
+    ***Measured: on a fresh run, `Show-FontInstructions` already gates on
+    `$global:IsAdmin` and exits with relaunch instructions if not admin —
+    FT-25's own comment says why: "running without admin meant settings
+    silently could not apply."*** But `Show-FontInstructions` is skipped
+    entirely on resume (`if (-not $global:ResumeFrom)`), and the resume
+    path's own admin check, `Test-AdminAccess`, still asked **"Continue in
+    Limited Mode? (Y = Continue / N = Exit)"** — the exact behavior FT-25
+    had already decided was wrong, left in place one call site over.
+    ***Measured: 15 of the 18 settings carry `RequiresAdmin=$true`***, so
+    Limited Mode could run at most 3 of them; it was barely functional even
+    on the day it was still offered. **The box also told the user they
+    could still "Run Defender and Malwarebytes scans" — Malwarebytes has
+    been out of Checkup entirely since 2026-09-08**, so the box was
+    describing a feature that no longer exists, on top of offering a mode
+    that should not exist.
+    **FIX: `Test-AdminAccess`'s non-admin branch now matches
+    `Show-FontInstructions` exactly — show the same relaunch instructions,
+    then exit. No Y/N, no Limited Mode, no Malwarebytes line.** One user
+    experience, one decision, enforced at both entry points instead of one.
+    Gates after: 12, 12b, 24 PASS, parse 0 errors, 0 non-ASCII, 88 functions
+    and no duplicates. Wrapper:
+    `Tool2\build_ascii44_ft261_adminrequired.py`.
   - **FT-260 — THE PRODUCT QUESTION IS DECIDED 2026-09-16; THE DETECTION GAP
     IS STILL OPEN ON PURPOSE.** Read the decision first, then the finding
     that started it — the heading used to say only "RAISED NOT FIXED," which

@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-16 16:30 ET -->
-<!-- Commit: 2c51707 -->
+<!-- Generated: 2026-09-17 12:17 ET -->
+<!-- Commit: 6eaca3d -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-16 16:30 ET  |  **Commit:** `2c51707`  |  **Made:** 2026-09-16 15:14 ET
-- **Commit subject:** Self-review found and fixed a misleading FT-260 heading; Guide Part 3 review found a real numbering bug
+- **Generated:** 2026-09-17 12:17 ET  |  **Commit:** `6eaca3d`  |  **Made:** 2026-09-16 16:46 ET
+- **Commit subject:** Testing whether CRLF is why the twins never surfaced to Cloud's search
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -19,7 +19,7 @@ document family and the single filename that is live right now. Take every
 filename from this table -- never from memory, never from another document,
 never by guessing which date looks newest.
 
-**79 rows follow.** If you cannot see all 79 of them, your
+**80 rows follow.** If you cannot see all 80 of them, your
 retrieval truncated the table -- **say so and ask for the rest, rather
 than answering from the handful you received.**
 
@@ -76,7 +76,7 @@ All paths are relative to `ProjectDocs/`.
 
 ### CLOUD REQUESTS AND CLOUD RESEARCH
 
-**24 rows in this group.** If you see fewer, this group was truncated -- say so.
+**25 rows in this group.** If you see fewer, this group was truncated -- say so.
 
 | What it is | The current file | Older versions present |
 |---|---|---|
@@ -102,6 +102,7 @@ All paths are relative to `ProjectDocs/`.
 | Co-Pilot Guide Part 1 (twin) | `GatewayGuard_CoPilotGuidePart1-2026-09-16-1627.md` | 0 |
 | Co-Pilot Guide Part 2 (twin) | `GatewayGuard_CoPilotGuidePart2-2026-09-16-1627.md` | 0 |
 | Co-Pilot Guide Part 3 (twin) | `GatewayGuard_CoPilotGuidePart3-2026-09-16-1627.md` | 0 |
+| Guide reconciliation pack (Co-Pilot Parts 1-3, applied) | `GatewayGuard_GuideReconciliationPack-CoPilot-2026-09-17-1818.md` | 0 |
 | Review of Cloud research | `GatewayGuard_ReviewOfCloudResearch-2026-08-24-1105.md` | -- |
 | Review of Cloud research | `GatewayGuard_ReviewOfCloudResearch-ascii43-2026-09-05-1130.md` | -- |
 
@@ -192,7 +193,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-09-08 07:03 to 07:51 [Claude Code -- CGDELL] -- THE MALWAREBYTES HALF RAN, AND ONE BUTTON PRESS PROVED BOTH PRODUCTS AT ONCE
+## Session: 2026-09-17 [Claude Code -- CGDELL] -- THE RECONCILIATION PACK APPLIED, AND THE RESUME PATH STILL OFFERED THE LIMITED MODE FT-25 HAD ALREADY REMOVED
 ```
 
 **If it is not in your copy of the session log, you are reading an old

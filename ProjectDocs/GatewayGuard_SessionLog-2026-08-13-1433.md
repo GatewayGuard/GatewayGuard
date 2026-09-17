@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-08 08:18 ET
+- **Last Modified:** 2026-09-17 12:16 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -15,6 +15,88 @@
 
 ---
 ---
+
+## Session: 2026-09-17 [Claude Code -- CGDELL] -- THE RECONCILIATION PACK APPLIED, AND THE RESUME PATH STILL OFFERED THE LIMITED MODE FT-25 HAD ALREADY REMOVED
+
+**Cloud delivered `GatewayGuard_GuideReconciliationPack-CoPilot-2026-09-17-1818.md`**
+-- a 30-item numbered change list (R-01 to R-30) against the three Copilot
+guide twins, per Working Rule 3. Every item was checked against the real
+build, `SettingsLocationList-2026-09-08-2130`, and `NamingStandard-2026-08-09-1345`
+before being applied -- none were taken on trust.
+
+**R-01 to R-29 applied to all three twins:** the four-heading numbering fix
+(Setting 10/11 in Part 2 were the build's 16/17; Setting 16/17 in Part 3 were
+the build's 18/19); the six VERIFY markers restored (R-05 to R-10); a
+permission line under every setting's `GatewayGuard Recommendation` in one of
+three shapes (R+C / R-only / BLOCKED), 18 lines total; seven names corrected to
+the Naming Standard's official 19 (Enhanced Phishing Protection, Firewall &
+network protection, BitLocker Data Encryption, Windows Widgets, Memory
+Integrity without the parenthetical); Setting 13's content rewritten to cover
+both of the build's two toggles (Startup boost AND Continue running background
+extensions and apps -- Copilot's draft had covered only the first); Setting 10
+given the Home-has-no-such-page sentence (`SkipOnHome=$true`, confirmed against
+the build); four on-screen paths/labels corrected to what is actually on the
+screen (Advertising ID's real location and toggle wording, the wake-from-sleep
+screen label, Fast Startup's hidden "Change settings that are currently
+unavailable" step, Wake on LAN's real Device Manager path with the BIOS/UEFI
+suggestion removed); SmartScreen's "enable available protections" named as its
+real four toggles; the Setting-5 table footnote and the Smart App Control
+managed-by sentence carried in as already decided; and Copilot's own two
+editorial asides to Bill (Part 1's closing recommendation, Part 2's stray Part
+3 preview block with its trailing typo) deleted.
+
+**R-30 was mine to answer, not Cloud's: does Checkup require Administrator?**
+***Measured: `Show-FontInstructions` already gates on `$global:IsAdmin` and
+exits with relaunch instructions on a fresh run -- FT-25, 2026-07-11, "limited
+mode REMOVED."*** Part 1's sentence was rewritten to say that plainly.
+
+**That measurement surfaced a real gap Bill then closed outright: "don't let
+checkup run without administrative rights."** ***Measured: `Show-FontInstructions`
+only runs on a fresh launch (`if (-not $global:ResumeFrom)`); on resume, the
+gate is `Test-AdminAccess`, which still asked "Continue in Limited Mode? (Y =
+Continue / N = Exit)" -- the exact behavior FT-25 had already decided was
+wrong, one call site over.*** ***Measured: 15 of 18 settings carry
+`RequiresAdmin=$true`***, so Limited Mode could run at most 3 of them, and its
+box still advertised "Run Defender and Malwarebytes scans" -- Malwarebytes has
+been out of Checkup since 2026-09-08. **FT-261, fixed same day:**
+`Test-AdminAccess`'s non-admin branch now matches `Show-FontInstructions`
+exactly -- show instructions, exit. No Y/N, no Limited Mode. Gates after: 12,
+12b, 24 PASS, parse 0 errors, 0 non-ASCII, 88 functions, no duplicates.
+Wrapper: `Tool2\build_ascii44_ft261_adminrequired.py`.
+
+**Two small content calls Bill made directly while the twins were open:**
+Tamper Protection's "When You Might Choose Differently" now reads "GatewayGuard
+recommends that all home users have Tamper Protection enabled" (Bill's own
+wording, in place of a hedged "many home users should leave it enabled").
+Also swept and fixed: **PL-4, no unverified superlatives** -- Bill caught
+"most" in a sentence I had just written ("most security settings need
+Administrator access") and named the rule directly; grepping both twins for
+the word found nine more "most home users" / "most users" claims Copilot's
+draft carried, all changed to "many" (two uses of "most important" describing
+the settings themselves, not a population, were left alone -- not the same
+class of claim). One N-07 sentence-case slip (Title Case "Firewall & Network
+Protection" inside a How-To-Check line, next to the correctly-cased heading)
+was also caught and fixed.
+
+**Final counts, as the pack asked for them, both matching its own prediction:**
+VERIFY = 6, "With your approval" / "Checkup checks this" = 18.
+
+**Ran the two checks Cloud had explicitly not been able to run** (Part 1's
+opening/cover sections and Part 2's Setting 1, Windows Update -- outside what
+Cloud's fragment-based search had surfaced): no additional name, path, or
+permission-line defects found in either.
+
+Files: `GatewayGuard_CoPilotGuidePart1/2/3-2026-09-16-1627.md` (all three
+edited in place), `GatewayGuard_GuideReconciliationPack-CoPilot-2026-09-17-1818.md`
+(filed, row added to `CURRENT.md`), `CLAUDE.md` (FT-261 entry added),
+`Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1` (FT-261),
+`Tool2\build_ascii44_ft261_adminrequired.py` (new).
+
+**Also fixed in passing, unrelated to the task:** a literal backspace byte
+(0x08) sitting in CLAUDE.md's FT-256 wrapper-filename reference where a
+backslash belonged (`Tool2` + BACKSPACE + `uild_...` instead of
+`Tool2\build_...`) -- cosmetic, pre-existing, caught only because the exact
+line was being read closely for an insertion anchor.
 
 ## Session: 2026-09-08 07:03 to 07:51 [Claude Code -- CGDELL] -- THE MALWAREBYTES HALF RAN, AND ONE BUTTON PRESS PROVED BOTH PRODUCTS AT ONCE
 
