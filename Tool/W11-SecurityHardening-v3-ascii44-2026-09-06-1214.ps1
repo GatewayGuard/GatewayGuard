@@ -6429,11 +6429,23 @@ function Get-AllStatuses {
                 # were "Enabled (default)". Field note 10 (2026-07-27):
                 # "widgets were off and tool said they were enabled." Null now
                 # reports Unknown instead of a definite wrong answer.
+                # FT-123b (item 14 closed 2026-09-17): when the POLICY value is
+                # absent, this now also checks the user's own TaskbarDa value
+                # before giving up and saying Unknown, same fallback shape as
+                # items 13 and 15. ***MEASURED on CGDELL 2026-09-17, Bill's
+                # field test, a real controlled flip -- not a guessed key:***
+                # TaskbarDa read 1 before, 0 after turning Widgets off in the
+                # taskbar's own UI, and 1 again after turning it back on.
                 try {
                     $w = (Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Dsh" -EA SilentlyContinue).AllowNewsAndInterests
-                    $s.Status = if ($null -eq $w) { "Unknown -- could not check" }
-                                elseif ($w -eq 0)  { "DISABLED -- GOOD" }
-                                else               { "Enabled -- needs attention" }
+                    if ($null -ne $w) {
+                        $s.Status = if ($w -eq 0) { "DISABLED -- GOOD" } else { "Enabled -- needs attention" }
+                    } else {
+                        $ggDa = (Get-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -EA SilentlyContinue).TaskbarDa
+                        $s.Status = if ($null -eq $ggDa) { "Unknown -- could not check" }
+                                    elseif ($ggDa -eq 0)  { "DISABLED -- GOOD" }
+                                    else                  { "Enabled -- needs attention" }
+                    }
                 }
                 catch { $s.Status = "Unknown -- could not check" }
             }

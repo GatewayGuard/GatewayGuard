@@ -349,8 +349,8 @@
     ***Measured: zero lines matching "boost" or "background" changed
     anywhere in the diff.*** That is a real, clean null result, not a dead
     end — checked immediately rather than accepted at face value:
-    ***measured directly against `%LOCALAPPDATA%\\Microsoft\\Edge\\User
-    Data\\Local State` (the file SHARED across all profiles, which the
+    ***measured directly against `%LOCALAPPDATA%\Microsoft\Edge\User
+    Data\Local State` (the file SHARED across all profiles, which the
     script never read): it holds `"startup_boost":{"enabled":false,
     "default_last_launch":true,...}` and `"background_mode":{"enabled":
     true}`.*** Copilot had the right names; the script (and the original
@@ -378,13 +378,33 @@
     case-13 decision logic was tested against all three shapes a read can
     take (both off, one on, one found and one missing) and returned GOOD,
     needs-attention, and Unknown respectively, each correctly.
-    **Item 14 (Widgets) is still open** — Bill's run reached "TaskbarDa
-    BEFORE = 1" and stopped there (Ctrl+C) before the after-read, so no
-    diff exists for it yet. Re-running Part 2 of the same script would
-    close it the same way.
+    **Item 14 (Widgets) CLOSED THE SAME DAY, ONE RE-RUN LATER — AND THIS
+    ONE IS FLIP-PROVEN, NOT JUST FOUND.** Bill's first run stopped at
+    "TaskbarDa BEFORE = 1" (Ctrl+C, before the after-read). He re-ran the
+    whole script and completed all three parts this time.
+    ***Measured on CGDELL 2026-09-17, a real controlled toggle: `TaskbarDa`
+    read 1 before, 0 after Widgets was turned off in the taskbar's own UI,
+    and 1 again after turning it back on.*** Unlike item 13, this is not an
+    inference from a field name — it was watched flip both directions.
+    **FIX: the same policy-then-effective-fallback shape as items 13/15**,
+    reading `HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\
+    Advanced\TaskbarDa` when the `AllowNewsAndInterests` policy is absent.
+    No new helper needed — a flat HKCU value, not nested JSON like Edge's
+    settings. Apply-Setting's case 14 was already correct and untouched;
+    only detection needed the fallback, same as item 13.
+    ***Verified live on this machine: TaskbarDa currently reads 1 (Widgets
+    back on after Bill's restore step), and the fix correctly reports
+    "Enabled -- needs attention" for that value.***
+    **FT-123b is now fully closed — items 13, 14 and 15 all have a real,
+    measured effective-state fallback. None of it was guessed:** two were
+    proven by watching them flip, one (item 13's specific `enabled` field)
+    rests on the standard Chromium naming convention rather than a proven
+    flip, and that distinction is written into the code comment, not
+    smoothed over.
     Gates after: 12, 12b, 24 PASS, parse 0 errors, 0 non-ASCII, 89
-    functions, no duplicates. Wrapper:
-    `Tool2\\build_ascii44_ft123b_item13.py`.
+    functions, no duplicates. Wrappers:
+    `Tool2\build_ascii44_ft123b_item13.py`,
+    `Tool2\build_ascii44_ft123b_item14.py`.
   - **FT-260 — THE PRODUCT QUESTION IS DECIDED 2026-09-16; THE DETECTION GAP
     IS STILL OPEN ON PURPOSE.** Read the decision first, then the finding
     that started it — the heading used to say only "RAISED NOT FIXED," which

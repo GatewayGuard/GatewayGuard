@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-17 15:19 ET -->
-<!-- Commit: efff1a8 -->
+<!-- Generated: 2026-09-17 15:39 ET -->
+<!-- Commit: 63cf1c1 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-17 15:19 ET  |  **Commit:** `efff1a8`  |  **Made:** 2026-09-17 14:49 ET
-- **Commit subject:** ascii44 scope and field-checklist documents for Bill; Check-Docs crash fixed; own dead-pointer shorthand corrected
+- **Generated:** 2026-09-17 15:39 ET  |  **Commit:** `63cf1c1`  |  **Made:** 2026-09-17 15:20 ET
+- **Commit subject:** FT-123b item 13 closed: Copilot's key names were right, the file was wrong -- Bill's field test found the real one
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 

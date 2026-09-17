@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-17 15:16 ET
+- **Last Modified:** 2026-09-17 15:38 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -450,6 +450,45 @@ item 13), `Tool2\build_ascii44_ft123b_item13.py` (new), `CLAUDE.md`
 (setting 13 row), `Test_Results\EffectiveState-CGDELL-2026-09-17_15-01.txt`
 and `Test_Results\HelloSignals-CGDELL-2026-09-17_14-56.txt` (Bill's and my
 own runs, both untracked field data, not committed).
+
+### EIGHTH HALF: BILL RE-RAN IT, FINISHED WIDGETS THIS TIME, AND FT-123b CLOSED IN FULL
+
+**Bill re-ran `Run-MeasureEffectiveState.bat` and completed all three
+parts.** Part 2 (Widgets) is a real, controlled, both-directions proof:
+***measured, `TaskbarDa` read 1 before, 0 after Widgets was turned off in
+the taskbar's own UI, and 1 again after turning it back on.*** Unlike item
+13's key, this one was watched flip, not inferred from its name.
+
+**Closed FT-123b for item 14 the same way item 13 was closed an hour
+earlier** -- the exact same policy-then-effective-fallback shape, reading
+`TaskbarDa` directly (a flat HKCU value, no new helper function needed the
+way Edge's nested JSON did). Apply-Setting's own case 14 was already
+correct and untouched. Verified live: `TaskbarDa` reads 1 right now
+(Widgets back on after Bill's restore step) and the fix correctly reports
+"Enabled -- needs attention" for that value. Gates clean, 89 functions, no
+duplicates.
+
+**FT-123b is now fully closed** -- items 13, 14 and 15 all have a real
+effective-state fallback instead of stopping at "Unknown." Two of the three
+are flip-proven (14 today, 15 on 09-16); item 13's `enabled` field rests on
+the standard Chromium naming convention rather than a proven flip, and
+CLAUDE.md says so plainly rather than folding the distinction away.
+
+**Also fixed in the same pass:** a doubled backslash (`\\` instead of `\`)
+that had crept into three spots in CLAUDE.md's FT-123b entry, an artifact
+of copying code-literal text into prose by hand. Checked all three files
+touched this session for the same mistake with a script rather than by eye
+-- none found elsewhere.
+
+`GatewayGuard_SettingsLocationList-2026-09-08-2130.md`'s setting-14 row
+updated to record the flip-proof.
+
+Files: `Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1` (FT-123b
+item 14), `Tool2\build_ascii44_ft123b_item14.py` (new), `CLAUDE.md`
+(FT-123b entry completed, backslash typos fixed),
+`GatewayGuard_SettingsLocationList-2026-09-08-2130.md` (setting 14 row),
+`Test_Results\EffectiveState-CGDELL-2026-09-17_15-29.txt` (Bill's second
+run, untracked field data, not committed).
 
 ## Session: 2026-09-08 07:03 to 07:51 [Claude Code -- CGDELL] -- THE MALWAREBYTES HALF RAN, AND ONE BUTTON PRESS PROVED BOTH PRODUCTS AT ONCE
 
