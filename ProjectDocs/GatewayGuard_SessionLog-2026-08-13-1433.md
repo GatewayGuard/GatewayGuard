@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-17 15:43 ET
+- **Last Modified:** 2026-09-17 15:51 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -512,6 +512,28 @@ keyboard rather than quietly carried forward as still-true.
 Files: `GatewayGuard_ascii44Scope-WhatsInWhatsNext-2026-09-17-1441.md`,
 `GatewayGuard_FieldChecklist-ascii44-2026-09-17-1441.md` (both amended in
 place, same filename/header date -- no new version, just current content).
+
+### TENTH HALF: BILL SETTLES THE OPEN QUESTION -- "CURRENTLY EDGE STARTUP BOOST IS ON"
+
+**The one gap left in FT-123b closed itself within minutes.** Bill looked
+at the real Edge screen and reported Startup Boost is on right now --
+exactly matching the 15:43 registry read (`True`), not the 15:11 one
+(`False`). This is a direct screen-to-registry match, not a watched flip,
+but it is real evidence the key means what it is assumed to mean: Bill did
+not need to be asked, he answered the exact open question from the
+checklist unprompted.
+
+Updated CLAUDE.md's FT-123b entry, the field checklist's screen-27 note,
+and `SettingsLocationList`'s setting-13 row to say so and to stop treating
+`startup_boost.enabled` as merely inferred. The unexplained 15:11-to-15:43
+move itself is left unexplained -- nothing points at a cause, and
+guessing one (a background Edge process, an update, Bill's own second
+script run touching it) would be exactly the kind of invented answer this
+project's rules exist to prevent.
+
+Files: `CLAUDE.md`, `GatewayGuard_FieldChecklist-ascii44-2026-09-17-1441.md`,
+`GatewayGuard_SettingsLocationList-2026-09-08-2130.md` (all three, same
+finding recorded three places).
 
 ## Session: 2026-09-08 07:03 to 07:51 [Claude Code -- CGDELL] -- THE MALWAREBYTES HALF RAN, AND ONE BUTTON PRESS PROVED BOTH PRODUCTS AT ONCE
 

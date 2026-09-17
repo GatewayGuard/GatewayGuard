@@ -398,9 +398,16 @@
     **FT-123b is now fully closed — items 13, 14 and 15 all have a real,
     measured effective-state fallback. None of it was guessed:** two were
     proven by watching them flip, one (item 13's specific `enabled` field)
-    rests on the standard Chromium naming convention rather than a proven
-    flip, and that distinction is written into the code comment, not
-    smoothed over.
+    rested on the standard Chromium naming convention rather than a proven
+    flip.
+    **That last gap closed the same day.** `startup_boost.enabled` was read
+    twice an hour apart — `False` at 15:11, `True` at 15:43, with no known
+    toggle in between — and flagged as a live value to re-read rather than
+    trust. ***Bill then read the real Edge screen directly: "currently edge
+    startup boost is on," at the exact moment the key read `True`.*** Not a
+    watched flip, but a direct screen-to-registry match at a single point in
+    time — the strongest evidence available short of watching it move, and
+    enough to call `enabled` confirmed rather than merely inferred.
     Gates after: 12, 12b, 24 PASS, parse 0 errors, 0 non-ASCII, 89
     functions, no duplicates. Wrappers:
     `Tool2\build_ascii44_ft123b_item13.py`,

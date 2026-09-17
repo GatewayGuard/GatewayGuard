@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-17 15:44 ET -->
-<!-- Commit: 9917e43 -->
+<!-- Generated: 2026-09-17 15:52 ET -->
+<!-- Commit: 2a964a3 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-17 15:44 ET  |  **Commit:** `9917e43`  |  **Made:** 2026-09-17 15:40 ET
-- **Commit subject:** FT-123b closed in full: item 14 (Widgets) now flip-proven, item 13's stray doubled backslashes fixed
+- **Generated:** 2026-09-17 15:52 ET  |  **Commit:** `2a964a3`  |  **Made:** 2026-09-17 15:45 ET
+- **Commit subject:** ascii44 records updated with FT-123b (items 13/14 closed)
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
