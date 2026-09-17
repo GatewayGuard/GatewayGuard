@@ -36,7 +36,12 @@ param([switch]$NoPause)
 $ErrorActionPreference = "Stop"
 Set-Location -Path $PSScriptRoot
 
-$ggBuild = Get-ChildItem -Path $PSScriptRoot -Filter "W11-SecurityHardening-v3-*.ps1" |
+# FT-264 (2026-09-17): searched $PSScriptRoot (Tool2\), which has held no
+# build .ps1 since the 2026-08-22 Tool/Tool2 split -- Get-ChildItem returned
+# nothing, so ParseFile got a null path and reported "1 error(s)", not zero
+# screens. The four launchers the split explicitly fixed did not include
+# this one. Build lives in ..\Tool\.
+$ggBuild = Get-ChildItem -Path (Join-Path $PSScriptRoot "..\Tool") -Filter "W11-SecurityHardening-v3-*.ps1" |
            Sort-Object LastWriteTime -Descending | Select-Object -First 1
 
 $ggOut = Join-Path $PSScriptRoot ("..\Test_Results\ScreenInventory-" +

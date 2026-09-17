@@ -37,7 +37,9 @@ param([switch]$NoPause)
 $ErrorActionPreference = "Stop"
 Set-Location -Path $PSScriptRoot
 
-$ggBuild = Get-ChildItem -Path $PSScriptRoot -Filter "W11-SecurityHardening-v3-*.ps1" |
+# FT-264 (2026-09-17): same fix as Get-ScreenInventory-2026-08-15.ps1 -- the
+# build has lived in ..\Tool\, not here, since the 2026-08-22 split.
+$ggBuild = Get-ChildItem -Path (Join-Path $PSScriptRoot "..\Tool") -Filter "W11-SecurityHardening-v3-*.ps1" |
            Sort-Object LastWriteTime -Descending | Select-Object -First 1
 
 $ggOut = Join-Path $PSScriptRoot ("..\Test_Results\InputGate-" + $env:COMPUTERNAME + "-" +

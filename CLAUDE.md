@@ -300,6 +300,35 @@
     chased further, since `gg_edit.py`'s own write-time check and two
     independent re-checks all read 0), 0 non-ASCII, 88 functions, no
     duplicates. Wrapper: `Tool2\build_ascii44_ft263_canautofix.py`.
+  - **FT-264, FIXED 2026-09-17 — TWO Tool2 UTILITY SCRIPTS HAVE BEEN UNABLE
+    TO FIND THE BUILD SINCE THE 2026-08-22 Tool/Tool2 SPLIT, AND SAID SO AS
+    "THE BUILD DOES NOT PARSE."** Found while building a screen-by-screen
+    field checklist for Bill and running `Run-ScreenInventory.bat`.
+    ***Measured: `Get-ScreenInventory-2026-08-15.ps1` and
+    `Test-InputGate-2026-08-15.ps1` both search `$PSScriptRoot` (`Tool2\`)
+    for `W11-SecurityHardening-v3-*.ps1` — a pattern that has matched
+    nothing since the build moved to `Tool\` on 2026-08-22.*** `Get-ChildItem`
+    silently returns nothing, `ParseFile($null, ...)` throws, and the script
+    reports "STOP: the build does not parse (1 error(s))" — a true
+    statement about a file that was never found, read by an operator as a
+    real corruption in the shipped build. ***This is not the same as the
+    unrelated transient single-error readings noted under FT-262 and
+    FT-263 — those were against the correct path in `Tool\` and did not
+    reproduce; this one reproduced 3 of 3 times and had a mechanical
+    cause.*** CLAUDE.md's own record of the split names four launchers it
+    verified afterward — `Run-GatewayGuard`, `Show-AllScreens`,
+    `Run-ScreenCoverageCheck`, `Run-ExternalCommandCheck` — and these two,
+    both dated before the split, were not among them.
+    **FIX: both now search `..\Tool\` instead of `$PSScriptRoot`.** No
+    build change; both are dev-only tools, edited directly (not through
+    `gg_edit.py`, which governs `Tool\*.ps1` only). Re-ran
+    `Run-ScreenInventory.bat` afterward: 69 `Draw-Box` screens found, 0
+    parse errors, output written to
+    `Test_Results\ScreenInventory-ascii44-2026-09-06-1214.txt`.
+    **Also fixed in passing:** FT-261 and FT-262 were applied without the
+    inline `# FT-NNN` code comment every other fix in this file carries —
+    added both, no behavior change, so a future screen-to-FT mapping (like
+    the one this was found while building) does not miss them.
   - **FT-260 — THE PRODUCT QUESTION IS DECIDED 2026-09-16; THE DETECTION GAP
     IS STILL OPEN ON PURPOSE.** Read the decision first, then the finding
     that started it — the heading used to say only "RAISED NOT FIXED," which

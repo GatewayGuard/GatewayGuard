@@ -3654,6 +3654,10 @@ function Get-GGPolicyLock {
 # STEP 3: ADMIN CHECK
 # ============================================================
 function Test-AdminAccess {
+    # FT-261 (2026-09-17): this used to offer "Continue in Limited Mode?"
+    # here on resume, the one behavior FT-25 (2026-07-11) had already
+    # removed from the fresh-run path (Show-FontInstructions, screen 01).
+    # Now matches it exactly -- show instructions, exit. No Limited Mode.
     $global:IsAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator")
 
     if (-not $global:IsAdmin) {
@@ -6797,6 +6801,10 @@ function Apply-Setting {
         6 {
             # Enhanced Phishing Protection -- WTDS registry
             # Key may be Tamper Protected -- catch PermissionDenied and show manual steps
+            # FT-262 (2026-09-17): the manual-steps text below used to say
+            # "turn ON all 3 options" while the screen shows four boxes,
+            # naming none of them -- drafted and reviewed 2026-08-26,
+            # never applied until now.
             try {
                 $rp = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WTDS\Components"
                 if (-not (Test-Path $rp)) { New-Item -Path $rp -Force | Out-Null }
