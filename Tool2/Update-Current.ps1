@@ -100,6 +100,7 @@ $wanted = @(
     # handoffs. All were tracked and synced but unnamed here, so Cloud could not
     # open them -- the exact failure this file exists to prevent.
     @{ Label = 'Build plan (current)';        Pattern = 'GatewayGuard_ascii*BuildPlan-*.md' },
+    @{ Label = 'Build scope -- what shipped vs. what is next'; Pattern = 'GatewayGuard_ascii*Scope-WhatsInWhatsNext-*.md' },
     # THE standing list of settings NOT in the product, added 2026-08-24 when
     # Bill froze the count at nineteen for launch. It needs a row because a
     # list nobody can find gets started again from scratch -- and a second

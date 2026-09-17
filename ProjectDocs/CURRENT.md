@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-17 14:27 ET -->
-<!-- Commit: d6db09c -->
+<!-- Generated: 2026-09-17 14:49 ET -->
+<!-- Commit: 824c07d -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-17 14:27 ET  |  **Commit:** `d6db09c`  |  **Made:** 2026-09-17 14:06 ET
-- **Commit subject:** FT-262 build fix applied (the 08-26 draft was never shipped); FT-263 opened: CanAuto=false silently skips Apply-Setting's per-ID cases entirely
+- **Generated:** 2026-09-17 14:49 ET  |  **Commit:** `824c07d`  |  **Made:** 2026-09-17 14:40 ET
+- **Commit subject:** FT-264: two Tool2 utility scripts have been unable to find the build since the 08-22 split; missing FT-261/262 code tags added
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -19,7 +19,7 @@ document family and the single filename that is live right now. Take every
 filename from this table -- never from memory, never from another document,
 never by guessing which date looks newest.
 
-**80 rows follow.** If you cannot see all 80 of them, your
+**81 rows follow.** If you cannot see all 81 of them, your
 retrieval truncated the table -- **say so and ask for the rest, rather
 than answering from the handful you received.**
 
@@ -62,15 +62,16 @@ All paths are relative to `ProjectDocs/`.
 
 ### THE BUILD AND ITS FIELD TESTS
 
-**7 rows in this group.** If you see fewer, this group was truncated -- say so.
+**8 rows in this group.** If you see fewer, this group was truncated -- say so.
 
 | What it is | The current file | Older versions present |
 |---|---|---|
 | Test results (raw run notes and logs) | `GatewayGuard_TestResults-ascii43-2026-09-04-2345.md` | 0 |
 | Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii43run2-2026-08-30-1723.md` | 4 |
 | Response to Bill's field notes | `GatewayGuard_ResponseToBillsNotes-ascii43-2026-08-30-1815.md` | 0 |
-| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii43-2026-08-26-1730.md` | 3 |
+| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii44-2026-09-17-1441.md` | 4 |
 | Build plan (current) | `GatewayGuard_ascii44BuildPlan-2026-09-05-1130.md` | 1 |
+| Build scope -- what shipped vs. what is next | `GatewayGuard_ascii44Scope-WhatsInWhatsNext-2026-09-17-1441.md` | 0 |
 | Future settings (candidate list) | `GatewayGuard_FutureSettings-2026-08-24-2310.md` | 0 |
 | Guide FT-220 sections | `GatewayGuard_GuideFT220-Sections-2026-08-21-1445.md` | 0 |
 

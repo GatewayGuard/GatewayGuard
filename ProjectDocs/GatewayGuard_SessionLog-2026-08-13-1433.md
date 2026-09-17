@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-17 14:26 ET
+- **Last Modified:** 2026-09-17 14:48 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -86,7 +86,9 @@ opening/cover sections and Part 2's Setting 1, Windows Update -- outside what
 Cloud's fragment-based search had surfaced): no additional name, path, or
 permission-line defects found in either.
 
-Files: `GatewayGuard_CoPilotGuidePart1/2/3-2026-09-16-1627.md` (all three
+Files: `GatewayGuard_CoPilotGuidePart1-2026-09-16-1627.md`,
+`GatewayGuard_CoPilotGuidePart2-2026-09-16-1627.md`,
+`GatewayGuard_CoPilotGuidePart3-2026-09-16-1627.md` (all three
 edited in place), `GatewayGuard_GuideReconciliationPack-CoPilot-2026-09-17-1818.md`
 (filed, row added to `CURRENT.md`), `CLAUDE.md` (FT-261 entry added),
 `Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1` (FT-261),
@@ -150,7 +152,9 @@ class of gap as the numbering bug the reconciliation pack fixed: the
 underlying measurement existed and was correct, but nothing surfaced it
 where a reader would see it.
 
-Files this half: `GatewayGuard_CoPilotGuidePart1/2/3-2026-09-16-1627.md`,
+Files this half: `GatewayGuard_CoPilotGuidePart1-2026-09-16-1627.md`,
+`GatewayGuard_CoPilotGuidePart2-2026-09-16-1627.md`,
+`GatewayGuard_CoPilotGuidePart3-2026-09-16-1627.md`,
 `GatewayGuard_SettingsLocationList-2026-09-08-2130.md`, `Start-CC.txt`.
 
 ### THIRD HALF: CLOUD'S REVIEW OF THE ABOVE, A REAL WEBSITE DEFECT FOUND IN THE SAME SPOT, AND THE SYNC IS STUCK AT 2c51707 -- REPO SIDE IS CLEAN
@@ -317,6 +321,82 @@ functions, no duplicates.
 Files: `Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1`,
 `Tool2\build_ascii44_ft263_canautofix.py` (new), `CLAUDE.md` (FT-263 marked
 fixed).
+
+### SIXTH HALF: FT-264, THE MISSING FT TAGS, AND THE THREE THINGS BILL ACTUALLY ASKED FOR
+
+**Bill asked three things: what is in ascii44 vs. ascii45, what order the
+user sees screens in, and a field checklist by screen number.** Answering
+the first honestly meant cross-checking `GatewayGuard_ascii44BuildPlan-
+2026-09-05-1130.md` against the real source rather than reading the plan as
+if it described what happened. ***Measured: zero occurrences of
+`PUAProtection`, signature-age reads, or Windows Update Agent COM code
+anywhere in ascii44*** -- the plan's entire Block B (FT-247 through FT-253)
+never shipped, including B4/FT-251, which is exactly what FT-262 fixed
+today under a different number, arrived at by a different path, 12 days
+after the plan called it "unblocked." Block A shipped in full. Blocks C and
+D are exactly as blocked as the plan said, except C2 (Malwarebytes), which
+Bill decided outright on 09-08 rather than by the plan's own test-first
+route.
+
+**Answering the second and third meant getting the real screen order, not
+reconstructing it from memory.** Ran `Tool2\Run-ScreenInventory.bat` to get
+the measured set of screens -- and it failed, "the build does not parse."
+**Traced it rather than working around it:** the script searches its own
+folder (`Tool2\`) for the build, which has lived in `..\Tool\` since the
+2026-08-22 split. Empty search, null path, `ParseFile` throws -- a true
+statement about a file that was never found, easy to mistake for real
+corruption. **Opened FT-264, fixed both this script and
+`Test-InputGate-2026-08-15.ps1`, the same bug in the same place**, and
+confirmed CLAUDE.md's own record of the split names four launchers it
+verified afterward -- neither of these two, both dated before the split,
+was among them.
+
+**Also found while doing the mapping: FT-261 and FT-262 went in earlier
+today without the inline `# FT-NNN` comment every other fix in this build
+carries.** Added both -- no behavior change, but the omission would have
+made exactly this kind of screen-to-FT mapping miss them next time.
+
+**Built the actual answers as two tracked documents, not chat text**, since
+Bill will want them at the keyboard during the actual run:
+`GatewayGuard_ascii44Scope-WhatsInWhatsNext-2026-09-17-1441.md` (question 1)
+and `GatewayGuard_FieldChecklist-ascii44-2026-09-17-1441.md` (questions 2
+and 3, using `$script:GGScreenLabels` -- the build's own screen-order table
+-- as the source of the sequence, not a hand-typed reconstruction).
+
+**ascii44 has still never been field run.** These two documents are what a
+first run would use; they are not a substitute for one.
+
+Files: `Tool2\Get-ScreenInventory-2026-08-15.ps1`,
+`Tool2\Test-InputGate-2026-08-15.ps1` (FT-264), `Tool\W11-SecurityHardening-
+v3-ascii44-2026-09-06-1214.ps1` (FT-261/262 tags), `CLAUDE.md` (FT-264),
+`GatewayGuard_ascii44Scope-WhatsInWhatsNext-2026-09-17-1441.md` (new),
+`GatewayGuard_FieldChecklist-ascii44-2026-09-17-1441.md` (new),
+`Tool2\Update-Current.ps1` (new tracked pattern).
+
+**Ran `Tool2\Run-DocCheck.bat` before committing, per session-end
+discipline, and it crashed** -- `[int]$m.Groups[3].Value` throwing on every
+CURRENT.md row whose count column reads `--` (a Multi-row), a gap left by
+the 2026-08-23 fix that widened the regex to accept `--` without updating
+the cast next to it. Fixed (guard the cast, treat `--` as 0 -- the value is
+computed but never read downstream, so this only stops the crash). Re-ran
+clean, and found two real things: **19 dead pointers across all of
+ProjectDocs, baseline 0** -- reproduced the check's own logic directly
+since it counts but never prints this list, and found two were mine: the
+session log's own "`GatewayGuard_CoPilotGuidePart1/2/3-2026-09-16-1627.md`"
+shorthand parses as a broken pointer to a file named "3-2026-09-16-1627.md",
+which does not exist and was never meant to. Spelled out all three real
+filenames instead, both places. **The other 19 (now 19, was 21) predate this
+session** -- old superseded-draft references in `GuideRewrite-Draft`,
+`ProjectInstructions`, `SyncDocsReview` and others -- left alone, out of
+scope for today. Also flagged: `GatewayGuard_FieldChecklist-ascii43.md`'s
+two copies have no anchor in `CURRENT.md` naming which is live, now that
+today's ascii44 checklist is the newest `FieldChecklist-*.md` match -- a
+side effect of shipping the new one, not a new mistake, but worth Bill
+knowing the old pair is now unanchored if either is ever needed again.
+
+Files, in addition to the list above: `Tool2\Check-Docs-2026-08-20.ps1`
+(crash fix), `GatewayGuard_SessionLog-2026-08-13-1433.md` (its own
+shorthand-pointer fix, this entry).
 
 ## Session: 2026-09-08 07:03 to 07:51 [Claude Code -- CGDELL] -- THE MALWAREBYTES HALF RAN, AND ONE BUTTON PRESS PROVED BOTH PRODUCTS AT ONCE
 

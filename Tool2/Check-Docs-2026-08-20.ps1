@@ -133,7 +133,10 @@ foreach ($line in (Get-Content -LiteralPath $currentMd -Encoding UTF8)) {
     $m = [regex]::Match($line, $rowPat)
     if ($m.Success -and $m.Groups[1].Value -ne "What it is") {
         $namedCurrent[$m.Groups[1].Value] = $m.Groups[2].Value
-        $namedOlder[$m.Groups[1].Value]   = [int]$m.Groups[3].Value
+        # FT-264b (2026-09-17): the regex above was widened 2026-08-23 to accept
+        # '--' (a Multi-row's count column), but this cast was never updated to
+        # match -- [int]'--' throws, once per Multi-row, every run since.
+        $namedOlder[$m.Groups[1].Value]   = if ($m.Groups[3].Value -eq '--') { 0 } else { [int]$m.Groups[3].Value }
     }
 }
 
