@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-17 15:38 ET
+- **Last Modified:** 2026-09-17 15:43 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -489,6 +489,29 @@ item 14), `Tool2\build_ascii44_ft123b_item14.py` (new), `CLAUDE.md`
 `GatewayGuard_SettingsLocationList-2026-09-08-2130.md` (setting 14 row),
 `Test_Results\EffectiveState-CGDELL-2026-09-17_15-29.txt` (Bill's second
 run, untracked field data, not committed).
+
+### NINTH HALF: BILL, PLAIN: "UPDATE ascii44 WITH THE FINDINGS"
+
+**The code was already updated as each fix landed.** What was still stale
+was the standalone record: `GatewayGuard_ascii44Scope-WhatsInWhatsNext-
+2026-09-17-1441.md` was written at 14:41, before Bill's Effective-State
+runs, so it had no way to mention FT-123b. Added it under "what wasn't in
+the plan at all, and got found anyway" -- its correct home, since FT-123b
+came from Cloud's 09-16 Copilot review, not the 09-05 build plan this
+document was built to check against.
+
+Also updated `GatewayGuard_FieldChecklist-ascii44-2026-09-17-1441.md`'s
+screen-27 entry, the highest-value screen in the whole checklist: items 13
+and 14 can now report a real On/Off there instead of "Unknown." **Checked
+the live state again while writing this, rather than reusing the earlier
+reading, and it had moved:** `startup_boost.enabled` read `False` at
+15:11 and `True` at 15:43, with no known toggle in between. Not chased
+further -- noted in the checklist as a live value to re-read at the
+keyboard rather than quietly carried forward as still-true.
+
+Files: `GatewayGuard_ascii44Scope-WhatsInWhatsNext-2026-09-17-1441.md`,
+`GatewayGuard_FieldChecklist-ascii44-2026-09-17-1441.md` (both amended in
+place, same filename/header date -- no new version, just current content).
 
 ## Session: 2026-09-08 07:03 to 07:51 [Claude Code -- CGDELL] -- THE MALWAREBYTES HALF RAN, AND ONE BUTTON PRESS PROVED BOTH PRODUCTS AT ONCE
 

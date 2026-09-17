@@ -102,6 +102,21 @@ sessions on CGDELL that surfaced defects nobody had scoped:
   turned out to be B4/FT-251 under a new number), Tamper Protection and
   Windows Hello's manual instructions never reaching a user, and two broken
   Tool2 utility scripts.
+- **FT-123b, items 13 and 14 (both fixed 2026-09-17, today)** -- a separate,
+  older open item (from Cloud's 2026-09-16 Copilot review, not the 09-05
+  build plan): items 13 (Edge Startup Boost/Background) and 14 (Widgets)
+  reported "Unknown -- could not check" whenever Checkup's own policy had
+  never been set, because Copilot's proposed effective-state key names
+  hadn't held up when checked against the file Cloud's measurement script
+  read. Bill ran that script himself. Item 14 (Widgets) came back
+  flip-proven -- `TaskbarDa` read 1, then 0 when he turned Widgets off in
+  Windows' own settings, then 1 again when he turned it back on. Item 13
+  turned out to need a different file entirely (`Local State`, shared
+  across Edge profiles, not the per-profile `Preferences` file the script
+  checked) -- found by investigating a "nothing changed" result instead of
+  accepting it. Both now have a real effective-state reader, mirroring the
+  one already built for item 15 on 09-16. Full detail: CLAUDE.md's FT-123b
+  entry.
 - **"Back replays a photograph, not the words"** (raised, not fixed) --
   resizing the window during a run breaks Back.
 - **FT-254** (raised, not fixed) -- `Test-TimeDateSync` prints success after

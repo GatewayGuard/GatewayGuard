@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-17 15:39 ET -->
-<!-- Commit: 63cf1c1 -->
+<!-- Generated: 2026-09-17 15:44 ET -->
+<!-- Commit: 9917e43 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-17 15:39 ET  |  **Commit:** `63cf1c1`  |  **Made:** 2026-09-17 15:20 ET
-- **Commit subject:** FT-123b item 13 closed: Copilot's key names were right, the file was wrong -- Bill's field test found the real one
+- **Generated:** 2026-09-17 15:44 ET  |  **Commit:** `9917e43`  |  **Made:** 2026-09-17 15:40 ET
+- **Commit subject:** FT-123b closed in full: item 14 (Widgets) now flip-proven, item 13's stray doubled backslashes fixed
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
