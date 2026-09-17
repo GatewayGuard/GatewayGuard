@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-17 12:16 ET
+- **Last Modified:** 2026-09-17 12:46 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -97,6 +97,61 @@ edited in place), `GatewayGuard_GuideReconciliationPack-CoPilot-2026-09-17-1818.
 backslash belonged (`Tool2` + BACKSPACE + `uild_...` instead of
 `Tool2\build_...`) -- cosmetic, pre-existing, caught only because the exact
 line was being read closely for an insertion anchor.
+
+### SECOND HALF: "ALL" VS "MANY", A TOOLS REFERENCE FOR BILL, AND A REAL GAP IN THE PHISHING-PROTECTION SETTING
+
+**Bill: "where we recommend something we should be saying all not many or
+most."** Went back through the 16 "many" sentences the PL-4 sweep above had
+produced and split them in two: seven were the recommendation statement
+itself (what "Recommended" means, or the closing line of a setting's "When
+You Might Choose Differently") and became "all"; nine were factual claims
+about attacker or population behavior, sourced with real exceptions listed a
+few lines later in the same section (Remote Desktop, Wake on LAN), and stayed
+"many" because "all" would have been false there. Bill confirmed the split
+and asked one more word swap: Wake on LAN's "never use this capability" ->
+"never need this capability".
+
+**Bill: "make a list of tools you use and where they are, add to
+start-cc.txt."** Added a new section to `Start-CC.txt` naming all 57
+launchers in `Tool2\`, sourced from each one's own header comment (not
+memory), grouped by what they're for: the six gates and checks Claude Code
+runs unprompted every session, build review, mouse/touchpad/console input,
+BitLocker, AV/malware testing, SANDY, running Checkup itself, and one-off
+diagnostics built for a specific past defect. `gg_edit.py` -- not a launcher,
+the Python module every build edit goes through -- is called out separately
+at the top of the core section.
+
+**Then a real content gap, caught by Bill looking at his own screen.**
+Setting 6's "When You Might Choose Differently" line said "leave phishing
+protections enabled" without saying which ones. Bill: *"the one about
+phishing. We don't want all 4 on, do we? only 3 of the 4 right?"* ***Measured
+from `WebThreatDefense.admx`: Enhanced Phishing Protection is actually five
+policies -- a master switch, three warnings (malicious sites, password
+reuse, unsafe password storage), and a fifth, `AutomaticDataCollection` /
+`CaptureThreatWindow`, that sends Microsoft a copy of the screen content
+when something is flagged.*** Could not confirm which four Bill was looking
+at by reading the registry -- ***already measured 2026-09-07: Tamper
+Protection refuses all four of these reads and writes, and the screen is the
+only truth for this group*** -- so asked, and Bill sent **screenshot 92**:
+the four checkboxes under Phishing protection are exactly the three warnings
+plus "Automatically collect website or app content when additional analysis
+is needed to help identify security threats," all four checked on.
+
+**Setting 6 rewritten: recommend the three warnings, explicitly recommend
+AGAINST the fourth.** Checkup's own build description for setting 6 only
+ever named the three warnings -- the fourth checkbox was never part of the
+setting, and the guide now says so by name, with the literal on-screen label
+instead of Copilot's paraphrase ("Known phishing websites" -> "Malicious
+apps and sites"). **`GatewayGuard_SettingsLocationList-2026-09-08-2130.md`
+had already measured all four registry writes failing on 2026-09-07 --
+"all four" is in that document's own prose -- but its table only ever
+listed three rows.** The fourth row is now in the table, which is the same
+class of gap as the numbering bug the reconciliation pack fixed: the
+underlying measurement existed and was correct, but nothing surfaced it
+where a reader would see it.
+
+Files this half: `GatewayGuard_CoPilotGuidePart1/2/3-2026-09-16-1627.md`,
+`GatewayGuard_SettingsLocationList-2026-09-08-2130.md`, `Start-CC.txt`.
 
 ## Session: 2026-09-08 07:03 to 07:51 [Claude Code -- CGDELL] -- THE MALWAREBYTES HALF RAN, AND ONE BUTTON PRESS PROVED BOTH PRODUCTS AT ONCE
 

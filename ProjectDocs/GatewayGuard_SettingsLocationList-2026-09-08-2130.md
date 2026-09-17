@@ -106,6 +106,7 @@ fixed, and this machine is now a live example rather than a theory.
 | Phishing protection -- Warn me about malicious apps and sites | **On** | These three are setting 6 |
 | Phishing protection -- Warn me about password reuse | **On** | |
 | Phishing protection -- Warn me about unsafe password storage | **On** | |
+| Phishing protection -- Automatically collect website or app content when additional analysis is needed to help identify security threats | **Off** | ***Confirmed by Bill's screenshot 92, 2026-09-17: Windows shows this as a fourth checkbox in the same group, checked On on this PC.*** **Not setting 6, and not recommended on** -- it sends more of the screen to Microsoft than the three warnings need in order to work. Checkup does not set this one either way; the guide says so. |
 
 ### 1. Block downloads is still yours to tick
 
@@ -117,10 +118,14 @@ setting out in Edge's own options.**
 > Windows Security > App & browser control > Reputation-based protection
 > settings > **Potentially unwanted app blocking** > tick **Block downloads**
 
-### 2. The three phishing toggles cannot be set by any program here
+### 2. The phishing toggles cannot be set by any program here
 
 ***Measured 2026-09-07: all four writes returned "Requested registry access is
-not allowed."*** Tamper Protection refuses them. They must be ticked by hand.
+not allowed."*** **This document only named three of those four rows until
+2026-09-17** -- the fourth, "Automatically collect website or app content...",
+was tested the same day as the other three but never given its own row, which
+is exactly the gap Bill's own question about "3 of the 4" ran into. Tamper
+Protection refuses all four writes. They must be ticked or unticked by hand.
 
 **And reading them back does not work either:** ***measured the same day, all
 four values read NOT SET while the screen showed all four ticked ON.*** **For

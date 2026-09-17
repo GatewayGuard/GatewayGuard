@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-17 12:17 ET -->
-<!-- Commit: 6eaca3d -->
+<!-- Generated: 2026-09-17 12:47 ET -->
+<!-- Commit: 387d98d -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-17 12:17 ET  |  **Commit:** `6eaca3d`  |  **Made:** 2026-09-16 16:46 ET
-- **Commit subject:** Testing whether CRLF is why the twins never surfaced to Cloud's search
+- **Generated:** 2026-09-17 12:47 ET  |  **Commit:** `387d98d`  |  **Made:** 2026-09-17 12:18 ET
+- **Commit subject:** Guide reconciliation pack applied to all three Co-Pilot twins; FT-261 closes the resume-path Limited Mode gap
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 

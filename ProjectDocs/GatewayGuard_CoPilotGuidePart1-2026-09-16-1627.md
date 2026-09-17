@@ -90,7 +90,7 @@ Throughout this guide you will see recommendations such as:
 
 Recommended
 
-This is the setting GatewayGuard believes provides the best balance of security, practicality, and ease of use for many home users.
+This is the setting GatewayGuard believes provides the best balance of security, practicality, and ease of use for all home users.
 
 Optional
 
@@ -136,7 +136,7 @@ How the setting affects security, privacy, or convenience.
 
 GatewayGuard Recommendation
 
-The setting recommended for many home users.
+The setting recommended for all home users.
 
 How to Check
 
@@ -179,4 +179,4 @@ Windows Hello
 Memory Integrity
 Password Required on Wake
 
-These settings provide the greatest security benefit for many home users.
+These settings provide the greatest security benefit for all home users.

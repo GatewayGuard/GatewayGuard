@@ -315,7 +315,7 @@ Wake on LAN allows another device on the network to turn on your computer remote
 
 Why It Matters
 
-Many home users never use this capability.
+Many home users never need this capability.
 
 Leaving unnecessary remote-management features disabled reduces complexity and potential exposure.
 

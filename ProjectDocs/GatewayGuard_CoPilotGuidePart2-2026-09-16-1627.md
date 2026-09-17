@@ -12,7 +12,7 @@
 
 Part 2: Core Security Settings
 
-This section covers the most important security protections available in Windows 11. For many home users, these settings provide the greatest security benefit and should be reviewed before moving on to privacy, convenience, or performance settings.
+This section covers the most important security protections available in Windows 11. For all home users, these settings provide the greatest security benefit and should be reviewed before moving on to privacy, convenience, or performance settings.
 
 Setting 1: Windows Update
 What It Is
@@ -33,7 +33,7 @@ Recommended: Automatic Updates Enabled
 
 With your approval, Checkup will make this change for you.
 
-For many home users, Windows should automatically check for, download, and install updates.
+For all home users, Windows should automatically check for, download, and install updates.
 
 How To Check
 Open Settings.
@@ -177,11 +177,13 @@ What It Is
 
 Phishing Protection helps identify:
 
+Malicious apps and sites
 Password reuse
 Unsafe password storage
-Known phishing websites
 
 when using Microsoft Edge.
+
+Windows Security shows a fourth checkbox in this same section, "Automatically collect website or app content when additional analysis is needed to help identify security threats." That checkbox is not part of this setting. It sends more of what is on your screen to Microsoft than the three warnings above need in order to work, so GatewayGuard does not recommend turning it on.
 
 Why It Matters
 
@@ -191,7 +193,7 @@ Phishing Protection helps identify risky behavior before credentials are stolen.
 
 GatewayGuard Recommendation
 
-Recommended: All Options Enabled
+Recommended: The Three Warnings On; Leave Automatic Collection Off
 
 With your approval, Checkup will try to make this change. On some computers Windows blocks it; Checkup then shows you the steps.
 
@@ -202,7 +204,15 @@ Open Reputation-Based Protection Settings.
 Review Phishing Protection options.
 How To Change It
 
-Enable all available phishing protection warnings.
+Turn on:
+
+Warn me about malicious apps and sites
+Warn me about password reuse
+Warn me about unsafe password storage
+
+Leave unchecked:
+
+Automatically collect website or app content when additional analysis is needed to help identify security threats
 
 What To Expect
 
@@ -210,7 +220,7 @@ Windows may occasionally display warnings related to password usage.
 
 When You Might Choose Differently
 
-Many home users should leave all phishing protections enabled.
+All home users should leave the three warnings enabled. Leaving the automatic-collection checkbox off costs you nothing -- the three warnings work the same either way.
 
 Setting 7: Firewall & network protection
 What It Is
@@ -251,7 +261,7 @@ Some applications may request firewall access the first time they run.
 
 When You Might Choose Differently
 
-Rarely. Many home users should keep all firewall profiles enabled.
+All home users should keep all firewall profiles enabled.
 
 Setting 8: BitLocker Data Encryption
 What It Is

@@ -63,8 +63,9 @@ New session. Machine: CGDELL.
 
 Before anything else:
 
-1. Run Get-Date and state the date and time you will use for
+1a. Run Get-Date and state the date and time you will use for
    this session. Do not ask me for it.
+1b. Ask Bill to check GitHub repo % capacity and claude cloud reported % of project capacity used.
 
 2. Confirm your working root and print the full path. Do not
    assume it -- a stale nested copy exists under Attachments\.
@@ -97,6 +98,184 @@ Cloud sees nothing until I do.
 Task: [what you want]
 
 ----------------- COPY TO HERE -----------------
+
+---------------------------------------------------------------
+ TOOL2 -- EVERY TOOL, WHAT IT DOES, WHERE IT LIVES
+---------------------------------------------------------------
+
+ALL of these live in Tool2\ and are double-clickable .bat files --
+no typing required. Each opens a window, runs, writes its result
+to Test_Results\ (unless noted), and waits for Enter to close.
+Read this section once; you do not need to memorize it.
+
+Sourced from each launcher's own header comment, 2026-09-17 --
+not from memory.
+
+--- CORE -- CLAUDE CODE RUNS THESE EVERY SESSION, UNPROMPTED ---
+
+Run-ScreenCoverageCheck.bat   Gates 12/12b: every screen has a
+                              unique ID and stays at or under 26
+                              lines. Run before any build is
+                              called done. READ-ONLY.
+Run-ExternalCommandCheck.bat  Gate 24: every command Checkup runs
+                              outside itself (powercfg, manage-bde,
+                              schtasks...) carries a dated VERIFIED
+                              comment. READ-ONLY.
+Run-RepoBloatCheck.bat        Gate 26, session-start repo review:
+                              what Cloud can see, what is wasting
+                              its budget, any commit that added a
+                              pile of files at once. READ-ONLY.
+Run-RepoHealthCheck.bat       Is everything pushed, is there OneDrive
+                              conflict-copy damage, is .git intact.
+                              READ-ONLY. Run before the final commit.
+Run-DocCheck.bat              Dead pointers, filename date vs. the
+                              file's own header date, more than one
+                              live copy of the same document.
+                              READ-ONLY.
+Run-UpdateCurrent.bat         Regenerates ProjectDocs\CURRENT.md --
+                              the index Cloud reads by name every
+                              session. Run after any new or renamed
+                              ProjectDocs file, before every commit.
+
+Not a .bat -- a Python module, Tool2\gg_edit.py. Every edit to the
+live build .ps1 goes through it (`from gg_edit import PS1Edit`),
+never a raw string replace. It copies the file first, asserts the
+old text is unique, and refuses to write unless the result parses.
+
+--- BUILD REVIEW ---
+
+Show-AllScreens.bat           Walks all 72 screens with no checks
+                              and no changes -- reads them straight
+                              off the build's own source (AST), so
+                              it cannot drift from the real screens.
+Run-ScreenInventory.bat       Lists every screen ID against the
+                              newest build.
+Run-AllSettingsStatus.bat     Runs Checkup's OWN status-detection
+                              code for all 18 settings in one pass.
+                              The "did this change break anything"
+                              checker -- run before a build edit and
+                              after, compare. READ-ONLY.
+Run-SettingsStatus.bat        For every setting: can Checkup READ
+                              it, can it CHANGE it, what is it set
+                              to right now on THIS PC. READ-ONLY.
+                              A few rows (mainly BitLocker) need
+                              admin to read; run once as yourself,
+                              once elevated if you want those filled in.
+
+--- MOUSE, TOUCHPAD & CONSOLE INPUT ---
+
+Run-MouseSetup.bat             Sets the mouse options Checkup needs
+                                (wheel routing, double-click speed).
+                                Shows every change, asks first, can
+                                revert. No admin.
+Run-SetDragThreshold.bat /
+Run-SetDragThreshold-Revert.bat  Sets/reverts the drag-distance
+                                threshold that stops accidental
+                                folder moves with the MOUSE. No
+                                admin needed (per-user setting).
+Run-SetTouchpadDrag.bat /
+Run-SetTouchpadDrag-Revert.bat   Same problem, the TOUCHPAD -- turns
+                                off/on the tap-twice-and-drag gesture.
+                                Different mechanism from the mouse
+                                fix above; a laptop may need both.
+Run-TestMouseSettings.bat      Reports every mouse setting this
+                                project sets and whether it is
+                                actually in force right now. READ-ONLY.
+Run-TerminalMaximized.bat /
+Run-TerminalMaximized-Revert.bat  Makes PowerShell open full-screen
+                                every time, or puts that back.
+Run-ConsoleInputModeCheck.bat  Checks the console's input mode flags.
+Run-InputGateTest.bat          Tests the newest build's input gate.
+Run-MarkModeTest.bat           Answers one question (FT-193): does
+                                Mark mode hand mouse input back after
+                                Checkup clears it. READ-ONLY.
+
+--- BITLOCKER / ENCRYPTION ---
+
+Run-GetRecoveryKey.bat            Reads the existing BitLocker
+                                   recovery key. READ-ONLY.
+Run-RotateBitLockerKey.bat        Rotates the BitLocker recovery key.
+Run-EncryptionMeasure.bat         Measures current encryption state.
+Run-EncryptionReversibilityCheck.bat  Checks encryption state and
+                                   whether it can be reversed.
+                                   READ-ONLY.
+
+--- AV / MALWARE TESTING (uses harmless EICAR test files, not malware) ---
+
+Run-AVTestKit.bat / Run-AVTestKitCleanup.bat
+    Stages/removes harmless EICAR test files across C: and D: to
+    measure which scanner finds what. Reversible. Read
+    ProjectDocs\GatewayGuard_AVScanCoverageTest-2026-08-21.md first.
+Run-PUAComparison.bat / Run-PUATestCleanup.bat
+    Stages six known real PUP installers in an excluded folder and
+    scans without acting, then removes them and the exclusion.
+    Nothing is ever executed. NOT read-only until cleanup runs.
+Run-ScanControl.bat        The control for the PUA comparison above
+                            -- runs EICAR through the same two paths
+                            the PUP specimens went through.
+Run-PUASampleSearch.bat    Searches attached drives for the six PUP
+                            specimens by SHA-256 and filename.
+                            READ-ONLY.
+Run-MBScanResult.bat       Reads the newest Malwarebytes scan record
+                            and prints what it found. READ-ONLY.
+Run-SetReputationSettings.bat / Run-RestoreReputationSettings.bat
+    Turns reputation-based protection settings on, having first
+    written an undo file / puts them back exactly as found.
+Run-PhishingStateTest.bat  Reads the real phishing-protection
+                            setting. READ-ONLY except a throwaway
+                            HKCU key it writes and deletes itself.
+Run-FullScanCoverageCheck.bat  Checks full-scan coverage.
+
+--- SANDY (the second, Windows 11 Home machine) ---
+
+Run-SandyChecks.bat         Collects every open SANDY measurement
+                             in one pass. READ-ONLY.
+Run-GatewayGuard-Sandy.bat  Runs the build against SANDY's own
+                             build pointer (may lag CGDELL's).
+Show-AllScreens-Sandy.bat   Same as Show-AllScreens.bat, SANDY's
+                             build pointer.
+
+--- RUNNING CHECKUP ITSELF ---
+
+Run-GatewayGuard.bat        Runs the current build
+                             (..\Tool\W11-SecurityHardening-v3-
+                             ascii44-2026-09-06-1214.ps1). Never
+                             self-elevates -- right-click, Run as
+                             administrator, for full access.
+
+--- ONE-OFF DIAGNOSTICS (built for a specific past defect; run only
+     when that area is the task) ---
+
+Run-CheckStoreDomain.bat        Checks the Gumroad store's domain.
+Run-ChecklistClaimsCheck.bat    Checks the field checklist's claims
+                                 against the build.
+Run-CollectLogs.bat             Collects Checkup's own run logs.
+Run-CopyCheck.bat               Checks the copy-instruction tip
+                                 wording is consistent everywhere.
+Run-FileDeleteCheck.bat         Checks a file-delete defect class.
+Run-FreeSpaceWipeCheck.bat      Checks free-space-wipe behavior.
+Run-GGEditSelfTest.bat          Self-test for gg_edit.py itself.
+Run-HomeDiagnostic.bat          Checks Home-edition-specific behavior.
+Run-InstallAccountCheck.bat     READ-ONLY. What account was active
+                                 when Windows was installed, and is
+                                 anything already encrypted.
+Run-LogSyncCheck.bat            READ-ONLY. Why a log has not synced.
+Run-LookBackTest.bat            Tests the look-back diagnostic logic.
+Run-MeasureEffectiveState.bat   READ-ONLY. Settles what actually
+                                 changes when you flip Edge Startup
+                                 Boost, Widgets, or Windows Hello, by
+                                 watching what moves while you flip it.
+Run-OneDriveSyncCheck.bat       Checks OneDrive sync state.
+Run-PSErrorCheck.bat            Checks for PowerShell errors in logs.
+Run-ProtectionHistoryCheck.bat  Checks Defender's protection history.
+Run-ScheduledTasksCheck.bat     Checks the GatewayGuard scheduled
+                                 tasks exist and are configured right.
+Run-TestCodeSignature.bat       Proves the code-signing certificate
+                                 can actually sign (Launch Plan B4).
+Run-DisplayOff.bat / Run-StayAwake.bat
+    Turn the screen off / keep the machine running with the display
+    off. Changes no security settings. `Run-StayAwake.bat undo`
+    reverts.
 
 ---------------------------------------------------------------
  WHY EACH STEP IS THERE
