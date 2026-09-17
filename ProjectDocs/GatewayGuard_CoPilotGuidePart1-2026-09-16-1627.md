@@ -83,7 +83,7 @@ Connect to the Internet.
 Install all available Windows updates.
 Save and close open work.
 Plug laptops into AC power before making major security changes.
-Run Checkup as Administrator. Checkup requires it -- if it is not running as Administrator, it will show you how to close it and re-open it correctly, then stop.
+Run Checkup as Administrator. Checkup will not run without it -- it closes and shows you how to relaunch correctly.
 Understanding Recommendations
 
 Throughout this guide you will see recommendations such as:

@@ -144,6 +144,48 @@
     Gates after: 12, 12b, 24 PASS, parse 0 errors, 0 non-ASCII, 88 functions
     and no duplicates. Wrapper:
     `Tool2\build_ascii44_ft261_adminrequired.py`.
+  - **FT-262, FIXED 2026-09-17 — SETTING 6 HAS A FOURTH CHECKBOX CHECKUP HAS
+    NEVER TOUCHED, AND EVERY CUSTOMER-FACING SURFACE EITHER SAID TO TURN IT
+    ON OR SAID NOTHING AT ALL. Bill, looking at his own screen: "the one
+    about phishing. We don't want all 4 on, do we? only 3 of the 4 right?"**
+    ***Measured against `WebThreatDefense.admx`: Enhanced Phishing Protection
+    is five policies — a master switch, three warnings (`NotifyMalicious`,
+    `NotifyPasswordReuse`, `NotifyUnsafeApp`), and `AutomaticDataCollection`
+    (registry name `CaptureThreatWindow`), which sends Microsoft a copy of
+    on-screen content when something is flagged.*** **Checkup's item 6 has
+    only ever set the three warnings — the fourth was never part of the
+    setting, on any surface, at any point.**
+    ***Confirmed against Bill's screenshot 92, 2026-09-17: the live screen
+    shows exactly four checkboxes under Phishing protection, all four
+    checked, and the fourth is `AutomaticDataCollection` by its own
+    wording.*** **Could not confirm this by reading the registry** — already
+    measured 2026-09-07 (see `SettingsLocationList`, section 2): Tamper
+    Protection refuses all four of these reads and writes, so the screen is
+    the only truth for this group. Had to ask Bill to look and send the
+    screenshot rather than guess which four he meant.
+    **What was wrong, surface by surface:** the guide said *"Recommended:
+    All Options Enabled"* and *"Enable all available phishing protection
+    warnings"* — read literally, an instruction to turn on the fourth. The
+    website said *"toggle each item that is off to On"* under the Phishing
+    protection heading — the same defect, independently arrived at. Neither
+    ever named the fourth checkbox, so a careful reader had no way to know
+    it was being asked to turn on something Checkup itself does not set.
+    **FIX: all three surfaces now name the three warnings by their literal
+    on-screen labels, name the fourth by its literal label, and say plainly
+    to leave it unchecked and why** (it shares more of the screen with
+    Microsoft than the three warnings need to work). Guide:
+    `GatewayGuard_CoPilotGuidePart2-2026-09-16-1627.md`, Setting 6. Website:
+    `WebSite\html\phishing-protection.html`, "How to change it yourself."
+    **THE DOCUMENTATION LESSON, separate from the setting itself:**
+    `GatewayGuard_SettingsLocationList-2026-09-08-2130.md` had already
+    measured all four registry writes failing on 2026-09-07, and its own
+    prose said *"all four writes returned..."* — **but its table had only
+    ever listed three rows.** The measurement was right the whole time; the
+    table just never surfaced the fourth row where a reader would see it.
+    Same shape as the ascii44 line-count mismatch and the Guide Part 3
+    numbering bug: two places in the same document set carrying two
+    different answers, neither one flagged as disagreeing with the other.
+    Fourth row added to the table.
   - **FT-260 — THE PRODUCT QUESTION IS DECIDED 2026-09-16; THE DETECTION GAP
     IS STILL OPEN ON PURPOSE.** Read the decision first, then the finding
     that started it — the heading used to say only "RAISED NOT FIXED," which

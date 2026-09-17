@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-17 12:47 ET -->
-<!-- Commit: 387d98d -->
+<!-- Generated: 2026-09-17 13:33 ET -->
+<!-- Commit: f50999b -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-17 12:47 ET  |  **Commit:** `387d98d`  |  **Made:** 2026-09-17 12:18 ET
-- **Commit subject:** Guide reconciliation pack applied to all three Co-Pilot twins; FT-261 closes the resume-path Limited Mode gap
+- **Generated:** 2026-09-17 13:33 ET  |  **Commit:** `f50999b`  |  **Made:** 2026-09-17 12:47 ET
+- **Commit subject:** Recommendations say "all" not "many"/"most"; tools reference added to Start-CC.txt; Setting 6 phishing protection corrected to 3-of-4
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 

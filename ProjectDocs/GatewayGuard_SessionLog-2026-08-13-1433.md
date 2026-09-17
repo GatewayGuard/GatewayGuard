@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-17 12:46 ET
+- **Last Modified:** 2026-09-17 13:32 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -152,6 +152,72 @@ where a reader would see it.
 
 Files this half: `GatewayGuard_CoPilotGuidePart1/2/3-2026-09-16-1627.md`,
 `GatewayGuard_SettingsLocationList-2026-09-08-2130.md`, `Start-CC.txt`.
+
+### THIRD HALF: CLOUD'S REVIEW OF THE ABOVE, A REAL WEBSITE DEFECT FOUND IN THE SAME SPOT, AND THE SYNC IS STUCK AT 2c51707 -- REPO SIDE IS CLEAN
+
+**Cloud reviewed the reconciliation-pack report against its 2026-09-16
+16:30 snapshot (commit `2c51707`) and made three real catches.** (1) My chat
+summary said "Bill decided during the work that [Checkup] should" require
+Administrator -- Cloud is right that the requirement dates to FT-25,
+2026-07-11, and FT-261 only closed the resume-path gap FT-25 left open. The
+CLAUDE.md entry itself already said this correctly; the loose framing was in
+my chat message, not a file. R-30's guide sentence was tightened anyway --
+Cloud's suggested wording read cleaner than mine. (2) Confirmed Setting 6's
+four-checkbox finding independently: "the fourth is the 24H2 addition...
+Checkup's item 6 sets the three warning policies and has never touched that
+one." Two follow-ons named: check the website's phishing page and the
+Naming Standard's "three warnings" wording for the same gap.
+
+**Website check found a live, independent instance of the same defect.**
+`WebSite\html\phishing-protection.html` never said "all options," but its
+"How to change it yourself" step said *"toggle each item that is off to
+On"* under the Phishing protection heading -- read literally, that also
+told a reader to turn on the fourth checkbox. Fixed to name the three
+warnings and the fourth checkbox separately, with the same "leave it off,
+here's why" line the guide now carries. Naming Standard's "(all 3)" for
+setting 6 was checked and is accurate as written -- no change needed there.
+
+**FT-262 opened and fixed** for the setting-6 finding across all three
+surfaces, with the sub-lesson Cloud asked to see named as its own
+paragraph: `SettingsLocationList`'s prose already said "all four" from a
+2026-09-07 measurement, but its own table had only ever listed three rows --
+same shape as the ascii44 line-count mismatch and the Guide Part 3
+numbering bug, a correct measurement that never reached the place a reader
+would see it. Fourth table row added.
+
+**Named the eight "all home users" sentences for Cloud** (seven from the
+many-to-all sweep plus Setting 3's wording, which was Bill's own direct
+line from earlier in the session, not part of that sweep): none touch
+Setting 8 (BitLocker, held under R-05) or Setting 15 (Password Saving,
+conditional by design) -- confirmed by grep, not by memory.
+
+**THE SYNC PROBLEM IS NOT REPO-SIDE.** Cloud's snapshot is still stamped
+`2c51707`, generated 2026-09-16 16:30 -- three real commits behind
+(`6eaca3d`, `387d98d`, `f50999b`), across two separate sync attempts by
+Bill (once testing the CRLF hypothesis last session, once today). ***Measured
+just now: `origin` points at the correct repo, `main` is the current branch,
+`2c51707` is a real ancestor of HEAD, the four commits since it are linear
+and clean, and `git rev-list --count origin/main..HEAD` reads 0 -- GitHub has
+everything.*** Repo-side diagnosis is exhausted and comes back clean twice
+in a row against two different fixes. Per the Ten-Minute Rule, this is now
+Bill's call to raise with Claude support rather than a third repo-side
+theory -- there is nothing left in this repository to check.
+
+**A SEPARATE, UNEXPLAINED FINDING, SURFACED WHILE CHECKING THE ABOVE:**
+`git branch -a` shows `origin/master` alongside `origin/main`. ***Measured:
+`origin/master` holds exactly two commits -- "Initial commit" and "nessage",
+2026-09-14 12:48:36 -04:00 -- with a nearly-empty tree (lowercase `tool/`,
+`tool2/` folders holding only `.gitkeep` placeholders), sharing no history
+with `main` at all (2c51707 is not on it).*** This does not explain the
+sync problem above -- Cloud is citing real `main`-branch content, so it is
+reading `main`, not `master` -- but it is the same standing anomaly flagged
+in earlier sessions and never explained or actioned. Not touched. Bill's
+call: what created it, and whether it should be deleted, renamed, or left
+alone (deleting a branch is a "not mine to do unilaterally" action per this
+file's own rule).
+
+Files this half: `CLAUDE.md` (FT-262, R-30 framing), the three guide twins
+(no change beyond what's already counted), `WebSite\html\phishing-protection.html`.
 
 ## Session: 2026-09-08 07:03 to 07:51 [Claude Code -- CGDELL] -- THE MALWAREBYTES HALF RAN, AND ONE BUTTON PRESS PROVED BOTH PRODUCTS AT ONCE
 
