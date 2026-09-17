@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-17 16:20 ET
+- **Last Modified:** 2026-09-17 18:50 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -12,6 +12,51 @@
   Code) so any Claude instance can resume with full context.
   Updated after every file produced or decision made.
   Downloaded by Bill at session end and uploaded to project immediately.
+
+---
+---
+
+## Session: 2026-09-17 18:50 [Claude Code -- CGDELL] -- CO-PILOT'S SETTING-6/17 DISTINCTION WAS RIGHT, AND IT FOUND A STALE LINE OF ITS OWN
+
+**Bill relayed a Co-Pilot review** of the Setting 6 / Setting 17 BLOCKED
+distinction (Co-Pilot had read the build source, not the project docs).
+Co-Pilot's core claim: Setting 6 (Edge Phishing Protection) is blocked by
+Windows itself, Setting 17 (Password Required on Wake) is only unreadable on
+this specific machine's `powercfg` output, and lumping both under "BLOCKED"
+in the settings-status count is misleading.
+
+**Checked, not taken on trust.** Read `Get-GGConsoleLockState` directly
+(`Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1:5128`) and the
+2026-09-17 "ELEVENTH HALF" entry above: the distinction is correct and had
+already been recorded there today, before Co-Pilot's review existed. So this
+was confirmation, not new information -- but Co-Pilot was working from the
+build alone and could not have known the doc already said this.
+
+**What Co-Pilot's review DID surface that today's own earlier edit had
+missed:** `GatewayGuard_SettingsLocationList-2026-09-08-2130.md` had two
+places disagreeing with itself -- row 17 (edited today) correctly says the
+CGDELL read is a per-machine gap, but a section further down, "The one live
+defect on this list," still said **"FT-256... not yet fixed"** -- stale since
+FT-256 was fixed 2026-09-08, the day the section was written and never
+revisited. Same shape as the FT-262 fourth-row omission: two places in one
+document, one updated, one not, neither flagging the other.
+
+**Fixed, all in the same file:** row 17's lead-in changed from "BLOCKED on
+this machine, not by Windows" to "UNREADABLE ON THIS MACHINE (not a Windows
+block)"; the stale section rewritten to state FT-256 is fixed and narrow the
+open question to "does this machine's `powercfg` output have anything to
+read" (not yet tested on SANDY); and a note added under the BLOCKED legend
+so a reader hits the setting-6/setting-17 distinction before reaching either
+row, not only inside row 17's own cell.
+
+**Also filed, not investigated:** Co-Pilot's ascii45 suggestion -- check
+whether "Require sign-in after sleep" is readable through the registry,
+Local Security Policy, or the modern Settings provider instead of depending
+on `powercfg`, since `powercfg` is now proven not to expose it on every
+machine. Noted in the doc, unverified against any source.
+
+Files: `GatewayGuard_SettingsLocationList-2026-09-08-2130.md` (row 17, the
+stale section, the legend note).
 
 ---
 ---

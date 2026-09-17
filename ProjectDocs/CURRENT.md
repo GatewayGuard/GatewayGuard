@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-17 16:21 ET -->
-<!-- Commit: 7208815 -->
+<!-- Generated: 2026-09-17 18:51 ET -->
+<!-- Commit: ee3cdc8 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-17 16:21 ET  |  **Commit:** `7208815`  |  **Made:** 2026-09-17 15:52 ET
-- **Commit subject:** Bill confirmed Edge Startup Boost is on right now, matching the registry read exactly -- FT-123b's last caveat resolved
+- **Generated:** 2026-09-17 18:51 ET  |  **Commit:** `ee3cdc8`  |  **Made:** 2026-09-17 16:21 ET
+- **Commit subject:** Setting 17 re-checked live with the FT-256 fix in place: still NO_INDEX on CGDELL, and that's a different kind of block than setting 6's
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -194,7 +194,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-09-17 [Claude Code -- CGDELL] -- THE RECONCILIATION PACK APPLIED, AND THE RESUME PATH STILL OFFERED THE LIMITED MODE FT-25 HAD ALREADY REMOVED
+## Session: 2026-09-17 18:50 [Claude Code -- CGDELL] -- CO-PILOT'S SETTING-6/17 DISTINCTION WAS RIGHT, AND IT FOUND A STALE LINE OF ITS OWN
 ```
 
 **If it is not in your copy of the session log, you are reading an old

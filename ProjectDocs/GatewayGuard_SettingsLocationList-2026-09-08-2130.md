@@ -41,6 +41,13 @@ the numbers costs nothing; a renumber costs the whole field record.**
 | **R only** | Checkup can **read** it but **cannot change** it -- it shows you the steps instead |
 | **BLOCKED** | Checkup **cannot read** it on this machine at all |
 
+**BLOCKED is one label covering two different causes -- do not read them as
+the same wall.** Setting 6 (Edge Phishing Protection) is blocked by Windows
+itself, on any machine: Tamper Protection refuses the read everywhere.
+Setting 17 (Password Required on Wake) is blocked only in the sense that
+`powercfg` on THIS machine prints no line to read -- it may read fine on
+SANDY or another PC, not yet tested. Each row says which kind it is.
+
 **Everything Checkup changes, it changes only after you say yes.**
 
 ---
@@ -68,7 +75,7 @@ it should be run on SANDY, which is Home rather than Pro.***
 | 14 | Widgets -- Disable | Windows key > type `taskbar settings` > Enter | **R+C** -- policy still unset; live-state fallback added 2026-09-17, FT-123b, using `TaskbarDa`, ***flip-proven*** by Bill's field test (1 before, 0 after turning Widgets off, 1 after restoring) | **On.** **Needs attention** |
 | 15 | Edge Password Saving -- Disable | Edge > three dots > Settings > Passwords | **R+C** | **Not set** -- so Edge's default, which is On |
 | 16 | Memory Integrity (Core Isolation) | Windows Security > Device security > Core isolation details | **R+C** -- but needs a **restart** to take effect | **On** |
-| 17 | Password Required on Wake | Windows key > type `sign-in options` > Enter, then Require sign-in | **BLOCKED on this machine, not by Windows** -- unlike setting 6 (Tamper Protection refuses the read on any PC), this is `powercfg` simply not printing a CONSOLELOCK index line on CGDELL's own power scheme. ***Re-measured 2026-09-17, elevated, using the FIXED `Get-GGConsoleLockState` reader: still `NO_INDEX`*** -- same result as before FT-256, because the fix corrected what Checkup says about an unreadable value, not whether this specific PC's `powercfg` output has one. May read fine on SANDY or another machine -- not yet tested elsewhere. | **Could not read**, honestly reported as unknown rather than a guess (FT-256's fix). Item stays selected, not hidden. |
+| 17 | Password Required on Wake | Windows key > type `sign-in options` > Enter, then Require sign-in | **UNREADABLE ON THIS MACHINE (not a Windows block)** -- unlike setting 6 (Tamper Protection refuses the read on any PC), this is `powercfg` simply not printing a CONSOLELOCK index line on CGDELL's own power scheme. ***Re-measured 2026-09-17, elevated, using the FIXED `Get-GGConsoleLockState` reader: still `NO_INDEX`*** -- same result as before FT-256, because the fix corrected what Checkup says about an unreadable value, not whether this specific PC's `powercfg` output has one. May read fine on SANDY or another machine -- not yet tested elsewhere. | **Could not read**, honestly reported as unknown rather than a guess (FT-256's fix). Item stays selected, not hidden. |
 | 18 | Fast Startup -- Disable | **Control Panel** > Hardware and Sound > Power Options > Choose what the power buttons do > **Change settings that are currently unavailable** | **R+C** | **Off** -- correct |
 | 19 | Wake on LAN -- Disable | **Device Manager** > Network adapters > right-click each > Properties > Power Management | **R+C** | **Ethernet = Enabled**, Wi-Fi = Disabled. **Needs attention on Ethernet** |
 
@@ -82,13 +89,25 @@ the Ethernet adapter -- and **9** Windows Hello has no PIN set up. **Everything
 security-critical is already correct**: real-time protection, tamper
 protection, firewall on all three profiles, BitLocker, and memory integrity.
 
-### The one live defect on this list
+### The one still-open question on this list
 
-**Setting 17 could not be read at all.** ***Measured: `powercfg` returned no
-CONSOLELOCK block, so there was nothing to parse.*** **The shipped build
-reports "Not required -- needs attention" in exactly this situation, from a
-read that produced nothing.** That is FT-256, raised in ascii44 and not yet
-fixed, and this machine is now a live example rather than a theory.
+**Setting 17 cannot be read on CGDELL.** ***Measured: `powercfg` returns no
+CONSOLELOCK block, so there is nothing to parse.*** **Before FT-256 (fixed
+2026-09-08), the shipped build reported "Not required -- needs attention" in
+exactly this situation -- a verdict from a read that produced nothing.**
+That is fixed: the build now reports "Could not read," honestly, and leaves
+the item selected rather than hiding it. **What FT-256 did not and could not
+fix is whether this specific machine's `powercfg` output has a CONSOLELOCK
+line to read at all** -- re-measured live 2026-09-17 with the fixed reader,
+still `NO_INDEX`. Not yet tested on SANDY or any other machine, so whether
+this is a CGDELL-only gap or a wider one is still open.
+
+**Worth investigating for ascii45, not done here:** whether Windows exposes
+"Require sign-in after sleep" through something other than `powercfg`'s
+CONSOLELOCK index -- the registry directly, Local Security Policy, or the
+modern Settings provider behind Accounts > Sign-in options. `powercfg` is
+proven, by this machine, not to be guaranteed to expose it. Raised by
+Co-Pilot's review, 2026-09-17 -- not yet checked against any source.
 
 ---
 
