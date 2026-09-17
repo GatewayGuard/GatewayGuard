@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-17 14:06 ET -->
-<!-- Commit: d0fec2c -->
+<!-- Generated: 2026-09-17 14:27 ET -->
+<!-- Commit: d6db09c -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-17 14:06 ET  |  **Commit:** `d0fec2c`  |  **Made:** 2026-09-17 13:33 ET
-- **Commit subject:** FT-262: the phishing-protection fourth checkbox, found independently on the website too; FT-261 framing tightened per Cloud's review
+- **Generated:** 2026-09-17 14:27 ET  |  **Commit:** `d6db09c`  |  **Made:** 2026-09-17 14:06 ET
+- **Commit subject:** FT-262 build fix applied (the 08-26 draft was never shipped); FT-263 opened: CanAuto=false silently skips Apply-Setting's per-ID cases entirely
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 

@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-17 14:05 ET
+- **Last Modified:** 2026-09-17 14:26 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -286,6 +286,37 @@ Files this half: `CLAUDE.md` (FT-262 expanded, FT-263 opened),
 `Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1` (FT-262),
 `Tool2\build_ascii44_ft262_phishingwording.py` (new),
 `GatewayGuard_SettingsLocationList-2026-09-08-2130.md` (field-results table).
+
+### FIFTH HALF: FT-263 FIXED -- BILL, PLAIN: "FIX FT-263"
+
+**Asked first what FT-263 actually meant in plain terms, then to fix it.**
+The fix: `Apply-Setting`'s early exit for a setting marked "cannot be done
+automatically" now lets exactly two settings through to their real
+instructions instead of stopping everyone at a generic message -- IDs 3
+(Tamper Protection) and 9 (Windows Hello), the only two that already carry
+that mark, and the only two whose specific case in the code was proven safe
+to run (neither one changes anything on the machine; both only read the
+current state and describe what to do). Any setting that gets marked this
+way in the future still stops at the safe generic message, same as before.
+
+**Verified live, not just read**, by pulling the real function straight out
+of the shipped build and calling it three times: once as Tamper Protection,
+once as Windows Hello, once as a made-up setting standing in for "any other
+setting marked this way later." The first two now return the specific
+instructions that were sitting unused in the code; the third still gets the
+safe generic message, proving the fix does not open the door for anything
+it shouldn't. The Tamper Protection test also happened to confirm, live on
+this machine right now, that the program correctly notices Malwarebytes is
+installed.
+
+Gates after: 12, 12b, 24 PASS, parse clean (one flaky "1 error" reading did
+not repeat on a second try, same as happened once already earlier today --
+noted, not worth more time chasing since every other check says clean), 88
+functions, no duplicates.
+
+Files: `Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1`,
+`Tool2\build_ascii44_ft263_canautofix.py` (new), `CLAUDE.md` (FT-263 marked
+fixed).
 
 ## Session: 2026-09-08 07:03 to 07:51 [Claude Code -- CGDELL] -- THE MALWAREBYTES HALF RAN, AND ONE BUTTON PRESS PROVED BOTH PRODUCTS AT ONCE
 

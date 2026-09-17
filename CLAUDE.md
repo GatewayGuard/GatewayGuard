@@ -219,8 +219,8 @@
     **08-26's OTHER recommendation, `CanAuto=$false` for setting 6, was
     checked and NOT applied — see FT-263.** It would have silenced the exact
     fix above.
-  - **FT-263, RAISED NOT FIXED 2026-09-17 — `CanAuto=$false` DOES NOT MEAN
-    "SHOW MANUAL STEPS." IT MEANS "NEVER REACH THE CODE THAT WOULD."**
+  - **FT-263, FIXED 2026-09-17 — `CanAuto=$false` DID NOT MEAN
+    "SHOW MANUAL STEPS." IT MEANT "NEVER REACH THE CODE THAT WOULD."**
     Found while checking whether `GatewayGuard_FieldResult-PhishingProtection-
     2026-08-26-1130.md`'s recommendation to set setting 6's `CanAuto=$false`
     was safe to apply (FT-262). It was not, and tracing why found a second,
@@ -259,19 +259,47 @@
     mention of Malwarebytes or a trial at all.*** **So this is not a wasted-
     code problem. The specific guidance exists nowhere the user can see it,
     on the one setting Bill just said every home user should have on.**
-    **Why this is raised, not fixed:** the shape of the real fix is a design
-    choice, not a one-line change — move the two dead cases' logic to run
-    regardless of `CanAuto` (a structural change to a function with seven
-    call sites), or delete them as confirmed-redundant if the missing check
-    finds their content lives elsewhere already. Guessing which and changing
-    it without the missing check is exactly the kind of one-explanation-fits
-    conclusion this project's own rules exist to catch.
-    **THE PRACTICAL CONSEQUENCE THAT MADE THIS WORTH RAISING NOW, NOT
+    **THE PRACTICAL CONSEQUENCE THAT MADE THIS WORTH FIXING NOW, NOT
     LATER:** setting 3, Tamper Protection, is the one setting Bill just said
-    every home user should have on, unconditionally, no exceptions. If its
-    specific, correct, already-written instructions have never once reached
-    a user, that is the highest-severity setting this class of bug could
-    have picked.
+    every home user should have on, unconditionally, no exceptions. Its
+    specific, correct, already-written instructions had never once reached
+    a user — the highest-severity setting this class of bug could have
+    picked.
+    **THE FIX: exempt only IDs 3 and 9 from the early return, since neither
+    writes anything.** ***Measured: neither case calls `Set-ItemProperty`,
+    `Set-Service`, `New-Item`, or `Remove-Item` — both only read state
+    (`Get-MalwarebytesState`, `Get-WmiObject ... AntiVirusProduct`,
+    `Test-Path ...\NGC`) and build a message string.*** So letting them
+    reach the switch carries none of the risk a real write would. Any other
+    setting that ever gets `CanAuto=$false` in the future still exits at the
+    generic message and never reaches a case that might write — the guard
+    is narrowed, not removed.
+    ```
+    if (-not $Setting.CanAuto -and $Setting.ID -notin 3,9) {
+        Write-Log ...
+        return "Manual action required -- see Guide: $($Setting.GuideRef)"
+    }
+    ```
+    ***Verified against the SHIPPED function, extracted from the build by
+    its own AST and called directly*** (mirroring the FT-256 verification
+    method): with `CanAuto=$false`, `ID=3` now returns *"MANUAL ACTION
+    REQUIRED: Windows Security -> Virus & threat protection -> Virus &
+    threat protection settings -> Tamper Protection -> On. (Malwarebytes
+    Free does not affect this setting.)"* — the specific instruction, not
+    the generic one. ***The same live call also confirmed
+    `Get-MalwarebytesState` detects Malwarebytes on CGDELL right now***, by
+    its documented FT-140 fallback path. `ID=9` now returns the specific
+    *"NOT CONFIGURED -- Manual setup: Settings -> Accounts -> Sign-in
+    options..."* message. A third, synthetic `ID=99` (standing in for any
+    future `CanAuto=false` setting) still returns the generic fallback
+    message unchanged, confirming the safety net holds for every ID except
+    the two proven safe.
+    Gates after: 12, 12b, 24 PASS, parse 0 errors (one transient "1 error"
+    reading did not reproduce on a clean re-run, matching the same false
+    reading seen once already this session under FT-262 — noted, not
+    chased further, since `gg_edit.py`'s own write-time check and two
+    independent re-checks all read 0), 0 non-ASCII, 88 functions, no
+    duplicates. Wrapper: `Tool2\build_ascii44_ft263_canautofix.py`.
   - **FT-260 — THE PRODUCT QUESTION IS DECIDED 2026-09-16; THE DETECTION GAP
     IS STILL OPEN ON PURPOSE.** Read the decision first, then the finding
     that started it — the heading used to say only "RAISED NOT FIXED," which

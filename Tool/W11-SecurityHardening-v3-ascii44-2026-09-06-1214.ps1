@@ -6690,7 +6690,17 @@ function Apply-Setting {
         Write-Log -Message "$($Setting.Name) | Already correct: $before" -Status "GOOD"
         return "Already at recommended setting -- GOOD, no change needed"
     }
-    if (-not $Setting.CanAuto) {
+    # FT-263 (2026-09-17): this used to return here unconditionally for every
+    # CanAuto=false setting, before the switch below could ever run -- so
+    # settings 3 (Tamper Protection) and 9 (Windows Hello), which write
+    # nothing but DO build specific, correct manual instructions in their
+    # own switch case (Malwarebytes/trial-aware for 3, an NGC check for 9),
+    # never reached them. Measured: neither case calls Set-ItemProperty,
+    # Set-Service, New-Item, or Remove-Item -- both only read state and
+    # return a message string -- so it is safe to let these two through.
+    # Any OTHER CanAuto=false setting still exits here and can never reach
+    # a case that might write.
+    if (-not $Setting.CanAuto -and $Setting.ID -notin 3,9) {
         Write-Log -Message "$($Setting.Name) | Manual action required" -Status "MANUAL"
         return "Manual action required -- see Guide: $($Setting.GuideRef)"
     }
