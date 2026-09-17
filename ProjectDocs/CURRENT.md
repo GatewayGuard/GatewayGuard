@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-17 15:52 ET -->
-<!-- Commit: 2a964a3 -->
+<!-- Generated: 2026-09-17 16:21 ET -->
+<!-- Commit: 7208815 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-17 15:52 ET  |  **Commit:** `2a964a3`  |  **Made:** 2026-09-17 15:45 ET
-- **Commit subject:** ascii44 records updated with FT-123b (items 13/14 closed)
+- **Generated:** 2026-09-17 16:21 ET  |  **Commit:** `7208815`  |  **Made:** 2026-09-17 15:52 ET
+- **Commit subject:** Bill confirmed Edge Startup Boost is on right now, matching the registry read exactly -- FT-123b's last caveat resolved
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 

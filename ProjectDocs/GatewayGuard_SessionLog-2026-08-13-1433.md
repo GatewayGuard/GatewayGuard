@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-17 15:51 ET
+- **Last Modified:** 2026-09-17 16:20 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -534,6 +534,32 @@ project's rules exist to prevent.
 Files: `CLAUDE.md`, `GatewayGuard_FieldChecklist-ascii44-2026-09-17-1441.md`,
 `GatewayGuard_SettingsLocationList-2026-09-08-2130.md` (all three, same
 finding recorded three places).
+
+### ELEVENTH HALF: THE R+C / R-ONLY / BLOCKED COUNT, AND SETTING 17 RE-CHECKED LIVE
+
+**Bill asked for the current count of what Checkup can check versus check
+AND change, across the 18.** Counted directly from `SettingsLocationList`'s
+table rather than from memory: **14 of 18 are R+C, 2 are R-only** (Tamper
+Protection, Windows Hello -- Windows itself forbids the write), **2 are
+BLOCKED** (Edge Phishing Protection, Password Required on Wake).
+
+**Then asked to re-check setting 17 (Password Required on Wake) live**,
+since its BLOCKED row predates FT-256's fix. ***Measured, elevated, using
+the shipped `Get-GGConsoleLockState` extracted from the build and called
+directly: still `NO_INDEX`*** -- `powercfg /query` on CGDELL still prints
+only the Power Scheme header, no CONSOLELOCK index line. Same result as
+before the fix. **FT-256 changed what Checkup says about this (honest
+"could not read" instead of an invented "not required"), not whether this
+specific PC's `powercfg` output has an answer to read.**
+
+**Recorded the distinction that matters:** setting 6's BLOCKED is Windows
+refusing the read on any machine (Tamper Protection). Setting 17's BLOCKED
+is `powercfg` not printing the line on THIS machine -- may work fine on
+SANDY, not yet tested there. Updated the setting-17 row to say so instead
+of leaving both BLOCKED rows looking like the same kind of wall.
+
+Files: `GatewayGuard_SettingsLocationList-2026-09-08-2130.md` (setting 17
+row), `GatewayGuard_SessionLog-2026-08-13-1433.md` (this entry).
 
 ## Session: 2026-09-08 07:03 to 07:51 [Claude Code -- CGDELL] -- THE MALWAREBYTES HALF RAN, AND ONE BUTTON PRESS PROVED BOTH PRODUCTS AT ONCE
 
