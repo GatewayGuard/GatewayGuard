@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-17 14:48 ET
+- **Last Modified:** 2026-09-17 15:16 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -382,10 +382,11 @@ computed but never read downstream, so this only stops the crash). Re-ran
 clean, and found two real things: **19 dead pointers across all of
 ProjectDocs, baseline 0** -- reproduced the check's own logic directly
 since it counts but never prints this list, and found two were mine: the
-session log's own "`GatewayGuard_CoPilotGuidePart1/2/3-2026-09-16-1627.md`"
-shorthand parses as a broken pointer to a file named "3-2026-09-16-1627.md",
-which does not exist and was never meant to. Spelled out all three real
-filenames instead, both places. **The other 19 (now 19, was 21) predate this
+session log's own shorthand -- naming the three guide twins as one
+compressed "Part1/2/3" filename -- parses as a broken pointer to a file
+named "3-2026-09-16-1627.md" once the date and extension are stripped
+off, which does not exist and was never meant to. Spelled out all three
+real filenames instead, both places. **The other 19 (now 19, was 21) predate this
 session** -- old superseded-draft references in `GuideRewrite-Draft`,
 `ProjectInstructions`, `SyncDocsReview` and others -- left alone, out of
 scope for today. Also flagged: `GatewayGuard_FieldChecklist-ascii43.md`'s
@@ -397,6 +398,58 @@ knowing the old pair is now unanchored if either is ever needed again.
 Files, in addition to the list above: `Tool2\Check-Docs-2026-08-20.ps1`
 (crash fix), `GatewayGuard_SessionLog-2026-08-13-1433.md` (its own
 shorthand-pointer fix, this entry).
+
+### SEVENTH HALF: BILL RAN THE SCRIPT, AND THE "NOTHING CHANGED" RESULT TURNED OUT TO BE THE WRONG FILE, NOT THE WRONG ANSWER
+
+**Bill asked what the "run some .bat and .ps1 programs" recommendation from
+Cloud was about, then ran `Run-MeasureEffectiveState.bat` himself** --
+completed Part 1 (Edge Startup Boost) in full: closed Edge, snapshot,
+flipped the toggle in `edge://settings/system`, closed Edge, snapshot
+again, flipped back. Reached Part 2 (Widgets), saw "TaskbarDa BEFORE = 1,"
+and pressed Ctrl+C before the after-read, ending the run there. Ran the
+read-only Windows Hello part myself separately (no toggle needed), since
+that piece needed no one at the keyboard.
+
+***Measured: zero lines matching "boost" or "background" changed anywhere
+in Part 1's diff.*** Read that as a real result to investigate, not a dead
+end: **checked `%LOCALAPPDATA%\Microsoft\Edge\User Data\Local State`
+directly** -- the file shared across all Edge profiles, which the script
+never reads (it only diffs each profile's own `Preferences` file) -- and
+found `"startup_boost":{"enabled":false,...}` and
+`"background_mode":{"enabled":true}` sitting right there. **Copilot's
+original key names, which FT-123b's header note said "do not hold up," were
+right all along. The file being checked was wrong**, both in Copilot's
+original guess and in Cloud's script built to settle it.
+
+**Closed FT-123b for item 13** the same way item 15 was closed on 09-16:
+a new function, `Get-GGEdgeLocalStateBool`, reads the real file when the
+policy is absent, and item 13's status check now falls back to it instead
+of stopping at "Unknown." ***Verified against the SHIPPED function**,
+extracted from the build and called directly: reads `False` and `True`
+respectively, matching the raw file exactly, and fails closed (does not
+throw) against a section name that does not exist. All three shapes the
+case-13 decision can take -- both off, one on, one found and one missing --
+were tested and each returned the right answer.* Labelled honestly in
+CLAUDE.md: the keys existing and holding real values is *measured*; that
+`enabled` is specifically the field the on-screen toggle moves is
+*inferred*, not flip-proven, since Bill's actual toggle test was aimed at
+the wrong file and no true before/after exists yet for the right one.
+
+**Item 14 (Widgets) is still open** -- the Ctrl+C landed before its
+after-read, so there is no diff for it yet, unlike item 13 where the
+"before" data alone (plus checking the right file) was enough. Re-running
+just that part would close it.
+
+`GatewayGuard_SettingsLocationList-2026-09-08-2130.md`'s setting-13 row
+updated from the 09-08 "both not set, assume Edge defaults" guess to the
+real measured values.
+
+Files: `Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1` (FT-123b
+item 13), `Tool2\build_ascii44_ft123b_item13.py` (new), `CLAUDE.md`
+(FT-123b entry), `GatewayGuard_SettingsLocationList-2026-09-08-2130.md`
+(setting 13 row), `Test_Results\EffectiveState-CGDELL-2026-09-17_15-01.txt`
+and `Test_Results\HelloSignals-CGDELL-2026-09-17_14-56.txt` (Bill's and my
+own runs, both untracked field data, not committed).
 
 ## Session: 2026-09-08 07:03 to 07:51 [Claude Code -- CGDELL] -- THE MALWAREBYTES HALF RAN, AND ONE BUTTON PRESS PROVED BOTH PRODUCTS AT ONCE
 

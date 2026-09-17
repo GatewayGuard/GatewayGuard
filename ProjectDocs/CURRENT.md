@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-17 14:49 ET -->
-<!-- Commit: 824c07d -->
+<!-- Generated: 2026-09-17 15:19 ET -->
+<!-- Commit: efff1a8 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-17 14:49 ET  |  **Commit:** `824c07d`  |  **Made:** 2026-09-17 14:40 ET
-- **Commit subject:** FT-264: two Tool2 utility scripts have been unable to find the build since the 08-22 split; missing FT-261/262 code tags added
+- **Generated:** 2026-09-17 15:19 ET  |  **Commit:** `efff1a8`  |  **Made:** 2026-09-17 14:49 ET
+- **Commit subject:** ascii44 scope and field-checklist documents for Bill; Check-Docs crash fixed; own dead-pointer shorthand corrected
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -69,7 +69,7 @@ All paths are relative to `ProjectDocs/`.
 | Test results (raw run notes and logs) | `GatewayGuard_TestResults-ascii43-2026-09-04-2345.md` | 0 |
 | Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii43run2-2026-08-30-1723.md` | 4 |
 | Response to Bill's field notes | `GatewayGuard_ResponseToBillsNotes-ascii43-2026-08-30-1815.md` | 0 |
-| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii44-2026-09-17-1441.md` | 4 |
+| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii44-2026-09-17-1441.md` | 3 |
 | Build plan (current) | `GatewayGuard_ascii44BuildPlan-2026-09-05-1130.md` | 1 |
 | Build scope -- what shipped vs. what is next | `GatewayGuard_ascii44Scope-WhatsInWhatsNext-2026-09-17-1441.md` | 0 |
 | Future settings (candidate list) | `GatewayGuard_FutureSettings-2026-08-24-2310.md` | 0 |

@@ -329,6 +329,62 @@
     inline `# FT-NNN` code comment every other fix in this file carries —
     added both, no behavior change, so a future screen-to-FT mapping (like
     the one this was found while building) does not miss them.
+  - **FT-123b, ITEM 13 CLOSED 2026-09-17 — COPILOT'S KEY NAMES WERE RIGHT,
+    THE FILE WAS WRONG. BILL'S FIELD TEST FOUND THE REAL ONE.**
+    **Background: item 13 (Edge Startup Boost and Background Running) has
+    reported "Unknown -- could not check" whenever its policy has never
+    been set, since ascii43** — deliberately, per FT-123 (the fix for a
+    worse defect: absence of policy used to be misread as "Enabled -- needs
+    attention"). Item 15 (Edge Password Saving) got a real fallback on
+    2026-09-16, reading the user's own live setting from Edge's
+    `Preferences` file when no policy is set. ***Item 13 and 14 were left on
+    "Unknown-only" the same day because Copilot's proposed key names,
+    checked against that same file, were not there:*** *"neither
+    startup_boost_enabled (item 13) nor a top-level background_mode.enabled
+    exists in it."*
+    **Bill ran `Tool2\Run-MeasureEffectiveState.bat` today** (Cloud's
+    script, built 2026-09-16 for exactly this) and completed Part 1 in
+    full: closed Edge, snapshotted its `Preferences` file, flipped Startup
+    Boost in `edge://settings/system`, closed Edge, snapshotted again.
+    ***Measured: zero lines matching "boost" or "background" changed
+    anywhere in the diff.*** That is a real, clean null result, not a dead
+    end — checked immediately rather than accepted at face value:
+    ***measured directly against `%LOCALAPPDATA%\\Microsoft\\Edge\\User
+    Data\\Local State` (the file SHARED across all profiles, which the
+    script never read): it holds `"startup_boost":{"enabled":false,
+    "default_last_launch":true,...}` and `"background_mode":{"enabled":
+    true}`.*** Copilot had the right names; the script (and the original
+    Copilot guess before it) was looking in the wrong file — per-profile
+    `Preferences`, not the shared `Local State`.
+    **FIX: `Get-GGEdgeLocalStateBool`, the `Local State` counterpart to
+    item 15's `Get-GGEdgeEffectiveBool`.** Item 13's status check now falls
+    back to it when the policy is absent, exact same shape as item 15: read
+    both `startup_boost.enabled` and `background_mode.enabled`, GOOD only
+    if both are found AND both false, "needs attention" if either found
+    value is true, Unknown if neither resolves or the read is only half
+    complete — never a guess from a partial read.
+    **Labelled honestly, not oversold:** *measured* that the keys exist and
+    hold real values right now; *inferred, not flip-proven* that `enabled`
+    is the specific field the on-screen toggle controls — Bill's toggle
+    test was aimed at the wrong file, so no before/after diff exists yet
+    for the right one. The inference rests on `enabled` being the
+    conventional Chromium name for a feature's own on/off field and the
+    only boolean in `background_mode`'s object, not on a proven flip.
+    ***Verified against the SHIPPED function, extracted from the build by
+    its own AST and called directly against this machine's real file:***
+    `startup_boost.enabled` reads `False`, `background_mode.enabled` reads
+    `True` — matching the raw JSON read exactly — and a made-up section
+    name fails closed (`Found = False`) rather than throwing. The full
+    case-13 decision logic was tested against all three shapes a read can
+    take (both off, one on, one found and one missing) and returned GOOD,
+    needs-attention, and Unknown respectively, each correctly.
+    **Item 14 (Widgets) is still open** — Bill's run reached "TaskbarDa
+    BEFORE = 1" and stopped there (Ctrl+C) before the after-read, so no
+    diff exists for it yet. Re-running Part 2 of the same script would
+    close it the same way.
+    Gates after: 12, 12b, 24 PASS, parse 0 errors, 0 non-ASCII, 89
+    functions, no duplicates. Wrapper:
+    `Tool2\\build_ascii44_ft123b_item13.py`.
   - **FT-260 — THE PRODUCT QUESTION IS DECIDED 2026-09-16; THE DETECTION GAP
     IS STILL OPEN ON PURPOSE.** Read the decision first, then the finding
     that started it — the heading used to say only "RAISED NOT FIXED," which
