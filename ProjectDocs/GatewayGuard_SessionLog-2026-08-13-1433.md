@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-17 13:32 ET
+- **Last Modified:** 2026-09-17 14:05 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -203,6 +203,14 @@ in a row against two different fixes. Per the Ten-Minute Rule, this is now
 Bill's call to raise with Claude support rather than a third repo-side
 theory -- there is nothing left in this repository to check.
 
+**RESOLVED the same hour, and not by anything in this repository.** Cloud's
+next sync landed `f50999b` clean -- rows 79 to 80, the pack file surfaces.
+Cloud's own words: *"the disconnect/reconnect was the fix."* **So the two
+stuck syncs were a connector-side fault, confirmed by elimination: nothing
+on the repo side changed between the failing syncs and the working one.**
+Worth remembering the next time this happens -- disconnect and reconnect
+the GitHub connector before spending time on the repo.
+
 **A SEPARATE, UNEXPLAINED FINDING, SURFACED WHILE CHECKING THE ABOVE:**
 `git branch -a` shows `origin/master` alongside `origin/main`. ***Measured:
 `origin/master` holds exactly two commits -- "Initial commit" and "nessage",
@@ -218,6 +226,66 @@ file's own rule).
 
 Files this half: `CLAUDE.md` (FT-262, R-30 framing), the three guide twins
 (no change beyond what's already counted), `WebSite\html\phishing-protection.html`.
+
+### FOURTH HALF: THE BUILD ITSELF WAS STILL WRONG, THE 08-26 FIX WAS NEVER APPLIED, AND FIXING IT PROPERLY FOUND A SECOND, OLDER, BIGGER DEFECT
+
+**Cloud's second review named the real gap: FT-262 fixed the guide, the
+website, and the documentation table, but never checked whether the BUILD's
+own manual-steps screen -- the one shown when the registry write is refused
+-- still had the wrong wording.** It did. ***Measured: line 6805 of the live
+ascii44 source still read "3. Under Phishing protection -> turn ON all 3
+options" while showing the user four.*** Read
+`GatewayGuard_FieldResult-PhishingProtection-2026-08-26-1130.md` in full for
+the first time this session (Cloud had only cited it, not quoted it) and
+found it had already drafted the exact replacement wording three weeks
+ago, sourced to Bill's own reading of the screen, never applied. **ascii43
+became ascii44 without this one line changing.** Applied the 08-26 draft
+verbatim, split across `Write-Host` lines. Gates after: 12, 12b, 24 PASS,
+parse 0 errors (confirmed twice after one transient false "1 error" reading
+that a clean re-run did not reproduce), 0 non-ASCII, 88 functions, no
+duplicates. Wrapper: `Tool2\build_ascii44_ft262_phishingwording.py`.
+
+**The 08-26 document's OTHER recommendation was checked before applying it,
+and it was wrong.** It said setting 6 should carry `CanAuto=$false` "at no
+cost, since the user already receives the manual steps." ***Measured:
+`Apply-Setting` returns a generic "Manual action required -- see Guide:
+$GuideRef" message the moment `-not $Setting.CanAuto` is true, BEFORE its
+`switch ($Setting.ID)` is ever reached -- so `CanAuto=$false` would have
+made the fix just applied unreachable, the same day it was written.*** Did
+not apply it.
+
+**Tracing that control flow found a second defect, bigger than the one
+being fixed, sitting on the two settings that already carry
+`CanAuto=$false`.** ***Measured: `.CanAuto` is never reassigned anywhere in
+the file, so for ID=3 (Tamper Protection) and ID=9 (Windows Hello), their
+`switch` cases -- rich, Malwarebytes/trial-aware for Tamper Protection, an
+NGC-configured check for Hello -- can never execute, for any caller, under
+any state.*** Checked whether that content exists anywhere the user does
+reach, rather than assuming either way: ***measured, it does not.***
+`Get-AllStatuses`' own case 3 shows only "OFF -- turn on in Windows Security
+(see guide)" or a one-line trial note, and the Guide's Setting 3 text is
+equally generic. **The specific instructions exist nowhere a user can see
+them, on the one setting Bill just said every home user should have on
+unconditionally.** Opened FT-263, raised not fixed -- the real fix is a
+structural change to a seven-call-site function, or a confirmed-redundant
+deletion, and guessing between them without the check just run would be
+exactly the failure mode this project's rules exist to catch.
+
+**Implemented the process fix Cloud asked for.** `SettingsLocationList`
+now carries a "Field results on file, by setting" table naming the dated
+write-up beside any setting that has one, so a future editor checks it
+before re-deriving a finding from scratch -- which is exactly what happened
+to the 08-26 document for three weeks.
+
+**The sync problem resolved itself the same hour, and not from anything in
+this repository** -- see the note appended to the prior section. Cloud's
+own diagnosis: disconnecting and reconnecting the GitHub connector was the
+fix, not a repo change.
+
+Files this half: `CLAUDE.md` (FT-262 expanded, FT-263 opened),
+`Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1` (FT-262),
+`Tool2\build_ascii44_ft262_phishingwording.py` (new),
+`GatewayGuard_SettingsLocationList-2026-09-08-2130.md` (field-results table).
 
 ## Session: 2026-09-08 07:03 to 07:51 [Claude Code -- CGDELL] -- THE MALWAREBYTES HALF RAN, AND ONE BUTTON PRESS PROVED BOTH PRODUCTS AT ONCE
 

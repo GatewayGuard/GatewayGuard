@@ -146,8 +146,23 @@
     `Tool2\build_ascii44_ft261_adminrequired.py`.
   - **FT-262, FIXED 2026-09-17 — SETTING 6 HAS A FOURTH CHECKBOX CHECKUP HAS
     NEVER TOUCHED, AND EVERY CUSTOMER-FACING SURFACE EITHER SAID TO TURN IT
-    ON OR SAID NOTHING AT ALL. Bill, looking at his own screen: "the one
-    about phishing. We don't want all 4 on, do we? only 3 of the 4 right?"**
+    ON OR SAID NOTHING AT ALL — INCLUDING THE BUILD ITSELF. Bill, looking at
+    his own screen: "the one about phishing. We don't want all 4 on, do we?
+    only 3 of the 4 right?"**
+    **THIS WAS NOT A NEW FINDING, AND THE FIRST WRITE OF THIS ENTRY SAID SO
+    BY OMISSION — Cloud caught it on review.** The same four boxes, the same
+    fourth-box wording, the same three-warnings-are-correct conclusion, and
+    an exact drafted replacement for the build's own manual-steps line were
+    **already measured and written up on 2026-08-26**:
+    `GatewayGuard_FieldResult-PhishingProtection-2026-08-26-1130.md`,
+    itself following a recommendation against turning the fourth box on in
+    `GatewayGuard_DecisionsForBill-2026-08-24-1033.md` item 5. **Bill had
+    already turned all four boxes on once before, on SANDY, on 2026-08-26 —
+    this is the second time the same interface confusion produced the same
+    result.** The 08-26 write-up sat as a live, correctly-dated row in
+    `CURRENT.md` for three weeks. Nothing routed a setting-6 change through
+    it, so it was re-derived from scratch instead of read. See the process
+    fix below.
     ***Measured against `WebThreatDefense.admx`: Enhanced Phishing Protection
     is five policies — a master switch, three warnings (`NotifyMalicious`,
     `NotifyPasswordReuse`, `NotifyUnsafeApp`), and `AutomaticDataCollection`
@@ -155,27 +170,35 @@
     on-screen content when something is flagged.*** **Checkup's item 6 has
     only ever set the three warnings — the fourth was never part of the
     setting, on any surface, at any point.**
-    ***Confirmed against Bill's screenshot 92, 2026-09-17: the live screen
-    shows exactly four checkboxes under Phishing protection, all four
+    ***Confirmed again against Bill's screenshot 92, 2026-09-17: the live
+    screen shows exactly four checkboxes under Phishing protection, all four
     checked, and the fourth is `AutomaticDataCollection` by its own
     wording.*** **Could not confirm this by reading the registry** — already
     measured 2026-09-07 (see `SettingsLocationList`, section 2): Tamper
     Protection refuses all four of these reads and writes, so the screen is
     the only truth for this group. Had to ask Bill to look and send the
     screenshot rather than guess which four he meant.
-    **What was wrong, surface by surface:** the guide said *"Recommended:
-    All Options Enabled"* and *"Enable all available phishing protection
-    warnings"* — read literally, an instruction to turn on the fourth. The
-    website said *"toggle each item that is off to On"* under the Phishing
-    protection heading — the same defect, independently arrived at. Neither
-    ever named the fourth checkbox, so a careful reader had no way to know
-    it was being asked to turn on something Checkup itself does not set.
-    **FIX: all three surfaces now name the three warnings by their literal
+    **What was wrong, surface by surface, and all four are now fixed:** the
+    guide said *"Recommended: All Options Enabled"* and *"Enable all
+    available phishing protection warnings"*; the website said *"toggle each
+    item that is off to On"* under the Phishing protection heading —
+    independently arrived at, same defect; and **the build's own manual-steps
+    screen, shown when the registry write is refused, said "turn ON all 3
+    options" while showing the user four** — this is the line the 08-26
+    document drafted a replacement for and it was never applied, surviving
+    unchanged from ascii43 into ascii44. None of the four ever named the
+    fourth checkbox, so a reader had no way to know they were being asked to
+    turn on something Checkup itself does not set.
+    **FIX: all four surfaces now name the three warnings by their literal
     on-screen labels, name the fourth by its literal label, and say plainly
     to leave it unchecked and why** (it shares more of the screen with
     Microsoft than the three warnings need to work). Guide:
     `GatewayGuard_CoPilotGuidePart2-2026-09-16-1627.md`, Setting 6. Website:
     `WebSite\html\phishing-protection.html`, "How to change it yourself."
+    Build: the manual-steps block in `Apply-Setting`, case 6 — wording is the
+    08-26 draft, applied verbatim. Gates after: 12, 12b, 24 PASS, parse 0
+    errors, 0 non-ASCII, 88 functions, no duplicates. Wrapper:
+    `Tool2\build_ascii44_ft262_phishingwording.py`.
     **THE DOCUMENTATION LESSON, separate from the setting itself:**
     `GatewayGuard_SettingsLocationList-2026-09-08-2130.md` had already
     measured all four registry writes failing on 2026-09-07, and its own
@@ -186,6 +209,69 @@
     numbering bug: two places in the same document set carrying two
     different answers, neither one flagged as disagreeing with the other.
     Fourth row added to the table.
+    **THE PROCESS FIX Cloud asked for:** a correct, dated, field-measured
+    finding sat unread in `ProjectDocs\` for three weeks because nothing
+    pointed a future editor of that setting back to it.
+    `SettingsLocationList` now carries a "Field results" column naming the
+    dated write-up beside any setting that has one — see the table update
+    below. **Before changing what any setting's guide, website, or build
+    text says, check that column first.**
+    **08-26's OTHER recommendation, `CanAuto=$false` for setting 6, was
+    checked and NOT applied — see FT-263.** It would have silenced the exact
+    fix above.
+  - **FT-263, RAISED NOT FIXED 2026-09-17 — `CanAuto=$false` DOES NOT MEAN
+    "SHOW MANUAL STEPS." IT MEANS "NEVER REACH THE CODE THAT WOULD."**
+    Found while checking whether `GatewayGuard_FieldResult-PhishingProtection-
+    2026-08-26-1130.md`'s recommendation to set setting 6's `CanAuto=$false`
+    was safe to apply (FT-262). It was not, and tracing why found a second,
+    older, larger defect.
+    ***Measured: `Apply-Setting` (line 6673) checks `if (-not
+    $Setting.CanAuto) { return "Manual action required -- see Guide:
+    $($Setting.GuideRef)" }` BEFORE `switch ($Setting.ID)` is ever reached —
+    the same function, one early return away from the per-setting cases.***
+    ***Measured: `.CanAuto` is never reassigned anywhere in the file after
+    the settings array declares it*** — so for any setting with
+    `CanAuto=$false`, the switch case with that ID's number can never
+    execute, for any caller, under any state. This is not a runtime
+    condition to test; it is a fact about the control flow, true by
+    construction.
+    **Two settings already carry `CanAuto=$false`, and both have a rich,
+    specific `switch` case that this makes permanently unreachable:**
+    **ID=3, Tamper Protection** — four branches keyed on Malwarebytes state
+    (Free / Trial / third-party AV / none), each with different, correct,
+    specific instructions. ***Measured: every path through `Apply-Setting`
+    for ID=3 returns the same generic string, "Manual action required --
+    see Guide: Phase 1, Step 2", before any of those four branches can run.***
+    **ID=9, Windows Hello** — checks whether a PIN or biometric is already
+    configured (`Test-Path ...\NGC`) and returns one of two different
+    messages. ***Measured: unreachable the same way — the generic message
+    fires first, so the NGC check has never run inside `Apply-Setting`.***
+    **Checked: the dead case's content is NOT duplicated anywhere the user
+    does reach.** ***Measured: `Get-AllStatuses` case 3 (line 6133), which
+    does run and does populate what the checklist shows, produces only "OFF
+    -- turn on in Windows Security (see guide)" or, during a Malwarebytes
+    trial, "OFF during Malwarebytes trial -- recheck after trial ends" —
+    neither the specific Windows Security path, nor the third-party-AV name,
+    nor the trial-ending options `Apply-Setting`'s dead case 3 would have
+    given.*** ***Measured: the Guide's own Setting 3 (Tamper Protection) text
+    is generic too — "Open Windows Security. Select Virus & threat
+    protection. Select Manage Settings. Turn Tamper Protection on." — no
+    mention of Malwarebytes or a trial at all.*** **So this is not a wasted-
+    code problem. The specific guidance exists nowhere the user can see it,
+    on the one setting Bill just said every home user should have on.**
+    **Why this is raised, not fixed:** the shape of the real fix is a design
+    choice, not a one-line change — move the two dead cases' logic to run
+    regardless of `CanAuto` (a structural change to a function with seven
+    call sites), or delete them as confirmed-redundant if the missing check
+    finds their content lives elsewhere already. Guessing which and changing
+    it without the missing check is exactly the kind of one-explanation-fits
+    conclusion this project's own rules exist to catch.
+    **THE PRACTICAL CONSEQUENCE THAT MADE THIS WORTH RAISING NOW, NOT
+    LATER:** setting 3, Tamper Protection, is the one setting Bill just said
+    every home user should have on, unconditionally, no exceptions. If its
+    specific, correct, already-written instructions have never once reached
+    a user, that is the highest-severity setting this class of bug could
+    have picked.
   - **FT-260 — THE PRODUCT QUESTION IS DECIDED 2026-09-16; THE DETECTION GAP
     IS STILL OPEN ON PURPOSE.** Read the decision first, then the finding
     that started it — the heading used to say only "RAISED NOT FIXED," which

@@ -153,6 +153,25 @@ cannot see.***
 
 ---
 
+## FIELD RESULTS ON FILE, BY SETTING -- CHECK THIS BEFORE CHANGING ANY WORDING
+
+**Added 2026-09-17, after FT-262: a correct, dated, field-measured finding
+about setting 6 sat unread in `ProjectDocs\` for three weeks and was
+re-derived from scratch instead of read.** Before writing or changing what
+any setting's guide text, website page, or build screen says, check this
+list. If the setting is not listed, none exists yet.
+
+| Setting | Field result on file | What it found |
+|---|---|---|
+| 3, Tamper Protection | *(none yet -- see FT-263, CLAUDE.md)* | `Apply-Setting`'s detailed, Malwarebytes/trial-aware manual steps for this setting can never run; the live checklist and the Guide both show only a generic line |
+| 6, Enhanced Phishing Protection | `GatewayGuard_FieldResult-PhishingProtection-2026-08-26-1130.md` | Four checkboxes on screen, Checkup's own item only ever sets three; drafted the exact replacement wording for the build's manual-steps line (applied 2026-09-17, FT-262) |
+| 14, Windows Widgets | `GatewayGuard_FieldResult-LockScreenWidgets-2026-08-26-1030.md` | Lock screen widgets are automatable; the widget opens a browser |
+
+**Not setting-specific, but worth the same check before touching F4/scan
+scope:** `GatewayGuard_FieldResult-FullScanCoversD-2026-08-27-1500.md`.
+
+---
+
 ## HOW TO RE-RUN THIS
 
 **`Tool2\Run-SettingsStatus.bat`** -- double-click it. **Read-only, changes

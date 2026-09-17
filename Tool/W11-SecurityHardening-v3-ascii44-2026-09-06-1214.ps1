@@ -6802,7 +6802,11 @@ function Apply-Setting {
                 Write-Host "  Enable manually:" -ForegroundColor Yellow
                 Write-Host "  1. Windows Security -> App & browser control" -ForegroundColor Gray
                 Write-Host "  2. Reputation-based protection settings" -ForegroundColor Gray
-                Write-Host "  3. Under Phishing protection -> turn ON all 3 options" -ForegroundColor Gray
+                Write-Host "  3. Under Phishing protection, turn ON the three" -ForegroundColor Gray
+                Write-Host "     'Warn me about' boxes." -ForegroundColor Gray
+                Write-Host "  4. Leave the fourth box OFF -- 'Automatically collect" -ForegroundColor Gray
+                Write-Host "     website or app content...' sends your screen" -ForegroundColor Gray
+                Write-Host "     contents to Microsoft. Checkup does not need it." -ForegroundColor Gray
                 Write-Host "  Full guide: gatewayguard.co/guide/phishing-protection" -ForegroundColor Cyan
                 Write-Host ""
                 Pause-ForUser "  Press Enter or Space to continue..."

@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-17 13:33 ET -->
-<!-- Commit: f50999b -->
+<!-- Generated: 2026-09-17 14:06 ET -->
+<!-- Commit: d0fec2c -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-17 13:33 ET  |  **Commit:** `f50999b`  |  **Made:** 2026-09-17 12:47 ET
-- **Commit subject:** Recommendations say "all" not "many"/"most"; tools reference added to Start-CC.txt; Setting 6 phishing protection corrected to 3-of-4
+- **Generated:** 2026-09-17 14:06 ET  |  **Commit:** `d0fec2c`  |  **Made:** 2026-09-17 13:33 ET
+- **Commit subject:** FT-262: the phishing-protection fourth checkbox, found independently on the website too; FT-261 framing tightened per Cloud's review
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
