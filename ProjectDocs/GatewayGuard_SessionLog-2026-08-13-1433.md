@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-25 11:04 ET
+- **Last Modified:** 2026-09-25 13:22 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -12,6 +12,53 @@
   Code) so any Claude instance can resume with full context.
   Updated after every file produced or decision made.
   Downloaded by Bill at session end and uploaded to project immediately.
+
+---
+---
+
+## Session: 2026-09-25 13:22 [Claude Code -- CGDELL] -- CLOUD'S REVIEW FILED; TWO OF ITS CLAIMS CORRECTED, FOUR "UNSOURCED" FLAGS WERE SOURCED ALL ALONG
+
+**Cloud delivered `GatewayGuard_CloudReview-ascii44Triage-GuidePart3-Part4-2026-09-25-1308.md`**
+(Bill put it in `ProjectDocs\`). Freshness check passed: Cloud quoted
+`11710d8` and the 11:04 session heading exactly. Agrees with all twelve
+triage decisions in substance; page numbers (Decision 8) cannot work across
+five print sizes -- use the setting number; do not have Checkup start the
+full scan in ascii45; launch/after split proposed in A-13.
+
+**Two of Cloud's claims corrected by measurement:**
+- **A-2 (keep the Machine-ID check because the state file may travel):**
+  ***measured: `$StateDir = "C:\GatewayGuard"`, build line 1602*** -- not
+  OneDrive. The state file does not follow the account to another PC, so the
+  stated reason does not hold.
+- **A-13 item 1 (FT collision) was larger than reported.** ***Measured:
+  Copilot's ASCII45 plan numbered nine items FT-260 to FT-268***, not six
+  from FT-263, and FT-260 to FT-264 are real recorded defects in CLAUDE.md.
+  **Renamed Copilot's to CP-1 to CP-9**, each line asserted before change,
+  header note added. Triage and CLAUDE.md numbers stand.
+
+**Four "unsourced" flags in Cloud's Part B (B-11b, B-12b, B-14a, B-19a) had
+sources -- they existed only in the 09-24 research pass inside a Claude Code
+session, never in the repo.** Filed as
+`GatewayGuard_GuidePart3-Sources-2026-09-25-1320.md`. **Lesson: research that
+changes a guide sentence goes into `ProjectDocs\` with the sentence, the same
+commit, or the next reviewer re-flags it.**
+
+**Part B applied to the Part 3 twin, except the two waiting on Bill (B-15c
+naming a password manager; B-P4b moving the restore point into Part 1):**
+B-10a Home/Pro permission line; B-10b dropped "and Windows Hello" (does not
+protect a Remote Desktop sign-in -- *inferred*, Cloud's); B-10c, B-14b, B-15b
+VERIFY markers for on-screen labels (W-07); B-11a the website's "more than a
+taste" sentence, so guide and site match Bill's 08-21 call; B-12a Insider
+wording; B-14a narrowed to what the source says (Edge's news feed); B-14c
+Checkup is all-or-nothing on Widgets; B-15a "open-source" out; B-18a/b Fast
+Startup plain reason (VERIFY) and the "(recommended)" label explained; B-N1;
+B-P4a "can be put back". VERIFY markers in Part 3: 7.
+
+**`Tool2\Update-Current.ps1`:** two rows added (Cloud review; Part 3 sources).
+
+**Waiting on Bill (Cloud's questions 1-4):** no named password manager?;
+approve the Part 4/Part 5 outline?; Firefox addendum out of the 10-15 guide?;
+launch/after split acceptable?
 
 ---
 ---

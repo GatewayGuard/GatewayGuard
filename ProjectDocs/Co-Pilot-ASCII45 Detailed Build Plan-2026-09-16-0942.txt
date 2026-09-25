@@ -1,3 +1,5 @@
+[Renamed 2026-09-25 by Claude Code: Copilot's nine plan items were numbered FT-260 to FT-268, which collide with real defects already recorded under those numbers (CLAUDE.md, ascii44 triage). They are CP-1 to CP-9 below. Nothing else in this file changed.]
+
 ASCII45 Detailed Build Plan
 GatewayGuard Checkup v3.1
 Release Objective: Accuracy Hardening Before Launch
@@ -39,7 +41,7 @@ Confirmed
 
 before launch.
 
-FT-260
+CP-1 (Copilot numbered this FT-260; renamed 2026-09-25 -- that FT number belongs to a real defect)
 Remove Retired Setting 5 References
 Problem
 
@@ -74,7 +76,7 @@ Setting 5 retired
 
 No mixed state.
 
-FT-261
+CP-2 (Copilot numbered this FT-261; renamed 2026-09-25 -- that FT number belongs to a real defect)
 BitLocker / Device Encryption Validation Matrix
 Risk Level
 
@@ -147,7 +149,7 @@ Use it as source material for:
 Guide
 Website pages
 Tool wording
-FT-262
+CP-3 (Copilot numbered this FT-262; renamed 2026-09-25 -- that FT number belongs to a real defect)
 Windows Hello Reality Check
 Current State
 
@@ -193,7 +195,7 @@ Could not verify
 
 when appropriate.
 
-FT-263
+CP-4 (Copilot numbered this FT-263; renamed 2026-09-25 -- that FT number belongs to a real defect)
 Guide/Tool Synchronization Audit
 Problem
 
@@ -238,7 +240,7 @@ Guide Name
 Website Name
 Current Recommendation
 
-FT-264
+CP-5 (Copilot numbered this FT-264; renamed 2026-09-25 -- that FT number belongs to a real defect)
 GuideRef Integrity Check
 
 Every GuideRef should point to an existing destination.
@@ -258,7 +260,7 @@ Every reference should resolve.
 
 No dead references.
 
-FT-265
+CP-6 (Copilot numbered this FT-265; renamed 2026-09-25 -- that FT number belongs to a real defect)
 Strengthen Unknown Handling
 
 Current philosophy is strong:
@@ -308,7 +310,7 @@ Startup Boost
 
 Still weak.
 
-FT-266
+CP-7 (Copilot numbered this FT-266; renamed 2026-09-25 -- that FT number belongs to a real defect)
 Manual Verification Pack
 
 Create a reusable verification toolkit.
@@ -331,7 +333,7 @@ Lets any future tester verify findings consistently.
 
 Supports T‑VF1 effort mentioned in guide planning.
 
-FT-267
+CP-8 (Copilot numbered this FT-267; renamed 2026-09-25 -- that FT number belongs to a real defect)
 Security-Critical Settings Review
 
 Review only:
@@ -354,7 +356,7 @@ Can Group Policy override?
 
 ASCII44 introduced policy awareness for several settings but coverage is incomplete.
 
-FT-268
+CP-9 (Copilot numbered this FT-268; renamed 2026-09-25 -- that FT number belongs to a real defect)
 Launch Documentation Package
 
 At completion of ASCII45 produce:

@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-25 11:05 ET -->
-<!-- Commit: 11710d8 -->
+<!-- Generated: 2026-09-25 13:23 ET -->
+<!-- Commit: 06c3026 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-25 11:05 ET  |  **Commit:** `11710d8`  |  **Made:** 2026-09-25 10:51 ET
-- **Commit subject:** Remove 371 files OneDrive already dropped from disk; kept in history (Bill approved)
+- **Generated:** 2026-09-25 13:23 ET  |  **Commit:** `06c3026`  |  **Made:** 2026-09-25 11:06 ET
+- **Commit subject:** Session close: Bill's guide comments applied, ascii44 field run triaged (FT-265 to FT-285), session log
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -19,7 +19,7 @@ document family and the single filename that is live right now. Take every
 filename from this table -- never from memory, never from another document,
 never by guessing which date looks newest.
 
-**81 rows follow.** If you cannot see all 81 of them, your
+**83 rows follow.** If you cannot see all 83 of them, your
 retrieval truncated the table -- **say so and ask for the rest, rather
 than answering from the handful you received.**
 
@@ -77,7 +77,7 @@ All paths are relative to `ProjectDocs/`.
 
 ### CLOUD REQUESTS AND CLOUD RESEARCH
 
-**25 rows in this group.** If you see fewer, this group was truncated -- say so.
+**27 rows in this group.** If you see fewer, this group was truncated -- say so.
 
 | What it is | The current file | Older versions present |
 |---|---|---|
@@ -104,6 +104,8 @@ All paths are relative to `ProjectDocs/`.
 | Co-Pilot Guide Part 2 (twin) | `GatewayGuard_CoPilotGuidePart2-2026-09-16-1627.md` | 0 |
 | Co-Pilot Guide Part 3 (twin) | `GatewayGuard_CoPilotGuidePart3-2026-09-16-1627.md` | 0 |
 | Guide reconciliation pack (Co-Pilot Parts 1-3, applied) | `GatewayGuard_GuideReconciliationPack-CoPilot-2026-09-17-1818.md` | 0 |
+| Cloud review: ascii44 triage, Guide Part 3, Part 4 outline | `GatewayGuard_CloudReview-ascii44Triage-GuidePart3-Part4-2026-09-25-1308.md` | 0 |
+| Guide Part 3 sources (evidence for the 09-24 edits) | `GatewayGuard_GuidePart3-Sources-2026-09-25-1320.md` | 0 |
 | Review of Cloud research | `GatewayGuard_ReviewOfCloudResearch-2026-08-24-1105.md` | -- |
 | Review of Cloud research | `GatewayGuard_ReviewOfCloudResearch-ascii43-2026-09-05-1130.md` | -- |
 
@@ -194,7 +196,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-09-25 11:04 [Claude Code -- CGDELL] -- AFTER THE PC RESET: GIT BACK, 371 FILES RETIRED, ascii44 TRIAGED, AND PASSWORD-ON-WAKE WAS NEVER READABLE ANYWHERE
+## Session: 2026-09-25 13:22 [Claude Code -- CGDELL] -- CLOUD'S REVIEW FILED; TWO OF ITS CLAIMS CORRECTED, FOUR "UNSOURCED" FLAGS WERE SOURCED ALL ALONG
 ```
 
 **If it is not in your copy of the session log, you are reading an old
