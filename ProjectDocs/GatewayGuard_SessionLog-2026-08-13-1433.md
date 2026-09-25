@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-25 13:22 ET
+- **Last Modified:** 2026-09-25 14:50 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -12,6 +12,62 @@
   Code) so any Claude instance can resume with full context.
   Updated after every file produced or decision made.
   Downloaded by Bill at session end and uploaded to project immediately.
+
+---
+---
+
+## Session: 2026-09-25 14:50 [Claude Code -- CGDELL] -- BILL ANSWERS CLOUD: NO PRODUCT NAMES, PARTS 4-5 APPROVED, EVERYTHING IN ascii45, 10-15 HOLDS
+
+**Bill's answers to Cloud's four questions in
+`GatewayGuard_CloudReview-ascii44Triage-GuidePart3-Part4-2026-09-25-1308.md`:**
+
+1. **"Remove AV names from guide."** Confirmed when asked: **no third-party
+   antivirus or password-manager name anywhere -- Malwarebytes out of the
+   guide too**, reversing 2026-09-08's guide-only arrangement. Microsoft
+   Defender is the only product named. `CLAUDE.md` Product Rules and Approved
+   Products updated. ***Measured: Guide Parts 1-3 name none already; the 08-22
+   draft that Parts 4-5 draw on names Malwarebytes 7, Avira 2, Norton 1,
+   McAfee 1*** -- they must not carry over. **Open: the website.**
+   ***Measured 2026-09-25: 12 product-name mentions across five pages***
+   (periodic-scanning 7, password-manager 2, defender-realtime 1,
+   phishing-protection 1, tamper-protection 1) -- two more pages than the
+   09-08 count in `CLAUDE.md`, now corrected there.
+2. **Part 4 / Part 5 outline (Cloud C-2) approved.** Restore point moves to
+   Part 1; Part 4 = what Checkup changed, putting each setting back, if
+   something looks wrong, if you think you are infected, getting help; Part 5
+   = passwords and two-step sign-in, the yearly update, habits. Cloud offered
+   to draft both in one pass.
+3. **Firefox addendum -- shown to Bill (old draft lines 1615-1760), NOT yet
+   decided.** Flagged to him: nothing in it measured; F10 contradicts
+   Setting 15 (turns password saving off for everyone); F2 "Strict" can break
+   sites; F10/F12 point at products.
+4. **"We will make the launch date."** Bill disagrees with Cloud's
+   launch/after split (A-13 item 4): **everything goes into ascii45, and
+   2026-10-15 holds.** Cloud's caution stands on the record: ascii45 still
+   needs its own field run and a triage before 10-15.
+   **Then, same session: "include the future loop and other items in ascii45
+   as well."** So the post-launch list comes in too. **ascii45 scope, as
+   Bill set it:**
+   - the 21 triage defects FT-265 to FT-285 and all 12 triage decisions;
+   - Malwarebytes out of the tool; GUI mode out;
+   - **Windows Update apply-and-loop** (Bill's note 12; ascii44 build plan
+     line 308 had it post-launch);
+   - **Checkup starting the full Defender scan** (Cloud A-6 had it ascii46),
+     plus PUA blocking on before scans and the `FullScanEndTime` read;
+   - Cloud's "after" list: the 2FA screen line, the GuideRef pass by setting
+     number, per-adapter Wake on LAN, the item-12 fallback read, FT-277,
+     FT-281 to FT-285;
+   - the other items the ascii44 plan deferred: FT-220 (waits on the guide
+     text) and the remaining encryption items (need a live encryption run).
+   **Still needs a decision before it can be built:** `X` = Exit and the 11
+   `N = exit` sites (open since 08-30). **Pending tests:** the full-screen
+   launch (below).
+
+**Also raised this session, not decided:** running Checkup full-screen in
+Windows Terminal from the launcher so there is no window X to click (two of
+nine ascii44 runs ended by the window closing). Needs a CGDELL test of the
+`wt` launch option and of administrator rights carrying over, plus an
+on-screen exit line. Bill has not answered.
 
 ---
 ---

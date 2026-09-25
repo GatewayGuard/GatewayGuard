@@ -711,9 +711,11 @@
 
 ## Product Rules (User-Facing)
 
-- Only name approved AV products by name: **Microsoft Defender (USA)**, and
-  **Malwarebytes Free (USA)** — **which from 2026-09-08 appears in the
-  GUIDE ONLY and never in the tool.** See Approved Products below.
+- **Name no third-party antivirus or password-manager product, anywhere —
+  tool, guide, or website.** Only **Microsoft Defender (USA)**, the protection
+  built into Windows, is named. **Bill, 2026-09-25: "remove AV names from
+  guide"** — this removes Malwarebytes from the guide too, reversing the
+  2026-09-08 guide-only arrangement. See Approved Products below.
 - Always include country of origin for AV recommendations
 - Never name unapproved or competitor products
 - "For your protection, your choices can be reviewed in your log" — shown **once only**, on the review screen
@@ -1444,11 +1446,25 @@ and reports — not working artifacts. (Confirmed 2026-07-26.)
 ## Approved Products Named in Tool
 
 - **Microsoft Defender (USA)** — the protection. In the tool and the guide.
-- **Malwarebytes Free (USA)** — **IN THE GUIDE ONLY, from 2026-09-08.**
+- **Malwarebytes Free (USA)** — **OUT OF THE GUIDE TOO, from 2026-09-25.**
 
-**BILL'S DECISION, 2026-09-08: "Malwarebytes is out of Checkup."** It stays
-in the guide as an **optional second opinion the reader may choose**, and the
-tool stops orchestrating it entirely.
+**BILL'S DECISION, 2026-09-25: "remove AV names from guide."** Answering
+Cloud's question on naming a password manager, and confirmed when asked:
+**no third-party antivirus or password-manager name anywhere** — not
+Malwarebytes, Norton, McAfee, Avira, nor Bitwarden or any other password
+manager. **Microsoft Defender is the only product named.** Measured
+2026-09-25: Guide Parts 1–3 already name none; the old 08-22 draft that Parts
+4–5 are built from names Malwarebytes 7 times, Avira 2, Norton 1, McAfee 1,
+and those do not carry over. **Website follow-up, not yet done -- measured
+2026-09-25, 12 product-name mentions across FIVE pages, not the three
+recorded on 09-08:** `periodic-scanning.html` 7, `password-manager.html` 2,
+`defender-realtime.html` 1, `phishing-protection.html` 1,
+`tamper-protection.html` 1. All must match the guide (W-07).
+
+*(Superseded, kept for the record:)* **BILL'S DECISION, 2026-09-08:
+"Malwarebytes is out of Checkup."** It stayed in the guide as an **optional
+second opinion the reader may choose**, and the tool stopped orchestrating it
+entirely.
 
 **Why, and it is measured on both sides.** ***Measured on CGDELL 2026-09-07
 and 09-08, same twelve files, one day apart: Defender flagged 0 of 6 real

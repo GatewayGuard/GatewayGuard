@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-25 13:23 ET -->
-<!-- Commit: 06c3026 -->
+<!-- Generated: 2026-09-25 14:51 ET -->
+<!-- Commit: fa7fb54 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-25 13:23 ET  |  **Commit:** `06c3026`  |  **Made:** 2026-09-25 11:06 ET
-- **Commit subject:** Session close: Bill's guide comments applied, ascii44 field run triaged (FT-265 to FT-285), session log
+- **Generated:** 2026-09-25 14:51 ET  |  **Commit:** `fa7fb54`  |  **Made:** 2026-09-25 13:23 ET
+- **Commit subject:** File Cloud's 09-25 review; apply its Part 3 fixes; sources filed; Copilot FT numbers renamed CP-1..CP-9
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -196,7 +196,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-09-25 13:22 [Claude Code -- CGDELL] -- CLOUD'S REVIEW FILED; TWO OF ITS CLAIMS CORRECTED, FOUR "UNSOURCED" FLAGS WERE SOURCED ALL ALONG
+## Session: 2026-09-25 14:50 [Claude Code -- CGDELL] -- BILL ANSWERS CLOUD: NO PRODUCT NAMES, PARTS 4-5 APPROVED, EVERYTHING IN ascii45, 10-15 HOLDS
 ```
 
 **If it is not in your copy of the session log, you are reading an old
