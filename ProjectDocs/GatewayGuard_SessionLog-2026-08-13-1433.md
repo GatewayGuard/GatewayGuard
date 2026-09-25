@@ -16,6 +16,35 @@
 ---
 ---
 
+## Session: 2026-09-25 16:38 [Claude Code -- CGDELL] -- ascii45 BUILD PLAN WRITTEN, X = EXIT DECIDED, SANDY MEASUREMENT SCRIPT READY
+
+**Bill: "1. build plan 2. use X 3. How do i test it."**
+
+- **`X` = Exit, decided.** ***Measured: `X` appears in no key comparison in
+  ascii44.*** `CLAUDE.md` updated -- the open question since 08-30 is closed.
+- **`GatewayGuard_ascii45BuildPlan-2026-09-25-1638.md`.** Blocks A (wrong
+  verdicts), B (GUI and Malwarebytes out -- before C, per Cloud), C (keys:
+  X, B = step back, L = look, F = fix the screen, FT-271, Ctrl+C), D (resume),
+  E (the new start sequence incl. Windows Update apply-and-loop and the
+  Checkup-started full scan, which also delivers F4 the second drive), F
+  (wording, Was/Now screen, GuideRef = setting number), G (six SANDY
+  measurements). ***Measured: ascii44's Block B never shipped*** -- FT-248,
+  249, 250, 252, 253 carry into ascii45. Proposed schedule has no slack:
+  ascii45 to SANDY 10-03, triage and ascii46 10-07 to 10-09.
+- **"How do I test it"** -- ascii45 does not exist yet; what can be tested
+  now is the six SANDY measurements. **`Tool2\Run-MeasureSandyForAscii45.bat`**
+  + `Measure-SandyForAscii45-2026-09-25.ps1`, read-only, run as
+  administrator. ***Tested on CGDELL with -NoPrompt, 16:36; output
+  `Test_Results\SandyForAscii45-CGDELL-2026-09-25_16-36.txt`.***
+- **Found while testing it, on CGDELL: C: is Fully Encrypted but BitLocker
+  Protection is OFF** (`manage-bde`: Conversion Status Fully Encrypted,
+  Protection Status Protection Off; `Get-BitLockerVolume` agrees). The data
+  is encrypted but the key is not being protected -- the same "temporarily
+  disabled" shape as Bill's SANDY note 29. Cause not measured. Raised to Bill.
+
+---
+---
+
 ## Session: 2026-09-25 14:50 [Claude Code -- CGDELL] -- BILL ANSWERS CLOUD: NO PRODUCT NAMES, PARTS 4-5 APPROVED, EVERYTHING IN ascii45, 10-15 HOLDS
 
 **Bill's answers to Cloud's four questions in

@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-25 15:04 ET -->
-<!-- Commit: b67b434 -->
+<!-- Generated: 2026-09-25 16:41 ET -->
+<!-- Commit: 581a228 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-25 15:04 ET  |  **Commit:** `b67b434`  |  **Made:** 2026-09-25 14:51 ET
-- **Commit subject:** Record Bill's answers to Cloud: no product names in the guide, Parts 4-5 approved, everything in ascii45, 10-15 holds
+- **Generated:** 2026-09-25 16:41 ET  |  **Commit:** `581a228`  |  **Made:** 2026-09-25 15:04 ET
+- **Commit subject:** Firefox addendum: standalone draft for Bill's live test, kept out of the 10-15 guide
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -70,7 +70,7 @@ All paths are relative to `ProjectDocs/`.
 | Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii44run1-2026-09-24-2353.md` | 3 |
 | Response to Bill's field notes | `GatewayGuard_ResponseToBillsNotes-ascii43-2026-08-30-1815.md` | 0 |
 | Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii44-2026-09-17-1441.md` | 2 |
-| Build plan (current) | `GatewayGuard_ascii44BuildPlan-2026-09-05-1130.md` | 1 |
+| Build plan (current) | `GatewayGuard_ascii45BuildPlan-2026-09-25-1638.md` | 2 |
 | Build scope -- what shipped vs. what is next | `GatewayGuard_ascii44Scope-WhatsInWhatsNext-2026-09-17-1441.md` | 0 |
 | Future settings (candidate list) | `GatewayGuard_FutureSettings-2026-08-24-2310.md` | 0 |
 | Guide FT-220 sections | `GatewayGuard_GuideFT220-Sections-2026-08-21-1445.md` | 0 |
@@ -197,7 +197,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-09-25 14:50 [Claude Code -- CGDELL] -- BILL ANSWERS CLOUD: NO PRODUCT NAMES, PARTS 4-5 APPROVED, EVERYTHING IN ascii45, 10-15 HOLDS
+## Session: 2026-09-25 16:38 [Claude Code -- CGDELL] -- ascii45 BUILD PLAN WRITTEN, X = EXIT DECIDED, SANDY MEASUREMENT SCRIPT READY
 ```
 
 **If it is not in your copy of the session log, you are reading an old

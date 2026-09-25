@@ -761,10 +761,13 @@ back at all and only the label said it did (label fixed, key kept).
 `@("Y","N","B")` / `"Choice (Y = Re-apply / N = Skip / B = Back): "`. It is
 the **only** one of 30 sites that offers `B`.
 
-**Exit is a separate open question.** Bill asked for **`X` = Exit** at screens
-14a and 18 (`Q` or `E` as fallbacks). That is not yet decided, and the 11
-`N = Exit` sites wait on it. **Do not fold it into the B change** -- one key
-at a time, or the same confusion returns wearing a different letter.
+**`X` = Exit. DECIDED -- Bill, 2026-09-25: "use X."** It had been open since
+he asked for it at screens 14a and 18 on 2026-08-30. ***Measured 2026-09-25:
+`X` appears in no key comparison anywhere in ascii44*** -- it is free, like
+`F`, `D` and `L`. **The 11 `N = Exit` sites become `X = Exit` in ascii45**
+(6 found by prompt wording on 09-25; the build step re-counts all 11), and
+every exit keeps the FT-171d confirmation. After this, **`N` means No and
+nothing else, `B` means Back, `X` means Exit.**
 
 Full measurement and the site-by-site list:
 `ProjectDocs\GatewayGuard_FieldTestTriage-ascii43run2-2026-08-30-1723.md`,
