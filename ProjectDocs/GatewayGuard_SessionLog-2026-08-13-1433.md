@@ -37,10 +37,14 @@
    something looks wrong, if you think you are infected, getting help; Part 5
    = passwords and two-step sign-in, the yearly update, habits. Cloud offered
    to draft both in one pass.
-3. **Firefox addendum -- shown to Bill (old draft lines 1615-1760), NOT yet
-   decided.** Flagged to him: nothing in it measured; F10 contradicts
-   Setting 15 (turns password saving off for everyone); F2 "Strict" can break
-   sites; F10/F12 point at products.
+3. **Firefox addendum -- decided 15:03: "make the firefox changes and then i
+   will test it. keep it out of the guide."** Out of the 10-15 guide. Lifted
+   into its own draft, `GatewayGuard_FirefoxAddendum-Draft-2026-09-25-1503.md`:
+   F2 Standard not Strict; plain lines under the technical labels; F8 points
+   at Part 4 Getting help; F10 now matches Setting 15 (off only if you use a
+   separate password manager); F12 removed (named a product). A check line
+   under every step for Bill's live walk. ***Measured: Firefox is not
+   installed on CGDELL*** -- Bill tests.
 4. **"We will make the launch date."** Bill disagrees with Cloud's
    launch/after split (A-13 item 4): **everything goes into ascii45, and
    2026-10-15 holds.** Cloud's caution stands on the record: ascii45 still

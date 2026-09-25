@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-25 14:51 ET -->
-<!-- Commit: fa7fb54 -->
+<!-- Generated: 2026-09-25 15:04 ET -->
+<!-- Commit: b67b434 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-25 14:51 ET  |  **Commit:** `fa7fb54`  |  **Made:** 2026-09-25 13:23 ET
-- **Commit subject:** File Cloud's 09-25 review; apply its Part 3 fixes; sources filed; Copilot FT numbers renamed CP-1..CP-9
+- **Generated:** 2026-09-25 15:04 ET  |  **Commit:** `b67b434`  |  **Made:** 2026-09-25 14:51 ET
+- **Commit subject:** Record Bill's answers to Cloud: no product names in the guide, Parts 4-5 approved, everything in ascii45, 10-15 holds
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -19,7 +19,7 @@ document family and the single filename that is live right now. Take every
 filename from this table -- never from memory, never from another document,
 never by guessing which date looks newest.
 
-**83 rows follow.** If you cannot see all 83 of them, your
+**84 rows follow.** If you cannot see all 84 of them, your
 retrieval truncated the table -- **say so and ask for the rest, rather
 than answering from the handful you received.**
 
@@ -77,7 +77,7 @@ All paths are relative to `ProjectDocs/`.
 
 ### CLOUD REQUESTS AND CLOUD RESEARCH
 
-**27 rows in this group.** If you see fewer, this group was truncated -- say so.
+**28 rows in this group.** If you see fewer, this group was truncated -- say so.
 
 | What it is | The current file | Older versions present |
 |---|---|---|
@@ -106,6 +106,7 @@ All paths are relative to `ProjectDocs/`.
 | Guide reconciliation pack (Co-Pilot Parts 1-3, applied) | `GatewayGuard_GuideReconciliationPack-CoPilot-2026-09-17-1818.md` | 0 |
 | Cloud review: ascii44 triage, Guide Part 3, Part 4 outline | `GatewayGuard_CloudReview-ascii44Triage-GuidePart3-Part4-2026-09-25-1308.md` | 0 |
 | Guide Part 3 sources (evidence for the 09-24 edits) | `GatewayGuard_GuidePart3-Sources-2026-09-25-1320.md` | 0 |
+| Firefox addendum (standalone draft, not in the 10-15 guide) | `GatewayGuard_FirefoxAddendum-Draft-2026-09-25-1503.md` | 0 |
 | Review of Cloud research | `GatewayGuard_ReviewOfCloudResearch-2026-08-24-1105.md` | -- |
 | Review of Cloud research | `GatewayGuard_ReviewOfCloudResearch-ascii43-2026-09-05-1130.md` | -- |
 
