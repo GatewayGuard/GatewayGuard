@@ -6,7 +6,7 @@
 - **Dated:** 2026-09-16 16:27 ET
 - **Editor:** Claude Code (CGDELL)
 - **Purpose:** a verbatim `.md` twin of `Co-Pilot part 3 Additional Security and Priv-2026-09-16-1448.txt`, made because Claude Cloud's project-knowledge search did not surface any of the seven Copilot `.txt` files this session -- the same failure this project already fixed once for `.docx`/`.pdf` (Step 5, `CLAUDE.md`), showing up here for `.txt` instead.
-- **Nothing cut, nothing reworded below.** The `.txt` file named above remains the file of record; this exists only so Cloud's connector can read the same words.
+- **No longer verbatim.** Reconciliation pack R-01 to R-29 applied 2026-09-17; Bill's inline comments (left in the `.txt` above, in single quotes) applied 2026-09-24 -- Remote Desktop/Quick Assist, Advertising ID, Diagnostic Data, Widgets and the taskbar weather, other browsers' password setting, Wake on LAN's backup reason, locked controls, and the Part 4 lead-in. This `.md` is now the live text; the `.txt` is the record of Copilot's original plus Bill's comments.
 
 ---
 
@@ -40,12 +40,20 @@ Recommended: Off
 
 With your approval, Checkup will make this change for you.
 
-Many home users do not need Remote Desktop.
+On Windows 11 Pro, turn it off if you do not use it.
+
+Windows 11 Home cannot be reached by Remote Desktop, so there is nothing to turn off. Home can still connect out to another PC, for example a work computer, using the Remote Desktop Connection app.
+
+To let a family member help you, use Quick Assist, which is built into Windows. Press Ctrl + Windows key + Q, or click Start and type Quick Assist. The helper clicks Help someone and reads you a code. You type that code, click Submit, then click Allow. You can end the session at any time by clicking Leave.
+
+Only do this when you called the helper. Never do it for someone who called you.
 
 How To Check
 Open Settings.
 Select System.
 Select Remote Desktop.
+
+It should say Off. If it says On, turn it off.
 
 If Settings > System has no Remote Desktop entry, your computer is Windows 11 Home and cannot accept these connections. There is nothing to turn off.
 
@@ -78,9 +86,11 @@ Applications can use this identifier to personalize advertisements and recommend
 
 Why It Matters
 
-Advertising IDs do not directly improve computer security.
+This is a privacy setting, not a security risk.
 
-However, disabling them can reduce some forms of activity tracking and ad personalization.
+The advertising ID is a number apps can use to pick ads for you. It has no effect on web searches or websites.
+
+Turning it off does not reduce the number of ads you see. Apps simply can no longer use this number to tailor them to you.
 
 GatewayGuard Recommendation
 
@@ -115,9 +125,11 @@ Windows sends diagnostic information to Microsoft to help identify bugs, compati
 
 Why It Matters
 
-Diagnostic data can help Microsoft improve Windows.
+This is a privacy setting. It does not weaken your security.
 
-However, many users prefer to limit information sharing when possible.
+Windows always sends Microsoft a basic report on your PC's health. The extra Optional level adds the websites you visit in Edge, which programs you use, and copies of memory when a program crashes. Those copies can include parts of a file you had open.
+
+Windows Update and your protection work exactly the same at either level.
 
 GatewayGuard Recommendation
 
@@ -204,9 +216,9 @@ Widgets display news, weather, sports, and other information on the Windows task
 
 Why It Matters
 
-Widgets are primarily a convenience feature.
+Widgets is the weather button on the left of your taskbar and the news panel that opens from it.
 
-Disabling them can reduce distractions and background activity.
+The news panel carries advertising, and ads in Microsoft's news feed have been used to send people to fake "call this number" warning pages.
 
 GatewayGuard Recommendation
 
@@ -223,13 +235,13 @@ Turn Widgets off.
 
 What To Expect
 
-The Widgets button will disappear from the taskbar.
+The Widgets button disappears from the taskbar, and the temperature on the taskbar goes with it.
 
-You can re-enable it at any time.
+The panel still opens if you press Windows key + W, and you can turn Widgets back on at any time.
 
 When You Might Choose Differently
 
-Users who regularly use weather forecasts, news updates, or calendar information may prefer to keep Widgets enabled.
+If you check the weather on your taskbar every day, you may prefer to keep Widgets on and turn off only the news. Open the panel, click the settings button, and under Dashboards turn Discover off.
 
 Setting 15: Edge Password Saving
 What It Is
@@ -260,7 +272,15 @@ Open Settings.
 Select Passwords.
 How To Change It
 
-Disable password saving if another password manager is your primary solution.
+Turn off password saving if another password manager is your primary solution.
+
+Microsoft Edge is Microsoft's own browser. It is built on the same open-source foundation as Google Chrome, which is why the two look alike, but it is a separate product. Other browsers have the same setting:
+
+Chrome: three-dot menu > Passwords and autofill > Google Password Manager > Settings > Offer to save passwords and passkeys.
+
+Firefox: Settings > Privacy & Security > Ask to save passwords.
+
+⚠ VERIFY -- the Firefox label on a live copy of Firefox.
 
 What To Expect
 
@@ -340,11 +360,9 @@ Your computer can no longer be powered on remotely from another device.
 
 When You Might Choose Differently
 
-You may leave Wake on LAN enabled if:
+Keep Wake on LAN on only if another device in your home, such as a network storage box, has been set up to wake this PC.
 
-You remotely access your computer.
-You use network backup software.
-You administer multiple computers.
+Backup programs that run on this PC wake it with their own timer and do not need Wake on LAN. Windows Update does not need it either.
 A Note About Gray or Locked Controls
 
 Occasionally Windows may display messages such as:
@@ -359,8 +377,10 @@ In these situations, the setting may not be editable.
 
 This does not necessarily indicate a problem. Windows security features, system policies, or other configuration controls can sometimes manage a setting automatically.
 
-If GatewayGuard reports that the setting is already configured correctly, no further action is usually required.
+Checkup tells you when a Windows policy on your computer is forcing Microsoft Defender real-time protection, SmartScreen, or the Firewall. When that happens, Checkup says so instead of asking you to change something Windows will not let you change.
 
-Part 4: Making Changes Safely
+If Windows says a setting is managed by Smart App Control, that setting is already protected and cannot be changed there. This is normal, not a fault.
 
-Now that you understand each GatewayGuard recommendation, the next section explains how to apply changes safely, create backups when appropriate, and recover from common mistakes.
+Part 4: Before and After You Make Changes
+
+Every change in Parts 2 and 3 can be undone. The next section explains how to create a restore point before you start, how to undo a change, and what to do if something does not look right afterward.

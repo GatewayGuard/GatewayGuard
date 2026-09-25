@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-17 18:51 ET -->
-<!-- Commit: ee3cdc8 -->
+<!-- Generated: 2026-09-25 11:05 ET -->
+<!-- Commit: 11710d8 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-17 18:51 ET  |  **Commit:** `ee3cdc8`  |  **Made:** 2026-09-17 16:21 ET
-- **Commit subject:** Setting 17 re-checked live with the FT-256 fix in place: still NO_INDEX on CGDELL, and that's a different kind of block than setting 6's
+- **Generated:** 2026-09-25 11:05 ET  |  **Commit:** `11710d8`  |  **Made:** 2026-09-25 10:51 ET
+- **Commit subject:** Remove 371 files OneDrive already dropped from disk; kept in history (Bill approved)
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -33,7 +33,7 @@ All paths are relative to `ProjectDocs/`.
 |---|---|---|
 | Briefing -- read this first | `_READ-FIRST-Briefing-2026-08-20-1306.md` | 0 |
 | Session log | `GatewayGuard_SessionLog-2026-08-13-1433.md` | 0 |
-| Project instructions | `GatewayGuard_ProjectInstructions-2026-08-12-1652.md` | 1 |
+| Project instructions | `GatewayGuard_ProjectInstructions-2026-08-12-1652.md` | 0 |
 | Coding standards | `GatewayGuard_CodingStandards-2026-08-07-1330.md` | 0 |
 | Defect prevention playbook | `GatewayGuard_DefectPreventionPlaybook-2026-07-26-0619.md` | 0 |
 | Website standards | `GatewayGuard_WebsiteStandards-2026-07-26-0619.md` | 0 |
@@ -67,9 +67,9 @@ All paths are relative to `ProjectDocs/`.
 | What it is | The current file | Older versions present |
 |---|---|---|
 | Test results (raw run notes and logs) | `GatewayGuard_TestResults-ascii43-2026-09-04-2345.md` | 0 |
-| Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii43run2-2026-08-30-1723.md` | 4 |
+| Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii44run1-2026-09-24-2353.md` | 3 |
 | Response to Bill's field notes | `GatewayGuard_ResponseToBillsNotes-ascii43-2026-08-30-1815.md` | 0 |
-| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii44-2026-09-17-1441.md` | 3 |
+| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii44-2026-09-17-1441.md` | 2 |
 | Build plan (current) | `GatewayGuard_ascii44BuildPlan-2026-09-05-1130.md` | 1 |
 | Build scope -- what shipped vs. what is next | `GatewayGuard_ascii44Scope-WhatsInWhatsNext-2026-09-17-1441.md` | 0 |
 | Future settings (candidate list) | `GatewayGuard_FutureSettings-2026-08-24-2310.md` | 0 |
@@ -114,14 +114,14 @@ All paths are relative to `ProjectDocs/`.
 | What it is | The current file | Older versions present |
 |---|---|---|
 | Marketing plan (current) | `GatewayGuard_MarketingPlan-2026-08-22-1000.md` | 3 |
-| Guide rewrite draft (current) | `GatewayGuard_GuideRewrite-Draft-2026-08-22-1000.md` | 2 |
-| Website source pack (19 guide pages) | `GatewayGuard_WebsiteSourcePack-2026-08-22-2235.md` | 2 |
+| Guide rewrite draft (current) | `GatewayGuard_GuideRewrite-Draft-2026-08-22-1000.md` | 0 |
+| Website source pack (19 guide pages) | `GatewayGuard_WebsiteSourcePack-2026-08-22-2235.md` | 0 |
 | Guide v9 source pack | `GatewayGuard_GuideV9-SourcePack-2026-08-15-1436.md` | 0 |
 | Marketing source pack | `GatewayGuard_MarketingSourcePack-2026-08-13-1427.md` | 0 |
 | Pricing copy (website) | `GatewayGuard_PricingCopy-2026-08-22-1000.md` | 1 |
 | Annual price decision | `GatewayGuard_PriceDecision-Annual-2026-08-21-1445.md` | 0 |
 | Refund policy and terms | `GatewayGuard_Decisions-RefundAndTerms-2026-08-22-1510.md` | 0 |
-| Licence agreement (EULA) | `GatewayGuard_License-2026-09-05-0018-TEXT.md` | 6 |
+| Licence agreement (EULA) | `GatewayGuard_License-2026-09-05-0018-TEXT.md` | 5 |
 
 ### WORKING RULES AND WHAT IS WAITING ON BILL
 
@@ -194,7 +194,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-09-17 18:50 [Claude Code -- CGDELL] -- CO-PILOT'S SETTING-6/17 DISTINCTION WAS RIGHT, AND IT FOUND A STALE LINE OF ITS OWN
+## Session: 2026-09-25 11:04 [Claude Code -- CGDELL] -- AFTER THE PC RESET: GIT BACK, 371 FILES RETIRED, ascii44 TRIAGED, AND PASSWORD-ON-WAKE WAS NEVER READABLE ANYWHERE
 ```
 
 **If it is not in your copy of the session log, you are reading an old

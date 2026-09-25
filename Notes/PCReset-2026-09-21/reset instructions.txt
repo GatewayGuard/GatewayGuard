@@ -1,0 +1,88 @@
+reset instructions
+Understood — **if you don’t have admin rights, you cannot reset the PC from inside Windows.**  
+But you *can still reset the PC* using the **Windows Recovery Environment**, which does **NOT** require admin rights.
+
+Here is the **exact, step‑by‑step, command‑free procedure** you can do **right now**.
+
+---
+
+## ⭐ Reset the PC *without* admin rights  
+Follow these steps **exactly**:
+
+### 1. **Hold SHIFT and click Restart**
+Do this from the login screen:
+
+1. Click the **Power icon** (bottom‑right).  
+2. Hold **SHIFT**.  
+3. While holding SHIFT, click **Restart**.
+
+This forces Windows into the recovery menu.
+
+---
+
+### 2. **Choose “Troubleshoot”**
+After reboot:
+
+- Select **Troubleshoot**
+
+---
+
+### 3. **Choose “Reset this PC”**
+Then choose:
+
+- **Reset this PC**
+
+---
+
+### 4. Choose **Remove everything**
+This wipes all accounts, including the broken admin situation.
+
+Select:
+
+- **Remove everything**
+
+---
+
+### 5. Choose **Cloud download**
+This gives you a clean, fresh Windows 11 image.
+
+Select:
+
+- **Cloud download**
+
+Windows will now reinstall itself **without needing any admin rights**.
+
+---
+
+## ⭐ After reset (VERY IMPORTANT)
+When Windows restarts after the reset:
+
+### 1. **Sign in with your personal Microsoft account**
+Use:
+
+**william.wfbiii@gmail.com**
+
+This will become the **first account**, which means it becomes the **administrator** automatically.
+
+### 2. Create your PIN  
+Windows will ask — just set it.
+
+### 3. After setup, recreate your other accounts  
+Use Windows Terminal (Admin):
+
+- Dad  
+- CGAdmin  
+- localuser  
+
+I’ll give you the exact commands when you’re ready.
+
+---
+
+## If you want, I can walk you through the reset *live*  
+Just tell me:
+
+**“I’m at the recovery menu”**  
+or  
+**“I’m ready to reset”**
+
+I’ll give you the next step instantly.

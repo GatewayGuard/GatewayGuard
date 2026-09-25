@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-17 18:50 ET
+- **Last Modified:** 2026-09-25 11:04 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -12,6 +12,99 @@
   Code) so any Claude instance can resume with full context.
   Updated after every file produced or decision made.
   Downloaded by Bill at session end and uploaded to project immediately.
+
+---
+---
+
+## Session: 2026-09-25 11:04 [Claude Code -- CGDELL] -- AFTER THE PC RESET: GIT BACK, 371 FILES RETIRED, ascii44 TRIAGED, AND PASSWORD-ON-WAKE WAS NEVER READABLE ANYWHERE
+
+Session ran 2026-09-24 21:42 to 2026-09-25 11:04 ET.
+
+**CGDELL was reset around 2026-09-21** (Bill's reset notes on the D: USB
+stick say so; now filed in `Notes\PCReset-2026-09-21\`). ***Measured: git
+and Python were both gone -- `git` not on PATH, `python` resolved only to the
+Microsoft Store stub.*** Installed Git 2.55.0 and Python 3.13.15 (all users)
+with winget, plus `python-docx` for the two `Tool2\` scripts that import it.
+Git identity set to William F. Burns III / william.wfbiii@gmail.com.
+**Do not run `GatewayGuard-PostReset.ps1`** -- Copilot wrote it; it would set
+`DisableFileSyncNGSC=1` (turns OneDrive sync off, where this whole project
+lives), commit under the wrong surname, and clone four repos that do not exist.
+
+**OneDrive fights git again, one new way.** The first commit failed:
+*"unable to append to '.git/logs/refs/heads/main': Invalid argument"* --
+OneDrive holds git's reflog files as cloud items (attributes 0x420).
+***Fixed with `git config --local windows.appendAtomically false`***, the
+fix git itself suggested. Undo: `git config --local --unset
+windows.appendAtomically`. First push after the reset needed Bill to sign in
+to GitHub from his own terminal; Claude Code's shell cannot show the prompt.
+
+**371 tracked files retired -- commit `11710d8`, pushed and verified.**
+***Measured: 371 tracked files missing from disk, 689 untracked.*** OneDrive
+had undone the 2026-09-04 retire-to-`Archive\` moves -- the D: backup dated
+09-15 already shows the same state, so the reset did not cause it. Bill:
+*"We don't need those files... get rid of them again."* The 280 loose copies
+that had reappeared in `ProjectDocs\` (incl. the 14.6 MB PCMag page) were
+checked byte-identical to committed blobs, then removed from disk. Everything
+stays in history.
+
+**THE GITHUB REPO IS PUBLIC.** ***Measured via the GitHub API:
+`GatewayGuard/GatewayGuard`, `private: False`.*** The two "Recovery Keys"
+files held only the words "Recovery Keys" -- no keys were exposed. Raised to
+Bill; nothing changed.
+
+**D: drive (8 GB USB) swept for the past two weeks.** 1,886 files changed
+since 09-10; 418 already in OneDrive; only the three PC-reset files were new
+and they are filed. Git internals dumped flat into `D:\GG-LLC\` and Windhawk
+app cache were deliberately not copied.
+
+**Guide comments applied (Bill's single-quoted notes).**
+- Part 1: "greatest" to "significant" per Bill, and a PL-4 sweep for the
+  same class across all three twins -- four more changed, including Part 2's
+  identical "greatest security benefit".
+- Part 2: ***no quoted comments exist in any Part 2 file, on C: or D:*** --
+  only a stray "Guiide". Told Bill they were likely never saved.
+- Part 3: Remote Desktop (Home connects out, cannot be reached; Quick Assist
+  steps); Advertising ID and Diagnostic Data rewritten as privacy, not
+  security; Widgets -- ***sourced: the taskbar temperature IS the Widgets
+  button, so it goes too***, with a keep-weather-drop-news option; Chrome and
+  Firefox password settings added (Firefox label carries a new VERIFY); Wake
+  on LAN's "network backup software" replaced -- ***sourced: Veeam, Macrium
+  and Windows Update wake the PC with timers, not WoL***; locked-controls
+  note now states exactly what `Get-GGPolicyLock` detects; Part 4 lead-in no
+  longer implies earlier changes were unsafe.
+- **Decision for Bill: naming Bitwarden.** Free, USA, audited yearly. The
+  approved-products rule forbids it until he says yes.
+
+**Part 4 of the guide has never been written** -- only its lead-in line at
+the end of Part 3 exists.
+
+**ascii44 field run triaged.** ***9 run logs on SANDY, 2026-09-19/20, plus
+Bill's 32 notes*** -> `ProjectDocs\GatewayGuard_FieldTestTriage-ascii44run1-2026-09-24-2353.md`,
+logs copied to `Test_Results\FieldRun-ascii44\`. New FT-265 through FT-285.
+Two findings re-measured by Claude Code before filing:
+- **FT-268: `powercfg /query` omits hidden settings; CONSOLELOCK is hidden.**
+  ***Measured on CGDELL 2026-09-24 23:53: `/query` returns only the scheme
+  header; `/qh` returns AC and DC index 0x1.*** So the 09-17 conclusion that
+  setting 17 is "unreadable on this machine" was wrong -- the build reads it
+  with the wrong switch, on every machine. FT-256's four-state reader is
+  correct and stays; its input command is the defect.
+  **`GatewayGuard_SettingsLocationList-2026-09-08-2130.md` row 17 and its
+  FT-256 section are now stale on this point and need correcting.**
+- **FT-265: screens 10 and 11 re-run on every resume.** ***Measured:
+  `Get-WinEdition` line 9812 and `Get-RAMStatus` line 9815 are
+  unconditional.*** Explains Bill's notes 9, 14, 21 and 24.
+Twelve decisions for Bill are listed in the triage, each with a
+recommendation.
+
+**Measured on CGDELL today, for the record:** `TaskbarDa` is now absent
+(read 1 on 09-17); `AllowTelemetry` = 3 (Optional diagnostic data).
+
+**Next free FT number: 286.**
+
+Files: `ProjectDocs\GatewayGuard_CoPilotGuidePart1/2/3-2026-09-16-1627.md`,
+`ProjectDocs\GatewayGuard_FieldTestTriage-ascii44run1-2026-09-24-2353.md`
+(new), `Test_Results\FieldRun-ascii44\` (new, 10 files),
+`Notes\PCReset-2026-09-21\` (new, 3 files), this log.
 
 ---
 ---

@@ -1,0 +1,126 @@
+﻿============================================================
+  GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+  Build: ascii44
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-09-19 14:08:35
+  Computer: SANDY
+  Machine:  HP HP Laptop 17-by1xxx
+  Machine ID: F7F13A97D58D (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[2026-09-19 14:08:35] [OK] Console control handler registered -- Ctrl+C in Mark mode can no longer end the session (FT-150), and closing the window still writes the log footer (FT-160)
+[2026-09-19 14:08:35] [START] Tool launched v3.1 build ascii44
+[2026-09-19 14:08:35] [INFO] Log location: C:\Users\willi\OneDrive\GatewayGuard\Logs  (OneDrive -- already set up on this PC)
+[2026-09-19 14:08:35] [INFO] Machine: HP HP Laptop 17-by1xxx | MachineID: F7F13A97D58D
+[2026-09-19 14:08:35] [OK] Sleep/shutdown prevention activated
+[2026-09-19 14:08:36] [OK] QuickEdit AND mouse input reporting disabled for this session (FT-01, FT-171a) -- re-asserted silently from here on
+[2026-09-19 14:08:36] [SCREEN] [SCREEN-25] (shown as screen 1a) Rendered: WELCOME BACK
+[2026-09-19 14:08:44] [KEY] Key 'S' accepted at: Show-ResumePrompt
+[2026-09-19 14:08:44] [STATE] User chose to START OVER -- checkpoint cleared
+[2026-09-19 14:08:46] [KEY] Continue accepted at: Show-FontInstructions
+[2026-09-19 14:08:47] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-09-19 14:08:47] [SCREEN] [SCREEN-28] (shown as screen 4) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[2026-09-19 14:08:47] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-09-19 14:08:48] [SCREEN] [SCREEN-29] (shown as screen 5) Rendered: BEFORE YOU START -- YOUR WINDOW
+[2026-09-19 14:08:48] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-09-19 14:08:48] [SCREEN] [SCREEN-78] (shown as screen 6) Rendered: BEFORE YOU START -- YOUR KEYBOARD
+[2026-09-19 14:08:48] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-09-19 14:08:48] [SCREEN] [SCREEN-30] (shown as screen 7) Rendered: WHAT HAPPENS NEXT -- PLEASE READ
+[2026-09-19 14:08:48] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-09-19 14:08:48] [SCREEN] [SCREEN-02] (shown as screen 8) Rendered: HOW TO SCROLL BACK (AND COPY) IN THIS WINDOW
+[2026-09-19 14:08:49] [KEY] Continue accepted at: Show-ScrollCopyTip
+[2026-09-19 14:08:49] [SCREEN] [SCREEN-05] (shown as screen 9) Rendered: !  IMPORTANT -- READ BEFORE CONTINUING
+[2026-09-19 14:08:54] [KEY] Key 'Y' accepted at: Test-PersonalComputer
+[2026-09-19 14:08:54] [CONFIRM] Personal computer confirmed by user
+[2026-09-19 14:08:54] [OK] Domain check passed -- not domain joined
+[2026-09-19 14:08:54] [OK] Administrator access confirmed
+[2026-09-19 14:08:56] [KEY] Continue accepted at: Test-AdminAccess
+[2026-09-19 14:08:56] [INFO] Windows Edition: Core -- Windows 11 Home
+[2026-09-19 14:08:56] [SCREEN] [SCREEN-34] (shown as screen 10) Rendered: WINDOWS EDITION DETECTED
+[2026-09-19 14:08:56] [INFO] Home edition -- Remote Desktop and Group Policy unavailable
+[2026-09-19 14:08:58] [KEY] Continue accepted at: Get-WinEdition
+[2026-09-19 14:08:58] [SCREEN] [SCREEN-35] (shown as screen 11) Rendered: YOUR PC -- RAM: 8 GB
+[2026-09-19 14:08:58] [WARN] RAM: 8 GB (minimal)
+[2026-09-19 14:08:59] [KEY] Continue accepted at: Get-RAMStatus
+[2026-09-19 14:09:06] [KEY] Key 'Y' accepted at: Test-TimeDateSync
+[2026-09-19 14:09:06] [OK] Time/date confirmed correct by user: Saturday, September 19, 2026 -- 2:08 PM (UTC-05:00) Eastern Time (US & Canada)
+[2026-09-19 14:09:12] [INFO] Secure Boot state read on all editions (FT-143): True
+[2026-09-19 14:09:12] [SCREEN] [SCREEN-09] (shown as screen 12) Rendered: YOUR SYSTEM AT A GLANCE
+[2026-09-19 14:09:12] [INFO] System Baseline Summary displayed
+[2026-09-19 14:09:22] [KEY] Continue accepted at: Show-SystemBaselineSummary
+[2026-09-19 14:09:22] [STATE] Checkpoint saved: Baseline
+[2026-09-19 14:09:22] [SCREEN] [SCREEN-26] (shown as screen 13) Rendered: YOUR PC'S SECURITY TOOLS -- A QUICK INTRODUCTION
+[2026-09-19 14:09:26] [KEY] Continue accepted at: Show-SecurityToolsBriefing
+[2026-09-19 14:09:26] [SCREEN] [SCREEN-27] (shown as screen 14) Rendered: THE SCANS WE RECOMMEND -- AND WHY
+[2026-09-19 14:09:30] [KEY] Continue accepted at: Show-ScanPlanBriefing
+[2026-09-19 14:09:30] [STATE] Checkpoint saved: Briefing
+[2026-09-19 14:09:30] [SCREEN] [SCREEN-39] (shown as screen 14a) Rendered: REMINDER: PRE-SCAN RECOMMENDED
+[2026-09-19 14:09:42] [KEY] Key 'Y' accepted at: Show-PreScanGate
+[2026-09-19 14:09:42] [CONFIRM] Repeat run -- user confirmed to continue
+[2026-09-19 14:09:42] [SCREEN] [SCREEN-38] (shown as screen 16) Rendered: DEFENDER OFFLINE SCAN
+[2026-09-19 14:09:47] [KEY] Key 'N' accepted at: Invoke-OfflineScanOffer
+[2026-09-19 14:09:47] [SKIP] User skipped Defender Offline Scan
+[2026-09-19 14:09:48] [KEY] Continue accepted at: Invoke-OfflineScanOffer
+[2026-09-19 14:09:49] [SCREEN] [SCREEN-43] (shown as screen 17) Rendered: OK  ANTIVIRUS STATUS -- HEALTHY SETUP
+[2026-09-19 14:09:49] [OK] Defender active as primary AV. MB Free installed as companion.
+[2026-09-19 14:09:54] [KEY] Continue accepted at: Test-DefenderPrimary
+[2026-09-19 14:09:54] [STATE] Checkpoint saved: DefenderAV
+[2026-09-19 14:09:55] [SCREEN] [SCREEN-73] (shown as screen 18) Rendered: MALWAREBYTES DETECTED ON THIS PC
+[2026-09-19 14:10:08] [KEY] Key 'N' accepted at: Show-MalwarebytesFollowUp
+[2026-09-19 14:10:08] [SKIP] User skipped Malwarebytes scan (already installed, state: FreeCompanion)
+[2026-09-19 14:10:12] [KEY] Continue accepted at: Show-MalwarebytesFollowUp
+[2026-09-19 14:10:12] [STATE] Checkpoint saved: Malwarebytes
+[2026-09-19 14:10:12] [OK] Sleep/shutdown prevention activated
+[2026-09-19 14:10:12] [OK] AC power confirmed. Battery present: True (100%). Sleep prevention active.
+[2026-09-19 14:10:19] [KEY] Continue accepted at: Test-PowerStatus
+[2026-09-19 14:10:19] [WARN] Password on wake: read produced no setting index (FT-256, NO_INDEX). Raw powercfg output: Power Scheme GUID: 48684d4a-8524-4093-8a63-ea7132b79c1c (HP Recommended)
+[2026-09-19 14:10:24] [KEY] Continue accepted at: Run-PowerSettingsCheck
+[2026-09-19 14:10:24] [SCREEN] [SCREEN-50] (shown as screen 19) Rendered: POWER SETTINGS -- SECURITY REVIEW
+[2026-09-19 14:10:24] [INFO] Power settings: PW=Could not read -- check by hand FastStart=DISABLED -- GOOD WOL=DISABLED -- GOOD Screen=Found: NEVER (your existing setting) -- recommend 5 min: Settings -> System -> Power & sleep CritBatt=HIBERNATE -- GOOD
+[2026-09-19 14:10:37] [KEY] Key 'Y' accepted at: Run-PowerSettingsCheck
+[2026-09-19 14:10:37] [WARN] Password on wake re-read found no setting index (FT-256). Raw powercfg output: Power Scheme GUID: 48684d4a-8524-4093-8a63-ea7132b79c1c (HP Recommended)
+[2026-09-19 14:10:37] [APPLIED] Password on wake: was 'Could not read -- check by hand' -> now 'could not re-read -- check manually'
+[2026-09-19 14:10:58] [KEY] Continue accepted at: Run-PowerSettingsCheck
+[2026-09-19 14:10:58] [STATE] Checkpoint saved: PowerSettings
+[2026-09-19 14:10:58] [START] === Apps Audit Started ===
+[2026-09-19 14:10:59] [SCREEN] [SCREEN-51] (shown as screen 20) Rendered: APPS AUDIT RESULTS
+[2026-09-19 14:10:59] [DONE] === Apps Audit Complete ===
+[2026-09-19 14:11:07] [KEY] Look-back opened at: Run-AppsAudit
+[2026-09-19 14:12:36] [KEY] Continue accepted at: Run-AppsAudit
+[2026-09-19 14:12:36] [STATE] Checkpoint saved: AppsAudit
+[2026-09-19 14:12:36] [SCREEN] [SCREEN-52] (shown as screen 21) Rendered: GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+[2026-09-19 14:17:41] [KEY] Key '1' accepted at: Select-Mode
+[2026-09-19 14:17:41] [INFO] Mode selected: Console
+[2026-09-19 14:17:41] [INFO] Item 6 (Edge phishing protection): registry read BLOCKED by Tamper Protection -- reporting Unknown rather than a fault (FT-141)
+[2026-09-19 14:17:44] [WARN] Item 17 (password on wake): read produced no setting index (FT-256, NO_INDEX). Raw powercfg output: Power Scheme GUID: 48684d4a-8524-4093-8a63-ea7132b79c1c (HP Recommended)
+[2026-09-19 14:17:44] [DONE] Get-AllStatuses complete -- all 19 settings probed
+[2026-09-19 14:17:44] [SCREEN] [SCREEN-53] (shown as screen 22) Rendered: QUICK QUESTION -- YOUR PASSWORDS
+[2026-09-19 14:17:44] [INFO] NOT SET (expected) -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1:3639 char:23 -- user was at: Show-ScopeDisclaimer -- Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection' because it does not exist.
+[2026-09-19 14:17:44] [ERROR] SILENT ERROR -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1:3639 char:23 -- user was at: Show-ScopeDisclaimer -- Property EnableSmartScreen does not exist at path HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System.
+[2026-09-19 14:17:44] [INFO] NOT SET (expected) -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1:3639 char:23 -- user was at: Show-ScopeDisclaimer -- Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' because it does not exist.
+[2026-09-19 14:17:44] [INFO] NOT SET (expected) -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1:3639 char:23 -- user was at: Show-ScopeDisclaimer -- Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' because it does not exist.
+[2026-09-19 14:17:44] [INFO] NOT SET (expected) -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1:3639 char:23 -- user was at: Show-ScopeDisclaimer -- Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' because it does not exist.
+[2026-09-19 14:17:49] [KEY] Key 'Y' accepted at: Show-ScopeDisclaimer
+[2026-09-19 14:17:49] [INFO] User has a password manager -- Edge Password Saving change stays available
+[2026-09-19 14:18:33] [KEY] Continue accepted at: Show-ScopeDisclaimer
+[2026-09-19 14:18:33] [SCREEN] [SCREEN-54] (shown as screen 23) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 1 of 2)
+[2026-09-19 14:18:41] [KEY] Nav 'BACK' at: Show-ScopeDisclaimer
+[2026-09-19 14:18:48] [KEY] Key 'Y' accepted at: Show-ScopeDisclaimer
+[2026-09-19 14:18:48] [INFO] Password-manager answer revised via Back: True
+[2026-09-19 14:18:48] [SCREEN] [SCREEN-54] (shown as screen 23) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 1 of 2)
+[2026-09-19 14:22:29] [KEY] Nav 'NEXT' at: Show-ScopeDisclaimer
+[2026-09-19 14:22:30] [SCREEN] [SCREEN-75] (shown as screen 24) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 2 of 2)
+[2026-09-19 14:22:36] [KEY] Nav 'BACK' at: Show-ScopeDisclaimer
+[2026-09-19 14:22:36] [SCREEN] [SCREEN-54] (shown as screen 23) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 1 of 2)
+[2026-09-19 14:22:39] [KEY] Nav 'BACK' at: Show-ScopeDisclaimer
+[2026-09-19 14:22:50] [OK] Sleep prevention deactivated -- normal power management restored (called from: PowerShell.Exiting engine event (last-resort cleanup))
+
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================

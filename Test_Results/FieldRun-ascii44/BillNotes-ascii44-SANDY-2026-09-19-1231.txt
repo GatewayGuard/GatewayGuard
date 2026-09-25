@@ -1,0 +1,32 @@
+1. Scr 2 – Scrolling
+2. No Scr #at top- Set your font… etc/ scr #4 at the bottom
+3. Scr 8 – re copying – letter m did nothing had to select Mark to initiate copy.  Copy did work.  Cntl C exited the pgm will start over
+4. Scr 10 – says bitlocker wll be handeld automatically 
+5. Scr 12 – shows 2 hardrives in correct order
+6. Scr 13 – Recommends we add Malwarebytes – no longer true – rewrite. Add C:\ To GG checkup statement
+7. Scr 14  – wrong in a lot of ways – we recommend defended offline and then full screen we are np longer recommending MB
+8. Scr 16 – Initiated offline scan – Scan started did not return had to reopen my word and notpad files. No indication  from PC on what had just happened – at some point showed scr 14a before running offline scan -   Resuming
+9. Went back to Scr 10 after I assume offline scan ended
+10. Scr 14b after Scr 10 – B goes back to Scr 11 which looks like it was skipped B goes back to Scr 10 and then next Scr is 14b again -IT then opened Devoce Secirty not Protection History – Virus & protection says last scan was on 9/14 and protection history says ‘no recent actions’ 
+11. Scr 17 – another mis-written screen talks about defemder + MB bring the recommended setup that it found – not true rewrite
+12. I thought we had rescoped the start so  we would check tamper setting first and then run a loop for windows updates until they finish. Etc. Am I even running Ascii44. Nothing has told me I am will check log now – log says Ascii44
+13. Scr 18 – says MB dectected on this machine, which the user has been told twice before already.  Too long – also showed   a Y answer to something – hit spacebar and screen showed nothing – tried to scroll back and accidentl ended checup – will resume                 
+14. Went back  to Scr 10 then Scr 11 then checking power related settomgs no scr #
+15. Scr 19 – to long – Selected N – B did not work – description at bottom should read good for those that are set as recommended – there are two wifi  devices + an ethernet adaptor.  What did checkup report on and shouldn’t report on the second wifi also.= lost the program not sure why will reseme
+16. Pressed a number of keys, one of which was N and it said to press B to go back and I die and ended up on Scr 10 again – We need to accurately resume at the screem they last left or explain what happened and what will happen next, 
+17. Scr 11 – 
+18. Power checking settings againno screem #
+19. Scr 19 – Y this time and it it implies checkup will change it reword – After restart  WAKE ON LAN SAID COULD NOT BE READ. PERFORM MANUALLY ETC. I HIT SPACE BAR AND THEN B FOR BACK AND ENDED UP GOING FORWARD TO SCR 21 CHECK LOGS FOR EXACT SEQUENCE 
+20. Scr – 21 want tp gp back tp check something can’t will exit and resume – SEE MY 19, ABOVE CAPS FOR WHAT I THINK HAPPENED
+21. Scr 10 then scr 11 thenscr 21  could not check what I wanted to will resume and will exit AGAIN AND start over \
+22. -  Scr 21 again selected 2 tried to go  back to console select  -  could not. Will resume again Cntl C ended program
+23. Resume again – why do we ask on resume the same question as before as they cannot be on a different computer – unnecessary – eliminate
+24. Scr 10  
+25. Scr 21 – Select 2 – popup – see "C:\Users\willi\OneDrive\Personal\Pictures\Screenshots\Screenshot (24).png" snf 25.png The msg no longer appears – a lot of added popups a little confusing, what are the what looks like checkboxes onleft side for.  We nee a writeup to te;; user what to do if he selects option 2 – but what is the advantage of usimg oprion 2 
+26. Cpu;d mpt get baxl tp se;ect cpmsp;e 1 w// try resume again
+27. Scr 26-27 – B & N do nothing – Tsmper Protection – Good. Windows Hello  - Not setup manual action needed – Edge boost = disabled Good Wodgets – Enabled needs attention (Bpth correct)
+28. Selected Encrytiom and  R to run  - #6 phishing - change wording You selected this item, so Checkup is applying it now. Applying.  everywhere we provide a guide section title  put in page numbers when we publish.#9 instructions no lf run off the screem #12 which is it checkup is applying it or on next screen #14 same as 12 #17 what are we doing here -   Result: Password required on wake -- enabled for both AC and battery – GOOD = intervention – use consistent wording for all settings 
+29. Device Encryption -  Currently temporarily disabled will resume automaticlally next time restart
+30. Scr 33a -  why are we doing this here do it earlier they selected to it don’t make them make the decision again change the previous and all screens that they have selected these and the next steip show all checkup  changed, The next screen walk them through the ones that require manual changes. Actiual settimg was already off Do we need new way to check for this?
+31. 33b – selected yes and error msg Done: ERROR: Attempted to perform an unauthorized operation.
+32. Scr 34 - Change MB or eliminated MB writeup Need to tell them how to do 2FA or provide3 guide page

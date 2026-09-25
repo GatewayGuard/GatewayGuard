@@ -12,7 +12,7 @@
 
 Part 2: Core Security Settings
 
-This section covers the most important security protections available in Windows 11. For all home users, these settings provide the greatest security benefit and should be reviewed before moving on to privacy, convenience, or performance settings.
+This section covers the core security protections available in Windows 11. For all home users, these settings provide significant security benefit and should be reviewed before moving on to privacy, convenience, or performance settings.
 
 Setting 1: Windows Update
 What It Is

@@ -1,0 +1,70 @@
+﻿============================================================
+  GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+  Build: ascii44
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-09-19 11:45:39
+  Computer: SANDY
+  Machine:  HP HP Laptop 17-by1xxx
+  Machine ID: F7F13A97D58D (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[2026-09-19 11:45:39] [OK] Console control handler registered -- Ctrl+C in Mark mode can no longer end the session (FT-150), and closing the window still writes the log footer (FT-160)
+[2026-09-19 11:45:39] [START] Tool launched v3.1 build ascii44
+[2026-09-19 11:45:39] [INFO] Log location: C:\Users\willi\OneDrive\GatewayGuard\Logs  (OneDrive -- already set up on this PC)
+[2026-09-19 11:45:39] [INFO] Machine: HP HP Laptop 17-by1xxx | MachineID: F7F13A97D58D
+[2026-09-19 11:45:39] [OK] Sleep/shutdown prevention activated
+[2026-09-19 11:45:39] [WARN] Write-GGBox: a line was truncated to fit the window (60 cols) -- FT-217
+[2026-09-19 11:45:39] [WARN] Write-GGBox: a line was truncated to fit the window (60 cols) -- FT-217
+[2026-09-19 11:45:39] [WARN] Write-GGBox: a line was truncated to fit the window (60 cols) -- FT-217
+[2026-09-19 11:45:39] [WARN] Write-GGBox: a line was truncated to fit the window (60 cols) -- FT-217
+[2026-09-19 11:45:39] [WARN] Write-GGBox: a line was truncated to fit the window (60 cols) -- FT-217
+[2026-09-19 11:45:39] [WARN] Write-GGBox: a line was truncated to fit the window (60 cols) -- FT-217
+[2026-09-19 11:45:39] [WARN] Write-GGBox: a line was truncated to fit the window (60 cols) -- FT-217
+[2026-09-19 11:45:39] [OK] QuickEdit AND mouse input reporting disabled for this session (FT-01, FT-171a) -- re-asserted silently from here on
+[2026-09-19 11:45:39] [SCREEN] [SCREEN-25] (shown as screen 1a) Rendered: WELCOME BACK
+[2026-09-19 11:45:53] [KEY] Key 'S' accepted at: Show-ResumePrompt
+[2026-09-19 11:45:53] [STATE] User chose to START OVER -- checkpoint cleared
+[2026-09-19 11:46:02] [KEY] Continue accepted at: Show-FontInstructions
+[2026-09-19 11:46:07] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-09-19 11:46:07] [SCREEN] [SCREEN-28] (shown as screen 4) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[2026-09-19 11:57:28] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-09-19 11:57:28] [SCREEN] [SCREEN-29] (shown as screen 5) Rendered: BEFORE YOU START -- YOUR WINDOW
+[2026-09-19 11:57:34] [KEY] Nav 'BACK' at: Show-FontInstructions
+[2026-09-19 11:57:34] [SCREEN] [SCREEN-28] (shown as screen 4) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[2026-09-19 11:57:41] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-09-19 11:57:41] [SCREEN] [SCREEN-29] (shown as screen 5) Rendered: BEFORE YOU START -- YOUR WINDOW
+[2026-09-19 11:57:46] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-09-19 11:57:46] [SCREEN] [SCREEN-78] (shown as screen 6) Rendered: BEFORE YOU START -- YOUR KEYBOARD
+[2026-09-19 11:58:33] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-09-19 11:58:34] [SCREEN] [SCREEN-30] (shown as screen 7) Rendered: WHAT HAPPENS NEXT -- PLEASE READ
+[2026-09-19 11:58:40] [KEY] Nav 'BACK' at: Show-FontInstructions
+[2026-09-19 11:58:40] [SCREEN] [SCREEN-78] (shown as screen 6) Rendered: BEFORE YOU START -- YOUR KEYBOARD
+[2026-09-19 11:58:42] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-09-19 11:58:42] [SCREEN] [SCREEN-30] (shown as screen 7) Rendered: WHAT HAPPENS NEXT -- PLEASE READ
+[2026-09-19 11:59:00] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-09-19 11:59:00] [SCREEN] [SCREEN-02] (shown as screen 8) Rendered: HOW TO SCROLL BACK (AND COPY) IN THIS WINDOW
+[2026-09-19 11:59:04] [KEY] Continue accepted at: Show-ScrollCopyTip
+[2026-09-19 11:59:04] [SCREEN] [SCREEN-05] (shown as screen 9) Rendered: !  IMPORTANT -- READ BEFORE CONTINUING
+[2026-09-19 11:59:12] [KEY] Key 'Y' accepted at: Test-PersonalComputer
+[2026-09-19 11:59:12] [CONFIRM] Personal computer confirmed by user
+[2026-09-19 11:59:12] [OK] Domain check passed -- not domain joined
+[2026-09-19 11:59:12] [OK] Administrator access confirmed
+[2026-09-19 11:59:15] [KEY] Continue accepted at: Test-AdminAccess
+[2026-09-19 11:59:15] [INFO] Windows Edition: Core -- Windows 11 Home
+[2026-09-19 11:59:15] [SCREEN] [SCREEN-34] (shown as screen 10) Rendered: WINDOWS EDITION DETECTED
+[2026-09-19 11:59:15] [INFO] Home edition -- Remote Desktop and Group Policy unavailable
+[2026-09-19 11:59:27] [KEY] Continue accepted at: Get-WinEdition
+[2026-09-19 11:59:27] [SCREEN] [SCREEN-35] (shown as screen 11) Rendered: YOUR PC -- RAM: 8 GB
+[2026-09-19 11:59:27] [WARN] RAM: 8 GB (minimal)
+[2026-09-19 11:59:40] [KEY] Look-back opened at: Get-RAMStatus
+[2026-09-19 12:01:32] [OK] Sleep prevention deactivated -- normal power management restored (called from: PowerShell.Exiting engine event (last-resort cleanup))
+
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================

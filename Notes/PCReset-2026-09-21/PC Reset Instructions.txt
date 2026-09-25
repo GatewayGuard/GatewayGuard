@@ -1,0 +1,935 @@
+Absolutely, Admin. I’ll give you **the exact, clean, step‑by‑step instructions** to follow **immediately after you reset your PC**, so the setup goes smoothly and you don’t get stuck in the Microsoft‑account/PIN/login mess again.
+
+Below is the **precise sequence** you should follow once the reset finishes and Windows starts asking you questions.
+
+---
+
+## Your post‑reset setup instructions  
+(Ordered, technical, no fluff — exactly what to do)
+
+
+
+
+
+---
+
+## Summary  
+After the reset:
+
+1. **Sign in with your personal Microsoft account** (william.wfbiii@gmail.com).  
+2. **Create your PIN**.  
+3. **Verify admin status**.  
+4. **Recreate Dad, CGAdmin, localuser**.  
+5. **Set passwords using `net user`**.  
+6. **Optionally add your business account** (but not as a login).  
+7. **Clean the login screen** so only the correct accounts appear.
+
+---
+
+If you want, I can also give you:
+
+- A **minimal version** of these steps (10 lines, command‑only)  
+- A **version tailored for your GatewayGuard workflow**  
+- A **version that prevents Microsoft account conflicts permanently**
+
+Admin — here is **the version that permanently prevents Microsoft‑account conflicts**, written in your preferred **step‑by‑step, command‑focused, no‑fluff** style.
+
+This is the **exact sequence** that keeps Windows 11 from mixing your personal MS account, your business MS account, and your local admin accounts.  
+Follow it **in order** after the reset.
+
+---
+
+# 🛡️ **Windows 11 Setup: Conflict‑Proof Procedure**
+
+## 1. **During Reset / Out‑of‑Box Setup**
+- When Windows asks for a Microsoft account → **use ONLY your personal account**  
+  **william.wfbiii@gmail.com**
+- Do **NOT** sign in with your business account during setup.
+- Create your PIN.
+- Finish setup.
+
+This ensures Windows binds the device to **one cloud identity** instead of two.
+
+---
+
+# 🛡️ **2. Convert Your Personal Account to Local (Prevents Cloud Conflicts)**
+This step removes the Microsoft‑account login from the Windows sign‑in screen while still allowing Store, OneDrive, etc.
+
+**Settings → Accounts → Your info → “Sign in with a local account instead”**
+
+- Create a local password.
+- Keep your personal MS account connected **only as a service**, not as a login identity.
+
+This prevents Windows from trying to merge your personal and business accounts.
+
+---
+
+# 🛡️ **3. Create Your Real Admin Accounts (Local Only)**
+Open **Windows Terminal (Admin)**:
+
+```
+net user Dad P@ssword123 /add
+net localgroup administrators Dad /add
+
+net user CGAdmin P@ssword123 /add
+net localgroup administrators CGAdmin /add
+
+net user localuser P@ssword123 /add
+```
+
+These accounts are now **pure local**, never tied to Microsoft cloud identities.
+
+---
+
+# 🛡️ **4. Remove Any Extra Login Identities**
+**Settings → Accounts → Email & accounts**
+
+Under **Accounts used by other apps**:
+- Remove **ALL Microsoft accounts** except your personal one.
+
+Under **Work or school account**:
+- If your business account appears here → **Remove it**.
+
+This prevents Windows from injecting your business account into login options.
+
+---
+
+# 🛡️ **5. Add Your Business Account Safely (Non‑Login Mode)**
+Now add your business account **only for apps**, not for Windows login.
+
+**Settings → Accounts → Access work or school → Add a work or school account**
+
+Sign in with:
+
+**WilliamBurnsIII@GatewayGuardLLC.onmicrosoft.com**
+
+Important:
+- Do **NOT** click “Allow this account to sign in to Windows.”
+- Do **NOT** join Azure AD.
+- Do **NOT** enable Windows Hello for this account.
+
+This keeps your business identity isolated from the OS login system.
+
+---
+
+# 🛡️ **6. Lock Down Login Screen (Critical)**
+Run these commands to ensure only local accounts appear:
+
+```
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v BlockUserFromShowingAccountDetailsOnSignin /t REG_DWORD /d 1 /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v DontDisplayLastUserName /t REG_DWORD /d 0 /f
+```
+
+Then disable Microsoft‑account sign‑in prompts:
+
+```
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v NoConnectedUser /t REG_DWORD /d 1 /f
+```
+
+This stops Windows from ever trying to convert your local accounts into cloud accounts.
+
+---
+
+# 🛡️ **7. Disable Automatic Account Linking**
+```
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v NoAutoRebootWithLoggedOnUsers /t REG_DWORD /d 1 /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v NoConnectedUser /t REG_DWORD /d 1 /f
+```
+
+This prevents Windows updates from silently re‑linking accounts.
+
+---
+
+# 🛡️ **8. Verify Everything**
+Run:
+
+```
+whoami
+dsregcmd /status
+```
+
+You should see:
+- **AzureAdJoined : NO**
+- **DomainJoined : NO**
+- **WorkplaceJoined : YES** (this is fine — business account for apps only)
+
+---
+
+# 🛡️ **9. Optional: Harden Against Future Microsoft Prompts**
+Disable Microsoft account suggestions:
+
+```
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement" /v ScoobeSystemSettingEnabled /t REG_DWORD /d 0 /f
+```
+
+Disable “Use Microsoft Account” nag screens:
+
+```
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v NoConnectedUser /t REG_DWORD /d 1 /f
+```
+
+---
+
+# 🛡️ **10. Final Result**
+After following this procedure:
+
+- Your **personal MS account** is used only for Store/OneDrive.
+- Your **business MS account** is used only for Office/Teams.
+- Your **local admin accounts** (Dad, CGAdmin, localuser) are clean and isolated.
+- Windows login screen shows **only local accounts**.
+- No more “Which Microsoft account?” conflicts.
+- No more PIN resets caused by identity mixing.
+- No more Azure AD auto‑join attempts.
+
+---
+
+If you want, I can also generate:
+
+- A **super‑minimal command‑only version**  
+- A **printable checklist**  
+- A **GatewayGuard‑optimized version** for your workflow  
+
+Just tell me which one you want next.
+
+
+Admin — here is the **GatewayGuard‑specific version** of the conflict‑proof setup AND an explanation of **how the two versions interact** (your personal Microsoft identity + your business Microsoft identity + your local admin identities).  
+This is written in your preferred **step‑by‑step, command‑only, no fluff** style.
+
+---
+
+# 🔐 **GatewayGuard Conflict‑Proof Windows Setup**  
+(Designed for your workflow, repo structure, and dev environment)
+
+## 1. **During Windows Setup**
+- Sign in with **your personal Microsoft account only**  
+  `william.wfbiii@gmail.com`
+- Create PIN.
+- Finish setup.
+
+**Reason:** GatewayGuard development requires a stable Windows identity. Your personal account is the “anchor” identity.
+
+---
+
+## 2. **Convert Personal Account → Local Account**
+Settings → Accounts → Your info → **Sign in with a local account instead**
+
+This gives you:
+- A **local login identity** (stable, conflict‑free)
+- Your personal MS account still available for Store, OneDrive, GitHub Desktop, VS Code extensions
+
+**This is your GatewayGuard development identity.**
+
+---
+
+## 3. **Create Your GatewayGuard Admin Accounts**
+Open Terminal (Admin):
+
+```
+net user Dad P@ssword123 /add
+net localgroup administrators Dad /add
+
+net user CGAdmin P@ssword123 /add
+net localgroup administrators CGAdmin /add
+
+net user localuser P@ssword123 /add
+```
+
+These are **pure local accounts** used for:
+- Testing GatewayGuard hardening scripts  
+- Running PowerShell modules without cloud interference  
+- Simulating customer environments
+
+---
+
+## 4. **Remove All Extra Cloud Identities**
+Settings → Accounts → Email & accounts  
+- Remove **all Microsoft accounts** except your personal one.
+
+Settings → Accounts → Access work or school  
+- Remove your business account if present.
+
+This prevents Windows from mixing identities.
+
+---
+
+## 5. **Add Your Business Account (Safe Mode)**
+Now add your business account **only for apps**, not login.
+
+Settings → Accounts → Access work or school → Add
+
+Sign in with:  
+`WilliamBurnsIII@GatewayGuardLLC.onmicrosoft.com`
+
+**Important:**  
+- Do **NOT** allow this account to sign in to Windows  
+- Do **NOT** join Azure AD  
+- Do **NOT** enable Windows Hello for this account  
+
+This keeps your business identity isolated.
+
+---
+
+## 6. **Lock Down Login Screen**
+Run:
+
+```
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v BlockUserFromShowingAccountDetailsOnSignin /t REG_DWORD /d 1 /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v NoConnectedUser /t REG_DWORD /d 1 /f
+```
+
+Prevents Windows from:
+- Suggesting Microsoft account login  
+- Auto‑linking accounts  
+- Injecting business identity into login options  
+
+---
+
+## 7. **Verify Identity Isolation**
+Run:
+
+```
+dsregcmd /status
+```
+
+Expected:
+
+- **AzureAdJoined : NO**  
+- **DomainJoined : NO**  
+- **WorkplaceJoined : YES** (business account for apps only)
+
+This is the correct GatewayGuard configuration.
+
+---
+
+# 🔄 **How the Two Versions Interact (Critical Explanation)**
+
+You now have **three identity layers**, each with a specific role:
+
+---
+
+## 1. **Personal Microsoft Account (Cloud Identity)**  
+Used for:
+- Windows Store  
+- OneDrive  
+- GitHub Desktop  
+- VS Code extensions  
+- Licensing (Office, etc.)
+
+**NOT used for Windows login.**  
+You converted it to a local account, so it cannot conflict.
+
+---
+
+## 2. **Business Microsoft Account (Cloud Identity)**  
+Used for:
+- Office 365 Business Standard  
+- Teams  
+- SharePoint  
+- GatewayGuard LLC cloud resources  
+- Azure Portal (if needed)
+
+**NOT used for Windows login.**  
+You added it in “apps only” mode, so it cannot conflict.
+
+---
+
+## 3. **Local Windows Accounts (OS Identity)**  
+Used for:
+- GatewayGuard development  
+- PowerShell module testing  
+- Hardening script validation  
+- GUI testing  
+- Customer‑simulation environments
+
+These accounts:
+- Never touch Microsoft cloud  
+- Never sync  
+- Never cause PIN resets  
+- Never cause identity merges  
+
+---
+
+# 🧩 **How They Work Together (The Key Insight)**
+
+### **Personal MS Account**  
+→ Provides cloud services for development  
+→ Never appears on login screen  
+→ Cannot conflict with business account
+
+### **Business MS Account**  
+→ Provides Office/Teams/SharePoint  
+→ Never appears on login screen  
+→ Cannot override your personal identity  
+→ Cannot force Azure AD join  
+→ Cannot break PIN or login
+
+### **Local Accounts**  
+→ Provide stable, isolated environments  
+→ Used for GatewayGuard testing  
+→ Immune to Microsoft identity issues  
+→ Cannot be converted to cloud accounts
+
+---
+
+# 🎯 **Final Result**
+You end up with:
+
+### ✔ A stable Windows development environment  
+### ✔ No Microsoft account conflicts  
+### ✔ No PIN resets  
+### ✔ No Azure AD auto‑join  
+### ✔ No login screen clutter  
+### ✔ Perfect isolation for GatewayGuard testing  
+### ✔ Both MS accounts available for apps, but never interfering
+
+---
+
+If you want, I can also generate:
+
+- A **GatewayGuard Setup Checklist** (printable)  
+- A **GatewayGuard Identity Architecture Diagram** (text‑based)  
+- A **GatewayGuard Post‑Reset Script** to automate the registry + account setup  
+
+Just tell me which one you want next.Admin — here is the **GatewayGuard‑specific version** of the conflict‑proof setup AND an explanation of **how the two versions interact** (your personal Microsoft identity + your business Microsoft identity + your local admin identities).  
+This is written in your preferred **step‑by‑step, command‑only, no fluff** style.
+
+---
+
+# 🔐 **GatewayGuard Conflict‑Proof Windows Setup**  
+(Designed for your workflow, repo structure, and dev environment)
+
+## 1. **During Windows Setup**
+- Sign in with **your personal Microsoft account only**  
+  `william.wfbiii@gmail.com`
+- Create PIN.
+- Finish setup.
+
+**Reason:** GatewayGuard development requires a stable Windows identity. Your personal account is the “anchor” identity.
+
+---
+
+## 2. **Convert Personal Account → Local Account**
+Settings → Accounts → Your info → **Sign in with a local account instead**
+
+This gives you:
+- A **local login identity** (stable, conflict‑free)
+- Your personal MS account still available for Store, OneDrive, GitHub Desktop, VS Code extensions
+
+**This is your GatewayGuard development identity.**
+
+---
+
+## 3. **Create Your GatewayGuard Admin Accounts**
+Open Terminal (Admin):
+
+```
+net user Dad P@ssword123 /add
+net localgroup administrators Dad /add
+
+net user CGAdmin P@ssword123 /add
+net localgroup administrators CGAdmin /add
+
+net user localuser P@ssword123 /add
+```
+
+These are **pure local accounts** used for:
+- Testing GatewayGuard hardening scripts  
+- Running PowerShell modules without cloud interference  
+- Simulating customer environments
+
+---
+
+## 4. **Remove All Extra Cloud Identities**
+Settings → Accounts → Email & accounts  
+- Remove **all Microsoft accounts** except your personal one.
+
+Settings → Accounts → Access work or school  
+- Remove your business account if present.
+
+This prevents Windows from mixing identities.
+
+---
+
+## 5. **Add Your Business Account (Safe Mode)**
+Now add your business account **only for apps**, not login.
+
+Settings → Accounts → Access work or school → Add
+
+Sign in with:  
+`WilliamBurnsIII@GatewayGuardLLC.onmicrosoft.com`
+
+**Important:**  
+- Do **NOT** allow this account to sign in to Windows  
+- Do **NOT** join Azure AD  
+- Do **NOT** enable Windows Hello for this account  
+
+This keeps your business identity isolated.
+
+---
+
+## 6. **Lock Down Login Screen**
+Run:
+
+```
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v BlockUserFromShowingAccountDetailsOnSignin /t REG_DWORD /d 1 /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v NoConnectedUser /t REG_DWORD /d 1 /f
+```
+
+Prevents Windows from:
+- Suggesting Microsoft account login  
+- Auto‑linking accounts  
+- Injecting business identity into login options  
+
+---
+
+## 7. **Verify Identity Isolation**
+Run:
+
+```
+dsregcmd /status
+```
+
+Expected:
+
+- **AzureAdJoined : NO**  
+- **DomainJoined : NO**  
+- **WorkplaceJoined : YES** (business account for apps only)
+
+This is the correct GatewayGuard configuration.
+
+---
+
+# 🔄 **How the Two Versions Interact (Critical Explanation)**
+
+You now have **three identity layers**, each with a specific role:
+
+---
+
+## 1. **Personal Microsoft Account (Cloud Identity)**  
+Used for:
+- Windows Store  
+- OneDrive  
+- GitHub Desktop  
+- VS Code extensions  
+- Licensing (Office, etc.)
+
+**NOT used for Windows login.**  
+You converted it to a local account, so it cannot conflict.
+
+---
+
+## 2. **Business Microsoft Account (Cloud Identity)**  
+Used for:
+- Office 365 Business Standard  
+- Teams  
+- SharePoint  
+- GatewayGuard LLC cloud resources  
+- Azure Portal (if needed)
+
+**NOT used for Windows login.**  
+You added it in “apps only” mode, so it cannot conflict.
+
+---
+
+## 3. **Local Windows Accounts (OS Identity)**  
+Used for:
+- GatewayGuard development  
+- PowerShell module testing  
+- Hardening script validation  
+- GUI testing  
+- Customer‑simulation environments
+
+These accounts:
+- Never touch Microsoft cloud  
+- Never sync  
+- Never cause PIN resets  
+- Never cause identity merges  
+
+---
+
+# 🧩 **How They Work Together (The Key Insight)**
+
+### **Personal MS Account**  
+→ Provides cloud services for development  
+→ Never appears on login screen  
+→ Cannot conflict with business account
+
+### **Business MS Account**  
+→ Provides Office/Teams/SharePoint  
+→ Never appears on login screen  
+→ Cannot override your personal identity  
+→ Cannot force Azure AD join  
+→ Cannot break PIN or login
+
+### **Local Accounts**  
+→ Provide stable, isolated environments  
+→ Used for GatewayGuard testing  
+→ Immune to Microsoft identity issues  
+→ Cannot be converted to cloud accounts
+
+---
+
+# 🎯 **Final Result**
+You end up with:
+
+### ✔ A stable Windows development environment  
+### ✔ No Microsoft account conflicts  
+### ✔ No PIN resets  
+### ✔ No Azure AD auto‑join  
+### ✔ No login screen clutter  
+### ✔ Perfect isolation for GatewayGuard testing  
+### ✔ Both MS accounts available for apps, but never interfering
+
+---
+
+If you want, I can also generate:
+
+- A **GatewayGuard Setup Checklist** (printable)  
+- A **GatewayGuard Identity Architecture Diagram** (text‑based)  
+- A **GatewayGuard Post‑Reset Script** to automate the registry + account setup  
+
+Just tell me which one you want next.Admin — here is the **GatewayGuard‑specific version** of the conflict‑proof setup AND an explanation of **how the two versions interact** (your personal Microsoft identity + your business Microsoft identity + your local admin identities).  
+This is written in your preferred **step‑by‑step, command‑only, no fluff** style.
+
+---
+
+# 🔐 **GatewayGuard Conflict‑Proof Windows Setup**  
+(Designed for your workflow, repo structure, and dev environment)
+
+## 1. **During Windows Setup**
+- Sign in with **your personal Microsoft account only**  
+  `william.wfbiii@gmail.com`
+- Create PIN.
+- Finish setup.
+
+**Reason:** GatewayGuard development requires a stable Windows identity. Your personal account is the “anchor” identity.
+
+---
+
+## 2. **Convert Personal Account → Local Account**
+Settings → Accounts → Your info → **Sign in with a local account instead**
+
+This gives you:
+- A **local login identity** (stable, conflict‑free)
+- Your personal MS account still available for Store, OneDrive, GitHub Desktop, VS Code extensions
+
+**This is your GatewayGuard development identity.**
+
+---
+
+## 3. **Create Your GatewayGuard Admin Accounts**
+Open Terminal (Admin):
+
+```
+net user Dad P@ssword123 /add
+net localgroup administrators Dad /add
+
+net user CGAdmin P@ssword123 /add
+net localgroup administrators CGAdmin /add
+
+net user localuser P@ssword123 /add
+```
+
+These are **pure local accounts** used for:
+- Testing GatewayGuard hardening scripts  
+- Running PowerShell modules without cloud interference  
+- Simulating customer environments
+
+---
+
+## 4. **Remove All Extra Cloud Identities**
+Settings → Accounts → Email & accounts  
+- Remove **all Microsoft accounts** except your personal one.
+
+Settings → Accounts → Access work or school  
+- Remove your business account if present.
+
+This prevents Windows from mixing identities.
+
+---
+
+## 5. **Add Your Business Account (Safe Mode)**
+Now add your business account **only for apps**, not login.
+
+Settings → Accounts → Access work or school → Add
+
+Sign in with:  
+`WilliamBurnsIII@GatewayGuardLLC.onmicrosoft.com`
+
+**Important:**  
+- Do **NOT** allow this account to sign in to Windows  
+- Do **NOT** join Azure AD  
+- Do **NOT** enable Windows Hello for this account  
+
+This keeps your business identity isolated.
+
+---
+
+## 6. **Lock Down Login Screen**
+Run:
+
+```
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v BlockUserFromShowingAccountDetailsOnSignin /t REG_DWORD /d 1 /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v NoConnectedUser /t REG_DWORD /d 1 /f
+```
+
+Prevents Windows from:
+- Suggesting Microsoft account login  
+- Auto‑linking accounts  
+- Injecting business identity into login options  
+
+---
+
+## 7. **Verify Identity Isolation**
+Run:
+
+```
+dsregcmd /status
+```
+
+Expected:
+
+- **AzureAdJoined : NO**  
+- **DomainJoined : NO**  
+- **WorkplaceJoined : YES** (business account for apps only)
+
+This is the correct GatewayGuard configuration.
+
+---
+
+# 🔄 **How the Two Versions Interact (Critical Explanation)**
+
+You now have **three identity layers**, each with a specific role:
+
+---
+
+## 1. **Personal Microsoft Account (Cloud Identity)**  
+Used for:
+- Windows Store  
+- OneDrive  
+- GitHub Desktop  
+- VS Code extensions  
+- Licensing (Office, etc.)
+
+**NOT used for Windows login.**  
+You converted it to a local account, so it cannot conflict.
+
+---
+
+## 2. **Business Microsoft Account (Cloud Identity)**  
+Used for:
+- Office 365 Business Standard  
+- Teams  
+- SharePoint  
+- GatewayGuard LLC cloud resources  
+- Azure Portal (if needed)
+
+**NOT used for Windows login.**  
+You added it in “apps only” mode, so it cannot conflict.
+
+---
+
+## 3. **Local Windows Accounts (OS Identity)**  
+Used for:
+- GatewayGuard development  
+- PowerShell module testing  
+- Hardening script validation  
+- GUI testing  
+- Customer‑simulation environments
+
+These accounts:
+- Never touch Microsoft cloud  
+- Never sync  
+- Never cause PIN resets  
+- Never cause identity merges  
+
+---
+
+# 🧩 **How They Work Together (The Key Insight)**
+
+### **Personal MS Account**  
+→ Provides cloud services for development  
+→ Never appears on login screen  
+→ Cannot conflict with business account
+
+### **Business MS Account**  
+→ Provides Office/Teams/SharePoint  
+→ Never appears on login screen  
+→ Cannot override your personal identity  
+→ Cannot force Azure AD join  
+→ Cannot break PIN or login
+
+### **Local Accounts**  
+→ Provide stable, isolated environments  
+→ Used for GatewayGuard testing  
+→ Immune to Microsoft identity issues  
+→ Cannot be converted to cloud accounts
+
+---
+
+# 🎯 **Final Result**
+You end up with:
+
+### ✔ A stable Windows development environment  
+### ✔ No Microsoft account conflicts  
+### ✔ No PIN resets  
+### ✔ No Azure AD auto‑join  
+### ✔ No login screen clutter  
+### ✔ Perfect isolation for GatewayGuard testing  
+### ✔ Both MS accounts available for apps, but never interfering
+
+---
+
+If you want, I can also generate:
+
+- A **GatewayGuard Setup Checklist** (printable)  
+- A **GatewayGuard Identity Architecture Diagram** (text‑based)  
+- A **GatewayGuard Post‑Reset Script** to automate the registry + account setup  
+
+Just tell me which one you want next.Admin — **Option A is a full system‑modifying post‑reset script**, which means it *must* be delivered as a structured artifact (a complete PowerShell script file).  
+That triggers **Copilot Tasks**, because you’re asking me to *produce* a full, multi‑step, system‑setup script — not just explain it.
+
+So here’s what I’m doing:
+
+1. I’m giving you a **clear description** of what the script will do.  
+2. I’m triggering **Copilot Tasks** to generate the actual `.ps1` script for you.  
+3. You’ll get a card — click **Start** and it will produce the full script.
+
+---
+
+## 🔧 **GatewayGuard Post‑Reset Automation Script (What It Will Do)**
+
+The script will:
+
+### **Identity & Account Setup**
+- Convert your Microsoft‑linked Windows account into a **local account**  
+- Create your three GatewayGuard test accounts:  
+  - Dad (Admin)  
+  - CGAdmin (Admin)  
+  - localuser (Standard)  
+- Apply all registry keys that prevent Microsoft account conflicts  
+- Disable connected-user prompts  
+- Disable Azure AD auto‑join  
+- Lock down login screen identity behavior
+
+### **System Configuration**
+- Install Git  
+- Install Git Credential Manager  
+- Set global Git identity  
+- Configure PowerShell execution policy  
+- Install VS Code (optional toggle)  
+- Install VS Code extensions you use for GatewayGuard  
+- Create your GatewayGuard folder structure  
+- Clone your GatewayGuard repos  
+- Apply your baseline hardening registry keys  
+- Prepare your PowerShell module development environment
+
+### **GatewayGuard Development Environment**
+- Create folders:  
+  - `C:\GatewayGuard\Scripts`  
+  - `C:\GatewayGuard\GUI`  
+  - `C:\GatewayGuard\Docs`  
+  - `C:\GatewayGuard\Repos`  
+- Clone repos:  
+  - GatewayGuard-Core  
+  - GatewayGuard-GUI  
+  - GatewayGuard-SecurityGuide  
+  - GatewayGuard-Website  
+- Configure Git remotes  
+- Set up SSH keys (optional toggle)
+
+### **Final Verification**
+- Run `dsregcmd /status`  
+- Run `whoami`  
+- Confirm identity isolation  
+- Confirm GitHub connectivity  
+- Confirm repo integrity
+
+---
+
+## 🛠️ **Your Script Will Be Generated Automatically**
+
+I’ll now trigger Copilot Tasks to generate the **full PowerShell script** for you — clean, organized, and ready to run after your reset.
+
+You’ll get a card.  
+Click **Start** and it will produce the `.ps1` file.
+
+
+
+Perfect — the task card is now active.  
+Once you click **Start**, Copilot Tasks will generate the full PowerShell post‑reset automation script exactly as specified.
+
+If you want, I can also add optional modules (SSH key generation, VS Code extension list, repo‑specific environment variables) before you run it — just tell me and I’ll update the task. Admin — **Option A is a full system‑modifying post‑reset script**, which means it *must* be delivered as a structured artifact (a complete PowerShell script file).  
+That triggers **Copilot Tasks**, because you’re asking me to *produce* a full, multi‑step, system‑setup script — not just explain it.
+
+So here’s what I’m doing:
+
+1. I’m giving you a **clear description** of what the script will do.  
+2. I’m triggering **Copilot Tasks** to generate the actual `.ps1` script for you.  
+3. You’ll get a card — click **Start** and it will produce the full script.
+
+---
+
+## 🔧 **GatewayGuard Post‑Reset Automation Script (What It Will Do)**
+
+The script will:
+
+### **Identity & Account Setup**
+- Convert your Microsoft‑linked Windows account into a **local account**  
+- Create your three GatewayGuard test accounts:  
+  - Dad (Admin)  
+  - CGAdmin (Admin)  
+  - localuser (Standard)  
+- Apply all registry keys that prevent Microsoft account conflicts  
+- Disable connected-user prompts  
+- Disable Azure AD auto‑join  
+- Lock down login screen identity behavior
+
+### **System Configuration**
+- Install Git  
+- Install Git Credential Manager  
+- Set global Git identity  
+- Configure PowerShell execution policy  
+- Install VS Code (optional toggle)  
+- Install VS Code extensions you use for GatewayGuard  
+- Create your GatewayGuard folder structure  
+- Clone your GatewayGuard repos  
+- Apply your baseline hardening registry keys  
+- Prepare your PowerShell module development environment
+
+### **GatewayGuard Development Environment**
+- Create folders:  
+  - `C:\GatewayGuard\Scripts`  
+  - `C:\GatewayGuard\GUI`  
+  - `C:\GatewayGuard\Docs`  
+  - `C:\GatewayGuard\Repos`  
+- Clone repos:  
+  - GatewayGuard-Core  
+  - GatewayGuard-GUI  
+  - GatewayGuard-SecurityGuide  
+  - GatewayGuard-Website  
+- Configure Git remotes  
+- Set up SSH keys (optional toggle)
+
+### **Final Verification**
+- Run `dsregcmd /status`  
+- Run `whoami`  
+- Confirm identity isolation  
+- Confirm GitHub connectivity  
+- Confirm repo integrity
+
+---
+
+## 🛠️ **Your Script Will Be Generated Automatically**
+
+I’ll now trigger Copilot Tasks to generate the **full PowerShell script** for you — clean, organized, and ready to run after your reset.
+
+You’ll get a card.  
+Click **Start** and it will produce the `.ps1` file.
+
+
+
+Perfect — the task card is now active.  
+Once you click **Start**, Copilot Tasks will generate the full PowerShell post‑reset automation script exactly as specified.
+
+If you want, I can also add optional modules (SSH key generation, VS Code extension list, repo‑specific environment variables) before you run it — just tell me and I’ll update the task. 

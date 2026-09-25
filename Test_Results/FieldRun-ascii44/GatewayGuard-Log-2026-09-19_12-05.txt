@@ -1,0 +1,71 @@
+﻿============================================================
+  GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+  Build: ascii44
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-09-19 12:05:05
+  Computer: SANDY
+  Machine:  HP HP Laptop 17-by1xxx
+  Machine ID: F7F13A97D58D (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[2026-09-19 12:05:06] [OK] Console control handler registered -- Ctrl+C in Mark mode can no longer end the session (FT-150), and closing the window still writes the log footer (FT-160)
+[2026-09-19 12:05:06] [START] Tool launched v3.1 build ascii44
+[2026-09-19 12:05:06] [INFO] Log location: C:\Users\willi\OneDrive\GatewayGuard\Logs  (OneDrive -- already set up on this PC)
+[2026-09-19 12:05:06] [INFO] Machine: HP HP Laptop 17-by1xxx | MachineID: F7F13A97D58D
+[2026-09-19 12:05:06] [OK] Sleep/shutdown prevention activated
+[2026-09-19 12:05:26] [KEY] Continue accepted at: Show-FontInstructions
+[2026-09-19 12:05:42] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-09-19 12:05:42] [OK] QuickEdit AND mouse input reporting disabled for this session (FT-01, FT-171a) -- re-asserted silently from here on
+[2026-09-19 12:05:42] [SCREEN] [SCREEN-28] (shown as screen 4) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[2026-09-19 12:05:45] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-09-19 12:05:46] [SCREEN] [SCREEN-29] (shown as screen 5) Rendered: BEFORE YOU START -- YOUR WINDOW
+[2026-09-19 12:05:47] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-09-19 12:05:47] [SCREEN] [SCREEN-78] (shown as screen 6) Rendered: BEFORE YOU START -- YOUR KEYBOARD
+[2026-09-19 12:05:50] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-09-19 12:05:51] [SCREEN] [SCREEN-30] (shown as screen 7) Rendered: WHAT HAPPENS NEXT -- PLEASE READ
+[2026-09-19 12:06:30] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-09-19 12:06:30] [SCREEN] [SCREEN-02] (shown as screen 8) Rendered: HOW TO SCROLL BACK (AND COPY) IN THIS WINDOW
+[2026-09-19 12:07:44] [KEY] Continue accepted at: Show-ScrollCopyTip
+[2026-09-19 12:07:44] [SCREEN] [SCREEN-05] (shown as screen 9) Rendered: !  IMPORTANT -- READ BEFORE CONTINUING
+[2026-09-19 12:07:51] [KEY] Key 'Y' accepted at: Test-PersonalComputer
+[2026-09-19 12:07:51] [CONFIRM] Personal computer confirmed by user
+[2026-09-19 12:07:52] [OK] Domain check passed -- not domain joined
+[2026-09-19 12:07:52] [OK] Administrator access confirmed
+[2026-09-19 12:07:55] [KEY] Continue accepted at: Test-AdminAccess
+[2026-09-19 12:07:55] [INFO] Windows Edition: Core -- Windows 11 Home
+[2026-09-19 12:07:55] [SCREEN] [SCREEN-34] (shown as screen 10) Rendered: WINDOWS EDITION DETECTED
+[2026-09-19 12:07:55] [INFO] Home edition -- Remote Desktop and Group Policy unavailable
+[2026-09-19 12:09:20] [KEY] Continue accepted at: Get-WinEdition
+[2026-09-19 12:09:20] [SCREEN] [SCREEN-35] (shown as screen 11) Rendered: YOUR PC -- RAM: 8 GB
+[2026-09-19 12:09:20] [WARN] RAM: 8 GB (minimal)
+[2026-09-19 12:09:36] [KEY] Continue accepted at: Get-RAMStatus
+[2026-09-19 12:09:47] [KEY] Key 'Y' accepted at: Test-TimeDateSync
+[2026-09-19 12:09:47] [OK] Time/date confirmed correct by user: Saturday, September 19, 2026 -- 12:09 PM (UTC-05:00) Eastern Time (US & Canada)
+[2026-09-19 12:09:53] [INFO] Secure Boot state read on all editions (FT-143): True
+[2026-09-19 12:09:53] [SCREEN] [SCREEN-09] (shown as screen 12) Rendered: YOUR SYSTEM AT A GLANCE
+[2026-09-19 12:09:53] [INFO] System Baseline Summary displayed
+[2026-09-19 12:10:31] [KEY] Continue accepted at: Show-SystemBaselineSummary
+[2026-09-19 12:10:31] [STATE] Checkpoint saved: Baseline
+[2026-09-19 12:10:31] [SCREEN] [SCREEN-26] (shown as screen 13) Rendered: YOUR PC'S SECURITY TOOLS -- A QUICK INTRODUCTION
+[2026-09-19 12:16:18] [KEY] Continue accepted at: Show-SecurityToolsBriefing
+[2026-09-19 12:16:18] [SCREEN] [SCREEN-27] (shown as screen 14) Rendered: THE SCANS WE RECOMMEND -- AND WHY
+[2026-09-19 12:20:39] [KEY] Continue accepted at: Show-ScanPlanBriefing
+[2026-09-19 12:20:39] [STATE] Checkpoint saved: Briefing
+[2026-09-19 12:20:40] [SCREEN] [SCREEN-39] (shown as screen 14a) Rendered: REMINDER: PRE-SCAN RECOMMENDED
+[2026-09-19 12:20:54] [KEY] Key 'Y' accepted at: Show-PreScanGate
+[2026-09-19 12:20:54] [CONFIRM] Repeat run -- user confirmed to continue
+[2026-09-19 12:20:54] [SCREEN] [SCREEN-38] (shown as screen 16) Rendered: DEFENDER OFFLINE SCAN
+[2026-09-19 12:21:06] [KEY] Key 'Y' accepted at: Invoke-OfflineScanOffer
+[2026-09-19 12:21:06] [STATE] Checkpoint saved: OfflineScanPending
+[2026-09-19 12:21:06] [INFO] Starting Defender Offline Scan -- reboot expected
+[2026-09-19 12:21:11] [OK] Sleep prevention deactivated -- normal power management restored (called from: Invoke-OfflineScanOffer)
+
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================

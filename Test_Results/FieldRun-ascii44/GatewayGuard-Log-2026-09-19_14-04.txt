@@ -1,0 +1,50 @@
+﻿============================================================
+  GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+  Build: ascii44
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-09-19 14:04:46
+  Computer: SANDY
+  Machine:  HP HP Laptop 17-by1xxx
+  Machine ID: F7F13A97D58D (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[2026-09-19 14:04:46] [OK] Console control handler registered -- Ctrl+C in Mark mode can no longer end the session (FT-150), and closing the window still writes the log footer (FT-160)
+[2026-09-19 14:04:46] [START] Tool launched v3.1 build ascii44
+[2026-09-19 14:04:46] [INFO] Log location: C:\Users\willi\OneDrive\GatewayGuard\Logs  (OneDrive -- already set up on this PC)
+[2026-09-19 14:04:46] [INFO] Machine: HP HP Laptop 17-by1xxx | MachineID: F7F13A97D58D
+[2026-09-19 14:04:46] [OK] Sleep/shutdown prevention activated
+[2026-09-19 14:04:46] [OK] QuickEdit AND mouse input reporting disabled for this session (FT-01, FT-171a) -- re-asserted silently from here on
+[2026-09-19 14:04:46] [SCREEN] [SCREEN-25] (shown as screen 1a) Rendered: WELCOME BACK
+[2026-09-19 14:04:57] [KEY] Key 'R' accepted at: Show-ResumePrompt
+[2026-09-19 14:04:57] [STATE] User chose to RESUME from checkpoint: AppsAudit
+[2026-09-19 14:04:58] [KEY] Continue accepted at: Show-ResumePrompt
+[2026-09-19 14:04:58] [SCREEN] [SCREEN-31] (shown as screen 1b) Rendered: QUICK RE-CHECK BEFORE RESUMING
+[2026-09-19 14:05:02] [KEY] Key 'Y' accepted at: Show-ResumeReverify
+[2026-09-19 14:05:02] [CONFIRM] Resume re-check: personal computer reconfirmed
+[2026-09-19 14:05:02] [OK] Domain check passed -- not domain joined
+[2026-09-19 14:05:02] [OK] Resume re-check: administrator access confirmed
+[2026-09-19 14:05:02] [OK] Sleep/shutdown prevention activated
+[2026-09-19 14:05:02] [OK] Resume re-check: AC power confirmed (100%). Sleep prevention active.
+[2026-09-19 14:05:04] [KEY] Continue accepted at: Show-ResumeReverify
+[2026-09-19 14:05:04] [INFO] Windows Edition: Core -- Windows 11 Home
+[2026-09-19 14:05:04] [SCREEN] [SCREEN-34] (shown as screen 10) Rendered: WINDOWS EDITION DETECTED
+[2026-09-19 14:05:04] [INFO] Home edition -- Remote Desktop and Group Policy unavailable
+[2026-09-19 14:05:06] [KEY] Continue accepted at: Get-WinEdition
+[2026-09-19 14:05:06] [SCREEN] [SCREEN-35] (shown as screen 11) Rendered: YOUR PC -- RAM: 8 GB
+[2026-09-19 14:05:06] [WARN] RAM: 8 GB (minimal)
+[2026-09-19 14:05:08] [KEY] Continue accepted at: Get-RAMStatus
+[2026-09-19 14:05:08] [SCREEN] [SCREEN-52] (shown as screen 21) Rendered: GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+[2026-09-19 14:08:20] [KEY] Key '3' accepted at: Select-Mode
+[2026-09-19 14:08:20] [INFO] Mode selected: Exit
+[2026-09-19 14:08:20] [EXIT] User exited at mode selection
+[2026-09-19 14:08:20] [OK] Sleep prevention deactivated -- normal power management restored (called from: W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1)
+
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================

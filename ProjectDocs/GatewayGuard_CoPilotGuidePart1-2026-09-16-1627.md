@@ -22,7 +22,7 @@ This guide works together with GatewayGuard Checkup to help you improve the secu
 
 You do not need to be a computer expert to use this guide.
 
-Most settings can be changed with a few mouse clicks. Others are simply reviewed so you can make an informed decision.
+Many settings can be changed with a few mouse clicks. Others are simply reviewed so you can make an informed decision.
 
 Who This Guide Is For
 
@@ -90,7 +90,7 @@ Throughout this guide you will see recommendations such as:
 
 Recommended
 
-This is the setting GatewayGuard believes provides the best balance of security, practicality, and ease of use for all home users.
+This is the setting GatewayGuard believes provides a sound balance of security, practicality, and ease of use for all home users.
 
 Optional
 
@@ -166,7 +166,7 @@ Our goal is not to force a particular configuration. Our goal is to help you und
 
 Part 2: Core Security Settings
 
-The next section covers the most important Windows 11 protections:
+The next section covers the core Windows 11 protections:
 
 Windows Update
 Defender Real-Time Protection
@@ -179,4 +179,4 @@ Windows Hello
 Memory Integrity
 Password Required on Wake
 
-These settings provide the greatest security benefit for all home users.
+These settings provide significant security benefit for all home users.

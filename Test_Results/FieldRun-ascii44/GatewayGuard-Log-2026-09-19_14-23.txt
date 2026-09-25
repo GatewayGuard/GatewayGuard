@@ -1,0 +1,76 @@
+﻿============================================================
+  GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+  Build: ascii44
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-09-19 14:23:23
+  Computer: SANDY
+  Machine:  HP HP Laptop 17-by1xxx
+  Machine ID: F7F13A97D58D (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[2026-09-19 14:23:24] [OK] Console control handler registered -- Ctrl+C in Mark mode can no longer end the session (FT-150), and closing the window still writes the log footer (FT-160)
+[2026-09-19 14:23:24] [START] Tool launched v3.1 build ascii44
+[2026-09-19 14:23:24] [INFO] Log location: C:\Users\willi\OneDrive\GatewayGuard\Logs  (OneDrive -- already set up on this PC)
+[2026-09-19 14:23:24] [INFO] Machine: HP HP Laptop 17-by1xxx | MachineID: F7F13A97D58D
+[2026-09-19 14:23:24] [OK] Sleep/shutdown prevention activated
+[2026-09-19 14:23:24] [OK] QuickEdit AND mouse input reporting disabled for this session (FT-01, FT-171a) -- re-asserted silently from here on
+[2026-09-19 14:23:24] [SCREEN] [SCREEN-25] (shown as screen 1a) Rendered: WELCOME BACK
+[2026-09-19 14:23:26] [KEY] Key 'R' accepted at: Show-ResumePrompt
+[2026-09-19 14:23:26] [STATE] User chose to RESUME from checkpoint: AppsAudit
+[2026-09-19 14:23:27] [KEY] Continue accepted at: Show-ResumePrompt
+[2026-09-19 14:23:27] [SCREEN] [SCREEN-31] (shown as screen 1b) Rendered: QUICK RE-CHECK BEFORE RESUMING
+[2026-09-19 14:23:31] [KEY] Key 'Y' accepted at: Show-ResumeReverify
+[2026-09-19 14:23:31] [CONFIRM] Resume re-check: personal computer reconfirmed
+[2026-09-19 14:23:31] [OK] Domain check passed -- not domain joined
+[2026-09-19 14:23:31] [OK] Resume re-check: administrator access confirmed
+[2026-09-19 14:23:31] [OK] Sleep/shutdown prevention activated
+[2026-09-19 14:23:31] [OK] Resume re-check: AC power confirmed (100%). Sleep prevention active.
+[2026-09-19 14:23:34] [KEY] Continue accepted at: Show-ResumeReverify
+[2026-09-19 14:23:34] [INFO] Windows Edition: Core -- Windows 11 Home
+[2026-09-19 14:23:34] [SCREEN] [SCREEN-34] (shown as screen 10) Rendered: WINDOWS EDITION DETECTED
+[2026-09-19 14:23:34] [INFO] Home edition -- Remote Desktop and Group Policy unavailable
+[2026-09-19 14:26:40] [KEY] Continue accepted at: Get-WinEdition
+[2026-09-19 14:26:41] [SCREEN] [SCREEN-35] (shown as screen 11) Rendered: YOUR PC -- RAM: 8 GB
+[2026-09-19 14:26:41] [WARN] RAM: 8 GB (minimal)
+[2026-09-19 14:26:41] [KEY] Continue accepted at: Get-RAMStatus
+[2026-09-19 14:26:41] [SCREEN] [SCREEN-52] (shown as screen 21) Rendered: GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+[2026-09-19 14:26:46] [KEY] Key '2' accepted at: Select-Mode
+[2026-09-19 14:26:46] [INFO] Mode selected: GUI
+[2026-09-19 14:26:47] [INFO] Item 6 (Edge phishing protection): registry read BLOCKED by Tamper Protection -- reporting Unknown rather than a fault (FT-141)
+[2026-09-19 14:26:49] [WARN] Item 17 (password on wake): read produced no setting index (FT-256, NO_INDEX). Raw powercfg output: Power Scheme GUID: 48684d4a-8524-4093-8a63-ea7132b79c1c (HP Recommended)
+[2026-09-19 14:26:50] [DONE] Get-AllStatuses complete -- all 19 settings probed
+[2026-09-19 14:26:50] [INFO] DIAG: yPos initialized as type System.Int32, value=28, count=1
+[2026-09-19 14:40:34] [START] === GUI Mode Hardening Run Started ===
+[2026-09-19 14:41:01] [ERROR] SILENT ERROR -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1:3639 char:23 -- user was at: Apply-Setting -- Property EnableSmartScreen does not exist at path HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System.
+[2026-09-19 14:41:01] [INFO] NOT SET (expected) -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1:3639 char:23 -- user was at: Apply-Setting -- Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' because it does not exist.
+[2026-09-19 14:41:01] [INFO] NOT SET (expected) -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1:3639 char:23 -- user was at: Apply-Setting -- Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' because it does not exist.
+[2026-09-19 14:41:01] [INFO] NOT SET (expected) -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1:3639 char:23 -- user was at: Apply-Setting -- Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' because it does not exist.
+[2026-09-19 14:41:01] [ERROR] SILENT ERROR -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1:6882 char:17 -- user was at: Apply-Setting -- Requested registry access is not allowed.
+[2026-09-19 14:41:01] [KEY] Continue accepted at: Apply-Setting
+[2026-09-19 14:41:01] [INFO] Edge Phishing Protection (all 3) | Before: Unknown -- Tamper Protection blocks this check; verify by hand | Result: MANUAL REQUIRED -- registry is protected on this PC (Tamper Protection)
+[2026-09-19 14:41:43] [MANUAL] Windows Hello (check only) -- Manual action required
+[2026-09-19 14:41:45] [INFO] Diagnostic Data -- Required Only | Deferred to individual convenience review (FT-94)
+[2026-09-19 14:42:04] [INFO] Windows Widgets -- Disable | Deferred to individual convenience review (FT-94)
+[2026-09-19 14:43:14] [APPLIED] Password Required on Wake | Before: Unknown -- could not read; check by hand | Result: Password required on wake -- enabled for both AC and battery -- GOOD
+
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================
+[2026-09-19 14:43:35] [OK] Sleep prevention deactivated -- normal power management restored (called from: unknown (empty call stack))
+[2026-09-19 14:43:35] [SCREEN] [SCREEN-70] (shown as screen 33) Rendered: AUTOMATED SCAN SCHEDULE SETUP
+[2026-09-19 14:43:39] [GOOD] Reminder settings confirmed by read-back -- runs on battery: yes, catches a missed start: yes, wakes the PC: no (T1)
+[2026-09-19 14:43:39] [GOOD] Scheduled task created: GatewayGuard - Quarterly Defender Offline Scan (reminder popup -- FT-175)
+[2026-09-19 14:43:40] [GOOD] Reminder settings confirmed by read-back -- runs on battery: yes, catches a missed start: yes, wakes the PC: no (T2)
+[2026-09-19 14:43:40] [GOOD] Scheduled task created: GatewayGuard - Monthly Malwarebytes Reminder
+[2026-09-19 14:46:48] [KEY] Look-back opened at: Setup-ScheduledTasks
+[2026-09-19 14:49:13] [KEY] Look-back opened at: Setup-ScheduledTasks
+[2026-09-20 16:27:56] [KEY] Look-back opened at: Setup-ScheduledTasks
+[2026-09-20 16:28:56] [KEY] Look-back opened at: Setup-ScheduledTasks
+[2026-09-20 16:29:05] [KEY] Continue accepted at: Setup-ScheduledTasks
+[2026-09-20 16:29:05] [SCREEN] [SCREEN-72] (shown as screen 34) Rendered: AUTOMATED STEPS COMPLETE

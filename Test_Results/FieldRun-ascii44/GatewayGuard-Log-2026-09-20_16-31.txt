@@ -1,0 +1,153 @@
+﻿============================================================
+  GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+  Build: ascii44
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-09-20 16:31:51
+  Computer: SANDY
+  Machine:  HP HP Laptop 17-by1xxx
+  Machine ID: F7F13A97D58D (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[2026-09-20 16:31:52] [OK] Console control handler registered -- Ctrl+C in Mark mode can no longer end the session (FT-150), and closing the window still writes the log footer (FT-160)
+[2026-09-20 16:31:52] [START] Tool launched v3.1 build ascii44
+[2026-09-20 16:31:52] [INFO] Log location: C:\Users\willi\OneDrive\GatewayGuard\Logs  (OneDrive -- already set up on this PC)
+[2026-09-20 16:31:52] [INFO] Machine: HP HP Laptop 17-by1xxx | MachineID: F7F13A97D58D
+[2026-09-20 16:31:52] [OK] Sleep/shutdown prevention activated
+[2026-09-20 16:31:52] [OK] QuickEdit AND mouse input reporting disabled for this session (FT-01, FT-171a) -- re-asserted silently from here on
+[2026-09-20 16:31:52] [SCREEN] [SCREEN-25] (shown as screen 1a) Rendered: WELCOME BACK
+[2026-09-20 16:31:56] [KEY] Key 'R' accepted at: Show-ResumePrompt
+[2026-09-20 16:31:56] [STATE] User chose to RESUME from checkpoint: AppsAudit
+[2026-09-20 16:32:07] [KEY] Continue accepted at: Show-ResumePrompt
+[2026-09-20 16:32:07] [SCREEN] [SCREEN-31] (shown as screen 1b) Rendered: QUICK RE-CHECK BEFORE RESUMING
+[2026-09-20 16:34:51] [KEY] Key 'Y' accepted at: Show-ResumeReverify
+[2026-09-20 16:34:51] [CONFIRM] Resume re-check: personal computer reconfirmed
+[2026-09-20 16:34:51] [OK] Domain check passed -- not domain joined
+[2026-09-20 16:34:51] [OK] Resume re-check: administrator access confirmed
+[2026-09-20 16:34:51] [OK] Sleep/shutdown prevention activated
+[2026-09-20 16:34:51] [OK] Sleep/shutdown prevention activated
+[2026-09-20 16:34:51] [SCREEN] [SCREEN-49] (shown as screen 18d) Rendered: !  RUNNING ON BATTERY POWER
+[2026-09-20 16:34:51] [WARN] Running on battery -- battery level: 86%
+[2026-09-20 16:35:00] [KEY] Key 'Y' accepted at: Test-PowerStatus
+[2026-09-20 16:35:05] [KEY] Continue accepted at: Show-ResumeReverify
+[2026-09-20 16:35:05] [INFO] Windows Edition: Core -- Windows 11 Home
+[2026-09-20 16:35:06] [SCREEN] [SCREEN-34] (shown as screen 10) Rendered: WINDOWS EDITION DETECTED
+[2026-09-20 16:35:06] [INFO] Home edition -- Remote Desktop and Group Policy unavailable
+[2026-09-20 16:35:08] [KEY] Continue accepted at: Get-WinEdition
+[2026-09-20 16:35:08] [SCREEN] [SCREEN-35] (shown as screen 11) Rendered: YOUR PC -- RAM: 8 GB
+[2026-09-20 16:35:08] [WARN] RAM: 8 GB (minimal)
+[2026-09-20 16:35:09] [KEY] Continue accepted at: Get-RAMStatus
+[2026-09-20 16:35:09] [SCREEN] [SCREEN-52] (shown as screen 21) Rendered: GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+[2026-09-20 16:35:12] [KEY] Key '1' accepted at: Select-Mode
+[2026-09-20 16:35:12] [INFO] Mode selected: Console
+[2026-09-20 16:35:15] [INFO] Item 6 (Edge phishing protection): registry read BLOCKED by Tamper Protection -- reporting Unknown rather than a fault (FT-141)
+[2026-09-20 16:35:20] [WARN] Item 17 (password on wake): read produced no setting index (FT-256, NO_INDEX). Raw powercfg output: Power Scheme GUID: 48684d4a-8524-4093-8a63-ea7132b79c1c (HP Recommended)
+[2026-09-20 16:35:23] [DONE] Get-AllStatuses complete -- all 19 settings probed
+[2026-09-20 16:35:24] [SCREEN] [SCREEN-53] (shown as screen 22) Rendered: QUICK QUESTION -- YOUR PASSWORDS
+[2026-09-20 16:35:24] [INFO] NOT SET (expected) -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1:3639 char:23 -- user was at: Show-ScopeDisclaimer -- Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection' because it does not exist.
+[2026-09-20 16:35:24] [ERROR] SILENT ERROR -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1:3639 char:23 -- user was at: Show-ScopeDisclaimer -- Property EnableSmartScreen does not exist at path HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System.
+[2026-09-20 16:35:24] [INFO] NOT SET (expected) -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1:3639 char:23 -- user was at: Show-ScopeDisclaimer -- Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' because it does not exist.
+[2026-09-20 16:35:24] [INFO] NOT SET (expected) -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1:3639 char:23 -- user was at: Show-ScopeDisclaimer -- Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' because it does not exist.
+[2026-09-20 16:35:24] [INFO] NOT SET (expected) -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1:3639 char:23 -- user was at: Show-ScopeDisclaimer -- Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' because it does not exist.
+[2026-09-20 16:35:28] [KEY] Key 'Y' accepted at: Show-ScopeDisclaimer
+[2026-09-20 16:35:28] [INFO] User has a password manager -- Edge Password Saving change stays available
+[2026-09-20 16:35:30] [KEY] Continue accepted at: Show-ScopeDisclaimer
+[2026-09-20 16:35:30] [SCREEN] [SCREEN-54] (shown as screen 23) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 1 of 2)
+[2026-09-20 16:35:38] [KEY] Nav 'NEXT' at: Show-ScopeDisclaimer
+[2026-09-20 16:35:38] [SCREEN] [SCREEN-75] (shown as screen 24) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 2 of 2)
+[2026-09-20 16:35:38] [KEY] Nav 'NEXT' at: Show-ScopeDisclaimer
+[2026-09-20 16:35:39] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 174, 5 item(s) selected
+[2026-09-20 16:35:39] [INFO] Checklist columns: window 174, name 69 (content needed 51), status 94 (content needed 94)
+[2026-09-20 16:38:16] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[2026-09-20 16:38:16] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 174, 5 item(s) selected
+[2026-09-20 16:38:16] [INFO] Checklist columns: window 174, name 123 (content needed 41), status 40 (content needed 40)
+[2026-09-20 16:38:57] [KEY] Checklist: key ignored (')
+[2026-09-20 16:39:02] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[2026-09-20 16:39:03] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 174, 5 item(s) selected
+[2026-09-20 16:39:03] [INFO] Checklist columns: window 174, name 69 (content needed 51), status 94 (content needed 94)
+[2026-09-20 16:39:07] [KEY] Checklist: key ignored (N)
+[2026-09-20 16:39:08] [KEY] Checklist: key ignored (N)
+[2026-09-20 16:39:10] [KEY] Checklist: key ignored (B)
+[2026-09-20 16:39:11] [WARN] Checklist: 4+ ignored keys in one prompt -- burst suppressed (FT-193)
+[2026-09-20 16:47:40] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[2026-09-20 16:47:40] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 174, 5 item(s) selected
+[2026-09-20 16:47:40] [INFO] Checklist columns: window 174, name 123 (content needed 41), status 40 (content needed 40)
+[2026-09-20 16:48:21] [KEY] Checklist command '8' accepted at: Run-ConsoleMode
+[2026-09-20 16:48:21] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 174, 6 item(s) selected
+[2026-09-20 16:48:21] [INFO] Checklist columns: window 174, name 123 (content needed 41), status 40 (content needed 40)
+[2026-09-20 16:48:25] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[2026-09-20 16:48:26] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 174, 6 item(s) selected
+[2026-09-20 16:48:26] [INFO] Checklist columns: window 174, name 69 (content needed 51), status 94 (content needed 94)
+[2026-09-20 17:00:10] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[2026-09-20 17:00:10] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 174, 6 item(s) selected
+[2026-09-20 17:00:10] [INFO] Checklist columns: window 174, name 123 (content needed 41), status 40 (content needed 40)
+[2026-09-20 17:00:12] [KEY] Checklist: key ignored (M)
+[2026-09-20 17:00:12] [KEY] Checklist: key ignored (M)
+[2026-09-20 17:00:13] [KEY] Checklist: key ignored (B)
+[2026-09-20 17:00:14] [WARN] Checklist: 4+ ignored keys in one prompt -- burst suppressed (FT-193)
+[2026-09-20 17:04:14] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[2026-09-20 17:04:14] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 174, 6 item(s) selected
+[2026-09-20 17:04:14] [INFO] Checklist columns: window 174, name 69 (content needed 51), status 94 (content needed 94)
+[2026-09-20 17:08:51] [KEY] Checklist command 'P' accepted at: Run-ConsoleMode
+[2026-09-20 17:08:51] [SCREEN] [SCREEN-77] (shown as screen 26) Checklist render: page 2, window width 174, 6 item(s) selected
+[2026-09-20 17:08:51] [INFO] Checklist columns: window 174, name 123 (content needed 41), status 40 (content needed 40)
+[2026-09-20 17:23:06] [KEY] Checklist command 'R' accepted at: Run-ConsoleMode
+[2026-09-20 17:23:06] [SCREEN] [SCREEN-55] (shown as screen 27) Rendered: REVIEW YOUR SELECTIONS -- NO CHANGES MADE YET
+[2026-09-20 17:23:06] [INFO] Review listing rendered -- awaiting Ready-to-proceed
+[2026-09-20 17:23:35] [KEY] Key 'Y' accepted at: Run-ConsoleMode
+[2026-09-20 17:23:35] [START] === Console Mode Hardening Run Started ===
+[2026-09-20 17:23:35] [ERROR] SILENT ERROR -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1:6882 char:17 -- user was at: Apply-Setting -- Requested registry access is not allowed.
+[2026-09-20 17:23:36] [KEY] Continue accepted at: Apply-Setting
+[2026-09-20 17:23:36] [INFO] Edge Phishing Protection (all 3) | Before: Unknown -- Tamper Protection blocks this check; verify by hand | Result: MANUAL REQUIRED -- registry is protected on this PC (Tamper Protection)
+[2026-09-20 17:41:49] [KEY] Continue accepted at: Run-ConsoleMode
+[2026-09-20 17:41:50] [INFO] Windows Hello (check only) | Before: Not set up -- manual action needed | Result: NOT CONFIGURED -- Manual setup: Settings -> Accounts -> Sign-in options -> set up PIN or fingerprint/face. A PIN is the minimum. See Guide: Phase 1, Step 4
+[2026-09-20 18:06:04] [KEY] Continue accepted at: Run-ConsoleMode
+[2026-09-20 18:06:04] [INFO] Diagnostic Data -- Required Only | Deferred to individual convenience review (FT-94)
+[2026-09-20 18:10:30] [KEY] Continue accepted at: Run-ConsoleMode
+[2026-09-20 18:10:30] [INFO] Windows Widgets -- Disable | Deferred to individual convenience review (FT-94)
+[2026-09-20 18:11:23] [KEY] Continue accepted at: Run-ConsoleMode
+[2026-09-20 18:11:23] [APPLIED] Password Required on Wake | Before: Unknown -- could not read; check by hand | Result: Password required on wake -- enabled for both AC and battery -- GOOD
+[2026-09-20 18:15:38] [KEY] Continue accepted at: Run-ConsoleMode
+[2026-09-20 18:15:41] [INFO] Device Encryption state: Not encrypted (0%), account type: Local -- raw: FullyDecrypted
+[2026-09-20 18:15:41] [SCREEN] [SCREEN-61] (shown as screen 28) Rendered: FINAL ITEM: DEVICE ENCRYPTION (Windows 11 Home)
+[2026-09-20 18:15:52] [KEY] Continue accepted at: Show-BitLockerHomeScreen
+[2026-09-20 18:15:53] [GOOD] Device Encryption prereq check -- TPM: True, SecureBoot: True, WinRE: True
+[2026-09-20 18:15:53] [SCREEN] [SCREEN-62] (shown as screen 29) Rendered: YOUR PC MEETS THE REQUIREMENTS
+[2026-09-20 18:15:58] [KEY] Continue accepted at: Show-BitLockerHomeScreen
+[2026-09-20 18:15:58] [SCREEN] [SCREEN-79] (shown as screen 30) Rendered: BEFORE YOU TURN IT ON -- YOUR RECOVERY KEY
+[2026-09-20 18:16:04] [KEY] Continue accepted at: Show-BitLockerHomeScreen
+[2026-09-20 18:16:04] [SCREEN] [SCREEN-80] (shown as screen 30b) Rendered: HOW TO SIGN IN WITH A MICROSOFT ACCOUNT
+[2026-09-20 18:20:48] [KEY] Continue accepted at: Show-BitLockerHomeScreen
+[2026-09-20 18:20:48] [SCREEN] [SCREEN-81] (shown as screen 31) Rendered: HOW TO TELL IF ENCRYPTION IS ACTUALLY RUNNING
+[2026-09-20 18:20:48] [SKIP] BitLocker/Device Encryption: Home edition -- manual path shown across 4 screens, no changes made by Checkup
+[2026-09-20 18:21:51] [KEY] Continue accepted at: Show-BitLockerHomeScreen
+[2026-09-20 18:21:51] [SCREEN] [SCREEN-69] (shown as screen 32) Rendered: ALL SELECTED ITEMS PROCESSED
+[2026-09-20 18:33:05] [KEY] Continue accepted at: Run-ConsoleMode
+[2026-09-20 18:33:05] [SCREEN] [SCREEN-70] (shown as screen 33) Rendered: AUTOMATED SCAN SCHEDULE SETUP
+[2026-09-20 18:33:10] [GOOD] Reminder settings confirmed by read-back -- runs on battery: yes, catches a missed start: yes, wakes the PC: no (T1)
+[2026-09-20 18:33:10] [GOOD] Scheduled task created: GatewayGuard - Quarterly Defender Offline Scan (reminder popup -- FT-175)
+[2026-09-20 18:33:14] [GOOD] Reminder settings confirmed by read-back -- runs on battery: yes, catches a missed start: yes, wakes the PC: no (T2)
+[2026-09-20 18:33:14] [GOOD] Scheduled task created: GatewayGuard - Monthly Malwarebytes Reminder
+[2026-09-20 18:33:29] [KEY] Continue accepted at: Setup-ScheduledTasks
+[2026-09-20 18:33:29] [SCREEN] [SCREEN-23] (shown as screen 33a) Rendered: CONVENIENCE CHOICES -- NOTHING CHANGED YET
+[2026-09-20 18:33:42] [KEY] Continue accepted at: Show-ConvenienceReview
+[2026-09-20 18:33:42] [SCREEN] [SCREEN-71] (shown as screen 33b) Rendered: YOUR CHOICE [1 of 2]: Diagnostic Data
+[2026-09-20 18:41:58] [KEY] Key 'N' accepted at: Show-ConvenienceReview
+[2026-09-20 18:41:58] [SKIP] User skipped convenience change: Diagnostic Data -- no change made
+[2026-09-20 18:41:58] [SCREEN] [SCREEN-71] (shown as screen 33b) Rendered: YOUR CHOICE [2 of 2]: Windows Widgets
+[2026-09-20 18:52:17] [KEY] Key 'Y' accepted at: Show-ConvenienceReview
+[2026-09-20 18:52:17] [ERROR] Windows Widgets -- Disable | Before: Enabled -- needs attention | Result: ERROR: Attempted to perform an unauthorized operation.
+[2026-09-20 18:52:17] [OK] User approved convenience change: Windows Widgets -- ERROR: Attempted to perform an unauthorized operation.
+[2026-09-20 18:52:17] [ERROR] SILENT ERROR -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1:6964 char:17 -- user was at: Show-ConvenienceReview -- Attempted to perform an unauthorized operation.
+[2026-09-20 18:54:50] [KEY] Continue accepted at: Show-ConvenienceReview
+[2026-09-20 18:54:51] [SCREEN] [SCREEN-72] (shown as screen 34) Rendered: AUTOMATED STEPS COMPLETE
+[2026-09-20 18:54:51] [OK] Sleep prevention deactivated -- normal power management restored (called from: Run-ConsoleMode)
+
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================

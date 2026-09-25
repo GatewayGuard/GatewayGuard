@@ -1,0 +1,74 @@
+﻿============================================================
+  GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+  Build: ascii44
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-09-19 12:35:54
+  Computer: SANDY
+  Machine:  HP HP Laptop 17-by1xxx
+  Machine ID: F7F13A97D58D (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[2026-09-19 12:35:54] [OK] Console control handler registered -- Ctrl+C in Mark mode can no longer end the session (FT-150), and closing the window still writes the log footer (FT-160)
+[2026-09-19 12:35:54] [START] Tool launched v3.1 build ascii44
+[2026-09-19 12:35:54] [INFO] Log location: C:\Users\willi\OneDrive\GatewayGuard\Logs  (OneDrive -- already set up on this PC)
+[2026-09-19 12:35:54] [INFO] Machine: HP HP Laptop 17-by1xxx | MachineID: F7F13A97D58D
+[2026-09-19 12:35:54] [OK] Sleep/shutdown prevention activated
+[2026-09-19 12:35:55] [WARN] Write-GGBox: a line was truncated to fit the window (60 cols) -- FT-217
+[2026-09-19 12:35:55] [WARN] Write-GGBox: a line was truncated to fit the window (60 cols) -- FT-217
+[2026-09-19 12:35:55] [WARN] Write-GGBox: a line was truncated to fit the window (60 cols) -- FT-217
+[2026-09-19 12:35:55] [WARN] Write-GGBox: a line was truncated to fit the window (60 cols) -- FT-217
+[2026-09-19 12:35:55] [WARN] Write-GGBox: a line was truncated to fit the window (60 cols) -- FT-217
+[2026-09-19 12:35:55] [WARN] Write-GGBox: a line was truncated to fit the window (60 cols) -- FT-217
+[2026-09-19 12:35:55] [WARN] Write-GGBox: a line was truncated to fit the window (60 cols) -- FT-217
+[2026-09-19 12:35:55] [OK] QuickEdit AND mouse input reporting disabled for this session (FT-01, FT-171a) -- re-asserted silently from here on
+[2026-09-19 12:35:55] [SCREEN] [SCREEN-25] (shown as screen 1a) Rendered: WELCOME BACK
+[2026-09-19 12:35:58] [KEY] Key 'R' accepted at: Show-ResumePrompt
+[2026-09-19 12:35:58] [STATE] User chose to RESUME from checkpoint: OfflineScanPending
+[2026-09-19 12:36:10] [KEY] Continue accepted at: Show-ResumePrompt
+[2026-09-19 12:36:10] [SCREEN] [SCREEN-31] (shown as screen 1b) Rendered: QUICK RE-CHECK BEFORE RESUMING
+[2026-09-19 12:36:17] [KEY] Key 'Y' accepted at: Show-ResumeReverify
+[2026-09-19 12:36:17] [CONFIRM] Resume re-check: personal computer reconfirmed
+[2026-09-19 12:36:17] [OK] Domain check passed -- not domain joined
+[2026-09-19 12:36:17] [OK] Resume re-check: administrator access confirmed
+[2026-09-19 12:36:17] [OK] Sleep/shutdown prevention activated
+[2026-09-19 12:36:17] [OK] Resume re-check: AC power confirmed (100%). Sleep prevention active.
+[2026-09-19 12:36:21] [KEY] Continue accepted at: Show-ResumeReverify
+[2026-09-19 12:36:21] [INFO] Windows Edition: Core -- Windows 11 Home
+[2026-09-19 12:36:21] [SCREEN] [SCREEN-34] (shown as screen 10) Rendered: WINDOWS EDITION DETECTED
+[2026-09-19 12:36:21] [INFO] Home edition -- Remote Desktop and Group Policy unavailable
+[2026-09-19 12:37:15] [KEY] Continue accepted at: Get-WinEdition
+[2026-09-19 12:37:15] [SCREEN] [SCREEN-35] (shown as screen 11) Rendered: YOUR PC -- RAM: 8 GB
+[2026-09-19 12:37:15] [WARN] RAM: 8 GB (minimal)
+[2026-09-19 12:37:17] [KEY] Continue accepted at: Get-RAMStatus
+[2026-09-19 12:37:17] [SCREEN] [SCREEN-40] (shown as screen 14b) Rendered: WELCOME BACK -- OFFLINE SCAN COMPLETE
+[2026-09-19 12:37:29] [KEY] Look-back opened at: Show-PostScanGuidance
+[2026-09-19 12:41:18] [KEY] Look-back opened at: Show-PostScanGuidance
+[2026-09-19 12:41:42] [KEY] Look-back opened at: Show-PostScanGuidance
+[2026-09-19 12:43:44] [KEY] Look-back opened at: Show-PostScanGuidance
+[2026-09-19 12:44:17] [KEY] Look-back opened at: Show-PostScanGuidance
+[2026-09-19 12:44:29] [KEY] Look-back opened at: Show-PostScanGuidance
+[2026-09-19 12:44:47] [KEY] Continue accepted at: Show-PostScanGuidance
+[2026-09-19 12:50:41] [KEY] Key 'N' accepted at: Show-PostScanGuidance
+[2026-09-19 12:50:41] [OK] Post-scan: Protection History clean or already handled
+[2026-09-19 12:50:49] [KEY] Continue accepted at: Show-PostScanGuidance
+[2026-09-19 12:50:50] [SCREEN] [SCREEN-43] (shown as screen 17) Rendered: OK  ANTIVIRUS STATUS -- HEALTHY SETUP
+[2026-09-19 12:50:50] [OK] Defender active as primary AV. MB Free installed as companion.
+[2026-09-19 12:57:38] [KEY] Continue accepted at: Test-DefenderPrimary
+[2026-09-19 12:57:38] [STATE] Checkpoint saved: DefenderAV
+[2026-09-19 12:57:38] [SCREEN] [SCREEN-73] (shown as screen 18) Rendered: MALWAREBYTES DETECTED ON THIS PC
+[2026-09-19 12:59:50] [KEY] Key 'Y' accepted at: Show-MalwarebytesFollowUp
+[2026-09-19 12:59:50] [INFO] Launched Malwarebytes at C:\Program Files\Malwarebytes\Anti-Malware\mbam.exe (elevated, inherited from tool)
+[2026-09-19 12:59:50] [SCREEN] [SCREEN-48] (shown as screen 18c) Rendered: AFTER THE CUSTOM SCAN -- RUN THE DEEP SCAN OVERNIGHT
+[2026-09-19 12:59:50] [INFO] Overnight Deep Scan guidance shown (D-15: verified no settings changes needed)
+[2026-09-19 13:01:04] [KEY] Look-back opened at: Show-MalwarebytesFollowUp
+
+[13:03:56] [EXIT] SESSION ENDED EARLY -- the window's X (close button) was clicked. Nothing was left half-applied: Checkup applies one setting at a time.
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================
