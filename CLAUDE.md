@@ -79,7 +79,7 @@
   new screen gets it automatically and cannot forget it. The 26-line limit is
   gate 12b in the coverage checker, run as a **ratchet**: ten screens were
   already over when the rule was written (72, 50, 73, 26, 27, 65, 60, 41, 30,
-  52) and sit in a named baseline inside the checker — reported on every run,
+  52 -- **52 cleared 2026-09-26**, ascii45 B1, so nine remain) and sit in a named baseline inside the checker — reported on every run,
   but not failing the gate. **Any screen not on that list that exceeds 26
   lines fails the build.** Delete an entry from the baseline as you split that
   screen; the list is only ever allowed to get shorter.

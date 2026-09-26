@@ -39,6 +39,10 @@
 #           (FT-188); item 6's Tamper Protection refusal logs its own
 #           INFO and clears its record. Access denials elsewhere stay
 #           ERROR (FT-245).
+#   B1:     GUI MODE REMOVED (Decision 5, Bill 2026-09-25). Seven measured
+#           defects in its first field run (FT-280, now moot). Screen 21
+#           reads [1] START / [X] EXIT; X asks first (Confirm-Exit) -- the
+#           old [3] EXIT left with no confirmation.
 #
 # CHANGES FROM ascii43 (2026-09-06 -- ASCII44):
 #   FT-242: NINE REGISTRY WRITES COULD NOT FAIL. Without -EA Stop a
@@ -8741,18 +8745,14 @@ function Show-ModeSelector {
         "  A complete log is saved to your GatewayGuard folder each run.     ",
         "  Guide and support: $GuideURL  (ends in .co -- NOT .com)   ",
         "---",
-        "  SELECT A MODE:                                            ",
+        "  WHAT HAPPENS NEXT:                                        ",
         "                                                            ",
-        "  [1] CONSOLE MODE                                          ",
-        "      Text-based checklist in this window. Shows each       ",
-        "      setting and its live status, and changes only the     ",
-        "      items you select. Fast and fully transparent.         ",
+        "  [1] START                                                 ",
+        "      A checklist in this window shows each setting and     ",
+        "      its live status. Checkup changes only the items you   ",
+        "      select.                                               ",
         "                                                            ",
-        "  [2] GUI MODE                                              ",
-        "      Opens a visual window with checkboxes and color-coded ",
-        "      status indicators. Recommended for first time users.  ",
-        "                                                            ",
-        "  [3] EXIT                                                  ",
+        "  [X] EXIT -- nothing has been changed                      ",
         "                                                            ",
         "  Admin status: $(if ($global:IsAdmin) { 'FULL ACCESS OK' } else { 'LIMITED MODE -- some settings unavailable' })",
         "  Edition: $global:WinEditionFriendly"
@@ -9475,341 +9475,6 @@ function Run-ConsoleMode {
 }
 
 # ============================================================
-# GUI MODE  (Garamond font throughout)
-# ============================================================
-function Run-GUIMode {
-    Add-Type -AssemblyName System.Windows.Forms
-    Add-Type -AssemblyName System.Drawing
-
-    Write-Host "  Checking current settings -- please wait..." -ForegroundColor Yellow
-    Get-AllStatuses
-
-    $form = New-Object System.Windows.Forms.Form
-    $form.Text    = "GatewayGuard Checkup -- Windows 11 Security Hardening v$ScriptVersion -- $global:WinEditionFriendly"
-    $form.Size    = New-Object System.Drawing.Size(900, 780)
-    $form.StartPosition = "CenterScreen"
-    $form.BackColor = [System.Drawing.Color]::FromArgb(28, 28, 28)
-    $form.ForeColor = [System.Drawing.Color]::White
-    $form.Font    = New-Object System.Drawing.Font("Garamond", 9)
-    $form.FormBorderStyle = "FixedDialog"
-    $form.MaximizeBox = $false
-
-    $form.Add_FormClosing({
-        param($sender, $e)
-        $resp = [System.Windows.Forms.MessageBox]::Show(
-            "Are you sure you want to exit?`n`nNo changes will be saved unless you clicked Run Selected.",
-            "Confirm Exit", "YesNo", "Question"
-        )
-        if ($resp -eq "No") { $e.Cancel = $true }
-        else { Disable-SleepPrevention; Save-Log }
-    })
-
-    $lblTitle = New-Object System.Windows.Forms.Label
-    $lblTitle.Text = "GatewayGuard Checkup -- Windows 11 Security Hardening v$ScriptVersion"
-    $lblTitle.Font = New-Object System.Drawing.Font("Garamond", 14, [System.Drawing.FontStyle]::Bold)
-    $lblTitle.ForeColor = [System.Drawing.Color]::FromArgb(0,180,255)
-    $lblTitle.Location = New-Object System.Drawing.Point(15, 10)
-    $lblTitle.Size = New-Object System.Drawing.Size(860, 28)
-    $form.Controls.Add($lblTitle)
-
-    $lblAuthor = New-Object System.Windows.Forms.Label
-    $lblAuthor.Text = "William F. Burns III  |  Former ISO, Port Authority of NY & NJ  |  $GuideURL"
-    $lblAuthor.Font = New-Object System.Drawing.Font("Garamond", 9)
-    $lblAuthor.ForeColor = [System.Drawing.Color]::Silver
-    $lblAuthor.Location = New-Object System.Drawing.Point(15, 42)
-    $lblAuthor.Size = New-Object System.Drawing.Size(860, 18)
-    $form.Controls.Add($lblAuthor)
-
-    $adminColor = if ($global:IsAdmin) { [System.Drawing.Color]::FromArgb(0,200,100) } else { [System.Drawing.Color]::Orange }
-    $lblStatus = New-Object System.Windows.Forms.Label
-    $lblStatus.Text = "Edition: $global:WinEdition  |  Admin: $(if ($global:IsAdmin) { 'Full Access OK' } else { 'Limited Mode -- some settings unavailable' })"
-    $lblStatus.Font = New-Object System.Drawing.Font("Garamond", 9, [System.Drawing.FontStyle]::Italic)
-    $lblStatus.ForeColor = $adminColor
-    $lblStatus.Location = New-Object System.Drawing.Point(15, 62)
-    $lblStatus.Size = New-Object System.Drawing.Size(860, 18)
-    $form.Controls.Add($lblStatus)
-
-    $lblNote = New-Object System.Windows.Forms.Label
-    $lblNote.Text = "Select settings to apply. No changes made without approval. Log saved to your GatewayGuard folder after run."
-    $lblNote.Font = New-Object System.Drawing.Font("Garamond", 9, [System.Drawing.FontStyle]::Italic)
-    $lblNote.ForeColor = [System.Drawing.Color]::FromArgb(255,200,0)
-    $lblNote.Location = New-Object System.Drawing.Point(15, 82)
-    $lblNote.Size = New-Object System.Drawing.Size(860, 18)
-    $form.Controls.Add($lblNote)
-
-    $lblScope = New-Object System.Windows.Forms.Label
-    $lblScope.Text = "This tool turns risky features OFF and security features ON. Features can be re-enabled in Windows Settings at any time."
-    $lblScope.Font = New-Object System.Drawing.Font("Garamond", 8, [System.Drawing.FontStyle]::Italic)
-    $lblScope.ForeColor = [System.Drawing.Color]::FromArgb(180,180,180)
-    $lblScope.Location = New-Object System.Drawing.Point(15, 102)
-    $lblScope.Size = New-Object System.Drawing.Size(860, 16)
-    $form.Controls.Add($lblScope)
-
-    $sep = New-Object System.Windows.Forms.Label
-    $sep.BorderStyle = "Fixed3D"
-    $sep.Location = New-Object System.Drawing.Point(10, 122)
-    $sep.Size = New-Object System.Drawing.Size(864, 2)
-    $form.Controls.Add($sep)
-
-    $panel = New-Object System.Windows.Forms.Panel
-    $panel.Location = New-Object System.Drawing.Point(10, 126)
-    $panel.Size = New-Object System.Drawing.Size(864, 570)
-    $panel.AutoScroll = $true
-    $panel.BackColor = [System.Drawing.Color]::FromArgb(28, 28, 28)
-    $form.Controls.Add($panel)
-
-    # BUGFIX ascii23 (2026-07-10): with ~20 rows x 6 controls each (~120+
-    # child controls) inside a scrollable panel, WinForms can visibly
-    # flicker, go blank, or freeze during scroll without double-buffering
-    # and layout suspension. DoubleBuffered is a protected property, so it
-    # needs reflection to set from PowerShell.
-    try {
-        $dbFlags = [System.Reflection.BindingFlags]::SetProperty -bor [System.Reflection.BindingFlags]::Instance -bor [System.Reflection.BindingFlags]::NonPublic
-        $panel.GetType().InvokeMember("DoubleBuffered", $dbFlags, $null, $panel, @($true)) | Out-Null
-    } catch {}
-    $panel.SuspendLayout()
-
-    foreach ($col in @(
-        @{Text="Select"; X=5; W=50},
-        @{Text="Setting (click row for details)"; X=60; W=530},
-        @{Text="Current Status"; X=605; W=245}
-    )) {
-        $lbl = New-Object System.Windows.Forms.Label
-        $lbl.Text = $col.Text
-        $lbl.Font = New-Object System.Drawing.Font("Garamond", 11, [System.Drawing.FontStyle]::Bold)
-        $lbl.ForeColor = [System.Drawing.Color]::FromArgb(0,180,255)
-        $lbl.Location = New-Object System.Drawing.Point($col.X, 5)
-        $lbl.Size = New-Object System.Drawing.Size($col.W, 22)
-        $panel.Controls.Add($lbl)
-    }
-
-    # Shared tooltip control -- shows Description + Guide Reference on hover.
-    # Long AutoPopDelay so it stays up long enough to actually read.
-    $tooltip = New-Object System.Windows.Forms.ToolTip
-    $tooltip.AutoPopDelay = 15000
-    $tooltip.InitialDelay = 400
-    $tooltip.ReshowDelay = 200
-    $tooltip.IsBalloon = $true
-
-    $checkboxes = @{}
-    $yPos = 28
-    # DIAGNOSTIC (2026-07-10): if the yPos bug recurs, this will tell us
-    # exactly what it actually is at the moment of first use, instead of
-    # guessing from a downstream error message.
-    Write-Log -Message "DIAG: yPos initialized as type $($yPos.GetType().FullName), value=$yPos, count=$(@($yPos).Count)" -Status "INFO"
-
-    foreach ($s in $Settings) {
-        $isSkipped = ($s.SkipOnHome -and ($global:WinEdition -notmatch "Pro|Enterprise|Education")) -or ($s.RequiresAdmin -and -not $global:IsAdmin)
-
-        $rowBg = New-Object System.Windows.Forms.Panel
-        # BUGFIX ascii23 (2026-07-09): $yPos was intermittently becoming
-        # System.Object[] instead of a scalar int, causing "op_Subtraction
-        # not found" crashes. Root cause not pinned down via static review --
-        # forcing an explicit [int] cast here makes the crash structurally
-        # impossible regardless of cause, and will throw a clearer error
-        # pointing at the real culprit if something upstream is still wrong.
-        if (@($yPos).Count -gt 1) {
-            Write-Log -Message "DIAG: yPos CORRUPTED at row for '$($s.Name)' -- type=$($yPos.GetType().FullName) value=$($yPos -join ',')" -Status "WARN"
-        }
-        # UX REDESIGN (2026-07-10): rows now show only Name + Status, in much
-        # larger text. Description and Guide Reference are no longer always
-        # visible -- shown via a hover tooltip AND a click popup (both, since
-        # hover alone isn't discoverable for everyone). Row height shrunk from
-        # 56 to 40 accordingly.
-        $rowBg.Location = New-Object System.Drawing.Point(0, ([int]@($yPos)[0] - 2))
-        $rowBg.Size = New-Object System.Drawing.Size(848, 40)
-        $rowBg.BackColor = if ($isSkipped) { [System.Drawing.Color]::FromArgb(35,35,35) } elseif ($s.ID % 2 -eq 0) { [System.Drawing.Color]::FromArgb(38,38,38) } else { [System.Drawing.Color]::FromArgb(28,28,28) }
-        $rowBg.Cursor = [System.Windows.Forms.Cursors]::Hand
-        $panel.Controls.Add($rowBg)
-
-        $cb = New-Object System.Windows.Forms.CheckBox
-        $cb.Checked = $s.Selected -and -not $isSkipped
-        $cb.Enabled = -not $isSkipped
-        $cb.Location = New-Object System.Drawing.Point(15, 9)
-        $cb.Size = New-Object System.Drawing.Size(22, 22)
-        $cb.Tag = $s.ID
-        $rowBg.Controls.Add($cb)
-        $checkboxes[$s.ID] = $cb
-
-        $nameText = "$($s.ID). $($s.Name)$(if (-not $s.CanAuto) { ' *' })$(if ($isSkipped) { ' [UNAVAILABLE]' })"
-        $lblName = New-Object System.Windows.Forms.Label
-        $lblName.Text = $nameText
-        $lblName.Font = New-Object System.Drawing.Font("Garamond", 13, [System.Drawing.FontStyle]::Bold)
-        $lblName.ForeColor = if ($isSkipped) { [System.Drawing.Color]::DimGray } else { [System.Drawing.Color]::White }
-        $lblName.Location = New-Object System.Drawing.Point(45, 7)
-        $lblName.Size = New-Object System.Drawing.Size(545, 26)
-        $lblName.Cursor = [System.Windows.Forms.Cursors]::Hand
-        $rowBg.Controls.Add($lblName)
-
-        $statusColor = if ($s.Status -match "ON|OK|GOOD|ENCRYPTED|CONFIGURED|ALL ON|DISABLED -- GOOD|Required Only|primary|N/A") {
-            [System.Drawing.Color]::FromArgb(0,200,100)
-        } elseif ($s.Status -match "OFF|NOT SET|PARTIAL|FULL|DEFAULT|action needed|Enabled \(default\)") {
-            [System.Drawing.Color]::FromArgb(255,100,100)
-        } elseif ($isSkipped) {
-            [System.Drawing.Color]::DimGray
-        } else {
-            [System.Drawing.Color]::Orange
-        }
-
-        $lblStat = New-Object System.Windows.Forms.Label
-        $lblStat.Text = $s.Status
-        $lblStat.Font = New-Object System.Drawing.Font("Garamond", 12, [System.Drawing.FontStyle]::Bold)
-        $lblStat.ForeColor = $statusColor
-        $lblStat.Location = New-Object System.Drawing.Point(600, 9)
-        $lblStat.Size = New-Object System.Drawing.Size(245, 24)
-        $rowBg.Controls.Add($lblStat)
-
-        # Hover tooltip -- attach to row, name, and status so it works no
-        # matter where on the row the cursor lands.
-        $detailText = "$($s.Description)`n`nGuide: $($s.GuideRef)"
-        $tooltip.SetToolTip($rowBg, $detailText)
-        $tooltip.SetToolTip($lblName, $detailText)
-        $tooltip.SetToolTip($lblStat, $detailText)
-
-        # Click popup -- more discoverable than hover for many users.
-        # Attached to row, name, and status labels so clicking anywhere on
-        # the row works, not just an exact pixel-perfect spot.
-        $detailPopupHandler = {
-            [System.Windows.Forms.MessageBox]::Show(
-                "$($s.Description)`n`nGuide reference: $($s.GuideRef)",
-                "$($s.ID). $($s.Name)",
-                "OK", "Information"
-            ) | Out-Null
-        }.GetNewClosure()
-        $rowBg.Add_Click($detailPopupHandler)
-        $lblName.Add_Click($detailPopupHandler)
-        $lblStat.Add_Click($detailPopupHandler)
-
-        $yPos = [int](@($yPos)[0]) + 44
-    }
-
-    $panel.ResumeLayout($true)
-
-    $lblLegend = New-Object System.Windows.Forms.Label
-    $lblLegend.Text = "* = Manual action required    UNAVAILABLE = Not supported on this edition or requires admin"
-    $lblLegend.Font = New-Object System.Drawing.Font("Garamond", 8, [System.Drawing.FontStyle]::Italic)
-    $lblLegend.ForeColor = [System.Drawing.Color]::Silver
-    $lblLegend.Location = New-Object System.Drawing.Point(45, ([int](@($yPos)[0]) + 4))
-    $lblLegend.Size = New-Object System.Drawing.Size(790, 14)
-    $panel.Controls.Add($lblLegend)
-
-    $btnCheckAll = New-Object System.Windows.Forms.Button
-    $btnCheckAll.Text = "Check All"
-    $btnCheckAll.Location = New-Object System.Drawing.Point(10, 707)
-    $btnCheckAll.Size = New-Object System.Drawing.Size(100, 32)
-    $btnCheckAll.BackColor = [System.Drawing.Color]::FromArgb(50,50,50)
-    $btnCheckAll.ForeColor = [System.Drawing.Color]::White
-    $btnCheckAll.FlatStyle = "Flat"
-    $btnCheckAll.Add_Click({ $checkboxes.Values | Where-Object { $_.Enabled } | ForEach-Object { $_.Checked = $true } })
-    $form.Controls.Add($btnCheckAll)
-
-    $btnClear = New-Object System.Windows.Forms.Button
-    $btnClear.Text = "Clear All"
-    $btnClear.Location = New-Object System.Drawing.Point(118, 707)
-    $btnClear.Size = New-Object System.Drawing.Size(100, 32)
-    $btnClear.BackColor = [System.Drawing.Color]::FromArgb(50,50,50)
-    $btnClear.ForeColor = [System.Drawing.Color]::White
-    $btnClear.FlatStyle = "Flat"
-    $btnClear.Add_Click({ $checkboxes.Values | ForEach-Object { $_.Checked = $false } })
-    $form.Controls.Add($btnClear)
-
-    $btnRun = New-Object System.Windows.Forms.Button
-    $btnRun.Text = "RUN SELECTED"
-    $btnRun.Location = New-Object System.Drawing.Point(648, 707)
-    $btnRun.Size = New-Object System.Drawing.Size(140, 32)
-    $btnRun.BackColor = [System.Drawing.Color]::FromArgb(0,120,60)
-    $btnRun.ForeColor = [System.Drawing.Color]::White
-    $btnRun.FlatStyle = "Flat"
-    $btnRun.Font = New-Object System.Drawing.Font("Garamond", 10, [System.Drawing.FontStyle]::Bold)
-    $form.Controls.Add($btnRun)
-
-    $btnExit = New-Object System.Windows.Forms.Button
-    $btnExit.Text = "Exit"
-    $btnExit.Location = New-Object System.Drawing.Point(796, 707)
-    $btnExit.Size = New-Object System.Drawing.Size(78, 32)
-    $btnExit.BackColor = [System.Drawing.Color]::FromArgb(120,30,30)
-    $btnExit.ForeColor = [System.Drawing.Color]::White
-    $btnExit.FlatStyle = "Flat"
-    $btnExit.Add_Click({
-        $resp = [System.Windows.Forms.MessageBox]::Show(
-            "Are you sure you want to exit?`n`nNo changes will be saved unless you clicked Run Selected.",
-            "Confirm Exit", "YesNo", "Question"
-        )
-        if ($resp -eq "Yes") { Disable-SleepPrevention; Save-Log; $form.Close() }
-    })
-    $form.Controls.Add($btnExit)
-
-    $btnRun.Add_Click({
-        $selectedIDs = $checkboxes.Keys | Where-Object { $checkboxes[$_].Checked }
-        if ($selectedIDs.Count -eq 0) {
-            [System.Windows.Forms.MessageBox]::Show("No settings selected. Please check at least one.", "Nothing Selected", "OK", "Warning")
-            return
-        }
-
-        Write-Log -Message "=== GUI Mode Hardening Run Started ===" -Status "START"
-        $btnRun.Enabled = $false
-        $btnRun.Text = "Running..."
-
-        foreach ($id in ($selectedIDs | Sort-Object)) {
-            if ($id -eq 8) { continue }
-            $s = $Settings | Where-Object { $_.ID -eq $id }
-
-            if ($s.Status -match "GOOD") {
-                Write-Log -Message "$($s.Name) -- already correct, skipped" -Status "GOOD"
-                continue
-            }
-
-            if (-not $s.CanAuto) {
-                [System.Windows.Forms.MessageBox]::Show(
-                    "$($s.Name) requires manual action.`n`n$($s.Description)`n`nSee Guide: $($s.GuideRef) at $GuideURL",
-                    "Manual Action Required -- $($s.Name)", "OK", "Information"
-                )
-                Write-Log -Message "$($s.Name) -- Manual action required" -Status "MANUAL"
-                continue
-            }
-
-            $msg = "Apply: $($s.Name)?`n`n$($s.Description)`n`nCurrent status: $($s.Status)`n`nGuide: $($s.GuideRef)"
-            $confirm = [System.Windows.Forms.MessageBox]::Show($msg, "Confirm -- $($s.Name)", "YesNo", "Question")
-
-            if ($confirm -eq "Yes") {
-                $result = Apply-Setting -Setting $s
-                [System.Windows.Forms.MessageBox]::Show("Result:`n$result", "Applied -- $($s.Name)", "OK", "Information")
-            } else {
-                Write-Log -Message "$($s.Name) -- Skipped by user" -Status "SKIP"
-            }
-        }
-
-        if ($checkboxes.ContainsKey(8) -and $checkboxes[8].Checked) {
-            $form.Hide()
-            # G-02b rev (ascii33, FT-101): inline tip, no blank screen, no pause
-            Write-Host ""
-            Write-Host "  Tip: To copy text from this window -- press Alt+Space, then E, then M --" -ForegroundColor Cyan
-            Write-Host "       drag or use Shift+arrows to select -- press Enter to copy." -ForegroundColor Cyan
-            Write-Host "       Press Esc to exit without copying." -ForegroundColor Cyan
-            Show-BitLockerScreen
-        }
-
-        Save-Log
-        Set-FirstRunComplete
-        Disable-SleepPrevention
-        $form.Hide()
-        Setup-ScheduledTasks
-        Show-ManualSteps
-
-        # FT-119 (ascii34): explicitly state GatewayGuard is closing after
-        # this dialog, matching the console-mode ending (Show-ManualSteps'
-        # own closing statement + the "close GatewayGuard" exit prompt).
-        [System.Windows.Forms.MessageBox]::Show(
-            "All selected settings processed. Checkup will now close.`n`nLog: $(Split-Path $LogPath -Leaf)`n`nSee the console window for your manual steps checklist -- complete those on your own time.`n`nGuide: $GuideURL",
-            "Run Complete -- Checkup Closing", "OK", "Information"
-        )
-        $form.Close()
-    })
-
-    $form.ShowDialog() | Out-Null
-}
-
-# ============================================================
 # MAIN ENTRY POINT
 # Pre-flight sequence (in order):
 # 0. Resume check  1. Opening/maximize/scroll (UX-01,02,03)  2. Font instructions
@@ -9817,7 +9482,7 @@ function Run-GUIMode {
 # 6. Edition detection  7. RAM check  8. Time/date check (UX-08)
 # 9. System Baseline Summary (UX-10)  10. First run  11. Pre-scan gate
 # 12. Defender AV check  13. Power check  14. Power settings  15. Apps audit
-# Then: mode selection -> Run-ConsoleMode or Run-GUIMode
+# Then: start screen -> Run-ConsoleMode (GUI mode removed in ascii45, B1)
 # BitLocker is always LAST inside the mode functions
 # ============================================================
 # FT-66+73 (ascii31): global try covers entire launch including Disable-
@@ -10021,29 +9686,19 @@ if (-not (Test-CheckpointReached -Checkpoint "AppsAudit")) {
 # Mode selection (FT-64, ascii28: wrapped in a function so the key log names
 # the screen -- it used to print the script filename as the location)
 function Select-Mode {
-    Show-ModeSelector
-    do {
-        $smChoice = Read-ValidKey -ValidKeys @("1","2","3") -Prompt "Enter choice (1, 2, or 3): "
-    } while ($smChoice -notin "1","2","3")
-    return $smChoice
+    # B1 (ascii45): GUI mode removed. X = Exit (Bill 2026-09-25) and it asks
+    # first -- Confirm-Exit exits on Y; on N we show this screen again.
+    while ($true) {
+        Show-ModeSelector
+        $smChoice = Read-ValidKey -ValidKeys @("1","X") -Prompt "Enter choice (1 = Start / X = Exit): "
+        if ($smChoice -eq "1") { return "1" }
+        Confirm-Exit "You chose Exit at the start screen. Checkup has not changed anything."
+    }
 }
 $choice = Select-Mode
 
-Write-Log -Message "Mode selected: $(if ($choice -eq '1') { 'Console' } elseif ($choice -eq '2') { 'GUI' } else { 'Exit' })" -Status "INFO"
-
-switch ($choice) {
-    "1" { Run-ConsoleMode }
-    "2" { Run-GUIMode }
-    "3" {
-        Write-Host ""
-        Write-Host "  Exiting. No changes made." -ForegroundColor Gray
-        Write-Host ""
-        Write-Log -Message "User exited at mode selection" -Status "EXIT"
-        Disable-SleepPrevention
-        Save-Log
-        exit
-    }
-}
+Write-Log -Message "Start chosen at screen 21 (console checklist)" -Status "INFO"
+Run-ConsoleMode   # B1 (ascii45): the only mode; Exit is handled inside Select-Mode
 
 
 # FT-66 (ascii29): global error trap -- see comment at try above
@@ -10065,13 +9720,13 @@ switch ($choice) {
     try { do { $ggErrKey = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") } while ($ggErrKey.VirtualKeyCode -notin @(13, 32)) } catch { $null = Read-Host }
 }
 # ============================================================
-# PRE-BUILD AUDIT: Verify all 15 required functions are present
+# PRE-BUILD AUDIT: Verify all 14 required functions are present
 # (run this block manually to verify before shipping)
 # ============================================================
 # $requiredFunctions = @(
 #     'Enable-SleepPrevention','Disable-SleepPrevention','Get-RAMStatus',
 #     'Get-WinEdition','Test-DefenderPrimary','Get-AllStatuses','Apply-Setting',
-#     'Run-ConsoleMode','Run-GUIMode','Show-BitLockerScreen','Write-Log',
+#     'Run-ConsoleMode','Show-BitLockerScreen','Write-Log',
 #     'Save-Log','Draw-Box','Test-PersonalComputer','Test-AdminAccess'
 # )
 # $defined = (Get-Command -CommandType Function).Name
