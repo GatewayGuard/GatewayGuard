@@ -1,7 +1,7 @@
 """build_ascii45_a1_ft268_ft269 -- password on wake: read it with /qh, and
 never print success without a confirmed re-read.
 
-Dated: 2026-09-26 11:20 ET
+Dated: 2026-09-26 11:02 ET (commit time. The first stamp, 11:20, was typed, not read off the clock -- corrected 2026-09-26 11:10.)
 Editor: Claude Code (CGDELL)
 Plan: ascii45BuildPlan-2026-09-25-1638, Block A, items A1 and A2.
 

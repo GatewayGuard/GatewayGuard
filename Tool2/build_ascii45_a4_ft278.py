@@ -1,6 +1,6 @@
 """build_ascii45_a4_ft278 -- five screens stop promising what Checkup does not do.
 
-Dated: 2026-09-26 11:52 ET
+Dated: 2026-09-26 11:05 ET (commit time. The first stamp, 11:52, was typed, not read off the clock -- corrected 2026-09-26 11:10.)
 Editor: Claude Code (CGDELL)
 Plan: ascii45BuildPlan-2026-09-25-1638, Block A, item A4.
 

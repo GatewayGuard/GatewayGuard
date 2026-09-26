@@ -1,7 +1,7 @@
 """build_ascii45_a3_ft284 -- the convenience review stops printing a green
 "Done:" over an ERROR.
 
-Dated: 2026-09-26 11:36 ET
+Dated: 2026-09-26 11:03 ET (commit time. The first stamp, 11:36, was typed, not read off the clock -- corrected 2026-09-26 11:10.)
 Editor: Claude Code (CGDELL)
 Plan: ascii45BuildPlan-2026-09-25-1638, Block A, item A3.
 

@@ -1,7 +1,7 @@
 """build_ascii45_a6_ft254 -- the time-sync fix stops printing success after
 four calls that could never fail, and drops an undocumented flag.
 
-Dated: 2026-09-26 12:31 ET
+Dated: 2026-09-26 11:08 ET (commit time. The first stamp, 12:31, was typed, not read off the clock -- corrected 2026-09-26 11:10.)
 Editor: Claude Code (CGDELL)
 Plan: ascii45BuildPlan-2026-09-25-1638, Block A, item A6.
 

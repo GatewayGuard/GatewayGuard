@@ -1,7 +1,7 @@
 """build_ascii45_a5_ft279 -- the run loop says what actually happened, not
 "applying it now", and long text wraps.
 
-Dated: 2026-09-26 12:08 ET
+Dated: 2026-09-26 11:06 ET (commit time. The first stamp, 12:08, was typed, not read off the clock -- corrected 2026-09-26 11:10.)
 Editor: Claude Code (CGDELL)
 Plan: ascii45BuildPlan-2026-09-25-1638, Block A, item A5.
 

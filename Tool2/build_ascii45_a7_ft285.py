@@ -1,7 +1,7 @@
 """build_ascii45_a7_ft285 -- two expected, handled conditions stop logging as
 [ERROR] SILENT ERROR.
 
-Dated: 2026-09-26 12:48 ET
+Dated: 2026-09-26 11:09 ET (commit time. The first stamp, 12:48, was typed, not read off the clock -- corrected 2026-09-26 11:10.)
 Editor: Claude Code (CGDELL)
 Plan: ascii45BuildPlan-2026-09-25-1638, Block A, item A7.
 
