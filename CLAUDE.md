@@ -15,7 +15,7 @@
 - **Current build:** ascii45 (8,879 non-blank lines / 9,202 total, 89 functions, measured 2026-09-26 after Block B) — **IN PROGRESS, NOT FIELD RUN. Blocks A and B done** (A: FT-268, 269, 284, 278, 279, 254, 285. B: GUI mode out; Malwarebytes out of the tool with a general other-antivirus read, `Get-GGOtherAV`; setting 5 retired; old monthly reminder removed once). **C1 done too** (X = Exit at all nine former N-exit prompts; seven now confirm). Rest of Block C next. Partial test checklist: `ProjectDocs\GatewayGuard_FieldChecklist-ascii45-partial-2026-09-26-1139.md`. **Open: the screen renumber pass after Block E** (removing 17b, 17d, 18, 18a-c left gaps).
   `Tool\W11-SecurityHardening-v3-ascii45-2026-09-26-1059.ps1`. Plan
   `ProjectDocs\GatewayGuard_ascii45BuildPlan-2026-09-25-1638.md`; each block is one commit.
-  **Next free FT number: 286.**
+  **Next free FT number: 289.** (286-288: Co-Pilot's code review, verified -- plan Block H.)
   - **ascii44 is spent and retired to `Builds\`** (2026-09-26). It was field run on SANDY
     2026-09-19/20: nine logs plus Bill's 32 notes in `Test_Results\FieldRun-ascii44\`, triaged in
     `ProjectDocs\GatewayGuard_FieldTestTriage-ascii44run1-2026-09-24-2353.md` (FT-265 to FT-285).

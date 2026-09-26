@@ -212,6 +212,29 @@ Unchanged from ascii44 and every build before it:
 
 ---
 
+# BLOCK H -- CO-PILOT'S CODE REVIEW OF ascii45, CHECKED (2026-09-26 13:44)
+
+Co-Pilot reviewed the ascii45 code (not the history comments) and rated
+settings 1, 4, 6, 8, 12 and 13 "conditional" and 9 "needs more work". Each
+claim was checked against the code before anything went into this plan.
+
+| # | Claim | Checked against | Verdict | Where |
+|---|---|---|---|---|
+| **H1 / FT-286** | Item 9 (Windows Hello) equates a folder with Hello | `Get-AllStatuses` line ~6012 and the apply case ~6550: `Test-Path "$env:LOCALAPPDATA\Microsoft\NGC"` | **WORSE than Co-Pilot said.** ***Measured on CGDELL 13:40:*** that folder **does not exist**, yet CGDELL **has** Hello -- `LogonUI\LastLoggedOnProvider` is the Hello (NGC) credential provider `{D6886603-...}`, and Bill's own SID has a `NgcFirst` subkey under it. The real NGC folder is under `C:\Windows\ServiceProfiles\LocalService\...` and is admin-locked. ***inferred:*** the check reports "Not set up" on **every** machine. The field agrees: SANDY 09-19/20 "Not set up"; SettingsLocationList row 9 says the same for CGDELL. **Safe direction** (never a wrong GOOD), but it tells users who have a PIN to set one up. **Fix in ascii45:** read the per-user `NgcFirst` entry under the Hello credential provider, with a flip test (a test account with and without a PIN). | ascii45 |
+| **H2 / FT-287** | Item 17 reads only the plugged-in (AC) value | `Get-GGConsoleLockState`: matches only `Current AC Power Setting Index` | **Correct.** A laptop on battery uses the DC value. **Fix in ascii45:** read both; GOOD only when both are 1. | ascii45 |
+| **H3 / FT-288** | Item 1 checks that the update service is allowed to run, not that updates are current | line ~5851: `Get-Service wuauserv` StartType only | **Correct.** Block E2 (the Windows Update loop) already checks for updates; item 1 should report from the same read. | E2 / ascii46 |
+| H4 | Item 12 reads only the policy value | line ~6030: `Policies\...\DataCollection` only | **Correct, already planned** -- Decision 11 / G6. | G6 |
+| H5 | Item 4 reads one SmartScreen layer | `SmartScreenEnabled` plus the `EnableSmartScreen` policy lock (line ~6265) | Correct that it reads one layer. The Edge and unwanted-app layers are item 6 and E3 (PUA). **No new work.** | -- |
+| H6 | Item 13 Edge values "inferred, not flip-proven" | the build's own comments | Correct; they say so. Flip test when Edge is next touched. | ascii46 |
+| -- | Items 2, 3, 7, 10, 11, 14-16, 18, 19 accurate | -- | No change. | -- |
+
+**The lesson, and it is FT-257's rule pointed at a different failure:** a
+check that always returns the same answer looks like a working check. Item 9
+printed a plausible "Not set up" on every machine, and no one noticed,
+because no one compared it with a machine known to have Hello.
+
+---
+
 # THE SCHEDULE -- *inferred*, a proposal, no slack
 
 | Dates | What |
