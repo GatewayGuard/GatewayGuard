@@ -28,6 +28,12 @@
 #           OFF (11-15) OR COULD NOT CHANGE (6). Now "Working on this
 #           item..." and the Result says what happened; the put-off
 #           result is no longer red; long text wraps (Write-GGWrapped).
+#   FT-254: TIME SYNC PRINTED "CORRECTED" AFTER FOUR CALLS THAT COULD NOT
+#           FAIL (-EA SilentlyContinue, | Out-Null). Each step now checked,
+#           then both settings re-read; green only when confirmed. Also
+#           dropped `w32tm /resync /force`: w32tm /? has no /force
+#           (measured CGDELL 2026-09-26; ignored when running, and the
+#           real failure -- service stopped, 0x80070426 -- was hidden).
 #
 # CHANGES FROM ascii43 (2026-09-06 -- ASCII44):
 #   FT-242: NINE REGISTRY WRITES COULD NOT FAIL. Without -EA Stop a
@@ -4132,16 +4138,36 @@ function Test-TimeDateSync {
                 "                                                            ",
                 "  Checkup will turn these back on now.                      "
             )
+            # FT-254 (ascii45): every step can now fail visibly, and success is
+            # printed only after a re-read confirms it.
+            $ggTSFail = @()
+            try { Set-Service -Name "W32Time" -StartupType Automatic -EA Stop } catch { $ggTSFail += "time service start-up type: $($_.Exception.Message)" }
+            try { Start-Service -Name "W32Time" -EA Stop } catch { $ggTSFail += "time service start: $($_.Exception.Message)" }
             try {
-                Set-Service -Name "W32Time" -StartupType Automatic -EA SilentlyContinue
-                Start-Service -Name "W32Time" -EA SilentlyContinue
-                w32tm /resync /force | Out-Null
-                Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\tzautoupdate" -Name "Start" -Value 3 -EA SilentlyContinue
-                Write-Host "  Time sync settings corrected." -ForegroundColor Green
-                Write-Log -Message "Time/timezone auto-sync corrected" -Status "FIXED"
-            } catch {
-                Write-Host "  Could not correct automatically -- see Settings > Time & Language." -ForegroundColor Yellow
-                Write-Log -Message "Time/timezone auto-fix failed: $_" -Status "WARN"
+                # VERIFIED 2026-09-26 measured on CGDELL: `w32tm /?` documents
+                # /resync [/computer] [/nowait] [/rediscover] [/soft] -- no /force.
+                # Exit 0 = resync accepted ("The command completed successfully.");
+                # -2147023834 (0x80070426) = W32Time not started.
+                $ggRs = (w32tm /resync 2>&1 | Out-String)
+                if ($LASTEXITCODE -ne 0) { $ggTSFail += "clock resync (exit $LASTEXITCODE): $(($ggRs -replace '\s+', ' ').Trim())" }
+            } catch { $ggTSFail += "clock resync: $($_.Exception.Message)" }
+            try { Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\tzautoupdate" -Name "Start" -Value 3 -EA Stop } catch { $ggTSFail += "automatic time zone: $($_.Exception.Message)" }
+            # Re-read the two settings the check above judged by.
+            $ggTzNow  = (Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\tzautoupdate" -Name "Start" -EA SilentlyContinue).Start
+            $ggW32Now = Get-Service -Name "W32Time" -EA SilentlyContinue
+            $ggTSOK   = ($ggW32Now -and $ggW32Now.StartType -ne "Disabled" -and $ggTzNow -ne 4)
+            if ($ggTSOK -and $ggTSFail.Count -eq 0) {
+                Write-Host "  Time sync settings corrected -- checked again and confirmed." -ForegroundColor Green
+                Write-Log -Message "Time/timezone auto-sync corrected and re-read confirmed" -Status "FIXED"
+            } elseif ($ggTSOK) {
+                Write-Host "  Automatic time is now turned on, but the clock could not be" -ForegroundColor Yellow
+                Write-Host "  re-checked right now. Windows will do it on its own later." -ForegroundColor Yellow
+                Write-Log -Message "Time/timezone settings confirmed on; not every step succeeded: $($ggTSFail -join ' | ')" -Status "WARN"
+            } else {
+                Write-Host "  Checkup could not turn automatic time back on. Please do it" -ForegroundColor Yellow
+                Write-Host "  yourself: Settings > Time & Language > Date & time > turn on" -ForegroundColor Yellow
+                Write-Host "  'Set time automatically' and 'Set time zone automatically'." -ForegroundColor Yellow
+                Write-Log -Message "Time/timezone auto-fix NOT confirmed on re-read (W32Time=$($ggW32Now.StartType), tzautoupdate=$ggTzNow): $($ggTSFail -join ' | ')" -Status "WARN"
             }
         }
 
