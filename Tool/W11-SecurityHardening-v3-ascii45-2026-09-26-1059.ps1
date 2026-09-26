@@ -19,6 +19,11 @@
 #   FT-284: THE CONVENIENCE REVIEW PRINTED A GREEN "Done:" OVER AN ERROR
 #           and logged it [OK] (SANDY, 33b). Now it uses the run loop's
 #           colour rule and logs WARN/ERROR for anything not a success.
+#   FT-278: FIVE SCREENS PROMISED WHAT CHECKUP DOES NOT DO. 10: Home
+#           encryption "handled automatically" (it is manual steps). 11:
+#           "option 2" (Home has none). 21: "asks Y/N before any change"
+#           (false since FT-219). 33 and 34: "automatic"/"scheduled"
+#           scans (they are reminder popups, FT-175). Box widths kept.
 #
 # CHANGES FROM ascii43 (2026-09-06 -- ASCII44):
 #   FT-242: NINE REGISTRY WRITES COULD NOT FAIL. Without -EA Stop a
@@ -3753,8 +3758,8 @@ function Get-WinEdition {
             "  Edition: $global:WinEditionFriendly                              ",
             "                                                                    ",
             "  Remote Desktop hosting is not available on Home Edition.          ",
-            "  BitLocker uses Device Encryption on Home -- handled               ",
-            "  automatically by Checkup.                                         "
+            "  On Home, encryption is called Device Encryption. Checkup          ",
+            "  shows you the steps to turn it on yourself.                       "
         )
         Write-Host ""
         Write-Log -Message "Home edition -- Remote Desktop and Group Policy unavailable" -Status "INFO"
@@ -3784,8 +3789,8 @@ function Get-RAMStatus {
                 "                                                              ",
                 "  EXCEPTION -- BITLOCKER ENCRYPTION:                         ",
                 "  BitLocker can take several hours on this PC.               ",
-                "  Schedule it to run overnight -- select option 2            ",
-                "  (Enable overnight) when you reach the BitLocker screen.    ",
+                "  Checkup shows the time estimate and your choices when      ",
+                "  you reach the encryption screen at the end.                ",
                 "  Plug into AC power and set Sleep to Never before leaving.  "
             )
             Write-Host ""
@@ -7575,8 +7580,8 @@ function Show-ManualSteps {
         "  [ ] 2FA                -- Enable on all important accounts.",
         "      Authenticator app preferred. Guide: Phase 5           ",
         "                                                            ",
-        "  [ ] Scheduled Scans    -- AUTOMATED: Checkup set up       ",
-        "      Quarterly Defender Offline Scan (Jan/Apr/Jul/Oct)     ",
+        "  [ ] Scan reminders     -- Checkup set up popups for a     ",
+        "      quarterly Defender Offline Scan (Jan/Apr/Jul/Oct)     ",
         "      + monthly reminder to run your Malwarebytes scans     ",
         "      (Custom Scan with rootkits, then Deep Scan overnight) ",
         "      Verify: Task Scheduler -> GatewayGuard tasks          ",
@@ -7586,8 +7591,8 @@ function Show-ManualSteps {
         "---",
         "  GATEWAYGUARD IS NOW FINISHED FOR THIS SESSION.               ",
         "  The program will close after this screen -- complete the    ",
-        "  items above on your own time. Your scheduled scans (above)  ",
-        "  will still run automatically later -- everything else       ",
+        "  items above on your own time. Your scan reminders (above)   ",
+        "  will still pop up later -- everything else                  ",
         "  requires you to run Checkup again.                          "
     )
     Write-Host ""
@@ -7673,12 +7678,12 @@ function Setup-ScheduledTasks {
     Write-Host ""
     Show-StepHeader -Key "TaskSetup" -Section "Wrapping Up"
     Draw-Box -ScreenId "70" -Color White -Lines @(
-        "  AUTOMATED SCAN SCHEDULE SETUP                            ",
-        "  Setting up automatic security scans...                   ",
+        "  SCAN REMINDER SETUP                                      ",
+        "  Setting up reminders to run your security scans...       ",
         "---",
-        "  (1) Quarterly Defender Offline Scan                      ",
-        "      Runs BEFORE Windows loads -- catches deeply hidden   ",
-        "      threats. Scheduled: 1st of Jan / Apr / Jul / Oct 2AM ",
+        "  (1) Quarterly reminder: Defender Offline Scan            ",
+        "      A popup on the 1st of Jan / Apr / Jul / Oct reminds  ",
+        "      you to run it. The scan runs before Windows loads.   ",
         "                                                            ",
         "  (2) Monthly reminder to run your Malwarebytes scans      ",
         "      A popup on the 1st of each month reminding you to    ",
@@ -8675,8 +8680,8 @@ function Show-ModeSelector {
         "                                                            ",
         "  [1] CONSOLE MODE                                          ",
         "      Text-based checklist in this window. Shows each       ",
-        "      setting, its live status, and asks Y/N before any     ",
-        "      change. Fast and fully transparent.                   ",
+        "      setting and its live status, and changes only the     ",
+        "      items you select. Fast and fully transparent.         ",
         "                                                            ",
         "  [2] GUI MODE                                              ",
         "      Opens a visual window with checkboxes and color-coded ",
