@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-26 11:26 ET -->
-<!-- Commit: 5fb49e3 -->
+<!-- Generated: 2026-09-26 11:40 ET -->
+<!-- Commit: 90c1897 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-26 11:26 ET  |  **Commit:** `5fb49e3`  |  **Made:** 2026-09-26 11:25 ET
-- **Commit subject:** ascii45 B2b-3/B3: last Malwarebytes wording gone; monthly reminder no longer created and removed once where it exists
+- **Generated:** 2026-09-26 11:40 ET  |  **Commit:** `90c1897`  |  **Made:** 2026-09-26 11:39 ET
+- **Commit subject:** Website: no Malwarebytes recommendation left in WebSite/html; setting-5 page retired
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -69,7 +69,7 @@ All paths are relative to `ProjectDocs/`.
 | Test results (raw run notes and logs) | `GatewayGuard_TestResults-ascii43-2026-09-04-2345.md` | 0 |
 | Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii44run1-2026-09-24-2353.md` | 3 |
 | Response to Bill's field notes | `GatewayGuard_ResponseToBillsNotes-ascii43-2026-08-30-1815.md` | 0 |
-| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii44-2026-09-17-1441.md` | 2 |
+| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii45-partial-2026-09-26-1139.md` | 3 |
 | Build plan (current) | `GatewayGuard_ascii45BuildPlan-2026-09-25-1638.md` | 2 |
 | Build scope -- what shipped vs. what is next | `GatewayGuard_ascii44Scope-WhatsInWhatsNext-2026-09-17-1441.md` | 0 |
 | Future settings (candidate list) | `GatewayGuard_FutureSettings-2026-08-24-2310.md` | 0 |
