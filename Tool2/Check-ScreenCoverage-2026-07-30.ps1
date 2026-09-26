@@ -169,7 +169,8 @@ $MaxScreenLines = 26
 # 2026-07-30). Reported every run, but not a failure. Remove an entry as soon
 # as that screen is split -- the list is only allowed to get shorter.
 $OversizeBaseline = @{
-    "72" = 55; "50" = 50; "73" = 35; "26" = 34; "27" = 34
+    "72" = 55; "50" = 50
+    # "73", "26", "27" removed 2026-09-26: ascii45 B2b-1 deleted screen 18 and rewrote 13/14 within 26.
     "65" = 33; "60" = 31; "41" = 28; "30" = 28
     # "52" (screen 21) removed 2026-09-26: ascii45 B1 dropped GUI mode and it fits in 26.
 }

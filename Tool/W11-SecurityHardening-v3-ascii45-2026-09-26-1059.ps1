@@ -48,6 +48,11 @@
 #           real-time state decide items 2, 3 and 7 for ANY third-party
 #           AV (FT-30/33/114 held). SETTING 5 RETIRED (Bill 2026-09-08);
 #           IDs not renumbered; typing 5 says it is no longer part of it.
+#   B2b-1:  SCREENS 13/14 STOP RECOMMENDING MALWAREBYTES (Bill's notes 6,
+#           7, 11, 13). 13: Defender + a generic other-antivirus note. 14:
+#           the offline scan only (the full scan arrives in Block E, not
+#           promised before). Screens 18/18a-c and Show-MalwarebytesFollowUp
+#           removed. Numbering gap closed by the renumber pass after Block E.
 #
 # CHANGES FROM ascii43 (2026-09-06 -- ASCII44):
 #   FT-242: NINE REGISTRY WRITES COULD NOT FAIL. Without -EA Stop a
@@ -2022,7 +2027,6 @@ $script:GGScreenLabels = @{
     "10" = "15"           # Pre-scan prep checklist
     "38" = "16"           # Defender offline scan
     "43" = "17"           # Antivirus status -- healthy setup
-    "73" = "18"           # Malwarebytes detected
     "50" = "19"           # Power settings -- security review
     "51" = "20"           # Apps audit results
     "52" = "21"           # Mode selector
@@ -2055,9 +2059,6 @@ $script:GGScreenLabels = @{
     "44" = "17c"          # Antivirus -- alternative state
     "45" = "17d"          # Antivirus -- alternative state
     "46" = "17e"          # Antivirus -- alternative state
-    "13" = "18a"          # Malwarebytes -- alternative state
-    "47" = "18b"          # Malwarebytes -- alternative state
-    "48" = "18c"          # Malwarebytes -- alternative state
     "49" = "18d"          # Power / battery warning
     "74" = "22a"          # Your passwords -- we remembered your answer
     "56" = "25a"          # Non-recommended selections
@@ -4420,31 +4421,22 @@ function Show-SecurityToolsBriefing {
         "  Before we change anything, here is what protects your PC   ",
         "  and how the pieces fit together.                           ",
         "                                                             ",
-        "  WINDOWS DEFENDER (already on your PC)                      ",
+        "  MICROSOFT DEFENDER (already on your PC)                    ",
         "  Windows comes with a built-in antivirus called Microsoft   ",
         "  Defender. It is free, already installed, and watches your  ",
         "  PC in real time -- every file you open, every download,    ",
         "  every program you run. Checkup will make sure it is        ",
         "  set up correctly.                                          ",
         "                                                             ",
-        "  MALWAREBYTES (we recommend adding it)                      ",
-        "  Malwarebytes is a separate free program that works         ",
-        "  alongside Defender. Defender watches in real time;         ",
-        "  Malwarebytes runs deeper scans when you ask for one --     ",
-        "  looking for threats that hide from real-time scanners.     ",
-        "  They work together without conflict.                       ",
-        "                                                             ",
-        "  ABOUT THE 14-DAY TRIAL (important -- please read)          ",
-        "  When you first install Malwarebytes, it starts a free      ",
-        "  14-day trial of the paid version. After 14 days the trial  ",
-        "  ends BY ITSELF -- you do not need to do anything, and      ",
-        "  nothing breaks. Malwarebytes switches to its free mode,    ",
-        "  Defender takes back real-time protection, and the deeper   ",
-        "  scans stay available to you permanently, at no cost.       ",
+        "  ANOTHER ANTIVIRUS ALREADY INSTALLED?                       ",
+        "  If your PC came with one, or you bought one, Checkup will  ",
+        "  notice and tell you. Only one antivirus can watch in real  ",
+        "  time. Checkup does not remove it -- it shows you what it   ",
+        "  found.                                                     ",
         "                                                             ",
         "  YOUR RECORDS                                               ",
         "  Checkup keeps a record of everything it does, saved        ",
-        "  in your own GatewayGuard folder. If you need help, that   ",
+        "  in your own GatewayGuard folder. If you need help, that    ",
         "  file shows exactly what happened on your PC.               "
     )
     Write-Host ""
@@ -4456,36 +4448,25 @@ function Show-ScanPlanBriefing {
     Write-Host ""
     Show-StepHeader -Key "Briefing2" -Section "Scans"
     Draw-Box -ScreenId "27" -Color White -Lines @(
-        "  THE SCANS WE RECOMMEND -- AND WHY                          ",
+        "  THE SCAN WE RECOMMEND -- AND WHY                           ",
         "---",
         "  Before hardening your settings, we want your PC confirmed  ",
         "  clean. A scan AFTER hardening cannot undo an infection     ",
         "  that is already there.                                     ",
         "                                                             ",
-        "  SCAN 1: DEFENDER OFFLINE SCAN (15-20 minutes)              ",
+        "  DEFENDER OFFLINE SCAN (15-20 minutes)                      ",
         "  Runs BEFORE Windows loads -- so threats cannot hide the    ",
         "  way they can once Windows is running. Your PC restarts     ",
         "  by itself, scans, and comes back. Checkup picks up         ",
         "  right where you left off.                                  ",
         "                                                             ",
-        "  SCAN 2: MALWAREBYTES CUSTOM SCAN (25 min to an hour)       ",
-        "  After installing Malwarebytes you will run a Custom Scan   ",
-        "  with 'Scan for rootkits' CHECKED and ALL drives selected.  ",
-        "  We will give you the exact steps when it is time.          ",
-        "                                                             ",
         "  What is a rootkit? One of the sneakiest kinds of           ",
         "  malicious software. It buries itself deep inside Windows   ",
-        "  -- deeper than most security programs can see -- then      ",
-        "  hides itself, and often hides other malicious programs     ",
-        "  too. Your PC can be infected and everything still LOOKS    ",
-        "  normal. The Custom Scan looks in the places rootkits hide. ",
+        "  and hides, so your PC can be infected while everything     ",
+        "  still LOOKS normal. A scan that runs before Windows        ",
+        "  loads looks where rootkits hide.                           ",
         "                                                             ",
-        "  LATER, MONTHLY: run that same Custom Scan, then a Deep     ",
-        "  Scan overnight. Overnight scans are safe -- Malwarebytes   ",
-        "  keeps the PC awake by itself. Just plug in and leave the   ",
-        "  lid open; the screen may go dark, the scan keeps going.    ",
-        "                                                             ",
-        "  Already ran your scans today? You can skip ahead on the    ",
+        "  Already ran this scan today? You can skip ahead on the     ",
         "  next screen.                                               "
     )
     Write-Host ""
@@ -4963,188 +4944,6 @@ function Test-DefenderPrimary {
         Write-Host "  Could not verify AV status -- continuing with caution." -ForegroundColor Yellow
         Write-Log -Message "AV status check error: $_" -Status "WARN"
         # Sleep removed (ascii32): per no-Sleep-in-Show rule
-    }
-}
-
-# ============================================================
-# MALWAREBYTES DETECT-AND-LAUNCH FOLLOW-UP (UX-06, OBS-01)
-# Replaces ascii22's manual-only Malwarebytes instructions.
-# Note: Malwarebytes has no officially documented cmdlet to trigger
-# a scan (unlike Defender's Start-MpWDOScan) -- this launches the
-# app to the scan screen; the user still clicks "Scan" themselves.
-# ============================================================
-function Show-MalwarebytesFollowUp {
-    Clear-Host
-    Write-Host ""
-    Write-Host "  Checking for Malwarebytes..." -ForegroundColor Cyan
-    Write-Host ""
-
-    $mbState = Get-MalwarebytesState
-
-    if ($mbState -eq "NotInstalled") {
-        Draw-Box -ScreenId "13" -Color White -Lines @(
-            "  MALWAREBYTES NOT DETECTED                                 ",
-            "---",
-            "  Malwarebytes Free is a companion scanner that catches      ",
-            "  PUPs and adware Defender sometimes misses. It's optional   ",
-            "  but recommended -- takes about 5-10 minutes.               "
-        )
-        Write-Host ""
-        $getMb = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Open the Malwarebytes download page now? (Y/N): "
-        if ($getMb.ToUpper() -eq "Y") {
-            Start-Process $AffiliateMalwarebytes
-            Write-Host ""
-            Write-Host "  A PERMISSIONS BOX MAY APPEAR during install -- please respond" -ForegroundColor Yellow
-            Write-Host "  to it promptly. It will disappear after a few minutes if left" -ForegroundColor Yellow
-            Write-Host "  unanswered. If that happens, search 'Malwarebytes' in the" -ForegroundColor Yellow
-            Write-Host "  Windows search bar to bring the box back." -ForegroundColor Yellow
-            Write-Log -Message "User opened Malwarebytes download page" -Status "INFO"
-            Write-Host ""
-            Write-Host "  Once it's installed, come back and run Checkup again" -ForegroundColor White
-            Write-Host "  to continue with a scan." -ForegroundColor White
-        } else {
-            Write-Log -Message "User skipped Malwarebytes install" -Status "SKIP"
-        }
-        Pause-ForUser "  Press Enter or Space to continue..."
-
-    } else {
-        # Already installed (FreeCompanion, TrialActive, or Unknown-but-present)
-        Draw-Box -ScreenId "73" -Color White -Lines @(
-            "  MALWAREBYTES DETECTED ON THIS PC                          ",
-            "---",
-            "  Checkup can open Malwarebytes now. Run the CUSTOM          ",
-            "  SCAN -- it is the only scan where YOU control rootkit      ",
-            "  checking, and the only one we could verify checks          ",
-            "  rootkits (confirmed on our own test machines).             ",
-            "                                                             ",
-            "  ONE-TIME CHECK FIRST (once Malwarebytes opens):            ",
-            "  Click the gear icon (Settings) -> Security -> make sure    ",
-            "  'Potentially unwanted items' is set to ALWAYS. This makes  ",
-            "  sure junk programs get offered for removal, not just       ",
-            "  listed.                                                    ",
-            "                                                             ",
-            "  HOW TO RUN THE CUSTOM SCAN:                                ",
-            "  1. Next to the Scan button, click the three dots           ",
-            "     (do NOT click Scan itself -- that runs a quicker scan   ",
-            "     that does NOT check rootkits)                           ",
-            "  2. Click Advanced Scan, then Custom Scan                   ",
-            "  3. CHECK the box 'Scan for rootkits'                       ",
-            "  4. CHECK ALL your drives (C:, D:, and any others)          ",
-            "  5. Start the scan -- about 25 minutes to an hour           ",
-            "                                                             ",
-            "  WHEN IT FINISHES -- THIS PART MATTERS:                     ",
-            "  If anything was found, click QUARANTINE right then, on     ",
-            "  that results screen. If you close it first, Malwarebytes   ",
-            "  only keeps a record -- you would have to scan all over     ",
-            "  again to remove anything. Finding is not fixing --         ",
-            "  quarantining is fixing.                                    ",
-            "                                                             ",
-            "  Afterward you can confirm rootkits were checked: open the  ",
-            "  scan report -- under 'Scan Options' it should say          ",
-            "  'Rootkits: Enabled'.                                       "
-        )
-        Write-Host ""
-        $runMb = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Open Malwarebytes now? (Y/N): "
-        if ($runMb.ToUpper() -eq "Y") {
-            Write-Host ""
-            Write-Host "  A PERMISSIONS BOX MAY APPEAR -- please respond promptly." -ForegroundColor Yellow
-            Write-Host "  It will disappear after a few minutes if left unanswered." -ForegroundColor Yellow
-            Write-Host "  If that happens, search 'Malwarebytes' in the Windows" -ForegroundColor Yellow
-            Write-Host "  search bar to bring it back." -ForegroundColor Yellow
-            Write-Host ""
-
-            $mbPaths = @(
-                "$env:ProgramFiles\Malwarebytes\Anti-Malware\mbam.exe",
-                "${env:ProgramFiles(x86)}\Malwarebytes\Anti-Malware\mbam.exe"
-            )
-            $mbExe = $mbPaths | Where-Object { Test-Path $_ } | Select-Object -First 1
-
-            if ($mbExe) {
-                # FT-22 (2026-07-11): this tool runs elevated, and a program
-                # started from an elevated process INHERITS Administrator --
-                # so Malwarebytes launched here is already running as admin.
-                Start-Process $mbExe
-                Write-Host "  Malwarebytes should now be open (with Administrator rights," -ForegroundColor Green
-                Write-Host "  inherited from Checkup). Click 'Scan' to check for threats." -ForegroundColor Green
-                Write-Log -Message "Launched Malwarebytes at $mbExe (elevated, inherited from tool)" -Status "INFO"
-                Write-Host ""
-                Write-Host "  The scan may take 5-45 minutes depending on your computer." -ForegroundColor Gray
-                Write-Host "  A fast scan on a clean machine is normal." -ForegroundColor Gray
-
-                # FT-11: Malwarebytes trial-specific guidance -- the upgrade
-                # nag box and Deep Scan availability are both trial-only
-                # behaviors that need explaining, or users may be tempted to
-                # pay for an upgrade they don't need, or miss the deeper
-                # scan option entirely once the trial ends.
-                if ($mbState -eq "TrialActive") {
-                    Write-Host ""
-                    Draw-Box -ScreenId "47" -Color White -Lines @(
-                        "  MALWAREBYTES TRIAL -- WHAT TO EXPECT                     ",
-                        "---",
-                        "  You may see a box asking you to upgrade to Premium.       ",
-                        "  You do NOT need to upgrade -- just click the X to close   ",
-                        "  that box. Windows Defender (already explained earlier)    ",
-                        "  is your primary protection either way.                    ",
-                        "                                                            ",
-                        "  The DEEPER scan works during the trial AND on the free    ",
-                        "  version after the trial ends -- confirmed on our own test  ",
-                        "  machines. To use it: click Scan options, then choose Deep  ",
-                        "  Scan or a Custom Scan with all drives checked.             ",
-                        "                                                            ",
-                        "  AFTER THE TRIAL ENDS: open Windows Security and check      ",
-                        "  that Tamper Protection is back ON -- the trial handoff     ",
-                        "  can leave it off.                                          "
-                    )
-                    Write-Log -Message "Malwarebytes trial detected -- showed upgrade-nag and Deep Scan guidance" -Status "INFO"
-                }
-
-                # FT-11 extension (2026-07-11, field evidence): on a test PC
-                # already scanned CLEAN by Defender and a Malwarebytes quick
-                # scan, a deeper scan later found 6 more detections. The quick
-                # scan is a start -- the deep scan is the real answer.
-                Write-Host ""
-                # D-15 (ascii33): "Sleep to Never" REMOVED -- field-verified
-                # 2026-07-19: MBAMService holds a SYSTEM power request during
-                # scans (powercfg /requests). The PC cannot sleep mid-scan.
-                # Screen-off is normal and harmless (observed on two machines).
-                Draw-Box -ScreenId "48" -Color White -Lines @(
-                    "  AFTER THE CUSTOM SCAN -- RUN THE DEEP SCAN OVERNIGHT      ",
-                    "---",
-                    "  The Deep Scan examines everything more thoroughly. Run     ",
-                    "  it after the Custom Scan -- overnight is perfect.          ",
-                    "                                                             ",
-                    "  TONIGHT, BEFORE BED:                                       ",
-                    "  1. Open Malwarebytes -- three dots next to Scan ->         ",
-                    "     Advanced Scan -> Deep Scan                              ",
-                    "  2. Plug the computer in to power                           ",
-                    "  3. Leave the lid OPEN (on a laptop)                        ",
-                    "  4. Start the scan and go to bed                            ",
-                    "                                                             ",
-                    "  You do NOT need to change any sleep settings --            ",
-                    "  Malwarebytes keeps the PC awake by itself while it         ",
-                    "  scans. Your screen may go dark to save power; that is      ",
-                    "  normal, the scan keeps running underneath. Do not press    ",
-                    "  the power button -- just check the results in the          ",
-                    "  morning.                                                   ",
-                    "                                                             ",
-                    "  On a PC with 8 GB of memory or less: run one scan per      ",
-                    "  night -- Custom Scan tonight, Deep Scan tomorrow night.    "
-                )
-                Write-Log -Message "Overnight Deep Scan guidance shown (D-15: verified no settings changes needed)" -Status "INFO"
-            } else {
-                # FT-22 (2026-07-11): manual-launch fallback now includes the
-                # right-click step so it still runs as Administrator.
-                Write-Host "  Malwarebytes is installed but wasn't found at the usual" -ForegroundColor Yellow
-                Write-Host "  location. To open it with full rights:" -ForegroundColor Yellow
-                Write-Host "  1. Click Start and type: Malwarebytes" -ForegroundColor White
-                Write-Host "  2. Click it ONCE to select it, then RIGHT-CLICK it" -ForegroundColor White
-                Write-Host "  3. Choose 'Run as administrator'" -ForegroundColor White
-                Write-Log -Message "Malwarebytes detected but executable not found at expected paths -- manual run-as-admin steps shown" -Status "WARN"
-            }
-        } else {
-            Write-Log -Message "User skipped Malwarebytes scan (already installed, state: $mbState)" -Status "SKIP"
-        }
-        Pause-ForUser "  Press Enter or Space to continue..."
     }
 }
 
@@ -9588,11 +9387,9 @@ if (-not (Test-CheckpointReached -Checkpoint "DefenderAV")) {
     Save-Checkpoint -Checkpoint "DefenderAV"
 }
 
-# 12b. Malwarebytes detect-and-launch (UX-06 standalone checkpoint)
-if (-not (Test-CheckpointReached -Checkpoint "Malwarebytes")) {
-    Show-MalwarebytesFollowUp
-    Save-Checkpoint -Checkpoint "Malwarebytes"
-}
+# 12b. (removed in ascii45, B2b-1: the Malwarebytes follow-up. The
+# "Malwarebytes" checkpoint name is left in CheckpointOrder for D2/FT-266,
+# which re-orders that list.)
 
 # 13. Power check and sleep prevention (FT-47: a resume already did this
 # quietly inside Show-ResumeReverify)
