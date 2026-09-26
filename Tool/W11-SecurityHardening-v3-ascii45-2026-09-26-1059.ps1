@@ -34,6 +34,11 @@
 #           dropped `w32tm /resync /force`: w32tm /? has no /force
 #           (measured CGDELL 2026-09-26; ignored when running, and the
 #           real failure -- service stopped, 0x80070426 -- was hidden).
+#   FT-285: TWO HANDLED CONDITIONS LOGGED AS [ERROR] SILENT ERROR. An
+#           absent policy VALUE is now expected-absent like an absent key
+#           (FT-188); item 6's Tamper Protection refusal logs its own
+#           INFO and clears its record. Access denials elsewhere stay
+#           ERROR (FT-245).
 #
 # CHANGES FROM ascii43 (2026-09-06 -- ASCII44):
 #   FT-242: NINE REGISTRY WRITES COULD NOT FAIL. Without -EA Stop a
@@ -3290,8 +3295,12 @@ function Write-PendingErrors {
                 # said ERROR four times. That log is the file we tell the
                 # customer to email support, so a clean run must not read like
                 # a broken one. Expected-absent keys log INFO; all else ERROR.
+                # FT-285 (ascii45): an absent policy VALUE is the same fact as
+                # an absent policy KEY -- expected on a home PC, handled by the
+                # caller (Get-GGPolicyLock). SANDY logged it as ERROR.
                 $ggBenign = (($ggMsg -match 'because it does not exist') -or
-                             ($ggMsg -match 'Cannot find path'))
+                             ($ggMsg -match 'Cannot find path') -or
+                             ($ggMsg -match '^Property \S+ does not exist at path'))
                 $ggStatus = if ($ggBenign) { "INFO" } else { "ERROR" }
                 $ggLabel  = if ($ggBenign) { "NOT SET (expected)" } else { "SILENT ERROR" }
                 # FT-245 (ascii44): $Where is where the USER was, not where the
@@ -6956,6 +6965,12 @@ function Apply-Setting {
                 $result = "All 3 phishing protection options enabled -- GOOD"
             } catch [System.Security.SecurityException] {
                 $result = "MANUAL REQUIRED -- registry is protected on this PC (Tamper Protection)"
+                # FT-285 (ascii45): this refusal is expected and handled right
+                # here (manual steps below). Log it as what it is and remove its
+                # record, or Write-PendingErrors logs it again as SILENT ERROR.
+                # Only THIS record: FT-245 keeps access denials ERROR elsewhere.
+                try { Write-Log -Message "Item 6: Phishing Protection keys are protected by Tamper Protection -- expected; manual steps shown ($($_.Exception.Message))" -Status "INFO" } catch {}
+                try { if ($Error.Count -gt 0 -and $Error[0].Exception -is [System.Security.SecurityException]) { $Error.RemoveAt(0) } } catch {}
                 Write-Host ""
                 Write-Host "  NOTE: Phishing Protection registry is protected on this PC." -ForegroundColor Yellow
                 Write-Host "  Enable manually:" -ForegroundColor Yellow
