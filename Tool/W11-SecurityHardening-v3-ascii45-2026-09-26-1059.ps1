@@ -16,6 +16,9 @@
 #           printed green OK / logged APPLIED whatever the re-read said;
 #           item 17 returned GOOD with no re-read at all. Both now re-read
 #           through Get-GGConsoleLockState and say GOOD only on REQUIRED.
+#   FT-284: THE CONVENIENCE REVIEW PRINTED A GREEN "Done:" OVER AN ERROR
+#           and logged it [OK] (SANDY, 33b). Now it uses the run loop's
+#           colour rule and logs WARN/ERROR for anything not a success.
 #
 # CHANGES FROM ascii43 (2026-09-06 -- ASCII44):
 #   FT-242: NINE REGISTRY WRITES COULD NOT FAIL. Without -EA Stop a
@@ -7419,8 +7422,18 @@ function Show-ConvenienceReview {
         if ($resp.ToUpper() -eq "Y") {
             $ggConvResult = Apply-Setting -Setting $ggSetting
             Write-Host ""
-            Write-Host "  Done: $ggConvResult" -ForegroundColor Green
-            Write-Log -Message "User approved convenience change: $($ci.Name) -- $ggConvResult" -Status "OK"
+            # FT-284 (ascii45): same colour rule as the run loop, in the same
+            # order. A result is only "Done" when it reads as a success.
+            if ($ggConvResult -match "GOOD|enabled|disabled|set to|Already") {
+                Write-Host "  Done: $ggConvResult" -ForegroundColor Green
+                Write-Log -Message "User approved convenience change: $($ci.Name) -- $ggConvResult" -Status "OK"
+            } elseif ($ggConvResult -match "NOTE:|MANUAL|manual") {
+                Write-Host "  $ggConvResult" -ForegroundColor Yellow
+                Write-Log -Message "User approved convenience change: $($ci.Name) -- $ggConvResult" -Status "WARN"
+            } else {
+                Write-Host "  Not changed: $ggConvResult" -ForegroundColor Red
+                Write-Log -Message "User approved convenience change: $($ci.Name) -- NOT applied -- $ggConvResult" -Status "ERROR"
+            }
         } else {
             Write-Host ""
             Write-Host "  Skipped: $($ci.Name) was left exactly as it was." -ForegroundColor Yellow
