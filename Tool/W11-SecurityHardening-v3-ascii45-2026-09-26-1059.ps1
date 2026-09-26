@@ -58,6 +58,10 @@
 #           healthy screen names whatever else is installed; the high-risk
 #           screen no longer suggests Malwarebytes. Get-MalwarebytesState
 #           deleted (no callers left).
+#   B2b-3:  LAST MALWAREBYTES WORDING GONE: start screen, 14a, 14b, 33, 34.
+#   B3:     THE MONTHLY MALWAREBYTES REMINDER IS NO LONGER CREATED, and
+#           Remove-GGOldMBReminder removes it once where an earlier build
+#           left it (SANDY had it twice), with a read-back.
 #
 # CHANGES FROM ascii43 (2026-09-06 -- ASCII44):
 #   FT-242: NINE REGISTRY WRITES COULD NOT FAIL. Without -EA Stop a
@@ -1706,7 +1710,6 @@ $GGUserDir = if ($global:GGUsingOneDrive) {
 $StateFilePath  = "$StateDir\gg_state.txt"
 
 # AFFILIATE LINK PLACEHOLDERS -- replace with actual affiliate URLs before publishing
-$AffiliateMalwarebytes = "https://www.malwarebytes.com/"            # FT-81: gatewayguard.co redirect deferred; SSL not yet configured
 $AffiliateMicrosoft    = "https://gatewayguard.co/microsoft365"      # AFFILIATE PLACEHOLDER
 
 $LogPath        = Join-Path $GGUserDir ("Logs\GatewayGuard-Log-" + (Get-Date -Format 'yyyy-MM-dd_HH-mm') + ".txt")
@@ -3547,7 +3550,7 @@ function Show-FontInstructions {
                 "  4. Windows edition detection (Home vs Pro)                ",
                 "  5. RAM check                                              ",
                 "  6. First-run vs returning user check                      ",
-                "  7. Security scan confirmation (Defender + Malwarebytes)   ",
+                "  7. Security scan confirmation (Defender)                  ",
                 "  8. Antivirus detection and status                         ",
                 "  9. Battery / power status check                           ",
                 " 10. Power settings (optional)                              ",
@@ -4555,8 +4558,6 @@ function Show-PreScanGate {
             "  For ongoing protection:                                    ",
             "  * Defender Offline Scan -- quarterly, or any time you      ",
             "    think something may be wrong                             ",
-            "  * Malwarebytes scan -- monthly (Checkup can launch it      ",
-            "    for you)                                                 ",
             "  Guide: Phase 5 -- Scheduled Scanning                       "
         )
         Write-Host ""
@@ -4655,8 +4656,8 @@ function Show-PostScanGuidance {
         "  * 'Quarantined' or 'Removed' -- good news, Defender         ",
         "    already handled it. No action needed.                   ",
         "  * 'Allowed' -- Defender saw something suspicious but        ",
-        "    didn't block it. If you don't recognize it, we'll run    ",
-        "    Malwarebytes next as a second opinion.                  ",
+        "    didn't block it. If you don't recognize it, write down  ",
+        "    its name -- the guide shows what to do next.            ",
         "  * 'No Recent Actions' -- your scan came back clean.        "
     )
     Write-Host ""
@@ -4672,7 +4673,7 @@ function Show-PostScanGuidance {
     if ($result.ToUpper() -eq "Y") {
         Write-Host ""
         Write-Host "  Write down the threat name shown in Protection History." -ForegroundColor Yellow
-        Write-Host "  We'll continue with Malwarebytes next as a second opinion." -ForegroundColor Yellow
+        Write-Host "  The guide shows what to do next with it." -ForegroundColor Yellow
         Write-Log -Message "Post-scan: user found items needing action in Protection History" -Status "WARN"
     } else {
         Write-Log -Message "Post-scan: Protection History clean or already handled" -Status "OK"
@@ -7144,27 +7145,6 @@ function Show-ManualSteps {
         "      Sign-in options -> set up PIN or biometrics           ",
         "      Guide: Phase 1, Step 4                                ",
         "                                                            ",
-        "  [ ] Malwarebytes Free  -- Helpful companion for scans.    ",
-        "      Not required, but catches what Defender misses.       ",
-        "      Skip the real-time trial -- manual scans only.        ",
-        "      $AffiliateMalwarebytes",
-        "      Guide: Phase 3, Step 4                                ",
-        "                                                            ",
-        "      SCAN 1 -- CUSTOM SCAN (checks for rootkits):           ",
-        "        1. Open Malwarebytes                                ",
-        "        2. Next to the Scan button, click the three dots    ",
-        "           (do NOT click Scan itself)                       ",
-        "        3. Click Advanced Scan, then Custom Scan            ",
-        "        4. CHECK the box 'Scan for rootkits'                ",
-        "        5. CHECK ALL your drives (C:, D:, and any others)   ",
-        "        6. Start the scan -- about 25 min to an hour        ",
-        "        7. If anything is found: click QUARANTINE right     ",
-        "           then                                             ",
-        "      SCAN 2 -- DEEP SCAN (run it overnight):                ",
-        "        Three dots -> Advanced Scan -> Deep Scan.            ",
-        "        Start it before bed and leave the lid open. The     ",
-        "        screen may go dark -- the scan keeps running.       ",
-        "                                                            ",
         $(if ($global:HasPasswordManager) { "  [x] Password Manager   -- You said you already use one.    " } else { "  [ ] Password Manager   -- Install, migrate passwords.     " }),
         $(if ($global:HasPasswordManager) { "      Good -- keep using it for every account.              " } else { "      Guide: Phase 5                                        " }),
         "                                                            ",
@@ -7173,8 +7153,6 @@ function Show-ManualSteps {
         "                                                            ",
         "  [ ] Scan reminders     -- Checkup set up popups for a     ",
         "      quarterly Defender Offline Scan (Jan/Apr/Jul/Oct)     ",
-        "      + monthly reminder to run your Malwarebytes scans     ",
-        "      (Custom Scan with rootkits, then Deep Scan overnight) ",
         "      Verify: Task Scheduler -> GatewayGuard tasks          ",
         "---",
         "  Log saved to: $(Split-Path $LogPath -Parent)",
@@ -7264,6 +7242,34 @@ function Invoke-SchTasksCreate {
 # ============================================================
 # SCHEDULED SECURITY TASKS
 # ============================================================
+function Remove-GGOldMBReminder {
+    # B3 (ascii45): builds up to ascii44 created "GatewayGuard - Monthly
+    # Malwarebytes Reminder" (SANDY got it twice). Malwarebytes is out of
+    # Checkup, so remove it once, with its helper script, and READ BACK.
+    # Returns ABSENT (nothing to do), REMOVED (confirmed gone) or FAILED:<why>.
+    # The name is an identifier (CLAUDE.md) -- matched exactly.
+    $ggName = "GatewayGuard - Monthly Malwarebytes Reminder"
+    $ggHelper = "C:\ProgramData\GatewayGuard\MBReminder.ps1"
+    try {
+        $ggT = Get-ScheduledTask -TaskName $ggName -EA SilentlyContinue
+        if (-not $ggT) {
+            if (Test-Path $ggHelper) { try { Remove-Item $ggHelper -Force -EA Stop } catch {} }
+            return "ABSENT"
+        }
+        Unregister-ScheduledTask -TaskName $ggName -Confirm:$false -EA Stop
+        if (Get-ScheduledTask -TaskName $ggName -EA SilentlyContinue) {
+            Write-Log -Message "Old monthly Malwarebytes reminder: removal ran but the task is still there on read-back" -Status "WARN"
+            return "FAILED: still present after removal"
+        }
+        if (Test-Path $ggHelper) { try { Remove-Item $ggHelper -Force -EA Stop } catch {} }
+        Write-Log -Message "Old monthly Malwarebytes reminder removed (read back: gone)" -Status "GOOD"
+        return "REMOVED"
+    } catch {
+        Write-Log -Message "Old monthly Malwarebytes reminder: could not remove -- $_" -Status "WARN"
+        return "FAILED: $($_.Exception.Message)"
+    }
+}
+
 function Setup-ScheduledTasks {
     Clear-Host
     Write-Host ""
@@ -7274,12 +7280,7 @@ function Setup-ScheduledTasks {
         "---",
         "  (1) Quarterly reminder: Defender Offline Scan            ",
         "      A popup on the 1st of Jan / Apr / Jul / Oct reminds  ",
-        "      you to run it. The scan runs before Windows loads.   ",
-        "                                                            ",
-        "  (2) Monthly reminder to run your Malwarebytes scans      ",
-        "      A popup on the 1st of each month reminding you to    ",
-        "      run the Custom Scan (with rootkit checking) and the  ",
-        "      Deep Scan. The popup includes the exact steps.       "
+        "      you to run it. The scan runs before Windows loads.   "
     )
     Write-Host ""
     Write-Host "  Setting up tasks -- please wait..." -ForegroundColor Yellow
@@ -7388,75 +7389,14 @@ Add-Type -AssemblyName System.Windows.Forms
         Write-Log -Message "Scheduled task ERROR: Quarterly Defender Offline Scan reminder -- $_" -Status "ERROR"
     }
 
-    # --- Task 2: Monthly Malwarebytes Reminder ---
-    try {
-        $scriptDir = "C:\ProgramData\GatewayGuard"
-        if (-not (Test-Path $scriptDir)) { New-Item -Path $scriptDir -ItemType Directory -Force | Out-Null }
-
-        # D-15 (ascii33): popup carries the field-verified Custom Scan
-        # steps. "Scan Now" removed -- that runs a Threat Scan, which
-        # does NOT check rootkits (report-verified 2026-07-19).
-        $reminderCode = @"
-Add-Type -AssemblyName System.Windows.Forms
-[System.Windows.Forms.MessageBox]::Show(
-    "MONTHLY SECURITY REMINDER -- GatewayGuard Checkup``n``n" +
-    "Time to run your two Malwarebytes scans this month.``n``n" +
-    "SCAN 1 -- CUSTOM SCAN (checks for rootkits):``n" +
-    "  1. Open Malwarebytes``n" +
-    "  2. Next to the Scan button, click the three dots``n" +
-    "     (do NOT click Scan itself)``n" +
-    "  3. Click Advanced Scan, then Custom Scan``n" +
-    "  4. CHECK the box 'Scan for rootkits'``n" +
-    "  5. CHECK ALL your drives (C:, D:, and any others)``n" +
-    "  6. Start the scan -- about 25 minutes to an hour``n" +
-    "  7. If anything is found: click QUARANTINE right then``n``n" +
-    "SCAN 2 -- DEEP SCAN (run it overnight):``n" +
-    "  Three dots -> Advanced Scan -> Deep Scan.``n" +
-    "  Start it before bed and leave the lid open.``n" +
-    "  The screen may go dark -- the scan keeps running.``n``n" +
-    "Malwarebytes does NOT scan by itself on the free version.``n" +
-    "This reminder is your prompt to run the scans yourself.",
-    "GatewayGuard -- Monthly Malwarebytes Scan Reminder",
-    [System.Windows.Forms.MessageBoxButtons]::OK,
-    [System.Windows.Forms.MessageBoxIcon]::Information
-) | Out-Null
-"@
-        $reminderCode | Out-File -FilePath "$scriptDir\MBReminder.ps1" -Encoding UTF8 -Force
-
-        # FT-93/93b (ascii33): schtasks.exe -- native monthly recurrence,
-        # runs as the current interactive user so the popup shows on
-        # their desktop (no /ru = current user).
-        # FT-109 (ascii34): this task's /tr happened to survive in the field
-        # (its exe, "powershell.exe", has no space in its own path -- only
-        # the -File argument does), but it uses the exact same fragile
-        # construction as Task 1 above. Switched to Invoke-SchTasksCreate
-        # for both, per the codebase's own rule to fix a pattern everywhere
-        # once found, not just where it's been observed failing.
-        $ggT2Name = "GatewayGuard - Monthly Malwarebytes Reminder"
-        $ggT2Tr = 'powershell.exe -WindowStyle Hidden -ExecutionPolicy Bypass -File \"' + "$scriptDir\MBReminder.ps1" + '\"'
-        $ggT2Args = "/create /f /tn `"$ggT2Name`" /tr `"$ggT2Tr`" /sc monthly /d 1 /st 10:00"
-        $ggT2Result = Invoke-SchTasksCreate -Arguments $ggT2Args
-        if ($ggT2Result.ExitCode -ne 0) { throw "schtasks exit $($ggT2Result.ExitCode) -- $($ggT2Result.Output)" }
-
-        # FT-203 (ascii44): the task exists, but schtasks left it unable to
-        # run on battery and unable to catch up a missed start. Fix the three
-        # settings, then LOG WHAT WAS READ BACK.
-        $ggSetT2 = Set-GGTaskSettings -TaskName $ggT2Name
-        if ($ggSetT2.Ok) {
-            Write-Log -Message ("Reminder settings confirmed by read-back -- runs on battery: yes, catches a missed start: yes, wakes the PC: no (T2)") -Status "GOOD"
-        } elseif ($ggSetT2.Error) {
-            $results += @{ Text = "  [!] Reminder created, but its battery settings could not be adjusted -- it may not run on battery"; Color = "Yellow" }
-            Write-Log -Message ("Reminder settings NOT adjusted (T2) -- $($ggSetT2.Error)") -Status "WARN"
-        } else {
-            $results += @{ Text = "  [!] Reminder created, but its battery settings did not take -- it may not run on battery"; Color = "Yellow" }
-            Write-Log -Message ("Reminder settings read back WRONG (T2) -- StartWhenAvailable=$($ggSetT2.StartWhenAvailable) DisallowStartIfOnBatteries=$($ggSetT2.DisallowStartIfOnBatteries) StopIfGoingOnBatteries=$($ggSetT2.StopIfGoingOnBatteries)") -Status "WARN"
-        }
-
-        $results += @{ Text = "  [OK] Monthly Malwarebytes scan reminder scheduled (1st of each month @ 10AM)"; Color = "Green" }
-        Write-Log -Message "Scheduled task created: GatewayGuard - Monthly Malwarebytes Reminder" -Status "GOOD"
-    } catch {
-        $results += @{ Text = "  [!] Monthly MB reminder task -- could not create: $_"; Color = "Yellow" }
-        Write-Log -Message "Scheduled task ERROR: Monthly Malwarebytes Reminder -- $_" -Status "ERROR"
+    # --- Task 2 REMOVED in ascii45 (B3): the monthly Malwarebytes reminder ---
+    # Malwarebytes is out of Checkup (Bill 2026-09-08). Earlier builds left the
+    # task behind; remove it once and say what happened.
+    $ggOldMB = Remove-GGOldMBReminder
+    if ($ggOldMB -eq "REMOVED") {
+        $results += @{ Text = "  [OK] An old monthly reminder from an earlier version was removed"; Color = "Green" }
+    } elseif ($ggOldMB -like "FAILED*") {
+        $results += @{ Text = "  [!] An old monthly reminder from an earlier version could not be removed -- see log"; Color = "Yellow" }
     }
 
     foreach ($r in $results) { Write-Host $r.Text -ForegroundColor $r.Color }
