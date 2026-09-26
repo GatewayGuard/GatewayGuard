@@ -362,7 +362,13 @@ Never scope or build the next ascii until the current build has at
 least one field run with an uploaded log. An untested build is a
 liability, not a build.
 
-**Status as of 2026-08-12: ascii39 HAS been field run. ascii40 is
+**Status as of 2026-09-26: ascii44 HAS been field run (SANDY, 2026-09-19/20;
+nine logs in `Test_Results\FieldRun-ascii44\`, triaged in
+`GatewayGuard_FieldTestTriage-ascii44run1-2026-09-24-2353.md`), so ascii45 is
+unblocked and being built. Cloud caught the line below still describing
+ascii39/40.**
+
+*Earlier status, superseded 2026-09-26:* **ascii39 HAS been field run. ascii40 is
 UNBLOCKED.** The field log is
 `Test_Results\Ascii39-Test-Results-2026-08-11-2237.txt` -- 49 numbered
 findings from the SANDY Phase 3 run of 2026-08-11, plus fifteen run logs

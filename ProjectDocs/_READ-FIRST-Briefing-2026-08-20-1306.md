@@ -1,7 +1,7 @@
 ﻿<!-- Dated: 2026-08-20 13:06 ET -->
 # READ FIRST -- Session Briefing
 **Document Name:** _READ-FIRST-Briefing
-**Last Modified:** 2026-09-16 12:30 ET
+**Last Modified:** 2026-09-26 11:53 ET
 **Last Editor:** Claude Code (CGDELL)
 **Purpose:** Read this before anything else at the start of every session.
 **Supersedes:** `_READ-FIRST-Briefing-2026-08-14-0041.md`, which by this
@@ -10,6 +10,11 @@ The tree was on **ascii42**. Three builds stale, on the first two lines any new
 session reads.
 
 **Change History Log:**
+- 2026-09-26 11:53: **Active-build block brought to ascii45 -- Cloud caught
+  it.** It still said "ascii44 -- BLOCK A COMPLETE, NOT YET FIELD RUN"; ascii44
+  was field run on SANDY 09-19/20 and is retired, and ascii45 is being built.
+  Every other section of this briefing still dates from 09-16 or earlier --
+  read `CLAUDE.md` and the session log for anything after that.
 - 2026-09-16 12:30: **LAUNCH DATE CORRECTED -- this document still said
   September 15 the day after Bill moved it to October 15.** Found by Cloud's
   09-16 response, not by this document's own reading -- exactly the
@@ -130,14 +135,15 @@ have passed it wrongly** -- `edge://settings/help` drives the updater directly,
 so it cannot see the unattended check stop. **A test that cannot fail is worse
 than no test.**
 
-**Active build: ascii44 -- BLOCK A COMPLETE, NOT YET FIELD RUN** --
-`Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1`, **9,387 non-blank
-lines / 9,775 total**. Gates 12, 12b and 24 PASS, 0 non-ASCII, 0 duplicate
-functions, 10 carried oversize screens. **Next free screen ID 90.**
-*(Grew 2026-09-07: FT-257, the SmartScreen check that reported "ON -- GOOD"
-from a value that was not there; FT-258, the Group Policy override check, with
-every key read out of Windows' own `PolicyDefinitions\*.admx`; FT-258b, the
-third firewall profile.)*
+**Active build: ascii45 -- IN PROGRESS, NOT FIELD RUN** (updated 2026-09-26) --
+`Tool\W11-SecurityHardening-v3-ascii45-2026-09-26-1059.ps1`. Blocks A and B and
+item C1 are built; C (rest), D, E, F are not. Plan:
+`GatewayGuard_ascii45BuildPlan-2026-09-25-1638.md`. Partial test checklist:
+`GatewayGuard_FieldChecklist-ascii45-partial-2026-09-26-1139.md`. Current line
+counts live on the build line in `CLAUDE.md` -- **stated there only**, so this
+block cannot drift from it again. **ascii44 is spent:** field run on SANDY
+2026-09-19/20, triaged in `GatewayGuard_FieldTestTriage-ascii44run1-2026-09-24-2353.md`,
+retired to `Builds\`.
 
 **Only ONE build's figures belong in this block.** It briefly carried both
 ascii43's and ascii44's on 2026-09-06 and the document gate caught it within

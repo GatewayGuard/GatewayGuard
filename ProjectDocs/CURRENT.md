@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-26 11:40 ET -->
-<!-- Commit: 90c1897 -->
+<!-- Generated: 2026-09-26 11:55 ET -->
+<!-- Commit: fd43281 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-26 11:40 ET  |  **Commit:** `90c1897`  |  **Made:** 2026-09-26 11:39 ET
-- **Commit subject:** Website: no Malwarebytes recommendation left in WebSite/html; setting-5 page retired
+- **Generated:** 2026-09-26 11:55 ET  |  **Commit at generation:** `fd43281`  |  **That commit was made:** 2026-09-26 11:40 ET
+- **Its subject line:** ascii45 partial test checklist (Blocks A, B, C1): every screen marked CHECK / SKIP / LOOK / GONE
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 

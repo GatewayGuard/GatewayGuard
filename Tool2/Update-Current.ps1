@@ -417,8 +417,9 @@ $L.Add('')
 # rationale moved to the bottom where it cannot outrank the data.
 $L.Add('# CURRENT -- which file is the live one')
 $L.Add('')
-$L.Add(('- **Generated:** ' + $stamp + ' ET  |  **Commit:** `' + $headHash + '`  |  **Made:** ' + $headDate + ' ET'))
-$L.Add(('- **Commit subject:** ' + $headSubj))
+# Labels match CloudWorkingRules / CloudProjectInstructions word for word (Cloud flagged the drift 2026-09-26).
+$L.Add(('- **Generated:** ' + $stamp + ' ET  |  **Commit at generation:** `' + $headHash + '`  |  **That commit was made:** ' + $headDate + ' ET'))
+$L.Add(('- **Its subject line:** ' + $headSubj))
 $L.Add('')
 $L.Add('*Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*')
 $L.Add('')

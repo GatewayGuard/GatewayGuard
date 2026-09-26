@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-26 11:25 ET
+- **Last Modified:** 2026-09-26 11:53 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -79,8 +79,37 @@ with the typed value kept in each header.
   recommendation -- his call if the no-product-names rule covers it.
 
 **ascii45 after Block B: 8,879 non-blank / 9,202 total, 89 functions.**
-Next: Block C (keys: X = Exit at the remaining sites, B = step back, L =
-look, F = fix the screen, FT-271, FT-270 Ctrl+C).
+
+**Then, same session (11:27-11:53):**
+- C1 `9a8d483` -- X = Exit. ***Measured: nine prompts ended Checkup on N***
+  (not the 08-30 count of 11 -- Block B removed the rest); three never said
+  "Exit". Seven exited on one keypress and now call Confirm-Exit; declining
+  returns to the same prompt (***tested on the shipped functions***).
+- Website `90c1897` -- Bill: "Don't recommend adding MB." defender-realtime
+  and tamper-protection pages no longer mention it; `periodic-scanning.html`
+  (setting 5) retired to `Archive\WebSite-Retired-2026-09-26\`. ***Measured:
+  0 Malwarebytes mentions and 0 setting-5 links left in `WebSite\html`.***
+  **Open:** setting 5 still in `Index-Builds\guide-index-2026-08-02-2031.html`;
+  which index ships is not recorded (asked Cloud).
+- `FieldChecklist-ascii45-partial-2026-09-26-1139.md` (`fd43281`) -- every
+  screen CHECK / SKIP / LOOK / GONE for the finished blocks. Optional.
+- **Cloud's freshness check passed, and it caught four stale records on our
+  side, all fixed:** the briefing's active-build block (still "ascii44, not
+  yet field run"); Project Instructions' UNRUN BUILD status (still
+  ascii39/40); CLAUDE.md and this log stopping at Block B; and `CURRENT.md`'s
+  stamp labels ("Commit / Made / Commit subject") drifting from the names the
+  Cloud rules use -- `Update-Current.ps1` now prints "Commit at generation /
+  That commit was made / Its subject line". **The fifth stale item is Bill's:**
+  the claude.ai Project Instructions box still holds the pre-08-21 text
+  (panther step); re-paste the block from
+  `GatewayGuard_CloudProjectInstructions-2026-08-12-2316.md`.
+- **My error, found while fixing those:** Python text-mode writes turned LF
+  files into CRLF -- `CLAUDE.md` in commit `31d823b` (all 997 lines), and the
+  briefing and Project Instructions today before commit. All three restored to
+  LF. Writes from now on use binary mode.
+
+Next: rest of Block C (B = step back, L = look, F = fix the screen, FT-271,
+FT-270 Ctrl+C after the SANDY test).
 
 ---
 ---
