@@ -149,6 +149,19 @@ if ($NoPrompt) { Out-Both "  (flip skipped -- NoPrompt)" } else {
     if (-not $still) { Out-Both "    RESTORED: the keys match the BEFORE reading again" } else { Out-Both "    NOTE: after flipping back, $($still.Count) line(s) still differ from BEFORE" }
 }
 
+# ---- 7. C9 (added 2026-09-26): is Windows Terminal on this PC? ---------------
+Out-Both ""; Out-Both "-- 7. C9  Windows Terminal (for the full-screen launch) --"
+$ggWt = Get-Command wt.exe -EA SilentlyContinue
+Out-Both "    wt.exe found: $([bool]$ggWt)  $(if ($ggWt) { $ggWt.Source })"
+try {
+    $ggPkg = Get-AppxPackage -Name Microsoft.WindowsTerminal* -EA Stop | Select-Object -First 1
+    Out-Both "    Windows Terminal package: $(if ($ggPkg) { $ggPkg.Name + ' ' + $ggPkg.Version } else { 'not installed' })"
+} catch { Out-Both "    Windows Terminal package: could not read -- $($_.Exception.Message)" }
+try {
+    $ggDel = Get-ItemProperty 'HKCU:\Console\%%Startup' -EA Stop
+    Out-Both "    Default terminal setting: DelegationConsole=$($ggDel.DelegationConsole) DelegationTerminal=$($ggDel.DelegationTerminal)"
+} catch { Out-Both "    Default terminal setting: not set (Windows decides)" }
+
 # ---- 3. FT-270: Ctrl+C -- done by hand, inside Checkup ----------------------
 Out-Both ""; Out-Both "-- 3. FT-270  Ctrl+C -- do this by hand after the script finishes --"
 Out-Both "    a) Start Checkup. At the first Y/N question, press Ctrl+C once."

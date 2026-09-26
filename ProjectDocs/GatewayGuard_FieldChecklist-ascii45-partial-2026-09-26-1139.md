@@ -93,6 +93,19 @@ numbers are fixed once, after Block E.
 | **The log**: item 6 shows an INFO line "protected by Tamper Protection -- expected" | **CHECK** (only if item 6 is selected and Windows blocks it) |
 | **On SANDY, after the run:** Task Scheduler has **no** "GatewayGuard - Monthly Malwarebytes Reminder" | **CHECK** |
 
+## Full-screen tests (added 2026-09-26 -- ascii45 C9, not built yet)
+
+These run BEFORE the full-screen launch is built, so its screens are written
+from what Windows Terminal actually does.
+
+| Test | Where | What to do | Mark |
+|---|---|---|---|
+| **Copy and selection** | CGDELL | Double-click `Tool2\Run-TestWtCopySelect.bat`. A full-screen window opens with three steps: highlight some lines for about 5 seconds; press Ctrl+C while they are highlighted; click to clear the highlight, wait 5 seconds, press Ctrl+C again. The results file in `Test_Results\WtCopySelect-...txt` records by itself whether highlighting paused the program and whether the copy worked. | **CHECK** |
+| **Is Windows Terminal on SANDY** | SANDY | Nothing extra -- step 7 of `Tool2\Run-MeasureSandyForAscii45.bat` reads it. | **CHECK** |
+
+**There is no X in full screen.** The test window closes by itself. If you
+ever need to leave full screen: **Alt+Enter**.
+
 ## Write down, for each CHECK
 
 - The screen number, what you pressed, what you saw.

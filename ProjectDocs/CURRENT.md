@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-26 12:03 ET -->
-<!-- Commit: 9e43e8d -->
+<!-- Generated: 2026-09-26 12:10 ET -->
+<!-- Commit: 35343fc -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-26 12:03 ET  |  **Commit at generation:** `9e43e8d`  |  **That commit was made:** 2026-09-26 11:55 ET
-- **Its subject line:** Fix the four stale records Cloud found; restore LF endings in CLAUDE.md
+- **Generated:** 2026-09-26 12:10 ET  |  **Commit at generation:** `35343fc`  |  **That commit was made:** 2026-09-26 12:03 ET
+- **Its subject line:** Bill: keep detected antivirus names; full-screen Windows Terminal launch tested on CGDELL -- it works
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 

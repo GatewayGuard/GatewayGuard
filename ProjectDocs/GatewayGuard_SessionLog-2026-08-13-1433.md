@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-26 12:03 ET
+- **Last Modified:** 2026-09-26 12:12 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -116,6 +116,18 @@ launch: ***measured, `Test_Results\WtFullscreen-CGDELL-2026-09-26_12-03.txt`:
 133 x 37 (was 81 x 21), and closes by itself.*** Four things still to check before
 the launcher changes (copying, Mark-mode, font screens, SANDY); recorded in the
 ascii45 plan's OPEN list. Not in scope until Bill says so.
+
+**12:07 -- Bill: "add full screen to ascii45"** -> build plan item C9. "Are the four
+things in my checklist?" -- they were not; now covered: SANDY's Windows Terminal
+check added as step 7 of `Tool2\Run-MeasureSandyForAscii45.bat`; copy/selection
+behaviour measured by new `Tool2\Run-TestWtCopySelect.bat` (+ .ps1, read-only, times
+every tick and reads the clipboard itself); screens 3/4/8 are Claude Code's to
+rewrite once measured; the admin launch is tested when C9 is built. Checklist
+gained a full-screen section. ***Measured while building the test: a script path
+with spaces does not survive wt's argument parsing, nor does -d "...\."; -d
+"<folder, no trailing backslash>" + a bare script name works*** -- recorded in C9,
+because Checkup's own launcher has the same spaces. Smoke-test result files were
+removed so Bill's run is the only one.
 
 Next: rest of Block C (B = step back, L = look, F = fix the screen, FT-271,
 FT-270 Ctrl+C after the SANDY test).
