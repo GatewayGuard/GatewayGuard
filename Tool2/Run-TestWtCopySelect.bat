@@ -26,7 +26,9 @@ if errorlevel 1 (
 )
 echo   A full-screen window is opening now. Follow the three steps on it.
 echo   There is no X in full screen: the window closes by itself after
-echo   step 3 or after two minutes. Alt+Enter also leaves full screen.
+echo   step 3 or after two minutes.
+echo   If you are ever stuck in a full-screen window: Alt+F4 closes it,
+echo   Alt+Enter leaves full screen.
 echo.
 REM Start in this folder (-d, folder WITHOUT a trailing backslash) and name the script without its path. Measured 2026-09-26: a full path with spaces, and a folder ending in \. , both failed.
 set "GGDIR=%~dp0"

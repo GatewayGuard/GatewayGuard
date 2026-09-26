@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-26 12:12 ET
+- **Last Modified:** 2026-09-26 12:15 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -128,6 +128,15 @@ with spaces does not survive wt's argument parsing, nor does -d "...\."; -d
 "<folder, no trailing backslash>" + a bare script name works*** -- recorded in C9,
 because Checkup's own launcher has the same spaces. Smoke-test result files were
 removed so Bill's run is the only one.
+
+**12:15 -- My error, and Bill paid for it:** my first smoke test passed an unquoted
+window title, so Windows Terminal tried to run "copy" and left the error on a
+FULL-SCREEN window with no X. Bill was stuck in it. My clean-up removed files but
+never checked for leftover windows. Closed it with a close request to that one
+window (it shared a process with this session, so the process was not ended).
+The .bat Bill runs quotes correctly and was tested end to end; it now also tells
+him Alt+F4 / Alt+Enter. C9 gains: check the build file exists, tested quoting
+only, and the escape line on screen before the window opens.
 
 Next: rest of Block C (B = step back, L = look, F = fix the screen, FT-271,
 FT-270 Ctrl+C after the SANDY test).
