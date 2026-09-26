@@ -26,7 +26,7 @@
 # =====================================================================
 
 param(
-    [string]$BuildPath = (Join-Path (Split-Path -Parent $PSScriptRoot) "Tool\W11-SecurityHardening-v3-ascii44-2026-09-06-1214.ps1")
+    [string]$BuildPath = (Join-Path (Split-Path -Parent $PSScriptRoot) "Tool\W11-SecurityHardening-v3-ascii45-2026-09-26-1059.ps1")
 )
 
 $ErrorActionPreference = 'Stop'

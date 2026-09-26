@@ -12,12 +12,14 @@
   guide revision **before** launch instead of after it.
   **Never write a countdown here** -- "six days" was wrong the next morning
   and stayed wrong. Write the date; let the reader subtract.
-- **Current build:** ascii44 (9,582 non-blank lines / 9,973 total, measured 2026-09-25) — **FIELD RUN AND SPENT.**
-  Field run on SANDY 2026-09-19/20: nine logs plus Bill's 32 notes in `Test_Results\FieldRun-ascii44\`,
-  triaged in `ProjectDocs\GatewayGuard_FieldTestTriage-ascii44run1-2026-09-24-2353.md` (FT-265 to FT-285).
-  **Next build: ascii45** -- plan `ProjectDocs\GatewayGuard_ascii45BuildPlan-2026-09-25-1638.md`.
+- **Current build:** ascii45 (9,588 non-blank lines / 9,979 total, 89 functions, measured 2026-09-26 at the base) — **IN PROGRESS, NOT FIELD RUN.**
+  `Tool\W11-SecurityHardening-v3-ascii45-2026-09-26-1059.ps1`. Plan
+  `ProjectDocs\GatewayGuard_ascii45BuildPlan-2026-09-25-1638.md`; each block is one commit.
   **Next free FT number: 286.**
-  - **ascii43 is spent and retired to `Builds\`.** `Tool\` holds only the current build.
+  - **ascii44 is spent and retired to `Builds\`** (2026-09-26). It was field run on SANDY
+    2026-09-19/20: nine logs plus Bill's 32 notes in `Test_Results\FieldRun-ascii44\`, triaged in
+    `ProjectDocs\GatewayGuard_FieldTestTriage-ascii44run1-2026-09-24-2353.md` (FT-265 to FT-285).
+    ascii43 is retired too. `Tool\` holds only the current build.
   - **The fix-by-fix history of ascii44 moved out of this file on 2026-09-26** -- FT-242 to FT-264,
     FT-123b, and the write-ups of FT-259 (window height), the mouse settings and Back replaying a
     photograph -- word for word to `Archive\CLAUDE-CurrentBuildHistory-ascii44-2026-09-26-0851.md`. Every session paid ~10k tokens for it,
