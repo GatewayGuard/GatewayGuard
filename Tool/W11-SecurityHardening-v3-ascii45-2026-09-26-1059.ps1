@@ -43,6 +43,11 @@
 #           defects in its first field run (FT-280, now moot). Screen 21
 #           reads [1] START / [X] EXIT; X asks first (Confirm-Exit) -- the
 #           old [3] EXIT left with no confirmation.
+#   B2a:    VERDICTS NO LONGER DEPEND ON MALWAREBYTES. New Get-GGOtherAV
+#           (other AVs registered in SecurityCenter2) + Defender's own
+#           real-time state decide items 2, 3 and 7 for ANY third-party
+#           AV (FT-30/33/114 held). SETTING 5 RETIRED (Bill 2026-09-08);
+#           IDs not renumbered; typing 5 says it is no longer part of it.
 #
 # CHANGES FROM ascii43 (2026-09-06 -- ASCII44):
 #   FT-242: NINE REGISTRY WRITES COULD NOT FAIL. Without -EA Stop a
@@ -5943,7 +5948,7 @@ $Settings = @(
     [PSCustomObject]@{ ID=2;  Name="Defender Real-Time VP (Virus Protection)";     Description="Your primary virus and malware shield. Should always be On.";                              GuideRef="Phase 1, Step 2";          Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$true;  Status='Pending' },
     [PSCustomObject]@{ ID=3;  Name="Tamper Protection (Defender)";        Description="Prevents malware from disabling Defender. Manual toggle required in Windows Security.";   GuideRef="Phase 1, Step 2";          Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$false; SecurityCritical=$true;  Status='Pending' },
     [PSCustomObject]@{ ID=4;  Name="SmartScreen";                       Description="Blocks known malicious websites and downloads.";                                          GuideRef="Phase 1, Step 2";          Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
-    [PSCustomObject]@{ ID=5;  Name="Defender Periodic Scanning";        Description="Enables Defender background scans if a 3rd-party AV is your primary protection.";        GuideRef="Phase 1, Step 2";          Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$true;  Status='Pending' },
+    # ID 5 (Defender Periodic Scanning) retired in ascii45 (Bill 2026-09-08). DO NOT RENUMBER -- every log names items by ID.
     [PSCustomObject]@{ ID=6;  Name="Edge Phishing Protection (all 3)";       Description="Warns about password reuse, unsafe password storage, and malicious sites in Microsoft Edge.";               GuideRef="Phase 1, Step 2";          Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
     [PSCustomObject]@{ ID=7;  Name="Defender Firewall Protection (all profiles)";   Description="Network traffic shield -- Domain, Private, and Public profiles all enabled.";            GuideRef="Phase 1, Step 2";          Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$true;  Status='Pending' },
     [PSCustomObject]@{ ID=8;  Name="BitLocker / Device Encryption";     Description="Encrypts your drive. Protects data if PC is lost or stolen.";                            GuideRef="Phase 1, Step 3";          Selected=$false; RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$true;  Status='Pending' },
@@ -5987,6 +5992,18 @@ function Get-TamperProtectionState {
             default { return "Unknown" }
         }
     } catch { return "Unknown" }
+}
+
+function Get-GGOtherAV {
+    # B2a (ascii45): replaces Get-MalwarebytesState for every VERDICT.
+    # Returns the display names of antivirus products registered with Windows
+    # Security Center other than Defender. Empty = none found. Never throws: a
+    # failed read returns empty, and every caller also reads Defender's own
+    # real-time state, so an empty answer can never produce a GOOD by itself.
+    try {
+        $ggAV = Get-WmiObject -Namespace "root\SecurityCenter2" -Class AntiVirusProduct -EA Stop
+        return @($ggAV | Where-Object { $_.displayName -and $_.displayName -notmatch "Windows Defender|Microsoft Defender" } | ForEach-Object { [string]$_.displayName })
+    } catch { return @() }
 }
 
 function Get-MalwarebytesState {
@@ -6219,66 +6236,37 @@ function Get-AllStatuses {
                 catch { $s.Status = "Unknown" }
             }
             2 {
-                try {
-                    $mbSt2 = Get-MalwarebytesState
-                    $avP2  = Get-WmiObject -Namespace "root\SecurityCenter2" -Class AntiVirusProduct -EA SilentlyContinue
-                    $mp2   = Get-MpComputerStatus -EA Stop
-
-                    if ($mbSt2 -eq "TrialActive") {
-                        # MB Premium Trial took over real-time from Defender
-                        $s.Status = "Malwarebytes Premium Trial active -- Defender real-time inactive (by design while trial runs)"
-                    } else {
-                        # FT-33 (2026-07-12): was elseif on three named states --
-                        # any OTHER value fell through leaving "Checking..." on
-                        # screen. Now everything non-trial checks Defender directly.
-                        # MB Free companion, not installed, or unknown -- check actual Defender state directly
-                        if ($mp2.RealTimeProtectionEnabled) {
-                            # FT-114 (ascii34): the FreeCompanion status string used to omit
-                            # the locked "GOOD" token (Status-String Contract, Gate #23) --
-                            # it read "ON -- Defender RT-VP active (...)" with no GOOD anywhere,
-                            # so auto-deselect, the HEADS UP filter (Test-NonRecommendedSelections),
-                            # AND the checklist color-match all failed to recognize this as a
-                            # healthy state. Field-confirmed (HP SANDY, 2026-07-21): Defender
-                            # Real-Time showed as ON yet was still flagged as a not-selected
-                            # security-critical concern on the HEADS UP screen. Also removed an
-                            # unreachable "TrialActive" branch here -- the outer if/else above
-                            # already fully handles TrialActive and never falls through to this
-                            # inner check.
-                            $s.Status = if ($mbSt2 -eq "FreeCompanion") { "ON -- GOOD  (Malwarebytes Free installed as a manual-scan companion; Defender remains primary)" } else { "ON -- GOOD" }
-                        } else {
-                            # Defender real-time is actually off -- check if a different 3rd-party AV is primary
-                            $nd2 = $avP2 | Where-Object { $_.displayName -notmatch "Windows Defender|Microsoft Defender|Malwarebytes" }
-                            if ($nd2) {
-                                $n2    = if ($nd2[0].displayName) { $nd2[0].displayName } else { "A 3rd-party AV" }
-                                $isHR2 = ($HighRiskAVList | Where-Object { $n2 -match $_ }).Count -gt 0
-                                $s.Status = if ($isHR2) { "!! CRITICAL RISK: $n2 (Russian/Chinese AV)" } else { "$n2 is active as primary AV -- Defender real-time is off" }
-                            } else {
-                                $s.Status = "OFF -- needs attention"
-                            }
-                        }
-                    }
-                } catch { $s.Status = "Unknown -- could not read Defender status" }
+                # B2a (ascii45): the Malwarebytes special case is gone. Defender
+                # real-time ON is GOOD whatever else is installed; OFF with
+                # another AV registered means that product is in charge (FT-30).
+                # Every branch ends in a definite status (FT-33) and the healthy
+                # one carries the GOOD token (FT-114).
+                $ggOther2 = @(Get-GGOtherAV)
+                $ggRT2 = $null
+                try { $ggRT2 = (Get-MpComputerStatus -EA Stop).RealTimeProtectionEnabled } catch {}
+                if ($ggRT2 -eq $true) {
+                    $s.Status = "ON -- GOOD"
+                } elseif ($ggOther2.Count -gt 0) {
+                    $n2    = $ggOther2[0]
+                    $isHR2 = ($HighRiskAVList | Where-Object { $n2 -match $_ }).Count -gt 0
+                    $s.Status = if ($isHR2) { "!! CRITICAL RISK: $n2 (Russian/Chinese AV)" } else { "$n2 is active as primary AV -- Defender real-time is off" }
+                } elseif ($ggRT2 -eq $false) {
+                    $s.Status = "OFF -- needs attention"
+                } else {
+                    $s.Status = "Unknown -- could not read Defender status"
+                }
             }
             3 {
                 # Tamper Protection is always readable via registry regardless of which AV is active
+                # B2a (ascii45): the Malwarebytes wording is gone. OFF while another
+                # AV is in charge is named as such -- Tamper Protection guards
+                # Defender, and Defender is not the one running then.
                 $tpState = Get-TamperProtectionState
-                $mbSt3   = Get-MalwarebytesState
                 switch ($tpState) {
-                    "On"  {
-                        $s.Status = if ($mbSt3 -eq "FreeCompanion") {
-                            "ON -- GOOD"
-                        } elseif ($mbSt3 -eq "TrialActive") {
-                            "ON -- GOOD  (Malwarebytes trial active)"
-                        } else {
-                            "ON -- GOOD"
-                        }
-                    }
+                    "On"  { $s.Status = "ON -- GOOD" }
                     "Off" {
-                        $s.Status = if ($mbSt3 -eq "TrialActive") {
-                            "OFF during Malwarebytes trial -- recheck after trial ends"
-                        } else {
-                            "OFF -- turn on in Windows Security (see guide)"
-                        }
+                        $ggOther3 = @(Get-GGOtherAV)
+                        $s.Status = if ($ggOther3.Count -gt 0) { "OFF while $($ggOther3[0]) is your antivirus -- see guide" } else { "OFF -- turn on in Windows Security (see guide)" }
                     }
                     default { $s.Status = "Could not read -- check in Windows Security" }
                 }
@@ -6329,34 +6317,6 @@ function Get-AllStatuses {
                     }
                 }
                 catch { $s.Status = "Unknown" }
-            }
-            5 {
-                try {
-                    $mbSt5   = Get-MalwarebytesState
-                    $avP5    = Get-WmiObject -Namespace "root\SecurityCenter2" -Class AntiVirusProduct -EA Stop
-                    $nd5     = $avP5 | Where-Object { $_.displayName -notmatch "Windows Defender|Microsoft Defender" }
-
-                    if ($mbSt5 -eq "FreeCompanion") {
-                        # MB Free -- Defender is still primary -- no periodic scan needed
-                        $s.Status = "OFF is correct here -- GOOD"   # Defender primary; MB Free is manual-scan companion only
-                    } elseif ($mbSt5 -eq "TrialActive") {
-                        # MB Premium Trial took over real-time -- periodic scanning IS recommended
-                        try {
-                            $ps = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows Defender" -EA SilentlyContinue).PassiveMode
-                            # FT-60 (ascii28): the toggle is MANUAL-ONLY (no supported
-                            # scripted method) -- say so, and point at the steps.
-                            $s.Status = "MB Trial is primary -- turn ON by hand (steps on this item's screen)"
-                        } catch { $s.Status = "MB Trial is primary -- turn ON by hand (steps on this item's screen)" }
-                    } elseif ($nd5) {
-                        # Other 3rd-party AV
-                        try {
-                            $ps = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows Defender" -EA SilentlyContinue).PassiveMode
-                            $s.Status = if ($ps -eq 1) { "3rd-party AV active -- enable periodic scanning" } else { "3rd-party AV detected -- check Defender settings" }
-                        } catch { $s.Status = "3rd-party AV active -- check Defender settings" }
-                    } else {
-                        $s.Status = "OFF is correct here -- GOOD"   # G-03 (ascii32): neutral -- Defender is primary, periodic scanning is for when a 3rd-party AV handles real-time protection
-                    }
-                } catch { $s.Status = "Unknown" }
             }
             6 {
                 # FT-141 (ascii39): THIS REPORTED A DEFINITE BAD FROM A CHECK
@@ -6424,14 +6384,8 @@ function Get-AllStatuses {
                 try {
                     $fw    = Get-NetFirewallProfile -EA Stop
                     $allOn = ($fw | Where-Object { -not $_.Enabled }).Count -eq 0
-                    $mbSt7 = Get-MalwarebytesState
-                    if ($mbSt7 -eq "TrialActive") {
-                        # MB WFC manages the firewall UI during Premium Trial
-                        # Underlying Windows Firewall engine should still be ON
-                        $s.Status = if ($allOn) { "ALL ON -- GOOD  (Malwarebytes WFC managing interface)" } else { "One or more profiles OFF -- needs attention  (Malwarebytes WFC detected)" }
-                    } else {
-                        $s.Status = if ($allOn) { "ALL ON -- GOOD" } else { "One or more profiles OFF -- needs attention" }
-                    }
+                    # B2a (ascii45): Malwarebytes wording removed; the verdict never depended on it.
+                    $s.Status = if ($allOn) { "ALL ON -- GOOD" } else { "One or more profiles OFF -- needs attention" }
                 } catch { $s.Status = "Unknown" }
             }
             8 {
@@ -6884,18 +6838,14 @@ function Apply-Setting {
         }
         2 {
             try {
-                $mbSt2a  = Get-MalwarebytesState
-                $avPA2   = Get-WmiObject -Namespace "root\SecurityCenter2" -Class AntiVirusProduct -EA SilentlyContinue
-                $ndA2    = $avPA2 | Where-Object { $_.displayName -notmatch "Windows Defender|Microsoft Defender" }
-
-                if ($mbSt2a -eq "FreeCompanion") {
-                    # MB Free is NOT blocking Defender -- enable Defender RT normally
-                    Set-MpPreference -DisableRealtimeMonitoring $false -EA Stop
-                    $result = "Defender Real-Time Protection enabled -- GOOD  (Malwarebytes Free companion remains installed for manual scans)"
-                } elseif ($mbSt2a -eq "TrialActive") {
-                    $result = "NOTE: Malwarebytes Premium Trial is currently handling real-time protection. Defender cannot run simultaneously. TO FIX: Open Malwarebytes -> Settings (gear icon) -> Account -> Deactivate Premium Trial. Defender will automatically become primary AV. Then rerun Checkup to confirm. See Guide: Phase 3, Step 4"
-                } elseif ($ndA2) {
-                    $avName   = if ($ndA2[0].displayName) { $ndA2[0].displayName } else { "A 3rd-party antivirus" }
+                # B2a (ascii45): general rule, no Malwarebytes special case. If
+                # another AV is registered and Defender real-time is not on, that
+                # product is in charge and Defender cannot be turned on beside it.
+                $ggOtherA2 = @(Get-GGOtherAV)
+                $ggRTA2 = $null
+                try { $ggRTA2 = (Get-MpComputerStatus -EA Stop).RealTimeProtectionEnabled } catch {}
+                if ($ggOtherA2.Count -gt 0 -and $ggRTA2 -ne $true) {
+                    $avName   = $ggOtherA2[0]
                     $isHiRisk = ($HighRiskAVList | Where-Object { $avName -match $_ }).Count -gt 0
                     if ($isHiRisk) {
                         $result = "!! CRITICAL SECURITY RISK: $avName is a Russian or Chinese antivirus. This software may be sending your files and browsing data to foreign government servers. ACTION REQUIRED: (1) Uninstall $avName -- Settings -> Apps -> $avName -> Uninstall. (2) Restart your PC. (3) Confirm Defender is active in Windows Security. Microsoft Defender is a fully capable free AV -- you do not need this product. See Guide: Phase 3, Step 4"
@@ -6909,17 +6859,13 @@ function Apply-Setting {
             } catch { $result = "ERROR: $_ -- If a 3rd-party AV is active, Defender real-time cannot be enabled simultaneously" }
         }
         3 {
-            $mbSt3a = Get-MalwarebytesState
-            $avPA3  = Get-WmiObject -Namespace "root\SecurityCenter2" -Class AntiVirusProduct -EA SilentlyContinue
-            $ndA3   = $avPA3 | Where-Object { $_.displayName -notmatch "Windows Defender|Microsoft Defender" }
-
-            if ($mbSt3a -eq "FreeCompanion") {
-                # MB Free does NOT interfere with Defender -- give normal Tamper Protection instructions
-                $result = "MANUAL ACTION REQUIRED: Windows Security -> Virus & threat protection -> Virus & threat protection settings -> Tamper Protection -> On. (Malwarebytes Free does not affect this setting.) See Guide: Phase 1, Step 2"
-            } elseif ($mbSt3a -eq "TrialActive") {
-                $result = "Malwarebytes Premium Trial is active -- Tamper Protection cannot be verified while the trial holds real-time AV control. EASIEST PATH: wait for the trial to end (it reverts to Free automatically -- nothing to do), then check again: Windows Security -> Virus & threat protection settings -> Tamper Protection -> On. In a hurry? End the trial early inside Malwarebytes: Settings (gear icon) -> Account -> Deactivate Premium Trial. See Guide: Phase 1, Step 2"
-            } elseif ($ndA3) {
-                $avName = if ($ndA3[0].displayName) { $ndA3[0].displayName } else { "A 3rd-party antivirus" }
+            # B2a (ascii45): general rule, no Malwarebytes branches. FT-263 made
+            # this case reachable; it only reads state and builds a message.
+            $ggOtherA3 = @(Get-GGOtherAV)
+            $ggRTA3 = $null
+            try { $ggRTA3 = (Get-MpComputerStatus -EA Stop).RealTimeProtectionEnabled } catch {}
+            if ($ggOtherA3.Count -gt 0 -and $ggRTA3 -ne $true) {
+                $avName = $ggOtherA3[0]
                 $result = "NOTE: $avName is registered as an AV. Tamper Protection cannot be verified while another AV is active. Fix AV status first, then: Windows Security -> Virus & threat protection settings -> Tamper Protection -> On. See Guide: Phase 1, Step 2"
             } else {
                 $result = "MANUAL ACTION REQUIRED: Windows Security -> Virus & threat protection -> Virus & threat protection settings -> Tamper Protection -> On. See Guide: Phase 1, Step 2"
@@ -6929,27 +6875,6 @@ function Apply-Setting {
             try {
                 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name SmartScreenEnabled -Value "Warn" -Force -EA Stop
                 $result = "SmartScreen set to Warn (recommended) -- GOOD"
-            } catch { $result = "ERROR: $_" }
-        }
-        5 {
-            try {
-                $mbSt5a = Get-MalwarebytesState
-                $avPA5  = Get-WmiObject -Namespace "root\SecurityCenter2" -Class AntiVirusProduct -EA SilentlyContinue
-                $ndA5   = $avPA5 | Where-Object { $_.displayName -notmatch "Windows Defender|Microsoft Defender" }
-
-                if ($mbSt5a -eq "FreeCompanion") {
-                    # MB Free -- Defender is primary real-time AV -- no periodic scan needed
-                    $result = "Defender is your primary AV -- real-time protection covers this. Malwarebytes Free is installed as a companion for manual scans (which is good). No change needed -- GOOD"
-                } elseif ($mbSt5a -eq "TrialActive") {
-                    # G-03 (ascii32): neutral framing -- describe the state factually, no comparison language
-                    $result = "Malwarebytes Premium Trial is currently handling real-time virus protection on this PC. Turning on Defender Periodic Scanning adds a second layer of background checks. To enable: Windows Security -> Virus & threat protection -> Microsoft Defender Antivirus options -> Periodic scanning -> On. When the trial ends, Malwarebytes switches to Free mode and Defender takes over real-time protection automatically. See Guide: Phase 1, Step 2"
-                } elseif ($ndA5) {
-                    $avName = if ($ndA5[0].displayName) { $ndA5[0].displayName } else { "another antivirus program" }
-                    # G-03 (ascii32): neutral framing -- state what was found and what the action is
-                    $result = "$avName is registered as your real-time antivirus. To add Defender as a background second check: Windows Security -> Virus & threat protection -> Microsoft Defender Antivirus options -> Periodic scanning -> On. See Guide: Phase 1, Step 2. MANUAL ACTION NEEDED."
-                } else {
-                    $result = "Defender is your primary AV -- real-time protection covers this. No change needed -- GOOD"
-                }
             } catch { $result = "ERROR: $_" }
         }
         6 {
@@ -6995,12 +6920,8 @@ function Apply-Setting {
         7 {
             try {
                 Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled True -EA Stop
-                $mbSt7a = Get-MalwarebytesState
-                if ($mbSt7a -eq "TrialActive") {
-                    $result = "All firewall profiles confirmed ON (Domain, Private, Public) -- GOOD. NOTE: Malwarebytes Windows Firewall Control (WFC) is managing the firewall interface during your Premium Trial -- this is normal. The underlying Windows Firewall engine remains active and your PC is protected."
-                } else {
-                    $result = "All firewall profiles enabled (Domain, Private, Public) -- GOOD"
-                }
+                # B2a (ascii45): Malwarebytes wording removed; the result never depended on it.
+                $result = "All firewall profiles enabled (Domain, Private, Public) -- GOOD"
             } catch { $result = "ERROR: $_" }
         }
         8 {
@@ -9464,7 +9385,13 @@ function Run-ConsoleMode {
                         # because it looked like it worked. Reject it out loud.
                         $maxId = ($Settings | Measure-Object -Property ID -Maximum).Maximum
                         Write-Host ""
-                        Write-Host "  There is no item $id. Item numbers run 1 to $maxId." -ForegroundColor Yellow
+                        # B2a (ascii45): 5 sits inside the range but was retired --
+                        # say so, rather than claim the numbers run 1 to 19.
+                        if ($id -ge 1 -and $id -le $maxId) {
+                            Write-Host "  Item $id is no longer part of Checkup. Choose another number." -ForegroundColor Yellow
+                        } else {
+                            Write-Host "  There is no item $id. Item numbers run 1 to $maxId." -ForegroundColor Yellow
+                        }
                         try { Write-Log -Message ("Checklist: item number out of range (" + $id + ") -- rejected") -Status "KEY" } catch {}
                         Pause-ForUser "  Press Enter or Space to return to the checklist..."
                     }
