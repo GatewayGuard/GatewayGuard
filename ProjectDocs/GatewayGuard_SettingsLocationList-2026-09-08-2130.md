@@ -99,9 +99,12 @@ end -- find another way to read it -- is no longer needed. **Co-Pilot's
 described the code as using `powercfg /query`.** Bill gave it the ascii45 text
 copy (`Tool\W11-SecurityHardening-v3-ascii45-2026-09-26-1059-1.txt`, ***measured
 identical to the build***), which has **0** `/query CONSOLELOCK` lines and **2**
-`/qh` lines; `Tool\ascii44.txt` has the reverse. Co-Pilot's reply opens "my
-review of ascii44.txt", so it answered from ascii44's code -- ***inferred:***
-from the ascii44 copy it had earlier in the same conversation.
+`/qh` lines. **It was reading ascii45** (Bill, 2026-09-26). ***Measured:***
+both phrases it quoted are in the ascii45 file -- line 152, in the ascii44
+change history the header keeps, and line 6154, the comment above item 17 --
+and neither note said FT-268 had replaced it. Claude Code's earlier guess that
+it answered from an ascii44 copy was wrong. **Fixed 2026-09-26 13:14 (C1b):**
+both notes now say "SUPERSEDED BY FT-268"; comments only, no code change.
 
 *The original text, kept for the record:*
 

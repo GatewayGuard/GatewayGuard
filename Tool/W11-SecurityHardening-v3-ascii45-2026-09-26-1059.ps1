@@ -65,6 +65,8 @@
 #   C1:     X = EXIT (Bill 2026-09-25). The nine prompts where N ended
 #           Checkup now use X; N means No and nothing else. Seven of them
 #           exited on one keypress -- they now ask first (Confirm-Exit).
+#   C1b:    The FT-256 notes below (ascii44 history, and above item 17)
+#           now say FT-268 superseded them. Comments only.
 #
 # CHANGES FROM ascii43 (2026-09-06 -- ASCII44):
 #   FT-242: NINE REGISTRY WRITES COULD NOT FAIL. Without -EA Stop a
@@ -152,6 +154,10 @@
 #           replacing two private copies of a two-outcome parse. A failed
 #           read now says "could not read" and logs the raw powercfg
 #           output, so the next field run says WHY.
+#           SUPERSEDED BY FT-268 (ascii45): the "could not read" was
+#           caused by `powercfg /query`, which leaves out hidden settings.
+#           The reader now uses `powercfg /qh` and reads it on every
+#           machine measured. This note is history, not current code.
 #           The unknown keeps the item SELECTED, because auto-deselect
 #           keys on "GOOD" -- so the user is still offered the fix. That
 #           is deliberate: the fix is harmless and idempotent, and a
@@ -6149,6 +6155,9 @@ function Get-AllStatuses {
                 }
             }
             17 {
+                # SUPERSEDED IN PART BY FT-268 (ascii45): Get-GGConsoleLockState
+                # now reads with `powercfg /qh`, so "could not read" is rare.
+                # The unknown-keeps-selected rule below still applies.
                 # FT-256 (ascii44, fixed 2026-09-08): "Not required -- needs
                 # attention" used to be printed when the parse found nothing.
                 # A failed read now says so, and an unknown keeps the item
