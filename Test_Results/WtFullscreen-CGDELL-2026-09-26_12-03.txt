@@ -1,0 +1,32 @@
+Windows Terminal full-screen launch test -- CGDELL -- 2026-09-26 12:03 ET
+Run by Claude Code at Bill's request ("test on CGDELL", 2026-09-26). Read-only
+for the system: it opened one Windows Terminal window, which closed itself.
+
+SOURCED (Microsoft Learn, "Windows Terminal command line arguments", updated
+2025-11-12): "--fullscreen, -F  Launches the terminal as full screen."
+"-w new" always opens a new window. From Command Prompt, wt returns
+immediately; PowerShell waits for it.
+
+COMMAND (from an elevated PowerShell):
+  wt.exe -w new -F new-tab --title GGWT-FULLSCREEN-TEST --suppressApplicationTitle
+         powershell.exe -NoProfile -ExecutionPolicy Bypass -File <child.ps1> -Out <file>
+
+MEASURED:
+  screen (DPI-aware)            : 1920 x 1080 (150% scaling)
+  window rect                   : (0,0)-(1920,1080)  -- covers the whole screen
+  title bar (WS_CAPTION)        : False  -- no title bar, so no X to click
+  appeared after                : ~550 ms
+  child: administrator          : True   (launched from an elevated process)
+  child: window size            : 133 columns x 37 rows
+                                  (the 2026-09-07 normal window was 81 x 21)
+  window after the child exited : closed by itself
+
+NOT YET MEASURED (needed before the launcher changes):
+  - launch from Run-GatewayGuard.bat started with "Run as administrator"
+    (this test launched from elevated PowerShell; inferred the same)
+  - SANDY: is Windows Terminal installed there
+  - copying text in Windows Terminal (screen 8's Alt+Space, E, M is for the
+    classic console window) and what Ctrl+C does with text selected
+  - selecting text in Windows Terminal: does it pause Checkup (FT-63 was a
+    classic-console behaviour)
+  - screens 3/4 (console font) give classic-console steps

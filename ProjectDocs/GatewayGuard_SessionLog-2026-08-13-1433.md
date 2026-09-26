@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-26 11:53 ET
+- **Last Modified:** 2026-09-26 12:03 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -107,6 +107,15 @@ with the typed value kept in each header.
   files into CRLF -- `CLAUDE.md` in commit `31d823b` (all 997 lines), and the
   briefing and Project Instructions today before commit. All three restored to
   LF. Writes from now on use binary mode.
+
+**Bill's two answers, 12:00:** (1) *"keep the found names"* -- screens 17/17a/17c
+keep showing the antivirus name Windows reports; recorded in CLAUDE.md Product Rules
+as the exception to no-product-names. (2) *"test on CGDELL"* -- the full-screen
+launch: ***measured, `Test_Results\WtFullscreen-CGDELL-2026-09-26_12-03.txt`:
+`wt -w new -F` fills the screen with no title bar, keeps administrator rights, gives
+133 x 37 (was 81 x 21), and closes by itself.*** Four things still to check before
+the launcher changes (copying, Mark-mode, font screens, SANDY); recorded in the
+ascii45 plan's OPEN list. Not in scope until Bill says so.
 
 Next: rest of Block C (B = step back, L = look, F = fix the screen, FT-271,
 FT-270 Ctrl+C after the SANDY test).

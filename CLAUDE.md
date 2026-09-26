@@ -144,6 +144,11 @@
   built into Windows, is named. **Bill, 2026-09-25: "remove AV names from
   guide"** — this removes Malwarebytes from the guide too, reversing the
   2026-09-08 guide-only arrangement. See Approved Products below.
+  **Exception -- names Checkup FINDS (Bill, 2026-09-26: "keep the found
+  names").** When Checkup detects an installed antivirus, it shows the name
+  Windows reports for it (screens 17, 17a, 17c -- e.g. "uninstall Kaspersky").
+  That is detection, not a recommendation, and the user needs the name to act.
+  Checkup's own copy still names no third-party product.
 - Always include country of origin for AV recommendations
 - Never name unapproved or competitor products
 - "For your protection, your choices can be reviewed in your log" — shown **once only**, on the review screen

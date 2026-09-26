@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-26 11:55 ET -->
-<!-- Commit: fd43281 -->
+<!-- Generated: 2026-09-26 12:03 ET -->
+<!-- Commit: 9e43e8d -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-26 11:55 ET  |  **Commit at generation:** `fd43281`  |  **That commit was made:** 2026-09-26 11:40 ET
-- **Its subject line:** ascii45 partial test checklist (Blocks A, B, C1): every screen marked CHECK / SKIP / LOOK / GONE
+- **Generated:** 2026-09-26 12:03 ET  |  **Commit at generation:** `9e43e8d`  |  **That commit was made:** 2026-09-26 11:55 ET
+- **Its subject line:** Fix the four stale records Cloud found; restore LF endings in CLAUDE.md
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 

@@ -164,9 +164,19 @@ run** (2026-09-25).
 # OPEN -- WAITING ON BILL
 
 1. **Full-screen launch** (no window X to click). Two of nine ascii44 runs
-   ended by the window closing. Needs a CGDELL test of the `wt` full-screen
-   option and of administrator rights carrying over, plus an on-screen exit
-   line. **Not in scope until Bill says so.**
+   ended by the window closing. **Tested on CGDELL 2026-09-26 at Bill's
+   request -- it works:** ***measured, `Test_Results\WtFullscreen-CGDELL-2026-09-26_12-03.txt`:
+   `wt -w new -F` (sourced, Microsoft Learn) opens a window covering the whole
+   screen with no title bar; administrator rights carry over from an elevated
+   launch; the window is 133 x 37 (the normal window on 09-07 was 81 x 21, so
+   26-line screens now fit -- most of FT-259 on this PC); it closes by itself
+   when Checkup ends.*** **Still to check before the launcher changes:** a
+   launch from the .bat run as administrator (inferred the same); SANDY has
+   Windows Terminal; how copying works there (screen 8 teaches the classic
+   console's Alt+Space, E, M) and what Ctrl+C does with text selected; whether
+   selecting text pauses Checkup (FT-63 was a classic-console behaviour); and
+   screens 3/4, whose font steps are for the classic console. Plus an
+   on-screen line saying how to leave. **In scope only when Bill says so.**
 
 # NOT IN ascii45
 
