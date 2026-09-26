@@ -7,6 +7,15 @@
 #   Source of every FT-265..FT-285 below: the ascii44 SANDY field run,
 #   FieldTestTriage-ascii44run1-2026-09-24-2353.
 #   (entries are added here, one family per commit)
+#   FT-268: PASSWORD ON WAKE WAS NEVER READABLE ON ANY MACHINE. The
+#           read used `powercfg /query`, which leaves out hidden
+#           settings, and CONSOLELOCK is hidden. Now `/qh`. Measured on
+#           CGDELL 2026-09-24/25: /query returns the header only, /qh
+#           returns AC and DC index 0x1.
+#   FT-269: NO SUCCESS WITHOUT A CONFIRMED RE-READ. Screen 19's apply
+#           printed green OK / logged APPLIED whatever the re-read said;
+#           item 17 returned GOOD with no re-read at all. Both now re-read
+#           through Get-GGConsoleLockState and say GOOD only on REQUIRED.
 #
 # CHANGES FROM ascii43 (2026-09-06 -- ASCII44):
 #   FT-242: NINE REGISTRY WRITES COULD NOT FAIL. Without -EA Stop a
@@ -5144,16 +5153,19 @@ function Get-GGConsoleLockState {
     # unneeded rather than hiding one that is needed. It is still wrong. It
     # tells the user their PC is insecure when we do not know.
     #
-    # VERIFIED 2026-09-08 measured on CGDELL, elevated: powercfg /query
-    # SCHEME_CURRENT SUB_NONE CONSOLELOCK returned the scheme header and NO
-    # "Current AC Power Setting Index:" line at all.
-    # Test_Results\SettingsStatus-CGDELL-2026-09-08_21-29.txt
+    # FT-268 (ascii45): the root cause of that NO_INDEX was the switch, not
+    # the machine. `/query` leaves out HIDDEN power settings, and
+    # CONSOLELOCK is hidden, so every machine answered NO_INDEX.
+    # VERIFIED 2026-09-25 measured on CGDELL, elevated: powercfg /qh
+    # SCHEME_CURRENT SUB_NONE CONSOLELOCK returns "Current AC Power Setting
+    # Index: 0x00000001" and the DC line; /query returns the header only.
+    # Test_Results\SandyForAscii45-CGDELL-2026-09-25_16-36.txt, section 5.
     #
     # FOUR ANSWERS, never two. The caller chooses the wording; this decides
     # only what was actually true. Raw carries the output so the log says WHY.
     $ggOut = ""
     try {
-        $ggQ   = powercfg /query SCHEME_CURRENT SUB_NONE CONSOLELOCK 2>&1
+        $ggQ   = powercfg /qh SCHEME_CURRENT SUB_NONE CONSOLELOCK 2>&1
         $ggOut = ($ggQ | Out-String)
     } catch {
         return @{ State = "NO_OUTPUT"; Value = $null; Raw = "powercfg threw: $_" }
@@ -5455,32 +5467,26 @@ function Apply-PowerSettings {
             powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_NONE CONSOLELOCK 1 | Out-Null
             powercfg /SETDCVALUEINDEX SCHEME_CURRENT SUB_NONE CONSOLELOCK 1 | Out-Null
             powercfg /S SCHEME_CURRENT | Out-Null
-            $ggNow = "could not re-read -- check manually"
-            try {
-                $ggQ = powercfg /query SCHEME_CURRENT SUB_NONE CONSOLELOCK 2>&1
-                # FT-255 (ascii44): powercfg returns an ARRAY. On an array -match is a
-        # FILTER and does NOT populate $Matches -- measured on CGDELL
-        # 2026-09-06. Out-String makes it a scalar match, which is the
-        # pattern already used at the screen-timeout and battery reads.
-                if (($ggQ | Out-String) -match "Current AC Power Setting Index: 0x(\w+)") {
-                    $ggNow = if ([Convert]::ToUInt32($Matches[1], 16) -eq 1) { "REQUIRED" } else { "still NOT required" }
-                } else {
-                    # FT-246/FT-256 (ascii44): the parse found nothing. Log the RAW
-                    # output so the next field run says WHY, instead of only
-                    # "could not re-read". Measured on CGDELL 2026-09-06: this
-                    # query can return the scheme header and no setting block at
-                    # all, which is FT-256 and is not fixed by any parse change.
-                    $ggRaw = ((($ggQ | Out-String) -replace "\s+", " ").Trim())
-                    if ($ggRaw.Length -gt 300) { $ggRaw = $ggRaw.Substring(0, 300) + "..." }
-                    Write-Log -Message "Password on wake re-read found no setting index (FT-256). Raw powercfg output: $ggRaw" -Status "WARN"
-                }
-            } catch {
-                Write-Log -Message "Password on wake re-read threw: $_" -Status "WARN"
+            # FT-269 (ascii45): re-read through the one shared reader (FT-268's
+            # /qh), and print OK / log APPLIED only when it confirms REQUIRED.
+            # Before this, the green OK printed whatever the re-read said.
+            $ggRe = Get-GGConsoleLockState
+            switch ($ggRe.State) {
+                "REQUIRED"     { $ggNow = "REQUIRED" }
+                "NOT_REQUIRED" { $ggNow = "still NOT required" }
+                default        { $ggNow = "could not confirm -- check by hand" }
             }
-            Write-Host "  OK  Password on wake" -ForegroundColor Green
-            Write-Host "      Was:  $ggWas" -ForegroundColor Gray
-            Write-Host "      Now:  $ggNow" -ForegroundColor Cyan
-            Write-Log -Message "Password on wake: was '$ggWas' -> now '$ggNow'" -Status "APPLIED"
+            if ($ggRe.State -eq "REQUIRED") {
+                Write-Host "  OK  Password on wake" -ForegroundColor Green
+                Write-Host "      Was:  $ggWas" -ForegroundColor Gray
+                Write-Host "      Now:  $ggNow" -ForegroundColor Cyan
+                Write-Log -Message "Password on wake: was '$ggWas' -> now '$ggNow' (re-read confirmed)" -Status "APPLIED"
+            } else {
+                Write-Host "  WARN Password on wake" -ForegroundColor Yellow
+                Write-Host "      Was:  $ggWas" -ForegroundColor Gray
+                Write-Host "      Now:  $ggNow" -ForegroundColor Yellow
+                Write-Log -Message "Password on wake: was '$ggWas' -> now '$ggNow' -- NOT confirmed ($($ggRe.State)). Raw powercfg output: $($ggRe.Raw)" -Status "WARN"
+            }
         } catch { Write-Host "  ERROR Password on wake: $_" -ForegroundColor Red; Write-Log -Message "Password on wake error: $_" -Status "ERROR" }
     } else { Write-Host "  --  Password on wake -- skipped, nothing changed" -ForegroundColor Gray }
 
@@ -7007,7 +7013,19 @@ function Apply-Setting {
                 powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_NONE CONSOLELOCK 1 | Out-Null
                 powercfg /SETDCVALUEINDEX SCHEME_CURRENT SUB_NONE CONSOLELOCK 1 | Out-Null
                 powercfg /S SCHEME_CURRENT | Out-Null
-                $result = "Password required on wake -- enabled for both AC and battery -- GOOD"
+                # FT-269 (ascii45): this returned GOOD with no re-read at all.
+                # Re-read through the shared reader; GOOD only on REQUIRED. The
+                # other two answers start NOTE:/ERROR: and avoid every word the
+                # run loop colours green (GOOD|enabled|disabled|set to|Already).
+                $ggRe17 = Get-GGConsoleLockState
+                if ($ggRe17.State -eq "REQUIRED") {
+                    $result = "Password required on wake -- enabled for both AC and battery -- confirmed -- GOOD"
+                } elseif ($ggRe17.State -eq "NOT_REQUIRED") {
+                    $result = "ERROR: Windows did not keep the change -- a password is still not required on wake. Check by hand: Settings -> Accounts -> Sign-in options -> 'If you've been away, when should Windows require you to sign in again?' -> When PC wakes up from sleep."
+                } else {
+                    $result = "NOTE: Checkup asked Windows to require a password on wake, but could not read it back to confirm. Check by hand: Settings -> Accounts -> Sign-in options -> 'If you've been away, when should Windows require you to sign in again?' -> When PC wakes up from sleep."
+                }
+                try { Write-Log -Message "Item 17 re-read after apply: $($ggRe17.State). Raw powercfg output: $($ggRe17.Raw)" -Status "INFO" } catch {}
             } catch { $result = "ERROR: $_" }
         }
         18 {
