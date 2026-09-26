@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-26 13:09 ET
+- **Last Modified:** 2026-09-26 14:44 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -14,6 +14,41 @@
   Downloaded by Bill at session end and uploaded to project immediately.
 
 ---
+---
+
+## Session: 2026-09-26 13:10-14:44 [Claude Code -- CGDELL] -- CO-PILOT'S ascii45 REVIEW CHECKED; ITEM 9 (WINDOWS HELLO) IS WRONG
+
+**Build: ascii45, in progress** (Blocks A, B, C1 + C1b). Next free FT: **289**.
+
+- **C1b (`df49203`):** Co-Pilot WAS reading the ascii45 text, as Bill said. The
+  phrases it quoted are in ascii45's retained ascii44 history (line 152) and
+  the item-17 comment (line 6154). Both notes now say "SUPERSEDED BY FT-268".
+  Comments only; parse 0, gates 12 and 24 pass. Bill's `Tool\...-1.txt` copy
+  refreshed. Tell Co-Pilot: the "CHANGES FROM" blocks are history.
+- **Co-Pilot's code review -> plan Block H (`fac30cd`)**, each claim checked:
+  FT-286 item 9 Hello, FT-287 item 17 reads AC only (DC missed), FT-288 item 1
+  checks the service not update freshness. Item 12 already planned (G6);
+  item 4 no new work; item 13 flip test later.
+- **FT-286, settled at the keyboard.** Bill signs in to CGDELL with a PIN. The
+  Microsoft account he set up on 09-24 and "Dad" are ONE account (SID 1001,
+  one profile `C:\Users\willi`, switch at 19:41 on 09-24, security log).
+  Checkup says "Not set up" (its folder does not exist); Settings says every
+  Hello option is "not available"; `dsregcmd` says `NgcSet : NO`. All three
+  deny a PIN that works. The business account (tenant GatewayGuard LLC) is
+  workplace-registered only -- no management, no Hello rules.
+  **My errors, recorded in H1:** I withdrew a correct verdict because
+  `dsregcmd` said NO (`8f6bae9`), then restored it (`d1ac765`). The field wins.
+- **Co-Pilot's Hello answer** agreed the check fails, but got the direction
+  backwards, sent users to Settings (which is wrong on CGDELL), cited no
+  links, and skipped the last-sign-in candidate. Plan H1 updated.
+
+**Next:**
+- **Bill:** at the next sign-in use the PASSWORD once, tell Claude Code; then
+  the PIN, tell Claude Code (flip test for the last-sign-in read, FT-286).
+- Build FT-286 (last-sign-in read if the flip test passes, else ask the
+  person) and FT-287 (AC and DC) in ascii45; then rest of Block C.
+- Still pending from before: SANDY measurement script, WT copy test.
+
 ---
 
 ## Session: 2026-09-26 11:10 [Claude Code -- CGDELL] -- /doctor CLEANUP, THEN ascii45 BUILT FROM ITS BASE THROUGH BLOCK A

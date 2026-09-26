@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-26 13:09 ET -->
-<!-- Commit: d960118 -->
+<!-- Generated: 2026-09-26 14:44 ET -->
+<!-- Commit: 68769a8 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-26 13:09 ET  |  **Commit at generation:** `d960118`  |  **That commit was made:** 2026-09-26 12:14 ET
-- **Its subject line:** C9: a failed full-screen launch strands the user -- recorded; test launcher tells how to get out
+- **Generated:** 2026-09-26 14:44 ET  |  **Commit at generation:** `68769a8`  |  **That commit was made:** 2026-09-26 14:04 ET
+- **Its subject line:** Block H1: Bill's Microsoft account and Dad are one account on CGDELL (measured)
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -197,7 +197,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-09-26 11:10 [Claude Code -- CGDELL] -- /doctor CLEANUP, THEN ascii45 BUILT FROM ITS BASE THROUGH BLOCK A
+## Session: 2026-09-26 13:10-14:44 [Claude Code -- CGDELL] -- CO-PILOT'S ascii45 REVIEW CHECKED; ITEM 9 (WINDOWS HELLO) IS WRONG
 ```
 
 **If it is not in your copy of the session log, you are reading an old
