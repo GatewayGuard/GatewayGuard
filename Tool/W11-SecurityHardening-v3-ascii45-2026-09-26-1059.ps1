@@ -53,6 +53,11 @@
 #           the offline scan only (the full scan arrives in Block E, not
 #           promised before). Screens 18/18a-c and Show-MalwarebytesFollowUp
 #           removed. Numbering gap closed by the renumber pass after Block E.
+#   B2b-2:  ANTIVIRUS CHECK (17, 17a-e) IS GENERAL. 17b (MB trial) and 17d
+#           (MB on duty) removed -- 17c covers any product in charge; 17's
+#           healthy screen names whatever else is installed; the high-risk
+#           screen no longer suggests Malwarebytes. Get-MalwarebytesState
+#           deleted (no callers left).
 #
 # CHANGES FROM ascii43 (2026-09-06 -- ASCII44):
 #   FT-242: NINE REGISTRY WRITES COULD NOT FAIL. Without -EA Stop a
@@ -2055,9 +2060,7 @@ $script:GGScreenLabels = @{
     "39" = "14a"          # Reminder: pre-scan recommended (repeat run)
     "40" = "14b"          # Welcome back -- offline scan complete
     "41" = "17a"          # Antivirus -- alternative state
-    "42" = "17b"          # Antivirus -- alternative state
     "44" = "17c"          # Antivirus -- alternative state
-    "45" = "17d"          # Antivirus -- alternative state
     "46" = "17e"          # Antivirus -- alternative state
     "49" = "18d"          # Power / battery warning
     "74" = "22a"          # Your passwords -- we remembered your answer
@@ -4691,7 +4694,6 @@ function Test-DefenderPrimary {
         $avProducts = Get-WmiObject -Namespace "root\SecurityCenter2" -Class AntiVirusProduct -ErrorAction Stop
         $defender   = $avProducts | Where-Object { $_.displayName -match "Windows Defender|Microsoft Defender" }
         $nonDefender = $avProducts | Where-Object { $_.displayName -notmatch "Windows Defender|Microsoft Defender" }
-        $mbFree     = $avProducts | Where-Object { $_.displayName -match "Malwarebytes" }
 
         # -- Detect Russian / Chinese AV -- strong uninstall recommendation --
         $riskyAV = $avProducts | Where-Object {
@@ -4722,9 +4724,6 @@ function Test-DefenderPrimary {
                 "  1. UNINSTALL: Settings -> Apps -> $riskyName -> Uninstall",
                 "  2. RESTART your PC after uninstalling                      ",
                 "  3. Confirm Microsoft Defender is active in Windows Security",
-                "  4. Optional companion: Malwarebytes FREE (manual scans)   ",
-                "     $AffiliateMalwarebytes",
-                "     (Free version only -- do NOT activate real-time)        ",
                 "                                                              ",
                 "  Microsoft Defender is a fully capable, FREE antivirus      ",
                 "  built into Windows. You do not need a paid foreign product."
@@ -4742,58 +4741,6 @@ function Test-DefenderPrimary {
             Pause-ForUser
         }
 
-        if ($mbFree) {
-            # Check if MB took over real-time -- use Get-MpComputerStatus (reliable)
-            # NOT productState 0x1000 bit -- MB Free also sets that bit (confirmed HP 17-by1xxx)
-            $defRT = $false
-            try { $defRT = (Get-MpComputerStatus -EA Stop).RealTimeProtectionEnabled } catch {}
-            if (-not $defRT -and -not $defender) {
-                Clear-Host
-                Write-Host ""
-                # FT-12 (2026-07-10): reframed from "this needs to be fixed"
-                # to "this is expected and fine" -- a Malwarebytes trial
-                # temporarily taking over real-time protection is a normal,
-                # temporary state, not a problem. Defender resumes control
-                # automatically once the trial ends or is deactivated.
-                Draw-Box -ScreenId "42" -Color White -Lines @(
-                    "  MALWAREBYTES TRIAL IS CURRENTLY HANDLING PROTECTION      ",
-                    "---",
-                    "  Malwarebytes started a Premium trial and is temporarily   ",
-                    "  handling real-time protection instead of Defender.       ",
-                    "  THIS IS NORMAL AND OK -- not a problem to fix right now.  ",
-                    "                                                            ",
-                    "  Windows only allows ONE app to handle real-time           ",
-                    "  protection at a time. Microsoft Defender will              ",
-                    "  automatically become active again once the Malwarebytes  ",
-                    "  trial ends (or if you deactivate it early).              ",
-                    "                                                            ",
-                    "  IN THE MEANTIME: you can still run daily Malwarebytes    ",
-                    "  scans manually for protection.                           ",
-                    "                                                            ",
-                    "  If you'd like Defender back sooner (optional):           ",
-                    "  Open Malwarebytes -> Settings (gear) -> Account ->        ",
-                    "  Deactivate Premium Trial                                  ",
-                    "                                                            ",
-                    "  Tamper Protection is a SEPARATE setting from real-time    ",
-                    "  protection -- worth checking it's still ON in Windows     ",
-                    "  Security regardless of which AV is currently active.      ",
-                    "  Guide: Phase 3, Step 4                                   "
-                )
-                Write-Host ""
-                do {
-                    $cont = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Continue? (Y = Continue / N = I'll deactivate the trial first): "
-                    if ($cont.ToUpper() -eq "N") {
-                        Write-Host "  Take your time -- relaunch Checkup once you're ready." -ForegroundColor Yellow
-                        Write-Log -Message "Exited -- user chose to deactivate MB trial first" -Status "INFO"
-                        Disable-SleepPrevention; Save-Log; exit
-                    }
-                } while ($cont.ToUpper() -ne "Y")
-                Write-Log -Message "Continuing -- Malwarebytes trial active as primary AV (expected, not an error)" -Status "OK"
-                Pause-ForUser
-                return
-            }
-        }
-
         # Check actual Defender real-time state directly -- most reliable source of truth
         # FT-23 (2026-07-11): a FAILED check used to default to "off" and fire
         # the scary DEFENDER IS OFF alarm even when Defender was fine
@@ -4809,35 +4756,31 @@ function Test-DefenderPrimary {
             Write-Log -Message "Get-MpComputerStatus failed -- Defender state UNKNOWN, not assuming OFF: $_" -Status "WARN"
         }
 
-        # Determine if MB Free is the only non-Defender AV (companion scenario -- OK)
-        $nonMbNonDefender = $nonDefender | Where-Object { $_.displayName -notmatch "Malwarebytes" }
-
         if ($defenderRTOn) {
             # Defender real-time IS on -- this is the healthy state
-            if ($mbFree) {
-                # MB registered in SC2 but Defender RT is on -- MB is companion only
+            if ($nonDefender) {
+                # B2b-2 (ascii45): another product is registered but Defender's
+                # real-time is on -- Defender is in charge, the other is not.
+                $ggAlso = $nonDefender[0].displayName
                 Clear-Host
                 Write-Host ""
                 Draw-Box -ScreenId "43" -Color White -Lines @(
                     "  OK  ANTIVIRUS STATUS -- HEALTHY SETUP                    ",
                     "---",
-                    "  Microsoft Defender: ACTIVE as primary real-time AV       ",
-                    "  Malwarebytes Free:  Installed as manual-scan companion    ",
+                    "  Microsoft Defender: ACTIVE -- watching your PC in real   ",
+                    "  time.                                                    ",
+                    "  Also installed:     $ggAlso",
                     "                                                            ",
-                    "  This is the RECOMMENDED setup:                           ",
-                    "  * Defender provides always-on real-time protection        ",
-                    "  * Malwarebytes Free adds manual scan capability for       ",
-                    "    catching PUPs and adware Defender sometimes misses      ",
-                    "  * Malwarebytes Free does NOT interfere with Defender      ",
+                    "  Only one antivirus can watch in real time, and on this   ",
+                    "  PC it is Defender. The other program is installed but   ",
+                    "  is not in charge. This is fine.                          ",
                     "                                                            ",
                     "  What you see in Windows Security:                        ",
-                    "  Both apps may appear under Virus & threat protection.    ",
-                    "  Defender is listed as 'On' -- this is correct.           ",
-                    "  Malwarebytes shows as installed but is NOT your primary  ",
-                    "  AV shield -- it is a companion tool only.                "
+                    "  Both may appear under Virus & threat protection.         ",
+                    "  Defender is listed as 'On' -- this is correct.           "
                 )
                 Write-Host ""
-                Write-Log -Message "Defender active as primary AV. MB Free installed as companion." -Status "OK"
+                Write-Log -Message "Defender active as primary AV. Also registered (not in charge): $ggAlso" -Status "OK"
                 Pause-ForUser
             } else {
                 Write-Host ""
@@ -4845,9 +4788,9 @@ function Test-DefenderPrimary {
                 Write-Log -Message "Defender confirmed as primary AV" -Status "OK"
                 Pause-ForUser
             }
-        } elseif ($nonMbNonDefender) {
-            # A different 3rd-party AV is active, not MB
-            $avName = $nonMbNonDefender[0].displayName
+        } elseif ($nonDefender) {
+            # B2b-2 (ascii45): ANY other product in charge (Malwarebytes included)
+            $avName = $nonDefender[0].displayName
             Clear-Host
             Write-Host ""
             Draw-Box -ScreenId "44" -Color White -Lines @(
@@ -4881,35 +4824,9 @@ function Test-DefenderPrimary {
             Write-Host "  under Virus & threat protection." -ForegroundColor Yellow
             Write-Log -Message "Defender state unverifiable -- informational message shown, continuing" -Status "WARN"
             Pause-ForUser
-        } elseif ($nonDefender | Where-Object { $_.displayName -match "Malwarebytes" }) {
-            # FT-30 (2026-07-12): Defender RT is off but MALWAREBYTES is
-            # registered in Security Center -- MB has taken over real-time
-            # protection (normal during a Premium trial). Round-4 field test
-            # showed the scary alarm firing here because the MB state check
-            # missed the trial. This is a handoff, not an emergency.
-            Write-Log -Message ("FT-30 context: mbState=" + (Get-MalwarebytesState) + " SC2=[" + (($nonDefender | ForEach-Object { $_.displayName }) -join "; ") + "]") -Status "INFO"
-            Clear-Host
-            Write-Host ""
-            Draw-Box -ScreenId "45" -Color White -Lines @(
-                "  ANTIVIRUS STATUS -- MALWAREBYTES IS ON DUTY               ",
-                "---",
-                "  Malwarebytes is currently providing your real-time         ",
-                "  protection, so Windows Defender's real-time shield is       ",
-                "  standing down. This is NORMAL -- Windows only allows one    ",
-                "  real-time antivirus at a time, and your PC IS protected.    ",
-                "                                                              ",
-                "  When the Malwarebytes trial ends, Defender takes over       ",
-                "  again automatically. Two things to check at that point:     ",
-                "  1. Defender real-time protection is back ON                 ",
-                "  2. Tamper Protection is ON (the trial can leave it off)     ",
-                "  Both live in Windows Security -> Virus & threat protection. "
-            )
-            Write-Host ""
-            Write-Log -Message "Defender RT off, Malwarebytes registered in SC2 -- handoff explanation shown (no alarm)" -Status "OK"
-            Pause-ForUser
         } else {
             # Defender real-time is CONFIRMED off and NOTHING registered to replace it
-            Write-Log -Message ("Defender-off ALARM context: mbState=" + (Get-MalwarebytesState) + " SC2 count=" + (@($nonDefender).Count)) -Status "WARN"
+            Write-Log -Message ("Defender-off ALARM context: SC2 count=" + (@($nonDefender).Count)) -Status "WARN"
             Clear-Host
             Write-Host ""
             Draw-Box -ScreenId "46" -Color White -Lines @(
@@ -5803,121 +5720,6 @@ function Get-GGOtherAV {
         $ggAV = Get-WmiObject -Namespace "root\SecurityCenter2" -Class AntiVirusProduct -EA Stop
         return @($ggAV | Where-Object { $_.displayName -and $_.displayName -notmatch "Windows Defender|Microsoft Defender" } | ForEach-Object { [string]$_.displayName })
     } catch { return @() }
-}
-
-function Get-MalwarebytesState {
-    # Returns: NotInstalled / FreeCompanion / TrialActive / Unknown
-    #
-    # FreeCompanion = MB Free installed -- Defender is still primary RT protection
-    # TrialActive   = MB Premium Trial active -- took over RT from Defender
-    #
-    # DETECTION METHOD (revised ascii20):
-    #   The productState 0x1000 bit is NOT reliable -- MB Free also sets it on some
-    #   systems (confirmed HP Laptop 17-by1xxx: MB Free productState=0x061000).
-    #
-    #   Primary: Check Defender RT directly via Get-MpComputerStatus.
-    #     If Defender RT is ON  -> MB is FreeCompanion regardless of productState
-    #     If Defender RT is OFF -> MB likely took over -> check further for TrialActive
-    #
-    #   Secondary (when Defender RT is off): firewall registration + service state
-    try {
-        # Step 1: IS MALWAREBYTES INSTALLED?
-        #
-        # FT-140 (ascii39): THIS USED TO ASK SecurityCenter2 AND NOTHING ELSE --
-        # "not registered in SC2" was taken to mean "not installed".
-        # MALWAREBYTES DEREGISTERS ITSELF FROM SC2 WHEN ITS TRIAL EXPIRES, so
-        # that test fails on every machine past day 14.
-        # Field-confirmed on two machines, 2026-07-29: the Dell has MB 5.6.3.277
-        # installed with MBAMService running, is absent from SC2, and Checkup
-        # reported NOT DETECTED and offered to download software already on the
-        # PC. Sandy, still registered (productState 393216), was detected fine.
-        # THAT IS WHY THIS SURVIVED 38 BUILDS: the bug is invisible during
-        # evaluation and universal afterwards. Every user reaches trial expiry,
-        # and no test run had ever crossed it.
-        # FOUR INDEPENDENT CHECKS, any one of which proves installation. SC2 is
-        # still consulted, but only for what it actually means further down --
-        # whether MB is currently registered as an antivirus product -- and
-        # never again as the installed test.
-        $avProducts = Get-WmiObject -Namespace "root\SecurityCenter2" -Class AntiVirusProduct -EA SilentlyContinue
-        $mbAV = $avProducts | Where-Object { $_.displayName -match "Malwarebytes" }
-
-        $mbInstalled = $false
-        $mbHow = ""
-        if ($mbAV) { $mbInstalled = $true; $mbHow = "registered in SecurityCenter2" }
-        # (b) The service MB installs and leaves running regardless of licence
-        #     state. This is the one that catches the trial-expired machine.
-        if (-not $mbInstalled) {
-            try {
-                $mbSvcChk = Get-Service -Name "MBAMService" -EA Stop
-                if ($mbSvcChk) { $mbInstalled = $true; $mbHow = "MBAMService present (status: " + $mbSvcChk.Status + ")" }
-            } catch {}
-        }
-        # (c) Uninstall entries -- BOTH hives. A 32-bit installer on 64-bit
-        #     Windows lands in WOW6432Node, and checking one hive only is how
-        #     half-detections happen.
-        if (-not $mbInstalled) {
-            foreach ($mbHive in @("HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*",
-                                  "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*")) {
-                try {
-                    $mbReg = Get-ItemProperty -Path $mbHive -EA SilentlyContinue |
-                             Where-Object { $_.DisplayName -match "Malwarebytes" }
-                    if ($mbReg) { $mbInstalled = $true; $mbHow = "uninstall entry found"; break }
-                } catch {}
-            }
-        }
-        # (d) The program itself on disk.
-        if (-not $mbInstalled) {
-            foreach ($mbPath in @("$env:ProgramFiles\Malwarebytes\Anti-Malware\mbam.exe",
-                                  "${env:ProgramFiles(x86)}\Malwarebytes\Anti-Malware\mbam.exe")) {
-                try { if (Test-Path $mbPath) { $mbInstalled = $true; $mbHow = "program file present"; break } } catch {}
-            }
-        }
-
-        if (-not $mbInstalled) { return "NotInstalled" }
-        if (-not $mbAV) {
-            # Installed but not registered as an AV -- the normal state once the
-            # 14-day trial has expired. Logged so the field can see WHICH check
-            # found it, rather than having to infer it from behaviour.
-            try { Write-Log -Message ("Malwarebytes detected by fallback (" + $mbHow + ") -- installed but NOT registered in SecurityCenter2. Normal after the 14-day trial expires (FT-140).") -Status "INFO" } catch {}
-        }
-
-        # Step 2: Check Defender real-time state directly -- most reliable source of truth
-        try {
-            $mp = Get-MpComputerStatus -EA Stop
-            $defenderRT = $mp.RealTimeProtectionEnabled
-        } catch {
-            $defenderRT = $false
-        }
-
-        if ($defenderRT) {
-            # Defender RT is ON -- MB is not taking over real-time, it is a companion
-            return "FreeCompanion"
-        }
-
-        # Step 3: Defender RT is OFF -- check if MB Premium Trial actually took over
-        $mbPremium = $false
-
-        # MB WFC (Windows Firewall Control) only registers as FirewallProduct during Premium Trial
-        try {
-            $fwProducts = Get-WmiObject -Namespace "root\SecurityCenter2" -Class FirewallProduct -EA SilentlyContinue
-            $mbFW = $fwProducts | Where-Object { $_.displayName -match "Malwarebytes" }
-            if ($mbFW) { $mbPremium = $true }
-        } catch {}
-
-        # MBAMService running + Defender RT off is a strong indicator of Premium Trial
-        try {
-            $mbSvc = Get-Service "MBAMService" -EA Stop
-            if ($mbSvc.Status -eq "Running") { $mbPremium = $true }
-        } catch {}
-
-        # FT-37 (2026-07-12): was "return if (...)" -- INVALID PowerShell that
-        # threw at runtime, got swallowed by the outer catch, and made this
-        # function return "Unknown" whenever Defender RT was off. That single
-        # line caused BOTH field-reported Defender false alarms (state:
-        # Unknown in the 2026-07-11 logs, Dell Latitude 5430).
-        if ($mbPremium) { return "TrialActive" } else { return "FreeCompanion" }
-
-    } catch { return "Unknown" }
 }
 
 function Get-GGEdgeLocalStateBool {

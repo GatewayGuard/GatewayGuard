@@ -171,7 +171,8 @@ $MaxScreenLines = 26
 $OversizeBaseline = @{
     "72" = 55; "50" = 50
     # "73", "26", "27" removed 2026-09-26: ascii45 B2b-1 deleted screen 18 and rewrote 13/14 within 26.
-    "65" = 33; "60" = 31; "41" = 28; "30" = 28
+    "65" = 33; "60" = 31; "30" = 28
+    # "41" (screen 17a) removed 2026-09-26: ascii45 B2b-2 dropped its Malwarebytes lines.
     # "52" (screen 21) removed 2026-09-26: ascii45 B1 dropped GUI mode and it fits in 26.
 }
 
