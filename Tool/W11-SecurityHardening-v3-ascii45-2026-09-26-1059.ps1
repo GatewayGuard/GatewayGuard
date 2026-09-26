@@ -62,6 +62,9 @@
 #   B3:     THE MONTHLY MALWAREBYTES REMINDER IS NO LONGER CREATED, and
 #           Remove-GGOldMBReminder removes it once where an earlier build
 #           left it (SANDY had it twice), with a read-back.
+#   C1:     X = EXIT (Bill 2026-09-25). The nine prompts where N ended
+#           Checkup now use X; N means No and nothing else. Seven of them
+#           exited on one keypress -- they now ask first (Confirm-Exit).
 #
 # CHANGES FROM ascii43 (2026-09-06 -- ASCII44):
 #   FT-242: NINE REGISTRY WRITES COULD NOT FAIL. Without -EA Stop a
@@ -3616,15 +3619,13 @@ function Test-PersonalComputer {
     )
     Write-Host ""
     do {
-        $confirm = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Is this YOUR personal computer? (Y = Yes / N = Exit): "
-        if ($confirm.ToUpper() -eq "N") {
+        $confirm = Read-ValidKey -ValidKeys @("Y","X") -Prompt "Is this YOUR personal computer? (Y = Yes / X = Exit): "
+        if ($confirm.ToUpper() -eq "X") {
+            # C1 (ascii45): X = Exit, and it asks first (was one keypress).
             Write-Host ""
-            Write-Host "  Exiting. No changes made." -ForegroundColor Yellow
             Write-Host "  To secure a company PC, contact your IT department." -ForegroundColor Gray
-            Write-Host ""
-            Write-Log -Message "User confirmed not personal PC -- exit" -Status "EXIT"
-            Save-Log
-            exit
+            Write-Log -Message "User chose Exit: not a personal PC" -Status "INFO"
+            Confirm-Exit "Checkup has not changed anything."
         }
     } while ($confirm.ToUpper() -ne "Y")
     # FT-42 (ascii28): the next checks run silently for a second or two --
@@ -3663,11 +3664,11 @@ function Test-DomainJoin {
             )
             Write-Host ""
             do {
-                $confirm = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Continue? (Y = This is my personal PC / N = Exit): "
-                if ($confirm.ToUpper() -eq "N") {
-                    Write-Host ""
-                    Write-Host "  Exiting. No changes made." -ForegroundColor Yellow
-                    Save-Log; exit
+                $confirm = Read-ValidKey -ValidKeys @("Y","X") -Prompt "Continue? (Y = This is my personal PC / X = Exit): "
+                if ($confirm.ToUpper() -eq "X") {
+                    # C1 (ascii45): X = Exit, and it asks first.
+                    Write-Log -Message "User chose Exit: domain-joined PC" -Status "INFO"
+                    Confirm-Exit "Checkup has not changed anything."
                 }
             } while ($confirm.ToUpper() -ne "Y")
             Write-Log -Message "Domain-joined PC ($domainName) -- user confirmed personal use" -Status "WARN"
@@ -4039,8 +4040,8 @@ function Show-ResumeReverify {
         "  power/battery state.                                       "
     )
     Write-Host ""
-    $rc = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Still YOUR personal computer? (Y = Yes / N = Exit): "
-    if ($rc.ToUpper() -eq "N") {
+    $rc = Read-ValidKey -ValidKeys @("Y","X") -Prompt "Still YOUR personal computer? (Y = Yes / X = Exit): "
+    if ($rc.ToUpper() -eq "X") {   # C1 (ascii45): X = Exit; screen 83 still confirms
         # FT-171d (ascii40): N USED TO END THE SESSION ON ITS OWN. One key, no
         # confirmation, everything closed -- against CLAUDE.md's standing rule
         # that there are no accidental exits without confirmation. On a machine
@@ -4518,18 +4519,19 @@ function Show-PreScanGate {
         do {
             Write-Host "  Y = Ready to scan now" -ForegroundColor DarkGray
             Write-Host "  S = Already scanned recently and it came back clean -- skip the scan" -ForegroundColor DarkGray
-            Write-Host "  N = Not ready yet -- exit Checkup so you can prepare first" -ForegroundColor DarkGray
+            Write-Host "  X = Not ready yet -- exit Checkup so you can prepare first" -ForegroundColor DarkGray
             Write-Host ""
-            $ready = Read-ValidKey -ValidKeys @("Y","N","S") -Prompt "Your choice (Y = Scan now / S = Skip scan / N = Exit to prepare): "
-            if ($ready.ToUpper() -eq "N") {
+            $ready = Read-ValidKey -ValidKeys @("Y","X","S") -Prompt "Your choice (Y = Scan now / S = Skip scan / X = Exit to prepare): "
+            if ($ready.ToUpper() -eq "X") {
                 Write-Host ""
-                Write-Host "  N exits Checkup so you can close programs and get ready." -ForegroundColor Yellow
+                Write-Host "  X exits Checkup so you can close programs and get ready." -ForegroundColor Yellow
                 Write-Host "  Nothing is changed on your PC. Relaunch Checkup when ready." -ForegroundColor Yellow
                 Write-Host ""
                 # LABEL CONSISTENCY (FT-65 rule): Y/N would flip meaning here
                 # (outer Y = scan, inner Y = exit) -- so this confirm uses E/R.
-                $exitConfirm = Read-ValidKey -ValidKeys @("E","R") -Prompt "Confirm: (E = Exit the tool / R = Return to the question above): "
-                if ($exitConfirm.ToUpper() -ne "E") {
+                # C1 (ascii45): X = Exit and B = Back, the keys' one meaning each.
+                $exitConfirm = Read-ValidKey -ValidKeys @("X","B") -Prompt "Confirm: (X = Exit the tool / B = Back to the question above): "
+                if ($exitConfirm.ToUpper() -ne "X") {
                     Write-Host ""
                     continue   # back to the Y/S/N prompt -- no exit
                 }
@@ -4562,8 +4564,8 @@ function Show-PreScanGate {
         )
         Write-Host ""
         do {
-            $cont = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Continue with Checkup? (Y = Continue / N = Exit): "
-            if ($cont.ToUpper() -eq "N") { Save-Log; exit }
+            $cont = Read-ValidKey -ValidKeys @("Y","X") -Prompt "Continue with Checkup? (Y = Continue / X = Exit): "
+            if ($cont.ToUpper() -eq "X") { Confirm-Exit "Checkup has not changed anything yet." }   # C1 (ascii45)
         } while ($cont.ToUpper() -ne "Y")
         Write-Log -Message "Repeat run -- user confirmed to continue" -Status "CONFIRM"
         # FT-175b (ascii41): THE OFFER WAS NEVER HERE. This branch runs on
@@ -4732,11 +4734,13 @@ function Test-DefenderPrimary {
             Write-Host ""
             Write-Log -Message "HIGH-RISK AV detected: $riskyName" -Status "WARN"
             do {
-                $cont = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Continue anyway? (Y = Continue / N = Exit to uninstall first): "
-                if ($cont.ToUpper() -eq "N") {
+                $cont = Read-ValidKey -ValidKeys @("Y","X") -Prompt "Continue anyway? (Y = Continue / X = Exit to uninstall first): "
+                if ($cont.ToUpper() -eq "X") {
+                    # C1 (ascii45): X = Exit, and it asks first.
                     Write-Host ""
                     Write-Host "  Uninstall $riskyName, then relaunch Checkup." -ForegroundColor Yellow
-                    Disable-SleepPrevention; Save-Log; exit
+                    Write-Log -Message "User chose Exit to uninstall first: $riskyName" -Status "INFO"
+                    Confirm-Exit
                 }
             } while ($cont.ToUpper() -ne "Y")
             Pause-ForUser
@@ -4808,11 +4812,12 @@ function Test-DefenderPrimary {
             )
             Write-Host ""
             do {
-                $cont = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Continue anyway? (Y = Continue / N = Fix first then re-run): "
-                if ($cont.ToUpper() -eq "N") {
+                $cont = Read-ValidKey -ValidKeys @("Y","X") -Prompt "Continue anyway? (Y = Continue / X = Exit to fix it first): "
+                if ($cont.ToUpper() -eq "X") {
+                    # C1 (ascii45): this N always exited; now X, and it asks first.
                     Write-Host "  Fix Defender status and relaunch the tool." -ForegroundColor Yellow
-                    Write-Log -Message "Exited -- non-Defender AV active: $avName" -Status "WARN"
-                    Disable-SleepPrevention; Save-Log; exit
+                    Write-Log -Message "User chose Exit to fix first -- non-Defender AV active: $avName" -Status "WARN"
+                    Confirm-Exit
                 }
             } while ($cont.ToUpper() -ne "Y")
             Write-Log -Message "Continuing with non-Defender AV active: $avName" -Status "WARN"
@@ -4848,11 +4853,12 @@ function Test-DefenderPrimary {
             )
             Write-Host ""
             do {
-                $cont = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Continue anyway? (Y = Continue / N = Fix Defender first): "
-                if ($cont.ToUpper() -eq "N") {
-                    Write-Host "  Enable Defender real-time protection, then relaunch." -ForegroundColor Yellow
-                    Write-Log -Message "Exited -- Defender real-time protection is OFF" -Status "WARN"
-                    Disable-SleepPrevention; Save-Log; exit
+                $cont = Read-ValidKey -ValidKeys @("Y","X") -Prompt "Continue anyway? (Y = Continue / X = Exit to fix Defender first): "
+                if ($cont.ToUpper() -eq "X") {
+                    # C1 (ascii45): this N always exited; now X, and it asks first.
+                    Write-Host "  Turn on Defender real-time protection, then relaunch." -ForegroundColor Yellow
+                    Write-Log -Message "User chose Exit to fix first -- Defender real-time protection is OFF" -Status "WARN"
+                    Confirm-Exit
                 }
             } while ($cont.ToUpper() -ne "Y")
             Write-Log -Message "Continuing with Defender real-time OFF" -Status "WARN"
@@ -4907,11 +4913,13 @@ function Test-PowerStatus {
         Write-Host ""
         Write-Log -Message "Running on battery -- battery level: $batteryPct" -Status "WARN"
         do {
-            $cont = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Continue on battery? (Y = Continue / N = Plug in and relaunch): "
-            if ($cont.ToUpper() -eq "N") {
+            $cont = Read-ValidKey -ValidKeys @("Y","X") -Prompt "Continue on battery? (Y = Continue / X = Exit to plug in first): "
+            if ($cont.ToUpper() -eq "X") {
+                # C1 (ascii45): this N always exited; now X, and it asks first.
                 Write-Host ""
                 Write-Host "  Plug in AC power and relaunch the tool." -ForegroundColor Yellow
-                Disable-SleepPrevention; Save-Log; exit
+                Write-Log -Message "User chose Exit to plug in first" -Status "INFO"
+                Confirm-Exit
             }
         } while ($cont.ToUpper() -ne "Y")
     } else {
