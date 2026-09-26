@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-25 16:41 ET -->
-<!-- Commit: 581a228 -->
+<!-- Generated: 2026-09-26 11:10 ET -->
+<!-- Commit: 1daf4bd -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-25 16:41 ET  |  **Commit:** `581a228`  |  **Made:** 2026-09-25 15:04 ET
-- **Commit subject:** Firefox addendum: standalone draft for Bill's live test, kept out of the 10-15 guide
+- **Generated:** 2026-09-26 11:10 ET  |  **Commit:** `1daf4bd`  |  **Made:** 2026-09-26 11:10 ET
+- **Commit subject:** Correct six ascii45 wrapper time stamps: typed, not read off the clock
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -197,7 +197,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-09-25 16:38 [Claude Code -- CGDELL] -- ascii45 BUILD PLAN WRITTEN, X = EXIT DECIDED, SANDY MEASUREMENT SCRIPT READY
+## Session: 2026-09-26 11:10 [Claude Code -- CGDELL] -- /doctor CLEANUP, THEN ascii45 BUILT FROM ITS BASE THROUGH BLOCK A
 ```
 
 **If it is not in your copy of the session log, you are reading an old

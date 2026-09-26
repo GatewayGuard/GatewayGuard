@@ -16,6 +16,48 @@
 ---
 ---
 
+## Session: 2026-09-26 11:10 [Claude Code -- CGDELL] -- /doctor CLEANUP, THEN ascii45 BUILT FROM ITS BASE THROUGH BLOCK A
+
+**/doctor (Bill approved "Clean up everything" + auto mode default):**
+product-management and design plugins off; auto mode the default
+(`~/.claude/settings.json`, backup `.bak-2026-09-26`); Bill disabled the
+Harmonic and Claude Docs connectors himself. **CLAUDE.md trimmed 95,323 ->
+56,395 chars** -- the ascii44 fix history moved verbatim to
+`Archive\CLAUDE-CurrentBuildHistory-ascii44-2026-09-26-0851.md` (commit
+`79330ee`); `/context` then measured CLAUDE.md at 21.3k tokens.
+
+**ascii45 -- Bill: "build ascii45".** Base `5c63ddd`: copy of ascii44, build
+number moved in all five places, ascii44 `git mv`'d to `Builds\`, three
+launchers repointed. **Block A, one commit per item, every edit through
+`gg_edit`, gates 12/12b/24 + 0 non-ASCII + no duplicate functions after
+each:**
+- A1/A2 `e54ff57` -- FT-268 `/qh`; FT-269 GOOD/OK only after a confirmed
+  re-read. ***Verified: the shipped reader, extracted by AST and run on
+  CGDELL, returns REQUIRED; ascii44's returns NO_INDEX on the same machine.***
+- A3 `c257d62` -- FT-284, no green "Done:" over an ERROR.
+- A4 `b04364a` -- FT-278, five screens (10, 11, 21, 33, 34) stop promising
+  automatic behaviour; every box line length asserted unchanged.
+- A5 `7ce97e0` -- FT-279, "Working on this item..." + honest result colour;
+  new `Write-GGWrapped` (90 functions).
+- A6 `e194157` -- FT-254 time sync, re-read before "corrected". **Found an
+  FT-162-class flag:** ***measured, `w32tm /?` has no `/force`***; ignored
+  when W32Time runs, and the real failure (service stopped, 0x80070426) was
+  hidden by `| Out-Null`. Now documented `/resync` + exit-code check.
+- A7 `5498c76` -- FT-285, absent policy value = expected (INFO); item 6's
+  handled Tamper refusal logs INFO and clears its own `$Error` record. Access
+  denials elsewhere stay ERROR (FT-245).
+
+**My error, corrected (`1daf4bd`):** six wrapper headers were stamped 11:20
+to 12:48 -- typed, not read. The clock said 11:10. Corrected to commit times,
+with the typed value kept in each header.
+
+**ascii45 now: 9,689 non-blank / 10,081 total, 90 functions.** Next: Block B
+(GUI mode out; Malwarebytes out of the tool, generalised to a
+SecurityCenter2 read; the Monthly Malwarebytes Reminder task removed).
+
+---
+---
+
 ## Session: 2026-09-25 16:38 [Claude Code -- CGDELL] -- ascii45 BUILD PLAN WRITTEN, X = EXIT DECIDED, SANDY MEASUREMENT SCRIPT READY
 
 **Bill: "1. build plan 2. use X 3. How do i test it."**

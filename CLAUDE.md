@@ -12,7 +12,7 @@
   guide revision **before** launch instead of after it.
   **Never write a countdown here** -- "six days" was wrong the next morning
   and stayed wrong. Write the date; let the reader subtract.
-- **Current build:** ascii45 (9,588 non-blank lines / 9,979 total, 89 functions, measured 2026-09-26 at the base) — **IN PROGRESS, NOT FIELD RUN.**
+- **Current build:** ascii45 (9,689 non-blank lines / 10,081 total, 90 functions, measured 2026-09-26 after Block A) — **IN PROGRESS, NOT FIELD RUN. Block A done** (FT-268, 269, 284, 278, 279, 254, 285); Block B next.
   `Tool\W11-SecurityHardening-v3-ascii45-2026-09-26-1059.ps1`. Plan
   `ProjectDocs\GatewayGuard_ascii45BuildPlan-2026-09-25-1638.md`; each block is one commit.
   **Next free FT number: 286.**
