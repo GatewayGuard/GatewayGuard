@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-26 12:14 ET -->
-<!-- Commit: 4fb5596 -->
+<!-- Generated: 2026-09-26 13:09 ET -->
+<!-- Commit: d960118 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-26 12:14 ET  |  **Commit at generation:** `4fb5596`  |  **That commit was made:** 2026-09-26 12:10 ET
-- **Its subject line:** ascii45 C9 full-screen launch in scope; copy/selection test and SANDY Windows Terminal check added
+- **Generated:** 2026-09-26 13:09 ET  |  **Commit at generation:** `d960118`  |  **That commit was made:** 2026-09-26 12:14 ET
+- **Its subject line:** C9: a failed full-screen launch strands the user -- recorded; test launcher tells how to get out
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 

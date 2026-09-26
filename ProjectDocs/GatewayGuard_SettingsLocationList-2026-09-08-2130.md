@@ -41,12 +41,11 @@ the numbers costs nothing; a renumber costs the whole field record.**
 | **R only** | Checkup can **read** it but **cannot change** it -- it shows you the steps instead |
 | **BLOCKED** | Checkup **cannot read** it on this machine at all |
 
-**BLOCKED is one label covering two different causes -- do not read them as
-the same wall.** Setting 6 (Edge Phishing Protection) is blocked by Windows
-itself, on any machine: Tamper Protection refuses the read everywhere.
-Setting 17 (Password Required on Wake) is blocked only in the sense that
-`powercfg` on THIS machine prints no line to read -- it may read fine on
-SANDY or another PC, not yet tested. Each row says which kind it is.
+**BLOCKED now covers one setting only: 6 (Edge Phishing Protection),**
+blocked by Windows itself on any machine -- Tamper Protection refuses the
+read everywhere. *(Updated 2026-09-26. Setting 17 used to sit here as
+"unreadable on this machine". That was wrong about the cause -- see row 17
+and FT-268 below.)*
 
 **Everything Checkup changes, it changes only after you say yes.**
 
@@ -75,7 +74,7 @@ it should be run on SANDY, which is Home rather than Pro.***
 | 14 | Widgets -- Disable | Windows key > type `taskbar settings` > Enter | **R+C** -- policy still unset; live-state fallback added 2026-09-17, FT-123b, using `TaskbarDa`, ***flip-proven*** by Bill's field test (1 before, 0 after turning Widgets off, 1 after restoring) | **On.** **Needs attention** |
 | 15 | Edge Password Saving -- Disable | Edge > three dots > Settings > Passwords | **R+C** | **Not set** -- so Edge's default, which is On |
 | 16 | Memory Integrity (Core Isolation) | Windows Security > Device security > Core isolation details | **R+C** -- but needs a **restart** to take effect | **On** |
-| 17 | Password Required on Wake | Windows key > type `sign-in options` > Enter, then Require sign-in | **UNREADABLE ON THIS MACHINE (not a Windows block)** -- unlike setting 6 (Tamper Protection refuses the read on any PC), this is `powercfg` simply not printing a CONSOLELOCK index line on CGDELL's own power scheme. ***Re-measured 2026-09-17, elevated, using the FIXED `Get-GGConsoleLockState` reader: still `NO_INDEX`*** -- same result as before FT-256, because the fix corrected what Checkup says about an unreadable value, not whether this specific PC's `powercfg` output has one. May read fine on SANDY or another machine -- not yet tested elsewhere. | **Could not read**, honestly reported as unknown rather than a guess (FT-256's fix). Item stays selected, not hidden. |
+| 17 | Password Required on Wake | Windows key > type `sign-in options` > Enter, then Require sign-in | **R+C in ascii45** *(updated 2026-09-26)*. **FT-268: it was never unreadable -- ascii44 asked the wrong way.** `powercfg /query` leaves out HIDDEN settings and CONSOLELOCK is hidden; `powercfg /qh` includes it. ***Measured on CGDELL 2026-09-24/25: `/query` returns the header only, `/qh` returns AC and DC index 0x1*** (`Test_Results\SandyForAscii45-CGDELL-2026-09-25_16-36.txt`, section 5). ***ascii45's reader, extracted from the build and run live 2026-09-26, returns REQUIRED*** (commit `e54ff57`). ascii44 and earlier still read NO_INDEX here. SANDY confirmation: step 5 of `Tool2\Run-MeasureSandyForAscii45.bat`. | **Required on wake -- on (AC and battery).** The 09-17 "Could not read" came from the wrong switch. |
 | 18 | Fast Startup -- Disable | **Control Panel** > Hardware and Sound > Power Options > Choose what the power buttons do > **Change settings that are currently unavailable** | **R+C** | **Off** -- correct |
 | 19 | Wake on LAN -- Disable | **Device Manager** > Network adapters > right-click each > Properties > Power Management | **R+C** | **Ethernet = Enabled**, Wi-Fi = Disabled. **Needs attention on Ethernet** |
 
@@ -89,7 +88,22 @@ the Ethernet adapter -- and **9** Windows Hello has no PIN set up. **Everything
 security-critical is already correct**: real-time protection, tamper
 protection, firewall on all three profiles, BitLocker, and memory integrity.
 
-### The one still-open question on this list
+### The question that was open here -- ANSWERED 2026-09-26 (FT-268)
+
+**Answer: setting 17 can be read on CGDELL, with `powercfg /qh`.** The section
+below asked whether it was a CGDELL-only gap or a wider one. It was neither:
+`/query` omits hidden power settings on every machine, and CONSOLELOCK is
+hidden. ascii45 reads it with `/qh` (row 17). The Co-Pilot suggestion at the
+end -- find another way to read it -- is no longer needed. **Co-Pilot's
+2026-09-26 review repeated the old "unreadable on CGDELL" conclusion and
+described the code as using `powercfg /query`.** Bill gave it the ascii45 text
+copy (`Tool\W11-SecurityHardening-v3-ascii45-2026-09-26-1059-1.txt`, ***measured
+identical to the build***), which has **0** `/query CONSOLELOCK` lines and **2**
+`/qh` lines; `Tool\ascii44.txt` has the reverse. Co-Pilot's reply opens "my
+review of ascii44.txt", so it answered from ascii44's code -- ***inferred:***
+from the ascii44 copy it had earlier in the same conversation.
+
+*The original text, kept for the record:*
 
 **Setting 17 cannot be read on CGDELL.** ***Measured: `powercfg` returns no
 CONSOLELOCK block, so there is nothing to parse.*** **Before FT-256 (fixed

@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-26 12:15 ET
+- **Last Modified:** 2026-09-26 13:09 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -137,6 +137,15 @@ window (it shared a process with this session, so the process was not ended).
 The .bat Bill runs quotes correctly and was tested end to end; it now also tells
 him Alt+F4 / Alt+Enter. C9 gains: check the build file exists, tested quoting
 only, and the escape line on screen before the window opens.
+
+**13:09 -- Co-Pilot reviewed setting 17 and repeated "unreadable on CGDELL"** --
+describing ascii44's `powercfg /query`. Bill had given it the ascii45 text copy
+(measured identical to the build: 0 `/query` lines, 2 `/qh`). Its reply opens "my
+review of ascii44.txt" -- inferred: it answered from the ascii44 copy it held
+earlier in that conversation. SettingsLocationList corrected: row 17 is R+C in
+ascii45 (FT-268), BLOCKED now means setting 6 only, the open question is
+answered. `Toolscii44.txt` removed -- measured identical (same git blob) to
+`Builds\...ascii44...ps1`, so nothing lost -- so it cannot be picked up again.
 
 Next: rest of Block C (B = step back, L = look, F = fix the screen, FT-271,
 FT-270 Ctrl+C after the SANDY test).
