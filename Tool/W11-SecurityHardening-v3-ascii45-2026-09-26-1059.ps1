@@ -24,6 +24,10 @@
 #           "option 2" (Home has none). 21: "asks Y/N before any change"
 #           (false since FT-219). 33 and 34: "automatic"/"scheduled"
 #           scans (they are reminder popups, FT-175). Box widths kept.
+#   FT-279: THE RUN LOOP SAID "APPLYING IT NOW" BEFORE ITEMS IT THEN PUT
+#           OFF (11-15) OR COULD NOT CHANGE (6). Now "Working on this
+#           item..." and the Result says what happened; the put-off
+#           result is no longer red; long text wraps (Write-GGWrapped).
 #
 # CHANGES FROM ascii43 (2026-09-06 -- ASCII44):
 #   FT-242: NINE REGISTRY WRITES COULD NOT FAIL. Without -EA Stop a
@@ -1871,6 +1875,26 @@ function Write-Log {
     if (Test-Path (Split-Path $LogPath -Parent) -ErrorAction SilentlyContinue) {
         try { $entry | Out-File -FilePath $LogPath -Append -Encoding UTF8 -ErrorAction SilentlyContinue } catch {}
     }
+}
+
+function Write-GGWrapped {
+    # FT-279 (ascii45): long results and hand-steps ran off the right edge
+    # (item 9 on SANDY). Wraps on word boundaries to the LIVE window width,
+    # read at call time, never cached (FT-217 family).
+    param([string]$Text, [string]$Color = "White", [int]$Indent = 2)
+    $ggW = 78
+    try { $ggW = [Console]::WindowWidth - 2 } catch {}
+    if ($ggW -lt 40) { $ggW = 40 }
+    $ggPad = " " * $Indent
+    $ggMax = $ggW - $Indent
+    $ggLine = ""
+    foreach ($ggWord in ($Text -split '\s+')) {
+        if ($ggWord.Length -eq 0) { continue }
+        if ($ggLine.Length -eq 0) { $ggLine = $ggWord }
+        elseif (($ggLine.Length + 1 + $ggWord.Length) -le $ggMax) { $ggLine += " " + $ggWord }
+        else { Write-Host ($ggPad + $ggLine) -ForegroundColor $Color; $ggLine = $ggWord }
+    }
+    if ($ggLine.Length -gt 0) { Write-Host ($ggPad + $ggLine) -ForegroundColor $Color }
 }
 
 function Save-Log {
@@ -9285,7 +9309,7 @@ function Run-ConsoleMode {
                         Write-Host ""
                         Write-Host "  This one needs you to do it by hand -- Checkup will show you the steps." -ForegroundColor Red
                         $r = Apply-Setting -Setting $s
-                        Write-Host "  INSTRUCTIONS: $r" -ForegroundColor Yellow
+                        Write-GGWrapped -Text "INSTRUCTIONS: $r" -Color Yellow   # FT-279
                         Pause-ForUser
                         continue
                     }
@@ -9308,12 +9332,13 @@ function Run-ConsoleMode {
                     # (-not $s.CanAuto), where Checkup shows the steps rather than
                     # changing anything itself.
                     Write-Host ""
-                    Write-Host "  You selected this item, so Checkup is applying it now." -ForegroundColor Cyan
-                    Write-Host "  Applying..." -ForegroundColor Cyan
+                    # FT-279 (ascii45): no promise before the outcome is known --
+                    # 11-15 are put off to their own review and 6 can be blocked.
+                    Write-Host "  Working on this item..." -ForegroundColor Cyan
                     $result = Apply-Setting -Setting $s
-                    $resultColor = if ($result -match "GOOD|enabled|disabled|set to|Already") { "Green" } elseif ($result -match "NOTE:|MANUAL|manual") { "Yellow" } else { "Red" }
+                    $resultColor = if ($result -match "GOOD|enabled|disabled|set to|Already") { "Green" } elseif ($result -match "NOTE:|MANUAL|manual") { "Yellow" } elseif ($result -match "Saved for your individual review") { "Cyan" } else { "Red" }
                     Write-Host ""
-                    Write-Host "  Result: $result" -ForegroundColor $resultColor
+                    Write-GGWrapped -Text "Result: $result" -Color $resultColor
                     Pause-ForUser
                 }
 
