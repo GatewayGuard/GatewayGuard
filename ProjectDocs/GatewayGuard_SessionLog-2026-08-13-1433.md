@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-26 11:10 ET
+- **Last Modified:** 2026-09-26 11:25 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -51,9 +51,36 @@ each:**
 to 12:48 -- typed, not read. The clock said 11:10. Corrected to commit times,
 with the typed value kept in each header.
 
-**ascii45 now: 9,689 non-blank / 10,081 total, 90 functions.** Next: Block B
-(GUI mode out; Malwarebytes out of the tool, generalised to a
-SecurityCenter2 read; the Monthly Malwarebytes Reminder task removed).
+**ascii45 after Block A: 9,689 non-blank / 10,081 total, 90 functions.**
+
+**Block B, same session (11:12-11:25), one commit per step:**
+- B1 `e8c9bcb` -- GUI mode deleted (331 lines); screen 21 is [1] START /
+  [X] EXIT, and X now goes through Confirm-Exit (the old [3] EXIT left with
+  no confirmation). Screen 21 fits in 26 lines.
+- B2a `b8f6fd9` -- verdicts for items 2, 3, 7 no longer depend on
+  Malwarebytes. New `Get-GGOtherAV` + Defender's own real-time state: on =
+  GOOD whatever else is installed; off with another AV registered = that
+  product is in charge. ***Tested on the shipped code, 7 cases incl. Norton,
+  Kaspersky, Defender unreadable -- all correct.*** Setting 5 retired, IDs
+  not renumbered.
+- B2b-1 `31d823b` -- screens 13/14 rewritten without Malwarebytes; 18/18a-c
+  deleted. B2b-2 `800ac49` -- antivirus check 17/17a-e general, 17b/17d
+  deleted, `Get-MalwarebytesState` deleted. ***Tested: 7 scenarios through
+  the shipped Test-DefenderPrimary.*** B2b-3/B3 `5fb49e3` -- last wording
+  gone; the monthly Malwarebytes reminder is no longer created and
+  `Remove-GGOldMBReminder` removes it once where it exists. ***Tested for
+  real on CGDELL with a stand-in task: REMOVED, then ABSENT.***
+- **Oversize screens: 10 -> 5** (52, 73, 26, 27, 41 cleared); checker
+  baseline and CLAUDE.md updated each time.
+- **Open, deliberately:** the screen renumber pass (gaps at 17b, 17d, 18,
+  18a-c) waits for Block E, which reorders the scan section anyway.
+- **For Bill:** screens 17, 17a, 17c show the NAME Windows reports for an
+  installed antivirus (e.g. "uninstall Kaspersky"). Kept as detection, not a
+  recommendation -- his call if the no-product-names rule covers it.
+
+**ascii45 after Block B: 8,879 non-blank / 9,202 total, 89 functions.**
+Next: Block C (keys: X = Exit at the remaining sites, B = step back, L =
+look, F = fix the screen, FT-271, FT-270 Ctrl+C).
 
 ---
 ---

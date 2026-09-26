@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-26 11:10 ET -->
-<!-- Commit: 1daf4bd -->
+<!-- Generated: 2026-09-26 11:26 ET -->
+<!-- Commit: 5fb49e3 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-26 11:10 ET  |  **Commit:** `1daf4bd`  |  **Made:** 2026-09-26 11:10 ET
-- **Commit subject:** Correct six ascii45 wrapper time stamps: typed, not read off the clock
+- **Generated:** 2026-09-26 11:26 ET  |  **Commit:** `5fb49e3`  |  **Made:** 2026-09-26 11:25 ET
+- **Commit subject:** ascii45 B2b-3/B3: last Malwarebytes wording gone; monthly reminder no longer created and removed once where it exists
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
