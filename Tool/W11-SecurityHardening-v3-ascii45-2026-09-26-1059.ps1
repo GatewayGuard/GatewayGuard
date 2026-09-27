@@ -85,6 +85,13 @@
 #           F clears, re-measures width and height, redraws it (in parts
 #           if taller than the window). Intro and checklist redraw
 #           themselves.
+#   D1 / FT-265: RESUME NO LONGER REPLAYS SCREENS 10 AND 11 (read silently).
+#   D2 / FT-266: checkpoint order fixed; OfflineScanDone is now saved.
+#   D3 / FT-267: a finished run clears its checkpoint.
+#   D4 / Decision 2: "Still YOUR personal computer?" skipped on resume when
+#           the saved Machine ID matches.
+#   D5 / Decision 3: checkpoints at 21, 22/23 and the checklist, with the
+#           selections saved; 1b says where Checkup will continue.
 #
 # CHANGES FROM ascii43 (2026-09-06 -- ASCII44):
 #   FT-242: NINE REGISTRY WRITES COULD NOT FAIL. Without -EA Stop a
@@ -3928,6 +3935,7 @@ function Test-AdminAccess {
 # NOTE: Uses WMI ONLY -- Get-WindowsEdition -Online causes infinite loop
 # ============================================================
 function Get-WinEdition {
+    param([switch]$Quiet)   # D1 / FT-265 (ascii45): on resume, read but do not show
     try {
         # Use registry -- fastest and no loop risk
         $regEdition = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion" -EA Stop).EditionID
@@ -3963,7 +3971,9 @@ function Get-WinEdition {
     Write-Log -Message "Windows Edition: $global:WinEditionFriendly" -Status "INFO"
 
     $isHome = $global:WinEdition -notmatch "Pro|Enterprise|Education|Business"
-    if ($isHome) {
+    if ($Quiet) {
+        Write-Log -Message "Edition screen not shown -- resuming (FT-265)" -Status "INFO"
+    } elseif ($isHome) {
         Clear-Host
         Write-Host ""
         Draw-Box -ScreenId "34" -Color White -Lines @(
@@ -3990,10 +4000,13 @@ function Get-WinEdition {
 # STEP 5: RAM CHECK
 # ============================================================
 function Get-RAMStatus {
+    param([switch]$Quiet)   # D1 / FT-265 (ascii45): on resume, read but do not show
     try {
         $ramBytes = (Get-WmiObject Win32_ComputerSystem).TotalPhysicalMemory
         $global:RAMGB = [math]::Round($ramBytes / 1GB)
-        if ($global:RAMGB -le 8) {
+        if ($Quiet) {
+            Write-Log -Message "RAM: $($global:RAMGB) GB -- screen not shown, resuming (FT-265)" -Status "INFO"
+        } elseif ($global:RAMGB -le 8) {
             Clear-Host
             Write-Host ""
             Draw-Box -ScreenId "35" -Color White -Lines @(
@@ -4051,14 +4064,17 @@ $global:CheckpointOrder = @(
     "PreScanPrep",
     "OfflineScanPending",
     "OfflineScanDone",
-    "Malwarebytes",
     "DefenderAV",
     "PowerSettings",
-    "AppsAudit"
+    "AppsAudit",
+    # D5 / Decision 3 (ascii45): resume can land at 22, 23 or the checklist.
+    "ModeChosen",
+    "Scope",
+    "Checklist"
 )
 
 function Save-Checkpoint {
-    param([Parameter(Mandatory)][string]$Checkpoint)
+    param([Parameter(Mandatory)][string]$Checkpoint, [switch]$NoLog)
     if (-not (Test-Path $StateDir)) { New-Item -Path $StateDir -ItemType Directory -Force | Out-Null }
     # FT-127 (ascii37): LINE 1 IS STILL THE CHECKPOINT NAME AND NOTHING ELSE.
     # That contract is unchanged, so a state file written by ascii36 or
@@ -4074,8 +4090,14 @@ function Save-Checkpoint {
         # for one boolean. Same shape, same restore path, one thing to break.
         if ($global:GGOneDriveDeclined) { $ggState += "OD=N" }
     }
+    # D4 (ascii45): the Machine ID, so resume can skip "Still YOUR PC?".
+    if ($global:MachineID) { $ggState += ("MID=" + $global:MachineID) }
+    # D5 (ascii45): the checklist selections (they lived only in memory, FT-204).
+    if ($Checkpoint -eq "Checklist") {
+        $ggState += ("SEL=" + ((@($Settings | Where-Object { $_.Selected } | ForEach-Object { $_.ID })) -join ","))
+    }
     ($ggState -join "`r`n") | Out-File -FilePath $StateFilePath -Encoding UTF8 -Force
-    Write-Log -Message "Checkpoint saved: $Checkpoint" -Status "STATE"
+    if (-not $NoLog) { Write-Log -Message "Checkpoint saved: $Checkpoint" -Status "STATE" }
 }
 
 function Get-SavedCheckpoint {
@@ -4100,6 +4122,11 @@ function Restore-SessionAnswers {
     try {
         $ggAll = @(Get-Content -Path $StateFilePath -EA Stop)
         foreach ($ggLine in $ggAll) {
+            if ($ggLine -match '^\s*MID=(\S+)\s*$') { $global:GGSavedMachineID = $Matches[1] }   # D4
+            if ($ggLine -match '^\s*SEL=([0-9,]*)\s*$') {   # D5
+                $global:GGSavedSelections = @($Matches[1] -split "," | Where-Object { $_ -ne "" } | ForEach-Object { [int]$_ })
+                Write-Log -Message ("Restored saved checklist selections: " + ($global:GGSavedSelections -join ",")) -Status "STATE"
+            }
             if ($ggLine -match '^\s*OD=N\s*$') {
                 $global:GGOneDriveDeclined = $true
                 Write-Log -Message "Restored saved answer: OneDrive declined" -Status "STATE"
@@ -4182,6 +4209,29 @@ function Show-ResumePrompt {
 # ============================================================
 # RESUME QUICK RE-CHECK (FT-47, ascii28)
 # ============================================================
+function Get-GGResumeTarget {
+    # D5 (ascii45): where a resumed run continues, in words, with the screen
+    # number from the table (never typed -- FT-172) where it is certain.
+    $ggMap = @{
+        "Baseline"           = @("the security tools overview", "26")
+        "Briefing"           = @("getting ready for the scan", "")
+        "PreScanPrep"        = @("getting ready for the scan", "")
+        "OfflineScanPending" = @("your offline scan results", "40")
+        "OfflineScanDone"    = @("the antivirus check", "")
+        "DefenderAV"         = @("the power settings review", "")
+        "PowerSettings"      = @("the apps review", "51")
+        "AppsAudit"          = @("the start screen", "52")
+        "ModeChosen"         = @("the password question", "")
+        "Scope"              = @("what Checkup does and does not do", "54")
+        "Checklist"          = @("the security checklist", "76")
+    }
+    $ggT = $ggMap[[string]$global:ResumeFrom]
+    if ($null -eq $ggT) { return "where you left off" }
+    $ggN = ""
+    if ($ggT[1] -and $script:GGScreenLabels.ContainsKey($ggT[1])) { $ggN = " (screen " + $script:GGScreenLabels[$ggT[1]] + ")" }
+    return ($ggT[0] + $ggN)
+}
+
 function Show-ResumeReverify {
     # FT-47 (ascii28): resuming used to replay Test-PersonalComputer,
     # Test-AdminAccess, and Test-PowerStatus as full flashing screens
@@ -4194,11 +4244,20 @@ function Show-ResumeReverify {
         "---",
         "  Because you're resuming, we re-verify the basics on this   ",
         "  ONE screen instead of replaying each earlier screen:       ",
-        "  your personal-PC answer, Administrator access, and         ",
-        "  power/battery state.                                       "
+        "  that this is the same computer, Administrator access, and  ",
+        "  power/battery state.                                       ",
+        "                                                             ",
+        ("  Checkup will continue at: " + (Get-GGResumeTarget))
     )
     Write-Host ""
-    $rc = Read-ValidKey -ValidKeys @("Y","X") -Prompt "Still YOUR personal computer? (Y = Yes / X = Exit): "
+    # D4 / Decision 2 (ascii45): skip the question when this is the same PC.
+    if ($global:GGSavedMachineID -and $global:GGSavedMachineID -eq $global:MachineID) {
+        $rc = "Y"
+        Write-Host "  OK  Same computer as before (Machine ID matches)." -ForegroundColor Green
+        Write-Log -Message "Resume re-check: Machine ID matches the saved one -- personal-PC question skipped (Decision 2)" -Status "CONFIRM"
+    } else {
+        $rc = Read-ValidKey -ValidKeys @("Y","X") -Prompt "Still YOUR personal computer? (Y = Yes / X = Exit): "
+    }
     if ($rc.ToUpper() -eq "X") {   # C1 (ascii45): X = Exit; screen 83 still confirms
         # FT-171d (ascii40): N USED TO END THE SESSION ON ITS OWN. One key, no
         # confirmation, everything closed -- against CLAUDE.md's standing rule
@@ -6934,9 +6993,10 @@ function Apply-Setting {
 function Show-ScopeDisclaimer {
     # Ensure sleep prevention is active (in case it failed at startup)
     # C3 / C5 (ascii45): -StartPage 2 comes from the checklist's B.
+    # D5 (ascii45): -StartPage 1 is a resume that already answered 22.
     param([int]$StartPage = 0)
     $script:GGStepBack = $false
-    $ggSkipQuestion = ($StartPage -eq 2)
+    $ggSkipQuestion = ($StartPage -ge 1)
     $ggReasked = $false
     if (-not $global:SleepPrevented) { Enable-SleepPrevention }
 
@@ -7057,7 +7117,8 @@ function Show-ScopeDisclaimer {
     # COULD CAUSE: one extra keypress on the way to the checklist. Accepted --
     # note 12 is explicit that splitting is what is wanted.
     }   # end: skip the question when coming back from the checklist
-    $ggScopePage = if ($ggSkipQuestion) { 2 } else { 1 }
+    if (-not $ggSkipQuestion) { Save-Checkpoint -Checkpoint "Scope" }   # D5
+    $ggScopePage = if ($ggSkipQuestion -and $StartPage -eq 2) { 2 } else { 1 }
     $ggSkipQuestion = $false
     while ($true) {
         Clear-Host
@@ -8483,10 +8544,27 @@ function Run-ConsoleMode {
     Write-Host "  SCROLL UP AND THEN DOWN ON THE NEXT SCREEN -- it explains" -ForegroundColor Yellow
     Write-Host "  exactly what Checkup does and does not do." -ForegroundColor Yellow
     # Sleep removed (ascii32): per no-Sleep-in-Run rule; message is shown then ScopeDisclaimer renders
-    Show-ScopeDisclaimer
-    if ($script:GGStepBack) { return }   # C3 (ascii45): B at screen 22 -> screen 21
+    # D5 / Decision 3 (ascii45): a resumed run goes straight to where it was,
+    # once. Going Back and coming forward again shows the normal screens.
+    $ggResumeAt = ""
+    if (-not $script:GGResumeConsumed) {
+        if (Test-CheckpointReached -Checkpoint "Checklist") { $ggResumeAt = "Checklist" }
+        elseif (Test-CheckpointReached -Checkpoint "Scope") { $ggResumeAt = "Scope" }
+        $script:GGResumeConsumed = $true
+    }
+    if ($ggResumeAt -eq "Checklist") {
+        if ($null -ne $global:GGSavedSelections) {
+            foreach ($ggS in $Settings) { $ggS.Selected = ($ggS.ID -in $global:GGSavedSelections) }
+            Write-Log -Message ("Resume: checklist selections restored: " + ($global:GGSavedSelections -join ",")) -Status "STATE"
+        }
+        Write-Log -Message "Resume: straight to the checklist (Decision 3)" -Status "STATE"
+    } else {
+        Show-ScopeDisclaimer -StartPage $(if ($ggResumeAt -eq "Scope") { 1 } else { 0 })
+        if ($script:GGStepBack) { return }   # C3 (ascii45): B at screen 22 -> screen 21
+    }
 
     :checklistLoop while ($true) {
+        Save-Checkpoint -Checkpoint "Checklist" -NoLog   # D5: selections survive a restart
         Clear-Host
         # FT-125 (ascii37): the checklist loop logged NOTHING -- not a render,
         # not a keypress, not a command. It is the screen the user spends the
@@ -9147,6 +9225,8 @@ function Run-ConsoleMode {
                 Restore-ScreenSaver
                 Save-Log
                 Set-FirstRunComplete
+                Clear-Checkpoint   # D3 / FT-267: a finished run leaves nothing to resume
+                Write-Log -Message "Run complete -- checkpoint cleared (FT-267)" -Status "STATE"
                 # FT-119 (ascii34): "Press Enter or Space to exit..." is used
                 # for routine screen transitions elsewhere too -- it didn't
                 # read as distinctly FINAL here. Now names the program and
@@ -9291,10 +9371,10 @@ if ($global:ResumeFrom) {
 }
 
 # 6. Edition detection (WMI ONLY -- no Get-WindowsEdition)
-Get-WinEdition
+Get-WinEdition -Quiet:([bool]$global:ResumeFrom)   # D1 / FT-265
 
 # 7. RAM check
-Get-RAMStatus
+Get-RAMStatus -Quiet:([bool]$global:ResumeFrom)    # D1 / FT-265
 
 # 8. Time & date sync check (UX-08) -- skip if already done before reboot
 if (-not (Test-CheckpointReached -Checkpoint "Baseline")) {
@@ -9360,6 +9440,7 @@ if (-not (Test-CheckpointReached -Checkpoint "Briefing")) {
 # replaces ascii22's old manual-instructions-only version.
 if (-not (Test-CheckpointReached -Checkpoint "OfflineScanDone")) {
     Show-PreScanGate
+    Save-Checkpoint -Checkpoint "OfflineScanDone"   # D2 / FT-266: was never saved
 }
 
 # 12. Defender primary AV check -- MOVED BEFORE Malwarebytes (D-06,
@@ -9384,6 +9465,7 @@ if (-not $global:ResumeFrom) { Test-PowerStatus }
 $ggFlow = "Power"
 if (Test-CheckpointReached -Checkpoint "PowerSettings") { $ggFlow = "Apps" }
 if ($ggFlow -eq "Apps" -and (Test-CheckpointReached -Checkpoint "AppsAudit")) { $ggFlow = "Mode" }
+if ($ggFlow -eq "Mode" -and (Test-CheckpointReached -Checkpoint "ModeChosen")) { $ggFlow = "Console" }   # D5
 
 # Mode selection (FT-64, ascii28: wrapped in a function so the key log names
 # the screen -- it used to print the script filename as the location)
@@ -9413,11 +9495,14 @@ function Select-Mode {
         $ggFlow = "Mode"
         continue ggFlowLoop
     }
-    $choice = Select-Mode
-    if ($choice -eq "BACK") { $ggFlow = "Apps"; continue ggFlowLoop }
-    Write-Log -Message "Start chosen at screen 21 (console checklist)" -Status "INFO"
+    if ($ggFlow -eq "Mode") {
+        $choice = Select-Mode
+        if ($choice -eq "BACK") { $ggFlow = "Apps"; continue ggFlowLoop }
+        Write-Log -Message "Start chosen at screen 21 (console checklist)" -Status "INFO"
+        Save-Checkpoint -Checkpoint "ModeChosen"   # D5
+    }
     Run-ConsoleMode   # B1 (ascii45): the only mode; Exit is handled inside Select-Mode
-    if ($script:GGStepBack) { continue ggFlowLoop }   # B at screen 22 -> screen 21
+    if ($script:GGStepBack) { $ggFlow = "Mode"; continue ggFlowLoop }   # B at screen 22 -> screen 21
     break
 }
 
