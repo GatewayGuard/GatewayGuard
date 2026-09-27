@@ -1,0 +1,11 @@
+﻿[10:22:57] Windows Update install measurement -- CGDELL -- elevated: True
+[10:23:12] Search: ResultCode 2, 2 update(s), 14.4 s
+[10:23:12]   - Windows Malicious Software Removal Tool x64 - v5.145 (KB890830)  (EulaAccepted=True, downloaded=True)
+[10:23:12]   - Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.459.429.0) - Current Channel (Broad)  (EulaAccepted=True, downloaded=False)
+[10:23:12] UpdateColl.Count = 2
+[10:23:15] Download: ResultCode 2, 2.9 s
+[10:30:49] Install: ResultCode 2, RebootRequired False, 453.9 s
+[10:30:49]   - Windows Malicious Software Removal Tool x64 - v5.145 (KB890830): result 2
+[10:30:49]   - Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.459.429.0) - Current Channel (Broad): result 2
+[10:30:59] Search again: 0 update(s) waiting
+[10:30:59] SystemInfo.RebootRequired = False

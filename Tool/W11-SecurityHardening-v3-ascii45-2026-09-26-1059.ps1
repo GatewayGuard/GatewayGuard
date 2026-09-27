@@ -98,8 +98,8 @@
 #           selections saved; 1b says where Checkup will continue.
 #   BLOCK E: THE NEW START SEQUENCE (Bill's order): E1 Tamper Protection
 #           first (FT-250); E2 Windows Update, install with permission and
-#           loop across restarts (FT-252 -- DOWNLOAD/INSTALL NOT YET
-#           MEASURED); E3 unwanted-app blocking (FT-248); E4 virus
+#           loop across restarts (FT-252 -- download/install measured on
+#           CGDELL 2026-09-27); E3 unwanted-app blocking (FT-248); E4 virus
 #           definitions (FT-249); one ready-check screen; E5 save-your-work
 #           warning on the offline scan (FT-276); E6 full scan of every
 #           drive in the background; E7 14b no longer claims the scan
@@ -4830,8 +4830,10 @@ function Invoke-WindowsUpdateLoop {
     #
     # VERIFY STATUS (2026-09-27):
     #   Search -- VERIFIED measured on CGDELL (below).
-    #   Download and install -- NOT YET MEASURED. They install real updates, so
-    #   they need Bill's approval to run on CGDELL. Do not ship until they are.
+    #   Download and install -- VERIFIED measured on CGDELL (below), with Bill's
+    #   approval. Install took 454 s with no output: the "may look still"
+    #   wording on screen 91 is needed.
+    #   Restart -- sourced only (no restart was needed in the measurement).
     $ggRound = 0
     while ($true) {
         $ggRound++
@@ -4911,7 +4913,11 @@ function Invoke-WindowsUpdateLoop {
         Write-Host "  Downloading and installing -- please wait. The window may look still." -ForegroundColor Yellow
         $ggIr = $null
         try {
-            # NOT YET MEASURED (see VERIFY STATUS above): UpdateColl, Download, Install.
+            # VERIFIED 2026-09-27 measured on CGDELL, elevated: UpdateColl.Add x2,
+            # CreateUpdateDownloader().Download() -> ResultCode 2 (2.9 s),
+            # CreateUpdateInstaller().Install() -> ResultCode 2, RebootRequired False
+            # (453.9 s), GetUpdateResult(i) -> 2 for both; search afterwards: 0 left.
+            # Test_Results\WUInstall-CGDELL-2026-09-27_10-22.txt
             # Result codes, sourced (Microsoft Learn, OperationResultCode):
             # 2 = succeeded, 3 = succeeded with errors, 4 = failed, 5 = aborted.
             $ggColl = New-Object -ComObject Microsoft.Update.UpdateColl
