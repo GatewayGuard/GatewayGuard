@@ -155,6 +155,18 @@ output `Test_Results\SandyForAscii45-CGDELL-2026-09-25_16-36.txt`.***
 | G5 | FT-268 -- `/qh` on SANDY | confirms A1 |
 | G6 | FT-282 -- the Diagnostic Data flip test | item 12 fallback read (Decision 11) |
 
+**Block G results -- SANDY, run by Bill 2026-09-27 12:45** (`Test_Results/SandyForAscii45-SANDY-2026-09-27_12-45.txt`), all ***measured***:
+
+| # | Result | Consequence |
+|---|---|---|
+| G1 FT-283 | `Policies\Microsoft\Dsh` exists; Administrators have FullControl (inherited) | The ascii44 UnauthorizedAccess on the Widgets write is NOT the key's permissions. Cause still open |
+| G2 note 29 | C: 100% encrypted, protection Off, RecoveryPassword only. Windows log: encryption started 09-20 18:22 on C: and D:, key backup to a Microsoft account failed at every sign-in since | FT-289 (H7) |
+| G3 FT-270 | Superseded by CGDELL tests 09-27: the old guard fails in Windows Terminal, the signal handler works | C7 built |
+| G4 FT-277 | `windowsdefender://protectionhistory` opens Windows Security **Home** (Bill). Defender log 09-19 12:21: event 2030, offline scan configured for next reboot; last full scan 08-28 | 14b must give the manual route to Protection history |
+| G5 FT-268 | `/query`: no index; `/qh`: AC 1, DC 1 | The fix works on SANDY too |
+| G6 FT-282 | Switch OFF on SANDY -> `CurrentVersion\Policies\DataCollection` AllowTelemetry = 1; ON on CGDELL -> 3; Group Policy value absent on both | **Built 2026-09-27** (item 12 reads it) |
+| step 7, C9 | SANDY has Windows Terminal 1.24.11911.0; default terminal not set, same as CGDELL | C9 can launch full screen on SANDY |
+
 **Also SANDY-only, measured during the ascii45 field run itself:** D3 (the USB
 sentence), D4 (the encryption local-account condition), and the live
 encryption at the end of the run. **Do not encrypt SANDY before the ascii45

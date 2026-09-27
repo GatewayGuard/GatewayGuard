@@ -108,6 +108,10 @@
 #   C7 / FT-270: CTRL+C ASKS FIRST IN WINDOWS TERMINAL. The old guard
 #           (TreatControlCAsInput) does not work there -- measured 2026-09-27;
 #           a Ctrl+C signal handler does. Every answer is read via Read-GGKey.
+#   FT-282: ITEM 12 (DIAGNOSTIC DATA) READ ONLY THE GROUP POLICY VALUE, which
+#           is empty on home PCs, and said "Sending extra data" when optional
+#           data was off. Now reads the Settings value too (measured on SANDY
+#           and CGDELL 2026-09-27).
 #
 # CHANGES FROM ascii43 (2026-09-06 -- ASCII44):
 #   FT-242: NINE REGISTRY WRITES COULD NOT FAIL. Without -EA Stop a
@@ -6808,8 +6812,26 @@ function Get-AllStatuses {
                 # "Required Only" is unchanged, so this stays safe under the
                 # Status-String Contract (Gate #23) -- every -match consumer
                 # (color-match at the checklist, etc.) still finds the token.
-                try { $dd = (Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -EA SilentlyContinue).AllowTelemetry; $s.Status = if ($null -ne $dd -and $dd -le 1) { "Should Send Required Only -- GOOD" } else { "Sending extra data -- we will limit it" } }
-                catch { $s.Status = "Sending extra data -- we will limit it" }
+                # FT-282 / Decision 11 (ascii45): the policy value first -- a policy
+                # overrides the Settings switch. If there is none, the value the
+                # switch itself writes. VERIFIED 2026-09-27 measured: switch OFF on
+                # SANDY -> 1, switch ON on CGDELL -> 3, at
+                # HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection.
+                # Registry reads only.
+                $ddPol = $null; $ddSet = $null
+                try { $ddPol = (Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -EA Stop).AllowTelemetry } catch {}
+                try { $ddSet = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -EA Stop).AllowTelemetry } catch {}
+                $dd = if ($null -ne $ddPol) { $ddPol } else { $ddSet }
+                if ($null -eq $dd) {
+                    $s.Status = "Unknown -- could not read; check by hand"
+                } elseif ([int]$dd -le 1) {
+                    $s.Status = "Should Send Required Only -- GOOD"
+                } elseif ([int]$dd -eq 3) {
+                    $s.Status = "Sending extra data -- we will limit it"
+                } else {
+                    $s.Status = "Unknown setting -- check by hand"
+                }
+                try { Write-Log -Message ("Item 12 (Diagnostic data): policy=" + $ddPol + " settings=" + $ddSet) -Status "INFO" } catch {}
             }
             13 {
                 # FT-123 (ascii37): this read ONLY the HKLM policy key
