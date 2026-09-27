@@ -37,7 +37,7 @@ if ($allClear) {
 } elseif ($busy) {
     Add "  STILL WORKING on $env:COMPUTERNAME. Leave the PC on and plugged in, and run this again later."
 } else {
-    Add "  NOTHING IS CHANGING on $env:COMPUTERNAME: the drive(s) above are encrypted and staying that way."
+    Add "  NOTHING IS CHANGING on ${env:COMPUTERNAME}: the drive(s) above are encrypted and staying that way."
     Add "  (If this is SANDY and you turned Device encryption off, it has not started yet.)"
 }
 $L | Out-File -FilePath $out -Encoding UTF8
