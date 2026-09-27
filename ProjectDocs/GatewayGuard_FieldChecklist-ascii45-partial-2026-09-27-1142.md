@@ -12,7 +12,9 @@
 - **Where:** CGDELL or SANDY. **On SANDY, do not turn on encryption** -- the
   full run needs it unencrypted.
 - **How to start:** right-click `Tool2\Run-GatewayGuard.bat` -> Run as
-  administrator. To look at screens without running anything:
+  administrator. **It now shows a short "opens full screen" note; press Enter
+  and Checkup opens full screen (C9).** It must still be running as
+  administrator there (it is not, if screen 3a appears). To look at screens without running anything:
   `Tool2\Show-AllScreens.bat`.
 - **Working document** -- plain Markdown, used at the keyboard.
 
@@ -46,12 +48,12 @@
 
 | Screen | What it is | Mark | What to check |
 |---|---|---|---|
-| 1-2 | Welcome, scrolling | LOOK | Press **F** here: the screen redraws |
-| 3, 4 | Console font | SKIP | Rewritten in C9 |
+| 1-2 | Welcome, scrolling | **CHECK** | **Full screen (C9):** screen 1 says there is no X, how to leave (X or Alt+F4) and Alt+Enter; screen 2 says mouse wheel or Ctrl+Shift+Page Up/Down. Press **F**: the screen redraws |
+| 3, 4 | Text size | **CHECK** | Full screen: "MAKE THE TEXT EASY TO READ" -- Ctrl and + bigger, Ctrl and - smaller, Ctrl and 0 normal, then F. Try them |
 | 5 | Your window | LOOK | |
 | 6 | Your keyboard | **CHECK** | Item 5 now reads "B, L AND F" and explains all three |
 | 7 | What happens next | LOOK | |
-| 8 | How to scroll back and copy | SKIP | Rewritten in C9 ("highlight with the mouse, press Ctrl+C") |
+| 8 | How to scroll back and copy | **CHECK** | Full screen: highlight with the mouse, press Ctrl+C. **Try it**: the highlight goes and Checkup keeps running; paste into Notepad to see it copied |
 | 9 / 9a / 9b | Pre-flight | LOOK | |
 | 10 | Windows edition | **CHECK** *(SANDY: Home)* | Shown on a normal run. **Not shown when resuming** |
 | 11 | RAM | **CHECK** | Same: not shown when resuming |

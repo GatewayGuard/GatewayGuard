@@ -831,6 +831,8 @@ Every instruction given to the user must state exactly what each action does and
 **Standard copy tip wording (use verbatim across all three locations):**
 > Tip: To copy text from this window -- press Alt+Space, then E, then M -- drag or use Shift+arrows to select -- press Enter to copy. Press Esc to exit without copying.
 
+**In full-screen Windows Terminal (C9, ascii45, 2026-09-27) the tip is instead:** *Tip: To copy text -- highlight it with the mouse, then press Ctrl+C.* -- measured on CGDELL: highlighting does not pause the program, Ctrl+C with text highlighted copies it. `Write-GGCopyTip` picks the right one; the classic console keeps the tip above word for word.
+
 The three locations this tip appears:
 1. Checklist legend line (always visible)
 2. Before BitLocker prep screen
