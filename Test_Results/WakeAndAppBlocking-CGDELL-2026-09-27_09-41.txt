@@ -1,0 +1,13 @@
+﻿WAKE PASSWORD AND UNWANTED-APP BLOCKING -- CGDELL -- 2026-09-27 09:41
+
+== ITEM 17: Require a password when the PC wakes up
+  When plugged in:  YES -- a password is required
+  On battery:       YES -- a password is required
+  Checkup would say: GOOD
+  Where you see it: Settings -> Accounts -> Sign-in options -> 'If you've
+  been away, when should Windows require you to sign in again?'
+
+== UNWANTED-APP BLOCKING (Microsoft Defender)
+  Defender PUAProtection = 2  (AUDIT -- recorded only, NOT blocked)
+  Where you see it: Windows Security -> App & browser control ->
+  Reputation-based protection settings -> Potentially unwanted app blocking
