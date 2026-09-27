@@ -1,4 +1,4 @@
-<!-- Dated: 2026-09-27 09:47 ET -->
+<!-- Dated: 2026-09-27 09:46 ET -->
 <!-- Editor: Claude Code (CGDELL), from a research agent's report -->
 # Windows Hello detection and unwanted-app blocking -- what is confirmed
 
