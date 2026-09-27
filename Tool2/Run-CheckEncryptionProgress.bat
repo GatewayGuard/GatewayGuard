@@ -1,5 +1,5 @@
 @echo off
-REM Dated: 2026-09-27 13:30 ET
+REM Dated: 2026-09-27 13:27 ET
 REM File: Run-CheckEncryptionProgress.bat
 REM
 REM  Shows how far encryption or decryption has got on every drive.
