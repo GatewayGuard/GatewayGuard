@@ -76,6 +76,11 @@
 #           (battery) value as well as AC, when Windows reports one.
 #   C2 / FT-271: IGNORED KEYS ARE LOGGED. All three key readers logged
 #           only accepted keys; now an ignored press is a KEY line too.
+#   C3 / FT-272: B GOES BACK ONE STEP (Bill's notes 10,15,19-22,26,27).
+#           20->19, 21->20, 22->21, checklist->24. Where no step exists, B
+#           says so. Signalled by $script:GGStepBack, never a return value.
+#   C4:     L = look at the previous screen (the old B picture replay).
+#   C5 / FT-273: back to screen 22 redraws it in full, with B to 21.
 #
 # CHANGES FROM ascii43 (2026-09-06 -- ASCII44):
 #   FT-242: NINE REGISTRY WRITES COULD NOT FAIL. Without -EA Stop a
@@ -2282,7 +2287,7 @@ function Show-LookBack {
         Write-Host ""
         Write-Host "  LOOKING BACK -- nothing on your PC has been changed or undone." -ForegroundColor Yellow
         if ($ggIdx -gt 0) {
-            Write-Host "  [B]              Look back one more screen" -ForegroundColor White
+            Write-Host "  [L]              Look back one more screen" -ForegroundColor White
         } else {
             Write-Host "  This is the earliest screen Checkup still has." -ForegroundColor DarkCyan
         }
@@ -2307,7 +2312,7 @@ function Show-LookBack {
             if ($ggK.VirtualKeyCode -in @(13, 32)) { return }
             $ggC = ""
             try { $ggC = $ggK.Character.ToString().ToUpper() } catch {}
-            if ($ggC -eq "B" -and $ggIdx -gt 0) { $ggDone = $true }
+            if ($ggC -eq "L" -and $ggIdx -gt 0) { $ggDone = $true }
         }
     }
 }
@@ -2715,7 +2720,10 @@ function Show-StepHeader {
 function Pause-ForUser {
     param(
         [string]$Message = "",
-        [switch]$NoBack
+        [switch]$NoBack,
+        # C3 (ascii45): B returns to the caller with $script:GGStepBack set.
+        [switch]$AllowStepBack,
+        [string]$BackTo = "the previous step"
     )
     # FT-134 (ascii38): 27 of the 54 call sites in ascii37 passed NO message and
     # fell back to a bare "Press Enter or Space to continue..." -- half the
@@ -2749,10 +2757,15 @@ function Pause-ForUser {
         } catch { $ggCanBack = $false }
     }
 
+    if ($AllowStepBack) { $script:GGStepBack = $false }
+    $ggNoBackShown = $false
     Write-Host ""
     Write-Host $Message -ForegroundColor White
+    if ($AllowStepBack) {
+        Write-Host "  Or press B to go back to $BackTo." -ForegroundColor DarkCyan
+    }
     if ($ggCanBack) {
-        Write-Host "  Or press B to look back at the previous screen (nothing is undone)." -ForegroundColor DarkCyan
+        Write-Host "  Or press L to look at the previous screen again (nothing is undone)." -ForegroundColor DarkCyan
     }
     try {
         # FT-29 (2026-07-12): buffer flush REMOVED -- it was eating the first
@@ -2792,7 +2805,23 @@ function Pause-ForUser {
                 Write-Host $Message -ForegroundColor White
                 continue
             }
-            if ($ggCanBack -and $ggCh -eq "B") {
+            # C3 (ascii45): B means BACK ONE STEP, and only that.
+            if ($ggCh -eq "B") {
+                if ($AllowStepBack) {
+                    $script:GGStepBack = $true
+                    try { Write-Log -Message ("Step back (B) accepted at: " + (Get-PSCallStack)[1].Command) -Status "KEY" } catch {}
+                    Clear-PendingKeys
+                    return
+                }
+                try { Write-Log -Message ("B pressed where no step back exists, at: " + (Get-PSCallStack)[1].Command) -Status "KEY" } catch {}
+                if (-not $ggNoBackShown) {
+                    Write-Host "  There is no step to go back to from this screen. Press Enter or Space to continue." -ForegroundColor Yellow
+                    $ggNoBackShown = $true
+                }
+                continue
+            }
+            # C4 (ascii45): the picture replay moved from B to L.
+            if ($ggCanBack -and $ggCh -eq "L") {
                 try { Write-Log -Message ("Look-back opened at: " + (Get-PSCallStack)[1].Command) -Status "KEY" } catch {}
                 Show-LookBack
                 # FT-65 (ascii29): a key that loops back to its own prompt must
@@ -2807,10 +2836,11 @@ function Pause-ForUser {
                 }
                 Write-Host ""
                 Write-Host $Message -ForegroundColor White
-                Write-Host "  Or press B to look back at the previous screen (nothing is undone)." -ForegroundColor DarkCyan
+                if ($AllowStepBack) { Write-Host "  Or press B to go back to $BackTo." -ForegroundColor DarkCyan }
+                Write-Host "  Or press L to look at the previous screen again (nothing is undone)." -ForegroundColor DarkCyan
             }
             # FT-271 (ascii45): every other key is still ignored, but now logged.
-            if (-not ($ggCanBack -and $ggCh -eq "B")) { Write-GGIgnoredKey -Key $k -Where ((Get-PSCallStack)[1].Command) }
+            if (-not ($ggCanBack -and $ggCh -eq "L")) { Write-GGIgnoredKey -Key $k -Where ((Get-PSCallStack)[1].Command) }
         }
         # FT-01 diagnostic breadcrumb: log every accepted continue key with
         # the screen (calling function) it came from.
@@ -3555,11 +3585,11 @@ function Show-FontInstructions {
                 "     a choice (Y/N/B etc) press that letter key only --        ",
                 "     no need to press Enter afterwards.                        ",
                 "                                                               ",
-                "  5. GOING BACK: On these setup screens, press B to go back    ",
-                "     one screen if you missed something. Later on, Checkup     ",
-                "     offers B whenever it can show you the previous screen     ",
-                "     exactly as it was. If B is not offered, that screen       ",
-                "     cannot be redrawn -- but everything is in your log file.  ",
+                "  5. GOING BACK: Press B to go back one step and change your   ",
+                "     answer. Press L to LOOK at the previous screen again --   ",
+                "     nothing is changed. Once Checkup has changed a setting,   ",
+                "     that step cannot be reopened, and the screen says so.     ",
+                "     Everything is also saved in your log file.                ",
                 "                                                               ",
                 "  6. COPYING: You never need to copy anything off these        ",
                 "     screens -- everything is saved automatically to your      ",
@@ -5703,7 +5733,7 @@ function Run-AppsAudit {
     }
 
     Write-Log -Message "=== Apps Audit Complete ===" -Status "DONE"
-    Pause-ForUser "  Apps Audit complete. Press Enter or Space to continue..."
+    Pause-ForUser "  Apps Audit complete. Press Enter or Space to continue..." -AllowStepBack -BackTo "the power settings review"
 }
 
 # ============================================================
@@ -6807,6 +6837,11 @@ function Apply-Setting {
 # ============================================================
 function Show-ScopeDisclaimer {
     # Ensure sleep prevention is active (in case it failed at startup)
+    # C3 / C5 (ascii45): -StartPage 2 comes from the checklist's B.
+    param([int]$StartPage = 0)
+    $script:GGStepBack = $false
+    $ggSkipQuestion = ($StartPage -eq 2)
+    $ggReasked = $false
     if (-not $global:SleepPrevented) { Enable-SleepPrevention }
 
     # FT-31 (2026-07-12): ask about a password manager BEFORE the checklist.
@@ -6828,6 +6863,8 @@ function Show-ScopeDisclaimer {
     # same question three times in a morning. Class 5 rule 4 (resumption
     # re-verifies) is honoured by SHOWING the remembered answer and offering
     # to change it, rather than silently assuming it.
+    :ggScopeTop while ($true) {
+    if (-not $ggSkipQuestion) {
     $ggPMKnown = ($null -ne $global:HasPasswordManager)
     if ($ggPMKnown) {
         Clear-Host
@@ -6846,7 +6883,8 @@ function Show-ScopeDisclaimer {
             "  [N] That has changed -- ask me the full question again     "
         )
         Write-Host ""
-        $ggPMStill = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Still correct? (Y = yes, continue / N = no, ask me again): "
+        $ggPMStill = Read-ValidKey -ValidKeys @("Y","N","B") -Prompt "Still correct? (Y = yes / N = no, ask me again / B = back to the start screen): "
+        if ($ggPMStill -eq "B") { $script:GGStepBack = $true; return }
         if ($ggPMStill.ToUpper() -eq "N") {
             $global:HasPasswordManager = $null
             $ggPMKnown = $false
@@ -6882,8 +6920,14 @@ function Show-ScopeDisclaimer {
         "  lose access to your accounts."
     )
     Write-Host ""
-    $pmAns = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Do you use a password manager? (Y = yes / N = no): "
+    $pmAns = Read-ValidKey -ValidKeys @("Y","N","B") -Prompt "Do you use a password manager? (Y = yes / N = no / B = back to the start screen): "
+    if ($pmAns -eq "B") { $script:GGStepBack = $true; return }
     $global:HasPasswordManager = ($pmAns.ToUpper() -eq "Y")
+    if ($ggReasked) {
+        $eSetting2 = $Settings | Where-Object { $_.ID -eq 15 }
+        if ($eSetting2) { $eSetting2.Selected = $global:HasPasswordManager }
+        Write-Log -Message "Password-manager answer revised via Back: $($global:HasPasswordManager)" -Status "INFO"
+    }
     if (-not $global:HasPasswordManager) {
         $eSetting = $Settings | Where-Object { $_.ID -eq 15 }
         if ($eSetting) { $eSetting.Selected = $false }
@@ -6916,7 +6960,9 @@ function Show-ScopeDisclaimer {
     # PREVENTS: a screen the user cannot read in one window.
     # COULD CAUSE: one extra keypress on the way to the checklist. Accepted --
     # note 12 is explicit that splitting is what is wanted.
-    $ggScopePage = 1
+    }   # end: skip the question when coming back from the checklist
+    $ggScopePage = if ($ggSkipQuestion) { 2 } else { 1 }
+    $ggSkipQuestion = $false
     while ($true) {
         Clear-Host
         Write-Host ""
@@ -6948,14 +6994,11 @@ function Show-ScopeDisclaimer {
             Write-Host ""
             $ggScopeNav = Read-NavKey -Prompt "  Press Enter or Space for page 2 of 2, or B to go back to the password question: "
             if ($ggScopeNav -eq "BACK") {
-                # Re-ask the password-manager question, then return to page 1
-                Clear-Host
-                Write-Host ""
-                $pmAns2 = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Do you use a password manager? (Y = yes / N = no): "
-                $global:HasPasswordManager = ($pmAns2.ToUpper() -eq "Y")
-                $eSetting2 = $Settings | Where-Object { $_.ID -eq 15 }
-                if ($eSetting2) { $eSetting2.Selected = $global:HasPasswordManager }
-                Write-Log -Message "Password-manager answer revised via Back: $($global:HasPasswordManager)" -Status "INFO"
+                # FT-273 (ascii45): this used to re-ask with a bare prompt --
+                # no box, no number, no Back. Now screen 22 is shown in full.
+                $global:HasPasswordManager = $null
+                $ggReasked = $true
+                continue ggScopeTop
             } else {
                 $ggScopePage = 2
             }
@@ -6986,9 +7029,10 @@ function Show-ScopeDisclaimer {
             )
             Write-Host ""
             $ggScopeNav = Read-NavKey -Prompt "  Press Enter or Space for the security checklist, or B to go back to page 1 of 2: "
-            if ($ggScopeNav -eq "BACK") { $ggScopePage = 1 } else { break }
+            if ($ggScopeNav -eq "BACK") { $ggScopePage = 1 } else { return }
         }
     }
+    }   # end :ggScopeTop (C3)
 }
 
 # ============================================================
@@ -8304,7 +8348,7 @@ function Show-ModeSelector {
         "      A checklist in this window shows each setting and     ",
         "      its live status. Checkup changes only the items you   ",
         "      select.                                               ",
-        "                                                            ",
+        "  [B] BACK -- to the apps review                            ",
         "  [X] EXIT -- nothing has been changed                      ",
         "                                                            ",
         "  Admin status: $(if ($global:IsAdmin) { 'FULL ACCESS OK' } else { 'LIMITED MODE -- some settings unavailable' })",
@@ -8344,6 +8388,7 @@ function Run-ConsoleMode {
     Write-Host "  exactly what Checkup does and does not do." -ForegroundColor Yellow
     # Sleep removed (ascii32): per no-Sleep-in-Run rule; message is shown then ScopeDisclaimer renders
     Show-ScopeDisclaimer
+    if ($script:GGStepBack) { return }   # C3 (ascii45): B at screen 22 -> screen 21
 
     :checklistLoop while ($true) {
         Clear-Host
@@ -8502,7 +8547,7 @@ function Run-ConsoleMode {
         Write-Host "  Commands:" -ForegroundColor Yellow
         Write-Host "    R = Run selected items     [number] = toggle item on/off" -ForegroundColor Yellow
         Write-Host "    A = Select all             C = Clear all       Q = Quit" -ForegroundColor Yellow
-        Write-Host "    P = show the other page of the list" -ForegroundColor Yellow
+        Write-Host "    P = show the other page of the list    B = go back one page" -ForegroundColor Yellow
         Write-Host "    I = show build and Machine ID" -ForegroundColor Yellow
         Write-Host "    Item numbers: 1-9 then Enter; 10-19 apply on the second digit." -ForegroundColor DarkGray
         Write-Host ""
@@ -8542,7 +8587,7 @@ function Run-ConsoleMode {
         # a burst was ten repaints a second. Measured 2026-08-18 at 17:35:15.
         $ggBadKeys = 0
         :keyLoop while ($true) {
-        Write-Host "  Enter command (R/A/C/Q/P or item number 1-19): " -ForegroundColor White -NoNewline
+        Write-Host "  Enter command (R/A/C/Q/P/B or item number 1-19): " -ForegroundColor White -NoNewline
         $userInput = ""
         $firstKey = $null   # FT-69 (ascii29): never test a stale key object
         # FT-46 (ascii28): re-assert Ctrl+C-as-input before every read
@@ -8559,7 +8604,7 @@ function Run-ConsoleMode {
         # FT-69 (ascii29): Ctrl+C opens the exit confirmation
         if ($firstKey -and $firstKey.Character -eq [char]3) { Invoke-CtrlCExit; continue checklistLoop }
 
-        if ($firstCh -in @("R","A","C","Q","P")) {
+        if ($firstCh -in @("R","A","C","Q","P","B")) {
             $userInput = $firstCh
             Write-Host $userInput -ForegroundColor Cyan
             break keyLoop
@@ -8611,7 +8656,7 @@ function Run-ConsoleMode {
             $ggBadKeys++
             Write-Host ""
             if ($ggBadKeys -le 3) {
-                Write-Host "  That key does nothing here. Press R, A, C, Q, P, I or an item number 1-19." -ForegroundColor Yellow
+                Write-Host "  That key does nothing here. Press R, A, C, Q, P, B, I or an item number 1-19." -ForegroundColor Yellow
                 # Rate-limited: a flood must not fill the log, but the FIRST
                 # few must appear or a future flood is invisible again --
                 # which is exactly why FT-193 could not be diagnosed from the
@@ -8644,6 +8689,11 @@ function Run-ConsoleMode {
         }
 
         switch ($userInput.ToUpper()) {
+            "B" {
+                # C3 (ascii45): back to the page before the checklist.
+                Show-ScopeDisclaimer -StartPage 2
+                if ($script:GGStepBack) { return }
+            }
             "P" { $script:ChecklistPage = if ($script:ChecklistPage -eq 1) { 2 } else { 1 } }
             "A" { $Settings | ForEach-Object { $_.Selected = $true } }
             "C" {
@@ -9228,17 +9278,12 @@ if (-not (Test-CheckpointReached -Checkpoint "DefenderAV")) {
 # quietly inside Show-ResumeReverify)
 if (-not $global:ResumeFrom) { Test-PowerStatus }
 
-# 14. Power settings review
-if (-not (Test-CheckpointReached -Checkpoint "PowerSettings")) {
-    Run-PowerSettingsCheck
-    Save-Checkpoint -Checkpoint "PowerSettings"
-}
-
-# 15. Apps audit
-if (-not (Test-CheckpointReached -Checkpoint "AppsAudit")) {
-    Run-AppsAudit
-    Save-Checkpoint -Checkpoint "AppsAudit"
-}
+# C3 (ascii45): screens 19 -> 20 -> 21 -> 22 run as STEPS, so B can go
+# back one. Everything they do before the checklist is a read or asks
+# first, so each can be redone. Screen 19 has no step behind it.
+$ggFlow = "Power"
+if (Test-CheckpointReached -Checkpoint "PowerSettings") { $ggFlow = "Apps" }
+if ($ggFlow -eq "Apps" -and (Test-CheckpointReached -Checkpoint "AppsAudit")) { $ggFlow = "Mode" }
 
 # Mode selection (FT-64, ascii28: wrapped in a function so the key log names
 # the screen -- it used to print the script filename as the location)
@@ -9247,15 +9292,34 @@ function Select-Mode {
     # first -- Confirm-Exit exits on Y; on N we show this screen again.
     while ($true) {
         Show-ModeSelector
-        $smChoice = Read-ValidKey -ValidKeys @("1","X") -Prompt "Enter choice (1 = Start / X = Exit): "
+        $smChoice = Read-ValidKey -ValidKeys @("1","B","X") -Prompt "Enter choice (1 = Start / B = Back / X = Exit): "
         if ($smChoice -eq "1") { return "1" }
+        if ($smChoice -eq "B") { return "BACK" }   # C3 (ascii45): back to the apps review
         Confirm-Exit "You chose Exit at the start screen. Checkup has not changed anything."
     }
 }
-$choice = Select-Mode
-
-Write-Log -Message "Start chosen at screen 21 (console checklist)" -Status "INFO"
-Run-ConsoleMode   # B1 (ascii45): the only mode; Exit is handled inside Select-Mode
+:ggFlowLoop while ($true) {
+    $script:GGStepBack = $false
+    if ($ggFlow -eq "Power") {
+        Run-PowerSettingsCheck
+        Save-Checkpoint -Checkpoint "PowerSettings"
+        $ggFlow = "Apps"
+        continue ggFlowLoop
+    }
+    if ($ggFlow -eq "Apps") {
+        Run-AppsAudit
+        if ($script:GGStepBack) { $ggFlow = "Power"; continue ggFlowLoop }
+        Save-Checkpoint -Checkpoint "AppsAudit"
+        $ggFlow = "Mode"
+        continue ggFlowLoop
+    }
+    $choice = Select-Mode
+    if ($choice -eq "BACK") { $ggFlow = "Apps"; continue ggFlowLoop }
+    Write-Log -Message "Start chosen at screen 21 (console checklist)" -Status "INFO"
+    Run-ConsoleMode   # B1 (ascii45): the only mode; Exit is handled inside Select-Mode
+    if ($script:GGStepBack) { continue ggFlowLoop }   # B at screen 22 -> screen 21
+    break
+}
 
 
 # FT-66 (ascii29): global error trap -- see comment at try above
