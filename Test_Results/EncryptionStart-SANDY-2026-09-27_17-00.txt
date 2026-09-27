@@ -1,0 +1,230 @@
+﻿WHAT STARTED ENCRYPTION -- SANDY -- read 2026-09-27 17:00 -- window 2026-09-20 18:10 to 18:30
+
+== Microsoft-Windows-BitLocker/BitLocker Management (at most 60)
+  18:22:25 id=796   BitLocker Drive Encryption is using software-based encryption to protect volume C:.
+           IdentificationGUID = {00000000-0000-0000-0000-000000000000}
+           VolumeName = \\?\Volume{d07a18f4-ee9b-44a7-a6ac-9608ea6da395}
+           VolumeMountPoint = C:
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 8832)
+  18:22:26 id=900   BitLocker successfully committed metadata changes for volume C:.
+           IdentificationGUID = {a4363f29-1030-4b6e-8aae-0b06e6e4efb5}
+           VolumeName = \\?\Volume{d07a18f4-ee9b-44a7-a6ac-9608ea6da395}
+           VolumeMountPoint = C:
+           ErrorCode = 0
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 8832)
+  18:22:26 id=4147  Device Encryption initialized by user for volume C:.
+           IdentificationGUID = {00000000-0000-0000-0000-000000000000}
+           VolumeName = \\?\Volume{d07a18f4-ee9b-44a7-a6ac-9608ea6da395}
+           VolumeMountPoint = C:
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 8832)
+  18:22:27 id=775   A BitLocker key protector was created.
+           IdentificationGUID = {a4363f29-1030-4b6e-8aae-0b06e6e4efb5}
+           VolumeName = \\?\Volume{d07a18f4-ee9b-44a7-a6ac-9608ea6da395}
+           VolumeMountPoint = C:
+           ProtectorGUID = {4058782a-1761-44be-b8bd-d85d6a67ca90}
+           ProtectorType = 0x3
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 8832)
+  18:22:27 id=900   BitLocker successfully committed metadata changes for volume C:.
+           IdentificationGUID = {a4363f29-1030-4b6e-8aae-0b06e6e4efb5}
+           VolumeName = \\?\Volume{d07a18f4-ee9b-44a7-a6ac-9608ea6da395}
+           VolumeMountPoint = C:
+           ErrorCode = 0
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 8832)
+  18:22:27 id=900   BitLocker successfully committed metadata changes for volume C:.
+           IdentificationGUID = {a4363f29-1030-4b6e-8aae-0b06e6e4efb5}
+           VolumeName = \\?\Volume{d07a18f4-ee9b-44a7-a6ac-9608ea6da395}
+           VolumeMountPoint = C:
+           ErrorCode = 0
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 8832)
+  18:22:27 id=898   Failed to backup BitLocker Drive Encryption recovery information for volume C: to your Microsoft account.
+           IdentificationGUID = {a4363f29-1030-4b6e-8aae-0b06e6e4efb5}
+           VolumeName = \\?\Volume{d07a18f4-ee9b-44a7-a6ac-9608ea6da395}\
+           VolumeMountPoint = C:
+           ErrorCode = -2147023579
+           BackendName = PDR
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 8832)
+  18:22:27 id=796   BitLocker Drive Encryption is using software-based encryption to protect volume D:.
+           IdentificationGUID = {00000000-0000-0000-0000-000000000000}
+           VolumeName = \\?\Volume{88b5debd-0000-0000-0000-100000000000}
+           VolumeMountPoint = D:
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 8832)
+  18:22:28 id=780   The identification field was changed. 
+           IdentificationGUID = {ecf15c1e-4d18-43c9-a10d-7e964fddc44d}
+           VolumeName = \\?\Volume{88b5debd-0000-0000-0000-100000000000}
+           VolumeMountPoint = D:
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 8832)
+  18:22:28 id=900   BitLocker successfully committed metadata changes for volume D:.
+           IdentificationGUID = {ecf15c1e-4d18-43c9-a10d-7e964fddc44d}
+           VolumeName = \\?\Volume{88b5debd-0000-0000-0000-100000000000}
+           VolumeMountPoint = D:
+           ErrorCode = 0
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 8832)
+  18:22:29 id=768   BitLocker encryption was started for volume D: using XTS-AES 128 algorithm.
+           IdentificationGUID = {ecf15c1e-4d18-43c9-a10d-7e964fddc44d}
+           VolumeName = \\?\Volume{88b5debd-0000-0000-0000-100000000000}
+           VolumeMountPoint = D:
+           AlgorithmType = 32772
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 8832)
+  18:22:29 id=900   BitLocker successfully committed metadata changes for volume D:.
+           IdentificationGUID = {ecf15c1e-4d18-43c9-a10d-7e964fddc44d}
+           VolumeName = \\?\Volume{88b5debd-0000-0000-0000-100000000000}
+           VolumeMountPoint = D:
+           ErrorCode = 0
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 8832)
+  18:22:29 id=4147  Device Encryption initialized by user for volume D:.
+           IdentificationGUID = {00000000-0000-0000-0000-000000000000}
+           VolumeName = \\?\Volume{88b5debd-0000-0000-0000-100000000000}
+           VolumeMountPoint = D:
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 8832)
+  18:22:29 id=780   The identification field was changed. 
+           IdentificationGUID = {a4363f29-1030-4b6e-8aae-0b06e6e4efb5}
+           VolumeName = \\?\Volume{d07a18f4-ee9b-44a7-a6ac-9608ea6da395}
+           VolumeMountPoint = C:
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 8832)
+  18:22:29 id=900   BitLocker successfully committed metadata changes for volume C:.
+           IdentificationGUID = {a4363f29-1030-4b6e-8aae-0b06e6e4efb5}
+           VolumeName = \\?\Volume{d07a18f4-ee9b-44a7-a6ac-9608ea6da395}
+           VolumeMountPoint = C:
+           ErrorCode = 0
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 8832)
+  18:22:29 id=768   BitLocker encryption was started for volume C: using XTS-AES 128 algorithm.
+           IdentificationGUID = {a4363f29-1030-4b6e-8aae-0b06e6e4efb5}
+           VolumeName = \\?\Volume{d07a18f4-ee9b-44a7-a6ac-9608ea6da395}
+           VolumeMountPoint = C:
+           AlgorithmType = 32772
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 8832)
+  18:22:30 id=900   BitLocker successfully committed metadata changes for volume C:.
+           IdentificationGUID = {a4363f29-1030-4b6e-8aae-0b06e6e4efb5}
+           VolumeName = \\?\Volume{d07a18f4-ee9b-44a7-a6ac-9608ea6da395}
+           VolumeMountPoint = C:
+           ErrorCode = 0
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 21376)
+  18:22:30 id=900   BitLocker successfully committed metadata changes for volume C:.
+           IdentificationGUID = {a4363f29-1030-4b6e-8aae-0b06e6e4efb5}
+           VolumeName = \\?\Volume{d07a18f4-ee9b-44a7-a6ac-9608ea6da395}
+           VolumeMountPoint = C:
+           ErrorCode = 0
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 21376)
+  18:22:30 id=900   BitLocker successfully committed metadata changes for volume C:.
+           IdentificationGUID = {a4363f29-1030-4b6e-8aae-0b06e6e4efb5}
+           VolumeName = \\?\Volume{d07a18f4-ee9b-44a7-a6ac-9608ea6da395}
+           VolumeMountPoint = C:
+           ErrorCode = 0
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 21376)
+  18:22:30 id=898   Failed to backup BitLocker Drive Encryption recovery information for volume C: to your Microsoft account.
+           IdentificationGUID = {a4363f29-1030-4b6e-8aae-0b06e6e4efb5}
+           VolumeName = \\?\Volume{d07a18f4-ee9b-44a7-a6ac-9608ea6da395}\
+           VolumeMountPoint = C:
+           ErrorCode = -2147023579
+           BackendName = PDR
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 21376)
+  18:22:30 id=4103  Failed to automatically enable Device Encryption.
+           ErrorCode = -2147023579
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 21376)
+  18:22:30 id=900   BitLocker successfully committed metadata changes for volume C:.
+           IdentificationGUID = {a4363f29-1030-4b6e-8aae-0b06e6e4efb5}
+           VolumeName = \\?\Volume{d07a18f4-ee9b-44a7-a6ac-9608ea6da395}
+           VolumeMountPoint = C:
+           ErrorCode = 0
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 10716)
+  18:22:30 id=900   BitLocker successfully committed metadata changes for volume C:.
+           IdentificationGUID = {a4363f29-1030-4b6e-8aae-0b06e6e4efb5}
+           VolumeName = \\?\Volume{d07a18f4-ee9b-44a7-a6ac-9608ea6da395}
+           VolumeMountPoint = C:
+           ErrorCode = 0
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 10716)
+  18:22:30 id=900   BitLocker successfully committed metadata changes for volume C:.
+           IdentificationGUID = {a4363f29-1030-4b6e-8aae-0b06e6e4efb5}
+           VolumeName = \\?\Volume{d07a18f4-ee9b-44a7-a6ac-9608ea6da395}
+           VolumeMountPoint = C:
+           ErrorCode = 0
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 10716)
+  18:22:30 id=898   Failed to backup BitLocker Drive Encryption recovery information for volume C: to your Microsoft account.
+           IdentificationGUID = {a4363f29-1030-4b6e-8aae-0b06e6e4efb5}
+           VolumeName = \\?\Volume{d07a18f4-ee9b-44a7-a6ac-9608ea6da395}\
+           VolumeMountPoint = C:
+           ErrorCode = -2147023579
+           BackendName = PDR
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 10716)
+  18:22:30 id=4103  Failed to automatically enable Device Encryption.
+           ErrorCode = -2147023579
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 10716)
+  18:22:35 id=900   BitLocker successfully committed metadata changes for volume C:.
+           IdentificationGUID = {a4363f29-1030-4b6e-8aae-0b06e6e4efb5}
+           VolumeName = \\?\Volume{d07a18f4-ee9b-44a7-a6ac-9608ea6da395}
+           VolumeMountPoint = C:
+           ErrorCode = 0
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 13736)
+  18:22:35 id=900   BitLocker successfully committed metadata changes for volume C:.
+           IdentificationGUID = {a4363f29-1030-4b6e-8aae-0b06e6e4efb5}
+           VolumeName = \\?\Volume{d07a18f4-ee9b-44a7-a6ac-9608ea6da395}
+           VolumeMountPoint = C:
+           ErrorCode = 0
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 13736)
+  18:22:35 id=900   BitLocker successfully committed metadata changes for volume C:.
+           IdentificationGUID = {a4363f29-1030-4b6e-8aae-0b06e6e4efb5}
+           VolumeName = \\?\Volume{d07a18f4-ee9b-44a7-a6ac-9608ea6da395}
+           VolumeMountPoint = C:
+           ErrorCode = 0
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 13736)
+  18:22:35 id=898   Failed to backup BitLocker Drive Encryption recovery information for volume C: to your Microsoft account.
+           IdentificationGUID = {a4363f29-1030-4b6e-8aae-0b06e6e4efb5}
+           VolumeName = \\?\Volume{d07a18f4-ee9b-44a7-a6ac-9608ea6da395}\
+           VolumeMountPoint = C:
+           ErrorCode = -2147023579
+           BackendName = PDR
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 13736)
+  18:22:35 id=4103  Failed to automatically enable Device Encryption.
+           ErrorCode = -2147023579
+           (user SID: S-1-5-21-915973185-942566487-393195779-1001, process id: 13736)
+
+== Microsoft-Windows-BitLocker-DrivePreparationTool/Operational (at most 30)
+  not readable or no events: There is not an event log on the localhost computer that matches "Microsoft-Windows-BitLocker-DrivePreparationTool/Operational".
+
+== Microsoft-Windows-Shell-Core/Operational (at most 120)
+  not readable or no events: No events were found that match the specified selection criteria.
+
+== Microsoft-Windows-AppModel-Runtime/Admin (at most 60)
+  not readable or no events: No events were found that match the specified selection criteria.
+
+== Microsoft-Windows-AAD/Operational (at most 60)
+  not readable or no events: No events were found that match the specified selection criteria.
+
+== Microsoft-Windows-LiveId/Operational (at most 60)
+  not readable or no events: No events were found that match the specified selection criteria.
+
+== Microsoft-Windows-User Device Registration/Admin (at most 60)
+  not readable or no events: No events were found that match the specified selection criteria.
+
+== Application (at most 80)
+  18:13:52 id=1022  .NET Runtime version 4.0.30319.0 - There was a failure initializing profiling API attach infrastructure.  This process will not allow a profiler to attach.  HRESULT: 0x80004005.  Process ID (decimal): 21100.  Message ID: [0x2509].
+  18:18:50 id=16394 Offline downlevel migration succeeded.
+  18:19:02 id=1022  .NET Runtime version 4.0.30319.0 - There was a failure initializing profiling API attach infrastructure.  This process will not allow a profiler to attach.  HRESULT: 0x80004005.  Process ID (decimal): 9480.  Message ID: [0x2509].
+  18:19:20 id=16384 Successfully scheduled Software Protection service for re-start at 2126-08-27T22:19:20Z. Reason: RulesEngine.
+
+== System (at most 80)
+  18:11:23 id=12    Process C:\Windows\System32\powercfg.exe (process ID:17540) reset policy scheme from {48684d4a-8524-4093-8a63-ea7132b79c1c} to {48684d4a-8524-4093-8a63-ea7132b79c1c}
+  18:22:29 id=24660 BitLocker encryption on write started for volume D:.
+  18:22:29 id=24660 BitLocker encryption on write started for volume C:.
+  18:22:29 id=24664 BitLocker finalization sweep started for volume C:.
+  18:22:29 id=24665 BitLocker finalization sweep paused for volume C:.
+  18:22:29 id=24666 BitLocker finalization sweep resumed for volume C:.
+  18:22:35 id=24664 BitLocker finalization sweep started for volume D:.
+  18:22:35 id=24665 BitLocker finalization sweep paused for volume D:.
+  18:22:35 id=24666 BitLocker finalization sweep resumed for volume D:.
+  18:22:35 id=24665 BitLocker finalization sweep paused for volume D:.
+  18:22:39 id=24665 BitLocker finalization sweep paused for volume C:.
+
+== Security log: process starts (4688) and sign-ins (4624), if Windows records them (at most 100)
+  not readable: No events were found that match the specified selection criteria.
+
+== Encryption settings in the registry now
+  HKLM:\SYSTEM\CurrentControlSet\Control\BitLocker
+     PreventDeviceEncryption = 0
+  HKLM:\SOFTWARE\Policies\Microsoft\FVE -- not present
+  HKLM:\SYSTEM\CurrentControlSet\Control\BitLockerStatus
+     BootStatus = 0
+
+== Which account was signed in (for context)
+  Sandy\Panther
+  local account: Panther  source=Local

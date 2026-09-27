@@ -1,0 +1,43 @@
+﻿WHAT STARTED ENCRYPTION -- CGDELL -- read 2026-09-27 15:58 -- window 2026-09-20 18:10 to 18:30
+
+== Microsoft-Windows-BitLocker/BitLocker Management (at most 60)
+  not readable or no events: No events were found that match the specified selection criteria.
+
+== Microsoft-Windows-BitLocker-DrivePreparationTool/Operational (at most 30)
+  not readable or no events: No events were found that match the specified selection criteria.
+
+== Microsoft-Windows-Shell-Core/Operational (at most 120)
+  not readable or no events: No events were found that match the specified selection criteria.
+
+== Microsoft-Windows-AppModel-Runtime/Admin (at most 60)
+  not readable or no events: No events were found that match the specified selection criteria.
+
+== Microsoft-Windows-AAD/Operational (at most 60)
+  not readable or no events: No events were found that match the specified selection criteria.
+
+== Microsoft-Windows-LiveId/Operational (at most 60)
+  not readable or no events: No events were found that match the specified selection criteria.
+
+== Microsoft-Windows-User Device Registration/Admin (at most 60)
+  not readable or no events: No events were found that match the specified selection criteria.
+
+== Application (at most 80)
+  not readable or no events: No events were found that match the specified selection criteria.
+
+== System (at most 80)
+  not readable or no events: No events were found that match the specified selection criteria.
+
+== Security log: process starts (4688) and sign-ins (4624), if Windows records them (at most 100)
+  not readable: No events were found that match the specified selection criteria.
+
+== Encryption settings in the registry now
+  HKLM:\SYSTEM\CurrentControlSet\Control\BitLocker
+  HKLM:\SOFTWARE\Policies\Microsoft\FVE -- not present
+  HKLM:\SYSTEM\CurrentControlSet\Control\BitLockerStatus
+     BootStatus = 0
+
+== Which account was signed in (for context)
+  CGDELL\Dad
+  local account: CGAdmin  source=Local
+  local account: Dad  source=Local
+  local account: localuser  source=Local
