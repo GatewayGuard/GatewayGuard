@@ -74,6 +74,8 @@
 #           otherwise the person is asked. Never a guessed GOOD.
 #   FT-287: PASSWORD ON WAKE ON BATTERY. REQUIRED now needs the DC
 #           (battery) value as well as AC, when Windows reports one.
+#   C2 / FT-271: IGNORED KEYS ARE LOGGED. All three key readers logged
+#           only accepted keys; now an ignored press is a KEY line too.
 #
 # CHANGES FROM ascii43 (2026-09-06 -- ASCII44):
 #   FT-242: NINE REGISTRY WRITES COULD NOT FAIL. Without -EA Stop a
@@ -2807,7 +2809,8 @@ function Pause-ForUser {
                 Write-Host $Message -ForegroundColor White
                 Write-Host "  Or press B to look back at the previous screen (nothing is undone)." -ForegroundColor DarkCyan
             }
-            # Every other key is silently swallowed, exactly as before.
+            # FT-271 (ascii45): every other key is still ignored, but now logged.
+            if (-not ($ggCanBack -and $ggCh -eq "B")) { Write-GGIgnoredKey -Key $k -Where ((Get-PSCallStack)[1].Command) }
         }
         # FT-01 diagnostic breadcrumb: log every accepted continue key with
         # the screen (calling function) it came from.
@@ -2862,6 +2865,20 @@ function Show-CheckupInfo {
     }
 }
 
+function Write-GGIgnoredKey {
+    # FT-271 (ascii45): the three key readers used to log only ACCEPTED keys,
+    # so "B did nothing" (Bill, ascii44 screens 26-27) could not be checked
+    # from the log. This writes one KEY line per ignored press.
+    param($Key, [string]$Where)
+    try {
+        if ($Key.VirtualKeyCode -in @(16, 17, 18, 20, 91, 92, 93)) { return }
+        if ($Key.Character -eq [char]3) { return }
+        $ggCode = [int][char]$Key.Character
+        $ggName = if ($ggCode -ge 33 -and $ggCode -le 126) { "'" + $Key.Character.ToString().ToUpper() + "'" } else { "key code " + $Key.VirtualKeyCode }
+        Write-Log -Message ("Key " + $ggName + " IGNORED at: " + $Where) -Status "KEY"
+    } catch {}
+}
+
 function Read-ValidKey {
     param(
         [string[]]$ValidKeys,
@@ -2893,6 +2910,7 @@ function Read-ValidKey {
             # none. Telling the user which keys work is the fix; inventing a
             # Back on "are you sure you want to close Checkup" is not.
             if ($ch -notin $ValidKeys) {
+                if ($ch -ne "I") { Write-GGIgnoredKey -Key $k -Where ((Get-PSCallStack)[1].Command) }
                 if ($ch -eq "I") {
                     Show-CheckupInfo
                     if ($Prompt) { Write-Host "  $Prompt" -ForegroundColor White -NoNewline }
@@ -2953,6 +2971,7 @@ function Read-NavKey {
             $ch = $k.Character.ToString().ToUpper()
             # FT-69 (ascii29): Ctrl+C opens the exit confirmation
             if ($k.Character -eq [char]3) { Invoke-CtrlCExit }
+            if (($vk -notin @(13, 32)) -and ($ch -ne "B")) { Write-GGIgnoredKey -Key $k -Where ((Get-PSCallStack)[1].Command) }
         } while (($vk -notin @(13, 32)) -and ($ch -ne "B"))
         $result = "NEXT"
         if ($ch -eq "B") { $result = "BACK" }
