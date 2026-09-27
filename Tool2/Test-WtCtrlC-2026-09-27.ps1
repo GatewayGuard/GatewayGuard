@@ -1,5 +1,5 @@
 # Test-WtCtrlC-2026-09-27.ps1
-# Dated: 2026-09-27 10:57 ET
+# Dated: 2026-09-27 11:04 ET
 # Editor: Claude Code (CGDELL)
 # Purpose: ascii45 C7 (FT-270, Ctrl+C ends with no confirmation). Checkup guards
 #          Ctrl+C by telling Windows to hand it over as an ordinary key
@@ -21,8 +21,15 @@ Note "Ctrl+C guard test -- $env:COMPUTERNAME -- Windows Terminal: $([bool]$env:W
 $finished = $false
 
 function Read-OneKey {
-    try { [Console]::TreatControlCAsInput = $true } catch { Note "TreatControlCAsInput could not be set: $_" }
-    return $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+    # Fixed 2026-09-27 11:04: the 11:02 run took the Ctrl key ON ITS OWN (VK 17)
+    # as the answer and moved on, so the C arrived unguarded. Checkup's readers
+    # loop past modifier keys; this now does the same, re-asserting the guard
+    # before every read (FT-46).
+    do {
+        try { [Console]::TreatControlCAsInput = $true } catch { Note "TreatControlCAsInput could not be set: $_" }
+        $k = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+    } while ($k.VirtualKeyCode -in @(16, 17, 18, 20, 91, 92, 93))
+    return $k
 }
 
 try {

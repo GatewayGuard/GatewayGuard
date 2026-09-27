@@ -1,0 +1,3 @@
+﻿[11:02:21] Ctrl+C guard test -- CGDELL -- Windows Terminal: True
+[11:02:29] STEP 1: a different key arrived: VK 17
+[11:02:30] ENDED EARLY -- the program was stopped before the test finished (Ctrl+C was NOT caught)
