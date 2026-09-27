@@ -67,6 +67,13 @@
 #           exited on one keypress -- they now ask first (Confirm-Exit).
 #   C1b:    The FT-256 notes below (ascii44 history, and above item 17)
 #           now say FT-268 superseded them. Comments only.
+#   FT-286: ITEM 9 (WINDOWS HELLO) SAID "NOT SET UP" TO A PIN USER. It tested
+#           a folder that does not exist on CGDELL. Now reads how this account
+#           last signed in or unlocked (Get-GGHelloSignIn), flip-tested by Bill
+#           2026-09-26. GOOD only on a Hello sign-in by this account;
+#           otherwise the person is asked. Never a guessed GOOD.
+#   FT-287: PASSWORD ON WAKE ON BATTERY. REQUIRED now needs the DC
+#           (battery) value as well as AC, when Windows reports one.
 #
 # CHANGES FROM ascii43 (2026-09-06 -- ASCII44):
 #   FT-242: NINE REGISTRY WRITES COULD NOT FAIL. Without -EA Stop a
@@ -4984,10 +4991,19 @@ function Get-GGConsoleLockState {
     if ($ggRaw.Length -gt 300) { $ggRaw = $ggRaw.Substring(0, 300) + "..." }
     # FT-255 (ascii44): Out-String FIRST. On an array -match is a filter and
     # never populates $Matches.
+    # FT-287 (ascii45): read AC (plugged in) AND DC (battery). Measured on
+    # CGDELL 2026-09-25: /qh prints both lines. A laptop on battery uses DC,
+    # so REQUIRED needs both. If Windows prints no DC line, AC decides.
     if ($ggOut -match "Current AC Power Setting Index:\s*0x(\w+)") {
         $ggVal = [Convert]::ToUInt32($Matches[1], 16)
-        if ($ggVal -eq 1) { return @{ State = "REQUIRED";     Value = $ggVal; Raw = $ggRaw } }
-        return @{ State = "NOT_REQUIRED"; Value = $ggVal; Raw = $ggRaw }
+        $ggDC  = $null
+        if ($ggOut -match "Current DC Power Setting Index:\s*0x(\w+)") {
+            $ggDC = [Convert]::ToUInt32($Matches[1], 16)
+        }
+        if ($ggVal -eq 1 -and ($null -eq $ggDC -or $ggDC -eq 1)) {
+            return @{ State = "REQUIRED";     Value = $ggVal; DC = $ggDC; Raw = $ggRaw }
+        }
+        return @{ State = "NOT_REQUIRED"; Value = $ggVal; DC = $ggDC; Raw = $ggRaw }
     }
     return @{ State = "NO_INDEX"; Value = $null; Raw = $ggRaw }
 }
@@ -5725,6 +5741,42 @@ function Get-TamperProtectionState {
     } catch { return "Unknown" }
 }
 
+function Get-GGHelloSignIn {
+    # FT-286 (ascii45). Item 9 used to test "$env:LOCALAPPDATA\Microsoft\NGC".
+    # Measured on CGDELL 2026-09-26: that folder does not exist while the user
+    # signs in with a PIN every day. Settings said Hello was "not available"
+    # and dsregcmd said NgcSet NO on the same PC -- neither can be the read.
+    #
+    # This reads HOW THIS ACCOUNT LAST SIGNED IN OR UNLOCKED.
+    # VERIFIED 2026-09-26 measured on CGDELL (flip test by Bill):
+    #   PIN sign-in 14:49:33      -> LastLoggedOnProvider {D6886603-...} (Hello)
+    #   password sign-in 14:53:51 -> {60B78E88-EAD8-445C-9CFD-0B87F74EA6CD}
+    #   Win+L, PIN unlock 15:04:21 -> {D6886603-...} again
+    # Registry read only; no external command.
+    #
+    # Returns HELLO only when the Hello provider was used AND the record is
+    # this account's. Everything else is NOT_CONFIRMED -- never a GOOD.
+    # Known limits: a user who has a PIN but last used a password is asked
+    # (safe); a PIN removed since the last sign-in or unlock still reads HELLO
+    # until the next one.
+    $ggHelloProvider = "{D6886603-9D2F-4EB2-B667-1971041FA96B}"
+    try {
+        $ggLU  = Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI" -EA Stop
+        $ggMe  = [Security.Principal.WindowsIdentity]::GetCurrent().User.Value
+        $ggPrv = "$($ggLU.LastLoggedOnProvider)"
+        $ggSid = "$($ggLU.LastLoggedOnUserSID)"
+        if ($ggSid -ne $ggMe) {
+            return @{ State = "NOT_CONFIRMED"; Why = "last sign-in was another account ($ggSid)" }
+        }
+        if ($ggPrv -eq $ggHelloProvider) {
+            return @{ State = "HELLO"; Why = "last sign-in used Windows Hello" }
+        }
+        return @{ State = "NOT_CONFIRMED"; Why = "last sign-in used provider $ggPrv" }
+    } catch {
+        return @{ State = "NOT_CONFIRMED"; Why = "could not read the sign-in record: $_" }
+    }
+}
+
 function Get-GGOtherAV {
     # B2a (ascii45): replaces Get-MalwarebytesState for every VERDICT.
     # Returns the display names of antivirus products registered with Windows
@@ -6009,8 +6061,10 @@ function Get-AllStatuses {
                 catch { $s.Status = "Check manually in Windows Security" }
             }
             9 {
-                $ngc = Test-Path "$env:LOCALAPPDATA\Microsoft\NGC"
-                $s.Status = if ($ngc) { "Configured -- GOOD" } else { "Not set up -- manual action needed" }
+                # FT-286 (ascii45): was Test-Path on a folder that does not exist.
+                $ggH9 = Get-GGHelloSignIn
+                $s.Status = if ($ggH9.State -eq "HELLO") { "You sign in with Windows Hello -- GOOD" } else { "Not confirmed -- Checkup will ask you" }
+                try { Write-Log -Message "Item 9 (Windows Hello): $($ggH9.State) -- $($ggH9.Why)" -Status "INFO" } catch {}
             }
             10 {
                 try { $rd = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server" -EA Stop).fDenyTSConnections; $s.Status = if ($rd -eq 1) { "DISABLED -- GOOD" } else { "Enabled -- consider disabling" } }
@@ -6425,7 +6479,7 @@ function Apply-Setting {
     # CanAuto=false setting, before the switch below could ever run -- so
     # settings 3 (Tamper Protection) and 9 (Windows Hello), which write
     # nothing but DO build specific, correct manual instructions in their
-    # own switch case (Malwarebytes/trial-aware for 3, an NGC check for 9),
+    # own switch case (Malwarebytes/trial-aware for 3, a sign-in check for 9),
     # never reached them. Measured: neither case calls Set-ItemProperty,
     # Set-Service, New-Item, or Remove-Item -- both only read state and
     # return a message string -- so it is safe to let these two through.
@@ -6547,11 +6601,12 @@ function Apply-Setting {
             $result = "BitLocker is handled via the dedicated BitLocker screen at the end of this run."
         }
         9 {
-            $ngc = Test-Path "$env:LOCALAPPDATA\Microsoft\NGC"
-            if ($ngc) {
-                $result = "Windows Hello is already configured -- GOOD, no action needed"
+            # FT-286 (ascii45): Windows gives no reliable "PIN is set up" read, so
+            # when the sign-in record cannot confirm it, ASK the person.
+            if ((Get-GGHelloSignIn).State -eq "HELLO") {
+                $result = "You sign in with Windows Hello -- GOOD, no action needed"
             } else {
-                $result = "NOT CONFIGURED -- Manual setup: Settings -> Accounts -> Sign-in options -> set up PIN or fingerprint/face. A PIN is the minimum. See Guide: Phase 1, Step 4"
+                $result = "MANUAL CHECK -- Checkup cannot confirm this one. Do you sign in to Windows with a short PIN, your face or your fingerprint? If yes, you are set. If you type your full password, set up a PIN: Settings -> Accounts -> Sign-in options -> PIN (Windows Hello). See Guide: Phase 1, Step 4"
             }
         }
         10 {
