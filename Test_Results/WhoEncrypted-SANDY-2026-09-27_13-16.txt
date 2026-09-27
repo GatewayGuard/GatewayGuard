@@ -1,0 +1,110 @@
+﻿WHO ENCRYPTED THIS DRIVE -- SANDY -- 2026-09-27 13:16 -- events since 2026-09-19
+
+== 1. Windows' encryption log (Microsoft-Windows-BitLocker/BitLocker Management), oldest first, at most 300
+  2026-09-20 18:22:25 id=796   BitLocker Drive Encryption is using software-based encryption to protect volume C:.
+  2026-09-20 18:22:26 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-20 18:22:26 id=4147  Device Encryption initialized by user for volume C:.
+  2026-09-20 18:22:27 id=775   A BitLocker key protector was created.
+  2026-09-20 18:22:27 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-20 18:22:27 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-20 18:22:27 id=898   Failed to backup BitLocker Drive Encryption recovery information for volume C: to your Microsoft account.
+  2026-09-20 18:22:27 id=796   BitLocker Drive Encryption is using software-based encryption to protect volume D:.
+  2026-09-20 18:22:28 id=780   The identification field was changed. 
+  2026-09-20 18:22:28 id=900   BitLocker successfully committed metadata changes for volume D:.
+  2026-09-20 18:22:29 id=768   BitLocker encryption was started for volume D: using XTS-AES 128 algorithm.
+  2026-09-20 18:22:29 id=900   BitLocker successfully committed metadata changes for volume D:.
+  2026-09-20 18:22:29 id=4147  Device Encryption initialized by user for volume D:.
+  2026-09-20 18:22:29 id=780   The identification field was changed. 
+  2026-09-20 18:22:29 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-20 18:22:29 id=768   BitLocker encryption was started for volume C: using XTS-AES 128 algorithm.
+  2026-09-20 18:22:30 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-20 18:22:30 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-20 18:22:30 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-20 18:22:30 id=898   Failed to backup BitLocker Drive Encryption recovery information for volume C: to your Microsoft account.
+  2026-09-20 18:22:30 id=4103  Failed to automatically enable Device Encryption.
+  2026-09-20 18:22:30 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-20 18:22:30 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-20 18:22:30 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-20 18:22:30 id=898   Failed to backup BitLocker Drive Encryption recovery information for volume C: to your Microsoft account.
+  2026-09-20 18:22:30 id=4103  Failed to automatically enable Device Encryption.
+  2026-09-20 18:22:35 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-20 18:22:35 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-20 18:22:35 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-20 18:22:35 id=898   Failed to backup BitLocker Drive Encryption recovery information for volume C: to your Microsoft account.
+  2026-09-20 18:22:35 id=4103  Failed to automatically enable Device Encryption.
+  2026-09-22 20:37:42 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-22 20:37:43 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-22 20:37:43 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-22 20:37:43 id=898   Failed to backup BitLocker Drive Encryption recovery information for volume C: to your Microsoft account.
+  2026-09-22 20:37:43 id=4103  Failed to automatically enable Device Encryption.
+  2026-09-24 09:35:14 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-24 09:35:15 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-24 09:35:15 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-24 09:35:16 id=898   Failed to backup BitLocker Drive Encryption recovery information for volume C: to your Microsoft account.
+  2026-09-24 09:35:16 id=4103  Failed to automatically enable Device Encryption.
+  2026-09-25 16:28:52 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-25 16:28:53 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-25 16:28:54 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-25 16:28:54 id=898   Failed to backup BitLocker Drive Encryption recovery information for volume C: to your Microsoft account.
+  2026-09-25 16:28:54 id=4103  Failed to automatically enable Device Encryption.
+  2026-09-25 19:20:58 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-25 19:20:58 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-25 19:20:58 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-25 19:20:58 id=898   Failed to backup BitLocker Drive Encryption recovery information for volume C: to your Microsoft account.
+  2026-09-25 19:20:58 id=4103  Failed to automatically enable Device Encryption.
+  2026-09-25 19:28:49 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-25 19:28:49 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-25 19:28:49 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-25 19:28:49 id=898   Failed to backup BitLocker Drive Encryption recovery information for volume C: to your Microsoft account.
+  2026-09-25 19:28:49 id=4103  Failed to automatically enable Device Encryption.
+  2026-09-25 19:30:29 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-25 19:30:29 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-25 19:30:29 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-25 19:30:29 id=898   Failed to backup BitLocker Drive Encryption recovery information for volume C: to your Microsoft account.
+  2026-09-25 19:30:29 id=4103  Failed to automatically enable Device Encryption.
+  2026-09-26 11:00:10 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-26 11:00:11 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-26 11:00:11 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-26 11:00:11 id=898   Failed to backup BitLocker Drive Encryption recovery information for volume C: to your Microsoft account.
+  2026-09-26 11:00:11 id=4103  Failed to automatically enable Device Encryption.
+  2026-09-27 12:40:48 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-27 12:40:49 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-27 12:40:49 id=900   BitLocker successfully committed metadata changes for volume C:.
+  2026-09-27 12:40:49 id=898   Failed to backup BitLocker Drive Encryption recovery information for volume C: to your Microsoft account.
+  2026-09-27 12:40:49 id=4103  Failed to automatically enable Device Encryption.
+
+== 2. Restarts since then (System log, event 6005 = Windows started), at most 50
+  2026-09-19 12:26:57  Windows started
+  2026-09-22 21:34:25  Windows started
+  2026-09-22 21:36:15  Windows started
+  2026-09-24 09:33:11  Windows started
+
+== 3. Updates installed since then (Windows Update history, at most 40) -- TIMES ARE UTC: subtract 4 hours for Eastern
+  2026-09-27 16:51  result=2  Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.459.432.0) - Current Channel (Broad)
+  2026-09-27 16:41  result=2  9NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+  2026-09-27 16:41  result=2  9NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+  2026-09-26 15:15  result=2  Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.459.413.0) - Current Channel (Broad)
+  2026-09-25 20:34  result=2  Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.459.403.0) - Current Channel (Broad)
+  2026-09-25 20:32  result=2  9NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+  2026-09-25 20:32  result=2  9NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+  2026-09-24 13:43  result=2  Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.459.374.0) - Current Channel (Broad)
+  2026-09-23 01:20  result=2  2026-09 Preview Update (KB5124010) (26200.9550)
+  2026-09-23 00:47  result=2  Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.459.343.0) - Current Channel (Broad)
+  2026-09-23 00:39  result=2  9NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+  2026-09-23 00:39  result=2  9NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+  2026-09-20 20:09  result=2  9NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+  2026-09-20 20:09  result=2  9NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+  2026-09-20 20:08  result=2  Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.459.308.0) - Current Channel (Broad)
+  2026-09-19 15:42  result=2  Update for Microsoft Defender Antivirus antimalware platform - KB4052623 (Version 4.18.26080.4) - Current Channel (Broad)
+  2026-09-19 15:41  result=2  9NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+  2026-09-19 15:41  result=2  9NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+  2026-09-19 15:41  result=2  9NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+  2026-09-19 15:40  result=2  9NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+  2026-09-19 15:40  result=2  9NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+  2026-09-19 15:40  result=2  9NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+  2026-09-19 15:34  result=2  9NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+  2026-09-19 15:34  result=2  9NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+
+== 4. Encryption state now
+  VolumeStatus=FullyEncrypted  ProtectionStatus=Off  EncryptionPercentage=100
+  Key protectors: RecoveryPassword
