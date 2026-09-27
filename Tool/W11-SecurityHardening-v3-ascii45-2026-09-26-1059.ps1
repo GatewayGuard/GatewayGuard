@@ -81,6 +81,10 @@
 #           says so. Signalled by $script:GGStepBack, never a return value.
 #   C4:     L = look at the previous screen (the old B picture replay).
 #   C5 / FT-273: back to screen 22 redraws it in full, with B to 21.
+#   C6 / C8 (FT-259): F FIXES THE SCREEN. Draw-Box keeps the box's text;
+#           F clears, re-measures width and height, redraws it (in parts
+#           if taller than the window). Intro and checklist redraw
+#           themselves.
 #
 # CHANGES FROM ascii43 (2026-09-06 -- ASCII44):
 #   FT-242: NINE REGISTRY WRITES COULD NOT FAIL. Without -EA Stop a
@@ -2119,6 +2123,8 @@ $script:GGScreenSeen = @{}
 
 function Get-ScreenNumber {
     param([string]$ScreenId)
+    # C8 (ascii45): a new screen starts; Draw-Box stores its text after this.
+    $script:GGLastBox = $null
     if (-not $ScreenId) { return "" }
     if (-not $script:GGScreenSeen.ContainsKey($ScreenId)) {
         $script:GGScreenNo++
@@ -2645,6 +2651,56 @@ function Write-GalleryBox {
     Write-GGBox -Lines $Lines -Color $Color -TextColor $TextColor -Number ""
 }
 
+function Wait-GGEnterOrSpace {
+    # C6 (ascii45): waits for Enter or Space only. Ctrl+C is taken as a key
+    # here and ignored; the flag is re-asserted before every read (FT-46).
+    try {
+        do {
+            try { [Console]::TreatControlCAsInput = $true } catch {}
+            $ggK = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+        } while ($ggK.VirtualKeyCode -notin @(13, 32))
+    } catch { $null = Read-Host }
+}
+
+function Invoke-GGFixScreen {
+    # C6 / FT-259 (ascii45). Bill 2026-09-07: "one key that resets the screen".
+    # Clears the window, measures it again (width AND height), and redraws the
+    # current screen's box from its stored TEXT (C8) -- so it works after a
+    # resize, where the look-back picture cannot. A box taller than the window
+    # is shown in parts. Returns $true when it redrew, $false when this screen
+    # has no stored box.
+    try { Write-Log -Message ("F (fix the screen) at: " + (Get-PSCallStack)[1].Command) -Status "KEY" } catch {}
+    $ggB = $script:GGLastBox
+    if ($null -eq $ggB) {
+        Write-Host ""
+        Write-Host "  This screen cannot be redrawn. Everything on it is in your log file." -ForegroundColor Yellow
+        return $false
+    }
+    Clear-Host
+    $ggH = 30
+    try { if ([Console]::WindowHeight -gt 0) { $ggH = [Console]::WindowHeight } } catch {}
+    $ggRoom = $ggH - 6          # borders, the part line and the prompt
+    if ($ggRoom -lt 8) { $ggRoom = 8 }
+    $ggAll = @($ggB.Lines)
+    if ($ggAll.Count -le $ggRoom) {
+        $null = Write-GGBox -Lines $ggAll -Color $ggB.Color -TextColor $ggB.TextColor -Number $ggB.Number
+    } else {
+        $ggParts = [int][math]::Ceiling($ggAll.Count / $ggRoom)
+        for ($ggP = 0; $ggP -lt $ggParts; $ggP++) {
+            $ggSlice = @($ggAll | Select-Object -Skip ($ggP * $ggRoom) -First $ggRoom)
+            $ggNum = if ($ggB.Number) { "$($ggB.Number), part $($ggP + 1) of $ggParts" } else { "" }
+            $null = Write-GGBox -Lines $ggSlice -Color $ggB.Color -TextColor $ggB.TextColor -Number $ggNum
+            if ($ggP -lt $ggParts - 1) {
+                Write-Host "  This screen is taller than your window. Press Enter or Space for the rest..." -ForegroundColor White
+                Wait-GGEnterOrSpace
+                Clear-Host
+            }
+        }
+    }
+    Write-Host "  (Screen redrawn to fit your window.)" -ForegroundColor DarkGray
+    return $true
+}
+
 function Draw-Box {
     param(
         [string[]]$Lines,
@@ -2658,6 +2714,7 @@ function Draw-Box {
     $ggNum = ""
     if ($ScreenId) { $ggNum = Get-ScreenNumber -ScreenId $ScreenId }
     Write-GGBox -Lines $Lines -Color $Color -TextColor $TextColor -Number $ggNum
+    $script:GGLastBox = @{ Lines = $Lines; Color = $Color; TextColor = $TextColor; Number = $ggNum }   # C8
     # FT-49 instrumentation (ascii28): every rendered box logs its title so
     # an unexpected exit shows exactly which screen was on-screen last.
     # FT-122 (ascii37): the [SCREEN-NN] prefix now comes from THIS one place
@@ -2723,7 +2780,10 @@ function Pause-ForUser {
         [switch]$NoBack,
         # C3 (ascii45): B returns to the caller with $script:GGStepBack set.
         [switch]$AllowStepBack,
-        [string]$BackTo = "the previous step"
+        [string]$BackTo = "the previous step",
+        # C6 (ascii45): F returns with $script:GGRedraw set, for callers that
+        # draw the screen themselves (the intro screens).
+        [switch]$AllowRedraw
     )
     # FT-134 (ascii38): 27 of the 54 call sites in ascii37 passed NO message and
     # fell back to a bare "Press Enter or Space to continue..." -- half the
@@ -2758,6 +2818,7 @@ function Pause-ForUser {
     }
 
     if ($AllowStepBack) { $script:GGStepBack = $false }
+    if ($AllowRedraw) { $script:GGRedraw = $false }
     $ggNoBackShown = $false
     Write-Host ""
     Write-Host $Message -ForegroundColor White
@@ -2803,6 +2864,20 @@ function Pause-ForUser {
                 }
                 Write-Host ""
                 Write-Host $Message -ForegroundColor White
+                continue
+            }
+            # C6 (ascii45): F fixes the screen.
+            if ($ggCh -eq "F") {
+                if ($AllowRedraw) {
+                    $script:GGRedraw = $true
+                    try { Write-Log -Message ("F (redraw) at: " + (Get-PSCallStack)[1].Command) -Status "KEY" } catch {}
+                    Clear-PendingKeys
+                    return
+                }
+                $null = Invoke-GGFixScreen
+                Write-Host ""
+                Write-Host $Message -ForegroundColor White
+                if ($AllowStepBack) { Write-Host "  Or press B to go back to $BackTo." -ForegroundColor DarkCyan }
                 continue
             }
             # C3 (ascii45): B means BACK ONE STEP, and only that.
@@ -2940,14 +3015,20 @@ function Read-ValidKey {
             # none. Telling the user which keys work is the fix; inventing a
             # Back on "are you sure you want to close Checkup" is not.
             if ($ch -notin $ValidKeys) {
-                if ($ch -ne "I") { Write-GGIgnoredKey -Key $k -Where ((Get-PSCallStack)[1].Command) }
+                if ($ch -ne "I" -and $ch -ne "F") { Write-GGIgnoredKey -Key $k -Where ((Get-PSCallStack)[1].Command) }
+                if ($ch -eq "F") {
+                    $null = Invoke-GGFixScreen   # C6 (ascii45)
+                    Write-Host ""
+                    if ($Prompt) { Write-Host "  $Prompt" -ForegroundColor White -NoNewline }
+                    continue
+                }
                 if ($ch -eq "I") {
                     Show-CheckupInfo
                     if ($Prompt) { Write-Host "  $Prompt" -ForegroundColor White -NoNewline }
                 } elseif ($k.Character -match '\S') {
                     Write-Host ""
                     Write-Host ("  That key does nothing here. Please press " + ($ValidKeys -join " or ") + ".") -ForegroundColor Yellow
-                    Write-Host "  Press I at any time to see your build and Machine ID." -ForegroundColor DarkGray
+                    Write-Host "  Press I at any time to see your build and Machine ID, or F to fix the screen." -ForegroundColor DarkGray
                     Write-Host "  To leave Checkup at any time, press Ctrl+C." -ForegroundColor DarkGray
                     if ($Prompt) { Write-Host "  $Prompt" -ForegroundColor White -NoNewline }
                 }
@@ -2989,7 +3070,10 @@ function Read-ValidKey {
 # -- READ-NAVKEY (FT-18, 2026-07-11): forward/back navigation --
 # Returns "NEXT" for Enter/Space, "BACK" for B. All other keys ignored.
 function Read-NavKey {
-    param([string]$Prompt = "  Press Enter or Space to continue, or B to go back one screen: ")
+    param(
+        [string]$Prompt = "  Press Enter or Space to continue, or B to go back one screen: ",
+        [switch]$AllowRedraw   # C6 (ascii45): F returns "REDRAW" to a caller that draws its own screen
+    )
     if ($Prompt) { Write-Host $Prompt -ForegroundColor White }
     try {
         # FT-29 (2026-07-12): buffer flush removed -- was eating first keypress
@@ -3001,6 +3085,16 @@ function Read-NavKey {
             $ch = $k.Character.ToString().ToUpper()
             # FT-69 (ascii29): Ctrl+C opens the exit confirmation
             if ($k.Character -eq [char]3) { Invoke-CtrlCExit }
+            if ($ch -eq "F") {
+                if ($AllowRedraw) {
+                    try { Write-Log -Message ("F (redraw) at: " + (Get-PSCallStack)[1].Command) -Status "KEY" } catch {}
+                    Clear-PendingKeys
+                    return "REDRAW"
+                }
+                $null = Invoke-GGFixScreen   # C6 (ascii45)
+                if ($Prompt) { Write-Host $Prompt -ForegroundColor White }
+                continue
+            }
             if (($vk -notin @(13, 32)) -and ($ch -ne "B")) { Write-GGIgnoredKey -Key $k -Where ((Get-PSCallStack)[1].Command) }
         } while (($vk -notin @(13, 32)) -and ($ch -ne "B"))
         $result = "NEXT"
@@ -3585,11 +3679,11 @@ function Show-FontInstructions {
                 "     a choice (Y/N/B etc) press that letter key only --        ",
                 "     no need to press Enter afterwards.                        ",
                 "                                                               ",
-                "  5. GOING BACK: Press B to go back one step and change your   ",
-                "     answer. Press L to LOOK at the previous screen again --   ",
-                "     nothing is changed. Once Checkup has changed a setting,   ",
-                "     that step cannot be reopened, and the screen says so.     ",
-                "     Everything is also saved in your log file.                ",
+                "  5. B, L AND F: B goes back one step to change an answer.     ",
+                "     L looks at the previous screen again (nothing changes).   ",
+                "     F fixes the screen if it looks cut off or jumbled. Once   ",
+                "     Checkup has changed a setting, that step cannot be        ",
+                "     reopened, and the screen says so.                         ",
                 "                                                               ",
                 "  6. COPYING: You never need to copy anything off these        ",
                 "     screens -- everything is saved automatically to your      ",
@@ -3638,10 +3732,12 @@ function Show-FontInstructions {
         & $introScreens[$screenIdx]
         Write-Host ""
         if ($screenIdx -eq 0) {
-            Pause-ForUser "  Press Enter or Space to continue..."
+            Pause-ForUser "  Press Enter or Space to continue..." -AllowRedraw
+            if ($script:GGRedraw) { continue }   # C6: F redraws at the new size
             $screenIdx++
         } else {
-            $nav = Read-NavKey
+            $nav = Read-NavKey -AllowRedraw
+            if ($nav -eq "REDRAW") { continue }   # C6: F redraws at the new size
             if ($nav -eq "BACK") { $screenIdx-- } else { $screenIdx++ }
         }
     }
@@ -8548,7 +8644,7 @@ function Run-ConsoleMode {
         Write-Host "    R = Run selected items     [number] = toggle item on/off" -ForegroundColor Yellow
         Write-Host "    A = Select all             C = Clear all       Q = Quit" -ForegroundColor Yellow
         Write-Host "    P = show the other page of the list    B = go back one page" -ForegroundColor Yellow
-        Write-Host "    I = show build and Machine ID" -ForegroundColor Yellow
+        Write-Host "    I = show build and Machine ID    F = fix the screen" -ForegroundColor Yellow
         Write-Host "    Item numbers: 1-9 then Enter; 10-19 apply on the second digit." -ForegroundColor DarkGray
         Write-Host ""
 
@@ -8604,6 +8700,10 @@ function Run-ConsoleMode {
         # FT-69 (ascii29): Ctrl+C opens the exit confirmation
         if ($firstKey -and $firstKey.Character -eq [char]3) { Invoke-CtrlCExit; continue checklistLoop }
 
+        if ($firstCh -eq "F") {
+            try { Write-Log -Message "F (fix the screen) at: checklist" -Status "KEY" } catch {}
+            continue checklistLoop   # C6 (ascii45): the checklist redraws at the new size
+        }
         if ($firstCh -in @("R","A","C","Q","P","B")) {
             $userInput = $firstCh
             Write-Host $userInput -ForegroundColor Cyan
