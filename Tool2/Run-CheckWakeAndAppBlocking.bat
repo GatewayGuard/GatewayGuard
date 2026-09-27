@@ -21,3 +21,6 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0Check-WakeAndAppBl
 echo.
 echo   Done. Press Enter to close.
 set /p "GGCLOSE="
+REM 2026-09-27: set /p leaves errorlevel 1 after an empty Enter, and Windows Terminal
+REM keeps a window open on a non-zero exit -- so end cleanly.
+exit /b 0

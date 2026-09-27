@@ -9,3 +9,6 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "Get-BitLockerRecoveryKey-20
 echo.
 set /p "=Press Enter to close this window." <nul
 set /p "dummy="
+REM 2026-09-27: set /p leaves errorlevel 1 after an empty Enter, and Windows Terminal
+REM keeps a window open on a non-zero exit -- so end cleanly.
+exit /b 0

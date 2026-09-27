@@ -37,3 +37,6 @@ wt.exe -w new -F new-tab -d "%GGDIR%" --title "GatewayGuard Ctrl+C test" --suppr
 echo   When the full-screen window has closed, the results are in Test_Results.
 echo   Press Enter to close this window.
 set /p "GGCLOSE="
+REM 2026-09-27: set /p leaves errorlevel 1 after an empty Enter, and Windows Terminal
+REM keeps a window open on a non-zero exit -- so end cleanly.
+exit /b 0

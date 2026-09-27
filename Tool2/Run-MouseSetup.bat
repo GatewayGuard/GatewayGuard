@@ -37,3 +37,6 @@ goto finish
 echo.
 echo   Press Enter to close this window.
 set /p "GGCLOSE="
+REM 2026-09-27: set /p leaves errorlevel 1 after an empty Enter, and Windows Terminal
+REM keeps a window open on a non-zero exit -- so end cleanly.
+exit /b 0

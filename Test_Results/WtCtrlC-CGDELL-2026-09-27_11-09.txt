@@ -1,0 +1,2 @@
+﻿[11:09:01] Ctrl+C guard test -- CGDELL -- Windows Terminal: True
+[11:09:09] ENDED EARLY -- the program was stopped before the test finished (Ctrl+C was NOT caught)
