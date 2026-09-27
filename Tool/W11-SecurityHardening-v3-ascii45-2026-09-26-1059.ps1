@@ -74,6 +74,8 @@
 #           otherwise the person is asked. Never a guessed GOOD.
 #           Face and fingerprint sign-ins count too (their own provider IDs,
 #           sourced Microsoft Learn 2026-09-27).
+#           The question now says what to LOOK at (Win+L shows "Enter PIN" --
+#           measured by Bill on CGDELL 2026-09-27).
 #   FT-287: PASSWORD ON WAKE ON BATTERY. REQUIRED now needs the DC
 #           (battery) value as well as AC, when Windows reports one.
 #   C2 / FT-271: IGNORED KEYS ARE LOGGED. All three key readers logged
@@ -7226,7 +7228,7 @@ function Apply-Setting {
             if ((Get-GGHelloSignIn).State -eq "HELLO") {
                 $result = "You sign in with Windows Hello -- GOOD, no action needed"
             } else {
-                $result = "MANUAL CHECK -- Checkup cannot confirm this one. Do you sign in to Windows with a short PIN, your face or your fingerprint? If yes, you are set. If you type your full password, set up a PIN: Settings -> Accounts -> Sign-in options -> PIN (Windows Hello). See Guide: Phase 1, Step 4"
+                $result = "MANUAL CHECK -- Checkup cannot confirm this one, so please look: press the Windows key + L to lock the screen. If it says Enter PIN, or signs you in by your face or fingerprint, you are set -- sign back in as usual. If it asks for your password, sign back in, then set up a PIN: Settings -> Accounts -> Sign-in options -> PIN (Windows Hello). See Guide: Phase 1, Step 4"
             }
         }
         10 {
