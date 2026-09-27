@@ -108,6 +108,9 @@
 #   C7 / FT-270: CTRL+C ASKS FIRST IN WINDOWS TERMINAL. The old guard
 #           (TreatControlCAsInput) does not work there -- measured 2026-09-27;
 #           a Ctrl+C signal handler does. Every answer is read via Read-GGKey.
+#           C7b: every ReadKey passes AllowCtrlC -- without it PowerShell's
+#           own key reader stopped Checkup even after the handler caught the
+#           Ctrl+C (measured, tests A-D, 2026-09-27).
 #   FT-282: ITEM 12 (DIAGNOSTIC DATA) READ ONLY THE GROUP POLICY VALUE, which
 #           is empty on home PCs, and said "Sending extra data" when optional
 #           data was off. Now reads the Settings value too (measured on SANDY
@@ -2575,7 +2578,7 @@ function Show-ScreenGallery {
         $ggGalBad = 0
         while ($ggNav -eq "") {
             try { [Console]::TreatControlCAsInput = $true } catch {}
-            $ggK = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+            $ggK = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown,AllowCtrlC")
             $ggVK = $ggK.VirtualKeyCode
             # Enter, Space, right arrow, down arrow, PageDown
             if ($ggVK -in @(13, 32, 39, 40, 34)) { $ggNav = "NEXT"; break }
@@ -2652,7 +2655,7 @@ function Show-ScreenGallery {
                 $ggJump = ""
                 while ($true) {
                     try { [Console]::TreatControlCAsInput = $true } catch {}
-                    $ggK2 = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+                    $ggK2 = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown,AllowCtrlC")
                     if ($ggK2.VirtualKeyCode -eq 13) { break }
                     if ($ggK2.VirtualKeyCode -eq 8) {
                         if ($ggJump.Length -gt 0) { $ggJump = $ggJump.Substring(0, $ggJump.Length - 1); Write-Host "`b `b" -NoNewline }
@@ -3399,7 +3402,7 @@ function Clear-PendingKeys {
         $ggDrained = 0
         $ggSw = [System.Diagnostics.Stopwatch]::StartNew()
         while ($Host.UI.RawUI.KeyAvailable -and $ggDrained -lt 256 -and $ggSw.ElapsedMilliseconds -lt 200) {
-            $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+            $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown,AllowCtrlC")
             $ggDrained++
         }
         $ggSw.Stop()
@@ -3607,7 +3610,7 @@ public static class GGCtrlC {
 }
 
 function Read-GGKey {
-    # C7 (ascii45): wait for a key the way ReadKey("NoEcho,IncludeKeyDown") did,
+    # C7 (ascii45): wait for a key the way ReadKey("NoEcho,IncludeKeyDown,AllowCtrlC") did,
     # but watch the Ctrl+C guard while waiting. A caught Ctrl+C comes back as
     # the key the callers already handle: Character 3.
     while ($true) {
@@ -3620,7 +3623,7 @@ function Read-GGKey {
         }
         $ggAvail = $true
         try { $ggAvail = $Host.UI.RawUI.KeyAvailable } catch { $ggAvail = $true }
-        if ($ggAvail) { return $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") }
+        if ($ggAvail) { return $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown,AllowCtrlC") }
         Start-Sleep -Milliseconds 50
     }
 }
@@ -7217,7 +7220,7 @@ function Test-NonRecommendedSelections {
         $resp = Read-ValidKey -ValidKeys @("Y","B","S") -Prompt "Your choice (Y = Continue / B = Go back / S = Show me each item): "
         if ($resp.ToUpper() -eq "S") {
             # Drain buffered auto-repeats of the accepted key (FT-65)
-            try { while ($Host.UI.RawUI.KeyAvailable) { $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") } } catch {}
+            try { while ($Host.UI.RawUI.KeyAvailable) { $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown,AllowCtrlC") } } catch {}
             Clear-Host
             Write-Host ""
             Draw-Box -ScreenId "57" -Color White -Lines @(
@@ -8485,7 +8488,7 @@ function Show-BitLockerDeclineHeadsUp {
         $bd = Read-ValidKey -ValidKeys @("Y","B","S") -Prompt "Your choice (Y = Continue / B = Go back / S = Show me): "
         if ($bd.ToUpper() -eq "S") {
             # Drain buffered auto-repeats of the accepted key (FT-65)
-            try { while ($Host.UI.RawUI.KeyAvailable) { $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") } } catch {}
+            try { while ($Host.UI.RawUI.KeyAvailable) { $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown,AllowCtrlC") } } catch {}
             Show-BitLockerWhyEncrypt
         }
     } while ($bd.ToUpper() -eq "S")
@@ -10132,7 +10135,7 @@ function Select-Mode {
     Write-Host "  $LogPath" -ForegroundColor Yellow
     Write-Host ""
     Write-Host "  Press Enter or Space to close this window..." -ForegroundColor White
-    try { do { $ggErrKey = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") } while ($ggErrKey.VirtualKeyCode -notin @(13, 32)) } catch { $null = Read-Host }
+    try { do { $ggErrKey = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown,AllowCtrlC") } while ($ggErrKey.VirtualKeyCode -notin @(13, 32)) } catch { $null = Read-Host }
 }
 # ============================================================
 # PRE-BUILD AUDIT: Verify all 14 required functions are present

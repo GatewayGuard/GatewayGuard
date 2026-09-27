@@ -1,0 +1,5 @@
+[15:06:57] [START] Ctrl+C reproduction, mode NoTreatNoFT150, Windows Terminal: True, build: W11-SecurityHardening-v3-ascii45-2026-09-26-1059.ps1
+[15:06:58] [INFO] FT-150 console handler NOT registered (this mode)
+[15:06:58] [OK] Ctrl+C guard armed (C7): a Ctrl+C asks first, in Windows Terminal too
+[15:07:01] [KEY] step 1: key code 67, char 3  <-- Ctrl+C CAUGHT (Checkup would ask first)
+[15:07:01] [EXIT] ENDED EARLY -- the program was stopped before the test finished
