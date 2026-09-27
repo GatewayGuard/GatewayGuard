@@ -1,0 +1,7 @@
+﻿Windows Terminal copy/selection test -- CGDELL -- started 2026-09-27 10:49:23
+Host: WT_SESSION present = True  (True means it really ran inside Windows Terminal)
+Ticks written: 109   (one every 0.5 s when nothing pauses the program)
+Ended: STOPPED EARLY -- by Ctrl+C or the window closing at 10:50:18
+Longest gap between ticks: 0.53 s (starting 10:49:39). Normal is about 0.5 s; a gap of several seconds while text was highlighted means selecting PAUSES the program.
+Clipboard now holds tick lines: False  (True means step 2's Ctrl+C COPIED the highlighted text)
+Clipboard starts: highlighted. Keep them highlighted for about 5 seconds.
