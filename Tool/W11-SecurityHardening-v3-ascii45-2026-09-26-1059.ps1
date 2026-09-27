@@ -112,6 +112,10 @@
 #           is empty on home PCs, and said "Sending extra data" when optional
 #           data was off. Now reads the Settings value too (measured on SANDY
 #           and CGDELL 2026-09-27).
+#   C9:     FULL-SCREEN WINDOWS TERMINAL. The launcher opens Checkup full
+#           screen; screens 1, 2, 3, 5, 6 and 8, screen 12's scroll hint and
+#           the copy tips say what is true there ($script:GGInWT). The
+#           classic console keeps its old text.
 #
 # CHANGES FROM ascii43 (2026-09-06 -- ASCII44):
 #   FT-242: NINE REGISTRY WRITES COULD NOT FAIL. Without -EA Stop a
@@ -3680,22 +3684,36 @@ function Show-FontInstructions {
             # They now carry IDs and read the same table as everything else.
             Write-Host ("  Welcome to GatewayGuard Checkup.  (Screen " + (Get-ScreenNumber -ScreenId "85") + ")") -ForegroundColor Cyan
             Write-Host ""
-            Write-Host "  For the best experience, please maximize this window now" -ForegroundColor White
-            Write-Host "  by clicking the square button in the upper right corner" -ForegroundColor White
-            Write-Host "  of this window, or hold the Windows key and press the" -ForegroundColor White
-            Write-Host "  Up arrow." -ForegroundColor White
+            if ($script:GGInWT) {   # C9
+                Write-Host "  Checkup fills the whole screen. There is no X to click in the" -ForegroundColor White
+                Write-Host "  corner. To leave at any time, press X at a question -- Checkup" -ForegroundColor White
+                Write-Host "  asks you first -- or press Alt+F4." -ForegroundColor White
+                Write-Host "  To see your other windows, press Alt+Enter; press it again to" -ForegroundColor White
+                Write-Host "  come back to full screen." -ForegroundColor White
+            } else {
+                Write-Host "  For the best experience, please maximize this window now" -ForegroundColor White
+                Write-Host "  by clicking the square button in the upper right corner" -ForegroundColor White
+                Write-Host "  of this window, or hold the Windows key and press the" -ForegroundColor White
+                Write-Host "  Up arrow." -ForegroundColor White
+            }
         },
         {   # Screen 2 of 5: Scroll instruction (FT-05/06 final wording)
             Write-Host ("  SCROLLING  (Screen " + (Get-ScreenNumber -ScreenId "86") + ")") -ForegroundColor Cyan
             Write-Host ""
-            Write-Host "  Now scroll to the TOP and BOTTOM of this window AND" -ForegroundColor White
-            Write-Host "  FOLLOWING WINDOWS -- use your mouse wheel, or click the" -ForegroundColor White
-            Write-Host "  little arrows on the right side of the window -- so you" -ForegroundColor White
-            Write-Host "  don't miss anything." -ForegroundColor White
+            if ($script:GGInWT) {   # C9
+                Write-Host "  On every screen, scroll to the TOP and BOTTOM with your mouse" -ForegroundColor White
+                Write-Host "  wheel so you don't miss anything. Or hold Ctrl and Shift and" -ForegroundColor White
+                Write-Host "  press Page Up or Page Down to move a whole page at a time." -ForegroundColor White
+            } else {
+                Write-Host "  Now scroll to the TOP and BOTTOM of this window AND" -ForegroundColor White
+                Write-Host "  FOLLOWING WINDOWS -- use your mouse wheel, or click the" -ForegroundColor White
+                Write-Host "  little arrows on the right side of the window -- so you" -ForegroundColor White
+                Write-Host "  don't miss anything." -ForegroundColor White
+            }
         },
         {   # Screen 3 of 5: Font setup (FT-04: now AFTER the welcome screens)
             Write-Host "  +==============================================================+" -ForegroundColor Yellow
-            Write-Host "  |  SET YOUR CONSOLE FONT (takes 30 seconds)                    |" -ForegroundColor Yellow
+            Write-Host $(if ($script:GGInWT) { "  |  MAKE THE TEXT EASY TO READ (takes 30 seconds)               |" } else { "  |  SET YOUR CONSOLE FONT (takes 30 seconds)                    |" }) -ForegroundColor Yellow   # C9
             Write-Host "  +==============================================================+" -ForegroundColor Yellow
             Write-Host ("  (Screen " + (Get-ScreenNumber -ScreenId "87") + ")") -ForegroundColor DarkGray
             Write-Host ""
@@ -3703,18 +3721,29 @@ function Show-FontInstructions {
             Write-Host "  Version: GatewayGuard Checkup v$ScriptVersion  Build: $BuildID" -ForegroundColor DarkCyan
             Write-Host ("  This PC: " + $global:MachineMake + " " + $global:MachineModel + "  |  Machine ID: " + $global:MachineID) -ForegroundColor DarkCyan
             Write-Host ""
-            Write-Host "  Checkup uses box-drawing characters. For best display:" -ForegroundColor White
-            Write-Host ""
-            Write-Host "  1. Right-click the title bar of this window" -ForegroundColor Cyan
-            Write-Host "  2. Click Properties (or Defaults)" -ForegroundColor Cyan
-            Write-Host "  3. Click the Font tab" -ForegroundColor Cyan
-            Write-Host "  4. Set Font to: Consolas  or  Lucida Console" -ForegroundColor Cyan
-            Write-Host "  5. Set Size to: 14  (or larger if text is hard to read)" -ForegroundColor Cyan
-            Write-Host "  6. Click OK" -ForegroundColor Cyan
-            Write-Host ""
-            Write-Host "  WHY: Without the right font, boxes may show as question marks" -ForegroundColor Gray
-            Write-Host "  or garbled characters. Checkup works either way -- this just" -ForegroundColor Gray
-            Write-Host "  makes it easier to read." -ForegroundColor Gray
+            if ($script:GGInWT) {   # C9: Windows Terminal's own keys (defaults.json, measured)
+                Write-Host "  Is the text too small or too big? You can change it any time:" -ForegroundColor White
+                Write-Host ""
+                Write-Host "  Bigger:          hold Ctrl and press  +  (plus)" -ForegroundColor Cyan
+                Write-Host "  Smaller:         hold Ctrl and press  -  (minus)" -ForegroundColor Cyan
+                Write-Host "  Back to normal:  hold Ctrl and press  0  (zero)" -ForegroundColor Cyan
+                Write-Host ""
+                Write-Host "  After changing the size, press F -- Checkup redraws the screen" -ForegroundColor Gray
+                Write-Host "  to fit the new size." -ForegroundColor Gray
+            } else {
+                Write-Host "  Checkup uses box-drawing characters. For best display:" -ForegroundColor White
+                Write-Host ""
+                Write-Host "  1. Right-click the title bar of this window" -ForegroundColor Cyan
+                Write-Host "  2. Click Properties (or Defaults)" -ForegroundColor Cyan
+                Write-Host "  3. Click the Font tab" -ForegroundColor Cyan
+                Write-Host "  4. Set Font to: Consolas  or  Lucida Console" -ForegroundColor Cyan
+                Write-Host "  5. Set Size to: 14  (or larger if text is hard to read)" -ForegroundColor Cyan
+                Write-Host "  6. Click OK" -ForegroundColor Cyan
+                Write-Host ""
+                Write-Host "  WHY: Without the right font, boxes may show as question marks" -ForegroundColor Gray
+                Write-Host "  or garbled characters. Checkup works either way -- this just" -ForegroundColor Gray
+                Write-Host "  makes it easier to read." -ForegroundColor Gray
+            }
             Write-Host ""
             Write-Host "  If the boxes below look correct, you are all set:" -ForegroundColor White
             Write-Host ""
@@ -3733,18 +3762,18 @@ function Show-FontInstructions {
             Draw-Box -ScreenId "29" -Color White -Lines @(
         "  BEFORE YOU START -- YOUR WINDOW                                      ",
                 "---",
-                "  1. IF YOU HAVEN'T MAXIMIZED THIS WINDOW YET, DO IT NOW!      ",
-                "     Click the small SQUARE icon at the TOP RIGHT of this      ",
-                "     window (next to the X close button) to go full screen.    ",
-                "     OR press Windows key + Up arrow.                          ",
+                $(if ($script:GGInWT) { "  1. CHECKUP FILLS THE WHOLE SCREEN. There is no X in the     " } else { "  1. IF YOU HAVEN'T MAXIMIZED THIS WINDOW YET, DO IT NOW!      " }),
+                $(if ($script:GGInWT) { "     corner: to leave, press X at a question (Checkup asks    " } else { "     Click the small SQUARE icon at the TOP RIGHT of this      " }),
+                $(if ($script:GGInWT) { "     first), or press Alt+F4. Alt+Enter shows other windows.  " } else { "     window (next to the X close button) to go full screen.    " }),
+                $(if ($script:GGInWT) { "     Text too small? Hold Ctrl and press + to make it bigger. " } else { "     OR press Windows key + Up arrow.                          " }),
                 "                                                               ",
                 "  2. SCROLLING: Some screens are longer than your window.      ",
                 "     To scroll UP or DOWN use your mouse scroll wheel.         ",
-                "     Scroll arrows also appear at the TOP RIGHT and BOTTOM     ",
-                "     RIGHT corners of the window. If the bottom arrow          ",
-                "     disappears, move your mouse to the bottom right corner    ",
-                "     and it will reappear.                                     ",
-                "     PAGE UP / PAGE DOWN keys also scroll quickly.             ",
+                $(if ($script:GGInWT) { "     Or hold Ctrl and Shift and press Page Up or Page Down     " } else { "     Scroll arrows also appear at the TOP RIGHT and BOTTOM     " }),
+                $(if ($script:GGInWT) { "     to move a whole page at a time. (Page Up and Page Down    " } else { "     RIGHT corners of the window. If the bottom arrow          " }),
+                $(if ($script:GGInWT) { "     on their own do not scroll here.)                         " } else { "     disappears, move your mouse to the bottom right corner    " }),
+                $(if ($script:GGInWT) { "     If the screen ever looks cut off after you change the     " } else { "     and it will reappear.                                     " }),
+                $(if ($script:GGInWT) { "     text size, press F to fit it to the window.               " } else { "     PAGE UP / PAGE DOWN keys also scroll quickly.             " }),
                 "                                                               ",
                 "  3. ALWAYS scroll to the TOP and BOTTOM of every screen       ",
                 "     before pressing Enter or Space to continue -- there may   ",
@@ -3770,9 +3799,9 @@ function Show-FontInstructions {
                 "     screens -- everything is saved automatically to your      ",
                 "     log file in your GatewayGuard folder. Press I to see it.  ",
                 "                                                               ",
-                "  7. IF YOU CLICK THE X BY ACCIDENT: Checkup closes, but it    ",
-                "     finishes writing your log first, and nothing is left      ",
-                "     half-changed. Just run it again."
+                $(if ($script:GGInWT) { "  7. IF CHECKUP CLOSES BY ACCIDENT: it finishes writing your   " } else { "  7. IF YOU CLICK THE X BY ACCIDENT: Checkup closes, but it    " }),
+                $(if ($script:GGInWT) { "     log first, and nothing is left half-changed. Just run     " } else { "     finishes writing your log first, and nothing is left      " }),
+                $(if ($script:GGInWT) { "     it again." } else { "     half-changed. Just run it again." })
             )
         },
         {   # Screen 6 of 6: What happens next
@@ -4266,13 +4295,13 @@ function Show-ResumePrompt {
             # FT-08: resuming skips the original maximize/scroll instructions
             # entirely, so the reminder needs to happen here instead.
             Write-Host ""
-            Write-Host "  Tip: press Windows+Up Arrow, or click the maximize box" -ForegroundColor Gray
-            Write-Host "  (top-right corner), to make this window full-screen again." -ForegroundColor Gray
+            if (-not $script:GGInWT) {   # C9: already full screen in Windows Terminal
+                Write-Host "  Tip: press Windows+Up Arrow, or click the maximize box" -ForegroundColor Gray
+                Write-Host "  (top-right corner), to make this window full-screen again." -ForegroundColor Gray
+            }
             Write-Host ""
             # G-02c (ascii32): Mark mode reminder in resume flow
-            Write-Host "  Tip: To copy text from this window -- press Alt+Space, then E, then M --" -ForegroundColor DarkCyan
-            Write-Host "       drag or use Shift+arrows to select -- press Enter to copy." -ForegroundColor DarkCyan
-            Write-Host "       Press Esc to exit without copying." -ForegroundColor DarkCyan
+            Write-GGCopyTip -Color DarkCyan   # C9
             Write-Host ""
             Pause-ForUser
         } else {
@@ -4405,6 +4434,19 @@ function Show-ResumeReverify {
 # ============================================================
 # SCROLL & COPY TIP (FT-41/FT-45/FT-63, ascii28)
 # ============================================================
+function Write-GGCopyTip {
+    # C9 (ascii45): the copy tip for the window Checkup is in. The classic
+    # console text is CLAUDE.md's standard tip, word for word.
+    param([System.ConsoleColor]$Color = "DarkCyan")
+    if ($script:GGInWT) {
+        Write-Host "  Tip: To copy text -- highlight it with the mouse, then press Ctrl+C." -ForegroundColor $Color
+    } else {
+        Write-Host "  Tip: To copy text from this window -- press Alt+Space, then E, then M --" -ForegroundColor $Color
+        Write-Host "       drag or use Shift+arrows to select -- press Enter to copy." -ForegroundColor $Color
+        Write-Host "       Press Esc to exit without copying." -ForegroundColor $Color
+    }
+}
+
 function Show-ScrollCopyTip {
     # QuickEdit is OFF on purpose (FT-01 walk-away fix) -- which also turns
     # off mouse highlighting and right-click copy. Mark mode is the
@@ -4415,21 +4457,21 @@ function Show-ScrollCopyTip {
     Draw-Box -ScreenId "02" -Color White -Lines @(
         "  HOW TO SCROLL BACK (AND COPY) IN THIS WINDOW              ",
         "---",
-        "  Mouse highlighting and right-click copy are turned OFF     ",
-        "  in this window ON PURPOSE -- a stray click used to freeze  ",
-        "  the program mid-run. Here is the safe way instead:         ",
-        "                                                             ",
-        "  TO SCROLL BACK AND RE-READ EARLIER TEXT:                   ",
-        "  1. Press Alt + Spacebar (a small menu opens, top-left)     ",
-        "  2. Press E, then M                                         ",
-        "  3. Up/Down arrows and Page Up/Page Down now scroll         ",
-        "  4. Press Esc when you are done                             ",
-        "                                                             ",
-        "  IMPORTANT: while you are scrolling this way, the program   ",
-        "  PAUSES and waits for you. It is not stuck -- press Esc     ",
-        "  and it carries on exactly where it was. (Ctrl+Arrow        ",
-        "  scrolling does NOT work in this window -- use the steps    ",
-        "  above.)                                                    ",
+        $(if ($script:GGInWT) { "  TO SCROLL BACK AND RE-READ EARLIER TEXT:                   " } else { "  Mouse highlighting and right-click copy are turned OFF     " }),
+        $(if ($script:GGInWT) { "  Use your mouse wheel. Or hold Ctrl and Shift and press     " } else { "  in this window ON PURPOSE -- a stray click used to freeze  " }),
+        $(if ($script:GGInWT) { "  Page Up or Page Down to move a whole page at a time.       " } else { "  the program mid-run. Here is the safe way instead:         " }),
+        $(if ($script:GGInWT) { "                                                             " } else { "                                                             " }),
+        $(if ($script:GGInWT) { "  TO COPY TEXT:                                              " } else { "  TO SCROLL BACK AND RE-READ EARLIER TEXT:                   " }),
+        $(if ($script:GGInWT) { "  1. Hold the left mouse button and drag across the text,    " } else { "  1. Press Alt + Spacebar (a small menu opens, top-left)     " }),
+        $(if ($script:GGInWT) { "     so it is highlighted.                                   " } else { "  2. Press E, then M                                         " }),
+        $(if ($script:GGInWT) { "  2. Press Ctrl+C. The highlight goes away -- that means it  " } else { "  3. Up/Down arrows and Page Up/Page Down now scroll         " }),
+        $(if ($script:GGInWT) { "     was copied. Paste it wherever you like with Ctrl+V.     " } else { "  4. Press Esc when you are done                             " }),
+        $(if ($script:GGInWT) { "                                                             " } else { "                                                             " }),
+        $(if ($script:GGInWT) { "  Highlighting does NOT pause Checkup. Ctrl+C with something " } else { "  IMPORTANT: while you are scrolling this way, the program   " }),
+        $(if ($script:GGInWT) { "  highlighted only copies -- it does not close Checkup.      " } else { "  PAUSES and waits for you. It is not stuck -- press Esc     " }),
+        $(if ($script:GGInWT) { "  Ctrl+C with nothing highlighted asks if you want to close  " } else { "  and it carries on exactly where it was. (Ctrl+Arrow        " }),
+        $(if ($script:GGInWT) { "  Checkup, and waits for your answer.                        " } else { "  scrolling does NOT work in this window -- use the steps    " }),
+        $(if ($script:GGInWT) { "                                                             " } else { "  above.)                                                    " }),
         "                                                             ",
         "  AND RELAX: everything on every screen is also saved into   ",
         "  your log file automatically -- you never NEED to copy      ",
@@ -4701,8 +4743,12 @@ function Show-SystemBaselineSummary {
     # FT-83 (ascii32): three baseline lines were hidden below the fold with a
     # live-but-invisible prompt. Explicit scroll notice added before the prompt.
     Write-Host "  ** If any lines above look cut off, SCROLL UP to see them:" -ForegroundColor Yellow
-    Write-Host "     press Alt+Spacebar, then E, then M, then use the Up/Down" -ForegroundColor Yellow
-    Write-Host "     arrow keys. Press Esc when done -- the tool will continue." -ForegroundColor Yellow
+    if ($script:GGInWT) {   # C9
+        Write-Host "     use your mouse wheel, or press F to fit the screen." -ForegroundColor Yellow
+    } else {
+        Write-Host "     press Alt+Spacebar, then E, then M, then use the Up/Down" -ForegroundColor Yellow
+        Write-Host "     arrow keys. Press Esc when done -- the tool will continue." -ForegroundColor Yellow
+    }
     Write-Host ""
     Write-Log -Message "System Baseline Summary displayed" -Status "INFO"
     Pause-ForUser "  Press Enter or Space to continue..."
@@ -9743,9 +9789,7 @@ function Run-ConsoleMode {
                     # G-02b rev (ascii33, FT-101): tip prints inline right before
                     # the BitLocker screen -- no standalone blank screen, no pause
                     Write-Host ""
-                    Write-Host "  Tip: To copy text from this window -- press Alt+Space, then E, then M --" -ForegroundColor Cyan
-                    Write-Host "       drag or use Shift+arrows to select -- press Enter to copy." -ForegroundColor Cyan
-                    Write-Host "       Press Esc to exit without copying." -ForegroundColor Cyan
+                    Write-GGCopyTip -Color Cyan   # C9
                     Show-BitLockerScreen
                 }
 
@@ -9891,6 +9935,8 @@ Enable-SleepPrevention
 Suspend-ScreenSaver
 
 # 0. Resume check (UX-05, UX-06) -- must happen before anything else renders
+$script:GGInWT = [bool]$env:WT_SESSION   # C9: running inside Windows Terminal?
+Write-Log -Message ("Window: " + $(if ($script:GGInWT) { "Windows Terminal" } else { "classic console" })) -Status "INFO"
 Enable-GGCtrlCGuard   # C7 / FT-270: before the first question
 Show-ResumePrompt
 

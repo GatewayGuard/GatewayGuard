@@ -1,5 +1,5 @@
 @echo off
-REM Dated: 2026-08-19 18:30 EDT
+REM Dated: 2026-09-27 14:25 ET
 REM File: Run-GatewayGuard.bat (always-current launcher -- paired build below)
 REM CURRENT BUILD: W11-SecurityHardening-v3-ascii45-2026-09-26-1059.ps1   (lives in ..\Tool\)
 REM
@@ -38,4 +38,35 @@ if errorlevel 1 (
   echo.
 )
 
+REM  C9 (ascii45, Bill 2026-09-26: "add full screen to ascii45"): open Checkup
+REM  FULL SCREEN in Windows Terminal; fall back to this window if it is missing.
+REM  MEASURED on CGDELL 2026-09-26/27: wt -w new -F opens full screen with no X,
+REM  keeps administrator, and closes when Checkup ends. A path with spaces does
+REM  NOT survive wt's own argument parsing, so: -d with the folder (no
+REM  trailing backslash) plus the file name alone. A failed wt launch leaves a
+REM  full-screen error window with no X -- so the file is checked above, and
+REM  Alt+F4 is explained before the window opens. SANDY has Windows Terminal
+REM  1.24 (measured 09-27).
+where wt.exe >nul 2>&1
+if errorlevel 1 goto :classic
+for %%I in ("%GGBUILD%") do set "GGTOOLDIR=%%~dpI" & set "GGFILE=%%~nxI"
+set "GGTOOLDIR=%GGTOOLDIR:~0,-1%"
+echo.
+echo   ==============================================================
+echo    GATEWAYGUARD CHECKUP OPENS FULL SCREEN
+echo   ==============================================================
+echo.
+echo   Checkup will fill the whole screen. There is no X to click.
+echo   To leave at any time, press X at a question -- Checkup asks you
+echo   first -- or press Alt+F4.
+echo   To see your other windows, press Alt+Enter (again to come back).
+echo.
+echo   Press Enter to open Checkup.
+set /p "GGGO="
+wt.exe -w new -F new-tab -d "%GGTOOLDIR%" --title "GatewayGuard Checkup" --suppressApplicationTitle powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%GGFILE%"
+if errorlevel 1 goto :classic
+exit /b 0
+
+:classic
+REM  No Windows Terminal (or it would not start): run in this window, as before.
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%GGBUILD%"
