@@ -1,0 +1,6 @@
+﻿PROGRAM-START LOGGING -- turning it OFF -- CGDELL -- 2026-09-27 18:02
+  before: program starts recorded: ON    command lines: ON    Security log size: 100 MB
+  auditpol said: The command was successfully executed.
+  after:  program starts recorded: off   command lines: off   Security log size: 20 MB
+
+  Done. Program-start logging is back to Windows' defaults.
