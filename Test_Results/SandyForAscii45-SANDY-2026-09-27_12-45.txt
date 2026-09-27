@@ -1,0 +1,118 @@
+﻿==============================================================
+ SANDY MEASUREMENTS FOR ascii45 -- read-only
+ Machine: SANDY   Run: 2026-09-27 12:45:37   Elevated: True
+==============================================================
+
+-- 1. FT-283  Widgets policy key: exists, owner, who may write it --
+  HKLM:\SOFTWARE\Policies\Microsoft\Dsh  exists: True
+    owner: BUILTIN\Administrators
+    NT AUTHORITY\Authenticated Users         Allow  ReadKey (inherited: True)
+    NT AUTHORITY\Authenticated Users         Allow  -2147483648 (inherited: True)
+    NT AUTHORITY\SYSTEM                      Allow  FullControl (inherited: True)
+    NT AUTHORITY\SYSTEM                      Allow  268435456 (inherited: True)
+    BUILTIN\Administrators                   Allow  FullControl (inherited: True)
+    BUILTIN\Administrators                   Allow  268435456 (inherited: True)
+    APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  ReadKey (inherited: True)
+    APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  -2147483648 (inherited: True)
+    S-1-15-3-1024-1065365936-1281604716-3511738428-1654721687-432734479-3232135806-4053264122-3456934681 Allow  ReadKey (inherited: True)
+    S-1-15-3-1024-1065365936-1281604716-3511738428-1654721687-432734479-3232135806-4053264122-3456934681 Allow  -2147483648 (inherited: True)
+  HKLM:\SOFTWARE\Policies\Microsoft  exists: True
+    owner: NT AUTHORITY\SYSTEM
+    NT AUTHORITY\Authenticated Users         Allow  ReadKey (inherited: True)
+    NT AUTHORITY\Authenticated Users         Allow  -2147483648 (inherited: True)
+    NT AUTHORITY\SYSTEM                      Allow  FullControl (inherited: True)
+    NT AUTHORITY\SYSTEM                      Allow  268435456 (inherited: True)
+    BUILTIN\Administrators                   Allow  FullControl (inherited: True)
+    BUILTIN\Administrators                   Allow  268435456 (inherited: True)
+    APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  ReadKey (inherited: True)
+    APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  -2147483648 (inherited: True)
+    S-1-15-3-1024-1065365936-1281604716-3511738428-1654721687-432734479-3232135806-4053264122-3456934681 Allow  ReadKey (inherited: True)
+    S-1-15-3-1024-1065365936-1281604716-3511738428-1654721687-432734479-3232135806-4053264122-3456934681 Allow  -2147483648 (inherited: True)
+
+-- 2. Note 29  Encryption state of C: --
+    BitLocker Drive Encryption: Configuration Tool version 10.0.26100
+    Copyright (C) 2013 Microsoft Corporation. All rights reserved.
+    
+    Volume C: [Windows]
+    [OS Volume]
+    
+        Size:                 237.28 GB
+        BitLocker Version:    2.0
+        Conversion Status:    Used Space Only Encrypted
+        Percentage Encrypted: 100.0%
+        Encryption Method:    XTS-AES 128
+        Protection Status:    Protection Off
+        Lock Status:          Unlocked
+        Identification Field: Unknown
+        Key Protectors:
+            Numerical Password
+    
+    Get-BitLockerVolume: VolumeStatus=FullyEncrypted ProtectionStatus=Off EncryptionPercentage=100 Method=XtsAes128
+    ALSO: take a screenshot of Settings > Privacy & security > Device encryption.
+
+-- 5. FT-268  Password on wake: /query (what ascii44 uses) vs /qh (the fix) --
+    [powercfg /query SCHEME_CURRENT SUB_NONE CONSOLELOCK]
+      Power Scheme GUID: 48684d4a-8524-4093-8a63-ea7132b79c1c  (HP Recommended)
+    [powercfg /qh SCHEME_CURRENT SUB_NONE CONSOLELOCK]
+      Power Scheme GUID: 48684d4a-8524-4093-8a63-ea7132b79c1c  (HP Recommended)
+        Subgroup GUID: fea3413e-7e05-4911-9a71-700331f1c294  (Settings belonging to no subgroup)
+          GUID Alias: SUB_NONE
+          Power Setting GUID: 0e796bdb-100d-47d6-a2d5-f7d2daa51f51  (Require a password on wakeup)
+            GUID Alias: CONSOLELOCK
+            Possible Setting Index: 000
+            Possible Setting Friendly Name: No
+            Possible Setting Index: 001
+            Possible Setting Friendly Name: Yes
+          Current AC Power Setting Index: 0x00000001
+          Current DC Power Setting Index: 0x00000001
+      
+
+-- 4b. FT-277  Defender log, 2026-09-19 12:15 to 12:45 (at most 50 events) --
+    12:21:12  id=2030  Microsoft Defender Antivirus downloaded and configured Microsoft Defender Antivirus (offline scan) to run on the next reboot.
+    12:21:12  id=5007  Microsoft Defender Antivirus Configuration has changed. If this is an unexpected event you should review the settings as this may be the result of malware.
+    12:21:12  id=5007  Microsoft Defender Antivirus Configuration has changed. If this is an unexpected event you should review the settings as this may be the result of malware.
+    12:21:26  id=5007  Microsoft Defender Antivirus Configuration has changed. If this is an unexpected event you should review the settings as this may be the result of malware.
+    12:26:59  id=5007  Microsoft Defender Antivirus Configuration has changed. If this is an unexpected event you should review the settings as this may be the result of malware.
+    12:26:59  id=5007  Microsoft Defender Antivirus Configuration has changed. If this is an unexpected event you should review the settings as this may be the result of malware.
+    12:27:05  id=5007  Microsoft Defender Antivirus Configuration has changed. If this is an unexpected event you should review the settings as this may be the result of malware.
+    12:27:05  id=5007  Microsoft Defender Antivirus Configuration has changed. If this is an unexpected event you should review the settings as this may be the result of malware.
+    12:27:09  id=5007  Microsoft Defender Antivirus Configuration has changed. If this is an unexpected event you should review the settings as this may be the result of malware.
+    12:27:09  id=5007  Microsoft Defender Antivirus Configuration has changed. If this is an unexpected event you should review the settings as this may be the result of malware.
+    12:27:09  id=5007  Microsoft Defender Antivirus Configuration has changed. If this is an unexpected event you should review the settings as this may be the result of malware.
+    12:28:05  id=5007  Microsoft Defender Antivirus Configuration has changed. If this is an unexpected event you should review the settings as this may be the result of malware.
+    Latest scan times Defender itself reports:
+    FullScanStartTime=8/28/2026 6:25:40 AM  FullScanEndTime=8/28/2026 7:47:17 AM  QuickScanEndTime=9/25/2026 7:36:16 PM
+
+-- 4a. FT-277  The link Checkup uses for Protection history --
+    Page that opened, as Bill read it: HOME
+
+-- 6. FT-282  Diagnostic data flip test --
+    BEFORE: 119 values read
+      HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection :: AllowTelemetry = 1
+      HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection :: MaxTelemetryAllowed = 1
+      HKCU:\Software\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack :: ShowedToastAtLevel = 1
+    Bill: it was OFF before the flip
+    AFTER: what changed ('<=' before, '=>' after):
+      => HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack :: LastSuccessfulUploadTime = 134350018056341261
+      => HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack :: LastSuccessfulRealtimeUploadTime = 134350018056341261
+      => HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack\EventTranscriptKey :: EnableEventTranscript = 1
+      => HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack\SettingsRequests :: LastDownloadTime = 134350017492284410
+      <= HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack :: LastSuccessfulUploadTime = 134350015373842269
+      <= HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack :: LastSuccessfulRealtimeUploadTime = 134350015373842269
+      <= HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack\SettingsRequests :: LastDownloadTime = 134350008481471478
+    NOTE: after flipping back, 7 line(s) still differ from BEFORE
+
+-- 7. C9  Windows Terminal (for the full-screen launch) --
+    wt.exe found: True  C:\Users\willi\AppData\Local\Microsoft\WindowsApps\wt.exe
+    Windows Terminal package: Microsoft.WindowsTerminal 1.24.11911.0
+    Default terminal setting: DelegationConsole={00000000-0000-0000-0000-000000000000} DelegationTerminal={00000000-0000-0000-0000-000000000000}
+
+-- 3. FT-270  Ctrl+C -- do this by hand after the script finishes --
+    a) Start Checkup. At the first Y/N question, press Ctrl+C once.
+       Did Checkup ask you to confirm, or did it just end?  ____________
+    b) Start Checkup again. Press Alt+Space, then look at the Edit menu:
+       which letter is underlined in 'Mark'?  ____
+       Select some text with Mark, then press Ctrl+C.  What happened?  ____________
+    Write your answers in this file, or tell Claude Code.
+
+Saved to: C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Test_Results\SandyForAscii45-SANDY-2026-09-27_12-45.txt
