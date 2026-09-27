@@ -2,6 +2,8 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # ascii45 -- PARTIAL test checklist (Blocks A, B and C1 only)
 
+> **SUPERSEDED 2026-09-27 11:42** by `GatewayGuard_FieldChecklist-ascii45-partial-2026-09-27-1142.md`, which covers everything built through 2026-09-27. Use that one.
+
 - **Build:** `Tool\W11-SecurityHardening-v3-ascii45-2026-09-26-1059.ps1`,
   as of commit `90c1897` (2026-09-26). **Not finished** -- Blocks C (rest), D, E
   and F are still to build.
