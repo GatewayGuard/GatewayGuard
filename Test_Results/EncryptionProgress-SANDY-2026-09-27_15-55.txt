@@ -1,0 +1,6 @@
+﻿ENCRYPTION PROGRESS -- SANDY -- 2026-09-27 15:55
+
+  Drive D:       0% encrypted   NOT encrypted -- done   (protection Off)
+  Drive C:       0% encrypted   NOT encrypted -- done   (protection Off)
+
+  ALL DRIVES ARE DECRYPTED. SANDY is ready for the field run.
