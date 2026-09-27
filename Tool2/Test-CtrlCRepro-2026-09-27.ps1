@@ -1,5 +1,5 @@
 # Test-CtrlCRepro-2026-09-27.ps1
-# Dated: 2026-09-27 14:53 ET
+# Dated: 2026-09-27 14:58 ET
 # Editor: Claude Code (CGDELL)
 # Purpose: Bill, 2026-09-27: in full-screen ascii45 "tried copy and control c ...
 #          and it ended the program" (log GatewayGuard-Log-2026-09-27_14-29.txt:
@@ -11,6 +11,10 @@
 #   -Mode Built    (launcher A): Register-ConsoleCtrl + Enable-GGCtrlCGuard +
 #                  Read-GGKey, exactly as built
 #   -Mode NoTreat  (launcher B): the same, but TreatControlCAsInput is never set
+#   -Mode NoFT150  (launcher C): as built, but WITHOUT the FT-150 console handler
+#   -Mode NoTreatNoFT150 (launcher D): B without the FT-150 handler
+#   Added 14:58 after A and B both ended (A: nothing arrived; B: caught, then ended).
+#   The 11:27 test that survived had no FT-150 handler.
 # READ-ONLY. Changes nothing. Run by Bill with Run-TestCtrlCRepro-A.bat / -B.bat.
 # Output: Test_Results\CtrlCRepro-<mode>-<machine>-<stamp>.txt
 
@@ -28,9 +32,9 @@ try {
         $fn = $ast.FindAll({ param($a) $a -is [System.Management.Automation.Language.FunctionDefinitionAst] -and $a.Name -eq $n }, $true)
         . ([scriptblock]::Create($fn[0].Extent.Text))
     }
-    Register-ConsoleCtrl -Path $outFile
+    if ($Mode -notlike "*NoFT150") { Register-ConsoleCtrl -Path $outFile } else { Write-Log "FT-150 console handler NOT registered (this mode)" "INFO" }
     Enable-GGCtrlCGuard
-    if ($Mode -eq "NoTreat") {
+    if ($Mode -like "NoTreat*") {
         function Read-GGKey {
             while ($true) {
                 $c = 0; try { $c = [GGCtrlC]::Count } catch {}
@@ -48,7 +52,7 @@ try {
     }
     Clear-Host
     Write-Host ""
-    Write-Host "  CTRL+C TEST $(if ($Mode -eq 'Built') { 'A (as Checkup is built)' } else { 'B (one setting removed)' }) -- nothing is changed" -ForegroundColor Cyan
+    Write-Host "  CTRL+C TEST $(if ($Mode -eq 'Built') { 'A (as Checkup is built)' } elseif ($Mode -eq 'NoTreat') { 'B (one setting removed)' } elseif ($Mode -eq 'NoFT150') { 'C (A without the older handler)' } else { 'D (B without the older handler)' }) -- nothing is changed" -ForegroundColor Cyan
     Write-Host ""
     Write-Host "  STEP 1: Do NOT highlight anything. Press Ctrl+C once." -ForegroundColor White
     Write-Host "          If this window closes, that is the answer -- it is recorded." -ForegroundColor Gray

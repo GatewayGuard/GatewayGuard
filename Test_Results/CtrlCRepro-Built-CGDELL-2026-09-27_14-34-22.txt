@@ -1,0 +1,5 @@
+[14:34:22] [START] Ctrl+C reproduction, mode Built, Windows Terminal: True
+[14:34:23] [OK] Console control handler registered -- Ctrl+C in Mark mode can no longer end the session (FT-150), and closing the window still writes the log footer (FT-160)
+[14:34:23] [OK] Ctrl+C guard armed (C7): a Ctrl+C asks first, in Windows Terminal too
+[14:34:29] [KEY] read 1: key code 17, char 0
+[14:34:29] [EXIT] ENDED EARLY -- the program was stopped
