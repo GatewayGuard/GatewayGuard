@@ -1,0 +1,5 @@
+﻿[11:27:13] Ctrl+C signal test -- CGDELL -- Windows Terminal: True
+[11:27:13] Handler armed. TreatControlCAsInput = False
+[11:27:24] STEP 1: Ctrl+C CAUGHT and cancelled -- the program kept running
+[11:27:40] STEP 2: Ctrl+C CAUGHT again -- it works every time, not just once
+[11:27:43] Ctrl+C signals counted: 2

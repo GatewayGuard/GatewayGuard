@@ -105,6 +105,9 @@
 #           warning on the offline scan (FT-276); E6 full scan of every
 #           drive in the background; E7 14b no longer claims the scan
 #           finished (FT-277). New screens 90-95, interim labels.
+#   C7 / FT-270: CTRL+C ASKS FIRST IN WINDOWS TERMINAL. The old guard
+#           (TreatControlCAsInput) does not work there -- measured 2026-09-27;
+#           a Ctrl+C signal handler does. Every answer is read via Read-GGKey.
 #
 # CHANGES FROM ascii43 (2026-09-06 -- ASCII44):
 #   FT-242: NINE REGISTRY WRITES COULD NOT FAIL. Without -EA Stop a
@@ -2331,7 +2334,7 @@ function Show-LookBack {
             try { [Console]::TreatControlCAsInput = $true } catch {}
             $ggK = $null
             try {
-                $ggK = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+                $ggK = Read-GGKey
             } catch {
                 # The console refused the read (focus loss, resize, redirected
                 # host). Returning hands the user back to their own screen,
@@ -2683,7 +2686,7 @@ function Wait-GGEnterOrSpace {
     try {
         do {
             try { [Console]::TreatControlCAsInput = $true } catch {}
-            $ggK = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+            $ggK = Read-GGKey
         } while ($ggK.VirtualKeyCode -notin @(13, 32))
     } catch { $null = Read-Host }
 }
@@ -2865,7 +2868,7 @@ function Pause-ForUser {
             # read. ascii37 asserted once before the loop; a look-back or any
             # swallowed key then read again with the flag already cleared.
             try { [Console]::TreatControlCAsInput = $true } catch {}
-            $k = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+            $k = Read-GGKey
             # FT-69 (ascii29): Ctrl+C opens the exit confirmation
             if ($k.Character -eq [char]3) { Invoke-CtrlCExit; continue }
             # Accept: Enter (13), Space (32), Numpad Enter (13 via numpad)
@@ -3023,7 +3026,7 @@ function Read-ValidKey {
         # FT-46 (ascii28): re-assert Ctrl+C-as-input before every read
         try { [Console]::TreatControlCAsInput = $true } catch {}
         do {
-            $k = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+            $k = Read-GGKey
             $ch = $k.Character.ToString().ToUpper()
             # FT-69 (ascii29): Ctrl+C opens the exit confirmation
             if ($k.Character -eq [char]3) { Invoke-CtrlCExit }
@@ -3106,7 +3109,7 @@ function Read-NavKey {
         # FT-46 (ascii28): re-assert Ctrl+C-as-input before every read
         try { [Console]::TreatControlCAsInput = $true } catch {}
         do {
-            $k  = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+            $k  = Read-GGKey
             $vk = $k.VirtualKeyCode
             $ch = $k.Character.ToString().ToUpper()
             # FT-69 (ascii29): Ctrl+C opens the exit confirmation
@@ -3566,6 +3569,54 @@ function Confirm-Exit {
 # Ctrl+C now opens Confirm-Exit, which asks before exiting -- so an
 # accidental copy attempt still cannot end the session. The guard flag
 # prevents recursion (Ctrl+C pressed AT the exit prompt is ignored).
+function Enable-GGCtrlCGuard {
+    # C7 / FT-270 (ascii45). VERIFIED 2026-09-27 measured on CGDELL, full-screen
+    # Windows Terminal: this handler caught Ctrl+C twice and the program kept
+    # running (Test_Results\WtCtrlC2-CGDELL-2026-09-27_11-27.txt). The old guard
+    # alone (TreatControlCAsInput) let Ctrl+C end the program (..._11-09.txt).
+    # Compiled, so it runs without a PowerShell thread.
+    try {
+        if (-not ("GGCtrlC" -as [type])) {
+            Add-Type -TypeDefinition @"
+using System;
+public static class GGCtrlC {
+    public static volatile int Count = 0;
+    static bool armed = false;
+    public static void Arm() {
+        if (armed) return;
+        armed = true;
+        Console.CancelKeyPress += delegate(object s, ConsoleCancelEventArgs e) { e.Cancel = true; Count++; };
+    }
+}
+"@
+        }
+        [GGCtrlC]::Arm()
+        $script:GGCtrlCHandled = 0
+        Write-Log -Message "Ctrl+C guard armed (C7): a Ctrl+C asks first, in Windows Terminal too" -Status "OK"
+    } catch {
+        try { Write-Log -Message "Ctrl+C guard could not be armed: $_" -Status "WARN" } catch {}
+    }
+}
+
+function Read-GGKey {
+    # C7 (ascii45): wait for a key the way ReadKey("NoEcho,IncludeKeyDown") did,
+    # but watch the Ctrl+C guard while waiting. A caught Ctrl+C comes back as
+    # the key the callers already handle: Character 3.
+    while ($true) {
+        try { [Console]::TreatControlCAsInput = $true } catch {}   # classic console path (FT-46)
+        $ggCount = 0
+        try { $ggCount = [GGCtrlC]::Count } catch {}
+        if ($ggCount -gt $script:GGCtrlCHandled) {
+            $script:GGCtrlCHandled = $ggCount
+            return (New-Object System.Management.Automation.Host.KeyInfo -ArgumentList 67, ([char]3), ([System.Management.Automation.Host.ControlKeyStates]::LeftCtrlPressed), $true)
+        }
+        $ggAvail = $true
+        try { $ggAvail = $Host.UI.RawUI.KeyAvailable } catch { $ggAvail = $true }
+        if ($ggAvail) { return $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") }
+        Start-Sleep -Milliseconds 50
+    }
+}
+
 function Invoke-CtrlCExit {
     if ($script:GGInConfirmExit) { return }
     $script:GGInConfirmExit = $true
@@ -8716,7 +8767,7 @@ function Show-BitLockerScreen {
         # FT-46 (ascii28): re-assert Ctrl+C-as-input before every read
         try { [Console]::TreatControlCAsInput = $true } catch {}
         try {
-            $blKey = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+            $blKey = Read-GGKey
         } catch {
             Write-Log -Message "ReadKey failed on BitLocker battery screen (focus loss?) -- falling back: $_" -Status "WARN"
             $blFallback = Read-Host
@@ -9238,7 +9289,7 @@ function Run-ConsoleMode {
         # FT-46 (ascii28): re-assert Ctrl+C-as-input before every read
         try { [Console]::TreatControlCAsInput = $true } catch {}
         try {
-            $firstKey = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+            $firstKey = Read-GGKey
             $firstCh = $firstKey.Character.ToString().ToUpper()
         } catch {
             Write-Log -Message "ReadKey failed (focus loss?) -- falling back to Read-Host: $_" -Status "WARN"
@@ -9267,7 +9318,7 @@ function Run-ConsoleMode {
             try { [Console]::TreatControlCAsInput = $true } catch {}
             $secondKey = $null   # FT-69 pattern: never test a stale key object
             try {
-                $secondKey = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+                $secondKey = Read-GGKey
                 $secondCh = $secondKey.Character.ToString()
                 $secondVK = $secondKey.VirtualKeyCode
             } catch {
@@ -9818,6 +9869,7 @@ Enable-SleepPrevention
 Suspend-ScreenSaver
 
 # 0. Resume check (UX-05, UX-06) -- must happen before anything else renders
+Enable-GGCtrlCGuard   # C7 / FT-270: before the first question
 Show-ResumePrompt
 
 # 1-2. Intro sequence (FT-04 order, 2026-07-11): Welcome/maximize -> scroll
