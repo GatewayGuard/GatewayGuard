@@ -72,6 +72,8 @@
 #           last signed in or unlocked (Get-GGHelloSignIn), flip-tested by Bill
 #           2026-09-26. GOOD only on a Hello sign-in by this account;
 #           otherwise the person is asked. Never a guessed GOOD.
+#           Face and fingerprint sign-ins count too (their own provider IDs,
+#           sourced Microsoft Learn 2026-09-27).
 #   FT-287: PASSWORD ON WAKE ON BATTERY. REQUIRED now needs the DC
 #           (battery) value as well as AC, when Windows reports one.
 #   C2 / FT-271: IGNORED KEYS ARE LOGGED. All three key readers logged
@@ -6370,7 +6372,14 @@ function Get-GGHelloSignIn {
     # Known limits: a user who has a PIN but last used a password is asked
     # (safe); a PIN removed since the last sign-in or unlock still reads HELLO
     # until the next one.
-    $ggHelloProvider = "{D6886603-9D2F-4EB2-B667-1971041FA96B}"
+    # Sourced 2026-09-27, Microsoft Learn (Windows Hello multifactor unlock):
+    # PIN, fingerprint and facial recognition each have their own provider ID.
+    # Biometrics require a PIN, so any of the three means Hello is set up.
+    $ggHelloProviders = @(
+        "{D6886603-9D2F-4EB2-B667-1971041FA96B}",   # PIN (also measured, CGDELL)
+        "{BEC09223-B018-416D-A0AC-523971B639F5}",   # fingerprint
+        "{8AF662BF-65A0-4D0A-A540-A338A999D36F}"    # facial recognition
+    )
     try {
         $ggLU  = Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI" -EA Stop
         $ggMe  = [Security.Principal.WindowsIdentity]::GetCurrent().User.Value
@@ -6379,7 +6388,7 @@ function Get-GGHelloSignIn {
         if ($ggSid -ne $ggMe) {
             return @{ State = "NOT_CONFIRMED"; Why = "last sign-in was another account ($ggSid)" }
         }
-        if ($ggPrv -eq $ggHelloProvider) {
+        if ($ggHelloProviders -contains $ggPrv.ToUpper()) {
             return @{ State = "HELLO"; Why = "last sign-in used Windows Hello" }
         }
         return @{ State = "NOT_CONFIRMED"; Why = "last sign-in used provider $ggPrv" }
