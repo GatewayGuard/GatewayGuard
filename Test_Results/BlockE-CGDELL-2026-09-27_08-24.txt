@@ -1,0 +1,73 @@
+﻿Block E measurements -- CGDELL -- 2026-09-27 08:24:13 -- elevated: True
+
+== 1. Get-MpComputerStatus fields (E1, E4, E7)
+  IsTamperProtected              = True
+  TamperProtectionSource         = Signatures
+  AntivirusEnabled               = True
+  RealTimeProtectionEnabled      = True
+  AntivirusSignatureAge          = 0
+  AntivirusSignatureLastUpdated  = 9/26/2026 3:06:38 PM
+  AntivirusSignatureVersion      = 1.459.420.0
+  QuickScanEndTime               = 9/25/2026 4:09:55 PM
+  QuickScanAge                   = 1
+  FullScanEndTime                = 
+  FullScanAge                    = 4294967295
+  FullScanStartTime              = 
+
+== 2. Get-MpPreference PUAProtection (E3)
+  PUAProtection = 2  (0 = off, 1 = on, 2 = audit per Microsoft docs)
+
+== 3. Set-MpPreference -PUAProtection: parameter metadata only (NOT run)
+  type: Microsoft.PowerShell.Cmdletization.GeneratedTypes.MpPreference.PUAProtectionType
+  values: Disabled, Enabled, AuditMode
+  ValidateSet: Disabled, Enabled, AuditMode
+
+== 4. Update-MpSignature: parameters (NOT run)
+  UpdateSource, CimSession, ThrottleLimit, AsJob, Verbose, Debug, ErrorAction, WarningAction, InformationAction, ErrorVariable, WarningVariable, InformationVariable, OutVariable, OutBuffer, PipelineVariable
+
+== 5. MpCmdRun.exe -? : the scan lines (E6)
+  path exists: True  (C:\Program Files\Windows Defender\MpCmdRun.exe)
+-Scan [-ScanType #] [-File <path> [-DisableRemediation] [-BootSectorScan] [-CpuThrottling]]
+
+         [-Timeout <days>]
+
+         [-Cancel]
+
+         [-ReturnHR]
+
+                                              Scans for malicious software
+
+   -Trace [-Grouping #] [-Level #]            Starts diagnostic tracing
+
+   -GetFiles [-SupportLogLocation <path>]     Collects support information
+
+   -GetFilesDiagTrack                         Same as Getfiles but outputs to 
+
+                                              temporary DiagTrack folder 
+
+   -RemoveDefinitions [-All]                  Restores the installed
+
+                                              signature definitions
+
+                                              to a previous backup copy or to
+
+                                              the original default set of
+
+                                      
+
+== 6. Start-MpScan: parameters (NOT run)
+  params: ScanPath, ScanType, CimSession, ThrottleLimit, AsJob, Verbose, Debug, ErrorAction, WarningAction, InformationAction, ErrorVariable, WarningVariable, InformationVariable, OutVariable, OutBuffer, PipelineVariable
+  ScanType values: QuickScan, FullScan, CustomScan
+  ScanType ValidateSet: FullScan, QuickScan, CustomScan
+
+== 7. Windows Update Agent: SEARCH ONLY (E2) -- nothing downloaded or installed
+  search took 21.7 s, ResultCode = 2 (2 = succeeded), updates found = 2
+   - Windows Malicious Software Removal Tool x64 - v5.145 (KB890830)  (downloaded=True, reboot may be needed=2, EULA accepted=True)
+   - Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.459.428.0) - Current Channel (Broad)  (downloaded=False, reboot may be needed=0, EULA accepted=True)
+  SystemInfo.RebootRequired = False
+  last install history (up to 5):
+   - 2026-09-27 01:38  result=2  Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.459.420.0) - Current Channel (Broad)
+   - 2026-09-26 13:05  result=2  Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.459.412.0) - Current Channel (Broad)
+   - 2026-09-25 21:53  result=2  9PG9S0WQV5WH-C2258428.Brother.PrintSupportApp
+   - 2026-09-25 21:53  result=2  9NSTH9KHZDLQ-Microsoft.UI.Xaml.2.8
+   - 2026-09-25 21:52  result=2  Brother Extension Driver Update (2.1.4.0)

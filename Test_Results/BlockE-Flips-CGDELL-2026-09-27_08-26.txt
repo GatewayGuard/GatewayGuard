@@ -1,0 +1,14 @@
+﻿[08:26:40] Block E flip measurements -- CGDELL
+[08:26:40] E3 PUAProtection before: 2
+[08:26:40] E3 Set-MpPreference -PUAProtection Enabled: no error
+[08:26:43] E3 PUAProtection after set: 1   (1 = Enabled)
+[08:26:43] E3 restored with -PUAProtection AuditMode
+[08:26:45] E3 PUAProtection after restore: 2   (must equal 2)
+[08:26:45] E4 before: version 1.459.420.0, last updated 9/26/2026 3:06:38 PM, age 0 day(s)
+[08:27:02] E4 Update-MpSignature: no error, 17 s
+[08:27:02] E4 after:  version 1.459.428.0, last updated 9/27/2026 2:31:00 AM, age 0 day(s)
+[08:27:03] E6 started MpCmdRun -Scan -ScanType 2 detached, PID 24936
+[08:27:18] E6 after 15 s: MpCmdRun still running = True; FullScanStartTime = 
+[08:27:18] E6 MpCmdRun -Scan -Cancel exit 0: Argument -cancel detected. Trying to cancel any quick/full scan in progress... Scan cancelled successfully.
+[08:27:23] E6 after cancel: MpCmdRun PID 24936 still running = False
+[08:27:23] E6 scan process exit code: 2
