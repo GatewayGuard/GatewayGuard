@@ -99,7 +99,8 @@
 #   BLOCK E: THE NEW START SEQUENCE (Bill's order): E1 Tamper Protection
 #           first (FT-250); E2 Windows Update, install with permission and
 #           loop across restarts (FT-252 -- download/install measured on
-#           CGDELL 2026-09-27); E3 unwanted-app blocking (FT-248); E4 virus
+#           CGDELL 2026-09-27; a spinner and timer run while it works, Bill
+#           2026-09-27); E3 unwanted-app blocking (FT-248); E4 virus
 #           definitions (FT-249); one ready-check screen; E5 save-your-work
 #           warning on the offline scan (FT-276); E6 full scan of every
 #           drive in the background; E7 14b no longer claims the scan
@@ -4822,49 +4823,107 @@ function Show-GGUpdateRestart {
     Write-Log -Message "Windows Update: restart postponed by the user (E2)" -Status "SKIP"
 }
 
+function Invoke-GGWithSpinner {
+    # E2 (ascii45). Bill 2026-09-27: "can you add a spinning something while
+    # updates are running". Runs $Script in a background runspace and draws a
+    # spinner and the elapsed time until it finishes. Returns the script's
+    # output; rethrows its first error. STA, the same as powershell.exe, where
+    # the Windows Update calls were measured.
+    param([scriptblock]$Script, [object]$Argument = $null, [string]$Message = "Working")
+    $ggRs = [runspacefactory]::CreateRunspace()
+    $ggRs.ApartmentState = "STA"
+    $ggRs.ThreadOptions  = "ReuseThread"
+    $ggRs.Open()
+    $ggPs = [powershell]::Create()
+    $ggPs.Runspace = $ggRs
+    [void]$ggPs.AddScript($Script)
+    if ($null -ne $Argument) { [void]$ggPs.AddArgument($Argument) }
+    $ggH = $ggPs.BeginInvoke()
+    $ggChars = @("|", "/", "-", "\")
+    $ggI  = 0
+    $ggT0 = Get-Date
+    while (-not $ggH.IsCompleted) {
+        $ggEl = (Get-Date) - $ggT0
+        $ggLine = "  " + $ggChars[$ggI % 4] + "  " + $Message + ("   {0:00}:{1:00} elapsed   " -f [int][math]::Floor($ggEl.TotalMinutes), $ggEl.Seconds)
+        try { Write-Host ("`r" + $ggLine) -NoNewline -ForegroundColor Yellow } catch {}
+        $ggI++
+        Start-Sleep -Milliseconds 250
+    }
+    try { Write-Host ("`r" + (" " * ($Message.Length + 30)) + "`r") -NoNewline } catch {}
+    $ggOut = $null
+    $ggErr = $null
+    try { $ggOut = $ggPs.EndInvoke($ggH) } catch { $ggErr = $_ }
+    if (-not $ggErr -and $ggPs.Streams.Error.Count -gt 0) { $ggErr = $ggPs.Streams.Error[0] }
+    $ggPs.Dispose()
+    $ggRs.Close()
+    try { Clear-PendingKeys } catch {}   # keys pressed while it spun are not answers
+    if ($ggErr) { throw $ggErr }
+    return @($ggOut)
+}
+
+$script:GGWUSearchScript = {
+    # Runs in the spinner's runspace. Returns plain values only.
+    # VERIFIED 2026-09-27 measured on CGDELL, elevated: this search -> ResultCode 2
+    # (Test_Results\BlockE-CGDELL-2026-09-27_08-24.txt, WUInstall-CGDELL-..._10-22.txt).
+    $s = New-Object -ComObject Microsoft.Update.Session
+    $r = $s.CreateUpdateSearcher().Search("IsInstalled=0 and IsHidden=0 and Type='Software'")
+    for ($i = 0; $i -lt $r.Updates.Count; $i++) {
+        $u = $r.Updates.Item($i)
+        [pscustomobject]@{ Title = [string]$u.Title; Id = [string]$u.Identity.UpdateID; Eula = [bool]$u.EulaAccepted }
+    }
+}
+
+$script:GGWUInstallScript = {
+    # Runs in the spinner's runspace. Installs ONLY the update IDs the user saw.
+    # VERIFIED 2026-09-27 measured on CGDELL, elevated: UpdateColl, Download()
+    # -> 2, Install() -> 2, RebootRequired False, 454 s
+    # (Test_Results\WUInstall-CGDELL-2026-09-27_10-22.txt).
+    param($ids)
+    $s = New-Object -ComObject Microsoft.Update.Session
+    $r = $s.CreateUpdateSearcher().Search("IsInstalled=0 and IsHidden=0 and Type='Software'")
+    $c = New-Object -ComObject Microsoft.Update.UpdateColl
+    for ($i = 0; $i -lt $r.Updates.Count; $i++) {
+        $u = $r.Updates.Item($i)
+        if (@($ids) -contains [string]$u.Identity.UpdateID) { [void]$c.Add($u) }
+    }
+    if ($c.Count -eq 0) { return [pscustomobject]@{ Count = 0; Download = 0; Install = 0; Reboot = $false; Per = @() } }
+    $d = $s.CreateUpdateDownloader(); $d.Updates = $c; $dr = $d.Download()
+    $n = $s.CreateUpdateInstaller();  $n.Updates = $c; $ir = $n.Install()
+    $per = @()
+    for ($i = 0; $i -lt $c.Count; $i++) { $per += [pscustomobject]@{ Title = [string]$c.Item($i).Title; Result = [int]$ir.GetUpdateResult($i).ResultCode } }
+    [pscustomobject]@{ Count = $c.Count; Download = [int]$dr.ResultCode; Install = [int]$ir.ResultCode; Reboot = [bool]$ir.RebootRequired; Per = $per }
+}
+
 function Invoke-WindowsUpdateLoop {
     # E2 / FT-252, upgraded by Bill 2026-09-25 to APPLY AND LOOP: check,
     # install with the user's permission, restart when needed, check again,
     # until nothing is left. Survives the restarts through the checkpoint
     # "WinUpdatePending" (Block D).
-    #
-    # VERIFY STATUS (2026-09-27):
-    #   Search -- VERIFIED measured on CGDELL (below).
-    #   Download and install -- VERIFIED measured on CGDELL (below), with Bill's
-    #   approval. Install took 454 s with no output: the "may look still"
-    #   wording on screen 91 is needed.
-    #   Restart -- sourced only (no restart was needed in the measurement).
+    # Search, download and install run in the background with a spinner
+    # (Invoke-GGWithSpinner) -- measured: the install alone took 454 s.
+    # Restart -- sourced only (no restart was needed in the measurement).
     $ggRound = 0
     while ($true) {
         $ggRound++
         Clear-Host
         Write-Host ""
-        Write-Host "  Checking Windows Update -- this can take a minute or two..." -ForegroundColor Yellow
-        $ggSess = $null
-        $ggRes  = $null
+        $ggAll = @()
         try {
-            # VERIFIED 2026-09-27 measured on CGDELL, elevated: Microsoft.Update.Session
-            # CreateUpdateSearcher().Search("IsInstalled=0 and IsHidden=0 and Type='Software'")
-            # -> ResultCode 2 (succeeded), 2 updates, 21.7 s.
-            # Test_Results\BlockE-CGDELL-2026-09-27_08-24.txt, section 7.
-            $ggSess = New-Object -ComObject Microsoft.Update.Session
-            $ggRes  = $ggSess.CreateUpdateSearcher().Search("IsInstalled=0 and IsHidden=0 and Type='Software'")
+            $ggAll = @(Invoke-GGWithSpinner -Script $script:GGWUSearchScript -Message "Checking Windows Update -- this can take a minute or two")
         } catch {
             Write-Log -Message "Windows Update search failed: $_" -Status "WARN"
             Add-GGReady "Update" "  NOTE  Checkup could not check Windows Update. Check it: Settings -> Windows Update."
             Save-Checkpoint -Checkpoint "WinUpdate"
             return
         }
-        $ggAll = @()
-        for ($ggI = 0; $ggI -lt $ggRes.Updates.Count; $ggI++) { $ggAll += $ggRes.Updates.Item($ggI) }
-        $ggOK   = @($ggAll | Where-Object { $_.EulaAccepted })
+        $ggOK   = @($ggAll | Where-Object { $_.Eula })
         $ggEula = $ggAll.Count - $ggOK.Count
         Write-Log -Message ("Windows Update round " + $ggRound + ": " + $ggAll.Count + " waiting, " + $ggEula + " need licence terms accepted") -Status "INFO"
 
         if ($ggOK.Count -eq 0) {
             $ggReboot = $false
             # VERIFIED 2026-09-27 measured on CGDELL: Microsoft.Update.SystemInfo
-            # RebootRequired = False (same file, section 7).
+            # RebootRequired = False (BlockE-CGDELL-..._08-24.txt, section 7).
             try { $ggReboot = [bool](New-Object -ComObject Microsoft.Update.SystemInfo).RebootRequired } catch {}
             if ($ggReboot) {
                 Show-GGUpdateRestart
@@ -4895,8 +4954,8 @@ function Invoke-WindowsUpdateLoop {
         $ggLines += @(
             "                                                             ",
             "  Checkup can download and install them now, with your      ",
-            "  permission. It can take several minutes, and this window   ",
-            "  may look still while it works -- it is not stuck.          ",
+            "  permission. It can take several minutes. A spinner and a   ",
+            "  timer show it is still working.                            ",
             "  Keep the PC plugged in.                                    "
         )
         Draw-Box -ScreenId "91" -Color White -Lines $ggLines
@@ -4910,30 +4969,18 @@ function Invoke-WindowsUpdateLoop {
         }
 
         Write-Host ""
-        Write-Host "  Downloading and installing -- please wait. The window may look still." -ForegroundColor Yellow
         $ggIr = $null
         try {
-            # VERIFIED 2026-09-27 measured on CGDELL, elevated: UpdateColl.Add x2,
-            # CreateUpdateDownloader().Download() -> ResultCode 2 (2.9 s),
-            # CreateUpdateInstaller().Install() -> ResultCode 2, RebootRequired False
-            # (453.9 s), GetUpdateResult(i) -> 2 for both; search afterwards: 0 left.
-            # Test_Results\WUInstall-CGDELL-2026-09-27_10-22.txt
             # Result codes, sourced (Microsoft Learn, OperationResultCode):
             # 2 = succeeded, 3 = succeeded with errors, 4 = failed, 5 = aborted.
-            $ggColl = New-Object -ComObject Microsoft.Update.UpdateColl
-            foreach ($ggU in $ggOK) { [void]$ggColl.Add($ggU) }
-            $ggDl = $ggSess.CreateUpdateDownloader()
-            $ggDl.Updates = $ggColl
-            $ggDr = $ggDl.Download()
-            $ggIn = $ggSess.CreateUpdateInstaller()
-            $ggIn.Updates = $ggColl
-            $ggIr = $ggIn.Install()
-            Write-Log -Message ("Windows Update: download result " + $ggDr.ResultCode + ", install result " + $ggIr.ResultCode + ", restart needed " + $ggIr.RebootRequired) -Status "INFO"
-            for ($ggI = 0; $ggI -lt $ggColl.Count; $ggI++) {
-                Write-Log -Message ("  " + $ggColl.Item($ggI).Title + " -- result " + $ggIr.GetUpdateResult($ggI).ResultCode) -Status "INFO"
-            }
+            $ggIds = @($ggOK | ForEach-Object { $_.Id })
+            $ggIr = @(Invoke-GGWithSpinner -Script $script:GGWUInstallScript -Argument $ggIds -Message "Downloading and installing updates -- please wait") | Select-Object -Last 1
+            Write-Host ""
+            Write-Log -Message ("Windows Update: " + $ggIr.Count + " update(s), download result " + $ggIr.Download + ", install result " + $ggIr.Install + ", restart needed " + $ggIr.Reboot) -Status "INFO"
+            foreach ($ggP in @($ggIr.Per)) { Write-Log -Message ("  " + $ggP.Title + " -- result " + $ggP.Result) -Status "INFO" }
         } catch {
             Write-Log -Message "Windows Update install failed: $_" -Status "ERROR"
+            Write-Host ""
             Write-Host "  The updates could not be installed. You can try from" -ForegroundColor Yellow
             Write-Host "  Settings -> Windows Update. Checkup carries on." -ForegroundColor Yellow
             Add-GGReady "Update" "  NOTE  The updates could not be installed. Try: Settings -> Windows Update."
@@ -4941,12 +4988,12 @@ function Invoke-WindowsUpdateLoop {
             Pause-ForUser "  Press Enter or Space to continue..."
             return
         }
-        if ($ggIr -and $ggIr.ResultCode -eq 2) {
+        if ($ggIr -and $ggIr.Install -eq 2) {
             Write-Host "  OK  Updates installed." -ForegroundColor Green
         } else {
             Write-Host "  Some updates did not install. Checkup checks again." -ForegroundColor Yellow
         }
-        if ($ggIr -and $ggIr.RebootRequired) {
+        if ($ggIr -and $ggIr.Reboot) {
             Show-GGUpdateRestart
             Save-Checkpoint -Checkpoint "WinUpdate"
             return
