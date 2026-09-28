@@ -1,7 +1,7 @@
 """build_ascii45_ft301b_proven -- FT-301: the Local State Startup boost field is
 now flip-proven; the build comment that said "inferred" is corrected.
 
-Dated: 2026-09-28 11:56 ET
+Dated: 2026-09-28 11:58 ET
 Editor: Claude Code (CGDELL)
 
 MEASURED on SANDY 2026-09-28 by Bill (Edge Settings -> System and performance
