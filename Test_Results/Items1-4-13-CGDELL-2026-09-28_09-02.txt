@@ -1,0 +1,32 @@
+﻿Items 1, 4, 13 -- CGDELL -- 2026-09-28 09:02:02 -- administrator: True
+
+== ITEM 1: Windows Update
+  wuauserv StartType=Manual  Status=Stopped   <- the ONLY thing item 1 reads today
+  Policy AU\NoAutoUpdate = (key absent)
+  Policy AU\AUOptions = (key absent)
+  UX\Settings\PauseUpdatesExpiryTime = (value absent)
+  UX\Settings\PauseUpdatesStartTime = (value absent)
+  UX\Settings\PauseQualityUpdatesEndTime = (value absent)
+  UX\Settings\PauseFeatureUpdatesEndTime = (value absent)
+  Update history entries: 129
+    2026-09-28 07:00  result=2  Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.459.442.0) - Current Channel (Broad)
+    2026-09-27 22:10  result=2  Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.459.437.0) - Current Channel (Broad)
+    2026-09-27 18:23  result=2  Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.459.435.0) - Current Channel (Broad)
+    2026-09-27 15:39  result=2  Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.459.432.0) - Current Channel (Broad)
+    2026-09-27 10:30  result=2  Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.459.429.0) - Current Channel (Broad)
+
+== ITEM 4: SmartScreen (Windows Security -> App & browser control -> Reputation-based protection)
+  Check apps and files   HKLM Explorer\SmartScreenEnabled = 'Warn'   <- the ONLY value item 4 reads and writes
+  Policy System\EnableSmartScreen = (value absent)
+  SmartScreen for Edge   HKCU Edge\SmartScreenEnabled (default value) = '1'   (candidate, not proven)
+  Edge policy SmartScreenEnabled = (value absent)
+  Store apps             HKCU AppHost\EnableWebContentEvaluation = (value absent)   (candidate, not proven)
+  Unwanted app blocking  Get-MpPreference PUAProtection = 1   (checked at start, E3)
+
+== ITEM 13: Edge Startup boost / Continue running background extensions and apps
+  Local State startup_boost   = {"default_last_launch":true,"last_browser_open_time":"13435065181944501"}
+  Local State background_mode = (section absent)
+  Local State file time: 2026-09-28 09:00:51
+  Edge policy StartupBoostEnabled = '0'
+  Edge policy BackgroundModeEnabled = '0'
+  msedge processes running now: 19  (Edge writes Local State when it closes -- close Edge fully before the second run)

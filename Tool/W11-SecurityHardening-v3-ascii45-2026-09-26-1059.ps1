@@ -140,6 +140,7 @@
 #   F8 (FT-253): Bill's wording on screens 22, 23, 27, 28, 34 and the by-hand
 #           line. FT-222: a changed item loses its X.
 #   FT-300 (part): item 4 re-reads SmartScreenEnabled before saying GOOD.
+#   FT-299: item 1 reads a pause (flip-tested) and the NoAutoUpdate policy.
 #   RENUMBER (2026-09-28): gaps and interim labels gone; 1a -> 0a (FT-195a).
 #   FT-282: ITEM 12 (DIAGNOSTIC DATA) READ ONLY THE GROUP POLICY VALUE, which
 #           is empty on home PCs, and said "Sending extra data" when optional
@@ -6669,6 +6670,33 @@ function Get-GGEdgeEffectiveBool {
     return @{ Found = $true; Value = [bool]$ggJson.$KeyName }
 }
 
+function Get-GGUpdateHold {
+    # FT-299 (ascii45): what can stop updates while the service looks fine.
+    # VERIFIED 2026-09-28 measured on CGDELL (Bill's flip test): Settings ->
+    # Pause writes UX\Settings PauseUpdatesExpiryTime ('2026-10-05T13:02:18Z',
+    # UTC); Resume removes it.
+    # VERIFIED 2026-09-28 sourced: learn.microsoft.com/windows/deployment/update/
+    # waas-wu-settings -- AU\NoAutoUpdate = 1 turns automatic updates off.
+    $ggHold = [ordered]@{ Paused = $false; Until = $null; Unreadable = $false; Policy = $false }
+    try {
+        $ggPx = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings" -Name PauseUpdatesExpiryTime -EA Stop).PauseUpdatesExpiryTime
+        if ($ggPx) {
+            $ggWhen = [datetime]::MinValue
+            if ([datetime]::TryParse([string]$ggPx, [Globalization.CultureInfo]::InvariantCulture, [Globalization.DateTimeStyles]::AdjustToUniversal -bor [Globalization.DateTimeStyles]::AssumeUniversal, [ref]$ggWhen)) {
+                if ($ggWhen -gt [datetime]::UtcNow) { $ggHold.Paused = $true; $ggHold.Until = $ggWhen.ToLocalTime() }
+            } else { $ggHold.Unreadable = $true }
+        }
+    } catch [System.Management.Automation.ItemNotFoundException] {
+    } catch [System.Management.Automation.PSArgumentException] {
+    } catch { $ggHold.Unreadable = $true }
+    try {
+        $ggNo = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name NoAutoUpdate -EA Stop).NoAutoUpdate
+        if ($ggNo -eq 1) { $ggHold.Policy = $true }
+    } catch {}
+    try { Write-Log -Message ("Item 1 hold read: paused=" + $ggHold.Paused + " until=" + $ggHold.Until + " unreadable=" + $ggHold.Unreadable + " policy=" + $ggHold.Policy) -Status "INFO" } catch {}
+    return $ggHold
+}
+
 function Get-AllStatuses {
     foreach ($s in $Settings) {
         $s | Add-Member -NotePropertyName Status -NotePropertyValue "Checking..." -Force -ErrorAction SilentlyContinue
@@ -6711,7 +6739,17 @@ function Get-AllStatuses {
 
         switch ($s.ID) {
             1 {
-                try { $svc = Get-Service wuauserv -EA Stop; $s.Status = if ($svc.StartType -ne 'Disabled') { "Enabled -- GOOD" } else { "DISABLED -- needs attention" } }
+                # FT-299 (ascii45): the service alone is not enough -- a pause or a
+                # policy stops updates while the service looks fine.
+                try {
+                    $svc = Get-Service wuauserv -EA Stop
+                    $ggHold1 = Get-GGUpdateHold
+                    $s.Status = if ($svc.StartType -eq 'Disabled') { "DISABLED -- needs attention" }
+                                elseif ($ggHold1.Policy) { "Turned off by a policy -- needs attention" }
+                                elseif ($ggHold1.Paused) { "PAUSED until " + $ggHold1.Until.ToString("MMM d") + " -- needs attention" }
+                                elseif ($ggHold1.Unreadable) { "Unknown -- could not read the pause setting" }
+                                else { "Enabled -- GOOD" }
+                }
                 catch { $s.Status = "Unknown" }
             }
             2 {
@@ -7326,12 +7364,24 @@ function Apply-Setting {
 
     switch ($Setting.ID) {
         1 {
-            try {
-                Set-Service -Name wuauserv -StartupType Automatic -EA Stop
-                Start-Service -Name wuauserv -EA SilentlyContinue
-                Set-Service -Name UsoSvc -StartupType Automatic -EA SilentlyContinue
-                $result = "Windows Update service set to Automatic and started -- GOOD"
-            } catch { $result = "ERROR: $_" }
+            # FT-299 (ascii45): Checkup does not undo a pause or a policy -- it
+            # shows the steps (screen 35). Otherwise the service, read back.
+            $ggHoldA = Get-GGUpdateHold
+            if ($ggHoldA.Policy) {
+                $result = "MANUAL: A policy on this PC turns automatic updates off. If you did not set it, ask whoever set up this PC. The policy is 'Configure Automatic Updates' in Group Policy (Windows 11 Pro)."
+            } elseif ($ggHoldA.Paused -or $ggHoldA.Unreadable) {
+                $result = "MANUAL: Updates are paused. To turn them back on by hand: Settings -> Windows Update -> Resume updates."
+            } else {
+                try {
+                    Set-Service -Name wuauserv -StartupType Automatic -EA Stop
+                    Start-Service -Name wuauserv -EA SilentlyContinue
+                    Set-Service -Name UsoSvc -StartupType Automatic -EA SilentlyContinue
+                    $ggSt1 = $null
+                    try { $ggSt1 = (Get-Service wuauserv -EA Stop).StartType } catch {}
+                    $result = if ("$ggSt1" -eq "Automatic") { "Windows Update service set to Automatic and started -- GOOD" }
+                              else { "NOTE: Checkup set the Windows Update service to start on its own, but could not read it back to confirm. Check: Settings -> Windows Update." }
+                } catch { $result = "ERROR: $_" }
+            }
         }
         2 {
             try {
