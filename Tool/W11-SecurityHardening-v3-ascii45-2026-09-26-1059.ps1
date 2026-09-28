@@ -111,6 +111,12 @@
 #           C7b: every ReadKey passes AllowCtrlC -- without it PowerShell's
 #           own key reader stopped Checkup even after the handler caught the
 #           Ctrl+C (measured, tests A-D, 2026-09-27).
+#   FT-294: ITEM 17 SAID GOOD WHILE A WAKE WITHIN 15 MINUTES NEEDS NO
+#           PASSWORD (Modern Standby, DelayLockInterval). Now DELAYED -- never
+#           GOOD -- and applying item 17 sets the delay to 0 and re-reads.
+#   FT-297: ITEM 8 ON AN ALREADY-ENCRYPTED DRIVE added a recovery key and
+#           said encryption had started. Now "encrypted, protection off" is
+#           its own state and gets screen 96 -- no command, no new key.
 #   FT-282: ITEM 12 (DIAGNOSTIC DATA) READ ONLY THE GROUP POLICY VALUE, which
 #           is empty on home PCs, and said "Sending extra data" when optional
 #           data was off. Now reads the Settings value too (measured on SANDY
@@ -2101,6 +2107,7 @@ $script:GGScreenLabels = @{
     "10" = "15"           # Pre-scan prep checklist
     "38" = "16"           # Defender offline scan
     "95" = "16a"          # Full scan of every drive (E6) -- interim label
+    "96" = "27f"          # Drive already encrypted, protection off (FT-297) -- interim
     "43" = "17"           # Antivirus status -- healthy setup
     "50" = "19"           # Power settings -- security review
     "51" = "20"           # Apps audit results
@@ -5773,7 +5780,19 @@ function Get-GGConsoleLockState {
             $ggDC = [Convert]::ToUInt32($Matches[1], 16)
         }
         if ($ggVal -eq 1 -and ($null -eq $ggDC -or $ggDC -eq 1)) {
-            return @{ State = "REQUIRED";     Value = $ggVal; DC = $ggDC; Raw = $ggRaw }
+            # FT-294 (ascii45): on Modern Standby PCs Settings' "If you've been
+            # away" choice is DelayLockInterval (seconds; 0 = every time,
+            # 0xFFFFFFFF = never -- sourced, Winaero/ElevenForum; CGDELL read 900 =
+            # Bill's "15 minutes", measured 2026-09-27). Any delay is not GOOD.
+            $ggDelay = $null
+            try { $ggDelay = (Get-ItemProperty "HKCU:\Control Panel\Desktop" -EA Stop).DelayLockInterval } catch {}
+            if ($null -ne $ggDelay -and [uint32]$ggDelay -eq [uint32]4294967295) {
+                return @{ State = "NOT_REQUIRED"; Value = $ggVal; DC = $ggDC; Delay = $ggDelay; Raw = $ggRaw }
+            }
+            if ($null -ne $ggDelay -and [uint32]$ggDelay -gt 0) {
+                return @{ State = "DELAYED"; Value = $ggVal; DC = $ggDC; Delay = [uint32]$ggDelay; Minutes = [math]::Round([uint32]$ggDelay / 60); Raw = $ggRaw }
+            }
+            return @{ State = "REQUIRED";     Value = $ggVal; DC = $ggDC; Delay = $ggDelay; Raw = $ggRaw }
         }
         return @{ State = "NOT_REQUIRED"; Value = $ggVal; DC = $ggDC; Raw = $ggRaw }
     }
@@ -5799,6 +5818,7 @@ function Run-PowerSettingsCheck {
     switch ($ggCL.State) {
         "REQUIRED"     { $results["PasswordOnWake"] = "REQUIRED -- GOOD" }
         "NOT_REQUIRED" { $results["PasswordOnWake"] = "NOT required -- change recommended" }
+        "DELAYED"      { $results["PasswordOnWake"] = ("Only after " + $ggCL.Minutes + " min away -- change recommended") }   # FT-294
         default        {
             $results["PasswordOnWake"] = "Could not read -- check by hand"
             try { Write-Log -Message "Password on wake: read produced no setting index (FT-256, $($ggCL.State)). Raw powercfg output: $($ggCL.Raw)" -Status "WARN" } catch {}
@@ -6061,6 +6081,8 @@ function Apply-PowerSettings {
             $ggWas = [string]$Results["PasswordOnWake"]
             powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_NONE CONSOLELOCK 1 | Out-Null
             powercfg /SETDCVALUEINDEX SCHEME_CURRENT SUB_NONE CONSOLELOCK 1 | Out-Null
+            # FT-294 (ascii45): also ask for a password on EVERY wake (Modern Standby).
+            try { if ($null -ne (Get-ItemProperty "HKCU:\Control Panel\Desktop" -EA Stop).DelayLockInterval) { Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name DelayLockInterval -Value 0 -Type DWord -Force -EA Stop } } catch {}
             powercfg /S SCHEME_CURRENT | Out-Null
             # FT-269 (ascii45): re-read through the one shared reader (FT-268's
             # /qh), and print OK / log APPLIED only when it confirms REQUIRED.
@@ -6069,6 +6091,7 @@ function Apply-PowerSettings {
             switch ($ggRe.State) {
                 "REQUIRED"     { $ggNow = "REQUIRED" }
                 "NOT_REQUIRED" { $ggNow = "still NOT required" }
+                "DELAYED"      { $ggNow = ("still only after " + $ggRe.Minutes + " min away") }   # FT-294
                 default        { $ggNow = "could not confirm -- check by hand" }
             }
             if ($ggRe.State -eq "REQUIRED") {
@@ -6836,7 +6859,7 @@ function Get-AllStatuses {
                 } catch { $s.Status = "Unknown" }
             }
             8 {
-                try { $bl = Get-BitLockerVolume -MountPoint $env:SystemDrive -EA Stop; $s.Status = if ($bl.ProtectionStatus -eq "On") { "ENCRYPTED -- GOOD" } else { "NOT Encrypted -- action available" } }
+                try { $bl = Get-BitLockerVolume -MountPoint $env:SystemDrive -EA Stop; $s.Status = if ($bl.ProtectionStatus -eq "On") { "ENCRYPTED -- GOOD" } elseif ([string]$bl.VolumeStatus -ne "FullyDecrypted") { "Encrypted, protection OFF -- needs attention" } else { "NOT Encrypted -- action available" } }   # FT-297
                 catch { $s.Status = "Check manually in Windows Security" }
             }
             9 {
@@ -7019,9 +7042,10 @@ function Get-AllStatuses {
                 $s.Status = switch ($ggCL17.State) {
                     "REQUIRED"     { "REQUIRED -- GOOD" }
                     "NOT_REQUIRED" { "Not required -- needs attention" }
+                    "DELAYED"      { "Only after " + $ggCL17.Minutes + " min away -- needs attention" }   # FT-294
                     default        { "Unknown -- could not read; check by hand" }
                 }
-                if (@("REQUIRED","NOT_REQUIRED") -notcontains $ggCL17.State) {
+                if (@("REQUIRED","NOT_REQUIRED","DELAYED") -notcontains $ggCL17.State) {
                     try { Write-Log -Message "Item 17 (password on wake): read produced no setting index (FT-256, $($ggCL17.State)). Raw powercfg output: $($ggCL17.Raw)" -Status "WARN" } catch {}
                 }
             }
@@ -7481,6 +7505,8 @@ function Apply-Setting {
             try {
                 powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_NONE CONSOLELOCK 1 | Out-Null
                 powercfg /SETDCVALUEINDEX SCHEME_CURRENT SUB_NONE CONSOLELOCK 1 | Out-Null
+                # FT-294 (ascii45): also ask for a password on EVERY wake (Modern Standby).
+                try { if ($null -ne (Get-ItemProperty "HKCU:\Control Panel\Desktop" -EA Stop).DelayLockInterval) { Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name DelayLockInterval -Value 0 -Type DWord -Force -EA Stop } } catch {}
                 powercfg /S SCHEME_CURRENT | Out-Null
                 # FT-269 (ascii45): this returned GOOD with no re-read at all.
                 # Re-read through the shared reader; GOOD only on REQUIRED. The
@@ -7489,6 +7515,8 @@ function Apply-Setting {
                 $ggRe17 = Get-GGConsoleLockState
                 if ($ggRe17.State -eq "REQUIRED") {
                     $result = "Password required on wake -- enabled for both AC and battery -- confirmed -- GOOD"
+                } elseif ($ggRe17.State -eq "DELAYED") {
+                    $result = "ERROR: Windows still asks for a password only after " + $ggRe17.Minutes + " minutes away. Change it by hand: Settings -> Accounts -> Sign-in options -> 'If you've been away, when should Windows require you to sign in again?' -> Every Time."
                 } elseif ($ggRe17.State -eq "NOT_REQUIRED") {
                     $result = "ERROR: Windows did not keep the change -- a password is still not required on wake. Check by hand: Settings -> Accounts -> Sign-in options -> 'If you've been away, when should Windows require you to sign in again?' -> When PC wakes up from sleep."
                 } else {
@@ -8776,6 +8804,39 @@ function Show-BitLockerHomeScreen {
     Pause-ForUser
 }
 
+function Show-GGEncryptedNotProtected {
+    # FT-297 (ascii45): the drive is already encrypted but protection is off.
+    # Measured on CGDELL 2026-09-28 (FullyEncrypted, protection Off) and SANDY
+    # 2026-09-27 (same state; a local account could not finish it -- FT-289).
+    # Checkup must NOT run Enable-BitLocker here: on CGDELL it only added a
+    # fifth recovery key and then reported that encryption had started.
+    param($Volume)
+    $ggHome = $global:WinEdition -notmatch "Pro|Enterprise|Education|Business"
+    Clear-Host
+    Write-Host ""
+    Draw-Box -ScreenId "96" -Color Yellow -Lines @(
+        "  YOUR DRIVE IS ALREADY ENCRYPTED -- PROTECTION IS OFF        ",
+        "---",
+        "  Your drive is already encrypted, but its protection is     ",
+        "  turned off. Until protection is on, the drive is not       ",
+        "  locked: someone who took it out of this PC could read it.  ",
+        "                                                             ",
+        "  Checkup does NOT start encryption again -- it is already   ",
+        "  done -- and it does NOT make another recovery key.         ",
+        "                                                             ",
+        "  TO TURN PROTECTION BACK ON:                                ",
+        $(if ($ggHome) { "  1. Press the Windows key, type  Device encryption , Enter. " } else { "  1. Press the Windows key, type  Manage BitLocker , Enter.  " }),
+        $(if ($ggHome) { "  2. Turn Device encryption On. On a local account (one that " } else { "  2. Next to drive C:, click  Resume protection.             " }),
+        $(if ($ggHome) { "     is not a Microsoft account) Windows may not be able to " } else { "  3. On the same page, click  Back up your recovery key,     " }),
+        $(if ($ggHome) { "     finish this -- it needs somewhere to save the key.     " } else { "     and keep it somewhere safe that is NOT this PC.         " }),
+        "                                                             ",
+        "  Checkup checks this again on your next run.                "
+    )
+    Write-Log -Message ("Item 8: drive already encrypted (" + $Volume.VolumeStatus + ", " + $Volume.EncryptionPercentage + "%) with protection " + $Volume.ProtectionStatus + " -- no encryption command run, no key made; manual steps shown (FT-297)") -Status "MANUAL"
+    Write-Host ""
+    Pause-ForUser "  Press Enter or Space to continue..."
+}
+
 function Show-BitLockerScreen {
     try {
         $vol = Get-BitLockerVolume -MountPoint $env:SystemDrive -EA Stop
@@ -8784,6 +8845,12 @@ function Show-BitLockerScreen {
             Write-Host "  BitLocker / Device Encryption: Already enabled -- GOOD" -ForegroundColor Green
             Write-Log -Message "BitLocker already enabled -- no change needed" -Status "GOOD"
             Pause-ForUser
+            return
+        }
+        # FT-297 (ascii45): encrypted (or encrypting) but protection off --
+        # never run Enable-BitLocker on it. Covers Home and Pro alike.
+        if ([string]$vol.VolumeStatus -ne "FullyDecrypted") {
+            Show-GGEncryptedNotProtected -Volume $vol
             return
         }
     } catch {}
