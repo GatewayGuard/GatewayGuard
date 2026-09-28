@@ -143,6 +143,7 @@
 #   FT-299: item 1 reads a pause (flip-tested) and the NoAutoUpdate policy.
 #   FT-301: item 13 judges its two parts separately (SANDY: one policy value).
 #   FT-300: item 4 also reads Edge SmartScreen (flip-proven) and app blocking.
+#           Store apps too (AppHost EnableWebContentEvaluation, flip-proven).
 #   RENUMBER (2026-09-28): gaps and interim labels gone; 1a -> 0a (FT-195a).
 #   FT-282: ITEM 12 (DIAGNOSTIC DATA) READ ONLY THE GROUP POLICY VALUE, which
 #           is empty on home PCs, and said "Sending extra data" when optional
@@ -6681,7 +6682,7 @@ function Get-GGSmartScreenParts {
     # VERIFIED 2026-09-28 measured on SANDY (Bill's flip test, 1-0-0-1):
     # HKCU\SOFTWARE\Microsoft\Edge\SmartScreenEnabled (default) follows
     # "SmartScreen for Microsoft Edge". PUAProtection = the E3 read.
-    $ggP = [ordered]@{ Edge = "unknown"; PUA = "unknown" }
+    $ggP = [ordered]@{ Edge = "unknown"; PUA = "unknown"; Store = "unknown" }
     $ggEp = $null
     try { $ggEp = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Edge" -Name SmartScreenEnabled -EA Stop).SmartScreenEnabled } catch {}
     if ($null -ne $ggEp) { $ggP.Edge = $(if ($ggEp -eq 1) { "on" } else { "off" }) }
@@ -6692,7 +6693,17 @@ function Get-GGSmartScreenParts {
         } catch {}
     }
     try { $ggPu = (Get-MpPreference -EA Stop).PUAProtection; if ($ggPu -eq 1) { $ggP.PUA = "on" } elseif ($null -ne $ggPu) { $ggP.PUA = "off" } } catch {}
-    try { Write-Log -Message ("Item 4 parts: Edge SmartScreen=" + $ggP.Edge + ", unwanted app blocking=" + $ggP.PUA) -Status "INFO" } catch {}
+    # VERIFIED 2026-09-28 measured on CGDELL (Bill's flip test): "SmartScreen for
+    # Microsoft Store apps" = HKCU AppHost\EnableWebContentEvaluation -- absent
+    # until the switch is first changed (absent with the switch on, on BOTH PCs),
+    # 0 off, 1 on.
+    try {
+        $ggSt = (Get-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" -Name EnableWebContentEvaluation -EA Stop).EnableWebContentEvaluation
+        if ($ggSt -eq 0) { $ggP.Store = "off" } elseif ($ggSt -eq 1) { $ggP.Store = "on" }
+    } catch [System.Management.Automation.ItemNotFoundException] { $ggP.Store = "on"
+    } catch [System.Management.Automation.PSArgumentException] { $ggP.Store = "on"
+    } catch {}
+    try { Write-Log -Message ("Item 4 parts: Edge SmartScreen=" + $ggP.Edge + ", unwanted app blocking=" + $ggP.PUA + ", Store apps=" + $ggP.Store) -Status "INFO" } catch {}
     return $ggP
 }
 
@@ -6702,6 +6713,7 @@ function Get-GGSmartScreenSteps {
     $ggOff = @()
     if ($Parts.Edge -ne "on") { $ggOff += "SmartScreen for Microsoft Edge" }
     if ($Parts.PUA -ne "on") { $ggOff += "Potentially unwanted app blocking (tick Block apps and Block downloads)" }
+    if ($Parts.Store -ne "on") { $ggOff += "SmartScreen for Microsoft Store apps (further down the same page)" }
     if ($ggOff.Count -eq 0) { return "" }
     return ("MANUAL: Windows Security -> App & browser control -> Reputation-based protection settings -> turn on: " + ($ggOff -join "; ") + ". Each should say On.")
 }
@@ -6869,8 +6881,9 @@ function Get-AllStatuses {
                         $gg4 = Get-GGSmartScreenParts
                         $s.Status = if ($gg4.Edge -eq "off") { "SmartScreen for Edge is OFF -- needs attention" }
                                     elseif ($gg4.PUA -eq "off") { "Unwanted app blocking is OFF -- needs attention" }
-                                    elseif ($gg4.Edge -eq "on" -and $gg4.PUA -eq "on") { "ON -- GOOD" }
-                                    else { "Unknown -- could not read SmartScreen for Edge" }
+                                    elseif ($gg4.Store -eq "off") { "SmartScreen for Store apps is OFF -- needs attention" }
+                                    elseif ($gg4.Edge -eq "on" -and $gg4.PUA -eq "on" -and $gg4.Store -eq "on") { "ON -- GOOD" }
+                                    else { "Unknown -- could not read every SmartScreen switch" }
                     } else {
                         $s.Status = "Unknown setting -- check by hand"
                     }

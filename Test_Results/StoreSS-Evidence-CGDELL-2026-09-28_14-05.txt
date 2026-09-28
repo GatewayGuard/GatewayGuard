@@ -1,0 +1,7 @@
+StoreSS evidence -- CGDELL 2026-09-28 (Bill's flip test of 'SmartScreen for Microsoft Store apps')
+Trimmed from Test_Results\StoreSS-CGDELL-2026-09-28_13-47-12 / 14-01-31 / 14-02-17.txt (full files not committed: they also caught unrelated values incl. a sign-in record).
+13:47 switch on (never changed): EnableWebContentEvaluation ABSENT
+    NOW    HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AppHost  ::  EnableWebContentEvaluation = 0
+    NOW    HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AppHost  ::  PreventOverride = 0
+    NOW    HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AppHost  ::  EnableWebContentEvaluation = 1
+    BEFORE HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AppHost  ::  EnableWebContentEvaluation = 0

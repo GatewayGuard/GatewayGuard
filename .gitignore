@@ -47,3 +47,8 @@ Attachments/
 
 # Screen recordings. Large, and none is a source of truth.
 Videos/
+
+# Find-StoreSmartScreen raw output: registry dumps can hold sign-in records -- never commit
+Test_Results/StoreSS-snap-*
+Test_Results/StoreSS-CGDELL-*
+Test_Results/StoreSS-SANDY-*
