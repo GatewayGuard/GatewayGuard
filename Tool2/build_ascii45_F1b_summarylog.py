@@ -1,7 +1,7 @@
 """build_ascii45_F1b_summarylog -- F1 follow-up: screen 99 logs each row once
 (before the pages), not again every time a page is redrawn after B.
 
-Dated: 2026-09-28 08:44 ET
+Dated: 2026-09-28 08:27 ET (commit time; the 08:44 first typed here was not read off a clock)
 Editor: Claude Code (CGDELL)
 
 Run from Tool2/:  python build_ascii45_F1b_summarylog.py

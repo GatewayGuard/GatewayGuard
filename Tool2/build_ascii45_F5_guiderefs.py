@@ -1,7 +1,7 @@
 """build_ascii45_F5_guiderefs -- Block F, F5 (Decision 8 as amended by Cloud):
 every guide reference names the SETTING NUMBER, or a guide Part and section.
 
-Dated: 2026-09-28 08:50 ET
+Dated: 2026-09-28 08:28 ET (commit time; the 08:50 first typed here was not read off a clock)
 Editor: Claude Code (CGDELL)
 
 Five print sizes mean no page number can be right, and "Phase 1, Step 6,

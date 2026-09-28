@@ -139,6 +139,7 @@
 #           or a Part and section -- never a page, never the old "Phase".
 #   F8 (FT-253): Bill's wording on screens 22, 23, 27, 28, 34 and the by-hand
 #           line. FT-222: a changed item loses its X.
+#   RENUMBER (2026-09-28): gaps and interim labels gone; 1a -> 0a (FT-195a).
 #   FT-282: ITEM 12 (DIAGNOSTIC DATA) READ ONLY THE GROUP POLICY VALUE, which
 #           is empty on home PCs, and said "Sending extra data" when optional
 #           data was off. Now reads the Settings value too (measured on SANDY
@@ -2107,80 +2108,82 @@ function Save-Log {
 # ============================================================
 $script:GGScreenLabels = @{
     # -- the canonical journey ------------------------------------
+    # Renumbered 2026-09-28 (ascii45) after Blocks E and F -- see
+    # Tool2\build_ascii45_renumber.py for the measured order.
     "85" = "1"            # Welcome / maximize
     "86" = "2"            # Scrolling
     "87" = "3"            # Set your console font
-    "29" = "5"            # Before you start -- your window
-    "78" = "6"            # Before you start -- your keyboard
-    "30" = "7"            # What happens next
-    "02" = "8"            # How to scroll back and copy
-    "05" = "9"            # Important -- read before continuing
-    "34" = "10"           # Windows edition detected
-    "35" = "11"           # Your PC -- RAM
-    "09" = "12"           # Your system at a glance
-    "26" = "13"           # Your PC's security tools
-    "27" = "14"           # The scans we recommend
-    "90" = "14c"          # Tamper Protection is off (E1) -- interim label
-    "91" = "14d"          # Windows Update -- updates waiting (E2) -- interim
-    "92" = "14e"          # Restart needed to finish updates (E2) -- interim
-    "93" = "14f"          # Unwanted app blocking (E3) -- interim
-    "97" = "14h"          # Checking your PC's protection, step by step (F12) -- interim
-    "94" = "14g"          # Before the scan -- what Checkup checked -- interim
-    "10" = "15"           # Pre-scan prep checklist
-    "38" = "16"           # Defender offline scan
-    "95" = "16a"          # Full scan of every drive (E6) -- interim label
-    "98" = "18"           # Power check -- plugged in, stay awake (FT-298) -- interim
-    "96" = "27f"          # Drive already encrypted, protection off (FT-297) -- interim
-    "43" = "17"           # Antivirus status -- healthy setup
-    "50" = "19"           # Power settings -- security review
-    "51" = "20"           # Apps audit results
-    "52" = "21"           # Mode selector
-    "53" = "22"           # Quick question -- your passwords
-    "54" = "23"           # What Checkup does and does not do (1 of 2)
-    "75" = "24"           # What Checkup does and does not do (2 of 2)
-    "76" = "25"           # The security checklist, page 1
-    "77" = "26"           # The security checklist, page 2
-    "55" = "27"           # Review your selections
-    "61" = "28"           # Final item: device encryption
-    "62" = "29"           # Your PC meets the requirements
-    "79" = "30"           # Before you turn it on -- your recovery key
-    "81" = "31"           # How to tell if encryption is running
-    "69" = "32"           # All selected items processed
-    "99" = "32a"          # What Checkup changed (F1) -- interim label
-    "100" = "32b"         # Steps for you to do (F1) -- interim label
-    "70" = "33"           # Automated scan schedule setup
-    "72" = "34"           # Automated steps complete
+    "29" = "4"            # Before you start -- your window
+    "78" = "5"            # Before you start -- your keyboard
+    "30" = "6"            # What happens next
+    "02" = "7"            # How to scroll back and copy
+    "05" = "8"            # Important -- read before continuing
+    "34" = "9"            # Windows edition detected
+    "35" = "10"           # Your PC -- RAM
+    "09" = "11"           # Your system at a glance
+    "26" = "12"           # Your PC's security tools
+    "27" = "13"           # The scans we recommend
+    "97" = "14"           # Checking your PC's protection, step by step (F12)
+    "94" = "15"           # Before the scan -- what Checkup checked
+    "10" = "16"           # Pre-scan prep checklist
+    "38" = "17"           # Defender offline scan
+    "95" = "18"           # Full scan of every drive (E6)
+    "98" = "19"           # Power check -- plugged in, stay awake (FT-298)
+    "50" = "20"           # Power settings -- security review
+    "51" = "21"           # Apps audit results
+    "52" = "22"           # Mode selector
+    "53" = "23"           # Quick question -- your passwords
+    "54" = "24"           # What Checkup does and does not do (1 of 2)
+    "75" = "25"           # What Checkup does and does not do (2 of 2)
+    "76" = "26"           # The security checklist, page 1
+    "77" = "27"           # The security checklist, page 2
+    "55" = "28"           # Review your selections
+    "61" = "29"           # Final item: device encryption
+    "62" = "30"           # Your PC meets the requirements
+    "79" = "31"           # Before you turn it on -- your recovery key
+    "81" = "32"           # How to tell if encryption is running
+    "69" = "33"           # All selected items processed
+    "99" = "34"           # What Checkup changed (F1)
+    "100" = "35"          # Steps for you to do (F1)
+    "70" = "36"           # Automated scan schedule setup
+    "72" = "37"           # Checkup is finished -- steps only you can do
     # -- branches, one level deep ---------------------------------
-    "25" = "1a"           # Welcome back -- a checkpoint exists
+    "25" = "0a"           # Welcome back -- a checkpoint exists (FT-195a: before 1)
     "31" = "1b"           # Quick re-check before resuming
     "83" = "1c"           # Are you sure you want to close Checkup?
     "01" = "3a"           # Not administrator -- how to run Checkup correctly
-    "32" = "9a"           # Domain-joined warning
-    "33" = "9b"           # Administrator access required
-    "36" = "11a"          # Time and date -- check
-    "37" = "11b"          # Time and date -- out of sync
-    "39" = "14a"          # Reminder: pre-scan recommended (repeat run)
-    "40" = "14b"          # Welcome back -- offline scan complete
-    "41" = "17a"          # Antivirus -- alternative state
-    "44" = "17c"          # Antivirus -- alternative state
-    "46" = "17e"          # Antivirus -- alternative state
-    "49" = "18d"          # Power / battery warning
-    "74" = "22a"          # Your passwords -- we remembered your answer
-    "56" = "25a"          # Non-recommended selections
-    "57" = "25b"          # Non-recommended -- confirm
-    "58" = "25c"          # Heads up -- skipping encryption
-    "60" = "25d"          # Why encrypt?
-    "68" = "25e"          # Encryption declined
-    "59" = "27a"          # Applying your changes
-    "64" = "27b"          # BitLocker (Windows 11 Pro)
-    "65" = "27c"          # BitLocker -- what will happen (Pro)
-    "66" = "27d"          # BitLocker -- confirm (Pro)
-    "67" = "27e"          # BitLocker enabled (Pro)
-    "63" = "28a"          # Device encryption may not be available on this PC
-    "82" = "30a"          # Already signed in with a Microsoft account
-    "80" = "30b"          # How to sign in with a Microsoft account
-    "88" = "33c"          # OneDrive offer -- shown only when there is no OneDrive
-    "89" = "33d"          # How to set up OneDrive
+    "32" = "8a"           # Domain-joined warning
+    "33" = "8b"           # Administrator access required
+    "36" = "10a"          # Time and date -- check
+    "37" = "10b"          # Time and date -- out of sync
+    "90" = "14a"          # Tamper Protection is off (E1)
+    "43" = "14b"          # Antivirus -- Defender on, another product also installed
+    "41" = "14c"          # Antivirus -- alternative state
+    "44" = "14d"          # Antivirus -- alternative state
+    "46" = "14e"          # Antivirus -- alternative state
+    "93" = "14f"          # Unwanted app blocking (E3)
+    "91" = "14g"          # Windows Update -- updates waiting (E2)
+    "92" = "14h"          # Restart needed to finish updates (E2)
+    "39" = "16a"          # Reminder: pre-scan recommended (repeat run)
+    "40" = "17a"          # Welcome back -- offline scan complete
+    "49" = "19a"          # Power / battery warning
+    "74" = "23a"          # Your passwords -- we remembered your answer
+    "56" = "26a"          # Non-recommended selections
+    "57" = "26b"          # Non-recommended -- confirm
+    "58" = "26c"          # Heads up -- skipping encryption
+    "60" = "26d"          # Why encrypt?
+    "68" = "26e"          # Encryption declined
+    "59" = "28a"          # Already correct -- re-offered
+    "96" = "28b"          # Drive already encrypted, protection off (FT-297)
+    "64" = "28c"          # BitLocker (Windows 11 Pro)
+    "65" = "28d"          # BitLocker -- what will happen (Pro)
+    "66" = "28e"          # BitLocker -- confirm (Pro)
+    "67" = "28f"          # BitLocker enabled (Pro)
+    "63" = "29a"          # Device encryption may not be available on this PC
+    "82" = "31a"          # Already signed in with a Microsoft account
+    "80" = "31b"          # How to sign in with a Microsoft account
+    "88" = "36a"          # OneDrive offer -- shown only when there is no OneDrive
+    "89" = "36b"          # How to set up OneDrive
     # -- reachable from everywhere, so deliberately unnumbered ----
     "84" = ""             # About this Checkup run (the I key)
 }
@@ -10185,7 +10188,7 @@ function Select-Mode {
     if ($ggFlow -eq "Mode") {
         $choice = Select-Mode
         if ($choice -eq "BACK") { $ggFlow = "Apps"; continue ggFlowLoop }
-        Write-Log -Message "Start chosen at screen 21 (console checklist)" -Status "INFO"
+        Write-Log -Message ("Start chosen at screen " + $script:GGScreenLabels["52"] + " (console checklist)") -Status "INFO"
         Save-Checkpoint -Checkpoint "ModeChosen"   # D5
     }
     Run-ConsoleMode   # B1 (ascii45): the only mode; Exit is handled inside Select-Mode

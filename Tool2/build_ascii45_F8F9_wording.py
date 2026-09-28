@@ -1,7 +1,7 @@
 """build_ascii45_F8F9_wording -- Block F, F8 (FT-253, the F6 wording block,
 plus FT-222 and FT-237) and F9 (FT-195a, FT-175b, FT-225).
 
-Dated: 2026-09-28 08:59 ET
+Dated: 2026-09-28 08:32 ET (commit time; the 08:59 first typed here was not read off a clock)
 Editor: Claude Code (CGDELL)
 
 Source: Bill's notes in GatewayGuard_FieldTestTriage-ascii43run2-2026-08-30-

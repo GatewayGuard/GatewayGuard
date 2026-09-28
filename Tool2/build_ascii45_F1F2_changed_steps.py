@@ -1,7 +1,7 @@
 """build_ascii45_F1F2_changed_steps -- Block F: Decision 4 (F1) and the stale
 Revert strings (F2).
 
-Dated: 2026-09-28 08:41 ET
+Dated: 2026-09-28 08:27 ET (commit time; the 08:41 first typed here was not read off a clock)
 Editor: Claude Code (CGDELL)
 
 F1 / Decision 4 (Bill, note 30: "they selected it, don't make them decide

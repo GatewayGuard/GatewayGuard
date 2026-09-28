@@ -1,7 +1,7 @@
 """build_ascii45_F3b_pages_names -- Block F, batch 3b: the last unnumbered
 antivirus pages (F4 / FT-275, F20 / FT-298) and password-manager names.
 
-Dated: 2026-09-28 08:31 ET
+Dated: 2026-09-28 08:22 ET (commit time; the 08:31 first typed here was not read off a clock)
 Editor: Claude Code (CGDELL)
 
 FT-275 / FT-298: Test-DefenderPrimary opened with Clear-Host and "Checking
