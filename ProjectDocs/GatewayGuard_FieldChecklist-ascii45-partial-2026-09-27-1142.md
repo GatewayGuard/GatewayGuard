@@ -5,8 +5,9 @@
 - **Replaces** `GatewayGuard_FieldChecklist-ascii45-partial-2026-09-26-1139.md`,
   which covered only Blocks A, B and C1.
 - **Build:** `Tool\W11-SecurityHardening-v3-ascii45-2026-09-26-1059.ps1`, as of
-  commit `17c57e2` (2026-09-27 11:29). **Not finished:** C9 (full-screen launch,
-  screens 3/4/8), Block F (wording and screens), and the screen renumber pass.
+  commit `19475d0` (2026-09-28 07:5x -- items 8 and 17 fixed). **Updated 2026-09-28 08:04.**
+  **Not finished:** Block F (wording and screens, now including the start order
+  Bill asked for) and the screen renumber pass.
 - **This is not the final SANDY field checklist.** That one is written when the
   build is finished. This one lets you test what IS built, now.
 - **Where:** CGDELL or SANDY. **On SANDY, do not turn on encryption** -- the
@@ -77,13 +78,28 @@
 | 21 | Start screen | **CHECK** | Now has **[B] BACK -- to the apps review**. B works |
 | 22 / 22a | Your passwords | **CHECK** | Prompt offers B = back to the start screen |
 | 23, 24 | What Checkup does | **CHECK** | B from 23 shows screen 22 **in full** (box and number), not a bare question |
-| 25 / 26 | The checklist | **CHECK** | Legend shows "B = go back one page" and "F = fix the screen". **Item 9 (Windows Hello):** if you last signed in with your PIN it says "You sign in with Windows Hello -- GOOD"; if you last used your password it gives the yellow "MANUAL CHECK ... press the Windows key + L ..." steps. **Item 17:** GOOD only when both values are on |
+| 25 / 26 | The checklist | **CHECK** | Legend shows "B = go back one page" and "F = fix the screen". **Item 9 (Windows Hello):** if you last signed in with your PIN it says "You sign in with Windows Hello -- GOOD"; if you last used your password it gives the yellow "MANUAL CHECK ... press the Windows key + L ..." steps. **Item 17:** GOOD only when both values are on **Item 17** on CGDELL must now say **"Only after 15 min away -- needs attention"** (Settings' "If you've been away" is 15 minutes there) -- NOT "REQUIRED -- GOOD". If you select it and run it, Settings should then show **Every Time**. **Item 8** on CGDELL must say **"Encrypted, protection OFF -- needs attention"**, not "NOT Encrypted" |
 | 27 | Review | LOOK | |
 | 27a | Applying | LOOK | |
 | 27b-31 | BitLocker / Device Encryption | LOOK | **Do not turn encryption on (SANDY)** |
 | 32, 33 | Processed, scan reminder | LOOK | |
 | 33a/33b | Convenience review | SKIP | Replaced in Block F |
 | 34 | Automated steps complete | LOOK | SKIP the 2FA line (Block F) |
+
+## Already known -- no need to report again
+
+Found in Bill's CGDELL runs 2026-09-27 and 09-28, recorded in the plan (F12-F20), not yet built:
+
+| What you will see | Plan |
+|---|---|
+| Tamper Protection is checked first but silently; the antivirus check comes after the scans; 14g has no antivirus line | FT-290, FT-298 -- your order: Tamper, virus protection, app blocking, Windows Update, each shown as it happens |
+| Two pages with no screen number after screen 15 (antivirus OK, power check) | FT-298 |
+| "Sleep prevention: SET BY THIS TOOL ... will be restored" -- it changes no setting | FT-291 |
+| Screen 19: the screen-timeout line appears right after your answer | FT-293 -- moves to the review screen |
+| Wake on LAN still "Enabled" on the checklist after Checkup turned it off | FT-292 |
+| Items 13 and 14 "Unknown -- could not check" | FT-295 |
+| Checklist order: Windows Update, Defender, Tamper | FT-296 -- becomes Tamper, Defender, Windows Update |
+| Screen 7's list of checks is out of date | F11 |
 
 ## Resume -- CHECK
 
