@@ -142,6 +142,7 @@
 #   FT-300 (part): item 4 re-reads SmartScreenEnabled before saying GOOD.
 #   FT-299: item 1 reads a pause (flip-tested) and the NoAutoUpdate policy.
 #   FT-301: item 13 judges its two parts separately (SANDY: one policy value).
+#   FT-300: item 4 also reads Edge SmartScreen (flip-proven) and app blocking.
 #   RENUMBER (2026-09-28): gaps and interim labels gone; 1a -> 0a (FT-195a).
 #   FT-282: ITEM 12 (DIAGNOSTIC DATA) READ ONLY THE GROUP POLICY VALUE, which
 #           is empty on home PCs, and said "Sending extra data" when optional
@@ -6675,6 +6676,36 @@ function Get-GGEdgeEffectiveBool {
     return @{ Found = $true; Value = [bool]$ggJson.$KeyName }
 }
 
+function Get-GGSmartScreenParts {
+    # FT-300 (ascii45): the other SmartScreen toggles item 4 must see.
+    # VERIFIED 2026-09-28 measured on SANDY (Bill's flip test, 1-0-0-1):
+    # HKCU\SOFTWARE\Microsoft\Edge\SmartScreenEnabled (default) follows
+    # "SmartScreen for Microsoft Edge". PUAProtection = the E3 read.
+    $ggP = [ordered]@{ Edge = "unknown"; PUA = "unknown" }
+    $ggEp = $null
+    try { $ggEp = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Edge" -Name SmartScreenEnabled -EA Stop).SmartScreenEnabled } catch {}
+    if ($null -ne $ggEp) { $ggP.Edge = $(if ($ggEp -eq 1) { "on" } else { "off" }) }
+    else {
+        try {
+            $ggEv = (Get-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Edge\SmartScreenEnabled" -Name "(default)" -EA Stop)."(default)"
+            if ("$ggEv" -eq "1") { $ggP.Edge = "on" } elseif ("$ggEv" -eq "0") { $ggP.Edge = "off" }
+        } catch {}
+    }
+    try { $ggPu = (Get-MpPreference -EA Stop).PUAProtection; if ($ggPu -eq 1) { $ggP.PUA = "on" } elseif ($null -ne $ggPu) { $ggP.PUA = "off" } } catch {}
+    try { Write-Log -Message ("Item 4 parts: Edge SmartScreen=" + $ggP.Edge + ", unwanted app blocking=" + $ggP.PUA) -Status "INFO" } catch {}
+    return $ggP
+}
+
+function Get-GGSmartScreenSteps {
+    # The by-hand steps for the parts Checkup does not change (screen 35).
+    param($Parts)
+    $ggOff = @()
+    if ($Parts.Edge -ne "on") { $ggOff += "SmartScreen for Microsoft Edge" }
+    if ($Parts.PUA -ne "on") { $ggOff += "Potentially unwanted app blocking (tick Block apps and Block downloads)" }
+    if ($ggOff.Count -eq 0) { return "" }
+    return ("MANUAL: Windows Security -> App & browser control -> Reputation-based protection settings -> turn on: " + ($ggOff -join "; ") + ". Each should say On.")
+}
+
 function Get-GGUpdateHold {
     # FT-299 (ascii45): what can stop updates while the service looks fine.
     # VERIFIED 2026-09-28 measured on CGDELL (Bill's flip test): Settings ->
@@ -6833,7 +6864,13 @@ function Get-AllStatuses {
                     } elseif ("$ss" -eq "Off") {
                         $s.Status = "OFF -- needs attention"
                     } elseif ("$ss" -eq "Warn" -or "$ss" -eq "RequireAdmin") {
-                        $s.Status = "ON -- GOOD"
+                        # FT-300 (ascii45): GOOD needs the Edge toggle and app
+                        # blocking on too -- the guide's Setting 4 covers all of them.
+                        $gg4 = Get-GGSmartScreenParts
+                        $s.Status = if ($gg4.Edge -eq "off") { "SmartScreen for Edge is OFF -- needs attention" }
+                                    elseif ($gg4.PUA -eq "off") { "Unwanted app blocking is OFF -- needs attention" }
+                                    elseif ($gg4.Edge -eq "on" -and $gg4.PUA -eq "on") { "ON -- GOOD" }
+                                    else { "Unknown -- could not read SmartScreen for Edge" }
                     } else {
                         $s.Status = "Unknown setting -- check by hand"
                     }
@@ -7436,7 +7473,10 @@ function Apply-Setting {
                 # FT-300 (ascii45): read it back before saying GOOD (FT-269 shape).
                 $ggSS = $null
                 try { $ggSS = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name SmartScreenEnabled -EA Stop).SmartScreenEnabled } catch {}
-                $result = if ("$ggSS" -eq "Warn") { "Check apps and files set to Warn (recommended) -- GOOD" }
+                # FT-300: the parts Checkup does not change become steps (screen 35).
+                $gg4Steps = Get-GGSmartScreenSteps -Parts (Get-GGSmartScreenParts)
+                $result = if ("$ggSS" -eq "Warn" -and $gg4Steps) { "Check apps and files set to Warn. " + $gg4Steps }
+                          elseif ("$ggSS" -eq "Warn") { "Check apps and files set to Warn (recommended) -- GOOD" }
                           else { "NOTE: Checkup set this, but could not read it back to confirm. Check by hand: Windows Security -> App & browser control -> Reputation-based protection settings -> Check apps and files -> On." }
             } catch { $result = "ERROR: $_" }
         }
