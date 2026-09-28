@@ -5,7 +5,7 @@
 - **Replaces** `GatewayGuard_FieldChecklist-ascii45-partial-2026-09-27-1142.md`.
   **Every screen number from 4 onward has changed** -- the map is below.
 - **Build:** `Tool\W11-SecurityHardening-v3-ascii45-2026-09-26-1059.ps1`, commit
-  `da15aea` (2026-09-28), **plus FT-299/300/301 (items 1, 4, 13), added to this list 2026-09-28 12:0x.** Blocks A-F built. **Still open:** F10 (waits on the
+  `da15aea` (2026-09-28), **plus FT-299/300/301 (items 1, 4, 13), added to this list 2026-09-28 13:06.** Blocks A-F built. **Still open:** F10 (waits on the
   guide text from Cloud) and C7/C9 confirmations on SANDY.
 - **Where:** CGDELL or SANDY. **On SANDY, do not turn on encryption.**
 - **How to start:** right-click `Tool2\Run-GatewayGuard.bat` -> Run as
