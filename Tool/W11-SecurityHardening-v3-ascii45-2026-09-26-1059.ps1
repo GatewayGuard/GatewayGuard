@@ -102,6 +102,9 @@
 #           CGDELL 2026-09-27; a spinner and timer run while it works, Bill
 #   FT-303 (SANDY 2026-09-28): AN INSTALLED-BUT-OFF ANTIVIRUS NO LONGER
 #           COUNTS AS IN CHARGE (Get-GGAVInCharge). FT-307: its name shows.
+#   SANDY RUN 1 (2026-09-28): FT-302 I-screen return, FT-304 no "nothing
+#           changed" where nothing was offered, FT-305 checklist columns,
+#           FT-306 screen 33 counts, FT-308/309 log noise, wording notes.
 #           2026-09-27); E3 unwanted-app blocking (FT-248); E4 virus
 #           definitions (FT-249); one ready-check screen; E5 save-your-work
 #           warning on the offline scan (FT-276); E6 full scan of every
@@ -2371,7 +2374,7 @@ function Show-LookBack {
             Write-Host "    $LogPath" -ForegroundColor Gray
         }
         Write-Host ""
-        Write-Host "  LOOKING BACK -- nothing on your PC has been changed or undone." -ForegroundColor Yellow
+        Write-Host "  LOOKING BACK at an earlier screen." -ForegroundColor Yellow
         if ($ggIdx -gt 0) {
             Write-Host "  [L]              Look back one more screen" -ForegroundColor White
         } else {
@@ -2940,7 +2943,7 @@ function Pause-ForUser {
                 if (-not (Restore-ScreenSnapshot -Snapshot $script:GGSnapshots[$script:GGSnapshots.Count - 1])) {
                     Clear-Host
                     Write-Host ""
-                    Write-Host "  (Returning to where you were. Nothing has changed.)" -ForegroundColor Yellow
+                    Write-Host "  (Returning to where you were.)" -ForegroundColor Yellow
                 }
                 Write-Host ""
                 Write-Host $Message -ForegroundColor White
@@ -2987,7 +2990,7 @@ function Pause-ForUser {
                     Clear-Host
                     Write-Host ""
                     Write-Host "  (Returning -- this screen could not be redrawn exactly." -ForegroundColor Yellow
-                    Write-Host "   Nothing has changed. Your log file has the full detail.)" -ForegroundColor Yellow
+                    Write-Host "   Your log file has the full detail.)" -ForegroundColor Yellow
                 }
                 Write-Host ""
                 Write-Host $Message -ForegroundColor White
@@ -3021,6 +3024,10 @@ function Show-CheckupInfo {
     # Re-entrancy guard: this screen's own pause must not offer itself.
     if ($script:GGInInfo) { return }
     $script:GGInInfo = $true
+    # FT-302 (ascii45): remember the caller's picture count and stored box,
+    # so closing this screen shows the caller's screen, not this one again.
+    $ggSnapCount = 0; try { $ggSnapCount = $script:GGSnapshots.Count } catch {}
+    $ggBoxBefore = $script:GGLastBox
     try {
         Clear-Host
         Write-Host ""
@@ -3040,12 +3047,14 @@ function Show-CheckupInfo {
             "  and double-click  Open-My-Log.bat  -- your log opens in    ",
             "  Notepad. The build and Machine ID are in the first lines.  ",
             "                                                             ",
-            "  Nothing on your PC has been changed by this screen, and    ",
-            "  nothing has been sent anywhere.                            "
+            "  This screen only shows information. Nothing is sent        ",
+            "  anywhere.                                                  "
         )
         Write-Host ""
         Pause-ForUser "  Press Enter or Space to go back to where you were..." -NoBack
     } finally {
+        try { while ($script:GGSnapshots.Count -gt $ggSnapCount) { $script:GGSnapshots.RemoveAt($script:GGSnapshots.Count - 1) } } catch {}
+        $script:GGLastBox = $ggBoxBefore
         $script:GGInInfo = $false
     }
 }
@@ -3565,7 +3574,12 @@ function Write-PendingErrors {
                 # severity is NOT reclassified, because turning an access
                 # denial into INFO is how a real failure becomes invisible.
                 $ggFault = if ($ggAt) { $ggAt } else { "location not recorded" }
-                Write-Log -Message ($ggLabel + " -- fault at: " + $ggFault + " -- user was at: " + $Where + " -- " + $ggMsg) -Status $ggStatus
+                if ($ggBenign) {
+                    # FT-309 (ascii45): one plain line -- "fault at" read like an error.
+                    Write-Log -Message ("Not set -- normal on a home PC: " + $ggMsg) -Status "INFO"
+                } else {
+                    Write-Log -Message ($ggLabel + " -- fault at: " + $ggFault + " -- user was at: " + $Where + " -- " + $ggMsg) -Status $ggStatus
+                }
             } catch {}
         }
     } catch {}
@@ -5062,7 +5076,7 @@ function Invoke-WindowsUpdateLoop {
         Write-Host ""
         $ggAll = @()
         try {
-            $ggAll = @(Invoke-GGWithSpinner -Script $script:GGWUSearchScript -Message "Checking Windows Update -- this can take a minute or two")
+            $ggAll = @(Invoke-GGWithSpinner -Script $script:GGWUSearchScript -Message "Checking Windows Update -- this can take a while")
         } catch {
             Write-Log -Message "Windows Update search failed: $_" -Status "WARN"
             Add-GGReady "Update" "  NOTE  Checkup could not check Windows Update. Check it: Settings -> Windows Update."
@@ -5454,9 +5468,9 @@ function Invoke-OfflineScanOffer {
         "  * This Checkup window will close during the restart       ",
         "  * A blue scan screen will run for 10-20 minutes            ",
         "  * Your computer will then restart again to the desktop    ",
-        "  * When you're back at the desktop, run Checkup again      ",
-        "    -- it will automatically pick up right where you left   ",
-        "    off. You do NOT need to start over.                     ",
+        "  * Sign in as usual, then run Checkup again and choose     ",
+        "    R (Resume) -- it picks up right where you left off.     ",
+        "    You do NOT need to start over.                          ",
         "                                                             ",
         "  Scan time varies by computer. A fast scan on a clean       ",
         "  machine is normal. A slower scan just means more files to  ",
@@ -5469,8 +5483,8 @@ function Invoke-OfflineScanOffer {
         Save-Checkpoint -Checkpoint "OfflineScanPending"
         Write-Log -Message "Starting Defender Offline Scan -- reboot expected" -Status "INFO"
         Write-Host ""
-        Write-Host "  Starting the offline scan. Your computer will restart" -ForegroundColor Green
-        Write-Host "  in a few seconds. See you on the other side!" -ForegroundColor Green
+        Write-Host "  Awaiting restart -- this can take several minutes. Leave the PC" -ForegroundColor Green
+        Write-Host "  alone. After the restart, sign in and run Checkup again (R)." -ForegroundColor Green
         Start-Sleep -Seconds 5   # intentional countdown -- gives user time to read "restarting" message; not an interactive loop
         Disable-SleepPrevention
         Start-MpWDOScan
@@ -5497,22 +5511,22 @@ function Show-PostScanGuidance {
     Draw-Box -ScreenId "40" -Color White -Lines @(
         "  WELCOME BACK -- AFTER THE OFFLINE SCAN                    ",
         "---",
-        "  Welcome back. If the offline scan ran, its results are in  ",
-        "  Protection History. Here's how to see them:               ",
+        "  Anything the offline scan found is listed in Protection    ",
+        "  history. To see it:                                       ",
         "                                                             ",
-        "  1. We'll open Windows Security to Protection History now   ",
-        "  2. Look for any items listed under Recent Actions          ",
+        "  1. Checkup opens Windows Security (next key). Click Virus  ",
+        "     & threat protection, then Protection history.           ",
         "                                                             ",
-        "  WHAT TO LOOK FOR:                                          ",
-        "  * 'Quarantined' or 'Removed' -- good news, Defender         ",
-        "    already handled it. No action needed.                   ",
-        "  * 'Allowed' -- Defender saw something suspicious but        ",
-        "    didn't block it. If you don't recognize it, write down  ",
-        "    its name -- the guide shows what to do next.            ",
-        "  * 'No Recent Actions' -- your scan came back clean.        "
+        "  2. WRITE DOWN the name and status of anything listed.      ",
+        "  * 'Quarantined' or 'Removed' -- Defender handled it.        ",
+        "  * 'Allowed' -- it was NOT blocked. If you do not know     ",
+        "    it, keep your note: the guide shows what to do next.      ",
+        "  * Nothing listed -- the scan found nothing.               ",
+        "  Guide: Setting 2 (Defender virus protection).             ",
+        "                                                             "
     )
     Write-Host ""
-    Pause-ForUser "  Press Enter or Space to open Protection History..."
+    Pause-ForUser "  Press Enter or Space to open Windows Security..."
     Start-Process "windowsdefender://protectionhistory"
     Start-Sleep -Seconds 2   # intentional: allows Protection History window to open before next prompt
 
@@ -5524,7 +5538,7 @@ function Show-PostScanGuidance {
     if ($result.ToUpper() -eq "Y") {
         Write-Host ""
         Write-Host "  Write down the threat name shown in Protection History." -ForegroundColor Yellow
-        Write-Host "  The guide shows what to do next with it." -ForegroundColor Yellow
+        Write-Host "  The guide shows what to do next with it: Setting 2." -ForegroundColor Yellow
         Write-Log -Message "Post-scan: user found items needing action in Protection History" -Status "WARN"
     } else {
         Write-Log -Message "Post-scan: Protection History clean or already handled" -Status "OK"
@@ -6000,8 +6014,8 @@ function Run-PowerSettingsCheck {
         "  POWER SETTINGS -- SECURITY REVIEW                          ",
         "---",
         "  These settings affect your PC's security between sessions. ",
-        "  Checkup changes 1-3 only on the security checklist        ",
-        "  (items 17, 18 and 19), and only the ones you select.      ",
+        "  Each line shows what Checkup FOUND on your PC right now.  ",
+        "  To change 1-3, select items 17, 18, 19 on the checklist.  ",
         "---",
         "  [1] Password required on wake:   $($results['PasswordOnWake'])",
         "      WHY: Without this, anyone can open your PC from sleep. ",
@@ -6048,8 +6062,6 @@ function Run-PowerSettingsCheck {
     # F3 / Decision 12 (ascii45): report only. The checklist (items 17, 18, 19)
     # is the one place these change. F15: the screen-timeout advice stays in
     # the box above -- it no longer prints after an answer.
-    Write-Host "  Items 1-3 above change only on the security checklist (items 17-19)," -ForegroundColor Yellow
-    Write-Host "  and only if you select them there. Nothing is changed here." -ForegroundColor Gray
     Write-Host ""
     $powerChoices = @{ PasswordOnWake = $false; FastStartup = $false; WakeOnLAN = $false }
 
@@ -6938,7 +6950,7 @@ function Get-AllStatuses {
                         if ($_.Exception -is [System.Security.SecurityException]) { $ppBlocked = $true }
                     }
                     if ($ppBlocked) {
-                        $s.Status = "Unknown -- Tamper Protection blocks this check; verify by hand"
+                        $s.Status = "Blocked by Tamper Protection -- check by hand; Checkup will show you how"
                         try { Write-Log -Message "Item 6 (Edge phishing protection): registry read BLOCKED by Tamper Protection -- reporting Unknown rather than a fault (FT-141)" -Status "INFO" } catch {}
                     } elseif ($null -eq $pp) {
                         $s.Status = "Not configured -- all 3 need to be enabled"
@@ -7524,7 +7536,8 @@ function Apply-Setting {
                 Set-ItemProperty -Path $rp -Name NotifyUnsafeApp      -Value 1 -Type DWord -Force -EA Stop
                 $result = "All 3 phishing protection options enabled -- GOOD"
             } catch [System.Security.SecurityException] {
-                $result = "MANUAL REQUIRED -- registry is protected on this PC (Tamper Protection)"
+                $result = "MANUAL -- these settings are protected on this PC (Tamper Protection); do the steps shown"
+                $script:GGStepsShown = $true   # notes 13/14: the loop does not repeat it
                 # FT-285 (ascii45): this refusal is expected and handled right
                 # here (manual steps below). Log it as what it is and remove its
                 # record, or Write-PendingErrors logs it again as SILENT ERROR.
@@ -7532,18 +7545,14 @@ function Apply-Setting {
                 try { Write-Log -Message "Item 6: Phishing Protection keys are protected by Tamper Protection -- expected; manual steps shown ($($_.Exception.Message))" -Status "INFO" } catch {}
                 try { if ($Error.Count -gt 0 -and $Error[0].Exception -is [System.Security.SecurityException]) { $Error.RemoveAt(0) } } catch {}
                 Write-Host ""
-                Write-Host "  NOTE: Phishing Protection registry is protected on this PC." -ForegroundColor Yellow
-                Write-Host "  Enable manually:" -ForegroundColor Yellow
                 Write-Host "  1. Windows Security -> App & browser control" -ForegroundColor Gray
-                Write-Host "  2. Reputation-based protection settings" -ForegroundColor Gray
+                Write-Host "  2. Reputation-based protection settings (you may need to click Turn on)" -ForegroundColor Gray
                 Write-Host "  3. Under Phishing protection, turn ON the three" -ForegroundColor Gray
                 Write-Host "     'Warn me about' boxes." -ForegroundColor Gray
                 Write-Host "  4. Leave the fourth box OFF -- 'Automatically collect" -ForegroundColor Gray
                 Write-Host "     website or app content...' sends your screen" -ForegroundColor Gray
-                Write-Host "     contents to Microsoft. Checkup does not need it." -ForegroundColor Gray
+                Write-Host "     contents to Microsoft. Checkup recommends you leave it off." -ForegroundColor Gray
                 Write-Host "  Full guide: gatewayguard.co/guide/phishing-protection" -ForegroundColor Cyan
-                Write-Host ""
-                Pause-ForUser "  Press Enter or Space to continue..."
             } catch {
                 $result = "Could not enable -- check manually in Windows Security -> App & browser control"
             }
@@ -7608,7 +7617,14 @@ function Apply-Setting {
                 if (-not (Test-Path $rp)) { New-Item -Path $rp -Force | Out-Null }
                 Set-ItemProperty -Path $rp -Name AllowNewsAndInterests -Value 0 -Type DWord -Force -EA Stop
                 $result = "Windows Widgets disabled -- GOOD"
-            } catch { $result = "ERROR: $_" }
+            } catch {
+                # Note 15 / FT-283 (SANDY 2026-09-28 16:11): Windows refused this write
+                # although Administrators have FullControl on the key (measured
+                # 09-27). Cause still open -- give the steps, never claim it worked.
+                try { Write-Log -Message ("Item 14: Windows refused the Widgets policy write -- manual steps shown (FT-283): " + $_.Exception.Message) -Status "WARN" } catch {}
+                try { if ($Error.Count -gt 0) { $Error.RemoveAt(0) } } catch {}
+                $result = "MANUAL -- Windows would not let Checkup change this. Turn Widgets off yourself: press the Windows key, type taskbar settings, press Enter, and turn Widgets Off."
+            }
         }
         15 {
             try {
@@ -7797,7 +7813,7 @@ function Show-ScopeDisclaimer {
             "  (a separate app that stores your passwords safely).       ",
             "                                                            ",
             "  We saved that answer so you do not have to give it again.  ",
-            "  Nothing on your PC has been changed by this screen.        ",
+            "                                                             ",
             "                                                            ",
             "  [Y] That is still correct -- continue to the next screen   ",
             "  [N] That has changed -- ask me the full question again     "
@@ -7892,7 +7908,7 @@ function Show-ScopeDisclaimer {
                 "  WHAT CHECKUP DOES AND DOES NOT DO   (page 1 of 2)                ",
                 "---",
                 "  HOW THIS WORKS:                                                   ",
-                "  The screens so far only READ your settings -- nothing changed.    ",
+                "  The screens so far only READ your settings.                       ",
                 "  The security checklist on the next screen shows what Checkup      ",
                 "  FOUND. Only the items you select there are changed --             ",
                 "  selecting an item is your approval.                               ",
@@ -7901,7 +7917,7 @@ function Show-ScopeDisclaimer {
                 "  * Security features ON  (Defender virus protection, SmartScreen, ",
                 "    Firewall, Memory Integrity, BitLocker if you choose it)        ",
                 "  * Risky features OFF    (Remote Desktop, Wake-on-LAN,            ",
-                "    Fast Startup)                                                  ",
+                "    Fast Startup) -- each is explained on the checklist            ",
                 "  * Privacy settings      (Advertising ID, Diagnostic Data)        ",
                 "                                                                    ",
                 "  WHAT IT CHECKS BUT CANNOT CHANGE -- these must be set by         ",
@@ -7929,8 +7945,8 @@ function Show-ScopeDisclaimer {
                 "---",
                 "  CONVENIENCE FEATURES -- CHANGED ONLY IF YOU SELECT THEM:         ",
                 "  The following are RECOMMENDED to turn off for security/privacy.   ",
-                "  Each one you select is changed with the rest. At the end,         ",
-                "  Checkup shows what changed and how to put each one back:         ",
+                "  Each one you select is changed with the rest, and at the          ",
+                "  end Checkup shows you what it changed:                           ",
                 "                                                                    ",
                 "  [A] Advertising ID      -- Stops Windows tracking you for ads    ",
                 "  [B] Diagnostic Data     -- Limits data sent to Microsoft         ",
@@ -7945,8 +7961,8 @@ function Show-ScopeDisclaimer {
                 "  * Does not make changes you cannot reverse                       ",
                 "                                                                    ",
                 "  Edition: $global:WinEditionFriendly",
-                "  Admin:   $(if ($global:IsAdmin) { 'Full access -- all settings available' } else { 'Limited -- some settings skipped' })",
-                "  Power:   $(if ($global:OnBattery) { 'BATTERY -- plug in before BitLocker' } else { 'AC power OK' })  Sleep: $(if ($global:SleepPrevented) { 'ACTIVE' } else { 'inactive' })"
+                "  Admin:   $(if ($global:IsAdmin) { 'Full access -- for all available settings' } else { 'Limited -- some settings skipped' })",
+                "  Power:   $(if ($global:OnBattery) { 'BATTERY -- plug in before BitLocker' } else { 'AC power OK' })  (Checkup keeps your PC awake while it runs)"
             )
             Write-Host ""
             $ggScopeNav = Read-NavKey -Prompt "  Press Enter or Space for the security checklist, or B to go back to page 1 of 2: "
@@ -7979,6 +7995,17 @@ function Add-GGRunResult {
     $ggKey = [string]$Setting.ID
     if ($script:GGRunResults.Contains($ggKey)) { $Was = $script:GGRunResults[$ggKey].Was }
     $script:GGRunResults[$ggKey] = [pscustomobject]@{ ID = [int]$Setting.ID; Name = [string]$Setting.Name; Was = $Was; Now = $Now; Steps = $Steps }
+}
+
+function Get-GGRunCountLine {
+    # FT-306 (ascii45, SANDY 2026-09-28): screen 33 said "ALL SELECTED ITEMS
+    # PROCESSED" after one item needed the user and one failed.
+    $ggRows = @(); if ($script:GGRunResults) { $ggRows = @($script:GGRunResults.Values) }
+    $ggDone = @($ggRows | Where-Object { Test-GGResultGood $_.Now }).Count
+    $ggYou  = @($ggRows | Where-Object { -not (Test-GGResultGood $_.Now) -and $_.Now -match 'MANUAL|NOTE:|by hand|Manual setup|LEFT ON' }).Count
+    $ggNot  = $ggRows.Count - $ggDone - $ggYou
+    if ($ggRows.Count -gt 0 -and $ggDone -eq $ggRows.Count) { return "  ALL SELECTED ITEMS DONE                                " }
+    return ("  SELECTED ITEMS -- done: " + $ggDone + "   need you: " + $ggYou + "   could not be done: " + $ggNot)
 }
 
 function Test-GGResultGood {
@@ -8276,6 +8303,12 @@ function Invoke-SchTasksCreate {
 # ============================================================
 # SCHEDULED SECURITY TASKS
 # ============================================================
+function Clear-GGExpectedTaskError {
+    # FT-308 (ascii45, SANDY 2026-09-28 16:29:47): "not found" is the
+    # answer Checkup hopes for here; it was logged as SILENT ERROR.
+    try { while ($Error.Count -gt 0 -and [string]$Error[0] -match 'No MSFT_ScheduledTask objects found') { $Error.RemoveAt(0) } } catch {}
+}
+
 function Remove-GGOldMBReminder {
     # B3 (ascii45): builds up to ascii44 created "GatewayGuard - Monthly
     # Malwarebytes Reminder" (SANDY got it twice). Malwarebytes is out of
@@ -8286,12 +8319,15 @@ function Remove-GGOldMBReminder {
     $ggHelper = "C:\ProgramData\GatewayGuard\MBReminder.ps1"
     try {
         $ggT = Get-ScheduledTask -TaskName $ggName -EA SilentlyContinue
+        Clear-GGExpectedTaskError   # FT-308
         if (-not $ggT) {
             if (Test-Path $ggHelper) { try { Remove-Item $ggHelper -Force -EA Stop } catch {} }
             return "ABSENT"
         }
         Unregister-ScheduledTask -TaskName $ggName -Confirm:$false -EA Stop
-        if (Get-ScheduledTask -TaskName $ggName -EA SilentlyContinue) {
+        $ggStill = Get-ScheduledTask -TaskName $ggName -EA SilentlyContinue
+        Clear-GGExpectedTaskError   # FT-308
+        if ($ggStill) {
             Write-Log -Message "Old monthly Malwarebytes reminder: removal ran but the task is still there on read-back" -Status "WARN"
             return "FAILED: still present after removal"
         }
@@ -9283,11 +9319,11 @@ function Show-ModeSelector {
         "  WHAT HAPPENS NEXT:                                        ",
         "                                                            ",
         "  [1] START                                                 ",
-        "      A checklist in this window shows each setting and     ",
-        "      its live status. Checkup changes only the items you   ",
-        "      select.                                               ",
+        "      A checklist will appear shortly, showing each         ",
+        "      setting and its live status. Checkup changes only     ",
+        "      the items you select.                                 ",
         "  [B] BACK -- to the apps review                            ",
-        "  [X] EXIT -- nothing has been changed                      ",
+        "  [X] EXIT -- close Checkup                                 ",
         "                                                            ",
         "  Admin status: $(if ($global:IsAdmin) { 'FULL ACCESS OK' } else { 'LIMITED MODE -- some settings unavailable' })",
         "  Edition: $global:WinEditionFriendly"
@@ -9440,9 +9476,10 @@ function Run-ConsoleMode {
                 if ($ggStatW -lt 15) { $ggStatW = 15 }
             }
         } else {
-            # Everything fits -- hand the leftover room to the name column so
-            # nothing is shortened that did not have to be.
-            $ggNameW = $ggAvailable - $ggStatW
+            # FT-305 (ascii45): everything fits -- the spare room goes to the
+            # STATUS column, so the column line sits just after the longest
+            # name (Bill, SANDY 2026-09-28: "move the break to the left").
+            $ggStatW = $ggAvailable - $ggNameW
         }
         # FT-125 (ascii37): [int] casts kept. These come from .Length so they
         # are already Int32, but the casts are what Class 4 rule 2 asks for at a
@@ -9623,7 +9660,7 @@ function Run-ConsoleMode {
                 # few must appear or a future flood is invisible again --
                 # which is exactly why FT-193 could not be diagnosed from the
                 # ascii40 logs.
-                try { Write-Log -Message ("Checklist: key ignored (" + $(if ($firstCh) { $firstCh } else { "non-printing" }) + ")") -Status "KEY" } catch {}
+                try { Write-Log -Message ("Checklist: key ignored (" + $(if ($firstCh -match '^[!-~]$') { $firstCh } else { "key code " + $(if ($firstKey) { $firstKey.VirtualKeyCode } else { "?" }) }) + ")") -Status "KEY" } catch {}
             } elseif ($ggBadKeys -eq 4) {
                 Write-Host "  Ignoring repeated keys. Something may be resting on the keyboard." -ForegroundColor Yellow
                 try { Write-Log -Message "Checklist: 4+ ignored keys in one prompt -- burst suppressed (FT-193)" -Status "WARN" } catch {}
@@ -9787,6 +9824,7 @@ function Run-ConsoleMode {
                 $proceed2 = Test-NonRecommendedSelections -Stage "final"
                 if (-not $proceed2) { continue checklistLoop }
 
+                Clear-Host   # note 13: the run starts on a clean screen, not under the review
                 Write-Host ""
                 Write-Host "  Starting -- $selectedCount item(s) to process..." -ForegroundColor Cyan
                 Write-Log -Message "=== Console Mode Hardening Run Started ===" -Status "START"
@@ -9947,7 +9985,9 @@ function Run-ConsoleMode {
                     Write-Host ""
                     # FT-279 (ascii45): no promise before the outcome is known --
                     # item 6 can be blocked by Tamper Protection.
-                    Write-Host "  Working on this item..." -ForegroundColor Cyan
+                    $script:GGStepsShown = $false
+                    if ($s.Status -match "Blocked by Tamper Protection") { Write-Host "  Do this:" -ForegroundColor Cyan }   # note 14
+                    else { Write-Host "  Working on this item..." -ForegroundColor Cyan }
                     $ggWas = $s.Status
                     $result = Apply-Setting -Setting $s
                     # F1: a by-hand answer from an item Checkup tried is a step too.
@@ -9956,8 +9996,10 @@ function Run-ConsoleMode {
                     # checklist mid-run does not change it a second time.
                     if (Test-GGResultGood $result) { $s.Selected = $false }
                     $resultColor = if ($result -match "GOOD|enabled|disabled|set to|Already") { "Green" } elseif ($result -match "NOTE:|MANUAL|manual") { "Yellow" } else { "Red" }
-                    Write-Host ""
-                    Write-GGWrapped -Text "Result: $result" -Color $resultColor
+                    if (-not $script:GGStepsShown) {   # note 14: steps already on screen
+                        Write-Host ""
+                        Write-GGWrapped -Text "Result: $result" -Color $resultColor
+                    }
                     Pause-ForUser
                 }
 
@@ -10004,7 +10046,7 @@ function Run-ConsoleMode {
 
                 Write-Host ""
                 Draw-Box -ScreenId "69" -Color White -Lines @(
-                    "  ALL SELECTED ITEMS PROCESSED                           ",
+                    $(Get-GGRunCountLine),
                     "  Log saved to your GatewayGuard folder.                       ",
                     "  Next: what Checkup changed, then any steps for you.    "
                 )

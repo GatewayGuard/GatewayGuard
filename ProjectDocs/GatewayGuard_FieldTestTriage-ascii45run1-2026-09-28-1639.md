@@ -69,6 +69,16 @@ list, and `[0]` on it asks the object for a property named "0" -- empty.
 | **FT-309** | Log 15:31:58 five `[INFO] NOT SET (expected) -- fault at ... 4034` lines (`Get-GGPolicyLock` reading absent policy keys) | WORDING (log) | Handled correctly, but the "fault at" wording reads like an error. Say "policy not set (normal)" in one line |
 | -- | Checklist line 15:52:51 "key ignored ()" -- blank key name | minor | Name non-printing keys ("key code N") as the other readers now do (C2) |
 
+## Fixed 2026-09-28 18:36 (`Tool2/build_ascii45_sandyrun1_fixes.py`, 55 edits)
+
+- **FT-302** -- cause found in the code: the Info screen saved its own picture on top of the caller's, and the caller restored the latest one -- the Info screen again (log 14:20:28-:34). Show-CheckupInfo now removes its picture and restores the caller's box. Tested.
+- **FT-304** -- "nothing has been changed" removed from screens 20, 22, 24, 23a, the Info screen, look-back and return lines. Kept only at Exit confirmations and the review screen, where a change was on offer.
+- **FT-305** -- spare width goes to the status column. Not unit-tested (inline in the checklist); see it on the next run.
+- **FT-306** -- screen 33 now reads "SELECTED ITEMS -- done: 1   need you: 1   could not be done: 1" for SANDY's run (tested), or "ALL SELECTED ITEMS DONE".
+- **FT-308, FT-309** -- log noise removed (tested for 308).
+- **Notes 2, 4b, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15** -- wording as Bill wrote it; item 6 prints "Do this:", one Enter, no repeated lines; the run clears the screen after the review; item 14 gives manual steps when Windows refuses (FT-283 cause still open).
+- **Not done here:** note 14's "search ... security draft throughout" -- the guide draft is Cloud's; note 18 waits on F10.
+
 ## Worked as intended in this run (measured, same logs)
 
 Resume after the offline-scan restart went straight to 17a with no screens 10/11
