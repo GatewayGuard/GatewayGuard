@@ -122,6 +122,11 @@
 #           definitions; screen 97 shows each result; antivirus on 14g.
 #   F18 (FT-296): checklist shows Tamper, Defender, Windows Update first
 #           (display only). F11: screen 7 lists the new order.
+#   F3/F15: SCREEN 19 IS A REPORT -- items 17-19 change on the checklist
+#           only; the screen-timeout line stays in the box as advice.
+#   F13 (FT-291): the stay-awake wording no longer claims a setting changed.
+#   F14/F7: Wake on LAN apply reads each adapter once (no error noise);
+#           every adapter's wake settings are logged. F17: 13/14 wording.
 #   FT-282: ITEM 12 (DIAGNOSTIC DATA) READ ONLY THE GROUP POLICY VALUE, which
 #           is empty on home PCs, and said "Sending extra data" when optional
 #           data was off. Now reads the Settings value too (measured on SANDY
@@ -5726,7 +5731,7 @@ function Test-PowerStatus {
             "  mid-encryption, the drive may be unrecoverable.           ",
             "  Plug in AC power before running BitLocker.                ",
             "                                                            ",
-            "  Sleep prevention is now ACTIVE for this session.         "
+            "  Checkup keeps your PC awake while it runs (F13).         "
         )
         Write-Host ""
         Write-Log -Message "Running on battery -- battery level: $batteryPct" -Status "WARN"
@@ -5749,8 +5754,11 @@ function Test-PowerStatus {
         } else {
             Write-Host "  OK  AC power -- desktop PC (no battery detected)." -ForegroundColor Green
         }
-        Write-Host "  OK  Sleep prevention: SET BY THIS TOOL for this session." -ForegroundColor Green
-        Write-Host "      Your original sleep setting will be restored automatically when Checkup exits." -ForegroundColor White
+        # F13 / FT-291 (ascii45): Enable-SleepPrevention changes NO setting --
+        # it only asks Windows not to sleep while Checkup runs.
+        Write-Host "  OK  Checkup keeps your PC awake while it runs." -ForegroundColor Green
+        Write-Host "      Your sleep settings are not changed. When Checkup closes, your" -ForegroundColor White
+        Write-Host "      PC goes to sleep as it normally does." -ForegroundColor White
         Write-Log -Message "AC power confirmed. Battery present: $hasBattery ($batteryPct). Sleep prevention active." -Status "OK"
         Pause-ForUser "  Press Enter or Space to continue..."
     }
@@ -5877,6 +5885,7 @@ function Run-PowerSettingsCheck {
         foreach ($a in $adapters) {
             $props = @(Get-NetAdapterAdvancedProperty -Name $a.Name -EA SilentlyContinue |
                 Where-Object { $_.DisplayName -match 'Wake on Magic Packet|Wake on Pattern Match|Wake from S0ix' })
+            try { Write-Log -Message ("Wake on LAN read: " + $a.Name + " [" + $a.InterfaceDescription + "] " + $(if ($props.Count) { ($props | ForEach-Object { $_.DisplayName + "=" + $_.DisplayValue }) -join "; " } else { "no named wake settings" })) -Status "INFO" } catch {}   # F7
             if ($props.Count -gt 0) {
                 $wolChecked = $true
                 foreach ($p in $props) {
@@ -5966,7 +5975,8 @@ function Run-PowerSettingsCheck {
         "  POWER SETTINGS -- SECURITY REVIEW                          ",
         "---",
         "  These settings affect your PC's security between sessions. ",
-        "  Review each one below -- changes are optional.             ",
+        "  Checkup changes 1-3 only on the security checklist        ",
+        "  (items 17, 18 and 19), and only the ones you select.      ",
         "---",
         "  [1] Password required on wake:   $($results['PasswordOnWake'])",
         "      WHY: Without this, anyone can open your PC from sleep. ",
@@ -5990,11 +6000,8 @@ function Run-PowerSettingsCheck {
         "  [4] Screen timeout (AC power):   $($results['ScreenTimeout'])",
         "      WHY: A screen that never turns off leaves your PC       ",
         "      visually accessible. Set to 5 min in Settings ->        ",
-        "      System -> Power & sleep. (Advisory only -- not changed.)",
-        "      NOTE: this is DIFFERENT from the temporary stay-awake    ",
-        "      protection Checkup turned on for this session --         ",
-        "      that one is automatic and undoes itself when the tool    ",
-        "      exits. Screen timeout is yours to set once, by hand.     ",
+        "      System -> Power & sleep. Checkup never changes this --   ",
+        "      it is yours to set once, by hand.                        ",
         "---",
         "  [5] Critical battery action:     $($results['CriticalBattery'])",
         "      WHY: If the battery dies mid-operation, open files are  ",
@@ -6006,67 +6013,21 @@ function Run-PowerSettingsCheck {
         "  continue -- each one shows its current state and WHY it      ",
         "  matters.                                                     ",
         "---",
-        "  Sleep prevention (this session): SET BY THIS TOOL          ",
-        "  -- not your previous setting. Your own sleep setting is    ",
-        "  put back when the tool exits.                              ",
-        "  Normal sleep resumes after you exit or the tool finishes.   "
+        "  While Checkup runs it keeps your PC awake. It does not    ",
+        "  change your sleep settings -- when Checkup closes, your   ",
+        "  PC goes to sleep as it normally does.                     "
     )
     Write-Host ""
     Write-Log -Message "Power settings: PW=$($results['PasswordOnWake']) FastStart=$($results['FastStartup']) WOL=$($results['WakeOnLAN']) Screen=$($results['ScreenTimeout']) CritBatt=$($results['CriticalBattery'])" -Status "INFO"
 
-    Write-Host "  Review each setting below and choose Y/N individually." -ForegroundColor Yellow
-    Write-Host "  All are optional -- choose what fits your situation." -ForegroundColor Gray
+    # F3 / Decision 12 (ascii45): report only. The checklist (items 17, 18, 19)
+    # is the one place these change. F15: the screen-timeout advice stays in
+    # the box above -- it no longer prints after an answer.
+    Write-Host "  Items 1-3 above change only on the security checklist (items 17-19)," -ForegroundColor Yellow
+    Write-Host "  and only if you select them there. Nothing is changed here." -ForegroundColor Gray
     Write-Host ""
+    $powerChoices = @{ PasswordOnWake = $false; FastStartup = $false; WakeOnLAN = $false }
 
-    $powerChoices = @{}
-
-    # 1. Password on wake
-    if ($results["PasswordOnWake"] -notmatch "GOOD|N/A") {
-        Write-Host "  [1] Password required on wake" -ForegroundColor White
-        Write-Host "      Current:  $($results['PasswordOnWake'])" -ForegroundColor Gray
-        Write-Host "      Change to: REQUIRED -- prevents unlocked screen access" -ForegroundColor Cyan
-        $powerChoices["PasswordOnWake"] = (Read-ValidKey -ValidKeys @("Y","N") -Prompt "Apply? (Y/N): ") -eq "Y"
-        Write-Host ""
-    } else {
-        Write-Host "  [1] Password on wake -- $($results['PasswordOnWake']), no change needed." -ForegroundColor Green
-        $powerChoices["PasswordOnWake"] = $false
-        Write-Host ""
-    }
-
-    # 2. Fast Startup
-    if ($results["FastStartup"] -notmatch "GOOD|N/A") {
-        Write-Host "  [2] Fast Startup" -ForegroundColor White
-        Write-Host "      Current:  $($results['FastStartup'])" -ForegroundColor Gray
-        Write-Host "      Change to: DISABLED -- ensures clean boot security state" -ForegroundColor Cyan
-        $powerChoices["FastStartup"] = (Read-ValidKey -ValidKeys @("Y","N") -Prompt "Apply? (Y/N): ") -eq "Y"
-        Write-Host ""
-    } else {
-        Write-Host "  [2] Fast Startup -- $($results['FastStartup']), no change needed." -ForegroundColor Green
-        $powerChoices["FastStartup"] = $false
-        Write-Host ""
-    }
-
-    # 3. Wake on LAN
-    if ($results["WakeOnLAN"] -notmatch "GOOD|N/A") {
-        Write-Host "  [3] Wake on LAN" -ForegroundColor White
-        Write-Host "      Current:  $($results['WakeOnLAN'])" -ForegroundColor Gray
-        Write-Host "      Change to: DISABLED -- removes remote wake attack surface" -ForegroundColor Cyan
-        Write-Host "      Note: Only disable if you do not use remote wake features." -ForegroundColor DarkYellow
-        $powerChoices["WakeOnLAN"] = (Read-ValidKey -ValidKeys @("Y","N") -Prompt "Apply? (Y/N): ") -eq "Y"
-        Write-Host ""
-    } else {
-        Write-Host "  [3] Wake on LAN -- $($results['WakeOnLAN']), no change needed." -ForegroundColor Green
-        $powerChoices["WakeOnLAN"] = $false
-        Write-Host ""
-    }
-
-    # 4. Screen timeout (advisory only)
-    Write-Host "  [4] Screen timeout: $($results['ScreenTimeout'])" -ForegroundColor Yellow
-    Write-Host "      Advisory only -- set manually in:" -ForegroundColor Gray
-    Write-Host "      Settings -> System -> Power & sleep -> Screen timeout" -ForegroundColor Gray
-    Write-Host ""
-
-    # 5. Critical battery (skip if desktop)
     if ($results["CriticalBattery"] -notmatch "GOOD|N/A|HIBERNATE|SHUTDOWN") {
         Write-Host "  [5] Critical battery action" -ForegroundColor White
         Write-Host "      Current:  $($results['CriticalBattery'])" -ForegroundColor Gray
@@ -6161,8 +6122,10 @@ function Apply-PowerSettings {
             $changed = 0
             $failed  = 0
             foreach ($a in @(Get-NetAdapter -Physical -EA Stop)) {
+                # F14 / FT-292 (ascii45): read the adapter once and filter (no error noise).
+                $ggAllProps = @(Get-NetAdapterAdvancedProperty -Name $a.Name -EA SilentlyContinue)
                 foreach ($dn in @('Wake on Magic Packet','Wake on Pattern Match','Wake from S0ix on Magic Packet')) {
-                    $prop = Get-NetAdapterAdvancedProperty -Name $a.Name -DisplayName $dn -EA SilentlyContinue
+                    $prop = $ggAllProps | Where-Object { $_.DisplayName -eq $dn } | Select-Object -First 1
                     if ($prop -and $prop.DisplayValue -eq "Enabled") {
                         try {
                             Set-NetAdapterAdvancedProperty -Name $a.Name -DisplayName $dn -DisplayValue "Disabled" -NoRestart -EA Stop
@@ -6966,13 +6929,13 @@ function Get-AllStatuses {
                     } else {
                         $ggBoost = Get-GGEdgeLocalStateBool -Section "startup_boost" -KeyName "enabled"
                         $ggBg    = Get-GGEdgeLocalStateBool -Section "background_mode" -KeyName "enabled"
-                        $s.Status = if (-not $ggBoost.Found -and -not $ggBg.Found) { "Unknown -- could not check" }
+                        $s.Status = if (-not $ggBoost.Found -and -not $ggBg.Found) { "Unknown -- nothing stored; select it to set it off" }
                                     elseif (($ggBoost.Found -and $ggBoost.Value -eq $true) -or ($ggBg.Found -and $ggBg.Value -eq $true)) { "Enabled -- needs attention" }
                                     elseif ($ggBoost.Found -and $ggBg.Found -and $ggBoost.Value -eq $false -and $ggBg.Value -eq $false) { "DISABLED -- GOOD" }
-                                    else { "Unknown -- could not check" }
+                                    else { "Unknown -- nothing stored; select it to set it off" }
                     }
                 }
-                catch { $s.Status = "Unknown -- could not check" }
+                catch { $s.Status = "Unknown -- nothing stored; select it to set it off" }
             }
             14 {
                 # FT-123 (ascii37): identical defect to item 13 -- this read
@@ -6995,12 +6958,12 @@ function Get-AllStatuses {
                         $s.Status = if ($w -eq 0) { "DISABLED -- GOOD" } else { "Enabled -- needs attention" }
                     } else {
                         $ggDa = (Get-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -EA SilentlyContinue).TaskbarDa
-                        $s.Status = if ($null -eq $ggDa) { "Unknown -- could not check" }
+                        $s.Status = if ($null -eq $ggDa) { "Unknown -- nothing stored; select it to set it off" }
                                     elseif ($ggDa -eq 0)  { "DISABLED -- GOOD" }
                                     else                  { "Enabled -- needs attention" }
                     }
                 }
-                catch { $s.Status = "Unknown -- could not check" }
+                catch { $s.Status = "Unknown -- nothing stored; select it to set it off" }
             }
             15 {
                 # FT-123 (ascii37): identical defect to items 13 and 14. Field
@@ -7098,6 +7061,7 @@ function Get-AllStatuses {
                     foreach ($a in $adapters) {
                         $props = @(Get-NetAdapterAdvancedProperty -Name $a.Name -EA SilentlyContinue |
                             Where-Object { $_.DisplayName -match 'Wake on Magic Packet|Wake on Pattern Match|Wake from S0ix' })
+                        try { Write-Log -Message ("Wake on LAN read: " + $a.Name + " [" + $a.InterfaceDescription + "] " + $(if ($props.Count) { ($props | ForEach-Object { $_.DisplayName + "=" + $_.DisplayValue }) -join "; " } else { "no named wake settings" })) -Status "INFO" } catch {}   # F7
                         if ($props.Count -gt 0) {
                             $wolChecked = $true
                             foreach ($p in $props) { if ($p.DisplayValue -eq "Enabled") { $wolOn = $true } }
@@ -7573,8 +7537,11 @@ function Apply-Setting {
                 $wolSeen    = 0
                 foreach ($a in @(Get-NetAdapter -Physical -EA Stop)) {
                     $adapterSeen = 0
+                    # F14 / FT-292 (ascii45): read the adapter once and filter -- asking for a
+                    # name it lacks left an error behind (4 SILENT ERROR lines, 2026-09-27).
+                    $ggAllProps = @(Get-NetAdapterAdvancedProperty -Name $a.Name -EA SilentlyContinue)
                     foreach ($dn in @('Wake on Magic Packet','Wake on Pattern Match','Wake from S0ix on Magic Packet')) {
-                        $prop = Get-NetAdapterAdvancedProperty -Name $a.Name -DisplayName $dn -EA SilentlyContinue
+                        $prop = $ggAllProps | Where-Object { $_.DisplayName -eq $dn } | Select-Object -First 1
                         if ($prop) {
                             $adapterSeen++
                             $wolSeen++
