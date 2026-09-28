@@ -27,6 +27,7 @@ running. SANDY has Malwarebytes Free installed and **off**; Defender is on
 **Fix:** those three skip only when Defender's own real-time protection is
 **off** (another antivirus really in charge), read with `Get-MpComputerStatus`
 as screen 14b already does. Installed-but-off products get named, not obeyed.
+**FIXED 2026-09-28 17:25** (`Tool2/build_ascii45_ft303_ft307_av.py`): new `Get-GGAVInCharge` -- another product counts only when Defender real-time is not on; used for the Tamper, PUA, definitions and full-scan steps and item 3's status. Tested with SANDY's case (Malwarebytes installed, Defender on): all three steps now run; a real in-charge antivirus is still deferred to.
 
 **FT-307 -- screen 14b showed the other antivirus with NO NAME** -- note 17.
 ***Measured:*** log 14:23:54 "Also registered (not in charge): " -- blank.
@@ -34,6 +35,7 @@ Code: `$ggAlso = $nonDefender[0].displayName` in `Test-DefenderPrimary`.
 *Inferred:* with ONE other product `$nonDefender` is a single WMI object, not a
 list, and `[0]` on it asks the object for a property named "0" -- empty.
 **Fix:** `@($nonDefender)[0].displayName`, and a test with one product.
+**FIXED 2026-09-28 17:25.** Cause ***measured*** on CGDELL 17:27: one registered product is a single `ManagementObject`; `$one[0].displayName` = "", `@($one)[0].displayName` = "Windows Defender". Both places that used `[0]` now use `@(...)[0]`.
 
 ## Note by note
 

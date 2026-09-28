@@ -100,6 +100,8 @@
 #           first (FT-250); E2 Windows Update, install with permission and
 #           loop across restarts (FT-252 -- download/install measured on
 #           CGDELL 2026-09-27; a spinner and timer run while it works, Bill
+#   FT-303 (SANDY 2026-09-28): AN INSTALLED-BUT-OFF ANTIVIRUS NO LONGER
+#           COUNTS AS IN CHARGE (Get-GGAVInCharge). FT-307: its name shows.
 #           2026-09-27); E3 unwanted-app blocking (FT-248); E4 virus
 #           definitions (FT-249); one ready-check screen; E5 save-your-work
 #           warning on the offline scan (FT-276); E6 full scan of every
@@ -4893,9 +4895,9 @@ function Show-TamperCheck {
         $ggTP = Get-TamperProtectionState
         Write-Log -Message "Tamper Protection read first (E1): $ggTP" -Status "INFO"
         if ($ggTP -eq "On") { Add-GGReady "Tamper" "  OK    Tamper Protection is on."; return }
-        $ggOther = @(Get-GGOtherAV)
-        if ($ggOther.Count -gt 0) {
-            Add-GGReady "Tamper" ("  NOTE  Tamper Protection is off while " + $ggOther[0] + " is your antivirus. That is expected.")
+        $ggInCharge = Get-GGAVInCharge   # FT-303: in charge, not merely installed
+        if ($ggInCharge) {
+            Add-GGReady "Tamper" ("  NOTE  Tamper Protection is off while " + $ggInCharge + " is your antivirus. That is expected.")
             return
         }
         if ($ggTP -ne "Off") {
@@ -5162,9 +5164,9 @@ function Invoke-PUACheck {
     # -> read 1; restored with -PUAProtection AuditMode -> read 2. Values
     # Disabled/Enabled/AuditMode from the cmdlet's own ValidateSet.
     # Test_Results\BlockE-Flips-CGDELL-2026-09-27_08-26.txt
-    $ggOther = @(Get-GGOtherAV)
-    if ($ggOther.Count -gt 0) {
-        Add-GGReady "PUA" ("  NOTE  " + $ggOther[0] + " is your antivirus, so its own settings apply.")
+    $ggInCharge = Get-GGAVInCharge   # FT-303: in charge, not merely installed
+    if ($ggInCharge) {
+        Add-GGReady "PUA" ("  NOTE  " + $ggInCharge + " is your antivirus, so its own settings apply.")
         return
     }
     $ggP = $null
@@ -5216,8 +5218,7 @@ function Update-GGSignaturesIfStale {
     # Test_Results\BlockE-Flips-CGDELL-2026-09-27_08-26.txt
     # Note: AntivirusSignatureAge read 0 at 17 hours old -- it counts whole days,
     # so the last-updated time is used instead.
-    $ggOther = @(Get-GGOtherAV)
-    if ($ggOther.Count -gt 0) { return }
+    if (Get-GGAVInCharge) { return }   # FT-303: in charge, not merely installed
     $ggS = $null
     try { $ggS = Get-MpComputerStatus -EA Stop } catch {}
     if ($null -eq $ggS) { Add-GGReady "Defs" "  NOTE  Checkup could not read Defender's virus definitions."; return }
@@ -5278,9 +5279,9 @@ function Invoke-FullScanOffer {
     # MpCmdRun -Scan -Cancel stopped it ("Scan cancelled successfully").
     # FullScanStartTime stayed blank while it ran -- do not use it as proof.
     # Test_Results\BlockE-Flips-CGDELL-2026-09-27_08-26.txt
-    $ggOther = @(Get-GGOtherAV)
-    if ($ggOther.Count -gt 0) {
-        Write-Log -Message ("Full scan offer skipped -- " + $ggOther[0] + " is the antivirus") -Status "INFO"
+    $ggInCharge = Get-GGAVInCharge   # FT-303: in charge, not merely installed
+    if ($ggInCharge) {
+        Write-Log -Message ("Full scan offer skipped -- " + $ggInCharge + " is the antivirus") -Status "INFO"
         return
     }
     $ggMp = Join-Path $env:ProgramFiles "Windows Defender\MpCmdRun.exe"
@@ -5612,7 +5613,7 @@ function Test-DefenderPrimary {
             if ($nonDefender) {
                 # B2b-2 (ascii45): another product is registered but Defender's
                 # real-time is on -- Defender is in charge, the other is not.
-                $ggAlso = $nonDefender[0].displayName
+                $ggAlso = @($nonDefender)[0].displayName   # FT-307: [0] on ONE WMI object is blank (measured)
                 Clear-Host
                 Write-Host ""
                 Draw-Box -ScreenId "43" -Color White -Lines @(
@@ -5643,7 +5644,7 @@ function Test-DefenderPrimary {
             }
         } elseif ($nonDefender) {
             # B2b-2 (ascii45): ANY other product in charge (Malwarebytes included)
-            $avName = $nonDefender[0].displayName
+            $avName = @($nonDefender)[0].displayName   # FT-307
             Clear-Host
             Write-Host ""
             Draw-Box -ScreenId "44" -Color White -Lines @(
@@ -6604,6 +6605,20 @@ function Get-GGOtherAV {
     } catch { return @() }
 }
 
+function Get-GGAVInCharge {
+    # FT-303 (ascii45, SANDY 2026-09-28): the name of another antivirus ONLY
+    # when it is actually in charge -- registered with Windows Security AND
+    # Defender's own real-time protection is not on. Installed-but-off
+    # products (SANDY's Malwarebytes Free) return "" and Checkup carries on
+    # with Defender. Same test as the item-2/3 apply paths.
+    $ggOther = @(Get-GGOtherAV)
+    if ($ggOther.Count -eq 0) { return "" }
+    $ggRT = $null
+    try { $ggRT = (Get-MpComputerStatus -EA Stop).RealTimeProtectionEnabled } catch {}
+    if ($ggRT -eq $true) { return "" }
+    return [string]$ggOther[0]
+}
+
 function Get-GGEdgeLocalStateBool {
     # FT-123b (item 13 closed 2026-09-17). Copilot's proposed key names for
     # Startup Boost and Background Mode were real, but in the wrong file --
@@ -6830,8 +6845,8 @@ function Get-AllStatuses {
                 switch ($tpState) {
                     "On"  { $s.Status = "ON -- GOOD" }
                     "Off" {
-                        $ggOther3 = @(Get-GGOtherAV)
-                        $s.Status = if ($ggOther3.Count -gt 0) { "OFF while $($ggOther3[0]) is your antivirus -- see guide" } else { "OFF -- turn on in Windows Security (see guide)" }
+                        $ggInCharge3 = Get-GGAVInCharge   # FT-303
+                        $s.Status = if ($ggInCharge3) { "OFF while $ggInCharge3 is your antivirus -- see guide" } else { "OFF -- turn on in Windows Security (see guide)" }
                     }
                     default { $s.Status = "Could not read -- check in Windows Security" }
                 }
