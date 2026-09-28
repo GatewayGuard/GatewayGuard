@@ -52,6 +52,7 @@ Add ("  Policy System\EnableSmartScreen = " + (RegVal "HKLM:\SOFTWARE\Policies\M
 Add ("  SmartScreen for Edge   HKCU Edge\SmartScreenEnabled (default value) = " + (RegVal "HKCU:\SOFTWARE\Microsoft\Edge\SmartScreenEnabled" "(default)") + "   (candidate, not proven)")
 Add ("  Edge policy SmartScreenEnabled = " + (RegVal "HKLM:\SOFTWARE\Policies\Microsoft\Edge" "SmartScreenEnabled"))
 Add ("  Store apps             HKCU AppHost\EnableWebContentEvaluation = " + (RegVal "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" "EnableWebContentEvaluation") + "   (candidate, not proven)")
+foreach ($n in "VerifiedAndReputablePolicyState", "VerifiedAndReputablePolicyStateMinValueSeen") { Add ("  Smart App Control CI\Policy\" + $n + " = " + (RegVal "HKLM:\SYSTEM\CurrentControlSet\Control\CI\Policy" $n) + "   (can lock these toggles, FT-260)") }
 try { $mp = Get-MpPreference -EA Stop; Add ("  Unwanted app blocking  Get-MpPreference PUAProtection = " + $mp.PUAProtection + "   (checked at start, E3)") } catch { Add ("  PUAProtection: " + $_.Exception.Message) }
 Add ""
 

@@ -22,7 +22,8 @@ $roots = @(
     "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer",
     "HKLM:\SOFTWARE\Microsoft\Windows Defender\SmartScreen",
     "HKLM:\SOFTWARE\Microsoft\Windows Security Health",
-    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System"
+    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System",
+    "HKLM:\SYSTEM\CurrentControlSet\Control\CI\Policy"   # Smart App Control (FT-260; Bill 2026-09-28)
 )
 # Areas that change on their own every few seconds -- noise, not settings.
 $noise = 'CloudStore|\\Explorer\\SessionInfo|\\Explorer\\UserAssist|RecentDocs|\\BagMRU|\\Bags\\|FeatureUsage|TypedPaths|\\Search\\|\\Notifications\\|\\DeliveryOptimization|PushNotifications|\\Themes\\History|\\Store\\Cache|TaskbarItemsCache|\\Explorer\\StartPage'
