@@ -49,9 +49,9 @@ Add ""
 Add "== ITEM 4: SmartScreen (Windows Security -> App & browser control -> Reputation-based protection)"
 Add ("  Check apps and files   HKLM Explorer\SmartScreenEnabled = " + (RegVal "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" "SmartScreenEnabled") + "   <- the ONLY value item 4 reads and writes")
 Add ("  Policy System\EnableSmartScreen = " + (RegVal "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" "EnableSmartScreen"))
-Add ("  SmartScreen for Edge   HKCU Edge\SmartScreenEnabled (default value) = " + (RegVal "HKCU:\SOFTWARE\Microsoft\Edge\SmartScreenEnabled" "(default)") + "   (candidate, not proven)")
+Add ("  SmartScreen for Edge   HKCU Edge\SmartScreenEnabled (default value) = " + (RegVal "HKCU:\SOFTWARE\Microsoft\Edge\SmartScreenEnabled" "(default)") + "   (flip-proven 2026-09-28: 1 on, 0 off)")
 Add ("  Edge policy SmartScreenEnabled = " + (RegVal "HKLM:\SOFTWARE\Policies\Microsoft\Edge" "SmartScreenEnabled"))
-Add ("  Store apps             HKCU AppHost\EnableWebContentEvaluation = " + (RegVal "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" "EnableWebContentEvaluation") + "   (candidate, not proven)")
+Add ("  Store apps             HKCU AppHost\EnableWebContentEvaluation = " + (RegVal "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" "EnableWebContentEvaluation") + "   (flip-proven 2026-09-28: absent or 1 on, 0 off)")
 foreach ($n in "VerifiedAndReputablePolicyState", "VerifiedAndReputablePolicyStateMinValueSeen") { Add ("  Smart App Control CI\Policy\" + $n + " = " + (RegVal "HKLM:\SYSTEM\CurrentControlSet\Control\CI\Policy" $n) + "   (can lock these toggles, FT-260)") }
 try { $mp = Get-MpPreference -EA Stop; Add ("  Unwanted app blocking  Get-MpPreference PUAProtection = " + $mp.PUAProtection + "   (checked at start, E3)") } catch { Add ("  PUAProtection: " + $_.Exception.Message) }
 Add ""
