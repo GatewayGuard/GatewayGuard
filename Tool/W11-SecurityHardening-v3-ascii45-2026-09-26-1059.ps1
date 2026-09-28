@@ -117,6 +117,11 @@
 #   FT-297: ITEM 8 ON AN ALREADY-ENCRYPTED DRIVE added a recovery key and
 #           said encryption had started. Now "encrypted, protection off" is
 #           its own state and gets screen 96 -- no command, no new key.
+#   F12/F20 (FT-290, FT-298): BILL'S START ORDER, SHOWN AS IT HAPPENS --
+#           Tamper, virus protection, unwanted-app blocking, Windows Update,
+#           definitions; screen 97 shows each result; antivirus on 14g.
+#   F18 (FT-296): checklist shows Tamper, Defender, Windows Update first
+#           (display only). F11: screen 7 lists the new order.
 #   FT-282: ITEM 12 (DIAGNOSTIC DATA) READ ONLY THE GROUP POLICY VALUE, which
 #           is empty on home PCs, and said "Sending extra data" when optional
 #           data was off. Now reads the Settings value too (measured on SANDY
@@ -2103,6 +2108,7 @@ $script:GGScreenLabels = @{
     "91" = "14d"          # Windows Update -- updates waiting (E2) -- interim
     "92" = "14e"          # Restart needed to finish updates (E2) -- interim
     "93" = "14f"          # Unwanted app blocking (E3) -- interim
+    "97" = "14h"          # Checking your PC's protection, step by step (F12) -- interim
     "94" = "14g"          # Before the scan -- what Checkup checked -- interim
     "10" = "15"           # Pre-scan prep checklist
     "38" = "16"           # Defender offline scan
@@ -3818,29 +3824,29 @@ function Show-FontInstructions {
             Draw-Box -ScreenId "30" -Color White -Lines @(
         "  WHAT HAPPENS NEXT -- PLEASE READ                                  ",
                 "---",
-                "  Checkup runs a series of quick checks before reaching     ",
-                "  the main security settings. Some screens appear briefly   ",
-                "  and move on automatically -- this is normal.              ",
+                "  Checkup runs some quick checks before the main security   ",
+                "  settings. Anything that needs you will PAUSE and wait.    ",
                 "                                                             ",
-                "  PRE-FLIGHT CHECKS (you will see these in order):          ",
+                "  GETTING READY:                                             ",
                 "  1. Personal computer confirmation                          ",
-                "  2. Domain / corporate network check                       ",
-                "  3. Administrator access check                             ",
-                "  4. Windows edition detection (Home vs Pro)                ",
-                "  5. RAM check                                              ",
-                "  6. First-run vs returning user check                      ",
-                "  7. Security scan confirmation (Defender)                  ",
-                "  8. Antivirus detection and status                         ",
-                "  9. Battery / power status check                           ",
-                " 10. Power settings (optional)                              ",
-                " 11. Apps audit (installed apps review)                     ",
+                "  2. Work or school network check                            ",
+                "  3. Administrator access check                              ",
+                "  4. Windows edition (Home or Pro) and memory                ",
                 "                                                             ",
-                "  Screens that require your input will PAUSE and wait.      ",
-                "  Quick status confirmations (green OK messages) will show  ",
-                "  briefly and move on -- nothing is skipped silently.       ",
+                "  PROTECTION CHECKS, in this order:                          ",
+                "  5. Tamper Protection                                       ",
+                "  6. Virus protection (Microsoft Defender)                   ",
+                "  7. Unwanted app blocking                                   ",
+                "  8. Windows Update -- installs updates with your OK         ",
+                "  9. Virus definitions                                       ",
+                " 10. Scans: the offline scan and a full scan, if you want    ",
                 "                                                             ",
-                "  After all checks pass, you reach the main security        ",
-                "  settings checklist where YOU control what gets changed.   "
+                "  THEN: power settings, the apps review, and the security   ",
+                "  settings checklist, where YOU choose what gets changed.   ",
+                "                                                             ",
+                "  Green OK messages move on by themselves -- nothing is     ",
+                "  skipped silently, and everything is saved in your log.    ",
+                "                                                             "
             )
         }
     )
@@ -4176,13 +4182,14 @@ $global:CheckpointOrder = @(
     "Briefing",
     # Block E (ascii45): the start sequence.
     "Tamper",
+    "DefenderAV",        # F12 (ascii45): moved up -- Bill's order
+    "PUA",               # F12 (ascii45): app blocking before Windows Update
     "WinUpdatePending",
     "WinUpdate",
     "Defs",
     "PreScanPrep",
     "OfflineScanPending",
     "OfflineScanDone",
-    "DefenderAV",
     "PowerSettings",
     "AppsAudit",
     # D5 / Decision 3 (ascii45): resume can land at 22, 23 or the checklist.
@@ -4334,13 +4341,14 @@ function Get-GGResumeTarget {
         "Baseline"           = @("the security tools overview", "26")
         "Briefing"           = @("getting ready for the scan", "")
         "PreScanPrep"        = @("getting ready for the scan", "")
-        "Tamper"             = @("the Windows Update check", "")
+        "Tamper"             = @("the virus protection check", "")
+        "PUA"                = @("the Windows Update check", "")
         "WinUpdatePending"   = @("the Windows Update check, after the restart", "")
-        "WinUpdate"          = @("unwanted app blocking", "")
+        "WinUpdate"          = @("the virus definitions check", "")
         "Defs"               = @("getting ready for the scan", "")
         "OfflineScanPending" = @("your offline scan results", "40")
-        "OfflineScanDone"    = @("the antivirus check", "")
-        "DefenderAV"         = @("the power settings review", "")
+        "OfflineScanDone"    = @("the power settings review", "")
+        "DefenderAV"         = @("unwanted app blocking", "")
         "PowerSettings"      = @("the apps review", "51")
         "AppsAudit"          = @("the start screen", "52")
         "ModeChosen"         = @("the password question", "")
@@ -5198,6 +5206,22 @@ function Update-GGSignaturesIfStale {
     }
 }
 
+function Show-GGStartProgress {
+    # F12 / FT-290 (ascii45): Bill -- "did not check tamper protection first".
+    # It did, silently. This screen shows each result as it arrives, in order,
+    # and what is being checked now.
+    param([string]$Now = "")
+    Clear-Host
+    Write-Host ""
+    $ggL = @("  CHECKING YOUR PC'S PROTECTION -- ONE STEP AT A TIME        ", "---")
+    if ($null -ne $script:GGReady) { foreach ($ggK in $script:GGReady.Keys) { $ggL += [string]$script:GGReady[$ggK] } }
+    if ($Now) { $ggL += ("  ...   Now checking: " + $Now) }
+    $ggL += @("                                                             ",
+              "  Nothing is changed without asking you first.               ")
+    Draw-Box -ScreenId "97" -Color White -Lines $ggL
+    Write-Host ""
+}
+
 function Show-GGReadySummary {
     # E (ascii45): one screen with what the start checks found, before the scans.
     if ($null -eq $script:GGReady -or $script:GGReady.Count -eq 0) { return }
@@ -5578,12 +5602,14 @@ function Test-DefenderPrimary {
                 )
                 Write-Host ""
                 Write-Log -Message "Defender active as primary AV. Also registered (not in charge): $ggAlso" -Status "OK"
+                Add-GGReady "AV" ("  OK    Virus protection (Microsoft Defender) is on. " + $ggAlso + " is also installed, not in charge.")
                 Pause-ForUser
             } else {
                 Write-Host ""
-                Write-Host "  OK  Microsoft Defender is active as primary AV." -ForegroundColor Green
+                # F20 / FT-298 (ascii45): was an unnumbered page with a pause;
+                # the result now shows on screen 97 and on 14g.
+                Add-GGReady "AV" "  OK    Virus protection (Microsoft Defender) is on."
                 Write-Log -Message "Defender confirmed as primary AV" -Status "OK"
-                Pause-ForUser
             }
         } elseif ($nonDefender) {
             # B2b-2 (ascii45): ANY other product in charge (Malwarebytes included)
@@ -9274,6 +9300,9 @@ function Run-ConsoleMode {
         if ($ggAvailable -lt 35) { $ggAvailable = 35 }   # floor: never below a bare-minimum readable table
         if (-not $script:ChecklistPage) { $script:ChecklistPage = 1 }
         $ggPageItems = if ($script:ChecklistPage -eq 1) { $Settings | Where-Object { $_.ID -le 10 } } else { $Settings | Where-Object { $_.ID -ge 11 } }
+        # F18 / FT-296 (ascii45): Bill -- "1. tamper 2. defender 3. windows updates".
+        # Display order only: the item NUMBERS never change (logs name items by ID).
+        $ggPageItems = @($ggPageItems | Sort-Object { $ggId = [int]$_.ID; switch ($ggId) { 3 { 1 } 2 { 2 } 1 { 3 } default { $ggId + 10 } } })
         # FT-151 (ascii39): BOTH COLUMNS ARE NOW SIZED FROM THE ACTUAL CONTENT
         # OF THE PAGE BEING DRAWN, on every render.
         # WHAT WAS WRONG: ascii34's FT-117 fix replaced two hardcoded presets
@@ -10099,16 +10128,30 @@ if (-not (Test-CheckpointReached -Checkpoint "Briefing")) {
 
 # Block E (ascii45): Bill's order -- Tamper Protection, Windows Update until
 # finished, unwanted-app blocking, virus definitions, then the scans.
+# F12 (ascii45) -- Bill's order: Tamper, virus protection, app blocking,
+# Windows Update, definitions. Screen 97 shows each result as it arrives.
 $script:GGReady = [ordered]@{}
 if (-not (Test-CheckpointReached -Checkpoint "Tamper")) {
+    Show-GGStartProgress -Now "Tamper Protection"
     Show-TamperCheck
     Save-Checkpoint -Checkpoint "Tamper"
+}
+if (-not (Test-CheckpointReached -Checkpoint "DefenderAV")) {
+    Show-GGStartProgress -Now "virus protection (Microsoft Defender)"
+    Test-DefenderPrimary
+    if (-not $script:GGReady.Contains("AV")) { Add-GGReady "AV" "  NOTE  Virus protection needs your attention -- see the screen before this one." }
+    Save-Checkpoint -Checkpoint "DefenderAV"
+}
+if (-not (Test-CheckpointReached -Checkpoint "PUA")) {
+    Show-GGStartProgress -Now "unwanted app blocking"
+    Invoke-PUACheck
+    Save-Checkpoint -Checkpoint "PUA"
 }
 if (-not (Test-CheckpointReached -Checkpoint "WinUpdate")) {
     Invoke-WindowsUpdateLoop   # saves WinUpdate / WinUpdatePending itself
 }
 if (-not (Test-CheckpointReached -Checkpoint "Defs")) {
-    Invoke-PUACheck
+    Show-GGStartProgress -Now "virus definitions"
     Update-GGSignaturesIfStale
     Save-Checkpoint -Checkpoint "Defs"
 }
@@ -10122,13 +10165,8 @@ if (-not (Test-CheckpointReached -Checkpoint "OfflineScanDone")) {
     Save-Checkpoint -Checkpoint "OfflineScanDone"   # D2 / FT-266: was never saved
 }
 
-# 12. Defender primary AV check -- MOVED BEFORE Malwarebytes (D-06,
-# ascii33): confirm Defender is your active antivirus first, then add
-# the companion scanner. Was after MB through ascii32.
-if (-not (Test-CheckpointReached -Checkpoint "DefenderAV")) {
-    Test-DefenderPrimary
-    Save-Checkpoint -Checkpoint "DefenderAV"
-}
+# 12. (F12, ascii45: the antivirus check moved into the start sequence,
+# second after Tamper Protection -- Bill's order.)
 
 # 12b. (removed in ascii45, B2b-1: the Malwarebytes follow-up. The
 # "Malwarebytes" checkpoint name is left in CheckpointOrder for D2/FT-266,
