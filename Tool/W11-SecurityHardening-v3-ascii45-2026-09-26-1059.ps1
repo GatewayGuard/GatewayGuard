@@ -132,6 +132,9 @@
 #   F20 (FT-298): the power check page gets a box (98). F6: two-step sign-in.
 #   FT-275: the antivirus check no longer clears screen 97; "could not verify"
 #           is a NOTE line. No password-manager product is named (CLAUDE.md).
+#   F1 (Decision 4): items 11-15 apply in the main run; 33a/33b are gone.
+#           New screens 99 "What Checkup changed" (Was -> Now) and 100
+#           "Steps for you to do". F2: undo steps are guide 4.2 rows 11-15.
 #   FT-282: ITEM 12 (DIAGNOSTIC DATA) READ ONLY THE GROUP POLICY VALUE, which
 #           is empty on home PCs, and said "Sending extra data" when optional
 #           data was off. Now reads the Settings value too (measured on SANDY
@@ -2139,6 +2142,8 @@ $script:GGScreenLabels = @{
     "79" = "30"           # Before you turn it on -- your recovery key
     "81" = "31"           # How to tell if encryption is running
     "69" = "32"           # All selected items processed
+    "99" = "32a"          # What Checkup changed (F1) -- interim label
+    "100" = "32b"         # Steps for you to do (F1) -- interim label
     "70" = "33"           # Automated scan schedule setup
     "72" = "34"           # Automated steps complete
     # -- branches, one level deep ---------------------------------
@@ -2170,8 +2175,6 @@ $script:GGScreenLabels = @{
     "63" = "28a"          # Device encryption may not be available on this PC
     "82" = "30a"          # Already signed in with a Microsoft account
     "80" = "30b"          # How to sign in with a Microsoft account
-    "23" = "33a"          # Convenience review
-    "71" = "33b"          # Convenience review -- result
     "88" = "33c"          # OneDrive offer -- shown only when there is no OneDrive
     "89" = "33d"          # How to set up OneDrive
     # -- reachable from everywhere, so deliberately unnumbered ----
@@ -7278,15 +7281,8 @@ function Test-NonRecommendedSelections {
 function Apply-Setting {
     param([PSCustomObject]$Setting)
 
-    # FT-94 (ascii33): convenience items (11-15) are NEVER applied in the
-    # main run -- they are deferred to Show-ConvenienceReview, which asks
-    # the user BEFORE applying each one. $script:GGConvPhase is set only
-    # inside that review. This guard intercepts every apply path
-    # (console loop, GUI loop, apply-all) with a single rule.
-    if ($Setting.ID -in 11,12,13,14,15 -and -not $script:GGConvPhase) {
-        Write-Log -Message "$($Setting.Name) | Deferred to individual convenience review (FT-94)" -Status "INFO"
-        return "Saved for your individual review -- you will approve or skip this one next"
-    }
+    # F1 / Decision 4 (ascii45): the FT-94 hold on 11-15 is gone. Selecting
+    # an item is the approval (FT-219), so they apply like every other item.
 
     $before = $Setting.Status
     $isHome = $global:WinEdition -notmatch "Pro|Enterprise|Education|Business"
@@ -7786,10 +7782,10 @@ function Show-ScopeDisclaimer {
             Draw-Box -ScreenId "75" -Color White -Lines @(
                 "  WHAT CHECKUP DOES AND DOES NOT DO   (page 2 of 2)                ",
                 "---",
-                "  CONVENIENCE FEATURES -- YOU WILL BE ASKED AT THE END:            ",
+                "  CONVENIENCE FEATURES -- CHANGED ONLY IF YOU SELECT THEM:         ",
                 "  The following are RECOMMENDED to turn off for security/privacy.   ",
-                "  After all settings run, you will review each one individually     ",
-                "  and decide if you want to KEEP the change or REVERT it:          ",
+                "  Each one you select is changed with the rest. At the end,         ",
+                "  Checkup shows what changed and how to put each one back:         ",
                 "                                                                    ",
                 "  [A] Advertising ID      -- Stops Windows tracking you for ads    ",
                 "  [B] Diagnostic Data     -- Limits data sent to Microsoft         ",
@@ -7816,148 +7812,125 @@ function Show-ScopeDisclaimer {
 }
 
 # ============================================================
-# CONVENIENCE FEATURES REVIEW (end of run -- option B: one at a time)
+# WHAT CHECKUP CHANGED + STEPS FOR YOU TO DO (F1 / Decision 4, ascii45)
+# Replaces the convenience review (33a/33b). Selecting an item on the
+# checklist is the approval (FT-219); this only REPORTS.
 # ============================================================
-function Show-ConvenienceReview {
-    $convItems = @(
-        @{
-            ID      = 11
-            Name    = "Advertising ID"
-            What    = "Turn OFF the Advertising ID -- Windows will stop tracking your activity for ad targeting."
-            Why     = "Windows assigns each account an Advertising ID and shares it across apps`n  and websites to serve targeted ads. Turning it off stops this tracking.`n  You still see ads -- they just won't be personalized to you."
-            Revert  = "Settings -> Privacy & security -> General -> Let apps use advertising ID -> On"
-            RegPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo"
-            RegName = "Enabled"
-            RevertVal = 1
-            RevertType = "DWord"
-        },
-        @{
-            ID      = 12
-            Name    = "Diagnostic Data"
-            What    = "Limit diagnostic data to REQUIRED ONLY -- Windows will send Microsoft only the minimum it needs."
-            Why     = "By default Windows sends detailed usage, browsing habits and error reports`n  to Microsoft. Required Only limits this to the minimum for Windows to work.`n  Windows continues to function normally with this setting."
-            Revert  = "Settings -> Privacy & security -> Diagnostics & feedback -> Diagnostic data -> Full"
-            RegPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection"
-            RegName = "AllowTelemetry"
-            RevertVal = 3
-            RevertType = "DWord"
-        },
-        @{
-            ID      = 13
-            Name    = "Edge Startup Boost and Background Running"
-            What    = "Stop Edge from launching at every startup and from running after you close it."
-            Why     = "Edge Startup Boost launches background Edge processes every time your PC`n  boots, even if you never open Edge. Background mode keeps Edge running`n  after you close it. Both waste RAM and CPU. Edge still works normally`n  when you open it -- it just won't pre-load without you asking."
-            Revert  = "Open Edge -> Settings (three dots) -> System and performance ->`n           Startup boost -> On  AND  Continue running background apps -> On"
-            RegPath = $null  # Edge settings via registry are user-specific -- manual revert only
-            RegName = $null
-            RevertVal = $null
-            RevertType = $null
-        },
-        @{
-            ID      = 14
-            Name    = "Windows Widgets"
-            What    = "Turn off the Widgets news/weather panel."
-            Why     = "The Widgets panel runs background Edge WebView2 processes at all times,`n  consuming RAM even when the panel is closed. It also sends browsing`n  behavior data to Microsoft. Disabling Widgets does NOT affect the`n  taskbar, Start menu, or any other feature."
-            Revert  = "Settings -> Personalization -> Taskbar -> Widgets -> On"
-            RegPath = $null
-            RegName = $null
-            RevertVal = $null
-            RevertType = $null
-        },
-        @{
-            ID      = 15
-            Name    = "Edge Password Saving"
-            What    = "Stop Edge from offering to save your passwords (your password manager does this job better)."
-            Why     = "Browser-saved passwords are stored with minimal encryption and are`n  vulnerable if someone accesses your PC or if Edge is compromised.`n  A separate password manager app uses stronger`n  encryption and works across all browsers and devices.`n  NOTE: This does NOT delete any passwords already saved in Edge."
-            Revert  = "Open Edge -> Settings -> Passwords -> Offer to save passwords -> On"
-            RegPath = $null
-            RegName = $null
-            RevertVal = $null
-            RevertType = $null
-        }
-    )
+# F2 (ascii45): guide Part 4, section 4.2, rows 11-15 -- the guide's measured
+# paths. Checkup has no automatic undo for these, so the steps are shown.
+$script:GGUndo = @{
+    11 = "Settings -> Privacy & security -> Recommendations and offers -> turn 'Let apps show me personalized ads by using my advertising ID' back on."
+    12 = "Settings -> Privacy & security -> Diagnostics & feedback -> choose 'Optional diagnostic data'."
+    13 = "Edge -> Settings -> System and performance -> open 'Startup boost' first -> turn 'Startup boost' and 'Continue running background extensions and apps' back on."
+    14 = "Right-click the taskbar -> Taskbar settings -> Widgets On."
+    15 = "Edge -> Settings -> Passwords -> 'Offer to save passwords' On. Turning it off never deleted the passwords Edge already had."
+}
 
-    # FT-94 (ascii33): ASK BEFORE APPLY. Items 11-15 were NOT applied in
-    # the main run (see the guard in Apply-Setting). Here each SELECTED
-    # item is explained, and NOTHING happens until the user says Y.
-    $ggConvSel = $Settings | Where-Object { $_.ID -in (11,12,13,14,15) -and $_.Selected }
-    if (-not $ggConvSel -or @($ggConvSel).Count -eq 0) { return }  # none selected -- skip
+function Add-GGRunResult {
+    # One row per item run. A second run of the same item keeps its FIRST
+    # "Was", so the summary still shows what the PC had before Checkup.
+    param($Setting, [string]$Was, [string]$Now, [string]$Steps = "")
+    if ($null -eq $script:GGRunResults) { $script:GGRunResults = [ordered]@{} }
+    $ggKey = [string]$Setting.ID
+    if ($script:GGRunResults.Contains($ggKey)) { $Was = $script:GGRunResults[$ggKey].Was }
+    $script:GGRunResults[$ggKey] = [pscustomobject]@{ ID = [int]$Setting.ID; Name = [string]$Setting.Name; Was = $Was; Now = $Now; Steps = $Steps }
+}
 
-    Clear-Host
-    Write-Host ""
-    Show-StepHeader -Key "ConvIntro" -Section "Wrapping Up"
-    Draw-Box -ScreenId "23" -Color White -Lines @(
-        "  CONVENIENCE CHOICES -- NOTHING CHANGED YET                       ",
-        "---",
-        "  The next few screens cover privacy and convenience settings.     ",
-        "  All are RECOMMENDED, but they are YOUR choice.                   ",
-        "                                                                   ",
-        "  NO change is made until you approve it. For each item:           ",
-        "    Y = Make this change now (recommended)                         ",
-        "    N = Skip it -- leave that setting exactly as it is             "
-    )
-    Write-Host ""
-    Pause-ForUser "  Press Enter or Space to see the first item..."
+function Test-GGResultGood {
+    # The run loop's own colour rule (FT-284), in the same order.
+    param([string]$Text)
+    return (($Text -match "GOOD|enabled|disabled|set to|Already") -and ($Text -notmatch "ERROR|NOTE:|MANUAL|manual|by hand"))
+}
 
-    $ggConvSelIDs = @($ggConvSel | ForEach-Object { $_.ID })
-    $ggCITotal = @($ggConvSelIDs).Count
-    $ggCIIdx   = 0
-    $script:GGConvPhase = $true   # FT-94: unlocks Apply-Setting for 11-15
-    foreach ($ci in $convItems) {
-        if ($ci.ID -notin $ggConvSelIDs) { continue }
-        $ggSetting = $Settings | Where-Object { $_.ID -eq $ci.ID }
+function Get-GGRowLines {
+    # Screen lines one summary row takes (wrapped at the window width).
+    param($Row)
+    $ggW = 76
+    try { $ggW = [Console]::WindowWidth - 6 } catch {}
+    if ($ggW -lt 30) { $ggW = 30 }
+    $ggN = 2 + [math]::Ceiling(("Was: " + $Row.Was).Length / $ggW) + [math]::Ceiling(("Now: " + $Row.Now).Length / $ggW)
+    if ($script:GGUndo.ContainsKey($Row.ID) -and (Test-GGResultGood $Row.Now) -and ($Row.Now -notmatch "Already")) {
+        $ggN += [math]::Ceiling(("To put it back: " + $script:GGUndo[$Row.ID]).Length / $ggW)
+    }
+    return $ggN
+}
 
-        $ggCIIdx++
+function Show-GGChangedSummary {
+    if ($null -eq $script:GGRunResults -or $script:GGRunResults.Count -eq 0) { return }
+    $ggRows = @($script:GGRunResults.Values)
+    # Pages by screen lines, not by a fixed count -- one long result (item 17's
+    # by-hand text) can fill most of a screen. 26-line rule: box 7 + 17.
+    $ggPages = New-Object System.Collections.Generic.List[object]
+    $ggCur = New-Object System.Collections.Generic.List[object]
+    $ggUsed = 0
+    foreach ($ggR in $ggRows) {
+        $ggN = Get-GGRowLines $ggR
+        if ($ggCur.Count -gt 0 -and ($ggUsed + $ggN) -gt 17) { $ggPages.Add($ggCur.ToArray()); $ggCur = New-Object System.Collections.Generic.List[object]; $ggUsed = 0 }
+        $ggCur.Add($ggR); $ggUsed += $ggN
+    }
+    if ($ggCur.Count -gt 0) { $ggPages.Add($ggCur.ToArray()) }
+    foreach ($ggR in $ggRows) {
+        try { Write-Log -Message ("Changed summary: " + $ggR.ID + ". " + $ggR.Name + " | Was: " + $ggR.Was + " | Now: " + $ggR.Now) -Status $(if (Test-GGResultGood $ggR.Now) { "OK" } else { "WARN" }) } catch {}
+    }
+    $ggP = 0
+    while ($ggP -lt $ggPages.Count) {
         Clear-Host
         Write-Host ""
-        Draw-Box -ScreenId "71" -Color White -Lines @(
-            "  YOUR CHOICE [$ggCIIdx of $ggCITotal]: $($ci.Name)          ",
+        Draw-Box -ScreenId "99" -Color White -Lines @(
+            ("  WHAT CHECKUP CHANGED   (page " + ($ggP + 1) + " of " + $ggPages.Count + ")"),
             "---",
-            "  WHAT THIS CHANGE WILL DO (nothing done yet):                ",
-            "  $($ci.What)                                                 ",
-            "---",
-            "  WHY WE RECOMMEND IT:                                        ",
-            "  $($ci.Why)                                                  ",
-            "---",
-            "  IF YOU EVER WANT TO UNDO IT LATER:                          ",
-            "  $($ci.Revert)                                               "
+            "  Each item you selected: what it was, and what it is now.   ",
+            "  Anything in yellow did not change -- the next screens show ",
+            "  the steps. All of this is also in your log.                "
         )
         Write-Host ""
-        Write-Host "  Y = Make this change now (recommended)" -ForegroundColor White
-        Write-Host "  N = Skip it -- leave this setting exactly as it is" -ForegroundColor White
-        Write-Host ""
-
-        do {
-            $resp = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Your choice (Y = Make the change / N = Skip it): "
-        } while ($resp.ToUpper() -notin @("Y","N"))
-
-        if ($resp.ToUpper() -eq "Y") {
-            $ggConvResult = Apply-Setting -Setting $ggSetting
-            Write-Host ""
-            # FT-284 (ascii45): same colour rule as the run loop, in the same
-            # order. A result is only "Done" when it reads as a success.
-            if ($ggConvResult -match "GOOD|enabled|disabled|set to|Already") {
-                Write-Host "  Done: $ggConvResult" -ForegroundColor Green
-                Write-Log -Message "User approved convenience change: $($ci.Name) -- $ggConvResult" -Status "OK"
-            } elseif ($ggConvResult -match "NOTE:|MANUAL|manual") {
-                Write-Host "  $ggConvResult" -ForegroundColor Yellow
-                Write-Log -Message "User approved convenience change: $($ci.Name) -- $ggConvResult" -Status "WARN"
-            } else {
-                Write-Host "  Not changed: $ggConvResult" -ForegroundColor Red
-                Write-Log -Message "User approved convenience change: $($ci.Name) -- NOT applied -- $ggConvResult" -Status "ERROR"
+        foreach ($ggR in $ggPages[$ggP]) {
+            $ggGood = Test-GGResultGood $ggR.Now
+            Write-Host ("  " + $ggR.ID + ". " + $ggR.Name) -ForegroundColor White
+            Write-GGWrapped -Text ("Was: " + $ggR.Was) -Color Gray -Indent 4
+            Write-GGWrapped -Text ("Now: " + $ggR.Now) -Color $(if ($ggGood) { "Green" } else { "Yellow" }) -Indent 4
+            if ($ggGood -and ($ggR.Now -notmatch "Already") -and $script:GGUndo.ContainsKey($ggR.ID)) {
+                Write-GGWrapped -Text ("To put it back: " + $script:GGUndo[$ggR.ID]) -Color DarkCyan -Indent 4
             }
-        } else {
             Write-Host ""
-            Write-Host "  Skipped: $($ci.Name) was left exactly as it was." -ForegroundColor Yellow
-            Write-Log -Message "User skipped convenience change: $($ci.Name) -- no change made" -Status "SKIP"
         }
+        if ($ggP -gt 0) {
+            Pause-ForUser "  Press Enter or Space to go on..." -AllowStepBack -BackTo "the previous page"
+            if ($script:GGStepBack) { $ggP--; continue }
+        } else {
+            Pause-ForUser "  Press Enter or Space to go on..."
+        }
+        $ggP++
     }
-    $script:GGConvPhase = $false
+}
 
-    Write-Host ""
-    Write-Host "  Convenience choices complete -- only the items you approved were changed." -ForegroundColor White
-    Write-Host ""
-    Pause-ForUser "  Press Enter or Space to see your manual steps checklist..."
+function Show-GGStepsForYou {
+    if ($null -eq $script:GGRunResults) { return }
+    $ggSteps = @($script:GGRunResults.Values | Where-Object { $_.Steps })
+    if ($ggSteps.Count -eq 0) { return }
+    $ggI = 0
+    while ($ggI -lt $ggSteps.Count) {
+        $ggR = $ggSteps[$ggI]
+        Clear-Host
+        Write-Host ""
+        Draw-Box -ScreenId "100" -Color White -Lines @(
+            ("  STEPS FOR YOU TO DO   (" + ($ggI + 1) + " of " + $ggSteps.Count + ")"),
+            "---",
+            ("  " + $ggR.ID + ". " + $ggR.Name),
+            "  Windows does not let Checkup finish this one, so here are  ",
+            "  the exact steps to do it yourself.                         "
+        )
+        Write-Host ""
+        Write-GGWrapped -Text $ggR.Steps -Color Yellow
+        Write-Log -Message ("Steps for you to do: " + $ggR.ID + ". " + $ggR.Name) -Status "INFO"
+        if ($ggI -gt 0) {
+            Pause-ForUser "  Press Enter or Space when you have read this..." -AllowStepBack -BackTo "the previous step"
+            if ($script:GGStepBack) { $ggI--; continue }
+        } else {
+            Pause-ForUser "  Press Enter or Space when you have read this..."
+        }
+        $ggI++
+    }
 }
 
 # ============================================================
@@ -9658,9 +9631,10 @@ function Run-ConsoleMode {
                 Write-Log -Message "Review listing rendered -- awaiting Ready-to-proceed" -Status "INFO"   # FT-68 (ascii29): brackets the listing loop in the log
 
                 do {
-                    $finalCheck = Read-ValidKey -ValidKeys @("Y","B","Q") -Prompt "Ready to proceed? (Y = Start / B = Go back / Q = Quit): "
+                    # Keys rule (ascii45): X = Exit, not Q.
+                    $finalCheck = Read-ValidKey -ValidKeys @("Y","B","X") -Prompt "Ready to proceed? (Y = Start / B = Go back / X = Exit): "
                     switch ($finalCheck.ToUpper()) {
-                        "Q" { Confirm-Exit; continue checklistLoop }
+                        "X" { Confirm-Exit; continue checklistLoop }
                         "B" { continue checklistLoop }
                     }
                 } while ($finalCheck.ToUpper() -ne "Y")
@@ -9714,7 +9688,9 @@ function Run-ConsoleMode {
                                 $warnResp = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Continue and change this setting? (Y = Yes I understand / N = Cancel): "
                                 if ($warnResp.ToUpper() -eq "Y") {
                                     Write-Host "  Applying..." -ForegroundColor Cyan
+                                    $ggWas = $s.Status
                                     $result = Apply-Setting -Setting $s
+                                    Add-GGRunResult -Setting $s -Was $ggWas -Now $result   # F1
                                     Write-Host "  Result: $result" -ForegroundColor Cyan
                                     Write-Log -Message "$($s.Name) -- changed by user despite GOOD status" -Status "CHANGED"
                                     Pause-ForUser
@@ -9794,10 +9770,13 @@ function Run-ConsoleMode {
                     }
 
                     if (-not $s.CanAuto) {
-                        Write-Host ""
-                        Write-Host "  This one needs you to do it by hand -- Checkup will show you the steps." -ForegroundColor Red
+                        # F1 / Decision 4 (ascii45): the steps come one per screen
+                        # after the run (screen 100), not mid-run.
+                        $ggWas = $s.Status
                         $r = Apply-Setting -Setting $s
-                        Write-GGWrapped -Text "INSTRUCTIONS: $r" -Color Yellow   # FT-279
+                        Add-GGRunResult -Setting $s -Was $ggWas -Now "Not changed -- this one is yours to do; the steps come at the end" -Steps $r
+                        Write-Host ""
+                        Write-Host "  Windows does not let Checkup change this one. The exact steps come at the end." -ForegroundColor Yellow
                         Pause-ForUser
                         continue
                     }
@@ -9821,10 +9800,13 @@ function Run-ConsoleMode {
                     # changing anything itself.
                     Write-Host ""
                     # FT-279 (ascii45): no promise before the outcome is known --
-                    # 11-15 are put off to their own review and 6 can be blocked.
+                    # item 6 can be blocked by Tamper Protection.
                     Write-Host "  Working on this item..." -ForegroundColor Cyan
+                    $ggWas = $s.Status
                     $result = Apply-Setting -Setting $s
-                    $resultColor = if ($result -match "GOOD|enabled|disabled|set to|Already") { "Green" } elseif ($result -match "NOTE:|MANUAL|manual") { "Yellow" } elseif ($result -match "Saved for your individual review") { "Cyan" } else { "Red" }
+                    # F1: a by-hand answer from an item Checkup tried is a step too.
+                    Add-GGRunResult -Setting $s -Was $ggWas -Now $result -Steps $(if ($result -match "MANUAL|by hand|Manual setup") { $result } else { "" })
+                    $resultColor = if ($result -match "GOOD|enabled|disabled|set to|Already") { "Green" } elseif ($result -match "NOTE:|MANUAL|manual") { "Yellow" } else { "Red" }
                     Write-Host ""
                     Write-GGWrapped -Text "Result: $result" -Color $resultColor
                     Pause-ForUser
@@ -9851,8 +9833,10 @@ function Run-ConsoleMode {
                             Write-Host "  Description: $($item.Description)" -ForegroundColor Gray
                             $reapply = Read-ValidKey -ValidKeys @("Y","N") -Prompt "Force re-apply anyway? (Y/N): "
                             if ($reapply.ToUpper() -eq "Y") {
+                                $ggWas = $item.Status
                                 $item.Status = "Forced re-apply by user"
                                 $result = Apply-Setting -Setting $item
+                                Add-GGRunResult -Setting $item -Was $ggWas -Now $result   # F1
                                 Write-Host "  Result: $result" -ForegroundColor Cyan
                             }
                         }
@@ -9873,7 +9857,7 @@ function Run-ConsoleMode {
                 Draw-Box -ScreenId "69" -Color White -Lines @(
                     "  ALL SELECTED ITEMS PROCESSED                           ",
                     "  Log saved to your GatewayGuard folder.                       ",
-                    "  See manual steps below for items needing your action.  "
+                    "  Next: what Checkup changed, then any steps for you.    "
                 )
                 # FT-244 (ascii44): Setup-ScheduledTasks begins with
                 # Clear-Host, so without this pause screen 32 was drawn
@@ -9881,8 +9865,9 @@ function Run-ConsoleMode {
                 # 2026-08-30. Bill: "Is there a screen 32."
                 Write-Host ""
                 Pause-ForUser "  Press Enter or Space to continue..."
+                Show-GGChangedSummary    # F1 / Decision 4 (ascii45): screen 99
+                Show-GGStepsForYou       # F1: screen 100, one by-hand item per screen
                 Setup-ScheduledTasks
-                Show-ConvenienceReview   # FT-70 (ascii29): was called twice back-to-back -- deduped
                 Show-OneDriveOffer       # FT-191: only if no OneDrive
                 Show-ManualSteps
                 Disable-SleepPrevention
