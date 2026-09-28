@@ -130,6 +130,8 @@
 #   F4 (FT-274/275): screen 3's sample box has no number of its own; screens
 #           1-3 are logged; the "next screen is long" pause is gone.
 #   F20 (FT-298): the power check page gets a box (98). F6: two-step sign-in.
+#   FT-275: the antivirus check no longer clears screen 97; "could not verify"
+#           is a NOTE line. No password-manager product is named (CLAUDE.md).
 #   FT-282: ITEM 12 (DIAGNOSTIC DATA) READ ONLY THE GROUP POLICY VALUE, which
 #           is empty on home PCs, and said "Sending extra data" when optional
 #           data was off. Now reads the Settings value too (measured on SANDY
@@ -5519,10 +5521,8 @@ function Show-PostScanGuidance {
 # Uses SecurityCenter2 WMI ONLY -- no registry
 # ============================================================
 function Test-DefenderPrimary {
-    Clear-Host
-    Write-Host ""
-    Write-Host "  Checking antivirus status..." -ForegroundColor Cyan
-    Write-Host ""
+    # FT-275 (ascii45): no Clear-Host here -- it wiped screen 97, which
+    # already says this check is running.
 
     try {
         $avProducts = Get-WmiObject -Namespace "root\SecurityCenter2" -Class AntiVirusProduct -ErrorAction Stop
@@ -5657,12 +5657,9 @@ function Test-DefenderPrimary {
             Pause-ForUser
         } elseif ($defenderRTUnknown) {
             # FT-23: could not VERIFY Defender -- do not alarm, do not block
-            Write-Host ""
-            Write-Host "  Could not verify Defender's status just now -- this is usually" -ForegroundColor Yellow
-            Write-Host "  temporary. To check yourself: open Windows Security and look" -ForegroundColor Yellow
-            Write-Host "  under Virus & threat protection." -ForegroundColor Yellow
-            Write-Log -Message "Defender state unverifiable -- informational message shown, continuing" -Status "WARN"
-            Pause-ForUser
+            # FT-275 (ascii45): was an unnumbered page; now a line on 97 and 14g.
+            Add-GGReady "AV" "  NOTE  Could not read virus protection just now (usually temporary). To look: Windows Security -> Virus & threat protection."
+            Write-Log -Message "Defender state unverifiable -- NOTE line shown, continuing" -Status "WARN"
         } else {
             # Defender real-time is CONFIRMED off and NOTHING registered to replace it
             Write-Log -Message ("Defender-off ALARM context: SC2 count=" + (@($nonDefender).Count)) -Status "WARN"
@@ -7656,7 +7653,7 @@ function Show-ScopeDisclaimer {
             "  YOUR PASSWORDS -- WE REMEMBERED YOUR ANSWER                ",
             "---",
             "  Last time, you told us you $ggPMWas a password manager",
-            "  (an app such as Bitwarden, 1Password, or KeePass).         ",
+            "  (a separate app that stores your passwords safely).       ",
             "                                                            ",
             "  We saved that answer so you do not have to give it again.  ",
             "  Nothing on your PC has been changed by this screen.        ",
@@ -7689,9 +7686,9 @@ function Show-ScopeDisclaimer {
     Draw-Box -ScreenId "53" -Color White -Lines @(
         "  QUICK QUESTION -- YOUR PASSWORDS                            ",
         "---",
-        "  Do you use a PASSWORD MANAGER -- a separate app such as     ",
-        "  Bitwarden, 1Password, or KeePass -- to store your           ",
-        "  passwords?                                                  ",
+        "  Do you use a PASSWORD MANAGER -- a separate app that         ",
+        "  stores your passwords safely and fills them in for you?     ",
+        "                                                              ",
         "                                                              ",
         "  WHY WE ASK: One of the later settings turns OFF the web     ",
         "  browser's built-in password saving, because browsers are    ",
@@ -7871,7 +7868,7 @@ function Show-ConvenienceReview {
             ID      = 15
             Name    = "Edge Password Saving"
             What    = "Stop Edge from offering to save your passwords (your password manager does this job better)."
-            Why     = "Browser-saved passwords are stored with minimal encryption and are`n  vulnerable if someone accesses your PC or if Edge is compromised.`n  A dedicated password manager (Bitwarden, 1Password) uses stronger`n  encryption and works across all browsers and devices.`n  NOTE: This does NOT delete any passwords already saved in Edge."
+            Why     = "Browser-saved passwords are stored with minimal encryption and are`n  vulnerable if someone accesses your PC or if Edge is compromised.`n  A separate password manager app uses stronger`n  encryption and works across all browsers and devices.`n  NOTE: This does NOT delete any passwords already saved in Edge."
             Revert  = "Open Edge -> Settings -> Passwords -> Offer to save passwords -> On"
             RegPath = $null
             RegName = $null
@@ -9785,7 +9782,7 @@ function Run-ConsoleMode {
                             Write-Host "  Browser-saved passwords are stored with minimal encryption" -ForegroundColor Gray
                             Write-Host "  and are vulnerable if someone gains access to your PC or" -ForegroundColor Gray
                             Write-Host "  if Edge is compromised by malware. A dedicated password" -ForegroundColor Gray
-                            Write-Host "  manager (Bitwarden, 1Password, etc.) uses stronger" -ForegroundColor Gray
+                            Write-Host "  manager app uses stronger" -ForegroundColor Gray
                             Write-Host "  encryption and works across all browsers and devices." -ForegroundColor Gray
                             Write-Host "  Turning this off does NOT delete saved passwords -- it" -ForegroundColor Gray
                             Write-Host "  just stops Edge from saving new ones going forward." -ForegroundColor Gray
