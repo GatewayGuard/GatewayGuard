@@ -1,0 +1,23 @@
+Ascii45-TestRun-2026-09-28-1421
+1. SCR 10 - selected I and it made me select space bar twice to go back. fix this
+2. Cheking windows update - change wording to this can take a while or some such wording
+3. Scr 15 - says defender is on not in charge. Note: MB is your antivirus - wrong fix this. Defender is in charge and MB is turned off
+4. Running offline scan - before run did you check app blocking was both on and approved by user? I don't remember seeing it. Can message at bottom be change to "awaiting restart" -took about 5 minutes
+5. 1. had to log back in 2. was user told what to do after restart
+6. Did not open to protection history - opened to AV. checked and no recent actions. Rewrite to explain what to do and that user should take notes - otherwise many users may be lost. Also referral to guide would be useful.
+7. Scr 20 - 1. Are these actual readings or recommendations 2. bottom wording makes no sense, you don't give the option to change, but you say at bottom nothing was changed.
+8. Scr 22 - Change a check list in this window to "a checklist window will appear later" or eliminate this wording 2. Again you say nothing has been changed, but no option was given to change anything, so why would anything have changed.  I think this type of continued saying nothing has been changed will actually make some users suspicious. get rid of it everywhere where it is said and no option to make a change.
+ was given.
+9. Scr 24 - talks about risky features, have we explained them yet if not will we explain them later - we do i thing or should and tell them here we will explain the risks later or somesuch wording. Aging the nothing changed message - get rid of it.
+Scr 25 - Change wordin "at the end, checkup shows what changed and how to put each ne back - this to me infers that you should reconsider your changes.  We don't want them thinking like that.  reword or eliminate. 2.at bottom change wording to "for all available settings" 3. Says sleep active at bottom - actual setting? Why tell them this and if we do tell them what the setting is.  Seems in opposition to previous info about sleep (set to never- recommend 5 minutes) 
+
+Scr 26 - #6 - Move setting/status break to left to allow my characters under status.  change wording to "Blocked by Tamper Protection - check by hand - Checkup will show you how" 
+Scr 27 - wording under status to far the right shift it left. Is there an additional  screen 28 wording for this screen under setting/status? 
+Scr 28 - doesn't move to a next screen just adds to bottom of scr 2. add to reputation based protection "(may need to select turn on)" 3, Change Checkup does not need it to Checkup recommends you leave/turn it off or somesuch wording. 4. selected "space bar and it said registry is protected. change to : "settings are protected
+Setting 6 - Change working on this item to "Do This:" and eliminate the redundant phishing line and the enable annually. 2. eliminate the next press enter and the following redundant manual required phrase. 3. search checkup and security draft throughout eliminating these redundant phrases and 'nothing has been changed'.
+Settings 14 - says it disables news/weather panel, but it still appears on left side of taskbar does it not. Didn't we resolve this earlier. Adjust wording to what we found out. Showed error attempt to perform an unauthorized action.
+Scr 33 - All selected items processed - incorrect
+Gateway guard finished, but did we give the instructions for everything that user needed to know and do.
+Scr 17 MB is installed on Sandy as free version - no recognition.  Need to recognize even when not in charge.
+
+
