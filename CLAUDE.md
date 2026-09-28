@@ -688,6 +688,30 @@ be deleted to solve a capacity problem.
 
 ---
 
+## GATE 27 -- SIMPLE MISTAKES ARE STOPPED BY A HOOK, NOT BY MEMORY (Bill, 2026-09-28)
+
+Bill: *"How can we avoid these simple mistakes, otherwise we may one day release
+an executable PS1 with one of them in it."* The build .ps1 was protected by
+`gg_edit` and gates 12/24; everything around it -- launchers, stamps, test
+files -- depended on remembering, and on 2026-09-28 that failed three ways: a
+launcher shipped with `>/dev/null` (SANDY: "cannot find the path"), seven
+typed `Dated:` stamps later than the clock, and a registry dump holding a
+Microsoft sign-in record reached `Test_Results\`.
+
+**`Tool2\Check-SimpleMistakes.ps1` runs by itself before every commit**
+(`.git\hooks\pre-commit`; tracked copy `Tool2\pre-commit-hook` -- copy it back
+after a fresh clone). It refuses the commit on: LF-only or `/dev/null` or
+`pause` or self-elevating or no `cd /d "%~dp0"` in a `.bat`; a `Dated:` later
+than the clock; anything that looks like a sign-in record or private key; a
+`.ps1` that does not parse, or uses `/dev/null` or `Join-String`; non-ASCII,
+duplicate functions, or a gate 12/24 failure in the build; more than 60 files.
+**Proven 2026-09-28 14:07:** three planted bad files, five FAILs, commit refused.
+By hand: `Tool2\Run-SimpleMistakesCheck.bat`. **Never bypass it
+(`--no-verify`).** A new kind of mistake gets a new check in that file, with
+its date -- that is how the list grows.
+
+---
+
 ## THE TEN-MINUTE RULE -- STOP AND WRITE IT UP
 
 Bill, 2026-08-12: *"If an issue can't be solved in 10 minutes or so, write up

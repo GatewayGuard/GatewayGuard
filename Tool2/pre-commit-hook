@@ -1,0 +1,5 @@
+#!/bin/sh
+# Gate 27 (Tool2/Check-SimpleMistakes.ps1) -- stops a commit that carries a
+# simple mistake: LF launchers, /dev/null, future stamps, secrets, parse errors,
+# non-ASCII in the build, gates 12/24. Bill 2026-09-28. Do not bypass it.
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "Tool2/Check-SimpleMistakes.ps1" -Staged
