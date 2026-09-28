@@ -16,6 +16,34 @@
 ---
 ---
 
+## Session: 2026-09-27 to 2026-09-28 08:37 [Claude Code -- CGDELL] -- ascii45: H, C2-C9, D, E, BLOCK F AND THE RENUMBER BUILT
+
+**Build:** ascii45, `Tool\W11-SecurityHardening-v3-ascii45-2026-09-26-1059.ps1`,
+9,893 non-blank / 10,232 lines, 112 functions (measured 2026-09-28). Not field run.
+
+- **09-27:** H1/H2 (Windows Hello read from LastLoggedOnProvider, flip-tested; password
+  on wake AC+DC), C2-C9 (ignored keys logged, B/L/F, Ctrl+C asks first -- Bill's tests
+  A-D, full-screen Windows Terminal), Block D (resume), Block E (start sequence; Windows
+  Update install measured on CGDELL, result 2, 454 s), FT-282 (item 12).
+- **09-27 evening / 09-28 early:** Bill's CGDELL runs found FT-290 to FT-298. Critical
+  ones fixed first: **FT-297** (item 8 on an encrypted drive added a recovery key and
+  claimed encryption started -- now screen 28b, changes nothing) and **FT-294** (item 17
+  said GOOD with a 15-minute delay -- DelayLockInterval now read).
+- **09-28, Block F** (Bill: "build block F and the renumber pass"): start order shown as it
+  happens; screen 20 report-only; unnumbered pages boxed or removed; items 11-15 apply in
+  the main run; new screens "What Checkup changed" (Was -> Now, undo steps from guide
+  4.2) and "Steps for you to do"; guide refs "Setting N"; F8 wording; FT-222. **No
+  password-manager product named** (four sites found and fixed).
+- **Renumber:** main line 1-37, no gaps; welcome-back 1a -> 0a (FT-195a).
+- **Stamps:** four wrapper headers carried typed times later than the clock (08:41-08:59
+  read at 08:34). Corrected to commit times and marked as such.
+- **Needs Bill:** screen 11 "thoroughly tested" sentence (not built -- the week's field
+  record does not support it); F10 waits on Cloud's guide text; SANDY field run.
+- **Checklist:** `ProjectDocs\GatewayGuard_FieldChecklist-ascii45-partial-2026-09-28-0836.md`
+  (old number -> new number map included).
+
+---
+
 ## Session: 2026-09-26 13:10-14:44 [Claude Code -- CGDELL] -- CO-PILOT'S ascii45 REVIEW CHECKED; ITEM 9 (WINDOWS HELLO) IS WRONG
 
 **Build: ascii45, in progress** (Blocks A, B, C1 + C1b). Next free FT: **289**.

@@ -150,6 +150,23 @@ signature age -> offline-scan offer -> full scan started by Checkup.**
 | F20 / FT-298 | **Two pages with no screen number after 15, and no antivirus line on 14g** (Bill, 2026-09-28) | ***Measured in the log:*** after 15, Test-DefenderPrimary prints "OK Microsoft Defender is active as primary AV" with a pause but no box (07:02:24), then Test-PowerStatus prints the power lines with a pause but no box -- neither has an ID or number (part of FT-275's unnumbered pauses). Bill: "Check AV on 14g" -- the antivirus check belongs in the start sequence and on the 14g summary (with FT-290's order); these two pages then either get IDs or fold into 14g |
 | F10 | **FT-220** | Waits on the guide text (W-07) -- the guide Parts 4-5 draft is with Cloud |
 
+**BUILT 2026-09-28 (Bill: "build block F and the renumber pass").** Commits
+`d4cca6d` (F11, F12/F20 order, F18), `0cd0b74` (F3, F7, F13, F14, F15, F17),
+batch 3a (F4/FT-274/275, FT-298 box 98, F6), batch 3b (FT-275 antivirus pages;
+password-manager names out, per CLAUDE.md), F1+F2 (screens 99 and 100; undo
+text = guide 4.2 rows 11-15; Ready prompt Q -> X), F5, F8/F9, and the renumber
+(`da15aea`). **Open:** F10 (guide text). **Not built, needs Bill:** screen 11's
+"All security setting changes made by Checkup have been thoroughly tested"
+(Bill's 08-26 note) -- the field record this week (FT-294, FT-297) does not
+support that claim yet. **F8, measured against this build:** most of the ~20
+items went with the screens they were about (Malwarebytes, 33a, the N keys,
+FT-279); what remained is in `Tool2\build_ascii45_F8F9_wording.py`. **F9:**
+FT-225 closed by the keys rule; FT-175b's offer is in `Show-PreScanGate`
+(nothing further written down anywhere); FT-195a fixed by the renumber (1a ->
+0a). **Renumber:** main line 1-37 with no gaps; the order and the conditions
+behind it are in the wrapper's docstring. Checklist:
+`ProjectDocs\GatewayGuard_FieldChecklist-ascii45-partial-2026-09-28-0836.md`.
+
 ---
 
 # BLOCK G -- BLOCKED ON A SANDY MEASUREMENT

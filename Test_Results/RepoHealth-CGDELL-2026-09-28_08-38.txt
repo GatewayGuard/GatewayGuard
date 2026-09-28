@@ -1,0 +1,85 @@
+﻿======================================================================
+  REPOSITORY HEALTH
+======================================================================
+  repository     : C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard
+  machine        : CGDELL
+  run at         : 2026-09-28 08:38:32
+
+-- 1. IS THE REPOSITORY SOUND ----------------------------------------
+  dangling objects (normal, ignored) : 64
+  RESULT: sound. No missing objects, no broken links.
+
+-- 2. HAS ONEDRIVE WRITTEN ANY CONFLICT COPIES -----------------------
+  A conflict copy is a file whose name gained a machine name, sitting
+  beside the real file. That is what OneDrive writes when two PCs change
+  the same file and it will not choose between them.
+  RESULT: 40 conflict copy(ies) present:
+      CLAUDE-Sandy.md   (08/25/2026 16:18:38)
+      Start-CC-Sandy.txt   (08/12/2026 23:02:25)
+      .git\COMMIT_EDITMSG-Sandy   (08/28/2026 10:43:30)
+      .git\index-Sandy   (08/30/2026 17:10:46)
+      .git\info\refs-Sandy   (08/23/2026 22:13:40)
+      .git\logs\HEAD-Sandy   (09/15/2026 13:59:52)
+      .git\logs\refs\heads\main-Sandy   (09/15/2026 13:59:52)
+      .git\logs\refs\remotes\origin\main-Sandy   (09/15/2026 13:59:52)
+      .git\objects\info\packs-Sandy   (08/23/2026 22:13:40)
+      .git\objects\info\commit-graphs\commit-graph-chain-Sandy   (08/24/2026 22:44:12)
+      .git\objects\pack\multi-pack-index-Sandy   (08/23/2026 22:13:11)
+      .git\refs\heads\main-Sandy   (08/28/2026 10:43:30)
+      .git\refs\remotes\origin\main-Sandy   (08/28/2026 10:43:32)
+      ProjectDocs\CURRENT-Sandy.md   (08/28/2026 10:30:07)
+      ProjectDocs\GatewayGuard_ascii43BuildPlan-2026-08-21-Sandy.md   (08/22/2026 13:01:54)
+      ProjectDocs\GatewayGuard_CloudResearch-WidgetsAndAccessibility-2026-08-24-1015-Sandy.md   (08/26/2026 02:27:20)
+      ProjectDocs\GatewayGuard_CodingStandards-2026-08-07-1330-Sandy.md   (08/22/2026 13:01:54)
+      ProjectDocs\GatewayGuard_CPM_FinalWeek-2026-08-24-2330-Sandy.md   (08/24/2026 22:56:21)
+      ProjectDocs\GatewayGuard_CPM_Schedule-2026-08-02-1201-Sandy.md   (08/02/2026 12:02:33)
+      ProjectDocs\GatewayGuard_Decisions-RefundAndTerms-2026-08-22-1510-Sandy.md   (08/23/2026 01:51:17)
+      ProjectDocs\GatewayGuard_DecisionsForBill-2026-08-25-1620-Sandy.md   (08/25/2026 16:18:05)
+      ProjectDocs\GatewayGuard_DecisionsForBill-2026-08-26-0302-Sandy.md   (08/26/2026 03:06:57)
+      ProjectDocs\GatewayGuard_DefectPassResponse-2026-08-22-1525-Sandy.md   (08/23/2026 01:02:22)
+      ProjectDocs\GatewayGuard_GumroadListings-2026-08-25-0015-Sandy.md   (08/25/2026 13:56:33)
+      ProjectDocs\GatewayGuard_LaunchPlan-2026-08-14-0107-Sandy.md   (08/22/2026 13:01:54)
+      ProjectDocs\GatewayGuard_MarketingPlan-2026-08-22-1000-Sandy.md   (08/23/2026 14:01:43)
+      ProjectDocs\GatewayGuard_MarketingPlanAmendment-2026-08-21-1445-Sandy.md   (08/21/2026 16:42:50)
+      ProjectDocs\GatewayGuard_MarketingPlanAmendment-2026-08-23-0142-Sandy.md   (08/23/2026 01:46:39)
+      ProjectDocs\GatewayGuard_NamingStandard-2026-08-09-1345-Sandy.md   (08/09/2026 13:47:54)
+      ProjectDocs\GatewayGuard_PricingCopy-2026-08-22-1000-Sandy.md   (08/23/2026 12:46:16)
+      ProjectDocs\GatewayGuard_ProjectInstructions-2026-08-12-1652-Sandy.md   (08/22/2026 13:01:54)
+      ProjectDocs\GatewayGuard_SessionLog-2026-08-13-1433-Sandy.md   (08/28/2026 10:39:45)
+      ProjectDocs\GatewayGuard_SyncPlan-2026-08-12-1726-Sandy.md   (08/14/2026 19:26:58)
+      ProjectDocs\GatewayGuard_SyncSetupSteps-2026-08-12-2146-Sandy.md   (08/12/2026 21:46:19)
+      ProjectDocs\GatewayGuard_TestHistory-ascii39-2026-08-02-1335-Sandy.md   (08/22/2026 13:01:54)
+      ProjectDocs\_READ-FIRST-Briefing-2026-08-20-1306-Sandy.md   (08/23/2026 23:04:04)
+      Tool2\Check-Docs-2026-08-20-Sandy.ps1   (08/23/2026 01:03:29)
+      Tool2\Run-GatewayGuard-Sandy.bat   (08/22/2026 12:58:41)
+      Tool2\Show-AllScreens-Sandy.bat   (08/22/2026 12:58:41)
+      Tool2\Update-Current-Sandy.ps1   (08/25/2026 16:18:17)
+  WHAT TO DO: compare each against the file beside it. Keep the newer
+              content, then remove the copy with the machine name.
+
+-- 3. IS EVERYTHING PUSHED -------------------------------------------
+  This is what makes the rest survivable. If the local repository is ever
+  damaged, a pushed repository is a re-clone and nothing is lost.
+  commits not yet on GitHub : 0
+  RESULT: safe. GitHub holds every commit.
+  tracked files changed or missing on disk : 7
+       M CLAUDE.md
+       M Notes/CC-Add-ons-Startup.txt
+       M Notes/Notes-2026-08-21-1408.txt
+       M ProjectDocs/CURRENT.md
+       M ProjectDocs/GatewayGuard_SessionLog-2026-08-13-1433.md
+       M ProjectDocs/GatewayGuard_ascii45BuildPlan-2026-09-25-1638.md
+       M WebSite.lnk
+
+-- 4. THE STANDING RISK ----------------------------------------------
+  .git is INSIDE the synced OneDrive folder. Every commit rewrites five
+  of git's internal files, OneDrive replicates all five to the other PC,
+  and it can write a conflict copy of any of them. This does not need
+  anyone to run git on the second machine -- measured 2026-08-09, five
+  conflict copies appeared at 14:39:27, the exact second of a commit made
+  on CGDELL.
+  This is why sections 1 and 3 above are worth running every session.
+
+======================================================================
+  1 THING(S) NEED ATTENTION -- see above
+======================================================================

@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-26 14:44 ET -->
-<!-- Commit: 68769a8 -->
+<!-- Generated: 2026-09-28 08:38 ET -->
+<!-- Commit: da15aea -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-26 14:44 ET  |  **Commit at generation:** `68769a8`  |  **That commit was made:** 2026-09-26 14:04 ET
-- **Its subject line:** Block H1: Bill's Microsoft account and Dad are one account on CGDELL (measured)
+- **Generated:** 2026-09-28 08:38 ET  |  **Commit at generation:** `da15aea`  |  **That commit was made:** 2026-09-28 08:35 ET
+- **Its subject line:** Renumber pass: main line 1-37 with no gaps, interim labels gone, welcome-back 1a -> 0a (FT-195a); wrapper header stamps corrected to commit times
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -69,7 +69,7 @@ All paths are relative to `ProjectDocs/`.
 | Test results (raw run notes and logs) | `GatewayGuard_TestResults-ascii43-2026-09-04-2345.md` | 0 |
 | Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii44run1-2026-09-24-2353.md` | 3 |
 | Response to Bill's field notes | `GatewayGuard_ResponseToBillsNotes-ascii43-2026-08-30-1815.md` | 0 |
-| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii45-partial-2026-09-26-1139.md` | 3 |
+| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii45-partial-2026-09-28-0836.md` | 4 |
 | Build plan (current) | `GatewayGuard_ascii45BuildPlan-2026-09-25-1638.md` | 2 |
 | Build scope -- what shipped vs. what is next | `GatewayGuard_ascii44Scope-WhatsInWhatsNext-2026-09-17-1441.md` | 0 |
 | Future settings (candidate list) | `GatewayGuard_FutureSettings-2026-08-24-2310.md` | 0 |
@@ -197,7 +197,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-09-26 13:10-14:44 [Claude Code -- CGDELL] -- CO-PILOT'S ascii45 REVIEW CHECKED; ITEM 9 (WINDOWS HELLO) IS WRONG
+## Session: 2026-09-27 to 2026-09-28 08:37 [Claude Code -- CGDELL] -- ascii45: H, C2-C9, D, E, BLOCK F AND THE RENUMBER BUILT
 ```
 
 **If it is not in your copy of the session log, you are reading an old
