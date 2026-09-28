@@ -5,7 +5,7 @@
 - **Replaces** `GatewayGuard_FieldChecklist-ascii45-partial-2026-09-27-1142.md`.
   **Every screen number from 4 onward has changed** -- the map is below.
 - **Build:** `Tool\W11-SecurityHardening-v3-ascii45-2026-09-26-1059.ps1`, commit
-  `da15aea` (2026-09-28). Blocks A-F built. **Still open:** F10 (waits on the
+  `da15aea` (2026-09-28), **plus FT-299/300/301 (items 1, 4, 13), added to this list 2026-09-28 12:0x.** Blocks A-F built. **Still open:** F10 (waits on the
   guide text from Cloud) and C7/C9 confirmations on SANDY.
 - **Where:** CGDELL or SANDY. **On SANDY, do not turn on encryption.**
 - **How to start:** right-click `Tool2\Run-GatewayGuard.bat` -> Run as
@@ -92,6 +92,7 @@ the first time you meet a screen** -- if it does, write down both numbers.
 | **24** | What Checkup does (1 of 2) | **CHECK** | "The screens so far only READ your settings -- nothing changed." Tamper Protection "essential, keep it on"; Windows Hello "strongly recommended"; "these must be set by hand, and Checkup will show you how" |
 | **25** | What Checkup does (2 of 2) | **CHECK** | Convenience features: "CHANGED ONLY IF YOU SELECT THEM ... At the end, Checkup shows what changed and how to put each one back" |
 | **26 / 27** | The checklist | **CHECK** | **Order: 3 Tamper, 2 Defender, 1 Windows Update first**, then 4 onward. Items 13 and 14 at defaults: "Unknown -- nothing stored; select it to set it off". Item 17 on CGDELL: "Only after 15 min away -- needs attention". Item 8 on CGDELL: "Encrypted, protection OFF -- needs attention". "Guide:" lines say **"Setting 14"** etc. -- never "Phase" or "Keep vs. Disable Table" |
+| **26 / 27, items 1, 4, 13** | Fixed after Co-Pilot's review (FT-299-301) | **CHECK** | **Item 1:** GOOD normally; if you pause updates first (Settings -> Windows Update -> Pause), it must say **"PAUSED until <date> -- needs attention"**, and running it puts **"Resume updates"** on screen 35 -- resume afterwards. **Item 4:** after running, "Check apps and files set to Warn (recommended) -- GOOD". **Item 13:** SANDY has only one of the two Edge policy values now -- it must say **"DISABLED -- GOOD"**, not "Enabled" |
 | **28** | Review | **CHECK** | Rows show "[X]" with **no "APPLYING"**. Prompt: Y = Start / B = Go back / **X = Exit** |
 | **run** | Each item as it runs | **CHECK** | **Items 11-15 are changed now, with the rest** -- no question at the end. An item Windows will not let Checkup change says "Windows does not allow any program to change this one, so Checkup shows you the exact steps to do it yourself, at the end" |
 | 28a | Already correct, re-offered | LOOK | |
