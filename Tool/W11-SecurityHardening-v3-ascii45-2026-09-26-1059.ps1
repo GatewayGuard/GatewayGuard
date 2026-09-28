@@ -141,6 +141,7 @@
 #           line. FT-222: a changed item loses its X.
 #   FT-300 (part): item 4 re-reads SmartScreenEnabled before saying GOOD.
 #   FT-299: item 1 reads a pause (flip-tested) and the NoAutoUpdate policy.
+#   FT-301: item 13 judges its two parts separately (SANDY: one policy value).
 #   RENUMBER (2026-09-28): gaps and interim labels gone; 1a -> 0a (FT-195a).
 #   FT-282: ITEM 12 (DIAGNOSTIC DATA) READ ONLY THE GROUP POLICY VALUE, which
 #           is empty on home PCs, and said "Sending extra data" when optional
@@ -6980,18 +6981,25 @@ function Get-AllStatuses {
                 # effective read (one key found, the other not) reports
                 # Unknown rather than guessing the missing half.
                 try {
+                    # FT-301 (ascii45): each part from its own best source -- the
+                    # policy value when present, else Local State. SANDY 2026-09-28
+                    # held ONE policy value; judging both by "either exists" read a
+                    # Startup boost that Local State showed off as Enabled.
                     $ep = Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Edge" -EA SilentlyContinue
-                    if ($ep -and ($null -ne $ep.StartupBoostEnabled -or $null -ne $ep.BackgroundModeEnabled)) {
-                        $s.Status = if ($ep.StartupBoostEnabled -eq 0 -and $ep.BackgroundModeEnabled -eq 0) { "DISABLED -- GOOD" }
-                                    else { "Enabled -- needs attention" }
-                    } else {
-                        $ggBoost = Get-GGEdgeLocalStateBool -Section "startup_boost" -KeyName "enabled"
-                        $ggBg    = Get-GGEdgeLocalStateBool -Section "background_mode" -KeyName "enabled"
-                        $s.Status = if (-not $ggBoost.Found -and -not $ggBg.Found) { "Unknown -- nothing stored; select it to set it off" }
-                                    elseif (($ggBoost.Found -and $ggBoost.Value -eq $true) -or ($ggBg.Found -and $ggBg.Value -eq $true)) { "Enabled -- needs attention" }
-                                    elseif ($ggBoost.Found -and $ggBg.Found -and $ggBoost.Value -eq $false -and $ggBg.Value -eq $false) { "DISABLED -- GOOD" }
-                                    else { "Unknown -- nothing stored; select it to set it off" }
+                    $ggParts = @()
+                    foreach ($ggPart in @(@{ Pol = "StartupBoostEnabled"; Sec = "startup_boost" }, @{ Pol = "BackgroundModeEnabled"; Sec = "background_mode" })) {
+                        $ggPv = $null
+                        if ($ep) { $ggPv = $ep.($ggPart.Pol) }
+                        if ($null -ne $ggPv) { $ggParts += $(if ($ggPv -eq 0) { "off" } else { "on" }) }
+                        else {
+                            $ggLs = Get-GGEdgeLocalStateBool -Section $ggPart.Sec -KeyName "enabled"
+                            $ggParts += $(if (-not $ggLs.Found) { "unknown" } elseif ($ggLs.Value -eq $true) { "on" } elseif ($ggLs.Value -eq $false) { "off" } else { "unknown" })
+                        }
                     }
+                    $s.Status = if ($ggParts -contains "on") { "Enabled -- needs attention" }
+                                elseif (($ggParts | Where-Object { $_ -eq "off" }).Count -eq 2) { "DISABLED -- GOOD" }
+                                else { "Unknown -- nothing stored; select it to set it off" }
+                    try { Write-Log -Message ("Item 13 parts: startup boost=" + $ggParts[0] + ", background=" + $ggParts[1]) -Status "INFO" } catch {}
                 }
                 catch { $s.Status = "Unknown -- nothing stored; select it to set it off" }
             }
@@ -7516,7 +7524,10 @@ function Apply-Setting {
                 if (-not (Test-Path $rp)) { New-Item -Path $rp -Force | Out-Null }
                 Set-ItemProperty -Path $rp -Name StartupBoostEnabled   -Value 0 -Type DWord -Force -EA Stop
                 Set-ItemProperty -Path $rp -Name BackgroundModeEnabled  -Value 0 -Type DWord -Force -EA Stop
-                $result = "Edge startup boost and background mode disabled -- GOOD"
+                # FT-301 (ascii45): read both back before GOOD (FT-269 shape).
+                $ggE13 = Get-ItemProperty -Path $rp -EA SilentlyContinue
+                $result = if ($ggE13 -and $ggE13.StartupBoostEnabled -eq 0 -and $ggE13.BackgroundModeEnabled -eq 0) { "Edge startup boost and background mode disabled -- GOOD" }
+                          else { "NOTE: Checkup set this, but could not read it back to confirm. Check by hand: Edge -> Settings -> System and performance -> Startup boost -> Off, and Continue running background extensions and apps -> Off." }
             } catch { $result = "ERROR: $_" }
         }
         14 {
