@@ -82,6 +82,7 @@
 | 27 | Review | LOOK | |
 | 27a | Applying | LOOK | |
 | 27b-31 | BitLocker / Device Encryption | LOOK | **Do not turn encryption on (SANDY)** |
+| **27f** | **Drive already encrypted, protection off** (new, FT-297) | **CHECK** *(CGDELL, item 8 selected)* | Must appear INSTEAD of the BitLocker steps. It must NOT show a new recovery key and must NOT say encryption has started. It tells you: Manage BitLocker -> Resume protection, and Back up your recovery key. Checkup changes nothing here |
 | 32, 33 | Processed, scan reminder | LOOK | |
 | 33a/33b | Convenience review | SKIP | Replaced in Block F |
 | 34 | Automated steps complete | LOOK | SKIP the 2FA line (Block F) |
