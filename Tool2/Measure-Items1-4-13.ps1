@@ -15,7 +15,9 @@
 
 $ErrorActionPreference = "Continue"
 $stamp = Get-Date -Format "yyyy-MM-dd_HH-mm"
-$out = Join-Path (Split-Path $PSScriptRoot -Parent) ("Test_Results\Items1-4-13-" + $env:COMPUTERNAME + "-" + $stamp + ".txt")
+$ggDir = Join-Path (Split-Path $PSScriptRoot -Parent) "Test_Results"
+if (-not (Test-Path $ggDir)) { $ggDir = $PSScriptRoot }   # 2026-09-28: SANDY reported "cannot find the path"
+$out = Join-Path $ggDir ("Items1-4-13-" + $env:COMPUTERNAME + "-" + $stamp + ".txt")
 $L = New-Object System.Collections.Generic.List[string]
 function Add([string]$t) { $L.Add($t) }
 function RegVal($path, $name) {
