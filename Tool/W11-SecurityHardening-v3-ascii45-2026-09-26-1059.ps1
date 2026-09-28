@@ -127,6 +127,9 @@
 #   F13 (FT-291): the stay-awake wording no longer claims a setting changed.
 #   F14/F7: Wake on LAN apply reads each adapter once (no error noise);
 #           every adapter's wake settings are logged. F17: 13/14 wording.
+#   F4 (FT-274/275): screen 3's sample box has no number of its own; screens
+#           1-3 are logged; the "next screen is long" pause is gone.
+#   F20 (FT-298): the power check page gets a box (98). F6: two-step sign-in.
 #   FT-282: ITEM 12 (DIAGNOSTIC DATA) READ ONLY THE GROUP POLICY VALUE, which
 #           is empty on home PCs, and said "Sending extra data" when optional
 #           data was off. Now reads the Settings value too (measured on SANDY
@@ -2098,7 +2101,6 @@ $script:GGScreenLabels = @{
     "85" = "1"            # Welcome / maximize
     "86" = "2"            # Scrolling
     "87" = "3"            # Set your console font
-    "28" = "4"            # FONT CHECK
     "29" = "5"            # Before you start -- your window
     "78" = "6"            # Before you start -- your keyboard
     "30" = "7"            # What happens next
@@ -2118,6 +2120,7 @@ $script:GGScreenLabels = @{
     "10" = "15"           # Pre-scan prep checklist
     "38" = "16"           # Defender offline scan
     "95" = "16a"          # Full scan of every drive (E6) -- interim label
+    "98" = "18"           # Power check -- plugged in, stay awake (FT-298) -- interim
     "96" = "27f"          # Drive already encrypted, protection off (FT-297) -- interim
     "43" = "17"           # Antivirus status -- healthy setup
     "50" = "19"           # Power settings -- security review
@@ -3768,7 +3771,9 @@ function Show-FontInstructions {
             Write-Host ""
             Write-Host "  If the boxes below look correct, you are all set:" -ForegroundColor White
             Write-Host ""
-            Draw-Box -ScreenId "28" -Color White -Lines @(
+            # FT-274 (ascii45): a sample, not a screen -- drawn with no number, so
+            # screen 3 no longer shows "Screen 4" inside itself.
+            Write-GGBox -Color White -Lines @(
                 "  FONT CHECK: If this box has clean lines, you are ready.   ",
                 "  +--+  Good: straight lines and corners                    ",
                 "  |  |  Good: text is a comfortable reading size            "
@@ -3861,6 +3866,11 @@ function Show-FontInstructions {
         Clear-Host
         Write-Host ""
         & $introScreens[$screenIdx]
+        # FT-274 (ascii45): screens 1-3 are drawn by hand and left no log line.
+        if ($screenIdx -le 2) {
+            $ggIntroId = @("85", "86", "87")[$screenIdx]
+            try { Write-Log -Message ("[SCREEN-" + $ggIntroId + "] (shown as screen " + $script:GGScreenLabels[$ggIntroId] + ") Rendered: intro screen " + ($screenIdx + 1)) -Status "SCREEN" } catch {}
+        }
         Write-Host ""
         if ($screenIdx -eq 0) {
             Pause-ForUser "  Press Enter or Space to continue..." -AllowRedraw
@@ -5746,19 +5756,22 @@ function Test-PowerStatus {
             }
         } while ($cont.ToUpper() -ne "Y")
     } else {
+        # FT-298 (ascii45): this page had no box and no number (Bill, 2026-09-28).
+        # F13 / FT-291: Enable-SleepPrevention changes NO setting -- it only asks
+        # Windows not to sleep while Checkup runs.
+        Clear-Host
         Write-Host ""
-        if ($hasBattery) {
-            Write-Host "  OK  Plugged into AC power." -ForegroundColor Green
-            Write-Host "      Battery: $batteryPct charged and plugged in" -ForegroundColor White
-            Write-Host "      Safe to run all settings including BitLocker." -ForegroundColor White
-        } else {
-            Write-Host "  OK  AC power -- desktop PC (no battery detected)." -ForegroundColor Green
-        }
-        # F13 / FT-291 (ascii45): Enable-SleepPrevention changes NO setting --
-        # it only asks Windows not to sleep while Checkup runs.
-        Write-Host "  OK  Checkup keeps your PC awake while it runs." -ForegroundColor Green
-        Write-Host "      Your sleep settings are not changed. When Checkup closes, your" -ForegroundColor White
-        Write-Host "      PC goes to sleep as it normally does." -ForegroundColor White
+        Draw-Box -ScreenId "98" -Color White -Lines @(
+            "  POWER CHECK                                                ",
+            "---",
+            $(if ($hasBattery) { ("  OK  Plugged in. Battery: " + $batteryPct + " charged.") } else { "  OK  Plugged in -- desktop PC (no battery).                " }),
+            "      Safe to run every setting, including encryption.       ",
+            "                                                            ",
+            "  OK  Checkup keeps your PC awake while it runs.            ",
+            "      Your sleep settings are not changed. When Checkup     ",
+            "      closes, your PC goes to sleep as it normally does.    "
+        )
+        Write-Host ""
         Write-Log -Message "AC power confirmed. Battery present: $hasBattery ($batteryPct). Sleep prevention active." -Status "OK"
         Pause-ForUser "  Press Enter or Space to continue..."
     }
@@ -5963,9 +5976,8 @@ function Run-PowerSettingsCheck {
 
     # FT-34 (2026-07-12): warn BEFORE the long screen appears
     Write-Host ""
-    Write-Host "  Power settings check complete. The NEXT screen is a long one --" -ForegroundColor Yellow
-    Write-Host "  BE SURE TO SCROLL UP TO THE TOP of it before reading." -ForegroundColor Yellow
-    Pause-ForUser "  Press Enter or Space to see the power settings review..."
+    # FT-275 (ascii45): the unnumbered "next screen is long -- scroll up" pause
+    # is gone; full screen (C9) and F (C6) handle long screens.
 
     # Display results
     Clear-Host
@@ -8054,8 +8066,9 @@ function Show-ManualSteps {
         $(if ($global:HasPasswordManager) { "  [x] Password Manager   -- You said you already use one.    " } else { "  [ ] Password Manager   -- Install, migrate passwords.     " }),
         $(if ($global:HasPasswordManager) { "      Good -- keep using it for every account.              " } else { "      Guide: Phase 5                                        " }),
         "                                                            ",
-        "  [ ] 2FA                -- Enable on all important accounts.",
-        "      Authenticator app preferred. Guide: Phase 5           ",
+        "  [ ] Two-step sign-in   -- Turn it on for email and bank. ",
+        "      A code from your phone as well as your password.     ",
+        "      See the guide, Part 5.                               ",
         "                                                            ",
         "  [ ] Scan reminders     -- Checkup set up popups for a     ",
         "      quarterly Defender Offline Scan (Jan/Apr/Jul/Oct)     ",
