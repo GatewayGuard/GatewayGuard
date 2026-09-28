@@ -135,6 +135,8 @@
 #   F1 (Decision 4): items 11-15 apply in the main run; 33a/33b are gone.
 #           New screens 99 "What Checkup changed" (Was -> Now) and 100
 #           "Steps for you to do". F2: undo steps are guide 4.2 rows 11-15.
+#   F5 (Decision 8): guide references name the setting number ("Setting 14")
+#           or a Part and section -- never a page, never the old "Phase".
 #   FT-282: ITEM 12 (DIAGNOSTIC DATA) READ ONLY THE GROUP POLICY VALUE, which
 #           is empty on home PCs, and said "Sending extra data" when optional
 #           data was off. Now reads the Settings value too (measured on SANDY
@@ -5393,7 +5395,7 @@ function Show-PreScanGate {
             "  For ongoing protection:                                    ",
             "  * Defender Offline Scan -- quarterly, or any time you      ",
             "    think something may be wrong                             ",
-            "  Guide: Phase 5 -- Scheduled Scanning                       "
+            "  Guide: Part 4, section 4.5 (the offline scan)              "
         )
         Write-Host ""
         do {
@@ -5644,7 +5646,7 @@ function Test-DefenderPrimary {
                 "                                                           ",
                 "  You may continue without fixing this, but some           ",
                 "  Defender settings may not apply correctly.               ",
-                "  Guide: Phase 3, Step 4                                   "
+                "  Guide: Setting 2                                         "
             )
             Write-Host ""
             do {
@@ -6368,7 +6370,7 @@ function Run-AppsAudit {
         foreach ($app in $redApps) {
             Write-Host "  * $($app.Name)" -ForegroundColor Red
             if ($app.Publisher) { Write-Host "    Publisher: $($app.Publisher)" -ForegroundColor DarkRed }
-            Write-Host "    Recommendation: Uninstall. See Guide: Phase 2" -ForegroundColor DarkRed
+            Write-Host "    Recommendation: Uninstall. See Guide: Part 4, section 4.5" -ForegroundColor DarkRed
         }
         Write-Host ""
         # FIX: Join-String -> -join for PS 5.1 compatibility
@@ -6411,7 +6413,7 @@ function Run-AppsAudit {
         foreach ($app in $redApps) {
             Write-Host "  App: $($app.Name)" -ForegroundColor White
             if ($app.Publisher) { Write-Host "  Publisher: $($app.Publisher)" -ForegroundColor Gray }
-            Write-Host "  ! Matches a known suspicious publisher. See Guide: Phase 2" -ForegroundColor Red
+            Write-Host "  ! Matches a known suspicious publisher. See Guide: Part 4, section 4.5" -ForegroundColor Red
             Write-Host ""
             $uninstall = Read-ValidKey -ValidKeys @("Y","N","S") -Prompt "Uninstall $($app.Name)? (Y = Yes / N = Skip / S = Skip all): "
             if ($uninstall.ToUpper() -eq "S") {
@@ -6487,25 +6489,25 @@ function Run-AppsAudit {
 # SETTINGS DEFINITIONS (19 settings)
 # ============================================================
 $Settings = @(
-    [PSCustomObject]@{ ID=1;  Name="Windows Update";                    Description="Ensures security patches are current and auto-update is on.";                              GuideRef="Phase 1, Step 1";          Selected=$true;  RequiresAdmin=$false; SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
-    [PSCustomObject]@{ ID=2;  Name="Defender Real-Time VP (Virus Protection)";     Description="Your primary virus and malware shield. Should always be On.";                              GuideRef="Phase 1, Step 2";          Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$true;  Status='Pending' },
-    [PSCustomObject]@{ ID=3;  Name="Tamper Protection (Defender)";        Description="Prevents malware from disabling Defender. Manual toggle required in Windows Security.";   GuideRef="Phase 1, Step 2";          Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$false; SecurityCritical=$true;  Status='Pending' },
-    [PSCustomObject]@{ ID=4;  Name="SmartScreen";                       Description="Blocks known malicious websites and downloads.";                                          GuideRef="Phase 1, Step 2";          Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
+    [PSCustomObject]@{ ID=1;  Name="Windows Update";                    Description="Ensures security patches are current and auto-update is on.";                              GuideRef="Setting 1";          Selected=$true;  RequiresAdmin=$false; SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
+    [PSCustomObject]@{ ID=2;  Name="Defender Real-Time VP (Virus Protection)";     Description="Your primary virus and malware shield. Should always be On.";                              GuideRef="Setting 2";          Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$true;  Status='Pending' },
+    [PSCustomObject]@{ ID=3;  Name="Tamper Protection (Defender)";        Description="Prevents malware from disabling Defender. Manual toggle required in Windows Security.";   GuideRef="Setting 3";          Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$false; SecurityCritical=$true;  Status='Pending' },
+    [PSCustomObject]@{ ID=4;  Name="SmartScreen";                       Description="Blocks known malicious websites and downloads.";                                          GuideRef="Setting 4";          Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
     # ID 5 (Defender Periodic Scanning) retired in ascii45 (Bill 2026-09-08). DO NOT RENUMBER -- every log names items by ID.
-    [PSCustomObject]@{ ID=6;  Name="Edge Phishing Protection (all 3)";       Description="Warns about password reuse, unsafe password storage, and malicious sites in Microsoft Edge.";               GuideRef="Phase 1, Step 2";          Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
-    [PSCustomObject]@{ ID=7;  Name="Defender Firewall Protection (all profiles)";   Description="Network traffic shield -- Domain, Private, and Public profiles all enabled.";            GuideRef="Phase 1, Step 2";          Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$true;  Status='Pending' },
-    [PSCustomObject]@{ ID=8;  Name="BitLocker / Device Encryption";     Description="Encrypts your drive. Protects data if PC is lost or stolen.";                            GuideRef="Phase 1, Step 3";          Selected=$false; RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$true;  Status='Pending' },
-    [PSCustomObject]@{ ID=9;  Name="Windows Hello (check only)";        Description="Checks if PIN or biometrics are configured. Setup done manually -- see Guide.";          GuideRef="Phase 1, Step 4";          Selected=$true;  RequiresAdmin=$false; SkipOnHome=$false; CanAuto=$false; SecurityCritical=$false; Status='Pending' },
-    [PSCustomObject]@{ ID=10; Name="Remote Desktop -- Disable";         Description="Stops other PCs connecting IN to this one. Windows 11 Home cannot accept incoming connections at all, so there is nothing to turn off there.";                    GuideRef="Keep vs. Disable Table";   Selected=$false; RequiresAdmin=$true;  SkipOnHome=$true;  CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
-    [PSCustomObject]@{ ID=11; Name="Advertising ID -- Turn Off";        Description="Stops Windows from tracking you for ad targeting.";                                      GuideRef="Keep vs. Disable Table";   Selected=$true;  RequiresAdmin=$false; SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
-    [PSCustomObject]@{ ID=12; Name="Diagnostic Data -- Required Only";  Description="Limits data sent to Microsoft to the minimum required.";                                 GuideRef="Keep vs. Disable Table";   Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
-    [PSCustomObject]@{ ID=13; Name="Edge Startup Boost and Background"; Description="Stops Edge pre-loading at boot and running in background after close. Saves RAM.";       GuideRef="Phase 1, Step 6, Part D"; Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
-    [PSCustomObject]@{ ID=14; Name="Windows Widgets -- Disable";        Description="Disables news/weather panel that runs background Edge processes.";                       GuideRef="Phase 1, Step 6, Part F"; Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
-    [PSCustomObject]@{ ID=15; Name="Edge Password Saving -- Disable";   Description="Turns off Edge password storage. Use a dedicated password manager instead. Check manually: Edge -> Settings -> Profiles -> Passwords.";            GuideRef="Phase 1, Step 6, Part I"; Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
-    [PSCustomObject]@{ ID=16; Name="Memory Integrity (Core Isolation)"; Description="Blocks untrusted code from high-security processes. RESTART required after enabling.";  GuideRef="Phase 1, Step 2";          Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$true;  Status='Pending' },
-    [PSCustomObject]@{ ID=17; Name="Password Required on Wake";         Description="Requires password when PC wakes from sleep. Prevents unlocked screen access.";          GuideRef="Keep vs. Disable Table";   Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
-    [PSCustomObject]@{ ID=18; Name="Fast Startup -- Disable";           Description="Fast Startup skips a full shutdown. Disabling ensures a clean security state on boot.";  GuideRef="Keep vs. Disable Table";   Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
-    [PSCustomObject]@{ ID=19; Name="Wake on LAN -- Disable";            Description="Prevents PC from being remotely woken over the network. Disable if not needed.";         GuideRef="Keep vs. Disable Table";   Selected=$false; RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' }
+    [PSCustomObject]@{ ID=6;  Name="Edge Phishing Protection (all 3)";       Description="Warns about password reuse, unsafe password storage, and malicious sites in Microsoft Edge.";               GuideRef="Setting 6";          Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
+    [PSCustomObject]@{ ID=7;  Name="Defender Firewall Protection (all profiles)";   Description="Network traffic shield -- Domain, Private, and Public profiles all enabled.";            GuideRef="Setting 7";          Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$true;  Status='Pending' },
+    [PSCustomObject]@{ ID=8;  Name="BitLocker / Device Encryption";     Description="Encrypts your drive. Protects data if PC is lost or stolen.";                            GuideRef="Setting 8";          Selected=$false; RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$true;  Status='Pending' },
+    [PSCustomObject]@{ ID=9;  Name="Windows Hello (check only)";        Description="Checks if PIN or biometrics are configured. Setup done manually -- see Guide.";          GuideRef="Setting 9";          Selected=$true;  RequiresAdmin=$false; SkipOnHome=$false; CanAuto=$false; SecurityCritical=$false; Status='Pending' },
+    [PSCustomObject]@{ ID=10; Name="Remote Desktop -- Disable";         Description="Stops other PCs connecting IN to this one. Windows 11 Home cannot accept incoming connections at all, so there is nothing to turn off there.";                    GuideRef="Setting 10";   Selected=$false; RequiresAdmin=$true;  SkipOnHome=$true;  CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
+    [PSCustomObject]@{ ID=11; Name="Advertising ID -- Turn Off";        Description="Stops Windows from tracking you for ad targeting.";                                      GuideRef="Setting 11";   Selected=$true;  RequiresAdmin=$false; SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
+    [PSCustomObject]@{ ID=12; Name="Diagnostic Data -- Required Only";  Description="Limits data sent to Microsoft to the minimum required.";                                 GuideRef="Setting 12";   Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
+    [PSCustomObject]@{ ID=13; Name="Edge Startup Boost and Background"; Description="Stops Edge pre-loading at boot and running in background after close. Saves RAM.";       GuideRef="Setting 13"; Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
+    [PSCustomObject]@{ ID=14; Name="Windows Widgets -- Disable";        Description="Disables news/weather panel that runs background Edge processes.";                       GuideRef="Setting 14"; Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
+    [PSCustomObject]@{ ID=15; Name="Edge Password Saving -- Disable";   Description="Turns off Edge password storage. Use a dedicated password manager instead. Check manually: Edge -> Settings -> Profiles -> Passwords.";            GuideRef="Setting 15"; Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
+    [PSCustomObject]@{ ID=16; Name="Memory Integrity (Core Isolation)"; Description="Blocks untrusted code from high-security processes. RESTART required after enabling.";  GuideRef="Setting 16";          Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$true;  Status='Pending' },
+    [PSCustomObject]@{ ID=17; Name="Password Required on Wake";         Description="Requires password when PC wakes from sleep. Prevents unlocked screen access.";          GuideRef="Setting 17";   Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
+    [PSCustomObject]@{ ID=18; Name="Fast Startup -- Disable";           Description="Fast Startup skips a full shutdown. Disabling ensures a clean security state on boot.";  GuideRef="Setting 18";   Selected=$true;  RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' },
+    [PSCustomObject]@{ ID=19; Name="Wake on LAN -- Disable";            Description="Prevents PC from being remotely woken over the network. Disable if not needed.";         GuideRef="Setting 19";   Selected=$false; RequiresAdmin=$true;  SkipOnHome=$false; CanAuto=$true;  SecurityCritical=$false; Status='Pending' }
 )
 
 $GoodPatterns = "GOOD|ALL ON|ENCRYPTED|CONFIGURED|Required Only|primary AV|N/A on Home|Already"
@@ -7337,9 +7339,9 @@ function Apply-Setting {
                     $avName   = $ggOtherA2[0]
                     $isHiRisk = ($HighRiskAVList | Where-Object { $avName -match $_ }).Count -gt 0
                     if ($isHiRisk) {
-                        $result = "!! CRITICAL SECURITY RISK: $avName is a Russian or Chinese antivirus. This software may be sending your files and browsing data to foreign government servers. ACTION REQUIRED: (1) Uninstall $avName -- Settings -> Apps -> $avName -> Uninstall. (2) Restart your PC. (3) Confirm Defender is active in Windows Security. Microsoft Defender is a fully capable free AV -- you do not need this product. See Guide: Phase 3, Step 4"
+                        $result = "!! CRITICAL SECURITY RISK: $avName is a Russian or Chinese antivirus. This software may be sending your files and browsing data to foreign government servers. ACTION REQUIRED: (1) Uninstall $avName -- Settings -> Apps -> $avName -> Uninstall. (2) Restart your PC. (3) Confirm Defender is active in Windows Security. Microsoft Defender is a fully capable free AV -- you do not need this product. See Guide: Setting 2"
                     } else {
-                        $result = "$avName is registered as an antivirus. Defender real-time cannot run simultaneously with another active AV. See Guide: Phase 3, Step 4"
+                        $result = "$avName is registered as an antivirus. Defender real-time cannot run simultaneously with another active AV. See Guide: Setting 2"
                     }
                 } else {
                     Set-MpPreference -DisableRealtimeMonitoring $false -EA Stop
@@ -7355,9 +7357,9 @@ function Apply-Setting {
             try { $ggRTA3 = (Get-MpComputerStatus -EA Stop).RealTimeProtectionEnabled } catch {}
             if ($ggOtherA3.Count -gt 0 -and $ggRTA3 -ne $true) {
                 $avName = $ggOtherA3[0]
-                $result = "NOTE: $avName is registered as an AV. Tamper Protection cannot be verified while another AV is active. Fix AV status first, then: Windows Security -> Virus & threat protection settings -> Tamper Protection -> On. See Guide: Phase 1, Step 2"
+                $result = "NOTE: $avName is registered as an AV. Tamper Protection cannot be verified while another AV is active. Fix AV status first, then: Windows Security -> Virus & threat protection settings -> Tamper Protection -> On. See Guide: Setting 3"
             } else {
-                $result = "MANUAL ACTION REQUIRED: Windows Security -> Virus & threat protection -> Virus & threat protection settings -> Tamper Protection -> On. See Guide: Phase 1, Step 2"
+                $result = "MANUAL ACTION REQUIRED: Windows Security -> Virus & threat protection -> Virus & threat protection settings -> Tamper Protection -> On. See Guide: Setting 3"
             }
         }
         4 {
@@ -7422,7 +7424,7 @@ function Apply-Setting {
             if ((Get-GGHelloSignIn).State -eq "HELLO") {
                 $result = "You sign in with Windows Hello -- GOOD, no action needed"
             } else {
-                $result = "MANUAL CHECK -- Checkup cannot confirm this one, so please look: press the Windows key + L to lock the screen. If it says Enter PIN, or signs you in by your face or fingerprint, you are set -- sign back in as usual. If it asks for your password, sign back in, then set up a PIN: Settings -> Accounts -> Sign-in options -> PIN (Windows Hello). See Guide: Phase 1, Step 4"
+                $result = "MANUAL CHECK -- Checkup cannot confirm this one, so please look: press the Windows key + L to lock the screen. If it says Enter PIN, or signs you in by your face or fingerprint, you are set -- sign back in as usual. If it asks for your password, sign back in, then set up a PIN: Settings -> Accounts -> Sign-in options -> PIN (Windows Hello). See Guide: Setting 9"
             }
         }
         10 {
@@ -7473,13 +7475,13 @@ function Apply-Setting {
                 # user says they have no manager, but a manual re-select could
                 # still reach here, so the guard lives at the point of change.
                 if (-not $global:HasPasswordManager) {
-                    $result = "LEFT ON -- set up a password manager first, or your saved passwords would have nowhere to live. See Guide: Phase 5 at $GuideURL"
+                    $result = "LEFT ON -- set up a password manager first, or your saved passwords would have nowhere to live. See Guide: Part 5, section 5.1 at $GuideURL"
                     Write-Log -Message "Edge Password Saving (ID 15) NOT disabled -- no password manager (FT-221)" -Status "SKIP"
                 } else {
                     $rp = "HKLM:\SOFTWARE\Policies\Microsoft\Edge"
                     if (-not (Test-Path $rp)) { New-Item -Path $rp -Force | Out-Null }
                     Set-ItemProperty -Path $rp -Name PasswordManagerEnabled -Value 0 -Type DWord -Force -EA Stop
-                    $result = "Edge password saving disabled. Use a dedicated password manager. See Guide: Phase 5 at $GuideURL"
+                    $result = "Edge password saving disabled. Use a dedicated password manager. See Guide: Setting 15 at $GuideURL"
                 }
             } catch { $result = "ERROR: $_" }
         }
@@ -7493,7 +7495,7 @@ function Apply-Setting {
                 $rp = "HKLM:\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity"
                 if (-not (Test-Path $rp)) { New-Item -Path $rp -Force | Out-Null }
                 Set-ItemProperty -Path $rp -Name Enabled -Value 1 -Type DWord -Force -EA Stop
-                $result = "Memory Integrity enabled -- RESTART REQUIRED to take effect.$drNote See Guide: Phase 1, Step 2"
+                $result = "Memory Integrity enabled -- RESTART REQUIRED to take effect.$drNote See Guide: Setting 16"
             } catch { $result = "ERROR: $_" }
         }
         17 {
@@ -8027,14 +8029,14 @@ function Show-ManualSteps {
         "---",
         "  [ ] Tamper Protection  -- Windows Security -> V&T          ",
         "      protection settings -> Tamper Protection -> ON          ",
-        "      Guide: Phase 1, Step 2                                ",
+        "      Guide: Setting 3                                      ",
         "                                                            ",
         "  [ ] Windows Hello      -- Settings -> Accounts ->          ",
         "      Sign-in options -> set up PIN or biometrics           ",
-        "      Guide: Phase 1, Step 4                                ",
+        "      Guide: Setting 9                                      ",
         "                                                            ",
         $(if ($global:HasPasswordManager) { "  [x] Password Manager   -- You said you already use one.    " } else { "  [ ] Password Manager   -- Install, migrate passwords.     " }),
-        $(if ($global:HasPasswordManager) { "      Good -- keep using it for every account.              " } else { "      Guide: Phase 5                                        " }),
+        $(if ($global:HasPasswordManager) { "      Good -- keep using it for every account.              " } else { "      Guide: Part 5, section 5.1                            " }),
         "                                                            ",
         "  [ ] Two-step sign-in   -- Turn it on for email and bank. ",
         "      A code from your phone as well as your password.     ",
@@ -8387,7 +8389,7 @@ function Save-BitLockerKey {
   CANNOT PROVIDE IT, YOUR FILES CANNOT BE RECOVERED.
   There are NO exceptions. No one can help you.
 
-  See Guide: Phase 1, Step 3 at $GuideURL
+  See Guide: Setting 8 at $GuideURL
 ========================================================
 "@ | Out-File -FilePath $global:BitLockerKeyPath -Encoding UTF8
 }
@@ -8614,7 +8616,7 @@ function Show-BitLockerHomeScreen {
     }
     Draw-Box -ScreenId "61" -Color White -Lines @(
         "  FINAL ITEM: DEVICE ENCRYPTION (Windows 11 Home)          ",
-        "  Guide: Phase 1, Step 3  |  $GuideURL",
+        "  Guide: Setting 8  |  $GuideURL      ",
         "---",
         "  Encryption scrambles everything on your drive so that a  ",
         "  thief who takes the PC cannot read your files.           ",
@@ -8965,7 +8967,7 @@ function Show-BitLockerScreen {
     Write-Host ""
     Draw-Box -ScreenId "66" -Color White -Lines @(
         "  FINAL ITEM: BitLocker / Device Encryption",
-        "  Guide: Phase 1, Step 3  |  $GuideURL",
+        "  Guide: Setting 8  |  $GuideURL      ",
         "---",
         "  BitLocker encrypts your entire drive. If your PC is lost",
         "  or stolen, no one can read your files without your",
