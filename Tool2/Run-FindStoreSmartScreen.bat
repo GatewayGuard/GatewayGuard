@@ -6,7 +6,7 @@ echo This launcher is in: %~dp0
 cd /d "%~dp0"
 if errorlevel 1 (echo PROBLEM: could not open that folder. & goto :done)
 if not exist "Find-StoreSmartScreen.ps1" (echo PROBLEM: Find-StoreSmartScreen.ps1 is not here yet -- let OneDrive finish syncing Tool2. & goto :done)
-net session >/dev/null 2>&1
+net session >nul 2>&1
 if %errorlevel%==0 (echo Running as administrator.) else (echo Not administrator -- run it as administrator so every area can be read.)
 echo.
 powershell -NoProfile -ExecutionPolicy Bypass -File "Find-StoreSmartScreen.ps1"

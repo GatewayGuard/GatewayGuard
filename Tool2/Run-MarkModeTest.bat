@@ -10,7 +10,7 @@ REM  Does NOT need administrator. NEVER self-elevates.
 REM
 cd /d "%~dp0"
 
-net session >/dev/null 2>&1
+net session >nul 2>&1
 if errorlevel 1 (
   echo.
   echo   NOTE: this window is NOT running as administrator. That is fine.

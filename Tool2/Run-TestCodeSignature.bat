@@ -6,7 +6,7 @@ REM Run-TestCodeSignature.bat -- launcher for Test-CodeSignature-2026-08-14.ps1
 REM Launch plan item B4: prove the code signing certificate can actually sign.
 REM Does NOT self-elevate. Does NOT touch the build.
 
-net session >/dev/null 2>&1
+net session >nul 2>&1
 if %errorlevel%==0 (
   echo   Running ELEVATED. Not required for this test, but harmless.
 ) else (
