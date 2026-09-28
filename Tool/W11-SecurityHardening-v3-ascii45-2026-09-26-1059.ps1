@@ -139,6 +139,7 @@
 #           or a Part and section -- never a page, never the old "Phase".
 #   F8 (FT-253): Bill's wording on screens 22, 23, 27, 28, 34 and the by-hand
 #           line. FT-222: a changed item loses its X.
+#   FT-300 (part): item 4 re-reads SmartScreenEnabled before saying GOOD.
 #   RENUMBER (2026-09-28): gaps and interim labels gone; 1a -> 0a (FT-195a).
 #   FT-282: ITEM 12 (DIAGNOSTIC DATA) READ ONLY THE GROUP POLICY VALUE, which
 #           is empty on home PCs, and said "Sending extra data" when optional
@@ -7370,7 +7371,11 @@ function Apply-Setting {
         4 {
             try {
                 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name SmartScreenEnabled -Value "Warn" -Force -EA Stop
-                $result = "SmartScreen set to Warn (recommended) -- GOOD"
+                # FT-300 (ascii45): read it back before saying GOOD (FT-269 shape).
+                $ggSS = $null
+                try { $ggSS = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name SmartScreenEnabled -EA Stop).SmartScreenEnabled } catch {}
+                $result = if ("$ggSS" -eq "Warn") { "Check apps and files set to Warn (recommended) -- GOOD" }
+                          else { "NOTE: Checkup set this, but could not read it back to confirm. Check by hand: Windows Security -> App & browser control -> Reputation-based protection settings -> Check apps and files -> On." }
             } catch { $result = "ERROR: $_" }
         }
         6 {

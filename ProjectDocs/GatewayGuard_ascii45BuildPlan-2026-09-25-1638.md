@@ -169,6 +169,21 @@ behind it are in the wrapper's docstring. Checklist:
 
 ---
 
+# BLOCK I -- CO-PILOT'S ascii45 REVIEW, 2026-09-28 (checked against the source)
+
+Co-Pilot withdrew its item 8, 9, 12 and 17 criticisms after reading the real
+ascii45 file. Its three remaining points were each checked against the source
+and **all three are right**. Measured, read-only, CGDELL 2026-09-28 08:51:
+`Test_Results\Items1-4-13-CGDELL-2026-09-28_08-51.txt` (`Tool2\Run-MeasureItems1-4-13.bat`).
+
+| # | FT | Finding (source) | Status |
+|---|---|---|---|
+| I1 | **FT-299** | **Item 1 says GOOD from the service start type alone** -- `Get-AllStatuses` case 1: `StartType -ne 'Disabled'` -> "Enabled -- GOOD". Paused updates, an auto-update policy, and updates the person declined at screen 14g are never looked at, though the start sequence (`Invoke-WindowsUpdateLoop`) knows its own outcome. **A possible wrong GOOD.** CGDELL: wuauserv Manual/Stopped (Windows' normal state), no AU policy, no pause values | **Needs a flip test before building:** Bill pauses updates for 1 week in Settings -> Windows Update, runs the measure script, resumes, runs it again. Then item 1 = service not Disabled AND not paused AND no NoAutoUpdate policy AND the start-sequence result |
+| I2 | **FT-300** | **Item 4 reads and writes ONE toggle** (`Explorer\SmartScreenEnabled`, "Check apps and files") but its description says "websites and downloads", and guide 4.2 says Checkup "turned the protections on" (four toggles). Apply also said GOOD without reading back | **Re-read BUILT** (`build_ascii45_ft300_item4_reread.py`). **Scope needs Bill/Cloud:** extend item 4 to Edge SmartScreen (candidate `HKCU\...\Edge\SmartScreenEnabled` = '1' on CGDELL, not flip-proven) and Store apps, OR narrow the item and guide wording to "Check apps and files". Unwanted app blocking is already its own start check (E3) |
+| I3 | **FT-301** | **Item 13's Local State field is unproven -- and absent.** CGDELL's `startup_boost` has only `default_last_launch` and `last_browser_open_time`; no `enabled`, no `background_mode` section. Item 13 reads the Edge policy first (both 0 on CGDELL -> GOOD, sound), and the Local State branch can only say GOOD when both fields are found false, else Unknown -- **no wrong GOOD possible today** | **Flip test on SANDY** (no Edge policy there, not measured): run the measure script, turn Startup boost off in Edge, close Edge fully, run it again |
+
+---
+
 # BLOCK G -- BLOCKED ON A SANDY MEASUREMENT
 
 **All six are in one script:** `Tool2\Run-MeasureSandyForAscii45.bat`
