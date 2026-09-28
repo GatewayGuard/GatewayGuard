@@ -6617,6 +6617,10 @@ function Get-GGEdgeLocalStateBool {
     # and holds "startup_boost":{"enabled":<bool>, "default_last_launch":
     # <bool>, ...} and "background_mode":{"enabled":<bool>}.
     #
+    # FT-301 (2026-09-28): startup_boost "enabled" is now FLIP-PROVEN on SANDY --
+    # false 11:41, true 11:53 with Startup boost turned on, false 11:54
+    # (Test_Results\Items1-4-13-SANDY-2026-09-28_11-41/11-53/11-54.txt).
+    # background_mode "enabled" is still inferred. The original note:
     # *Inferred, not flip-proven*: "enabled" is the field the on-screen
     # toggle controls in each section -- the standard Chromium naming for a
     # feature's own on/off field, and the only boolean in background_mode's
