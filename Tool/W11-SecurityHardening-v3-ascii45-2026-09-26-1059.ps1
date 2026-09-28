@@ -137,6 +137,8 @@
 #           "Steps for you to do". F2: undo steps are guide 4.2 rows 11-15.
 #   F5 (Decision 8): guide references name the setting number ("Setting 14")
 #           or a Part and section -- never a page, never the old "Phase".
+#   F8 (FT-253): Bill's wording on screens 22, 23, 27, 28, 34 and the by-hand
+#           line. FT-222: a changed item loses its X.
 #   FT-282: ITEM 12 (DIAGNOSTIC DATA) READ ONLY THE GROUP POLICY VALUE, which
 #           is empty on home PCs, and said "Sending extra data" when optional
 #           data was off. Now reads the Settings value too (measured on SANDY
@@ -7711,7 +7713,7 @@ function Show-ScopeDisclaimer {
         Write-Host ""
         Write-Host "  Understood -- Edge's password saving will be LEFT ON for now." -ForegroundColor Green
         Write-Host "  When you're ready, a password manager is strongly recommended --" -ForegroundColor Gray
-        Write-Host "  see the Guide for how to set one up, then re-run Checkup." -ForegroundColor Gray
+        Write-Host "  the guide, Part 5, shows how to set one up. Then run Checkup again." -ForegroundColor Gray
         Write-Log -Message "No password manager -- Edge Password Saving (ID 15) deselected, left ON" -Status "INFO"
     } else {
         Write-Log -Message "User has a password manager -- Edge Password Saving change stays available" -Status "INFO"
@@ -7749,10 +7751,10 @@ function Show-ScopeDisclaimer {
                 "  WHAT CHECKUP DOES AND DOES NOT DO   (page 1 of 2)                ",
                 "---",
                 "  HOW THIS WORKS:                                                   ",
-                "  The previous pre-flight screens READ your current settings.       ",
-                "  What you saw was what was FOUND on your PC -- nothing was         ",
-                "  changed yet. Changes only happen after you approve each item      ",
-                "  in the security checklist on the next screen.                     ",
+                "  The screens so far only READ your settings -- nothing changed.    ",
+                "  The security checklist on the next screen shows what Checkup      ",
+                "  FOUND. Only the items you select there are changed --             ",
+                "  selecting an item is your approval.                               ",
                 "                                                                    ",
                 "  WHAT IT CHANGES (each one only with your approval):              ",
                 "  * Security features ON  (Defender virus protection, SmartScreen, ",
@@ -7761,11 +7763,11 @@ function Show-ScopeDisclaimer {
                 "    Fast Startup)                                                  ",
                 "  * Privacy settings      (Advertising ID, Diagnostic Data)        ",
                 "                                                                    ",
-                "  WHAT IT CHECKS BUT CANNOT CHANGE -- Windows insists a human      ",
-                "  does these; Checkup shows you the exact steps instead:           ",
+                "  WHAT IT CHECKS BUT CANNOT CHANGE -- these must be set by         ",
+                "  hand, and Checkup will show you how:                             ",
                 "                                                                   ",
-                "  * Tamper Protection                                              ",
-                "  * Windows Hello (PIN)                                            ",
+                "  * Tamper Protection -- essential, keep it on                     ",
+                "  * Windows Hello (PIN) -- strongly recommended                    ",
                 "  * Screen timeout                                                 ",
                 "                                                                   "
             )
@@ -8024,7 +8026,7 @@ function Show-ManualSteps {
     Write-Host ""
     Show-StepHeader -Key "ManualSteps" -Section "Wrapping Up"
     Draw-Box -ScreenId "72" -Color White -Lines @(
-        "  AUTOMATED STEPS COMPLETE                                  ",
+        "  CHECKUP IS FINISHED -- STEPS ONLY YOU CAN DO              ",
         "  These items require YOUR personal action:                 ",
         "---",
         "  [ ] Tamper Protection  -- Windows Security -> V&T          ",
@@ -8622,9 +8624,9 @@ function Show-BitLockerHomeScreen {
         "  thief who takes the PC cannot read your files.           ",
         "                                                           ",
         "  Windows 11 Home calls it Device Encryption. It is the    ",
-        "  same protection as BitLocker on Pro, but Windows turns   ",
-        "  it on itself -- Checkup cannot turn it on for you, and   ",
-        "  does not try.                                            ",
+        "  same protection as BitLocker on Pro. Checkup cannot turn ",
+        "  it on -- if it is off, it must be turned on by hand, and ",
+        "  Checkup will show you how.                               ",
         "                                                           ",
         $ggNowLine
     )
@@ -9594,7 +9596,7 @@ function Run-ConsoleMode {
                 if ($applyItems) {
                     foreach ($s in $applyItems) {
                         $statusShort = [string]$s.Status; if ($statusShort.Length -gt 28) { $statusShort = $statusShort.Substring(0,28) }   # FT-68 (ascii29): [string] guard
-                        Write-Host ("  [X] APPLYING  {0,2}. {1,-38} {2}" -f $s.ID, $s.Name, $statusShort) -ForegroundColor White
+                        Write-Host ("  [X]           {0,2}. {1,-38} {2}" -f $s.ID, $s.Name, $statusShort) -ForegroundColor White   # F8: no "APPLYING"
                     }
                 } else {
                     Write-Host "  (none selected)" -ForegroundColor DarkGray
@@ -9778,7 +9780,8 @@ function Run-ConsoleMode {
                         $r = Apply-Setting -Setting $s
                         Add-GGRunResult -Setting $s -Was $ggWas -Now "Not changed -- this one is yours to do; the steps come at the end" -Steps $r
                         Write-Host ""
-                        Write-Host "  Windows does not let Checkup change this one. The exact steps come at the end." -ForegroundColor Yellow
+                        Write-Host "  Windows does not allow any program to change this one, so Checkup" -ForegroundColor Yellow
+                        Write-Host "  shows you the exact steps to do it yourself, at the end." -ForegroundColor Yellow
                         Pause-ForUser
                         continue
                     }
@@ -9808,6 +9811,9 @@ function Run-ConsoleMode {
                     $result = Apply-Setting -Setting $s
                     # F1: a by-hand answer from an item Checkup tried is a step too.
                     Add-GGRunResult -Setting $s -Was $ggWas -Now $result -Steps $(if ($result -match "MANUAL|by hand|Manual setup") { $result } else { "" })
+                    # FT-222 (ascii45): a changed item loses its X, so B back to the
+                    # checklist mid-run does not change it a second time.
+                    if (Test-GGResultGood $result) { $s.Selected = $false }
                     $resultColor = if ($result -match "GOOD|enabled|disabled|set to|Already") { "Green" } elseif ($result -match "NOTE:|MANUAL|manual") { "Yellow" } else { "Red" }
                     Write-Host ""
                     Write-GGWrapped -Text "Result: $result" -Color $resultColor
