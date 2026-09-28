@@ -1,0 +1,194 @@
+﻿============================================================
+  GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+  Build: ascii45
+  William F. Burns III | Former ISO, Port Authority NY & NJ
+  Website: gatewayguard.co
+  Run Date: 2026-09-28 06:57:40
+  Computer: CGDELL
+  Machine:  Dell Inc. Latitude 5430
+  Machine ID: 565F4EC4F822 (unique to this PC -- a code derived from
+              this computer's hardware; it identifies this PC only)
+  NOTE: This log is written continuously from launch until the program
+        finishes or stops -- if the program ends unexpectedly, the LAST
+        LINE below shows exactly where it was.
+============================================================
+
+[2026-09-28 06:57:40] [OK] Console control handler registered -- Ctrl+C in Mark mode can no longer end the session (FT-150), and closing the window still writes the log footer (FT-160)
+[2026-09-28 06:57:40] [START] Tool launched v3.1 build ascii45
+[2026-09-28 06:57:40] [INFO] Log location: C:\Users\willi\OneDrive\GatewayGuard\Logs  (OneDrive -- already set up on this PC)
+[2026-09-28 06:57:40] [INFO] Machine: Dell Inc. Latitude 5430 | MachineID: 565F4EC4F822
+[2026-09-28 06:57:40] [OK] Sleep/shutdown prevention activated
+[2026-09-28 06:57:40] [INFO] Window: Windows Terminal
+[2026-09-28 06:57:41] [OK] Ctrl+C guard armed (C7): a Ctrl+C asks first, in Windows Terminal too
+[2026-09-28 06:57:41] [OK] QuickEdit AND mouse input reporting disabled for this session (FT-01, FT-171a) -- re-asserted silently from here on
+[2026-09-28 06:57:41] [SCREEN] [SCREEN-25] (shown as screen 1a) Rendered: WELCOME BACK
+[2026-09-28 06:57:45] [KEY] Key 'S' accepted at: Show-ResumePrompt
+[2026-09-28 06:57:45] [STATE] User chose to START OVER -- checkpoint cleared
+[2026-09-28 06:57:47] [KEY] Continue accepted at: Show-FontInstructions
+[2026-09-28 06:57:49] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-09-28 06:57:49] [SCREEN] [SCREEN-28] (shown as screen 4) Rendered: FONT CHECK: If this box has clean lines, you are ready.
+[2026-09-28 06:57:51] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-09-28 06:57:51] [SCREEN] [SCREEN-29] (shown as screen 5) Rendered: BEFORE YOU START -- YOUR WINDOW
+[2026-09-28 06:57:52] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-09-28 06:57:52] [SCREEN] [SCREEN-78] (shown as screen 6) Rendered: BEFORE YOU START -- YOUR KEYBOARD
+[2026-09-28 06:57:53] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-09-28 06:57:53] [SCREEN] [SCREEN-30] (shown as screen 7) Rendered: WHAT HAPPENS NEXT -- PLEASE READ
+[2026-09-28 06:57:54] [KEY] Nav 'NEXT' at: Show-FontInstructions
+[2026-09-28 06:57:54] [SCREEN] [SCREEN-02] (shown as screen 8) Rendered: HOW TO SCROLL BACK (AND COPY) IN THIS WINDOW
+[2026-09-28 06:57:55] [KEY] Continue accepted at: Show-ScrollCopyTip
+[2026-09-28 06:57:55] [SCREEN] [SCREEN-05] (shown as screen 9) Rendered: !  IMPORTANT -- READ BEFORE CONTINUING
+[2026-09-28 06:57:57] [KEY] Key key code 13 IGNORED at: Test-PersonalComputer
+[2026-09-28 06:57:59] [KEY] Key key code 32 IGNORED at: Test-PersonalComputer
+[2026-09-28 06:58:00] [KEY] Key key code 13 IGNORED at: Test-PersonalComputer
+[2026-09-28 06:58:03] [KEY] Key 'Y' accepted at: Test-PersonalComputer
+[2026-09-28 06:58:03] [CONFIRM] Personal computer confirmed by user
+[2026-09-28 06:58:03] [OK] Domain check passed -- not domain joined
+[2026-09-28 06:58:03] [OK] Administrator access confirmed
+[2026-09-28 06:58:07] [KEY] Continue accepted at: Test-AdminAccess
+[2026-09-28 06:58:07] [INFO] Windows Edition: Professional -- Windows 11 Pro
+[2026-09-28 06:58:07] [INFO] RAM: 32 GB (ample)
+[2026-09-28 06:58:22] [KEY] Key key code 13 IGNORED at: Test-TimeDateSync
+[2026-09-28 06:58:27] [KEY] Key key code 13 IGNORED at: Test-TimeDateSync
+[2026-09-28 06:58:33] [KEY] Key key code 13 IGNORED at: Test-TimeDateSync
+[2026-09-28 06:58:38] [KEY] Key 'Y' accepted at: Test-TimeDateSync
+[2026-09-28 06:58:38] [OK] Time/date confirmed correct by user: Monday, September 28, 2026 -- 6:58 AM (UTC-05:00) Eastern Time (US & Canada)
+[2026-09-28 06:58:42] [INFO] Secure Boot state read on all editions (FT-143): False
+[2026-09-28 06:58:42] [SCREEN] [SCREEN-09] (shown as screen 12) Rendered: YOUR SYSTEM AT A GLANCE
+[2026-09-28 06:58:42] [INFO] System Baseline Summary displayed
+[2026-09-28 06:58:47] [KEY] Continue accepted at: Show-SystemBaselineSummary
+[2026-09-28 06:58:47] [STATE] Checkpoint saved: Baseline
+[2026-09-28 06:58:47] [SCREEN] [SCREEN-26] (shown as screen 13) Rendered: YOUR PC'S SECURITY TOOLS -- A QUICK INTRODUCTION
+[2026-09-28 06:59:15] [KEY] Continue accepted at: Show-SecurityToolsBriefing
+[2026-09-28 06:59:15] [SCREEN] [SCREEN-27] (shown as screen 14) Rendered: THE SCAN WE RECOMMEND -- AND WHY
+[2026-09-28 06:59:20] [KEY] Continue accepted at: Show-ScanPlanBriefing
+[2026-09-28 06:59:20] [STATE] Checkpoint saved: Briefing
+[2026-09-28 06:59:21] [INFO] Tamper Protection read first (E1): On
+[2026-09-28 06:59:21] [STATE] Checkpoint saved: Tamper
+[2026-09-28 07:00:03] [INFO] Windows Update round 1: 1 waiting, 0 need licence terms accepted
+[2026-09-28 07:00:03] [SCREEN] [SCREEN-91] (shown as screen 14d) Rendered: WINDOWS UPDATE -- 1 UPDATE(S) WAITING
+[2026-09-28 07:00:29] [KEY] Key 'Y' accepted at: Invoke-WindowsUpdateLoop
+[2026-09-28 07:01:00] [INFO] Windows Update: 1 update(s), download result 2, install result 2, restart needed False
+[2026-09-28 07:01:00] [INFO]   Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.459.442.0) - Current Channel (Broad) -- result 2
+[2026-09-28 07:01:15] [INFO] Windows Update round 2: 0 waiting, 0 need licence terms accepted
+[2026-09-28 07:01:15] [STATE] Checkpoint saved: WinUpdate
+[2026-09-28 07:01:15] [INFO] Unwanted app blocking (PUAProtection) read: 1
+[2026-09-28 07:01:15] [INFO] Virus definitions: version 1.459.442.0, 7 hour(s) old
+[2026-09-28 07:01:15] [STATE] Checkpoint saved: Defs
+[2026-09-28 07:01:15] [SCREEN] [SCREEN-94] (shown as screen 14g) Rendered: BEFORE THE SCAN -- WHAT CHECKUP CHECKED
+[2026-09-28 07:01:31] [KEY] Continue accepted at: Show-GGReadySummary
+[2026-09-28 07:01:31] [SCREEN] [SCREEN-10] (shown as screen 15) Rendered: BEFORE WE SCAN YOUR PC
+[2026-09-28 07:01:41] [KEY] Key 'B' IGNORED at: Show-PreScanGate
+[2026-09-28 07:01:45] [KEY] Key 'B' IGNORED at: Show-PreScanGate
+[2026-09-28 07:01:54] [KEY] Key 'S' accepted at: Show-PreScanGate
+[2026-09-28 07:01:54] [WARN] Scan gate SKIPPED by user (S key)
+[2026-09-28 07:01:58] [KEY] Look-back opened at: Show-PreScanGate
+[2026-09-28 07:02:23] [KEY] Continue accepted at: Show-PreScanGate
+[2026-09-28 07:02:23] [STATE] Checkpoint saved: OfflineScanDone
+[2026-09-28 07:02:24] [OK] Defender confirmed as primary AV
+[2026-09-28 07:02:38] [KEY] Look-back opened at: Test-DefenderPrimary
+[2026-09-28 07:03:37] [KEY] Look-back opened at: Test-DefenderPrimary
+[2026-09-28 07:03:51] [KEY] Continue accepted at: Test-DefenderPrimary
+[2026-09-28 07:03:51] [STATE] Checkpoint saved: DefenderAV
+[2026-09-28 07:03:51] [OK] Sleep/shutdown prevention activated
+[2026-09-28 07:03:51] [OK] AC power confirmed. Battery present: True (100%). Sleep prevention active.
+[2026-09-28 07:04:12] [KEY] Continue accepted at: Test-PowerStatus
+[2026-09-28 07:04:19] [KEY] Continue accepted at: Run-PowerSettingsCheck
+[2026-09-28 07:04:20] [SCREEN] [SCREEN-50] (shown as screen 19) Rendered: POWER SETTINGS -- SECURITY REVIEW
+[2026-09-28 07:04:20] [INFO] Power settings: PW=REQUIRED -- GOOD FastStart=DISABLED -- GOOD WOL=DISABLED -- GOOD Screen=Found: NEVER (your existing setting) -- recommend 5 min: Settings -> System -> Power & sleep CritBatt=HIBERNATE -- GOOD
+[2026-09-28 07:08:05] [KEY] Look-back opened at: Run-PowerSettingsCheck
+[2026-09-28 07:11:41] [KEY] Continue accepted at: Run-PowerSettingsCheck
+[2026-09-28 07:11:41] [STATE] Checkpoint saved: PowerSettings
+[2026-09-28 07:11:41] [START] === Apps Audit Started ===
+[2026-09-28 07:11:42] [SCREEN] [SCREEN-51] (shown as screen 20) Rendered: APPS AUDIT RESULTS
+[2026-09-28 07:11:42] [DONE] === Apps Audit Complete ===
+[2026-09-28 07:11:48] [KEY] Continue accepted at: Run-AppsAudit
+[2026-09-28 07:11:48] [STATE] Checkpoint saved: AppsAudit
+[2026-09-28 07:11:48] [SCREEN] [SCREEN-52] (shown as screen 21) Rendered: GatewayGuard Checkup -- Windows 11 Security Hardening v3.1
+[2026-09-28 07:12:06] [KEY] Key '1' accepted at: Select-Mode
+[2026-09-28 07:12:06] [INFO] Start chosen at screen 21 (console checklist)
+[2026-09-28 07:12:06] [STATE] Checkpoint saved: ModeChosen
+[2026-09-28 07:12:06] [INFO] Item 6 (Edge phishing protection): registry read BLOCKED by Tamper Protection -- reporting Unknown rather than a fault (FT-141)
+[2026-09-28 07:12:08] [INFO] Item 9 (Windows Hello): HELLO -- last sign-in used Windows Hello
+[2026-09-28 07:12:08] [INFO] Item 12 (Diagnostic data): policy= settings=3
+[2026-09-28 07:12:09] [DONE] Get-AllStatuses complete -- all 18 settings probed
+[2026-09-28 07:12:09] [SCREEN] [SCREEN-53] (shown as screen 22) Rendered: QUICK QUESTION -- YOUR PASSWORDS
+[2026-09-28 07:12:09] [INFO] NOT SET (expected) -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii45-2026-09-26-1059.ps1:3989 char:23 -- user was at: Show-ScopeDisclaimer -- Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection' because it does not exist.
+[2026-09-28 07:12:09] [INFO] NOT SET (expected) -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii45-2026-09-26-1059.ps1:3989 char:23 -- user was at: Show-ScopeDisclaimer -- Property EnableSmartScreen does not exist at path HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System.
+[2026-09-28 07:12:09] [INFO] NOT SET (expected) -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii45-2026-09-26-1059.ps1:3989 char:23 -- user was at: Show-ScopeDisclaimer -- Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' because it does not exist.
+[2026-09-28 07:12:09] [INFO] NOT SET (expected) -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii45-2026-09-26-1059.ps1:3989 char:23 -- user was at: Show-ScopeDisclaimer -- Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' because it does not exist.
+[2026-09-28 07:12:09] [INFO] NOT SET (expected) -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii45-2026-09-26-1059.ps1:3989 char:23 -- user was at: Show-ScopeDisclaimer -- Cannot find path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' because it does not exist.
+[2026-09-28 07:12:33] [KEY] Key 'N' accepted at: Show-ScopeDisclaimer
+[2026-09-28 07:12:33] [INFO] No password manager -- Edge Password Saving (ID 15) deselected, left ON
+[2026-09-28 07:17:38] [KEY] Key 'N' IGNORED at: Show-ScopeDisclaimer
+[2026-09-28 07:17:39] [KEY] Continue accepted at: Show-ScopeDisclaimer
+[2026-09-28 07:17:39] [STATE] Checkpoint saved: Scope
+[2026-09-28 07:17:39] [SCREEN] [SCREEN-54] (shown as screen 23) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 1 of 2)
+[2026-09-28 07:17:44] [KEY] Nav 'NEXT' at: Show-ScopeDisclaimer
+[2026-09-28 07:17:44] [SCREEN] [SCREEN-75] (shown as screen 24) Rendered: WHAT CHECKUP DOES AND DOES NOT DO   (page 2 of 2)
+[2026-09-28 07:17:48] [KEY] Nav 'NEXT' at: Show-ScopeDisclaimer
+[2026-09-28 07:17:48] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 133, 5 item(s) selected
+[2026-09-28 07:17:48] [INFO] Checklist columns: window 133, name 60 (content needed 51), status 62 (content needed 62)
+[2026-09-28 07:18:34] [KEY] Checklist command '8' accepted at: Run-ConsoleMode
+[2026-09-28 07:18:34] [SCREEN] [SCREEN-76] (shown as screen 25) Checklist render: page 1, window width 133, 6 item(s) selected
+[2026-09-28 07:18:34] [INFO] Checklist columns: window 133, name 60 (content needed 51), status 62 (content needed 62)
+[2026-09-28 07:18:42] [KEY] Checklist command 'R' accepted at: Run-ConsoleMode
+[2026-09-28 07:18:42] [SCREEN] [SCREEN-55] (shown as screen 27) Rendered: REVIEW YOUR SELECTIONS -- NO CHANGES MADE YET
+[2026-09-28 07:18:42] [INFO] Review listing rendered -- awaiting Ready-to-proceed
+[2026-09-28 07:19:07] [KEY] Key 'Y' accepted at: Run-ConsoleMode
+[2026-09-28 07:19:07] [START] === Console Mode Hardening Run Started ===
+[2026-09-28 07:19:07] [APPLIED] SmartScreen | Before: Not configured -- needs attention | Result: SmartScreen set to Warn (recommended) -- GOOD
+[2026-09-28 07:19:26] [KEY] Continue accepted at: Run-ConsoleMode
+[2026-09-28 07:19:26] [INFO] Item 6: Phishing Protection keys are protected by Tamper Protection -- expected; manual steps shown (Requested registry access is not allowed.)
+[2026-09-28 07:19:31] [KEY] Continue accepted at: Apply-Setting
+[2026-09-28 07:19:31] [INFO] Edge Phishing Protection (all 3) | Before: Unknown -- Tamper Protection blocks this check; verify by hand | Result: MANUAL REQUIRED -- registry is protected on this PC (Tamper Protection)
+[2026-09-28 07:19:37] [KEY] Continue accepted at: Run-ConsoleMode
+[2026-09-28 07:19:37] [INFO] Diagnostic Data -- Required Only | Deferred to individual convenience review (FT-94)
+[2026-09-28 07:19:51] [KEY] Continue accepted at: Run-ConsoleMode
+[2026-09-28 07:19:51] [INFO] Edge Startup Boost and Background | Deferred to individual convenience review (FT-94)
+[2026-09-28 07:20:17] [KEY] Continue accepted at: Run-ConsoleMode
+[2026-09-28 07:20:17] [INFO] Windows Widgets -- Disable | Deferred to individual convenience review (FT-94)
+[2026-09-28 07:20:28] [KEY] Continue accepted at: Run-ConsoleMode
+[2026-09-28 07:20:29] [SCREEN] [SCREEN-65] (shown as screen 27c) Rendered: BEFORE ENABLING BITLOCKER, YOU MUST:
+[2026-09-28 07:21:06] [KEY] Key 'Y' accepted at: Show-BitLockerScreen
+[2026-09-28 07:21:06] [SCREEN] [SCREEN-66] (shown as screen 27d) Rendered: FINAL ITEM: BitLocker / Device Encryption
+[2026-09-28 07:21:24] [KEY] Key '1' accepted at: Show-BitLockerScreen
+[2026-09-28 07:21:28] [APPLIED] BitLocker enabled. Drive: 236GB SSD (solid state), RAM: 32GB, Estimate: 20-60 minutes, Mode: now
+[2026-09-28 07:21:28] [SCREEN] [SCREEN-67] (shown as screen 27e) Rendered: !  BITLOCKER RECOVERY KEY -- CRITICAL ACTION REQUIRED
+[2026-09-28 07:21:50] [KEY] Continue accepted at: Show-BitLockerScreen
+[2026-09-28 07:21:50] [INFO] BitLocker: restored sleep to original setting (15 min)
+[2026-09-28 07:21:50] [SCREEN] [SCREEN-69] (shown as screen 32) Rendered: ALL SELECTED ITEMS PROCESSED
+[2026-09-28 07:22:03] [KEY] Continue accepted at: Run-ConsoleMode
+[2026-09-28 07:22:03] [SCREEN] [SCREEN-70] (shown as screen 33) Rendered: SCAN REMINDER SETUP
+[2026-09-28 07:22:09] [GOOD] Reminder settings confirmed by read-back -- runs on battery: yes, catches a missed start: yes, wakes the PC: no (T1)
+[2026-09-28 07:22:09] [GOOD] Scheduled task created: GatewayGuard - Quarterly Defender Offline Scan (reminder popup -- FT-175)
+[2026-09-28 07:22:11] [ERROR] SILENT ERROR -- fault at: At C:\Users\willi\OneDrive - GatewayGuard LLC\GatewayGuard\Tool\W11-SecurityHardening-v3-ascii45-2026-09-26-1059.ps1:8139 char:16 -- user was at: Setup-ScheduledTasks -- No MSFT_ScheduledTask objects found with property 'TaskName' equal to 'GatewayGuard - Monthly Malwarebytes Reminder'.  Verify the value of the property and retry.
+[2026-09-28 07:22:16] [KEY] Continue accepted at: Setup-ScheduledTasks
+[2026-09-28 07:22:17] [SCREEN] [SCREEN-23] (shown as screen 33a) Rendered: CONVENIENCE CHOICES -- NOTHING CHANGED YET
+[2026-09-28 07:22:24] [KEY] Continue accepted at: Show-ConvenienceReview
+[2026-09-28 07:22:24] [WARN] Write-GGBox: a line was truncated to fit the window (133 cols) -- FT-217
+[2026-09-28 07:22:24] [WARN] Write-GGBox: a line was truncated to fit the window (133 cols) -- FT-217
+[2026-09-28 07:22:24] [SCREEN] [SCREEN-71] (shown as screen 33b) Rendered: YOUR CHOICE [1 of 3]: Diagnostic Data
+[2026-09-28 07:24:10] [KEY] Key 'Y' accepted at: Show-ConvenienceReview
+[2026-09-28 07:24:10] [APPLIED] Diagnostic Data -- Required Only | Before: Sending extra data -- we will limit it | Result: Diagnostic data set to Required Only -- GOOD
+[2026-09-28 07:24:10] [OK] User approved convenience change: Diagnostic Data -- Diagnostic data set to Required Only -- GOOD
+[2026-09-28 07:24:10] [SCREEN] [SCREEN-71] (shown as screen 33b) Rendered: YOUR CHOICE [2 of 3]: Edge Startup Boost and Background Running
+[2026-09-28 07:24:20] [KEY] Key 'Y' accepted at: Show-ConvenienceReview
+[2026-09-28 07:24:20] [APPLIED] Edge Startup Boost and Background | Before: Unknown -- could not check | Result: Edge startup boost and background mode disabled -- GOOD
+[2026-09-28 07:24:20] [OK] User approved convenience change: Edge Startup Boost and Background Running -- Edge startup boost and background mode disabled -- GOOD
+[2026-09-28 07:24:20] [SCREEN] [SCREEN-71] (shown as screen 33b) Rendered: YOUR CHOICE [3 of 3]: Windows Widgets
+[2026-09-28 07:24:27] [KEY] Key 'Y' accepted at: Show-ConvenienceReview
+[2026-09-28 07:24:27] [APPLIED] Windows Widgets -- Disable | Before: Unknown -- could not check | Result: Windows Widgets disabled -- GOOD
+[2026-09-28 07:24:27] [OK] User approved convenience change: Windows Widgets -- Windows Widgets disabled -- GOOD
+[2026-09-28 07:24:36] [KEY] Look-back opened at: Show-ConvenienceReview
+[2026-09-28 07:25:20] [KEY] Key key code 27 IGNORED at: Show-ConvenienceReview
+[2026-09-28 07:25:20] [KEY] Key key code 27 IGNORED at: Show-ConvenienceReview
+[2026-09-28 07:25:22] [KEY] Continue accepted at: Show-ConvenienceReview
+[2026-09-28 07:25:22] [SCREEN] [SCREEN-72] (shown as screen 34) Rendered: AUTOMATED STEPS COMPLETE
+[2026-09-28 07:25:22] [OK] Sleep prevention deactivated -- normal power management restored (called from: Run-ConsoleMode)
+
+============================================================
+Log complete. Keep this file -- it is your record of all changes made.
+If you need support, email this file to: support@gatewayguard.co
+============================================================
+[2026-09-28 07:25:22] [STATE] Run complete -- checkpoint cleared (FT-267)
+[2026-09-28 07:25:40] [KEY] Continue accepted at: Run-ConsoleMode
