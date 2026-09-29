@@ -1,0 +1,317 @@
+I reviewed all three documents as a technical editor focused on factual accuracy, senior-user comprehension, and consistency with ASCII45, rather than as a general proofreader. GatewayGuard_ForCopilot-1-GuideParts1-4-5-2026-09-28-2123.md GatewayGuard_ForCopilot-2-WebsitePages-2026-09-28-2123.md GatewayGuard_ForCopilot-3-ScreenReadings-2026-09-28-2123.md
+
+Overall Verdict
+
+These drafts are substantially stronger than the previous guide versions.
+
+Biggest improvements:
+
+Fewer unsupported claims.
+Better separation between what Checkup does and what the user does.
+Much better warning structure.
+Significantly better recovery and support guidance.
+Better consistency with current ASCII45 behavior.
+
+I found only a small number of areas I'd change before release.
+
+PART 1 GUIDE REVIEW
+Restore Point Section
+Current
+
+It is not an undo button for the settings in this guide.
+
+Recommendation
+
+Good.
+
+Keep it.
+
+This is one of the clearest explanations in the guide.
+
+Current
+
+Some of them it puts back and some it does not.
+
+Suggested Rewrite
+
+Some settings may be affected by a restore point and some may not.
+
+Reason:
+
+A senior may ask:
+
+Which ones?
+
+
+and the current sentence sounds slightly absolute.
+
+PART 4 REVIEW
+Section 4.1
+Current
+
+Keep the record.
+
+Suggested Rewrite
+
+Keep the record file.
+
+Small change.
+
+More concrete.
+
+Seniors tend to respond better to a tangible object than an abstract concept.
+
+Section 4.2
+Setting 2
+Current
+
+Only do this if support asks you to.
+
+Recommended
+
+Keep.
+
+Excellent warning.
+
+Setting 8
+Current
+
+Keep your recovery key either way.
+
+Suggested Rewrite
+
+Keep your recovery key whether encryption is on or off.
+
+Reason:
+
+"either way" is slightly ambiguous.
+
+Setting 17
+Concern
+
+Current wording:
+
+choose Never.
+
+Your own ASCII45 work around FT‑294 suggests that "Never" is something you generally consider unsafe and a source of false GOODs.
+
+The reversal instructions are technically accurate as an undo.
+
+I would add:
+
+This restores the previous convenience setting, but GatewayGuard does not recommend it.
+
+This prevents accidental interpretation as:
+
+Recommended Value = Never
+
+SECTION 4.3
+Very Good
+
+The distinction between:
+
+Restore Point
+
+
+and
+
+Undoing Checkup
+
+
+is handled better here than anywhere else in the project.
+
+No changes recommended.
+
+SECTION 4.5
+Step 1
+Current
+
+If you know which program it is
+
+Suggested Rewrite
+
+If you are certain which program it is
+
+Reason:
+
+The threshold should be certainty.
+
+Not guesswork.
+
+Step 3
+Current
+
+the status should say it was removed or quarantined
+
+Suggested Rewrite
+
+the status should indicate it was removed or quarantined
+
+Reason:
+
+Protection History terminology does change between Defender versions.
+
+Slightly more future-proof.
+
+PART 5 REVIEW
+5.1 Passwords
+Current
+
+Long beats clever.
+
+Excellent.
+
+Keep it.
+
+That sentence is memorable and understandable.
+
+Current
+
+Do not change a good password on a schedule.
+
+Very good.
+
+Also factually better than older password guidance.
+
+Keep it.
+
+Two-Step Sign-In
+Current
+
+This is the one to choose if your bank offers it.
+
+Referring to authenticator apps.
+
+Good.
+
+Reasonable.
+
+No change.
+
+WEBSITE PAGE REVIEW
+Password Manager Page
+Biggest Issue
+
+Current:
+
+they can export every password Edge has saved in a few clicks
+
+That is stronger than I would publish.
+
+Suggested:
+
+they may be able to access passwords stored in the browser
+
+More defensible.
+
+Everything else is fine once Bitwarden references are removed.
+
+Phishing Protection Page
+Current
+
+people aged 60 and over filed more than 200,000 complaints
+
+I would verify this statistic from the actual cited FTC/FBI source before publication.
+
+If not verified:
+
+remove.
+
+Otherwise:
+
+keep.
+
+Widgets Page
+Current
+
+Widgets sends your reading and browsing habits back to Microsoft.
+
+Too strong.
+
+Cloud already flagged this area.
+
+I agree.
+
+Suggested:
+
+Widgets can personalize content based on how you use Microsoft services and the Widget feed.
+
+That's safer.
+
+Defender Real-Time Protection Page
+Current
+
+consistently rated by independent labs as one of the best antivirus engines available
+
+Cloud already called this out.
+
+I agree.
+
+Either:
+
+cite a current test
+
+or
+
+remove.
+Diagnostic Data Page
+
+This remains the weakest website page.
+
+Current
+
+which apps you use, how long you spend in them, which features you click, and details about your browsing
+
+This is still stronger than I would publish without source verification.
+
+Cloud's earlier concern remains valid.
+
+I would rewrite the entire "Why you might want the minimum" section using the neutral version we discussed earlier.
+
+Advertising ID Page
+
+Still the most opinionated page in the website set.
+
+The technical explanation is mostly fine.
+
+The marketing language is not.
+
+Current phrases like:
+
+advertisers you have never heard of
+
+and
+
+record of what you do
+
+are advocacy language rather than explanatory language.
+
+I would soften those before launch.
+
+SCREEN-READING DOCUMENT REVIEW
+
+GatewayGuard_ForCopilot-3-ScreenReadings-2026-09-28-2123.md is excellent.
+
+It is:
+
+actionable
+measurable
+specific
+avoids leading questions
+
+The instruction box:
+
+Read out, word for word...
+
+is exactly the right instruction.
+
+No changes recommended.
+
+Highest Priority Fixes Before Launch
+Diagnostic Data page wording.
+Advertising ID page wording.
+Widgets telemetry wording.
+Verify FBI/phishing statistic or remove it.
+Add a caution to Setting 17's undo instructions that "Never" is the previous setting, not the recommended one.
+
+Everything else is at the level where I'd consider it editing and polishing rather than defect correction.
