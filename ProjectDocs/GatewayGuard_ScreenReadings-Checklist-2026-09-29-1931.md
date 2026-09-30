@@ -52,4 +52,4 @@
 
 - System protection on C: went from **Off** (C1) to **On** (S4 reading).
 - BitLocker on C: went from **suspended** (C5) to **on** (S5 reading).
-- Not explained yet. Both are the settings Checkup's item 8 and Part 1 touch (FT-297); check the logs before assuming either way.
+- **Explained -- Bill, 2026-09-30: "i reset them based on your notes."** He turned system protection on and resumed BitLocker himself, by hand. Not Checkup, and nothing to investigate.
