@@ -7573,7 +7573,7 @@ function Apply-Setting {
             if ((Get-GGHelloSignIn).State -eq "HELLO") {
                 $result = "You sign in with Windows Hello -- GOOD, no action needed"
             } else {
-                $result = "MANUAL CHECK -- Checkup cannot confirm this one, so please look: press the Windows key + L to lock the screen. If it says Enter PIN, or signs you in by your face or fingerprint, you are set -- sign back in as usual. If it asks for your password, sign back in, then set up a PIN: Settings -> Accounts -> Sign-in options -> PIN (Windows Hello). See Guide: Setting 9"
+                $result = "MANUAL CHECK -- Checkup cannot confirm this one, so please look: press the Windows key + L to lock the screen. If it says Enter your PIN, or signs you in by your face or fingerprint, you are set -- sign back in as usual. If it asks for your password, sign back in, then set up a PIN: Settings -> Accounts -> Sign-in options -> PIN (Windows Hello). See Guide: Setting 9"
             }
         }
         10 {
