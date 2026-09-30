@@ -128,6 +128,14 @@ $wanted = @(
     # Added 2026-09-16. Copilot's two review bundles, each with Claude
     # Code's check appended -- same reasoning as the row above.
     @{ Label = 'Co-Pilot ascii44/BitLocker review + comments'; Pattern = 'GatewayGuard_CoPilotAscii44Review-Comments-*.md' },
+    # Added 2026-09-30, after Cloud reported that none of the 09-28..09-30 bases
+    # had a row: the screen readings (exact on-screen words from Bill's
+    # screenshots), the Copilot review packs and their triage, and the brief to
+    # Cloud. Multi where each file is a separate handoff.
+    @{ Label = 'Screen readings (exact on-screen words)'; Pattern = 'GatewayGuard_ScreenReadings-Checklist-*.md' },
+    @{ Label = 'Copilot guide review -- triage'; Pattern = 'GatewayGuard_CopilotGuideReview-Triage-*.md' },
+    @{ Label = 'For Copilot (review pack)';   Pattern = 'GatewayGuard_ForCopilot-*.md'; Multi = $true },
+    @{ Label = 'Cloud brief';                 Pattern = 'GatewayGuard_CloudBrief-*.md'; Multi = $true },
     @{ Label = 'Co-Pilot Guide rewrite review + comments';     Pattern = 'GatewayGuard_CoPilotGuideReview-Comments-*.md' },
     @{ Label = 'Cloud response to the Co-Pilot set'; Pattern = 'GatewayGuard_CloudResponse-CoPilot*.md' },
     @{ Label = 'Smart App Control -- full chat history'; Pattern = 'GatewayGuard_SmartAppControl-ChatHistory-*.md' },

@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-26 14:44 ET
+- **Last Modified:** 2026-09-30 15:51 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -14,6 +14,40 @@
   Downloaded by Bill at session end and uploaded to project immediately.
 
 ---
+---
+
+## Session: 2026-09-30 11:50-15:51 [Claude Code -- CGDELL] -- SCREEN READINGS FINISHED; ITEM 9 SAYS "ENTER YOUR PIN"; CURRENT.md CAUGHT UP
+
+**Build: ascii45, not field run.** Next free FT: 310 (unchanged).
+
+- **Screen readings finished**, every CGDELL and SANDY row
+  (`ProjectDocs\GatewayGuard_ScreenReadings-Checklist-2026-09-29-1931.md`), from
+  Bill's screenshots 6-29 and one phone photo. Bill's notes kept word for word.
+  12 findings for the guide (Cloud) -- Part 1 system protection and restore
+  wizard, setting 1/8/13/17 undo wording, "No recent actions", Quick Assist's
+  camera prompt, the lock screen, setting 6 labels, Widgets check, Remote
+  Desktop on Home ("doesn't support Remote Desktop", no switch).
+- **Lock screen (phone photo, CGDELL):** "Enter your PIN", "Sign-in options"
+  (key / keypad), **no "I forgot my PIN" link** -- the S2 row asked for a link
+  that is not there (Claude Code's error, from unconfirmed community sources).
+  **Item 9 now says "Enter your PIN"** (`deeb776`).
+- **CGDELL changed overnight** (system protection Off -> On, BitLocker
+  suspended -> on): **Bill did it by hand** from the checklist notes. Not Checkup.
+- **CURRENT.md was two days stale** (Cloud caught it: da15aea, 09-28 08:38).
+  Regenerated; `Update-Current.ps1` gained rows for the screen readings, the
+  Copilot triage, the ForCopilot packs and the Cloud brief.
+- **Not logged at the time, recovered from git (09-28 08:38 to 09-29 19:31):**
+  FT-299..301 (Co-Pilot 09-28 review: items 1, 4, 13 reads, flip-tested);
+  gate 27 pre-commit hook (`dc68985`); SANDY ascii45 run 1 triaged (FT-302..309,
+  `c57930c`) and fixed (`32ee2d2`, `b3e7e58`); Cloud brief (`be192c7`); three
+  ForCopilot documents and Copilot's review triaged (`4832d76`, `b54f746`);
+  SANDY run 2 checklist (`eac86ef`); screen readings C1-C6 (`06ff4cb`).
+
+**Next:**
+- Cloud applies the 12 guide findings (pasted by Bill 2026-09-30).
+- SANDY ascii45 run 2 with `GatewayGuard_FieldChecklist-ascii45-SANDYrun2-2026-09-29-0826.md`.
+- Tool\ holds two untracked recipe files of Bill's -- his to move.
+
 ---
 
 ## Session: 2026-09-27 to 2026-09-28 08:37 [Claude Code -- CGDELL] -- ascii45: H, C2-C9, D, E, BLOCK F AND THE RENUMBER BUILT

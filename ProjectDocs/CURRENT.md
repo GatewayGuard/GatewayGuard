@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-28 08:38 ET -->
-<!-- Commit: da15aea -->
+<!-- Generated: 2026-09-30 15:51 ET -->
+<!-- Commit: bd90d2f -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-28 08:38 ET  |  **Commit at generation:** `da15aea`  |  **That commit was made:** 2026-09-28 08:35 ET
-- **Its subject line:** Renumber pass: main line 1-37 with no gaps, interim labels gone, welcome-back 1a -> 0a (FT-195a); wrapper header stamps corrected to commit times
+- **Generated:** 2026-09-30 15:51 ET  |  **Commit at generation:** `bd90d2f`  |  **That commit was made:** 2026-09-30 15:35 ET
+- **Its subject line:** Screen readings: S4 System Restore wizard page 2 read -- all readings done; finding 12 for Part 1
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -19,7 +19,7 @@ document family and the single filename that is live right now. Take every
 filename from this table -- never from memory, never from another document,
 never by guessing which date looks newest.
 
-**84 rows follow.** If you cannot see all 84 of them, your
+**90 rows follow.** If you cannot see all 90 of them, your
 retrieval truncated the table -- **say so and ask for the rest, rather
 than answering from the handful you received.**
 
@@ -67,9 +67,9 @@ All paths are relative to `ProjectDocs/`.
 | What it is | The current file | Older versions present |
 |---|---|---|
 | Test results (raw run notes and logs) | `GatewayGuard_TestResults-ascii43-2026-09-04-2345.md` | 0 |
-| Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii44run1-2026-09-24-2353.md` | 3 |
+| Field test triage (latest) | `GatewayGuard_FieldTestTriage-ascii45run1-2026-09-28-1639.md` | 4 |
 | Response to Bill's field notes | `GatewayGuard_ResponseToBillsNotes-ascii43-2026-08-30-1815.md` | 0 |
-| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii45-partial-2026-09-28-0836.md` | 4 |
+| Field checklist (current build) | `GatewayGuard_FieldChecklist-ascii45-SANDYrun2-2026-09-29-0826.md` | 5 |
 | Build plan (current) | `GatewayGuard_ascii45BuildPlan-2026-09-25-1638.md` | 2 |
 | Build scope -- what shipped vs. what is next | `GatewayGuard_ascii44Scope-WhatsInWhatsNext-2026-09-17-1441.md` | 0 |
 | Future settings (candidate list) | `GatewayGuard_FutureSettings-2026-08-24-2310.md` | 0 |
@@ -77,7 +77,7 @@ All paths are relative to `ProjectDocs/`.
 
 ### CLOUD REQUESTS AND CLOUD RESEARCH
 
-**28 rows in this group.** If you see fewer, this group was truncated -- say so.
+**34 rows in this group.** If you see fewer, this group was truncated -- say so.
 
 | What it is | The current file | Older versions present |
 |---|---|---|
@@ -95,6 +95,12 @@ All paths are relative to `ProjectDocs/`.
 | Cloud answer (delivered) | `GatewayGuard_CloudAnswer-Malwarebytes-2026-09-08-1105.md` | -- |
 | External guide review + comments | `GatewayGuard_ExternalGuideReview-Comments-2026-09-15-1324.md` | 0 |
 | Co-Pilot ascii44/BitLocker review + comments | `GatewayGuard_CoPilotAscii44Review-Comments-2026-09-16-1135.md` | 0 |
+| Screen readings (exact on-screen words) | `GatewayGuard_ScreenReadings-Checklist-2026-09-29-1931.md` | 0 |
+| Copilot guide review -- triage | `GatewayGuard_CopilotGuideReview-Triage-2026-09-29-0820.md` | 0 |
+| For Copilot (review pack) | `GatewayGuard_ForCopilot-1-GuideParts1-4-5-2026-09-28-2123.md` | -- |
+| For Copilot (review pack) | `GatewayGuard_ForCopilot-2-WebsitePages-2026-09-28-2123.md` | -- |
+| For Copilot (review pack) | `GatewayGuard_ForCopilot-3-ScreenReadings-2026-09-28-2123.md` | -- |
+| Cloud brief | `GatewayGuard_CloudBrief-GuideVsAscii45-SinceC1-2026-09-28-1910.md` | -- |
 | Co-Pilot Guide rewrite review + comments | `GatewayGuard_CoPilotGuideReview-Comments-2026-09-16-1140.md` | 0 |
 | Cloud response to the Co-Pilot set | `GatewayGuard_CloudResponse-CoPilot44-45-2026-09-16-1209.md` | 0 |
 | Smart App Control -- full chat history | `GatewayGuard_SmartAppControl-ChatHistory-2026-09-16-1403.md` | 0 |
@@ -197,7 +203,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-09-27 to 2026-09-28 08:37 [Claude Code -- CGDELL] -- ascii45: H, C2-C9, D, E, BLOCK F AND THE RENUMBER BUILT
+## Session: 2026-09-30 11:50-15:51 [Claude Code -- CGDELL] -- SCREEN READINGS FINISHED; ITEM 9 SAYS "ENTER YOUR PIN"; CURRENT.md CAUGHT UP
 ```
 
 **If it is not in your copy of the session log, you are reading an old
