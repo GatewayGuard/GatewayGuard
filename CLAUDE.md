@@ -706,6 +706,21 @@ than the clock; anything that looks like a sign-in record or private key; a
 `.ps1` that does not parse, or uses `/dev/null` or `Join-String`; non-ASCII,
 duplicate functions, or a gate 12/24 failure in the build; more than 60 files.
 **Proven 2026-09-28 14:07:** three planted bad files, five FAILs, commit refused.
+
+**Extended 2026-09-30 (Bill: "why do we keep having these mistakes"):** the
+repeat offenders were all things that depended on remembering -- `CURRENT.md`
+two days stale, no session-log entry for 09-28/29, stamps typed 1-14 minutes
+wrong. So the hook now does them: **A1** regenerates `CURRENT.md` and adds it
+to any commit that touches `ProjectDocs\`; **W1** warns when the build or
+`ProjectDocs\` changes and the session log has no entry for today; **S2**
+refuses an unfilled stamp placeholder; **S3** refuses a NEW file whose
+`Dated:` is not the minute it was created. **Never type a time: write the
+placeholder (two at-signs, NOW, two at-signs) and run `python Tool2/stamp.py
+<file>`** -- `--now` prints the time for a file name. Proven 2026-09-30 16:23
+with four planted files (typed stamp and placeholder refused; stamped file
+passed; ProjectDocs file passed with `CURRENT.md` added). The proof also caught
+W1 reading an untracked `-Sandy` conflict copy of the log; it reads only the
+tracked file now.
 By hand: `Tool2\Run-SimpleMistakesCheck.bat`. **Never bypass it
 (`--no-verify`).** A new kind of mistake gets a new check in that file, with
 its date -- that is how the list grows.

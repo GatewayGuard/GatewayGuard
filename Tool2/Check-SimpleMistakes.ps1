@@ -18,6 +18,16 @@
 #   X1     secrets      -- 2026-09-28: a registry dump holding a Microsoft sign-in
 #                          record reached Test_Results and was nearly committed.
 #   C1     big commits  -- 2026-09-03, commit 17fc9fa: 665 files in one commit.
+# Added 2026-09-30 16:21 (Bill: "why do we keep having these mistakes"):
+#   S2     placeholder  -- a stamp.py placeholder left unfilled.
+#   S3     typed stamp  -- a NEW file whose "Dated:" is more than a minute before,
+#                          or two after, the minute it was created. Stamps were
+#                          typed 1-14 minutes wrong on 09-27..09-30; S1 only
+#                          caught the future. Use Tool2\stamp.py, never type.
+#   A1     CURRENT.md   -- regenerated and added to the commit, by itself, when
+#                          the commit touches ProjectDocs\ (it was 2 days stale).
+#   W1     session log  -- WARNING (not a stop) when the build or ProjectDocs\
+#                          change and the session log has no entry for today.
 # A FAIL stops the commit. Fix the file and commit again. Never skip the hook.
 
 param([switch]$Staged)
@@ -36,6 +46,9 @@ if ($Staged) {
     $files = @(git ls-files 2>$null | Where-Object { $_ -match '\.(bat|ps1|py)$' -and $_ -notmatch '^(Archive|Builds|Migration|Notes)/' })
 }
 $files = @($files | Where-Object { $_ -and (Test-Path -LiteralPath $_) })
+$added = @()
+if ($Staged) { $added = @(git diff --cached --name-only --diff-filter=A 2>$null) }
+$tokNow = "@@" + "NOW" + "@@"; $tokStamp = "@@" + "STAMP" + "@@"   # built from pieces: this file must not hold them whole
 
 function Get-Text([string]$f) {
     if ($Staged) { return ((git show (":" + $f) 2>$null) -join "`n") }
@@ -73,7 +86,21 @@ foreach ($f in $files) {
         try {
             $d = [datetime]::ParseExact(($m.Groups[1].Value + " " + $m.Groups[2].Value + ":" + $m.Groups[3].Value), "yyyy-MM-dd HH:mm", $null)
             if ($d -gt $now.AddMinutes(2)) { Fail $f ("S1 is stamped " + $d.ToString("yyyy-MM-dd HH:mm") + ", later than the clock (" + $now.ToString("HH:mm") + "). Run 'date' and use what it says.") }
+            # S3 (2026-09-30): a NEW file's "Dated:" must be the minute it was made.
+            if ($added -contains $f) {
+                $c = (Get-Item -LiteralPath (Join-Path $repo $f)).CreationTime
+                $cMin = [datetime]::new($c.Year, $c.Month, $c.Day, $c.Hour, $c.Minute, 0)
+                $gap = ($d - $cMin).TotalMinutes
+                if ($gap -lt -1 -or $gap -gt 2) {
+                    Fail $f ("S3 is stamped " + $d.ToString("HH:mm") + " but the file was created at " + $c.ToString("HH:mm") + " -- a typed time? Write the placeholder and run: python Tool2/stamp.py " + $f)
+                }
+            }
         } catch {}
+    }
+
+    # ---------- S2: an unfilled stamp.py placeholder ----------
+    if ($f -ne 'Tool2/stamp.py' -and ($t.Contains($tokNow) -or $t.Contains($tokStamp) -or $f.Contains($tokStamp))) {
+        Fail $f ("S2 still holds a stamp placeholder. Run: python Tool2/stamp.py " + $f)
     }
 
     # ---------- launchers ----------
@@ -121,4 +148,33 @@ if ($fails.Count -gt 0) {
     exit 1
 }
 Write-Host "GATE 27: PASS" -ForegroundColor Green
+
+if ($Staged) {
+    $docs  = @($files | Where-Object { $_ -match '^ProjectDocs/' -and $_ -ne 'ProjectDocs/CURRENT.md' })
+    $build = @($files | Where-Object { $_ -match '^Tool/' })
+
+    # ---------- W1: the session log has an entry for today ----------
+    if ($docs.Count -gt 0 -or $build.Count -gt 0) {
+        # The TRACKED log only: an untracked OneDrive conflict copy
+        # (...-Sandy.md) sorts after the real one and fooled the first version
+        # of this check on its own proof run (2026-09-30).
+        $log = @(git ls-files "ProjectDocs/GatewayGuard_SessionLog-*.md" 2>$null | Sort-Object) | Select-Object -Last 1
+        $first = $null
+        if ($log) { $first = Select-String -LiteralPath (Join-Path $repo $log) -Pattern '^## Session:' | Select-Object -First 1 }
+        if (-not $first -or $first.Line -notmatch [regex]::Escape($now.ToString("yyyy-MM-dd"))) {
+            Write-Host ("  W1 WARNING -- the session log's newest entry is not dated today (" + $now.ToString("yyyy-MM-dd") + "). Add one before the day ends.") -ForegroundColor Yellow
+        }
+    }
+
+    # ---------- A1: CURRENT.md regenerated and added, by itself ----------
+    if ($docs.Count -gt 0) {
+        $uc = & powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot "Update-Current.ps1") 2>&1 | Out-String
+        if (Test-Path (Join-Path $repo "ProjectDocs\CURRENT.md")) {
+            git add "ProjectDocs/CURRENT.md" 2>$null
+            Write-Host "  A1 CURRENT.md regenerated and added to this commit (ProjectDocs changed)." -ForegroundColor Green
+        } else {
+            Write-Host "  A1 WARNING -- CURRENT.md could not be regenerated. Run Tool2\Update-Current.ps1 by hand." -ForegroundColor Yellow
+        }
+    }
+}
 exit 0
