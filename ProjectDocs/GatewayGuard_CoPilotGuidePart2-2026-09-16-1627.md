@@ -298,12 +298,9 @@ Back up important files.
 Save your recovery key.
 Store the recovery key somewhere safe.
 How To Check
-Windows 11 Home
-Open Settings.
-Search for Device Encryption.
-Windows 11 Pro
-Open Control Panel.
-Open BitLocker Drive Encryption.
+**Windows 11 Home:** Open Settings > Privacy & security > **Device encryption**. The switch is labelled **Device encryption**.
+
+**Windows 11 Pro:** Open Control Panel > **BitLocker Drive Encryption**. It should say **Windows (C:) BitLocker on**. **If it says BitLocker suspended, click Resume protection.**
 How To Change It
 
 Follow the step-by-step instructions provided by Checkup.
@@ -340,12 +337,12 @@ Recommended: Configure a PIN at Minimum
 
 Checkup checks this and shows you the steps; Windows requires that you make the change yourself.
 
-⚠ VERIFY -- a PIN can be created on a local account; a local account cannot reset a forgotten PIN without the account password.
-
 How To Check
-Open Settings.
-Select Accounts.
-Select Sign-In Options.
+**The quickest check:** press the **Windows key** and **L** together. If the screen says **Enter your PIN**, you are set -- type your PIN to sign back in. If it asks for your password, sign back in, then set up a PIN: Settings > Accounts > Sign-in options.
+
+Below the box, **Sign-in options** shows a key symbol (your password) and a keypad symbol (your PIN). If you ever forget your PIN, click **Sign-in options**, choose the key symbol, and sign in with your password.
+
+Settings can say Windows Hello is not available on a computer where the PIN works. **The lock screen is the one to believe.**
 How To Change It
 
 Use Sign-In Options to configure:

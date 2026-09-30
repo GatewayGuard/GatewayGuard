@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-30 15:51 ET -->
-<!-- Commit: bd90d2f -->
+<!-- Generated: 2026-09-30 16:43 ET -->
+<!-- Commit: 6f3ab29 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-30 15:51 ET  |  **Commit at generation:** `bd90d2f`  |  **That commit was made:** 2026-09-30 15:35 ET
-- **Its subject line:** Screen readings: S4 System Restore wizard page 2 read -- all readings done; finding 12 for Part 1
+- **Generated:** 2026-09-30 16:43 ET  |  **Commit at generation:** `6f3ab29`  |  **That commit was made:** 2026-09-30 16:23 ET
+- **Its subject line:** Gate 27 extended: A1 regenerates CURRENT.md into any ProjectDocs commit, W1 warns on no session-log entry today, S2/S3 refuse unfilled or typed stamps; Tool2/stamp.py writes the clock time
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -19,7 +19,7 @@ document family and the single filename that is live right now. Take every
 filename from this table -- never from memory, never from another document,
 never by guessing which date looks newest.
 
-**90 rows follow.** If you cannot see all 90 of them, your
+**96 rows follow.** If you cannot see all 96 of them, your
 retrieval truncated the table -- **say so and ask for the rest, rather
 than answering from the handful you received.**
 
@@ -77,7 +77,7 @@ All paths are relative to `ProjectDocs/`.
 
 ### CLOUD REQUESTS AND CLOUD RESEARCH
 
-**34 rows in this group.** If you see fewer, this group was truncated -- say so.
+**40 rows in this group.** If you see fewer, this group was truncated -- say so.
 
 | What it is | The current file | Older versions present |
 |---|---|---|
@@ -101,6 +101,12 @@ All paths are relative to `ProjectDocs/`.
 | For Copilot (review pack) | `GatewayGuard_ForCopilot-2-WebsitePages-2026-09-28-2123.md` | -- |
 | For Copilot (review pack) | `GatewayGuard_ForCopilot-3-ScreenReadings-2026-09-28-2123.md` | -- |
 | Cloud brief | `GatewayGuard_CloudBrief-GuideVsAscii45-SinceC1-2026-09-28-1910.md` | -- |
+| Guide draft, Parts 1/4/5 (Cloud; newest supersedes) | `GatewayGuard_GuideDraft-Part1SafetyNet-Part4-Part5-2026-09-30-1636.md` | 1 |
+| Guide change list (Cloud, old -> new) | `GatewayGuard_GuideChanges-Parts2-3-ScreenReadings-2026-09-30-1636.md` | -- |
+| Guide vs ascii45 (Cloud) | `GatewayGuard_GuideVsAscii45-BlocksABC1-2026-09-26-1459.md` | 0 |
+| VERIFY list T-VF1 (Cloud) | `GatewayGuard_VerifyList-T-VF1-GuideParts1-5-2026-09-26-1459.md` | 0 |
+| Website vs guide and decisions (Cloud) | `GatewayGuard_WebsiteVsGuideAndDecisions-2026-09-26-1459.md` | 0 |
+| Hello PIN and PUA research | `GatewayGuard_HelloAndPUA-Research-2026-09-27-0946.md` | 0 |
 | Co-Pilot Guide rewrite review + comments | `GatewayGuard_CoPilotGuideReview-Comments-2026-09-16-1140.md` | 0 |
 | Cloud response to the Co-Pilot set | `GatewayGuard_CloudResponse-CoPilot44-45-2026-09-16-1209.md` | 0 |
 | Smart App Control -- full chat history | `GatewayGuard_SmartAppControl-ChatHistory-2026-09-16-1403.md` | 0 |

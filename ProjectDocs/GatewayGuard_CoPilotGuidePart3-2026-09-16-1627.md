@@ -42,22 +42,24 @@ On Windows 11 Pro, with your approval, Checkup will turn this off for you. On Wi
 
 Windows 11 Home cannot be reached by Remote Desktop, so there is nothing to turn off. Home can still connect out to another PC, for example a work computer, using the Remote Desktop Connection app.
 
-To let a family member help you, use Quick Assist, which is built into Windows. Press Ctrl + Windows key + Q, or click Start and type Quick Assist. The helper clicks Help someone and reads you a code. You type that code, click Submit, then click Allow. You can end the session at any time by clicking Leave.
+To let a family member help you, use Quick Assist, which is built into Windows. Press **Ctrl + Windows key + Q**, or click Start and type Quick Assist.
+
+**If a box asks "Let Quick Assist access your camera?", click No.**
+
+The window has two halves. Your helper uses **Help someone** on their computer and reads you a code. On yours, under **Get help**, type that code in the box under **Security code from assistant** and click **Submit**. Then click **Allow**. You can end the session at any time by clicking **Leave**.
 
 Only do this when you called the helper. Never do it for someone who called you.
 
-⚠ VERIFY -- Quick Assist keys and button labels (Help someone, Submit, Allow, Leave) read off a live screen; currently from Microsoft's pages.
+⚠ VERIFY -- **Allow** and **Leave**, which need a real session with a second device; and that sharing works after answering **No** to the camera box.
 
 How To Check
 Open Settings.
 Select System.
 Select Remote Desktop.
 
-It should say Off. If it says On, turn it off.
+**Windows 11 Pro:** the page has a switch labelled **Remote Desktop**. It should say **Off**. If it says On, turn it off.
 
-If Settings > System has no Remote Desktop entry, your computer is Windows 11 Home and cannot accept these connections. There is nothing to turn off.
-
-⚠ VERIFY -- exact on-screen path and label on Pro; what Home shows (page absent, or present and greyed).
+**Windows 11 Home:** the page has no switch. It says: *"Your Home edition of Windows 11 doesn't support Remote Desktop."* **That means this computer is already protected. There is nothing to do.**
 
 How To Change It
 
@@ -171,9 +173,7 @@ Edge Startup Boost and Background Running are two separate toggles in Edge's set
 
 Startup boost pre-loads part of Microsoft Edge when your PC starts, so the browser opens faster.
 
-Continue running background extensions and apps keeps Edge running in the background after you close it.
-
-⚠ VERIFY -- the running-after-close claim, and the exact current label of Edge's background-apps toggle.
+**Continue running background extensions and apps when Edge is closed** does what its name says: it keeps parts of Edge running after you close it.
 
 Why It Matters
 
@@ -194,7 +194,7 @@ Open Microsoft Edge.
 Open Settings.
 Select System and Performance.
 Open Startup boost first, or the toggles do not appear.
-Review Startup boost and Continue running background extensions and apps.
+Review **Startup boost** and **Continue running background extensions and apps when Edge is closed**.
 How To Change It
 
 Turn off Startup boost and Continue running background extensions and apps.
@@ -204,6 +204,8 @@ What To Expect
 Edge may take slightly longer to start after a reboot.
 
 Many users will not notice a significant difference.
+
+After Checkup turns these off, Edge shows a **briefcase icon** beside both switches, and you cannot turn them back on in Edge. That is expected. To put them back, see **Part 4, 4.2, Setting 13**.
 
 When You Might Choose Differently
 
@@ -239,7 +241,7 @@ What To Expect
 
 The Widgets button disappears from the taskbar, and the temperature on the taskbar goes with it.
 
-The panel still opens if you press Windows key + W, and you can turn Widgets back on at any time.
+To confirm Widgets is off, press the **Windows key** and **W** together. Nothing should open. You can turn Widgets back on at any time.
 
 When You Might Choose Differently
 
@@ -247,7 +249,7 @@ If you check the weather on your taskbar every day, you may prefer to keep Widge
 
 Checkup turns Widgets off entirely. If you want the weather only, answer No when Checkup offers this change, then do the step above yourself.
 
-⚠ VERIFY -- Windows key + W with Widgets off, and Dashboards > Discover, read off a live screen.
+⚠ VERIFY -- Dashboards > Discover, read off a live screen with Widgets on.
 
 Setting 15: Edge Password Saving
 What It Is
