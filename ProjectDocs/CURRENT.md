@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-10-02 13:47 ET -->
-<!-- Commit: 67add67 -->
+<!-- Generated: 2026-10-02 13:50 ET -->
+<!-- Commit: 54eadad -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-10-02 13:47 ET  |  **Commit at generation:** `67add67`  |  **That commit was made:** 2026-10-02 13:27 ET
-- **Its subject line:** Screen readings R4-R8 from Bill's screenshots 36-43: R4 entry read; R5 switches return On; R6 Diagnostics and Widgets show 'managed by your organization' from Checkup's own policy values; R7 needs the Allow screen; R8 blocked by the Widgets policy
+- **Generated:** 2026-10-02 13:50 ET  |  **Commit at generation:** `54eadad`  |  **That commit was made:** 2026-10-02 13:47 ET
+- **Its subject line:** R7 read: Quick Assist 'Allow screen sharing?' -- Allow is greyed until 'I understand the security implications' is ticked (Bill's screenshot 45); Leave label still unread
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
