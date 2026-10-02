@@ -268,11 +268,11 @@ What It Is
 
 Encryption protects the contents of your drive if the computer is lost or stolen.
 
-Windows 11 Pro typically uses BitLocker.
+Windows 11 Pro uses **BitLocker**.
 
-Windows 11 Home may use Device Encryption.
+Windows 11 Home uses **Device encryption**, on computers that support it. If you sign in with a Microsoft account, Windows can turn it on for you. If you sign in with a local account (one that is not a Microsoft account), it does not.
 
-⚠ VERIFY -- Home/Pro split and whether Device Encryption on Home requires a Microsoft account. BitLocker Test 2 on SANDY answers this; sentence held until then.
+On our test computer, which uses a local account, Device encryption scrambled the drive but could not switch protection on, because Windows had nowhere to save the recovery key. Settings said protection would resume at the next restart. It did not, across three restarts. Checkup tells you if your computer is in this state.
 
 Why It Matters
 
@@ -307,9 +307,7 @@ Follow the step-by-step instructions provided by Checkup.
 
 What To Expect
 Initial encryption may take time.
-A recovery key will be generated.
-
-⚠ VERIFY -- on a Microsoft account the key is saved to the account automatically; on a local account it is saved nowhere automatically. One of the two claims that can cost a reader their files.
+Windows makes a **recovery key**. With a Microsoft account, Windows saves a copy to that account. **With a local account, nothing saves it for you.** Save it yourself: to a USB flash drive, to a file kept somewhere other than this computer, or on paper.
 
 Encryption normally runs in the background.
 When You Might Choose Differently

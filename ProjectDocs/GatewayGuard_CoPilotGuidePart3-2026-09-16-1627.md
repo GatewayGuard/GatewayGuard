@@ -50,7 +50,7 @@ The window has two halves. Your helper uses **Help someone** on their computer a
 
 Only do this when you called the helper. Never do it for someone who called you.
 
-⚠ VERIFY -- **Allow** and **Leave**, which need a real session with a second device; and that sharing works after answering **No** to the camera box.
+⚠ VERIFY -- **Allow** and **Leave**, which need a real session with a second device; and that sharing works after answering **No** to the camera box (reading R7).
 
 How To Check
 Open Settings.
@@ -133,7 +133,7 @@ This is a privacy setting. It does not weaken your security.
 
 Windows always sends Microsoft a basic report on your PC's health. The extra Optional level adds the websites you visit in Edge, which programs you use, and copies of memory when a program crashes. Those copies can include parts of a file you had open.
 
-Windows Update and your protection work exactly the same at either level.
+Microsoft says the Required level is the minimum it needs to keep Windows secure and up to date.
 
 GatewayGuard Recommendation
 
@@ -159,8 +159,6 @@ Optional Diagnostic Data
 What To Expect
 
 Windows will continue sending information necessary to maintain and update the operating system.
-
-⚠ VERIFY -- Windows sends the larger level unless told otherwise; updates are identical at either level.
 
 When You Might Choose Differently
 
@@ -249,7 +247,7 @@ If you check the weather on your taskbar every day, you may prefer to keep Widge
 
 Checkup turns Widgets off entirely. If you want the weather only, answer No when Checkup offers this change, then do the step above yourself.
 
-⚠ VERIFY -- Dashboards > Discover, read off a live screen with Widgets on.
+⚠ VERIFY -- Dashboards > Discover, read off a live screen with Widgets on (reading R8).
 
 Setting 15: Edge Password Saving
 What It Is
@@ -286,9 +284,7 @@ Microsoft Edge is Microsoft's own browser. It is built on the same underlying br
 
 Chrome: three-dot menu > Passwords and autofill > Google Password Manager > Settings > Offer to save passwords and passkeys.
 
-Firefox: Settings > Privacy & Security > Ask to save passwords.
-
-⚠ VERIFY -- the Chrome and Firefox labels, read off live copies of each browser.
+Firefox: Settings > Passwords and autofill (in older versions, Privacy & Security) > Ask to save passwords.
 
 What To Expect
 
@@ -305,9 +301,7 @@ Fast Startup combines elements of shutdown and hibernation to reduce boot time.
 
 Why It Matters
 
-With Fast Startup on, Shut down does not fully shut the computer down. Windows saves part of itself to disk and reloads it the next time. Some updates and repairs only finish after a real shutdown, so problems can carry over from one day to the next.
-
-⚠ VERIFY -- which updates and repairs need a full shutdown to finish.
+With Fast Startup on, Shut down does not fully shut the computer down. Windows saves part of itself to disk and reloads it the next time. Microsoft says some Windows updates can only finish after a full shutdown. **Restart** always does a full shutdown, even with Fast Startup on.
 
 GatewayGuard Recommendation
 

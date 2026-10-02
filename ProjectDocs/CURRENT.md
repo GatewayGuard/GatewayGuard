@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-09-30 16:43 ET -->
-<!-- Commit: 6f3ab29 -->
+<!-- Generated: 2026-10-02 11:59 ET -->
+<!-- Commit: 850e82c -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-09-30 16:43 ET  |  **Commit at generation:** `6f3ab29`  |  **That commit was made:** 2026-09-30 16:23 ET
-- **Its subject line:** Gate 27 extended: A1 regenerates CURRENT.md into any ProjectDocs commit, W1 warns on no session-log entry today, S2/S3 refuse unfilled or typed stamps; Tool2/stamp.py writes the clock time
+- **Generated:** 2026-10-02 11:59 ET  |  **Commit at generation:** `850e82c`  |  **That commit was made:** 2026-09-30 16:43 ET
+- **Its subject line:** Guide Parts 2/3 twins: Cloud's screen-readings change list applied (P2-1..P2-3, P3-1..P3-8, each old string asserted, 10/10); Cloud's 09-30 GuideChanges + GuideDraft Parts 1/4/5 filed (stamps corrected 18:31 -> 16:36 arrival); CURRENT rows for the draft, change list, three 09-26 Cloud files and the 09-27 Hello/PUA research; S6 answered from the logs (only real offline scan is SANDY 09-28, ~10 min)
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -19,7 +19,7 @@ document family and the single filename that is live right now. Take every
 filename from this table -- never from memory, never from another document,
 never by guessing which date looks newest.
 
-**96 rows follow.** If you cannot see all 96 of them, your
+**97 rows follow.** If you cannot see all 97 of them, your
 retrieval truncated the table -- **say so and ask for the rest, rather
 than answering from the handful you received.**
 
@@ -77,7 +77,7 @@ All paths are relative to `ProjectDocs/`.
 
 ### CLOUD REQUESTS AND CLOUD RESEARCH
 
-**40 rows in this group.** If you see fewer, this group was truncated -- say so.
+**41 rows in this group.** If you see fewer, this group was truncated -- say so.
 
 | What it is | The current file | Older versions present |
 |---|---|---|
@@ -103,6 +103,7 @@ All paths are relative to `ProjectDocs/`.
 | Cloud brief | `GatewayGuard_CloudBrief-GuideVsAscii45-SinceC1-2026-09-28-1910.md` | -- |
 | Guide draft, Parts 1/4/5 (Cloud; newest supersedes) | `GatewayGuard_GuideDraft-Part1SafetyNet-Part4-Part5-2026-09-30-1636.md` | 1 |
 | Guide change list (Cloud, old -> new) | `GatewayGuard_GuideChanges-Parts2-3-ScreenReadings-2026-09-30-1636.md` | -- |
+| Guide change list (Cloud, old -> new) | `GatewayGuard_GuideChanges-Parts2-3-MarkersClosed-2026-10-02-1156.md` | -- |
 | Guide vs ascii45 (Cloud) | `GatewayGuard_GuideVsAscii45-BlocksABC1-2026-09-26-1459.md` | 0 |
 | VERIFY list T-VF1 (Cloud) | `GatewayGuard_VerifyList-T-VF1-GuideParts1-5-2026-09-26-1459.md` | 0 |
 | Website vs guide and decisions (Cloud) | `GatewayGuard_WebsiteVsGuideAndDecisions-2026-09-26-1459.md` | 0 |
