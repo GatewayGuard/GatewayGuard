@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-10-02 12:20 ET -->
-<!-- Commit: 2d120f5 -->
+<!-- Generated: 2026-10-02 13:17 ET -->
+<!-- Commit: 02c7b27 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-10-02 12:20 ET  |  **Commit at generation:** `2d120f5`  |  **That commit was made:** 2026-10-02 12:16 ET
-- **Its subject line:** Bill's answers to Cloud's six questions: 1 Setting 11 sentence, 2 Fast Startup stays Off with why, 5 12pt edition recorded as exception (CLAUDE.md), 6 twins are the source; 3-4 pending
+- **Generated:** 2026-10-02 13:17 ET  |  **Commit at generation:** `02c7b27`  |  **That commit was made:** 2026-10-02 12:20 ET
+- **Its subject line:** Bill's answers 3 and 4: Setting 13 gets the measured-free Edge line; 'Google Password Manager' stays as an on-screen label (CLAUDE.md no-names rule exception)
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
@@ -210,7 +210,7 @@ not from this file.** It is the newest entry in the log, so it can only
 be found in a snapshot taken after that session was filed.
 
 ```
-## Session: 2026-09-30 11:50-15:51 [Claude Code -- CGDELL] -- SCREEN READINGS FINISHED; ITEM 9 SAYS "ENTER YOUR PIN"; CURRENT.md CAUGHT UP
+## Session: 2026-10-02 11:56-13:17 [Claude Code -- CGDELL] -- GUIDE: CLOUD'S 10-02 FILES FILED; BILL'S ANSWERS TO CLOUD'S SIX QUESTIONS
 ```
 
 **If it is not in your copy of the session log, you are reading an old

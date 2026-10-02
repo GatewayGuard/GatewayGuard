@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-09-30 15:51 ET
+- **Last Modified:** 2026-10-02 13:17 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -14,6 +14,31 @@
   Downloaded by Bill at session end and uploaded to project immediately.
 
 ---
+---
+
+## Session: 2026-10-02 11:56-13:17 [Claude Code -- CGDELL] -- GUIDE: CLOUD'S 10-02 FILES FILED; BILL'S ANSWERS TO CLOUD'S SIX QUESTIONS
+
+Entry written at session end from the day's commits (no entry existed for today).
+
+- `25dd897` Cloud's 10-02 files filed: guide Parts 1/4/5 FINAL, Parts 2/3
+  markers-closed list, website changes, format pack needs. P2-5, P2-6,
+  P3-9..P3-13 applied to the twins (7/7, old strings asserted). VERIFY left:
+  Part 2 none, Part 3 two (R7, R8).
+- `b86e00a` Screen readings R1-R3 from Bill's screenshots 31-35 (CGDELL);
+  System Restore ran 11:01 and is recorded. R4-R8 not found.
+- `2d120f5`, `02c7b27` Bill's answers to Cloud's six questions: 1 Setting 11
+  sentence; 2 Fast Startup stays Off, with why; 3 Setting 13 gets the
+  measured-free Edge line; 4 "Google Password Manager" stays as an on-screen
+  label (CLAUDE.md exception); 5 the 12-pt edition is a recorded exception
+  (CLAUDE.md); 6 the twins are the source.
+- The 09-27 session (ascii45 Blocks C-E, Ctrl+C, full screen, SANDY
+  encryption) was resumed briefly and closed; everything from it was already
+  committed.
+
+**Open:** guide Part 3 R7/R8; F10; screen 11's sentence; the SANDY field run.
+**Left alone:** `ProjectDocs/Co-polot_Guide_Review-2026-09-29-0815.txt` has
+uncommitted changes Claude Code did not make (Bill's, presumably).
+
 ---
 
 ## Session: 2026-09-30 11:50-15:51 [Claude Code -- CGDELL] -- SCREEN READINGS FINISHED; ITEM 9 SAYS "ENTER YOUR PIN"; CURRENT.md CAUGHT UP
