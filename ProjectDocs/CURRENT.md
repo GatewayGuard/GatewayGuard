@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-10-02 13:17 ET -->
-<!-- Commit: 02c7b27 -->
+<!-- Generated: 2026-10-02 13:19 ET -->
+<!-- Commit: c8eca93 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-10-02 13:17 ET  |  **Commit at generation:** `02c7b27`  |  **That commit was made:** 2026-10-02 12:20 ET
-- **Its subject line:** Bill's answers 3 and 4: Setting 13 gets the measured-free Edge line; 'Google Password Manager' stays as an on-screen label (CLAUDE.md no-names rule exception)
+- **Generated:** 2026-10-02 13:19 ET  |  **Commit at generation:** `c8eca93`  |  **That commit was made:** 2026-10-02 13:17 ET
+- **Its subject line:** Session log: 2026-10-02 entry (guide work from the day's commits); session end
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
