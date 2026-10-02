@@ -149,6 +149,10 @@
   Windows reports for it (screens 17, 17a, 17c -- e.g. "uninstall Kaspersky").
   That is detection, not a recommendation, and the user needs the name to act.
   Checkup's own copy still names no third-party product.
+  **Exception -- on-screen labels the reader must click (Bill, 2026-10-02).**
+  A menu name that appears on another program's own screen may be quoted so
+  the steps work -- e.g. Chrome's *"Google Password Manager"* in Setting 15.
+  Cutting it leaves a dead end. It is a label, not a recommendation.
 - Always include country of origin for AV recommendations
 - Never name unapproved or competitor products
 - "For your protection, your choices can be reviewed in your log" — shown **once only**, on the review screen

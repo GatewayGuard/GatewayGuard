@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-10-02 12:16 ET -->
-<!-- Commit: b86e00a -->
+<!-- Generated: 2026-10-02 12:20 ET -->
+<!-- Commit: 2d120f5 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-10-02 12:16 ET  |  **Commit at generation:** `b86e00a`  |  **That commit was made:** 2026-10-02 12:07 ET
-- **Its subject line:** Screen readings R1-R3 from Bill's screenshots 31-35 (CGDELL); System Restore Finish was clicked and the restore ran 11:01 -- recorded; R4-R8 not found
+- **Generated:** 2026-10-02 12:20 ET  |  **Commit at generation:** `2d120f5`  |  **That commit was made:** 2026-10-02 12:16 ET
+- **Its subject line:** Bill's answers to Cloud's six questions: 1 Setting 11 sentence, 2 Fast Startup stays Off with why, 5 12pt edition recorded as exception (CLAUDE.md), 6 twins are the source; 3-4 pending
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
