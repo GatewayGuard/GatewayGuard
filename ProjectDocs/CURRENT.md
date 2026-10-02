@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-10-02 13:57 ET -->
-<!-- Commit: 7cfde1e -->
+<!-- Generated: 2026-10-02 14:09 ET -->
+<!-- Commit: d0aef6d -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-10-02 13:57 ET  |  **Commit at generation:** `7cfde1e`  |  **That commit was made:** 2026-10-02 13:56 ET
-- **Its subject line:** R7 complete: Quick Assist bar reads 'Screen sharing on' with chat, pause and Leave (Bill's screenshots 46-49)
+- **Generated:** 2026-10-02 14:09 ET  |  **Commit at generation:** `d0aef6d`  |  **That commit was made:** 2026-10-02 13:57 ET
+- **Its subject line:** R7 research: Quick Assist is provisioned with Windows on CGDELL (measured), had to be installed on SANDY; Microsoft Learn -- Store install, helper needs a Microsoft account, sharer needs none
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 

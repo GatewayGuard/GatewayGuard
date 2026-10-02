@@ -99,5 +99,22 @@ Claude Code deleted `StartupBoostEnabled` and `BackgroundModeEnabled` (both 0) u
 
 ## R8 -- Widgets panel settings
 
-- **Blocked:** Widgets cannot be turned on (R6, policy `AllowNewsAndInterests = 0`). Dashboards and
-  Discover cannot be read until that value is removed.
+- Claude Code removed `AllowNewsAndInterests` from `HKLM\SOFTWARE\Policies\Microsoft\Dsh` at Bill's request
+  (backup `Test_Results\R8-WidgetsPolicy-UNDO-CGDELL.reg`).
+- **Taskbar (screenshot 50, 13:57):** "Widgets" is no longer greyed -- switch **On**. The "managed by your
+  organization" banner is not in view.
+- No weather button appeared on the taskbar; **Windows key + W** opened the panel (Bill). The weather on the
+  lock screen (Win+L) is a separate lock-screen feature.
+- **Widgets panel (screenshot 51, 14:05):** top bar "October 2", "Good afternoon", **"New look"** switch (On),
+  a **+**, a person icon and a **gear**. The gear opens **"Settings"**:
+  - **"Discover new widgets"** -- "Add more widgets to your board"
+  - **"Personalize"** -- "No feeds here to personalize. Add feeds to start personalizing"
+  - **"Notifications"** -- "Manage taskbar notifications from your widgets and feeds"
+  - **"Language"** -- "Widgets board uses your Windows display language. You can update this in Settings."
+  - **"Open Widgets board on hover"** -- "Widgets board opens when hovering on the taskbar icon" -- **On**
+  - **"Show or hide feeds"** -- "Choose which feeds appear on your board"
+  - **"Widgets"** -- "Version 526.21100.40.0"
+- **THERE IS NO "Dashboards" AND NO "Discover" SECTION.** The guide's Setting 14 line *"Dashboards > Discover"*
+  is wrong for this version. **Corrected path:** Windows key + W > gear (Settings) > **Show or hide feeds**.
+  (Not opened: what "Show or hide feeds" lists.) This closes Part 3's R8 marker with a text change.
+- Bill to turn Widgets back Off afterwards.
