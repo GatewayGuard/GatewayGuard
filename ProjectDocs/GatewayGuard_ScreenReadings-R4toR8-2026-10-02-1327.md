@@ -73,6 +73,30 @@ Claude Code deleted `StartupBoostEnabled` and `BackgroundModeEnabled` (both 0) u
 - Also seen (screenshots 44, 44-CGDELL): choosing "Help someone" on both PCs gives both a code and they
   cannot connect -- the side being helped must type the code instead.
 
+### R7 research -- does Quick Assist come with Windows? (Bill: "I believe quick assist came installed. but research it")
+
+- ***Measured, CGDELL (Windows 11 Pro 25H2, build 26200):*** Quick Assist is a Store-style app,
+  `MicrosoftCorporationII.QuickAssist` 2.0.56.0, and it is **provisioned in the Windows image**
+  (`Get-AppxProvisionedPackage` lists it) -- so on CGDELL it **came with Windows**, as Bill thought.
+  The old built-in program (`System32\quickassist.exe`) is gone.
+- ***Measured, SANDY (Bill):*** it had to be downloaded and installed before it would open. Not measured
+  why -- SANDY's Windows image may not include it, or it was removed earlier.
+- *Sourced, Microsoft Learn* (learn.microsoft.com/windows/client-management/client-tools/quick-assist,
+  updated 2025-09-30): Quick Assist is installed **from the Microsoft Store** ("Download the new version of
+  Quick Assist by visiting the Microsoft Store ... When the installation is complete, Install changes to Open").
+  Start it by typing *Quick Assist* in Windows search, **Ctrl + Windows + Q**, or Start > All apps > Quick Assist.
+- *Sourced, same page:* **"The helper must have a Microsoft account. The sharer doesn't have to
+  authenticate."** -- the person being helped needs no account; the helper does.
+- *Sourced, same page:* the sharer sees "only an abbreviated version of the helper's name (first name, last
+  initial)" -- matches screenshot 45 ("William B.").
+- *Sourced, same page:* "Only allow a Helper to connect to your device if you initiated the interaction" --
+  the scam warning the guide should repeat.
+- *Sourced, support.microsoft.com "Solve PC problems remotely using Quick Assist":* Store path -- Start > All
+  apps > Microsoft Store > search Quick Assist > Get or Install > Open.
+- **For the guide:** "Quick Assist usually comes with Windows 11. If it does not open, install it free from the
+  Microsoft Store: open Microsoft Store, search for Quick Assist, click Get." Plus: the helper needs a
+  Microsoft account; you do not.
+
 ## R8 -- Widgets panel settings
 
 - **Blocked:** Widgets cannot be turned on (R6, policy `AllowNewsAndInterests = 0`). Dashboards and
