@@ -69,7 +69,7 @@ Claude Code deleted `StartupBoostEnabled` and `BackgroundModeEnabled` (both 0) u
 - **For the guide:** the reader must **tick the box first** -- Allow cannot be clicked until then.
 - Bill: the session connected and SANDY saw CGDELL's screen.
 - **Bill, 2026-10-02: on SANDY (Windows 11 Home) Quick Assist had to be downloaded, installed and opened first** -- it was not ready to use. **For the guide:** the helper's PC may need Quick Assist installed (Microsoft Store) before the session; say so, with the steps. Not measured: whether CGDELL's was preinstalled or installed earlier.
-- **Not captured:** the **Leave** button during the session. Only that label stays unread.
+- **During the session, CGDELL (screenshots 46-49, identical, 13:54):** a Quick Assist bar across the top: **"Screen sharing on"**, a chat button, a pause button, and a blue **"Leave"** button. R7 is complete.
 - Also seen (screenshots 44, 44-CGDELL): choosing "Help someone" on both PCs gives both a code and they
   cannot connect -- the side being helped must type the code instead.
 

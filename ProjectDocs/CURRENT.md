@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-10-02 13:50 ET -->
-<!-- Commit: 54eadad -->
+<!-- Generated: 2026-10-02 13:56 ET -->
+<!-- Commit: 71b0b0f -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-10-02 13:50 ET  |  **Commit at generation:** `54eadad`  |  **That commit was made:** 2026-10-02 13:47 ET
-- **Its subject line:** R7 read: Quick Assist 'Allow screen sharing?' -- Allow is greyed until 'I understand the security implications' is ticked (Bill's screenshot 45); Leave label still unread
+- **Generated:** 2026-10-02 13:56 ET  |  **Commit at generation:** `71b0b0f`  |  **That commit was made:** 2026-10-02 13:50 ET
+- **Its subject line:** R7: Quick Assist had to be downloaded and installed on SANDY before use (Bill) -- guide must say so
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
