@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-10-02 13:19 ET -->
-<!-- Commit: c8eca93 -->
+<!-- Generated: 2026-10-02 13:27 ET -->
+<!-- Commit: c72f971 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-10-02 13:19 ET  |  **Commit at generation:** `c8eca93`  |  **That commit was made:** 2026-10-02 13:17 ET
-- **Its subject line:** Session log: 2026-10-02 entry (guide work from the day's commits); session end
+- **Generated:** 2026-10-02 13:27 ET  |  **Commit at generation:** `c72f971`  |  **That commit was made:** 2026-10-02 13:19 ET
+- **Its subject line:** Bill's edits: two Notes files, the Co-Pilot guide review, WebSite.lnk
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
