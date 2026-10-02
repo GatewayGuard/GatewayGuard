@@ -61,7 +61,16 @@ Claude Code deleted `StartupBoostEnabled` and `BackgroundModeEnabled` (both 0) u
   "You'll stay on this screen until the person you're helping enters the code."; code **XY9W2E**,
   "Code expires in 09:43"; links **"Copy code"**, **"Give instructions"**; "Sign in with a different account".
 - Bill also noted CGDELL's code **3T9164**.
-- **Still not captured:** the **Allow** screen and the **Leave** button on the side being helped. R7 stays open.
+- **Allow screen, CGDELL (screenshot 45, 13:44)** -- after entering SANDY's code:
+  helper shown as **"William B."**; heading **"Allow screen sharing?"**;
+  "If this person contacted you unexpectedly and asked to connect to your device, this might be a scam.";
+  links "Privacy statement", "Terms of use"; a **tick box "I understand the security implications of
+  sharing my screen"**; buttons **Allow** (**greyed out until the box is ticked**) and **Decline**.
+- **For the guide:** the reader must **tick the box first** -- Allow cannot be clicked until then.
+- Bill: the session connected and SANDY saw CGDELL's screen.
+- **Not captured:** the **Leave** button during the session. Only that label stays unread.
+- Also seen (screenshots 44, 44-CGDELL): choosing "Help someone" on both PCs gives both a code and they
+  cannot connect -- the side being helped must type the code instead.
 
 ## R8 -- Widgets panel settings
 

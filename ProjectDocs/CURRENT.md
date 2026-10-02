@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-10-02 13:27 ET -->
-<!-- Commit: c72f971 -->
+<!-- Generated: 2026-10-02 13:47 ET -->
+<!-- Commit: 67add67 -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-10-02 13:27 ET  |  **Commit at generation:** `c72f971`  |  **That commit was made:** 2026-10-02 13:19 ET
-- **Its subject line:** Bill's edits: two Notes files, the Co-Pilot guide review, WebSite.lnk
+- **Generated:** 2026-10-02 13:47 ET  |  **Commit at generation:** `67add67`  |  **That commit was made:** 2026-10-02 13:27 ET
+- **Its subject line:** Screen readings R4-R8 from Bill's screenshots 36-43: R4 entry read; R5 switches return On; R6 Diagnostics and Widgets show 'managed by your organization' from Checkup's own policy values; R7 needs the Allow screen; R8 blocked by the Widgets policy
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 
