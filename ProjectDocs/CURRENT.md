@@ -1,12 +1,12 @@
 <!-- GENERATED FILE -- DO NOT EDIT BY HAND. -->
 <!-- Written by Tool2\Update-Current.ps1. Hand edits are lost on the next run. -->
-<!-- Generated: 2026-10-02 12:07 ET -->
-<!-- Commit: 25dd897 -->
+<!-- Generated: 2026-10-02 12:16 ET -->
+<!-- Commit: b86e00a -->
 
 # CURRENT -- which file is the live one
 
-- **Generated:** 2026-10-02 12:07 ET  |  **Commit at generation:** `25dd897`  |  **That commit was made:** 2026-10-02 11:59 ET
-- **Its subject line:** Cloud's 10-02 files filed (stamped 11:56 arrival): guide Parts 1/4/5 FINAL, Parts 2/3 markers-closed list, website changes, format pack needs; P2-5, P2-6, P3-9..P3-13 applied to the twins (7/7, each old string asserted) -- VERIFY left: Part 2 0, Part 3 2 (R7, R8)
+- **Generated:** 2026-10-02 12:16 ET  |  **Commit at generation:** `b86e00a`  |  **That commit was made:** 2026-10-02 12:07 ET
+- **Its subject line:** Screen readings R1-R3 from Bill's screenshots 31-35 (CGDELL); System Restore Finish was clicked and the restore ran 11:01 -- recorded; R4-R8 not found
 
 *Reading a synced copy? Quote those values back first. Why they matter is at the BOTTOM of this file.*
 

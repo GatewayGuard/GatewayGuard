@@ -899,7 +899,7 @@ running the tool are `.md` files with no font or typography requirements.
 The standards below govern deliverables a reader sees — guides, plans,
 and reports — not working artifacts. (Confirmed 2026-07-26.)
 
-- Minimum **14pt body font**
+- Minimum **14pt body font** -- **one recorded exception (Bill, 2026-10-02): the guide's Compact 12-point edition ships** alongside the 14/16/18/20-point editions.
 - **Garamond** for guides, plans, reports, GUI text
 - **Arial 14pt** for console/PowerShell output only
 - Table headers: black fill / white bold text / black borders
