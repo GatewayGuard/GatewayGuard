@@ -327,12 +327,29 @@ function Get-GGNameDate {
 # CLAUDE-Sandy.md, which reappeared after being removed once already --
 # excluding the shape rather than deleting the current instances is what
 # actually stops it recurring a third time.
+$retiredFamilies = @(); $pendingGroup = $null
 foreach ($w in $wanted) {
     $hits = @(Get-ChildItem -LiteralPath $docs -Filter $w.Pattern -File -EA SilentlyContinue |
               Where-Object { $_.Name -notmatch '-Sandy\.[^.]+$' } |
               Sort-Object @{ Expression = { Get-GGNameDate $_.Name } }, Name)
     if ($hits.Count -eq 0) {
-        $missing += $w.Pattern
+        # 2026-10-03 (Cloud at 181% capacity): a family whose files were all
+        # retired to Archive\ProjectDocs-Retired-* on purpose is dropped from the
+        # table, not treated as a hole. Its Group tag passes to the next row.
+        # A pattern found NOWHERE still stops the run -- that is a typo or a loss.
+        $ggRetired = @(Get-ChildItem -Path (Join-Path (Split-Path $docs -Parent) 'Archive') -Directory -Filter 'ProjectDocs-Retired-*' -EA SilentlyContinue |
+                       ForEach-Object { Get-ChildItem -LiteralPath $_.FullName -Filter $w.Pattern -File -EA SilentlyContinue })
+        if ($ggRetired.Count -gt 0) {
+            $retiredFamilies += $w.Label
+            if ($w.Group) { $pendingGroup = $w.Group }
+        } else {
+            $missing += $w.Pattern
+        }
+        continue
+    }
+    if ($pendingGroup -and -not $w.Group) { $w.Group = $pendingGroup }
+    $pendingGroup = $null
+    if ($false) {
     } elseif ($w.ContainsKey('Multi') -and $w.Multi) {
         # A collection of distinct docs sharing a prefix (e.g. Cloud requests).
         # List every one, newest-sorted -- they are not versions of each other.

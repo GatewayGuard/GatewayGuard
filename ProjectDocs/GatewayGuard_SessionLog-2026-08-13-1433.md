@@ -2,7 +2,7 @@
 <!-- Editor: Claude Code (CGDELL) -->
 # GatewayGuard Session Log
 - **Document Name:** GatewayGuard_SessionLog
-- **Last Modified:** 2026-10-02 13:17 ET
+- **Last Modified:** 2026-10-03 10:44 ET
 - *(The `Dated:` line and the filename stay at 2026-08-13 14:33 -- this file
   is append-only, so they record when it was opened, not when it last grew.
   `Last Modified` had been left at the creation date through nine days of
@@ -14,6 +14,35 @@
   Downloaded by Bill at session end and uploaded to project immediately.
 
 ---
+---
+
+## Session: 2026-10-02 13:17 to 2026-10-03 10:44 [Claude Code -- CGDELL] -- READINGS R1-R8 DONE; CLOUD'S PROJECT KNOWLEDGE CUT FROM 181% TO ~65%
+
+**Build: ascii45, not field run.** Next free FT: 310 (unchanged).
+
+- **Readings R1-R8 all done** from Bill's screenshots 31-51:
+  `ScreenReadings-R1toR3-2026-10-02-1207.md`, `ScreenReadings-R4toR8-2026-10-02-1327.md`.
+  Findings: System Restore Finish restarts at once (Bill clicked it; CGDELL restored to 10:56, 4 min, 11:01);
+  Quick Assist Allow greyed until the "I understand" box is ticked, bar "Screen sharing on"/Leave, had to be
+  installed on SANDY (provisioned with Windows on CGDELL, measured); **after Checkup, Settings says "managed by
+  your organization"** -- Checkup's own policy values for items 12 and 14; **Setting 14 has no Dashboards >
+  Discover** -- it is Win+W > gear > Show or hide feeds.
+- CGDELL changed for the readings, with undo files: Edge policy values removed (`Test_Results/R5-...UNDO`),
+  Widgets policy removed (`Test_Results/R8-...UNDO`). EICAR test file planted and quarantined.
+- **Bill's six answers to Cloud** -- `BillDecisions-CloudQuestions-2026-10-02-1216.md`; CLAUDE.md gains the
+  12-point edition exception and the on-screen-label exception to the no-names rule.
+- **Cloud at 181% of capacity (Bill, 2026-10-03).** Gate 26 measured 4,564 KB, so Cloud's real limit is about
+  2.5 MB, not the 4 MB the gate assumes (inferred). Retired 196 ProjectDocs files to
+  `Archive/ProjectDocs-Retired-2026-10-03/` (superseded drafts, finished builds, everything dated before
+  09-15 except rules, licence, settings list, plans); session log entries before 09-25 moved to
+  `Archive/SessionLog-before-2026-09-25.md`. **Cloud scope now 1,642 KB in 64 files.**
+  `Update-Current.ps1` now drops a family whose files are all retired instead of refusing to write.
+- Fake "Chrome virus" notification popups in Bill's 10-01 screenshots are from a scam site
+  (helentium.co.in) -- CGDELL's Chrome is clean; likely SANDY; Bill told how to remove the site.
+
+**Next:** Bill syncs Cloud; Cloud writes the change list from the readings and Bill's answers; F10; website W changes;
+gate 26's budget should be lowered to about 2,400 KB.
+
 ---
 
 ## Session: 2026-10-02 11:56-13:17 [Claude Code -- CGDELL] -- GUIDE: CLOUD'S 10-02 FILES FILED; BILL'S ANSWERS TO CLOUD'S SIX QUESTIONS
