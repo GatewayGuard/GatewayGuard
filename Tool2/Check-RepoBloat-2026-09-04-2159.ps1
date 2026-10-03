@@ -43,7 +43,9 @@ param(
     # Cloud's scope. Change these only if the connector scope changes.
     [string[]]$CloudPaths = @('ProjectDocs', 'Tool', 'WebSite/Rules', 'CLAUDE.md'),
     # Budget in KB for everything Cloud can see. 4 MB leaves real headroom.
-    [int]$BudgetKB = 4096,
+    # 2026-10-03: Cloud reported 181% full at 4,564 KB, so its real limit is ~2,520 KB (inferred).
+    # 2,400 leaves a margin. Was 4096, which let the folders reach 181% while this gate said 111%.
+    [int]$BudgetKB = 2400,
     # A commit adding more than this many files gets reported.
     [int]$BulkAddThreshold = 60,
     # How many recent commits to look back over.
