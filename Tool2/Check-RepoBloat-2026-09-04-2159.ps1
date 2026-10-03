@@ -45,7 +45,9 @@ param(
     # Budget in KB for everything Cloud can see. 4 MB leaves real headroom.
     # 2026-10-03: Cloud reported 181% full at 4,564 KB, so its real limit is ~2,520 KB (inferred).
     # 2,400 leaves a margin. Was 4096, which let the folders reach 181% while this gate said 111%.
-    [int]$BudgetKB = 2400,
+    # 2026-10-03 later: MEASURED by Bill -- Cloud showed 72% at 1,644 KB, so the real limit is ~2,280 KB.
+    # 2,000 KB warns at ~88% of Cloud's capacity. (The 2,400 above was an over-estimate.)
+    [int]$BudgetKB = 2000,
     # A commit adding more than this many files gets reported.
     [int]$BulkAddThreshold = 60,
     # How many recent commits to look back over.
